@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, Calculator } from "lucide-react";
+import { Menu, X, ChevronDown, Calculator, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "@/components/SearchBar";
+import { useDarkMode } from "@/hooks/use-dark-mode";
 
 const navLinks = [
   { label: "Finance", href: "/category/finance" },
   { label: "Health", href: "/category/health" },
   { label: "Math", href: "/category/math" },
   { label: "Science", href: "/category/science" },
+  { label: "Date & Time", href: "/category/datetime" },
   { label: "Lifestyle", href: "/category/lifestyle" },
 ];
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { isDark, toggle } = useDarkMode();
 
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
@@ -26,7 +29,7 @@ const Header = () => {
           </span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-5">
           {navLinks.map((link) => (
             <Link
               key={link.label}
@@ -36,17 +39,18 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
-          <button className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
-            More <ChevronDown className="w-3 h-3" />
-          </button>
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
           <div className="w-48">
             <SearchBar />
           </div>
-          <button className="px-4 py-1.5 text-sm font-medium rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
-            Log In
+          <button
+            onClick={toggle}
+            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
         </div>
 
@@ -70,8 +74,17 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
-          <div className="mt-3">
-            <SearchBar />
+          <div className="flex items-center gap-3 mt-3">
+            <div className="flex-1">
+              <SearchBar />
+            </div>
+            <button
+              onClick={toggle}
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
           </div>
         </div>
       )}
