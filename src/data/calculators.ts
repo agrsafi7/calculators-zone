@@ -1,4 +1,4 @@
-import { Calculator, DollarSign, Heart, Hash, ArrowRightLeft, FlaskConical, Smile, Home } from "lucide-react";
+import { Calculator, DollarSign, Heart, Hash, ArrowRightLeft, FlaskConical, Smile, Home, Clock } from "lucide-react";
 
 export interface CalculatorInfo {
   slug: string;
@@ -37,19 +37,19 @@ export const categories: CategoryInfo[] = [
     tags: ["BMI", "Calories", "Pregnancy"],
   },
   {
-    name: "Math & Algebra",
+    name: "Math & Education",
     slug: "math",
     icon: "hash",
     color: "hsl(262 83% 58%)",
-    description: "Solve fractions, percentages, geometry problems, and scientific equations.",
-    tags: ["Percentage", "Fractions", "Volume"],
+    description: "Solve fractions, percentages, geometry problems, GPA, and scientific equations.",
+    tags: ["Percentage", "Fractions", "GPA"],
   },
   {
     name: "Unit Conversions",
     slug: "conversions",
     icon: "convert",
     color: "hsl(199 89% 48%)",
-    description: "Convert between metric and imperial units for length, weight, and volume.",
+    description: "Convert between metric and imperial units for length, weight, temperature, and more.",
     tags: ["Length", "Weight", "Temperature"],
   },
   {
@@ -58,22 +58,30 @@ export const categories: CategoryInfo[] = [
     icon: "flask",
     color: "hsl(25 95% 53%)",
     description: "Tools for physics, chemistry, thermodynamics, and other scientific fields.",
-    tags: ["Molar Mass", "Kinematics"],
+    tags: ["Force", "Ohm's Law", "pH"],
+  },
+  {
+    name: "Date & Time",
+    slug: "datetime",
+    icon: "clock",
+    color: "hsl(142 71% 45%)",
+    description: "Calculate age, date differences, business days, countdowns, and time zones.",
+    tags: ["Age", "Date Diff", "Countdown"],
   },
   {
     name: "Lifestyle",
     slug: "lifestyle",
     icon: "smile",
     color: "hsl(330 81% 60%)",
-    description: "Everyday calculators for time, date, travel, and personal hobbies.",
-    tags: ["Age", "Date", "Time Zone"],
+    description: "Everyday calculators for sleep, travel, pets, cooking, and personal hobbies.",
+    tags: ["Sleep", "Pet Age", "Travel"],
   },
 ];
 
 export const popularCalculators: CalculatorInfo[] = [
   { slug: "bmi-calculator", name: "BMI Calculator", category: "Health", categorySlug: "health", description: "Calculate your Body Mass Index", icon: "heart" },
   { slug: "mortgage-calculator", name: "Mortgage Calculator", shortName: "Mortgage Calc", category: "Finance", categorySlug: "finance", description: "Estimate monthly mortgage payments", icon: "dollar" },
-  { slug: "age-calculator", name: "Age Calculator", category: "Lifestyle", categorySlug: "lifestyle", description: "Calculate your exact age", icon: "smile" },
+  { slug: "age-calculator", name: "Age Calculator", category: "Date & Time", categorySlug: "datetime", description: "Calculate your exact age", icon: "clock" },
   { slug: "percentage-calculator", name: "Percentage Calculator", shortName: "Percentage Calc", category: "Math", categorySlug: "math", description: "Calculate percentages easily", icon: "hash" },
   { slug: "salary-calculator", name: "Salary Calculator", shortName: "Salary Paycheck", category: "Finance", categorySlug: "finance", description: "Calculate your take-home pay", icon: "dollar" },
   { slug: "length-converter", name: "Length Converter", category: "Units", categorySlug: "conversions", description: "Convert between length units", icon: "convert" },
@@ -87,6 +95,7 @@ export const getCategoryIcon = (icon: string) => {
     case "convert": return ArrowRightLeft;
     case "flask": return FlaskConical;
     case "smile": return Smile;
+    case "clock": return Clock;
     case "home": return Home;
     default: return Calculator;
   }

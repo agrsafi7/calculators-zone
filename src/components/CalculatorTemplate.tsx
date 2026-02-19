@@ -99,7 +99,7 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
           "@type": "WebApplication",
           name: config.name,
           description: config.metaDescription,
-          applicationCategory: "FinanceApplication",
+          applicationCategory: "UtilityApplication",
           operatingSystem: "All",
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
         }}

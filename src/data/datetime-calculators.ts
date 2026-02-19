@@ -1,18 +1,18 @@
 import { CalculatorConfig } from "@/components/CalculatorTemplate";
 
 const dtRelated = (exclude: string) => [
-  { name: "Age Calculator", slug: "age-calculator", icon: "smile", category: "lifestyle" },
-  { name: "Date Difference", slug: "date-difference-calculator", icon: "smile", category: "lifestyle" },
-  { name: "Business Days", slug: "business-days-calculator", icon: "smile", category: "lifestyle" },
-  { name: "Countdown", slug: "countdown-calculator", icon: "smile", category: "lifestyle" },
+  { name: "Age Calculator", slug: "age-calculator", icon: "clock", category: "datetime" },
+  { name: "Date Difference", slug: "date-difference-calculator", icon: "clock", category: "datetime" },
+  { name: "Business Days", slug: "business-days-calculator", icon: "clock", category: "datetime" },
+  { name: "Countdown", slug: "countdown-calculator", icon: "clock", category: "datetime" },
 ].filter((c) => c.slug !== exclude);
 
 export const datetimeCalculators: CalculatorConfig[] = [
   {
-    slug: "age-calculator", name: "Age Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "age-calculator", name: "Age Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate your exact age in years, months, days, hours, and minutes from your date of birth.",
     metaDescription: "Free age calculator. Find your exact age in years, months, days from your birthday.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "birthYear", label: "Birth Year", type: "number", defaultValue: 1990, min: 1900, max: 2030 },
       { id: "birthMonth", label: "Birth Month (1-12)", type: "number", defaultValue: 6, min: 1, max: 12 },
@@ -44,10 +44,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("age-calculator"),
   },
   {
-    slug: "date-difference-calculator", name: "Date Difference Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "date-difference-calculator", name: "Date Difference Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate the exact number of days, weeks, and months between any two dates.",
     metaDescription: "Free date difference calculator. Find days, weeks, and months between two dates.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "y1", label: "Start Year", type: "number", defaultValue: 2024, min: 1900 },
       { id: "m1", label: "Start Month", type: "number", defaultValue: 1, min: 1, max: 12 },
@@ -77,10 +77,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("date-difference-calculator"),
   },
   {
-    slug: "days-between-dates-calculator", name: "Days Between Dates Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "days-between-dates-calculator", name: "Days Between Dates Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Find the exact number of calendar days between two dates.",
     metaDescription: "Calculate days between two dates. Free days between dates calculator.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "y1", label: "From Year", type: "number", defaultValue: 2025, min: 1900 },
       { id: "m1", label: "From Month", type: "number", defaultValue: 1, min: 1, max: 12 },
@@ -105,10 +105,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("days-between-dates-calculator"),
   },
   {
-    slug: "time-duration-calculator", name: "Time Duration Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "time-duration-calculator", name: "Time Duration Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate the duration between two times in hours, minutes, and seconds.",
     metaDescription: "Free time duration calculator. Find hours and minutes between two times.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "h1", label: "Start Hour (0-23)", type: "number", defaultValue: 9, min: 0, max: 23 },
       { id: "min1", label: "Start Minute", type: "number", defaultValue: 0, min: 0, max: 59 },
@@ -132,10 +132,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("time-duration-calculator"),
   },
   {
-    slug: "business-days-calculator", name: "Business Days Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "business-days-calculator", name: "Business Days Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate the number of business days (weekdays) between two dates, excluding weekends.",
     metaDescription: "Free business days calculator. Count weekdays between two dates, excluding weekends.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "y1", label: "Start Year", type: "number", defaultValue: 2025, min: 1900 },
       { id: "m1", label: "Start Month", type: "number", defaultValue: 1, min: 1, max: 12 },
@@ -170,10 +170,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("business-days-calculator"),
   },
   {
-    slug: "work-hours-calculator", name: "Work Hours Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "work-hours-calculator", name: "Work Hours Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate total work hours and pay for a given period based on daily hours and hourly rate.",
     metaDescription: "Free work hours calculator. Track weekly work hours and calculate pay.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "hoursPerDay", label: "Hours per Day", type: "number", defaultValue: 8, step: 0.5 },
       { id: "daysPerWeek", label: "Days per Week", type: "number", defaultValue: 5, min: 1, max: 7 },
@@ -197,10 +197,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("work-hours-calculator"),
   },
   {
-    slug: "time-zone-converter", name: "Time Zone Converter", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "time-zone-converter", name: "Time Zone Converter", category: "Date & Time", categorySlug: "datetime",
     description: "Convert time between different UTC offset time zones.",
     metaDescription: "Free time zone converter. Convert times between UTC offset zones.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "hour", label: "Hour (0-23)", type: "number", defaultValue: 12, min: 0, max: 23 },
       { id: "minute", label: "Minute", type: "number", defaultValue: 0, min: 0, max: 59 },
@@ -226,10 +226,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("time-zone-converter"),
   },
   {
-    slug: "countdown-calculator", name: "Countdown Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "countdown-calculator", name: "Countdown Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate how many days, hours, and minutes remain until a specific date.",
     metaDescription: "Free countdown calculator. Find days remaining until any future date.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "year", label: "Target Year", type: "number", defaultValue: 2026, min: 2024 },
       { id: "month", label: "Target Month (1-12)", type: "number", defaultValue: 1, min: 1, max: 12 },
@@ -256,10 +256,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("countdown-calculator"),
   },
   {
-    slug: "week-number-calculator", name: "Week Number Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "week-number-calculator", name: "Week Number Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Find the ISO week number and day of year for any date.",
     metaDescription: "Free week number calculator. Find the ISO week number for any date.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "year", label: "Year", type: "number", defaultValue: 2025, min: 1900 },
       { id: "month", label: "Month (1-12)", type: "number", defaultValue: 6, min: 1, max: 12 },
@@ -287,10 +287,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("week-number-calculator"),
   },
   {
-    slug: "add-subtract-days-calculator", name: "Add/Subtract Days Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "add-subtract-days-calculator", name: "Add/Subtract Days Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Add or subtract a number of days from a date to find the resulting date.",
     metaDescription: "Free add/subtract days calculator. Find a date X days before or after a given date.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "year", label: "Start Year", type: "number", defaultValue: 2025, min: 1900 },
       { id: "month", label: "Start Month (1-12)", type: "number", defaultValue: 1, min: 1, max: 12 },
@@ -314,10 +314,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("add-subtract-days-calculator"),
   },
   {
-    slug: "retirement-date-calculator", name: "Retirement Date Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "retirement-date-calculator", name: "Retirement Date Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Estimate your retirement date based on your current age and planned retirement age.",
     metaDescription: "Free retirement date calculator. Find your retirement date and remaining working years.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "birthYear", label: "Birth Year", type: "number", defaultValue: 1985, min: 1940 },
       { id: "birthMonth", label: "Birth Month (1-12)", type: "number", defaultValue: 6, min: 1, max: 12 },
@@ -342,10 +342,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("retirement-date-calculator"),
   },
   {
-    slug: "due-date-calculator", name: "Due Date Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "due-date-calculator", name: "Due Date Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate a due date by adding a number of days or weeks to a start date.",
     metaDescription: "Free due date calculator. Find a deadline date from a start date plus duration.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "year", label: "Start Year", type: "number", defaultValue: 2025, min: 1900 },
       { id: "month", label: "Start Month (1-12)", type: "number", defaultValue: 2, min: 1, max: 12 },
@@ -370,10 +370,10 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("due-date-calculator"),
   },
   {
-    slug: "chronological-age-calculator", name: "Chronological Age Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    slug: "chronological-age-calculator", name: "Chronological Age Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate exact chronological age in years, months, and days — often used for educational assessments.",
     metaDescription: "Free chronological age calculator. Precise age in years, months, days for assessments.",
-    icon: "smile",
+    icon: "clock",
     inputs: [
       { id: "birthYear", label: "Birth Year", type: "number", defaultValue: 2015, min: 1900 },
       { id: "birthMonth", label: "Birth Month (1-12)", type: "number", defaultValue: 3, min: 1, max: 12 },

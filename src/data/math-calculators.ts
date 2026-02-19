@@ -895,7 +895,7 @@ export const mathCalculators: CalculatorConfig[] = [
       const results = [
         { label: `${name} Area`, value: area.toFixed(2), highlight: true },
       ];
-      if (perim > 0) results.push({ label: "Perimeter", value: perim.toFixed(2) });
+      if (perim > 0) results.push({ label: "Perimeter", value: perim.toFixed(2), highlight: false });
       return results;
     },
     formula: { expression: "Circle: πr²; Rectangle: l×w; Triangle: ½bh; Trapezoid: ½(a+b)h", variables: ["r=radius", "l=length, w=width", "b=base, h=height"] },
