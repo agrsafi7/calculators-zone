@@ -9,7 +9,7 @@ import Index from "./pages/Index";
 import MortgageCalculator from "./pages/MortgageCalculator";
 import BmiCalculator from "./pages/BmiCalculator";
 import PercentageCalculator from "./pages/PercentageCalculator";
-import FinanceCalculatorPage from "./pages/FinanceCalculatorPage";
+import GenericCalculatorPage from "./pages/GenericCalculatorPage";
 import CategoryPage from "./pages/CategoryPage";
 import { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } from "./pages/LegalPages";
 import NotFound from "./pages/NotFound";
@@ -27,11 +27,15 @@ const App = () => (
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Index />} />
+              {/* Specific hand-crafted calculator pages */}
               <Route path="/finance/mortgage-calculator" element={<MortgageCalculator />} />
               <Route path="/health/bmi-calculator" element={<BmiCalculator />} />
               <Route path="/math/percentage-calculator" element={<PercentageCalculator />} />
-              <Route path="/finance/:slug" element={<FinanceCalculatorPage />} />
+              {/* Category listing pages */}
               <Route path="/category/:slug" element={<CategoryPage />} />
+              {/* Generic dynamic calculator pages for all categories */}
+              <Route path="/:categorySlug/:slug" element={<GenericCalculatorPage />} />
+              {/* Legal pages */}
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-of-service" element={<TermsOfService />} />
               <Route path="/disclaimer" element={<Disclaimer />} />

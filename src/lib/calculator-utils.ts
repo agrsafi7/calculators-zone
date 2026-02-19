@@ -1,5 +1,11 @@
 import { CalculatorInfo, popularCalculators } from "@/data/calculators";
 import { financeCalculators } from "@/data/finance-calculators";
+import { healthCalculators } from "@/data/health-calculators";
+import { mathCalculators } from "@/data/math-calculators";
+import { conversionCalculators } from "@/data/conversion-calculators";
+import { datetimeCalculators } from "@/data/datetime-calculators";
+import { scienceCalculators } from "@/data/science-calculators";
+import { lifestyleCalculators } from "@/data/lifestyle-calculators";
 
 const STORAGE_KEY = "smartcalchub_recent";
 const MAX_RECENT = 5;
@@ -28,30 +34,27 @@ export const addRecentCalculator = (calc: { slug: string; categorySlug: string; 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(recent.slice(0, MAX_RECENT)));
 };
 
-// All calculators as a flat searchable list
-export const allCalculators: CalculatorInfo[] = [
-  ...popularCalculators,
-  // Finance calculators from config
-  ...financeCalculators.map((c) => ({
+// Convert CalculatorConfig[] to CalculatorInfo[]
+const configToInfo = (configs: { slug: string; name: string; category: string; categorySlug: string; description: string; icon: string }[]): CalculatorInfo[] =>
+  configs.map((c) => ({
     slug: c.slug,
     name: c.name,
     category: c.category,
     categorySlug: c.categorySlug,
     description: c.description,
     icon: c.icon,
-  })),
-  // Other category calculators
-  { slug: "calorie-calculator", name: "Calorie Calculator", category: "Health", categorySlug: "health", description: "Estimate daily calorie needs", icon: "heart" },
-  { slug: "gpa-calculator", name: "GPA Calculator", category: "Math", categorySlug: "math", description: "Calculate your grade point average", icon: "hash" },
-  { slug: "date-difference-calculator", name: "Date Difference Calculator", category: "Lifestyle", categorySlug: "lifestyle", description: "Calculate days between dates", icon: "smile" },
-  { slug: "weight-converter", name: "Weight Converter", category: "Units", categorySlug: "conversions", description: "Convert between weight units", icon: "convert" },
-  { slug: "molar-mass-calculator", name: "Molar Mass Calculator", category: "Science", categorySlug: "science", description: "Calculate molar mass of compounds", icon: "flask" },
-  { slug: "kinematics-calculator", name: "Kinematics Calculator", category: "Science", categorySlug: "science", description: "Solve kinematics equations", icon: "flask" },
-  { slug: "temperature-converter", name: "Temperature Converter", category: "Units", categorySlug: "conversions", description: "Convert between temperature scales", icon: "convert" },
-  { slug: "pregnancy-calculator", name: "Pregnancy Due Date Calculator", category: "Health", categorySlug: "health", description: "Estimate your due date", icon: "heart" },
-  { slug: "fractions-calculator", name: "Fractions Calculator", category: "Math", categorySlug: "math", description: "Add, subtract, multiply fractions", icon: "hash" },
-  { slug: "volume-calculator", name: "Volume Calculator", category: "Math", categorySlug: "math", description: "Calculate volume of shapes", icon: "hash" },
-  { slug: "time-zone-converter", name: "Time Zone Converter", category: "Lifestyle", categorySlug: "lifestyle", description: "Convert between time zones", icon: "smile" },
+  }));
+
+// All calculators as a flat searchable list
+export const allCalculators: CalculatorInfo[] = [
+  ...popularCalculators,
+  ...configToInfo(financeCalculators),
+  ...configToInfo(healthCalculators),
+  ...configToInfo(mathCalculators),
+  ...configToInfo(conversionCalculators),
+  ...configToInfo(datetimeCalculators),
+  ...configToInfo(scienceCalculators),
+  ...configToInfo(lifestyleCalculators),
 ];
 
 // Deduplicate by slug
