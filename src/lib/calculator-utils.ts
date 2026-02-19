@@ -1,4 +1,5 @@
 import { CalculatorInfo, popularCalculators } from "@/data/calculators";
+import { financeCalculators } from "@/data/finance-calculators";
 
 const STORAGE_KEY = "smartcalchub_recent";
 const MAX_RECENT = 5;
@@ -30,8 +31,16 @@ export const addRecentCalculator = (calc: { slug: string; categorySlug: string; 
 // All calculators as a flat searchable list
 export const allCalculators: CalculatorInfo[] = [
   ...popularCalculators,
-  { slug: "loan-calculator", name: "Loan Calculator", category: "Finance", categorySlug: "finance", description: "Calculate loan payments and interest", icon: "dollar" },
-  { slug: "compound-interest-calculator", name: "Compound Interest Calculator", category: "Finance", categorySlug: "finance", description: "Calculate compound interest growth", icon: "dollar" },
+  // Finance calculators from config
+  ...financeCalculators.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+    category: c.category,
+    categorySlug: c.categorySlug,
+    description: c.description,
+    icon: c.icon,
+  })),
+  // Other category calculators
   { slug: "calorie-calculator", name: "Calorie Calculator", category: "Health", categorySlug: "health", description: "Estimate daily calorie needs", icon: "heart" },
   { slug: "gpa-calculator", name: "GPA Calculator", category: "Math", categorySlug: "math", description: "Calculate your grade point average", icon: "hash" },
   { slug: "date-difference-calculator", name: "Date Difference Calculator", category: "Lifestyle", categorySlug: "lifestyle", description: "Calculate days between dates", icon: "smile" },
@@ -42,14 +51,21 @@ export const allCalculators: CalculatorInfo[] = [
   { slug: "pregnancy-calculator", name: "Pregnancy Due Date Calculator", category: "Health", categorySlug: "health", description: "Estimate your due date", icon: "heart" },
   { slug: "fractions-calculator", name: "Fractions Calculator", category: "Math", categorySlug: "math", description: "Add, subtract, multiply fractions", icon: "hash" },
   { slug: "volume-calculator", name: "Volume Calculator", category: "Math", categorySlug: "math", description: "Calculate volume of shapes", icon: "hash" },
-  { slug: "retirement-calculator", name: "Retirement Calculator", category: "Finance", categorySlug: "finance", description: "Plan your retirement savings", icon: "dollar" },
   { slug: "time-zone-converter", name: "Time Zone Converter", category: "Lifestyle", categorySlug: "lifestyle", description: "Convert between time zones", icon: "smile" },
 ];
+
+// Deduplicate by slug
+const seen = new Set<string>();
+export const uniqueCalculators = allCalculators.filter((c) => {
+  if (seen.has(c.slug)) return false;
+  seen.add(c.slug);
+  return true;
+});
 
 export const searchCalculators = (query: string): CalculatorInfo[] => {
   if (!query.trim()) return [];
   const q = query.toLowerCase();
-  return allCalculators
+  return uniqueCalculators
     .filter((c) => c.name.toLowerCase().includes(q) || c.category.toLowerCase().includes(q) || c.description.toLowerCase().includes(q))
     .slice(0, 8);
 };

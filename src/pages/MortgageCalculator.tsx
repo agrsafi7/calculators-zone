@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, RotateCcw, Star } from "lucide-react";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
+import SEO from "@/components/SEO";
 import { addRecentCalculator } from "@/lib/calculator-utils";
 import { popularCalculators, getCategoryIcon } from "@/data/calculators";
 import {
@@ -75,6 +76,7 @@ const MortgageCalculator = () => {
 
   return (
     <div>
+      <SEO title="Mortgage Calculator" description="Free mortgage calculator. Estimate monthly payments, total interest, and amortization for home loans. Adjust rates and terms instantly." canonical="/finance/mortgage-calculator" breadcrumbs={[{name:"Home",url:"/"},{name:"Finance",url:"/category/finance"},{name:"Mortgage Calculator",url:"/finance/mortgage-calculator"}]} faqs={[{question:"What constitutes a good interest rate?",answer:"A rate below the current national average is generally considered good."},{question:"How does a down payment affect my loan?",answer:"A larger down payment reduces your principal and monthly payments."}]} />
       {/* Breadcrumb */}
       <nav className="container mx-auto px-4 py-4 text-sm text-muted-foreground flex items-center gap-1.5">
         <Link to="/" className="hover:text-foreground">Home</Link>
