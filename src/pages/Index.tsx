@@ -1,10 +1,39 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, CheckCircle, Star } from "lucide-react";
 import { categories, popularCalculators, getCategoryIcon } from "@/data/calculators";
+import { financeCalculators } from "@/data/finance-calculators";
+import { healthCalculators } from "@/data/health-calculators";
+import { mathCalculators } from "@/data/math-calculators";
+import { conversionCalculators } from "@/data/conversion-calculators";
+import { datetimeCalculators } from "@/data/datetime-calculators";
+import { scienceCalculators } from "@/data/science-calculators";
+import { lifestyleCalculators } from "@/data/lifestyle-calculators";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
+
+const categoryCalcCounts: Record<string, number> = {
+  finance: financeCalculators.length,
+  health: healthCalculators.length,
+  math: mathCalculators.length,
+  conversions: conversionCalculators.length,
+  datetime: datetimeCalculators.length,
+  science: scienceCalculators.length,
+  lifestyle: lifestyleCalculators.length,
+};
+
+const categoryFeatured: Record<string, { name: string; slug: string }[]> = {
+  finance: financeCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
+  health: healthCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
+  math: mathCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
+  conversions: conversionCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
+  datetime: datetimeCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
+  science: scienceCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
+  lifestyle: lifestyleCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
+};
+
+const totalCalcs = Object.values(categoryCalcCounts).reduce((a, b) => a + b, 0);
 
 const Sidebar = () => (
   <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
@@ -19,7 +48,7 @@ const Sidebar = () => (
         We provide accurate, reliable, and free calculation tools for professionals and students alike. Trusted by financial advisors and educators worldwide.
       </p>
       <ul className="space-y-2 mb-4">
-        {["100% Free & Open Access", "Mobile Optimized Tools", "Instant Results"].map((item) => (
+        {[`${totalCalcs}+ Free Calculators`, "Mobile Optimized Tools", "Instant Results"].map((item) => (
           <li key={item} className="flex items-center gap-2 text-xs">
             <CheckCircle className="w-3.5 h-3.5 text-green-400" />
             {item}
@@ -57,7 +86,7 @@ const Sidebar = () => (
 const Index = () => {
   return (
     <div>
-      <SEO title="Free Online Calculators" description="Access 100+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly tools trusted by millions." canonical="/" />
+      <SEO title="Free Online Calculators" description={`Access ${totalCalcs}+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly tools trusted by millions.`} canonical="/" />
       <section className="hero-section py-16 md:py-24 text-center">
         <div className="container mx-auto px-4">
           <div className="inline-flex items-center gap-1.5 bg-blue-100 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-6">
@@ -68,7 +97,7 @@ const Index = () => {
             Free Online Calculators for Every Need
           </h1>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8">
-            Access over 100+ precision tools for finance, health, science, and daily life. Fast, free, and accurate.
+            Access over {totalCalcs}+ precision tools for finance, health, science, and daily life. Fast, free, and accurate.
           </p>
           <div className="max-w-lg mx-auto">
             <SearchBar large placeholder="What do you want to calculate today?" />
@@ -86,13 +115,13 @@ const Index = () => {
             <div className="mb-12">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold">Browse Categories</h2>
-                <Link to="#" className="text-sm font-medium text-primary hover:underline flex items-center gap-1">
-                  View All <ArrowUpRight className="w-3 h-3" />
-                </Link>
+                <span className="text-sm font-medium text-muted-foreground">{totalCalcs} calculators across {categories.length} categories</span>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {categories.map((cat) => {
                   const Icon = getCategoryIcon(cat.icon);
+                  const count = categoryCalcCounts[cat.slug] || 0;
+                  const featured = categoryFeatured[cat.slug] || [];
                   return (
                     <Link
                       key={cat.slug}
@@ -106,13 +135,18 @@ const Index = () => {
                         >
                           <Icon className="w-5 h-5" />
                         </div>
-                        <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-semibold text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
+                            {count} tools
+                          </span>
+                          <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
                       </div>
                       <h3 className="font-semibold text-sm mb-1">{cat.name}</h3>
                       <p className="text-xs text-muted-foreground mb-3">{cat.description}</p>
                       <div className="flex flex-wrap gap-1.5">
-                        {cat.tags.map((tag) => (
-                          <span key={tag} className="category-tag">{tag}</span>
+                        {featured.map((f) => (
+                          <span key={f.slug} className="category-tag">{f.name}</span>
                         ))}
                       </div>
                     </Link>
@@ -132,7 +166,7 @@ const Index = () => {
                       to={`/${calc.categorySlug}/${calc.slug}`}
                       className="card-elevated bg-card rounded-xl border border-border p-4 flex items-center gap-3 group"
                     >
-                      <div className="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+                      <div className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center shrink-0">
                         <Icon className="w-4 h-4 text-primary" />
                       </div>
                       <div>
