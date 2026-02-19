@@ -4,6 +4,7 @@ import { categories, popularCalculators, getCategoryIcon } from "@/data/calculat
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import RecentlyUsed from "@/components/RecentlyUsed";
+import SEO from "@/components/SEO";
 
 const Sidebar = () => (
   <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
@@ -56,6 +57,7 @@ const Sidebar = () => (
 const Index = () => {
   return (
     <div>
+      <SEO title="Free Online Calculators" description="Access 100+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly tools trusted by millions." canonical="/" />
       <section className="hero-section py-16 md:py-24 text-center">
         <div className="container mx-auto px-4">
           <div className="inline-flex items-center gap-1.5 bg-blue-100 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-6">

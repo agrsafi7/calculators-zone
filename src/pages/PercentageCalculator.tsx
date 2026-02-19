@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ChevronRight, RotateCcw } from "lucide-react";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
+import SEO from "@/components/SEO";
 import { addRecentCalculator } from "@/lib/calculator-utils";
 import { getCategoryIcon } from "@/data/calculators";
 import {
@@ -58,6 +59,7 @@ const PercentageCalculator = () => {
 
   return (
     <div>
+      <SEO title="Percentage Calculator" description="Free percentage calculator. Calculate percentages, percentage of a number, and percentage change. Quick and accurate." canonical="/math/percentage-calculator" />
       <nav className="container mx-auto px-4 py-4 text-sm text-muted-foreground flex items-center gap-1.5">
         <Link to="/" className="hover:text-foreground">Home</Link>
         <ChevronRight className="w-3 h-3" />

@@ -1,14 +1,15 @@
 import { useParams, Link } from "react-router-dom";
 import { ChevronRight, ArrowUpRight } from "lucide-react";
 import { categories, getCategoryIcon } from "@/data/calculators";
-import { allCalculators } from "@/lib/calculator-utils";
+import { uniqueCalculators } from "@/lib/calculator-utils";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
+import SEO from "@/components/SEO";
 
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const category = categories.find((c) => c.slug === slug);
-  const calculators = allCalculators.filter((c) => c.categorySlug === slug);
+  const calculators = uniqueCalculators.filter((c) => c.categorySlug === slug);
 
   if (!category) {
     return (
@@ -23,6 +24,7 @@ const CategoryPage = () => {
 
   return (
     <div>
+      <SEO title={`${category.name} Calculators`} description={category.description} canonical={`/category/${category.slug}`} breadcrumbs={[{name:"Home",url:"/"},{name:category.name,url:`/category/${category.slug}`}]} />
       {/* Breadcrumb */}
       <nav className="container mx-auto px-4 py-4 text-sm text-muted-foreground flex items-center gap-1.5">
         <Link to="/" className="hover:text-foreground">Home</Link>
