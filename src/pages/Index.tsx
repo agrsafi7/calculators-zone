@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, CheckCircle, Star, Search } from "lucide-react";
+import { ArrowUpRight, CheckCircle, Star } from "lucide-react";
 import { categories, popularCalculators, getCategoryIcon } from "@/data/calculators";
 import AdPlaceholder from "@/components/AdPlaceholder";
+import SearchBar from "@/components/SearchBar";
+import RecentlyUsed from "@/components/RecentlyUsed";
 
 const Sidebar = () => (
   <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
     <AdPlaceholder size="rectangle" />
 
-    {/* Why SmartCalc card */}
     <div className="bg-navy text-primary-foreground rounded-xl p-6">
       <div className="flex items-center gap-2 mb-3">
         <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
@@ -32,7 +33,8 @@ const Sidebar = () => (
       </Link>
     </div>
 
-    {/* Latest Updates */}
+    <RecentlyUsed />
+
     <div className="bg-card rounded-xl border border-border p-5">
       <h3 className="font-bold text-sm mb-4">Latest Updates</h3>
       <ul className="space-y-4">
@@ -54,7 +56,6 @@ const Sidebar = () => (
 const Index = () => {
   return (
     <div>
-      {/* Hero */}
       <section className="hero-section py-16 md:py-24 text-center">
         <div className="container mx-auto px-4">
           <div className="inline-flex items-center gap-1.5 bg-blue-100 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-6">
@@ -67,31 +68,19 @@ const Index = () => {
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8">
             Access over 100+ precision tools for finance, health, science, and daily life. Fast, free, and accurate.
           </p>
-          <div className="max-w-lg mx-auto relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="What do you want to calculate today?"
-              className="w-full pl-12 pr-28 py-3.5 rounded-xl border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary shadow-sm"
-            />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">
-              Search
-            </button>
+          <div className="max-w-lg mx-auto">
+            <SearchBar large placeholder="What do you want to calculate today?" />
           </div>
         </div>
       </section>
 
-      {/* Ad */}
       <section className="py-6">
         <AdPlaceholder size="leaderboard" />
       </section>
 
-      {/* Main content with sidebar */}
       <section className="container mx-auto px-4 py-8">
         <div className="flex gap-8">
-          {/* Main */}
           <div className="flex-1 min-w-0">
-            {/* Categories */}
             <div className="mb-12">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold">Browse Categories</h2>
@@ -130,7 +119,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Popular Calculators */}
             <div>
               <h2 className="text-2xl font-bold mb-6">Popular Calculators</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
