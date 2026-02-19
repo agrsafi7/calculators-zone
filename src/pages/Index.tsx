@@ -42,7 +42,7 @@ const Sidebar = () => (
     <div className="bg-navy text-primary-foreground rounded-xl p-6">
       <div className="flex items-center gap-2 mb-3">
         <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-        <h3 className="font-bold text-sm">Why SmartCalc?</h3>
+        <h3 className="font-bold text-sm">Why Calculators?</h3>
       </div>
       <p className="text-xs opacity-80 mb-4">
         We provide accurate, reliable, and free calculation tools for professionals and students alike. Trusted by financial advisors and educators worldwide.

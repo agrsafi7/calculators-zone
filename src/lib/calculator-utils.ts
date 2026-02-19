@@ -7,7 +7,7 @@ import { datetimeCalculators } from "@/data/datetime-calculators";
 import { scienceCalculators } from "@/data/science-calculators";
 import { lifestyleCalculators } from "@/data/lifestyle-calculators";
 
-const STORAGE_KEY = "smartcalchub_recent";
+const STORAGE_KEY = "calculators_recent";
 const MAX_RECENT = 5;
 
 export interface RecentEntry {
