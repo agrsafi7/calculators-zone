@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, RotateCcw } from "lucide-react";
+import { RotateCcw } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
@@ -105,13 +106,11 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
         }}
       />
 
-      <nav className="container mx-auto px-4 py-4 text-sm text-muted-foreground flex items-center gap-1.5">
-        <Link to="/" className="hover:text-foreground">Home</Link>
-        <ChevronRight className="w-3 h-3" />
-        <Link to={`/category/${config.categorySlug}`} className="hover:text-foreground">{config.category}</Link>
-        <ChevronRight className="w-3 h-3" />
-        <span className="text-foreground">{config.name}</span>
-      </nav>
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: config.category, href: `/category/${config.categorySlug}` },
+        { label: config.name },
+      ]} />
 
       <div className="container mx-auto px-4 pb-12">
         <div className="flex flex-col lg:flex-row gap-8">
