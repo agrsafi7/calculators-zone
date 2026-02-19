@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { ChevronRight, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { categories, getCategoryIcon } from "@/data/calculators";
 import { uniqueCalculators } from "@/lib/calculator-utils";
 import AdPlaceholder from "@/components/AdPlaceholder";
@@ -25,12 +26,10 @@ const CategoryPage = () => {
   return (
     <div>
       <SEO title={`${category.name} Calculators`} description={category.description} canonical={`/category/${category.slug}`} breadcrumbs={[{name:"Home",url:"/"},{name:category.name,url:`/category/${category.slug}`}]} />
-      {/* Breadcrumb */}
-      <nav className="container mx-auto px-4 py-4 text-sm text-muted-foreground flex items-center gap-1.5">
-        <Link to="/" className="hover:text-foreground">Home</Link>
-        <ChevronRight className="w-3 h-3" />
-        <span className="text-foreground">{category.name}</span>
-      </nav>
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: category.name },
+      ]} />
 
       <div className="container mx-auto px-4 pb-12">
         <div className="flex gap-8">
