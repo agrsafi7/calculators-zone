@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, Calculator, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import SearchBar from "@/components/SearchBar";
 import { useDarkMode } from "@/hooks/use-dark-mode";
@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Finance", href: "/category/finance" },
   { label: "Health", href: "/category/health" },
   { label: "Math", href: "/category/math" },
+  { label: "Conversions", href: "/category/conversions" },
   { label: "Science", href: "/category/science" },
   { label: "Date & Time", href: "/category/datetime" },
   { label: "Lifestyle", href: "/category/lifestyle" },
@@ -21,11 +22,9 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Calculator className="w-4 h-4 text-primary-foreground" />
-          </div>
+          <img src="/favicon.png" alt="Calculators" className="w-8 h-8 rounded-lg" />
           <span className="text-lg font-bold text-foreground">
-            SmartCalc<span className="text-primary">Hub</span>
+            Calculators
           </span>
         </Link>
 

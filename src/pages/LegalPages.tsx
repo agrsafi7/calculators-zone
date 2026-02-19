@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const LegalPage = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div>
-    <nav className="container mx-auto px-4 py-4 text-sm text-muted-foreground flex items-center gap-1.5">
-      <Link to="/" className="hover:text-foreground">Home</Link>
-      <ChevronRight className="w-3 h-3" />
-      <span className="text-foreground">{title}</span>
-    </nav>
+    <Breadcrumbs items={[
+      { label: "Home", href: "/" },
+      { label: title },
+    ]} />
     <div className="container mx-auto px-4 pb-12 max-w-3xl">
       <h1 className="text-2xl md:text-3xl font-black mb-6">{title}</h1>
       <div className="prose prose-sm max-w-none text-muted-foreground space-y-4 text-sm leading-relaxed">
@@ -20,7 +19,7 @@ const LegalPage = ({ title, children }: { title: string; children: React.ReactNo
 export const PrivacyPolicy = () => (
   <LegalPage title="Privacy Policy">
     <p><strong className="text-foreground">Last updated:</strong> February 19, 2026</p>
-    <p>SmartCalcHub ("we", "us", or "our") operates the SmartCalcHub website. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.</p>
+    <p>Calculators ("we", "us", or "our") operates the Calculators website. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Information We Collect</h2>
     <p>We collect several types of information for various purposes to provide and improve our Service to you:</p>
@@ -30,7 +29,7 @@ export const PrivacyPolicy = () => (
     </ul>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Use of Data</h2>
-    <p>SmartCalcHub uses the collected data for various purposes:</p>
+    <p>Calculators uses the collected data for various purposes:</p>
     <ul className="list-disc pl-5 space-y-1">
       <li>To provide and maintain the Service</li>
       <li>To notify you about changes to our Service</li>
@@ -44,32 +43,32 @@ export const PrivacyPolicy = () => (
     <p>We may use third-party advertising companies, including Google AdSense, to serve ads when you visit our website. These companies may use cookies to serve ads based on your prior visits to our website or other websites.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please contact us at <strong className="text-foreground">privacy@smartcalchub.com</strong>.</p>
+    <p>If you have any questions about this Privacy Policy, please contact us at <strong className="text-foreground">privacy@calculators.com</strong>.</p>
   </LegalPage>
 );
 
 export const TermsOfService = () => (
   <LegalPage title="Terms of Service">
     <p><strong className="text-foreground">Last updated:</strong> February 19, 2026</p>
-    <p>Please read these Terms of Service ("Terms") carefully before using SmartCalcHub.</p>
+    <p>Please read these Terms of Service ("Terms") carefully before using Calculators.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Acceptance of Terms</h2>
-    <p>By accessing or using SmartCalcHub, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.</p>
+    <p>By accessing or using Calculators, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Use of the Service</h2>
-    <p>SmartCalcHub provides online calculators for informational and educational purposes only. The results provided by our calculators should not be considered as professional financial, medical, or legal advice.</p>
+    <p>Calculators provides online calculators for informational and educational purposes only. The results provided by our calculators should not be considered as professional financial, medical, or legal advice.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Accuracy Disclaimer</h2>
     <p>While we strive to provide accurate calculations, we make no warranties or representations about the accuracy, reliability, or completeness of any information on this site. Users should verify results independently before making important decisions.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Intellectual Property</h2>
-    <p>The Service and its original content, features, and functionality are owned by SmartCalcHub and are protected by international copyright, trademark, and other intellectual property laws.</p>
+    <p>The Service and its original content, features, and functionality are owned by Calculators and are protected by international copyright, trademark, and other intellectual property laws.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Limitation of Liability</h2>
-    <p>In no event shall SmartCalcHub be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the Service.</p>
+    <p>In no event shall Calculators be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the Service.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Contact</h2>
-    <p>Questions about these Terms should be sent to <strong className="text-foreground">legal@smartcalchub.com</strong>.</p>
+    <p>Questions about these Terms should be sent to <strong className="text-foreground">legal@calculators.com</strong>.</p>
   </LegalPage>
 );
 
@@ -78,16 +77,16 @@ export const Disclaimer = () => (
     <p><strong className="text-foreground">Last updated:</strong> February 19, 2026</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">General Disclaimer</h2>
-    <p>The information provided by SmartCalcHub is for general informational and educational purposes only. All information on the site is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the site.</p>
+    <p>The information provided by Calculators is for general informational and educational purposes only. All information on the site is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the site.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Financial Disclaimer</h2>
-    <p>The financial calculators on SmartCalcHub are provided for illustrative purposes only. They are not intended to provide specific financial, investment, tax, legal, accounting, or other professional advice. Always consult a qualified professional before making financial decisions.</p>
+    <p>The financial calculators on Calculators are provided for illustrative purposes only. They are not intended to provide specific financial, investment, tax, legal, accounting, or other professional advice. Always consult a qualified professional before making financial decisions.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Health Disclaimer</h2>
     <p>Health-related calculators (BMI, calorie, etc.) are provided for general reference only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">No Liability</h2>
-    <p>Under no circumstances shall SmartCalcHub be responsible for any loss or damage resulting from reliance on information or calculator results provided through this website.</p>
+    <p>Under no circumstances shall Calculators be responsible for any loss or damage resulting from reliance on information or calculator results provided through this website.</p>
   </LegalPage>
 );
 
@@ -120,9 +119,9 @@ export const ContactPage = () => (
 
     <h2 className="text-lg font-bold text-foreground mt-6">Other Ways to Reach Us</h2>
     <ul className="list-disc pl-5 space-y-1">
-      <li><strong className="text-foreground">Email:</strong> support@smartcalchub.com</li>
-      <li><strong className="text-foreground">Business Inquiries:</strong> partners@smartcalchub.com</li>
-      <li><strong className="text-foreground">Advertising:</strong> ads@smartcalchub.com</li>
+      <li><strong className="text-foreground">Email:</strong> support@calculators.com</li>
+      <li><strong className="text-foreground">Business Inquiries:</strong> partners@calculators.com</li>
+      <li><strong className="text-foreground">Advertising:</strong> ads@calculators.com</li>
     </ul>
   </LegalPage>
 );

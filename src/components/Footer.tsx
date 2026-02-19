@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Calculator } from "lucide-react";
 import { categories, getCategoryIcon } from "@/data/calculators";
 import { financeCalculators } from "@/data/finance-calculators";
 import { healthCalculators } from "@/data/health-calculators";
@@ -46,11 +45,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <Calculator className="w-4 h-4 text-primary-foreground" />
-              </div>
+              <img src="/favicon.png" alt="Calculators" className="w-8 h-8 rounded-lg" />
               <span className="text-lg font-bold text-primary-foreground">
-                SmartCalcHub
+                Calculators
               </span>
             </div>
             <p className="text-sm opacity-70 mb-4">
@@ -116,7 +113,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center text-sm opacity-60">
-          © {new Date().getFullYear()} SmartCalc Hub. All rights reserved.
+          © {new Date().getFullYear()} Calculators. All rights reserved.
         </div>
       </div>
     </footer>

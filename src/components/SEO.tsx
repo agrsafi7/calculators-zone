@@ -11,9 +11,9 @@ interface SEOProps {
 }
 
 const SEO = ({ title, description, canonical, type = "website", jsonLd, breadcrumbs, faqs }: SEOProps) => {
-  const siteName = "SmartCalcHub";
+  const siteName = "Calculators";
   const fullTitle = `${title} | ${siteName}`;
-  const baseUrl = "https://smartcalchub.com";
+  const baseUrl = "https://calculators.com";
 
   const breadcrumbSchema = breadcrumbs?.length
     ? {
