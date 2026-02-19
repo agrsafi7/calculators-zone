@@ -1,0 +1,127 @@
+import { useParams, Link } from "react-router-dom";
+import { ChevronRight, ArrowUpRight } from "lucide-react";
+import { categories, getCategoryIcon } from "@/data/calculators";
+import { allCalculators } from "@/lib/calculator-utils";
+import AdPlaceholder from "@/components/AdPlaceholder";
+import RecentlyUsed from "@/components/RecentlyUsed";
+
+const CategoryPage = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const category = categories.find((c) => c.slug === slug);
+  const calculators = allCalculators.filter((c) => c.categorySlug === slug);
+
+  if (!category) {
+    return (
+      <div className="container mx-auto px-4 py-16 text-center">
+        <h1 className="text-2xl font-bold mb-2">Category not found</h1>
+        <Link to="/" className="text-primary hover:underline text-sm">Back to Home</Link>
+      </div>
+    );
+  }
+
+  const CatIcon = getCategoryIcon(category.icon);
+
+  return (
+    <div>
+      {/* Breadcrumb */}
+      <nav className="container mx-auto px-4 py-4 text-sm text-muted-foreground flex items-center gap-1.5">
+        <Link to="/" className="hover:text-foreground">Home</Link>
+        <ChevronRight className="w-3 h-3" />
+        <span className="text-foreground">{category.name}</span>
+      </nav>
+
+      <div className="container mx-auto px-4 pb-12">
+        <div className="flex gap-8">
+          {/* Main */}
+          <div className="flex-1 min-w-0">
+            {/* Category header */}
+            <div className="flex items-center gap-4 mb-6">
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center"
+                style={{ backgroundColor: `${category.color}15`, color: category.color }}
+              >
+                <CatIcon className="w-6 h-6" />
+              </div>
+              <div>
+                <h1 className="text-3xl font-black">{category.name} Calculators</h1>
+                <p className="text-muted-foreground text-sm">{category.description}</p>
+              </div>
+            </div>
+
+            <AdPlaceholder size="leaderboard" />
+
+            {/* Calculator grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+              {calculators.map((calc) => {
+                const Icon = getCategoryIcon(calc.icon);
+                return (
+                  <Link
+                    key={calc.slug}
+                    to={`/${calc.categorySlug}/${calc.slug}`}
+                    className="card-elevated bg-card rounded-xl border border-border p-5 group"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                    <h3 className="font-semibold text-sm mb-1">{calc.name}</h3>
+                    <p className="text-xs text-muted-foreground">{calc.description}</p>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {calculators.length === 0 && (
+              <div className="text-center py-12 text-muted-foreground">
+                <p className="text-sm">Calculators coming soon for this category.</p>
+              </div>
+            )}
+
+            <div className="mt-8">
+              <AdPlaceholder size="leaderboard" />
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
+            <AdPlaceholder size="rectangle" />
+
+            {/* Other categories */}
+            <div className="bg-card rounded-xl border border-border p-5">
+              <h3 className="font-bold text-sm mb-4">Other Categories</h3>
+              <ul className="space-y-1">
+                {categories
+                  .filter((c) => c.slug !== slug)
+                  .map((c) => {
+                    const OtherIcon = getCategoryIcon(c.icon);
+                    return (
+                      <li key={c.slug}>
+                        <Link
+                          to={`/category/${c.slug}`}
+                          className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-secondary transition-colors text-sm"
+                        >
+                          <div
+                            className="w-8 h-8 rounded-lg flex items-center justify-center"
+                            style={{ backgroundColor: `${c.color}15`, color: c.color }}
+                          >
+                            <OtherIcon className="w-4 h-4" />
+                          </div>
+                          {c.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+              </ul>
+            </div>
+
+            <RecentlyUsed />
+          </aside>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CategoryPage;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { Search, Menu, X, ChevronDown, Calculator } from "lucide-react";
+import { Menu, X, ChevronDown, Calculator } from "lucide-react";
 import { useState } from "react";
+import SearchBar from "@/components/SearchBar";
 
 const navLinks = [
   { label: "Finance", href: "/category/finance" },
@@ -12,12 +13,10 @@ const navLinks = [
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
 
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
-        {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
             <Calculator className="w-4 h-4 text-primary-foreground" />
@@ -27,7 +26,6 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -43,24 +41,15 @@ const Header = () => {
           </button>
         </nav>
 
-        {/* Search + Login */}
         <div className="hidden md:flex items-center gap-3">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search tools..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 pr-3 py-1.5 w-48 text-sm rounded-lg border border-border bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-            />
+          <div className="w-48">
+            <SearchBar />
           </div>
           <button className="px-4 py-1.5 text-sm font-medium rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity">
             Log In
           </button>
         </div>
 
-        {/* Mobile toggle */}
         <button
           className="md:hidden text-foreground"
           onClick={() => setMobileOpen(!mobileOpen)}
@@ -69,7 +58,6 @@ const Header = () => {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden border-t border-border bg-card px-4 py-4 space-y-3">
           {navLinks.map((link) => (
@@ -82,13 +70,8 @@ const Header = () => {
               {link.label}
             </Link>
           ))}
-          <div className="relative mt-3">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search tools..."
-              className="pl-9 pr-3 py-2 w-full text-sm rounded-lg border border-border bg-secondary focus:outline-none focus:ring-2 focus:ring-primary/30"
-            />
+          <div className="mt-3">
+            <SearchBar />
           </div>
         </div>
       )}

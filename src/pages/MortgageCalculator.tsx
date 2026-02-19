@@ -1,7 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, RotateCcw, Star } from "lucide-react";
 import AdPlaceholder from "@/components/AdPlaceholder";
+import RecentlyUsed from "@/components/RecentlyUsed";
+import { addRecentCalculator } from "@/lib/calculator-utils";
 import { popularCalculators, getCategoryIcon } from "@/data/calculators";
 import {
   Accordion,
@@ -23,6 +25,10 @@ const MortgageCalculator = () => {
   const [downPaymentPercent, setDownPaymentPercent] = useState(20);
   const [interestRate, setInterestRate] = useState(6.5);
   const [loanTerm, setLoanTerm] = useState(30);
+
+  useEffect(() => {
+    addRecentCalculator({ slug: "mortgage-calculator", categorySlug: "finance", name: "Mortgage Calculator", category: "Finance" });
+  }, []);
 
   const result = useMemo(() => {
     const principal = homePrice - downPayment;
@@ -332,22 +338,7 @@ const MortgageCalculator = () => {
 
             <AdPlaceholder size="rectangle" />
 
-            {/* Recently Used */}
-            <div className="bg-card rounded-xl border border-border p-5">
-              <h3 className="font-bold text-sm mb-4 flex items-center gap-2">
-                <Star className="w-4 h-4 text-primary" /> Recently Used
-              </h3>
-              <ul className="space-y-3">
-                <li>
-                  <p className="text-sm font-medium">BMI Calculator</p>
-                  <p className="text-xs text-muted-foreground">Health & Fitness</p>
-                </li>
-                <li>
-                  <p className="text-sm font-medium">Percentage Change</p>
-                  <p className="text-xs text-muted-foreground">Math</p>
-                </li>
-              </ul>
-            </div>
+            <RecentlyUsed />
           </aside>
         </div>
       </div>
