@@ -10,14 +10,14 @@ const footerLinks = {
   ],
   company: [
     { label: "About Us", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Contact", href: "/contact" },
     { label: "Careers", href: "#" },
     { label: "Advertise", href: "#" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
+    { label: "Disclaimer", href: "/disclaimer" },
     { label: "Sitemap", href: "#" },
   ],
 };
@@ -26,14 +26,14 @@ const Footer = () => {
   return (
     <footer className="footer-section">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
                 <Calculator className="w-4 h-4 text-primary-foreground" />
               </div>
-              <span className="text-lg font-bold text-white">
+              <span className="text-lg font-bold text-primary-foreground">
                 SmartCalcHub
               </span>
             </div>
@@ -44,7 +44,7 @@ const Footer = () => {
 
           {/* Links */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">Calculators</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mb-4">Calculators</h4>
             <ul className="space-y-2">
               {footerLinks.calculators.map((link) => (
                 <li key={link.label}>
@@ -56,7 +56,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">Company</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mb-4">Company</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
@@ -68,7 +68,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">Legal</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mb-4">Legal</h4>
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.label}>
@@ -81,7 +81,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 text-center text-sm opacity-60">
+        <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center text-sm opacity-60">
           © {new Date().getFullYear()} SmartCalc Hub. All rights reserved.
         </div>
       </div>

@@ -7,7 +7,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Index from "./pages/Index";
 import MortgageCalculator from "./pages/MortgageCalculator";
+import BmiCalculator from "./pages/BmiCalculator";
+import PercentageCalculator from "./pages/PercentageCalculator";
 import CategoryPage from "./pages/CategoryPage";
+import { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } from "./pages/LegalPages";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,8 +27,13 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/finance/mortgage-calculator" element={<MortgageCalculator />} />
+              <Route path="/health/bmi-calculator" element={<BmiCalculator />} />
+              <Route path="/math/percentage-calculator" element={<PercentageCalculator />} />
               <Route path="/category/:slug" element={<CategoryPage />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
