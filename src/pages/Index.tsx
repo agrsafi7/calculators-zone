@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, CheckCircle, Star } from "lucide-react";
+import { ArrowUpRight, CheckCircle, Star, Calculator, Search } from "lucide-react";
 import { categories, popularCalculators, getCategoryIcon } from "@/data/calculators";
 import { financeCalculators } from "@/data/finance-calculators";
 import { healthCalculators } from "@/data/health-calculators";
@@ -12,6 +12,7 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
+import HeroCalculator from "@/components/HeroCalculator";
 
 const categoryCalcCounts: Record<string, number> = {
   finance: financeCalculators.length,
@@ -87,20 +88,48 @@ const Index = () => {
   return (
     <div>
       <SEO title="Free Online Calculators" description={`Access ${totalCalcs}+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly tools trusted by millions.`} canonical="/" />
-      <section className="hero-section py-16 md:py-24 text-center">
+      <section className="hero-section py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="inline-flex items-center gap-1.5 bg-blue-100 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-6">
-            <CheckCircle className="w-3 h-3" />
-            TRUSTED BY 2M+ USERS MONTHLY
-          </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4 max-w-2xl mx-auto">
-            Free Online Calculators for Every Need
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8">
-            Access over {totalCalcs}+ precision tools for finance, health, science, and daily life. Fast, free, and accurate.
-          </p>
-          <div className="max-w-lg mx-auto">
-            <SearchBar large placeholder="What do you want to calculate today?" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {/* Left: Calculator */}
+            <div>
+              <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-4">
+                <Calculator className="w-3 h-3" />
+                QUICK CALCULATE
+              </div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4">
+                Free Online Calculators for Every Need
+              </h1>
+              <p className="text-muted-foreground text-sm mb-6">
+                Access over {totalCalcs}+ precision tools for finance, health, science, and daily life.
+              </p>
+              <HeroCalculator />
+            </div>
+
+            {/* Right: Search + Info */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
+                <Search className="w-3 h-3" />
+                FIND A CALCULATOR
+              </div>
+              <h2 className="text-2xl font-bold">What do you want to calculate?</h2>
+              <SearchBar large placeholder="Search calculators..." />
+              <div className="bg-card rounded-xl border border-border p-5 space-y-3">
+                <div className="flex items-center gap-2">
+                  <Star className="w-4 h-4 text-primary fill-primary" />
+                  <span className="font-semibold text-sm">Trusted by 2M+ users monthly</span>
+                </div>
+                <ul className="space-y-2">
+                  {[`${totalCalcs}+ Free Calculators`, "Instant & Accurate Results", "Works on All Devices"].map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <CheckCircle className="w-3.5 h-3.5 text-primary" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <RecentlyUsed />
+            </div>
           </div>
         </div>
       </section>
@@ -181,6 +210,27 @@ const Index = () => {
           </div>
 
           <Sidebar />
+        </div>
+      </section>
+
+      {/* SEO About Section */}
+      <section className="container mx-auto px-4 py-12 border-t border-border">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-4">About Calculators</h2>
+          <div className="prose prose-sm max-w-none text-muted-foreground space-y-4">
+            <p>
+              Calculators is your one-stop destination for fast, comprehensive, and completely free online calculators across a wide range of categories. With over {totalCalcs} tools spanning finance, health &amp; fitness, math, unit conversions, science, date &amp; time, and lifestyle — we help millions of users every month make quick, accurate calculations without the hassle of sign-ups or downloads.
+            </p>
+            <p>
+              Whether you're a student solving complex equations, a professional calculating mortgage rates, or someone tracking daily calorie intake — our tools are designed with precision and simplicity in mind. Each calculator is individually developed, rigorously tested, and optimized for all devices so you get reliable results every time, on desktop or mobile.
+            </p>
+            <p>
+              We believe the internet should be a source of free, accessible information. That's why all our calculators and tools are 100% free to use, require no registration, and are constantly updated to reflect the latest formulas and standards. From <Link to="/finance/mortgage-calculator" className="text-primary hover:underline">mortgage calculators</Link> and <Link to="/health/bmi-calculator" className="text-primary hover:underline">BMI calculators</Link> to <Link to="/math/percentage-calculator" className="text-primary hover:underline">percentage calculators</Link> and <Link to="/conversions/length-converter" className="text-primary hover:underline">unit converters</Link> — we've got you covered.
+            </p>
+            <p>
+              Our mission is simple: to be the most trusted, go-to calculator resource on the web. If you find an error or have a suggestion for a new tool, we'd love to hear from you. Your feedback helps us continuously improve and expand our library of calculators.
+            </p>
+          </div>
         </div>
       </section>
     </div>
