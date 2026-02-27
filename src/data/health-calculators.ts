@@ -1013,4 +1013,92 @@ export const healthCalculators: CalculatorConfig[] = [
     faqs: [{ question: "Why does frame size matter?", answer: "Frame size affects ideal weight calculations. A large-framed person can healthily weigh more than a small-framed person of the same height." }],
     relatedCalcs: healthRelated("body-type-calculator"),
   },
+  // 31. Anorexic BMI Calculator
+  {
+    slug: "anorexic-bmi-calculator", name: "Anorexic BMI Calculator", category: "Health", categorySlug: "health",
+    description: "Understand BMI ranges associated with anorexia nervosa and underweight classifications.",
+    metaDescription: "Free anorexic BMI calculator. Understand BMI thresholds for underweight and anorexia classifications.",
+    icon: "heart",
+    inputs: [
+      { id: "weight", label: "Weight (kg)", type: "number", defaultValue: 45, step: 0.1 },
+      { id: "height", label: "Height (cm)", type: "number", defaultValue: 170, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const bmi = v.weight / ((v.height / 100) ** 2);
+      let severity = "Normal Weight";
+      if (bmi < 15) severity = "Very Severely Underweight";
+      else if (bmi < 16) severity = "Severely Underweight";
+      else if (bmi < 17) severity = "Moderately Underweight";
+      else if (bmi < 18.5) severity = "Mildly Underweight";
+      const healthyMin = 18.5 * ((v.height / 100) ** 2);
+      return [
+        { label: "BMI", value: bmi.toFixed(1), highlight: true },
+        { label: "Classification", value: severity },
+        { label: "Minimum Healthy Weight", value: `${healthyMin.toFixed(1)} kg` },
+        { label: "Weight to Gain", value: bmi < 18.5 ? `${(healthyMin - v.weight).toFixed(1)} kg` : "N/A — healthy range" },
+      ];
+    },
+    formula: { expression: "BMI = Weight / Height²", variables: ["<15 = very severely underweight", "<16 = severely underweight", "<18.5 = underweight"] },
+    howToUse: "Enter weight and height. If you or someone you know is struggling, please seek professional help.",
+    faqs: [{ question: "What BMI indicates anorexia?", answer: "A BMI below 17.5 is one diagnostic criterion for anorexia nervosa. However, anorexia is a complex mental health condition diagnosed by professionals." }],
+    relatedCalcs: healthRelated("anorexic-bmi-calculator"),
+  },
+  // 32. Overweight Calculator
+  {
+    slug: "overweight-calculator", name: "Overweight Calculator", category: "Health", categorySlug: "health",
+    description: "Determine if you're overweight based on BMI and calculate how much weight to lose to reach a healthy range.",
+    metaDescription: "Free overweight calculator. Check if your BMI is in the overweight range and find target weight.",
+    icon: "heart",
+    inputs: [
+      { id: "weight", label: "Weight (kg)", type: "number", defaultValue: 90, step: 0.1 },
+      { id: "height", label: "Height (cm)", type: "number", defaultValue: 170, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const bmi = v.weight / ((v.height / 100) ** 2);
+      const maxHealthy = 24.9 * ((v.height / 100) ** 2);
+      const overBy = Math.max(0, v.weight - maxHealthy);
+      let category = "Normal";
+      if (bmi >= 40) category = "Class III Obesity";
+      else if (bmi >= 35) category = "Class II Obesity";
+      else if (bmi >= 30) category = "Class I Obesity";
+      else if (bmi >= 25) category = "Overweight";
+      else if (bmi >= 18.5) category = "Normal";
+      else category = "Underweight";
+      return [
+        { label: "BMI", value: bmi.toFixed(1), highlight: true },
+        { label: "Category", value: category },
+        { label: "Max Healthy Weight", value: `${maxHealthy.toFixed(1)} kg` },
+        { label: "Weight to Lose", value: overBy > 0 ? `${overBy.toFixed(1)} kg` : "Already healthy!" },
+      ];
+    },
+    formula: { expression: "BMI = Weight / Height²; Overweight = BMI 25-29.9", variables: ["Normal: 18.5-24.9", "Obese: 30+"] },
+    howToUse: "Enter your weight and height to check your BMI classification and target weight.",
+    faqs: [{ question: "Is BMI always accurate?", answer: "BMI doesn't distinguish muscle from fat. Athletes may have high BMI but low body fat. Use alongside body fat measurements." }],
+    relatedCalcs: healthRelated("overweight-calculator"),
+  },
+  // 33. Weight Watcher Points Calculator
+  {
+    slug: "weight-watcher-points-calculator", name: "Weight Watcher Points Calculator", category: "Health", categorySlug: "health",
+    description: "Estimate Weight Watchers-style points for foods based on calories, fat, and fiber content.",
+    metaDescription: "Free points calculator for weight management. Estimate food points from calories, fat, and fiber.",
+    icon: "heart",
+    inputs: [
+      { id: "calories", label: "Calories", type: "number", defaultValue: 250 },
+      { id: "fat", label: "Total Fat (g)", type: "number", defaultValue: 10, step: 0.1 },
+      { id: "fiber", label: "Fiber (g)", type: "number", defaultValue: 3, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const points = Math.max(0, Math.round(v.calories / 50 + v.fat / 12 - Math.min(v.fiber, 4) / 5));
+      return [
+        { label: "Estimated Points", value: `${points}`, highlight: true },
+        { label: "Calories", value: `${v.calories} cal` },
+        { label: "Fat", value: `${v.fat}g` },
+        { label: "Fiber Bonus", value: `−${Math.min(v.fiber, 4)} fiber credits` },
+      ];
+    },
+    formula: { expression: "Points ≈ Calories/50 + Fat/12 − min(Fiber,4)/5", variables: ["Classic formula approximation", "Actual WW formulas are proprietary"] },
+    howToUse: "Enter the calories, fat, and fiber of a food item to estimate its points value.",
+    faqs: [{ question: "Is this the official formula?", answer: "No. This is an approximation of the classic points formula. Weight Watchers' current system uses a different proprietary calculation." }],
+    relatedCalcs: healthRelated("weight-watcher-points-calculator"),
+  },
 ];

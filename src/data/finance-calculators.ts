@@ -2414,4 +2414,181 @@ export const financeCalculators: CalculatorConfig[] = [
     faqs: [{ question: "What causes a marriage penalty?", answer: "When both spouses earn similar high incomes, the combined income pushes into higher brackets faster than two single returns." }],
     relatedCalcs: financeRelated("marriage-tax-calculator"),
   },
+  // 70. Estate Tax Calculator
+  {
+    slug: "estate-tax-calculator", name: "Estate Tax Calculator", category: "Finance", categorySlug: "finance",
+    description: "Estimate federal estate tax liability based on the value of an estate and applicable exemptions.",
+    metaDescription: "Free estate tax calculator. Estimate federal estate taxes with current exemption amounts and rates.",
+    icon: "dollar",
+    inputs: [
+      { id: "estateValue", label: "Total Estate Value", type: "number", defaultValue: 15000000, prefix: "$" },
+      { id: "exemption", label: "Exemption Amount", type: "number", defaultValue: 13610000, prefix: "$" },
+      { id: "deductions", label: "Deductions (charity, etc.)", type: "number", defaultValue: 0, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const taxable = Math.max(v.estateValue - v.exemption - v.deductions, 0);
+      const tax = taxable * 0.40;
+      const effectiveRate = v.estateValue > 0 ? (tax / v.estateValue) * 100 : 0;
+      return [
+        { label: "Estimated Estate Tax", value: fmt0(tax), highlight: true },
+        { label: "Taxable Estate", value: fmt0(taxable) },
+        { label: "Effective Rate", value: pct(effectiveRate) },
+        { label: "Net to Heirs", value: fmt0(v.estateValue - tax) },
+      ];
+    },
+    formula: { expression: "Tax = (Estate − Exemption − Deductions) × 40%", variables: ["2024 exemption: $13.61M per person", "Rate: 40% on taxable portion"] },
+    howToUse: "Enter total estate value, exemption amount, and deductions. See estimated federal estate tax.",
+    faqs: [{ question: "Who pays estate tax?", answer: "Only estates exceeding the exemption (~$13.61M in 2024). Less than 1% of estates owe federal estate tax." }],
+    relatedCalcs: financeRelated("estate-tax-calculator"),
+  },
+  // 71. Social Security Calculator
+  {
+    slug: "social-security-calculator", name: "Social Security Calculator", category: "Finance", categorySlug: "finance",
+    description: "Estimate your monthly Social Security retirement benefit based on average earnings and claiming age.",
+    metaDescription: "Free Social Security calculator. Estimate your monthly retirement benefit by claiming age.",
+    icon: "dollar",
+    inputs: [
+      { id: "avgEarnings", label: "Average Annual Earnings", type: "number", defaultValue: 65000, prefix: "$" },
+      { id: "claimAge", label: "Claiming Age", type: "number", defaultValue: 67, min: 62, max: 70 },
+      { id: "fra", label: "Full Retirement Age", type: "number", defaultValue: 67, min: 66, max: 67 },
+    ],
+    calculate: (v) => {
+      const aime = v.avgEarnings / 12;
+      let pia = 0;
+      if (aime <= 1174) pia = aime * 0.9;
+      else if (aime <= 7078) pia = 1174 * 0.9 + (aime - 1174) * 0.32;
+      else pia = 1174 * 0.9 + (7078 - 1174) * 0.32 + (aime - 7078) * 0.15;
+      let benefit = pia;
+      if (v.claimAge < v.fra) {
+        const monthsEarly = (v.fra - v.claimAge) * 12;
+        const reduction = monthsEarly <= 36 ? monthsEarly * (5/900) : 36 * (5/900) + (monthsEarly - 36) * (5/1200);
+        benefit = pia * (1 - reduction);
+      } else if (v.claimAge > v.fra) {
+        benefit = pia * (1 + (v.claimAge - v.fra) * 0.08);
+      }
+      return [
+        { label: "Monthly Benefit", value: fmt(benefit), highlight: true },
+        { label: "Annual Benefit", value: fmt0(benefit * 12) },
+        { label: "PIA (at FRA)", value: fmt(pia) },
+        { label: "Adjustment", value: v.claimAge < v.fra ? `−${pct(((pia - benefit) / pia) * 100)}` : `+${pct(((benefit - pia) / pia) * 100)}` },
+      ];
+    },
+    formula: { expression: "PIA = 90%×first $1,174 + 32%×next $5,904 + 15%×remainder", variables: ["Reduced ~6.7%/yr before FRA", "Increased 8%/yr after FRA to age 70"] },
+    howToUse: "Enter your average annual earnings, claiming age, and full retirement age.",
+    faqs: [{ question: "Should I claim early?", answer: "Claiming at 62 reduces benefits ~30%. Waiting to 70 increases ~24% above FRA. Consider health, savings, and other income." }],
+    relatedCalcs: financeRelated("social-security-calculator"),
+  },
+  // 72. Annuity Payout Calculator
+  {
+    slug: "annuity-payout-calculator", name: "Annuity Payout Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate the periodic payout from an annuity given a lump sum, interest rate, and payout period.",
+    metaDescription: "Free annuity payout calculator. Estimate periodic payments from an annuity investment.",
+    icon: "dollar",
+    inputs: [
+      { id: "principal", label: "Annuity Value", type: "number", defaultValue: 500000, prefix: "$" },
+      { id: "rate", label: "Interest Rate (%)", type: "number", defaultValue: 5, suffix: "%", step: 0.1 },
+      { id: "years", label: "Payout Period (years)", type: "number", defaultValue: 20 },
+    ],
+    calculate: (v) => {
+      const r = v.rate / 100 / 12;
+      const n = v.years * 12;
+      const pmt = r > 0 ? v.principal * r / (1 - Math.pow(1 + r, -n)) : v.principal / n;
+      return [
+        { label: "Monthly Payout", value: fmt(pmt), highlight: true },
+        { label: "Annual Payout", value: fmt0(pmt * 12) },
+        { label: "Total Payouts", value: fmt0(pmt * n) },
+        { label: "Total Interest Earned", value: fmt0(pmt * n - v.principal) },
+      ];
+    },
+    formula: { expression: "PMT = PV × r / (1 − (1+r)^−n)", variables: ["PV = annuity value", "r = monthly rate", "n = total payments"] },
+    howToUse: "Enter the annuity value, interest rate, and desired payout period.",
+    faqs: [{ question: "What types of annuities exist?", answer: "Fixed (guaranteed rate), variable (market-linked), immediate (payouts start now), and deferred (payouts start later)." }],
+    relatedCalcs: financeRelated("annuity-payout-calculator"),
+  },
+  // 73. Credit Cards Payoff Calculator
+  {
+    slug: "credit-cards-payoff-calculator", name: "Credit Cards Payoff Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate how long it takes to pay off credit card debt and total interest paid with minimum or fixed payments.",
+    metaDescription: "Free credit card payoff calculator. Find how long to pay off your balance and total interest costs.",
+    icon: "dollar",
+    inputs: [
+      { id: "balance", label: "Current Balance", type: "number", defaultValue: 8000, prefix: "$" },
+      { id: "apr", label: "APR (%)", type: "number", defaultValue: 22, suffix: "%", step: 0.1 },
+      { id: "payment", label: "Monthly Payment", type: "number", defaultValue: 200, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const mr = v.apr / 100 / 12;
+      if (v.payment <= v.balance * mr) return [{ label: "Error", value: "Payment too low to cover interest", highlight: true }];
+      const months = Math.ceil(-Math.log(1 - (v.balance * mr) / v.payment) / Math.log(1 + mr));
+      const totalPaid = v.payment * months;
+      const totalInterest = totalPaid - v.balance;
+      return [
+        { label: "Months to Payoff", value: `${months} months (${(months / 12).toFixed(1)} yrs)`, highlight: true },
+        { label: "Total Interest", value: fmt0(totalInterest) },
+        { label: "Total Paid", value: fmt0(totalPaid) },
+      ];
+    },
+    formula: { expression: "Months = −log(1 − Balance×r/Payment) / log(1+r)", variables: ["r = monthly rate = APR/12"] },
+    howToUse: "Enter your credit card balance, APR, and monthly payment amount.",
+    faqs: [{ question: "Why does minimum payment take so long?", answer: "Minimum payments (often 2% of balance) mostly cover interest. A $5,000 balance at 20% APR with minimums takes 25+ years." }],
+    relatedCalcs: financeRelated("credit-cards-payoff-calculator"),
+  },
+  // 74. VA Mortgage Calculator
+  {
+    slug: "va-mortgage-calculator", name: "VA Mortgage Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate monthly payments for a VA home loan including the VA funding fee. No down payment or PMI required.",
+    metaDescription: "Free VA mortgage calculator. Estimate payments for VA home loans with funding fee and no PMI.",
+    icon: "dollar",
+    inputs: [
+      { id: "homePrice", label: "Home Price", type: "number", defaultValue: 350000, prefix: "$" },
+      { id: "downPayment", label: "Down Payment", type: "number", defaultValue: 0, prefix: "$" },
+      { id: "rate", label: "Interest Rate (%)", type: "number", defaultValue: 6.25, suffix: "%", step: 0.1 },
+      { id: "term", label: "Term (years)", type: "number", defaultValue: 30 },
+      { id: "fundingFee", label: "Funding Fee (%)", type: "number", defaultValue: 2.15, suffix: "%", step: 0.05 },
+    ],
+    calculate: (v) => {
+      const baseLoan = v.homePrice - v.downPayment;
+      const fee = baseLoan * (v.fundingFee / 100);
+      const totalLoan = baseLoan + fee;
+      const r = loanCalc(totalLoan, v.rate, v.term * 12);
+      return [
+        { label: "Monthly Payment", value: fmt(r.monthly), highlight: true },
+        { label: "VA Funding Fee", value: fmt0(fee) },
+        { label: "Total Loan Amount", value: fmt0(totalLoan) },
+        { label: "Total Interest", value: fmt0(r.totalInterest) },
+        { label: "No PMI", value: "✓ VA benefit" },
+      ];
+    },
+    formula: { expression: "Loan = (Price − Down) + Funding Fee; standard amortization", variables: ["Funding fee can be financed into loan", "No PMI required"] },
+    howToUse: "Enter home price, down payment (can be $0), rate, term, and funding fee percentage.",
+    faqs: [{ question: "What is the VA funding fee?", answer: "A one-time fee (1.25-3.3%) that funds the VA loan program. Exempt for veterans with service-connected disabilities." }],
+    relatedCalcs: financeRelated("va-mortgage-calculator"),
+  },
+  // 75. Average Return Calculator
+  {
+    slug: "average-return-calculator", name: "Average Return Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate the average annual return (CAGR) of an investment from start and end values over time.",
+    metaDescription: "Free average return calculator. Find CAGR and average annual return from investment performance.",
+    icon: "dollar",
+    inputs: [
+      { id: "startValue", label: "Starting Value", type: "number", defaultValue: 10000, prefix: "$" },
+      { id: "endValue", label: "Ending Value", type: "number", defaultValue: 25000, prefix: "$" },
+      { id: "years", label: "Number of Years", type: "number", defaultValue: 10 },
+    ],
+    calculate: (v) => {
+      if (v.startValue <= 0 || v.years <= 0) return [{ label: "Error", value: "Values must be positive" }];
+      const cagr = (Math.pow(v.endValue / v.startValue, 1 / v.years) - 1) * 100;
+      const totalReturn = ((v.endValue - v.startValue) / v.startValue) * 100;
+      return [
+        { label: "CAGR", value: pct(cagr), highlight: true },
+        { label: "Total Return", value: pct(totalReturn) },
+        { label: "Gain/Loss", value: fmt0(v.endValue - v.startValue) },
+        { label: "Growth Multiple", value: `${(v.endValue / v.startValue).toFixed(2)}×` },
+      ];
+    },
+    formula: { expression: "CAGR = (End/Start)^(1/Years) − 1", variables: ["Compound Annual Growth Rate"] },
+    howToUse: "Enter starting value, ending value, and time period to calculate average annual return.",
+    faqs: [{ question: "CAGR vs simple average?", answer: "CAGR accounts for compounding and is more accurate. Simple average can be misleading with volatile returns." }],
+    relatedCalcs: financeRelated("average-return-calculator"),
+  },
 ];

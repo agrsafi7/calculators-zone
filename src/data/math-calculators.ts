@@ -1367,4 +1367,129 @@ export const mathCalculators: CalculatorConfig[] = [
     faqs: [{ question: "What is a remainder?", answer: "The amount left over after division. 17 ÷ 5 = 3 remainder 2 (because 5 × 3 = 15, and 17 − 15 = 2)." }],
     relatedCalcs: mathRelated("long-division-calculator"),
   },
+  // 47. Rounding Calculator
+  {
+    slug: "rounding-calculator", name: "Rounding Calculator", category: "Math", categorySlug: "math",
+    description: "Round numbers to any decimal place, significant figures, or nearest whole number.",
+    metaDescription: "Free rounding calculator. Round numbers to decimal places, significant figures, or nearest integer.",
+    icon: "hash",
+    inputs: [
+      { id: "value", label: "Number", type: "number", defaultValue: 3.14159265, step: 0.0000001 },
+      { id: "places", label: "Decimal Places", type: "number", defaultValue: 2, min: 0, max: 10 },
+    ],
+    calculate: (v) => {
+      const rounded = parseFloat(v.value.toFixed(v.places));
+      const floor = Math.floor(v.value * Math.pow(10, v.places)) / Math.pow(10, v.places);
+      const ceil = Math.ceil(v.value * Math.pow(10, v.places)) / Math.pow(10, v.places);
+      return [
+        { label: "Rounded", value: `${rounded}`, highlight: true },
+        { label: "Floor (round down)", value: `${floor}` },
+        { label: "Ceiling (round up)", value: `${ceil}` },
+        { label: "Nearest Integer", value: `${Math.round(v.value)}` },
+      ];
+    },
+    formula: { expression: "Standard rounding: ≥5 rounds up, <5 rounds down", variables: ["Floor always rounds toward −∞", "Ceiling always rounds toward +∞"] },
+    howToUse: "Enter a number and number of decimal places to round to.",
+    faqs: [{ question: "What is banker's rounding?", answer: "Banker's rounding rounds .5 to the nearest even number to reduce bias. Standard rounding always rounds .5 up." }],
+    relatedCalcs: mathRelated("rounding-calculator"),
+  },
+  // 48. Number Sequence Calculator
+  {
+    slug: "number-sequence-calculator", name: "Number Sequence Calculator", category: "Math", categorySlug: "math",
+    description: "Generate arithmetic and geometric sequences from a starting value, common difference/ratio, and number of terms.",
+    metaDescription: "Free number sequence calculator. Generate arithmetic and geometric sequences.",
+    icon: "hash",
+    inputs: [
+      { id: "first", label: "First Term", type: "number", defaultValue: 2, step: 0.1 },
+      { id: "diff", label: "Common Difference / Ratio", type: "number", defaultValue: 3, step: 0.1 },
+      { id: "n", label: "Number of Terms", type: "number", defaultValue: 8, min: 1, max: 20 },
+      { id: "type", label: "Sequence Type", type: "select", defaultValue: 0, options: [{ value: 0, label: "Arithmetic (+)" }, { value: 1, label: "Geometric (×)" }] },
+    ],
+    calculate: (v) => {
+      const terms: number[] = [];
+      let sum = 0;
+      for (let i = 0; i < Math.min(v.n, 20); i++) {
+        const term = v.type === 0 ? v.first + i * v.diff : v.first * Math.pow(v.diff, i);
+        terms.push(parseFloat(term.toFixed(4)));
+        sum += term;
+      }
+      return [
+        { label: "Sequence", value: terms.join(", "), highlight: true },
+        { label: "Sum", value: sum.toFixed(2) },
+        { label: "Last Term", value: `${terms[terms.length - 1]}` },
+        { label: "Count", value: `${terms.length}` },
+      ];
+    },
+    formula: { expression: "Arithmetic: aₙ = a₁ + (n−1)d; Geometric: aₙ = a₁ × r^(n−1)", variables: ["d = common difference", "r = common ratio"] },
+    howToUse: "Enter the first term, difference/ratio, and number of terms.",
+    faqs: [{ question: "What is an arithmetic sequence?", answer: "Each term increases by a constant amount (common difference). Example: 2, 5, 8, 11..." }],
+    relatedCalcs: mathRelated("number-sequence-calculator"),
+  },
+  // 49. Factor Calculator
+  {
+    slug: "factor-calculator", name: "Factor Calculator", category: "Math", categorySlug: "math",
+    description: "Find all factors (divisors) of a number and determine if it is prime.",
+    metaDescription: "Free factor calculator. Find all factors of any positive integer.",
+    icon: "hash",
+    inputs: [
+      { id: "n", label: "Number", type: "number", defaultValue: 60, min: 1 },
+    ],
+    calculate: (v) => {
+      const n = Math.floor(Math.abs(v.n));
+      if (n < 1) return [{ label: "Error", value: "Enter a positive integer" }];
+      const factors: number[] = [];
+      for (let i = 1; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) { factors.push(i); if (i !== n / i) factors.push(n / i); }
+      }
+      factors.sort((a, b) => a - b);
+      const isPrime = factors.length === 2;
+      return [
+        { label: "Factors", value: factors.join(", "), highlight: true },
+        { label: "Number of Factors", value: `${factors.length}` },
+        { label: "Is Prime?", value: isPrime ? "Yes" : "No" },
+        { label: "Factor Pairs", value: factors.filter((_, i) => i < factors.length / 2).map(f => `${f}×${n / f}`).join(", ") },
+      ];
+    },
+    formula: { expression: "Check divisibility from 1 to √n", variables: ["If n/i is integer, both i and n/i are factors"] },
+    howToUse: "Enter a positive integer to find all its factors.",
+    faqs: [{ question: "What is a factor?", answer: "A factor divides evenly into a number with no remainder. Factors of 12 are 1, 2, 3, 4, 6, 12." }],
+    relatedCalcs: mathRelated("factor-calculator"),
+  },
+  // 50. Statistics Calculator
+  {
+    slug: "statistics-calculator", name: "Statistics Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate comprehensive statistics: mean, median, mode, range, variance, standard deviation, and more.",
+    metaDescription: "Free statistics calculator. Compute mean, median, mode, range, variance, and standard deviation.",
+    icon: "hash",
+    inputs: [
+      { id: "v1", label: "Value 1", type: "number", defaultValue: 4 },
+      { id: "v2", label: "Value 2", type: "number", defaultValue: 8 },
+      { id: "v3", label: "Value 3", type: "number", defaultValue: 6 },
+      { id: "v4", label: "Value 4", type: "number", defaultValue: 5 },
+      { id: "v5", label: "Value 5", type: "number", defaultValue: 3 },
+      { id: "v6", label: "Value 6", type: "number", defaultValue: 7 },
+    ],
+    calculate: (v) => {
+      const data = [v.v1, v.v2, v.v3, v.v4, v.v5, v.v6].sort((a, b) => a - b);
+      const n = data.length;
+      const mean = data.reduce((a, b) => a + b, 0) / n;
+      const median = n % 2 === 0 ? (data[n / 2 - 1] + data[n / 2]) / 2 : data[Math.floor(n / 2)];
+      const variance = data.reduce((sum, x) => sum + (x - mean) ** 2, 0) / n;
+      const sampleVar = data.reduce((sum, x) => sum + (x - mean) ** 2, 0) / (n - 1);
+      const sd = Math.sqrt(variance);
+      const range = data[n - 1] - data[0];
+      return [
+        { label: "Mean", value: mean.toFixed(4), highlight: true },
+        { label: "Median", value: `${median}` },
+        { label: "Population SD", value: sd.toFixed(4) },
+        { label: "Sample SD", value: Math.sqrt(sampleVar).toFixed(4) },
+        { label: "Range", value: `${range}` },
+        { label: "Sorted Data", value: data.join(", ") },
+      ];
+    },
+    formula: { expression: "μ = Σx/n; σ = √(Σ(x−μ)²/n); s = √(Σ(x−μ)²/(n−1))", variables: ["Population vs sample SD"] },
+    howToUse: "Enter up to 6 data values to see comprehensive descriptive statistics.",
+    faqs: [{ question: "Population vs sample?", answer: "Use population SD (÷n) when data is the entire population. Use sample SD (÷(n−1)) when data is a subset." }],
+    relatedCalcs: mathRelated("statistics-calculator"),
+  },
 ];
