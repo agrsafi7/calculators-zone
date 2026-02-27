@@ -1,12 +1,20 @@
 import { useState } from "react";
+import { Clock, Trash2 } from "lucide-react";
 
 type Mode = "basic" | "scientific";
+
+interface HistoryEntry {
+  expression: string;
+  result: string;
+}
 
 const HeroCalculator = () => {
   const [mode, setMode] = useState<Mode>("basic");
   const [display, setDisplay] = useState("0");
   const [expression, setExpression] = useState("");
   const [angleMode, setAngleMode] = useState<"deg" | "rad">("deg");
+  const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
 
   const handleInput = (val: string) => {
     if (display === "0" && val !== ".") {
@@ -59,6 +67,9 @@ const HeroCalculator = () => {
       const formatted = Number.isFinite(result)
         ? parseFloat(result.toFixed(10)).toString()
         : "Error";
+      if (formatted !== "Error") {
+        setHistory((prev) => [{ expression, result: formatted }, ...prev].slice(0, 10));
+      }
       setDisplay(formatted);
       setExpression(formatted);
     } catch {
@@ -102,9 +113,46 @@ const HeroCalculator = () => {
       <div className="p-3 space-y-2">
         {/* Display */}
         <div className="bg-secondary rounded-lg p-3 text-right">
-          <p className="text-xs text-muted-foreground h-4 truncate">{expression || "\u00A0"}</p>
+          <div className="flex items-center justify-between mb-1">
+            <button
+              onClick={() => setShowHistory(!showHistory)}
+              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <Clock className="w-3 h-3" />
+              History {history.length > 0 && `(${history.length})`}
+            </button>
+            {expression && <p className="text-xs text-muted-foreground truncate ml-2">{expression}</p>}
+          </div>
           <p className="text-2xl font-bold text-foreground truncate">{display}</p>
         </div>
+
+        {/* History panel */}
+        {showHistory && (
+          <div className="bg-secondary/50 rounded-lg border border-border max-h-36 overflow-y-auto">
+            {history.length === 0 ? (
+              <p className="text-xs text-muted-foreground text-center py-3">No calculations yet</p>
+            ) : (
+              <>
+                <div className="flex items-center justify-between px-3 pt-2 pb-1">
+                  <span className="text-xs font-medium text-muted-foreground">Recent</span>
+                  <button onClick={() => setHistory([])} className="text-muted-foreground hover:text-destructive transition-colors">
+                    <Trash2 className="w-3 h-3" />
+                  </button>
+                </div>
+                {history.map((h, i) => (
+                  <button
+                    key={i}
+                    onClick={() => { setDisplay(h.result); setExpression(h.result); setShowHistory(false); }}
+                    className="w-full text-right px-3 py-1.5 hover:bg-secondary transition-colors"
+                  >
+                    <p className="text-xs text-muted-foreground truncate">{h.expression}</p>
+                    <p className="text-sm font-semibold text-foreground">= {h.result}</p>
+                  </button>
+                ))}
+              </>
+            )}
+          </div>
+        )}
 
         {/* Scientific buttons */}
         {mode === "scientific" && (
