@@ -1,5 +1,6 @@
+import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Search, X } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { categories, getCategoryIcon } from "@/data/calculators";
 import { uniqueCalculators } from "@/lib/calculator-utils";
@@ -9,8 +10,17 @@ import SEO from "@/components/SEO";
 
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
+  const [filter, setFilter] = useState("");
   const category = categories.find((c) => c.slug === slug);
-  const calculators = uniqueCalculators.filter((c) => c.categorySlug === slug);
+  const allCalcs = uniqueCalculators.filter((c) => c.categorySlug === slug);
+
+  const calculators = useMemo(() => {
+    if (!filter.trim()) return allCalcs;
+    const q = filter.toLowerCase();
+    return allCalcs.filter(
+      (c) => c.name.toLowerCase().includes(q) || c.description.toLowerCase().includes(q)
+    );
+  }, [allCalcs, filter]);
 
   if (!category) {
     return (
@@ -49,6 +59,26 @@ const CategoryPage = () => {
               </div>
             </div>
 
+            {/* Search / filter */}
+            <div className="relative mb-6">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <input
+                type="text"
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
+                placeholder={`Filter ${allCalcs.length} calculators…`}
+                className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+              />
+              {filter && (
+                <button
+                  onClick={() => setFilter("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
             <AdPlaceholder size="leaderboard" />
 
             {/* Calculator grid */}
@@ -62,7 +92,7 @@ const CategoryPage = () => {
                     className="card-elevated bg-card rounded-xl border border-border p-5 group"
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
                         <Icon className="w-5 h-5 text-primary" />
                       </div>
                       <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -76,7 +106,7 @@ const CategoryPage = () => {
 
             {calculators.length === 0 && (
               <div className="text-center py-12 text-muted-foreground">
-                <p className="text-sm">Calculators coming soon for this category.</p>
+                <p className="text-sm">{filter ? "No calculators match your search." : "Calculators coming soon for this category."}</p>
               </div>
             )}
 
