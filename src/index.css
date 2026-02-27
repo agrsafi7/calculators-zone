@@ -170,4 +170,19 @@
   .formula-block {
     @apply bg-foreground text-primary-foreground rounded-xl p-6 font-mono text-center;
   }
+
+  .app-container {
+    --app-shadow: 0 0 40px -10px hsl(0 0% 0% / 0.12);
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: var(--app-shadow);
+    border-left: 1px solid hsl(var(--border));
+    border-right: 1px solid hsl(var(--border));
+    position: relative;
+  }
+
+  .dark .app-container {
+    --app-shadow: 0 0 60px -10px hsl(217 91% 60% / 0.08);
+  }
 }
