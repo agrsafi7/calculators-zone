@@ -724,4 +724,293 @@ export const healthCalculators: CalculatorConfig[] = [
     ],
     relatedCalcs: healthRelated("child-growth-percentile-calculator"),
   },
+  // 21. One Rep Max Calculator
+  {
+    slug: "one-rep-max-calculator", name: "One Rep Max Calculator", category: "Health", categorySlug: "health",
+    description: "Estimate your one-repetition maximum (1RM) for any lift based on weight and reps performed.",
+    metaDescription: "Free one rep max calculator. Estimate your 1RM using the Epley formula from any weight and rep count.",
+    icon: "heart",
+    inputs: [
+      { id: "weight", label: "Weight Lifted", type: "number", defaultValue: 100, step: 0.5 },
+      { id: "reps", label: "Reps Performed", type: "number", defaultValue: 8, min: 1, max: 30 },
+    ],
+    calculate: (v) => {
+      if (v.reps === 1) return [{ label: "1RM", value: `${v.weight}`, highlight: true }, { label: "That IS your 1RM!", value: "Test confirmed" }];
+      const epley = v.weight * (1 + v.reps / 30);
+      const brzycki = v.weight * (36 / (37 - v.reps));
+      const avg = (epley + brzycki) / 2;
+      return [
+        { label: "Estimated 1RM", value: `${Math.round(avg)}`, highlight: true },
+        { label: "Epley Formula", value: `${Math.round(epley)}` },
+        { label: "Brzycki Formula", value: `${Math.round(brzycki)}` },
+        { label: "95% (heavy single)", value: `${Math.round(avg * 0.95)}` },
+        { label: "80% (working sets)", value: `${Math.round(avg * 0.8)}` },
+      ];
+    },
+    formula: { expression: "Epley: 1RM = W × (1 + R/30); Brzycki: 1RM = W × 36/(37−R)", variables: ["W = weight lifted", "R = reps performed"] },
+    howToUse: "Enter the weight you lifted and how many reps you completed. The calculator estimates your 1RM.",
+    faqs: [{ question: "How accurate is this?", answer: "Most accurate with 1-10 reps. Above 10 reps, estimates become less reliable. The average of Epley and Brzycki is typically within 5% of actual 1RM." }],
+    relatedCalcs: healthRelated("one-rep-max-calculator"),
+  },
+  // 22. Body Surface Area Calculator
+  {
+    slug: "body-surface-area-calculator", name: "Body Surface Area Calculator", category: "Health", categorySlug: "health",
+    description: "Calculate your body surface area (BSA) using the Mosteller formula for medical dosing.",
+    metaDescription: "Free BSA calculator. Calculate body surface area using the Mosteller formula for medical applications.",
+    icon: "heart",
+    inputs: [
+      { id: "height", label: "Height (cm)", type: "number", defaultValue: 175, step: 0.1 },
+      { id: "weight", label: "Weight (kg)", type: "number", defaultValue: 75, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const bsa = Math.sqrt((v.height * v.weight) / 3600);
+      return [
+        { label: "BSA", value: `${bsa.toFixed(2)} m²`, highlight: true },
+        { label: "Average Adult BSA", value: "1.7-1.9 m²" },
+      ];
+    },
+    formula: { expression: "BSA = √(Height × Weight / 3600)", variables: ["Mosteller formula", "Height in cm, Weight in kg"] },
+    howToUse: "Enter height and weight to calculate body surface area.",
+    faqs: [{ question: "Why is BSA important?", answer: "BSA is used for drug dosing (chemotherapy), burn assessment, kidney function, and cardiac index calculations." }],
+    relatedCalcs: healthRelated("body-surface-area-calculator"),
+  },
+  // 23. Army Body Fat Calculator
+  {
+    slug: "army-body-fat-calculator", name: "Army Body Fat Calculator", category: "Health", categorySlug: "health",
+    description: "Calculate body fat percentage using the U.S. Army circumference-based method.",
+    metaDescription: "Free Army body fat calculator. Estimate body fat using the DoD circumference method.",
+    icon: "heart",
+    inputs: [
+      { id: "gender", label: "Gender", type: "select", defaultValue: 0, options: [{ value: 0, label: "Male" }, { value: 1, label: "Female" }] },
+      { id: "height", label: "Height (inches)", type: "number", defaultValue: 70, step: 0.5 },
+      { id: "waist", label: "Waist (inches)", type: "number", defaultValue: 34, step: 0.5 },
+      { id: "neck", label: "Neck (inches)", type: "number", defaultValue: 15.5, step: 0.5 },
+      { id: "hip", label: "Hip (inches, women)", type: "number", defaultValue: 38, step: 0.5 },
+    ],
+    calculate: (v) => {
+      let bf: number;
+      if (v.gender === 0) {
+        bf = 86.010 * Math.log10(v.waist - v.neck) - 70.041 * Math.log10(v.height) + 36.76;
+      } else {
+        bf = 163.205 * Math.log10(v.waist + v.hip - v.neck) - 97.684 * Math.log10(v.height) - 78.387;
+      }
+      const maxAllowed = v.gender === 0 ? 26 : 36;
+      return [
+        { label: "Body Fat %", value: `${Math.max(bf, 2).toFixed(1)}%`, highlight: true },
+        { label: "Army Max Allowed", value: `${maxAllowed}%` },
+        { label: "Status", value: bf <= maxAllowed ? "Within Standards ✓" : "Exceeds Standards" },
+      ];
+    },
+    formula: { expression: "Male: 86.01×log(waist−neck) − 70.04×log(height) + 36.76", variables: ["Female adds hip measurement", "All measurements in inches"] },
+    howToUse: "Enter measurements in inches. Women must also enter hip measurement.",
+    faqs: [{ question: "What are Army body fat standards?", answer: "Males: 26% max (ages 17-20) to 26%. Females: 30-36% depending on age. Standards vary by branch." }],
+    relatedCalcs: healthRelated("army-body-fat-calculator"),
+  },
+  // 24. Calories Burned Calculator
+  {
+    slug: "calories-burned-calculator", name: "Calories Burned Calculator", category: "Health", categorySlug: "health",
+    description: "Estimate calories burned during various activities based on duration and body weight.",
+    metaDescription: "Free calories burned calculator. Estimate calorie expenditure for running, cycling, swimming, and more.",
+    icon: "heart",
+    inputs: [
+      { id: "weight", label: "Weight (kg)", type: "number", defaultValue: 70, step: 0.1 },
+      { id: "activity", label: "Activity", type: "select", defaultValue: 7, options: [{ value: 3.5, label: "Walking (moderate)" }, { value: 7, label: "Running (jogging)" }, { value: 10, label: "Running (fast)" }, { value: 6, label: "Cycling (moderate)" }, { value: 8, label: "Swimming" }, { value: 5, label: "Weight Training" }, { value: 4, label: "Yoga" }] },
+      { id: "duration", label: "Duration (minutes)", type: "number", defaultValue: 30, min: 1 },
+    ],
+    calculate: (v) => {
+      const calories = (v.activity * v.weight * 3.5 / 200) * v.duration;
+      return [
+        { label: "Calories Burned", value: `${Math.round(calories)} cal`, highlight: true },
+        { label: "Per Hour", value: `${Math.round(calories * 60 / v.duration)} cal/hr` },
+        { label: "MET Value", value: `${v.activity}` },
+      ];
+    },
+    formula: { expression: "Calories = MET × Weight(kg) × 3.5 / 200 × Minutes", variables: ["MET = Metabolic Equivalent of Task"] },
+    howToUse: "Select an activity, enter your weight and duration to estimate calories burned.",
+    faqs: [{ question: "What are METs?", answer: "Metabolic Equivalents measure exercise intensity. 1 MET = resting. Walking = 3-4 METs. Running = 7-12 METs." }],
+    relatedCalcs: healthRelated("calories-burned-calculator"),
+  },
+  // 25. Pregnancy Weight Gain Calculator
+  {
+    slug: "pregnancy-weight-gain-calculator", name: "Pregnancy Weight Gain Calculator", category: "Health", categorySlug: "health",
+    description: "Calculate recommended weight gain during pregnancy based on pre-pregnancy BMI.",
+    metaDescription: "Free pregnancy weight gain calculator. Find recommended weight gain ranges by trimester.",
+    icon: "heart",
+    inputs: [
+      { id: "weight", label: "Pre-Pregnancy Weight (kg)", type: "number", defaultValue: 65, step: 0.1 },
+      { id: "height", label: "Height (cm)", type: "number", defaultValue: 165, step: 0.1 },
+      { id: "week", label: "Current Week of Pregnancy", type: "number", defaultValue: 20, min: 1, max: 42 },
+    ],
+    calculate: (v) => {
+      const bmi = v.weight / ((v.height / 100) ** 2);
+      let minTotal: number, maxTotal: number;
+      if (bmi < 18.5) { minTotal = 12.5; maxTotal = 18; }
+      else if (bmi < 25) { minTotal = 11.5; maxTotal = 16; }
+      else if (bmi < 30) { minTotal = 7; maxTotal = 11.5; }
+      else { minTotal = 5; maxTotal = 9; }
+      const progress = Math.min(v.week / 40, 1);
+      const expectedMin = minTotal * progress;
+      const expectedMax = maxTotal * progress;
+      return [
+        { label: "Expected Gain So Far", value: `${expectedMin.toFixed(1)} – ${expectedMax.toFixed(1)} kg`, highlight: true },
+        { label: "Total Recommended", value: `${minTotal} – ${maxTotal} kg` },
+        { label: "Pre-Pregnancy BMI", value: bmi.toFixed(1) },
+        { label: "BMI Category", value: bmi < 18.5 ? "Underweight" : bmi < 25 ? "Normal" : bmi < 30 ? "Overweight" : "Obese" },
+      ];
+    },
+    formula: { expression: "Based on IOM guidelines by pre-pregnancy BMI", variables: ["Normal BMI: 11.5-16 kg total", "Gradual gain assumed"] },
+    howToUse: "Enter pre-pregnancy weight, height, and current week to see recommended weight gain.",
+    faqs: [{ question: "Why does recommended gain vary by BMI?", answer: "Women with lower BMI need more weight gain for healthy fetal development. Higher BMI women have more reserves." }],
+    relatedCalcs: healthRelated("pregnancy-weight-gain-calculator"),
+  },
+  // 26. Period Calculator
+  {
+    slug: "period-calculator", name: "Period Calculator", category: "Health", categorySlug: "health",
+    description: "Predict your next period date and track your menstrual cycle.",
+    metaDescription: "Free period calculator. Predict next period date based on cycle length and last period.",
+    icon: "heart",
+    inputs: [
+      { id: "lastMonth", label: "Last Period Month (1-12)", type: "number", defaultValue: 1, min: 1, max: 12 },
+      { id: "lastDay", label: "Last Period Day", type: "number", defaultValue: 15, min: 1, max: 31 },
+      { id: "lastYear", label: "Last Period Year", type: "number", defaultValue: 2026, min: 2020 },
+      { id: "cycleLength", label: "Cycle Length (days)", type: "number", defaultValue: 28, min: 21, max: 45 },
+      { id: "periodLength", label: "Period Duration (days)", type: "number", defaultValue: 5, min: 1, max: 10 },
+    ],
+    calculate: (v) => {
+      const lastPeriod = new Date(v.lastYear, v.lastMonth - 1, v.lastDay);
+      const next1 = new Date(lastPeriod); next1.setDate(next1.getDate() + v.cycleLength);
+      const next2 = new Date(next1); next2.setDate(next2.getDate() + v.cycleLength);
+      const next3 = new Date(next2); next3.setDate(next3.getDate() + v.cycleLength);
+      const fmt = (d: Date) => d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+      return [
+        { label: "Next Period", value: fmt(next1), highlight: true },
+        { label: "Following Period", value: fmt(next2) },
+        { label: "3rd Period", value: fmt(next3) },
+        { label: "Cycle Length", value: `${v.cycleLength} days` },
+      ];
+    },
+    formula: { expression: "Next Period = Last Period + Cycle Length", variables: ["Assumes regular cycles"] },
+    howToUse: "Enter the first day of your last period and your average cycle length.",
+    faqs: [{ question: "What is a normal cycle length?", answer: "Normal cycles range from 21-35 days, with 28 days being average. Cycles can vary by a few days each month." }],
+    relatedCalcs: healthRelated("period-calculator"),
+  },
+  // 27. GFR Calculator
+  {
+    slug: "gfr-calculator", name: "GFR Calculator", category: "Health", categorySlug: "health",
+    description: "Estimate Glomerular Filtration Rate (eGFR) to assess kidney function using the CKD-EPI equation.",
+    metaDescription: "Free GFR calculator. Estimate kidney function using the CKD-EPI equation from creatinine, age, and sex.",
+    icon: "heart",
+    inputs: [
+      { id: "gender", label: "Gender", type: "select", defaultValue: 0, options: [{ value: 0, label: "Male" }, { value: 1, label: "Female" }] },
+      { id: "age", label: "Age", type: "number", defaultValue: 45, min: 18, max: 120 },
+      { id: "creatinine", label: "Serum Creatinine (mg/dL)", type: "number", defaultValue: 1.0, step: 0.01 },
+    ],
+    calculate: (v) => {
+      const kappa = v.gender === 0 ? 0.9 : 0.7;
+      const alpha = v.gender === 0 ? -0.302 : -0.241;
+      const sexFactor = v.gender === 0 ? 1 : 1.012;
+      const scr = v.creatinine / kappa;
+      const egfr = 142 * Math.pow(Math.min(scr, 1), alpha) * Math.pow(Math.max(scr, 1), -1.200) * Math.pow(0.9938, v.age) * sexFactor;
+      let stage = "Normal (G1)";
+      if (egfr < 15) stage = "Kidney Failure (G5)";
+      else if (egfr < 30) stage = "Severe (G4)";
+      else if (egfr < 45) stage = "Moderate-Severe (G3b)";
+      else if (egfr < 60) stage = "Moderate (G3a)";
+      else if (egfr < 90) stage = "Mild (G2)";
+      return [
+        { label: "eGFR", value: `${Math.round(egfr)} mL/min/1.73m²`, highlight: true },
+        { label: "CKD Stage", value: stage },
+      ];
+    },
+    formula: { expression: "CKD-EPI 2021 (race-free)", variables: ["eGFR based on creatinine, age, sex"] },
+    howToUse: "Enter gender, age, and serum creatinine level from a blood test.",
+    faqs: [{ question: "What is a normal GFR?", answer: "Normal is ≥90 mL/min/1.73m². Below 60 sustained for 3 months indicates chronic kidney disease." }],
+    relatedCalcs: healthRelated("gfr-calculator"),
+  },
+  // 28. Conception Calculator
+  {
+    slug: "conception-calculator", name: "Conception Calculator", category: "Health", categorySlug: "health",
+    description: "Estimate the date of conception based on your due date or last menstrual period.",
+    metaDescription: "Free conception date calculator. Estimate when conception occurred from due date or last period.",
+    icon: "heart",
+    inputs: [
+      { id: "mode", label: "Calculate From", type: "select", defaultValue: 0, options: [{ value: 0, label: "Last Menstrual Period" }, { value: 1, label: "Due Date" }] },
+      { id: "month", label: "Month (1-12)", type: "number", defaultValue: 6, min: 1, max: 12 },
+      { id: "day", label: "Day (1-31)", type: "number", defaultValue: 15, min: 1, max: 31 },
+      { id: "year", label: "Year", type: "number", defaultValue: 2025, min: 2020 },
+    ],
+    calculate: (v) => {
+      const date = new Date(v.year, v.month - 1, v.day);
+      let conception: Date;
+      if (v.mode === 0) {
+        conception = new Date(date); conception.setDate(conception.getDate() + 14);
+      } else {
+        conception = new Date(date); conception.setDate(conception.getDate() - 266);
+      }
+      const fertileStart = new Date(conception); fertileStart.setDate(fertileStart.getDate() - 5);
+      const fmt = (d: Date) => d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+      return [
+        { label: "Estimated Conception", value: fmt(conception), highlight: true },
+        { label: "Fertile Window", value: `${fmt(fertileStart)} – ${fmt(conception)}` },
+      ];
+    },
+    formula: { expression: "From LMP: Conception ≈ LMP + 14 days; From Due Date: Conception ≈ Due − 266 days", variables: ["Ovulation typically occurs ~14 days after LMP"] },
+    howToUse: "Select whether you know your LMP or due date, then enter the date.",
+    faqs: [{ question: "How accurate is this?", answer: "This estimates based on a 28-day cycle with ovulation at day 14. Actual conception can vary by several days." }],
+    relatedCalcs: healthRelated("conception-calculator"),
+  },
+  // 29. Healthy Weight Calculator
+  {
+    slug: "healthy-weight-calculator", name: "Healthy Weight Calculator", category: "Health", categorySlug: "health",
+    description: "Find the healthy weight range for your height based on BMI guidelines.",
+    metaDescription: "Free healthy weight calculator. Find your ideal weight range based on height using BMI guidelines.",
+    icon: "heart",
+    inputs: [
+      { id: "height", label: "Height (cm)", type: "number", defaultValue: 170, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const hm = v.height / 100;
+      const minWeight = 18.5 * hm * hm;
+      const maxWeight = 24.9 * hm * hm;
+      const midWeight = (minWeight + maxWeight) / 2;
+      return [
+        { label: "Healthy Range", value: `${minWeight.toFixed(1)} – ${maxWeight.toFixed(1)} kg`, highlight: true },
+        { label: "Midpoint", value: `${midWeight.toFixed(1)} kg` },
+        { label: "In Pounds", value: `${(minWeight * 2.205).toFixed(0)} – ${(maxWeight * 2.205).toFixed(0)} lbs` },
+      ];
+    },
+    formula: { expression: "Weight Range = BMI(18.5-24.9) × Height(m)²", variables: ["BMI 18.5-24.9 is considered healthy"] },
+    howToUse: "Enter your height to see the healthy weight range based on BMI guidelines.",
+    faqs: [{ question: "Is BMI the best measure?", answer: "BMI is a screening tool, not a diagnostic. It doesn't account for muscle mass, bone density, or body composition." }],
+    relatedCalcs: healthRelated("healthy-weight-calculator"),
+  },
+  // 30. Body Type Calculator
+  {
+    slug: "body-type-calculator", name: "Body Type Calculator", category: "Health", categorySlug: "health",
+    description: "Determine your body frame size (small, medium, large) based on wrist circumference and height.",
+    metaDescription: "Free body type calculator. Determine your body frame size from wrist measurement and height.",
+    icon: "heart",
+    inputs: [
+      { id: "gender", label: "Gender", type: "select", defaultValue: 0, options: [{ value: 0, label: "Male" }, { value: 1, label: "Female" }] },
+      { id: "height", label: "Height (cm)", type: "number", defaultValue: 175, step: 0.1 },
+      { id: "wrist", label: "Wrist Circumference (cm)", type: "number", defaultValue: 17, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const ratio = v.height / v.wrist;
+      let frame: string;
+      if (v.gender === 0) {
+        frame = ratio > 10.4 ? "Small Frame" : ratio > 9.6 ? "Medium Frame" : "Large Frame";
+      } else {
+        frame = ratio > 11 ? "Small Frame" : ratio > 10.1 ? "Medium Frame" : "Large Frame";
+      }
+      return [
+        { label: "Body Frame", value: frame, highlight: true },
+        { label: "Height/Wrist Ratio", value: ratio.toFixed(1) },
+      ];
+    },
+    formula: { expression: "Ratio = Height / Wrist Circumference", variables: ["Male: >10.4 small, 9.6-10.4 medium, <9.6 large"] },
+    howToUse: "Enter your gender, height, and wrist circumference to determine body frame size.",
+    faqs: [{ question: "Why does frame size matter?", answer: "Frame size affects ideal weight calculations. A large-framed person can healthily weigh more than a small-framed person of the same height." }],
+    relatedCalcs: healthRelated("body-type-calculator"),
+  },
 ];

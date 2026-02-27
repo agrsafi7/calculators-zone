@@ -936,4 +936,435 @@ export const mathCalculators: CalculatorConfig[] = [
     faqs: [{ question: "What units?", answer: "Volume is in cubic units (e.g., cm³). Surface area is in square units (cm²)." }],
     relatedCalcs: mathRelated("volume-calculator"),
   },
+  // 31. Binary Calculator
+  {
+    slug: "binary-calculator", name: "Binary Calculator", category: "Math", categorySlug: "math",
+    description: "Convert between decimal, binary, octal, and hexadecimal number systems.",
+    metaDescription: "Free binary calculator. Convert between decimal, binary, octal, and hex number systems.",
+    icon: "hash",
+    inputs: [
+      { id: "value", label: "Decimal Number", type: "number", defaultValue: 255, min: 0 },
+    ],
+    calculate: (v) => {
+      const n = Math.floor(Math.abs(v.value));
+      return [
+        { label: "Binary", value: n.toString(2), highlight: true },
+        { label: "Octal", value: n.toString(8) },
+        { label: "Hexadecimal", value: n.toString(16).toUpperCase() },
+        { label: "Decimal", value: n.toLocaleString() },
+      ];
+    },
+    formula: { expression: "Divide by base repeatedly, collect remainders", variables: ["Binary = base 2", "Octal = base 8", "Hex = base 16"] },
+    howToUse: "Enter a decimal number to see its binary, octal, and hex representations.",
+    faqs: [{ question: "Why is binary important?", answer: "Computers use binary (0s and 1s) internally. Understanding binary is fundamental to computer science." }],
+    relatedCalcs: mathRelated("binary-calculator"),
+  },
+  // 32. Hex Calculator
+  {
+    slug: "hex-calculator", name: "Hex Calculator", category: "Math", categorySlug: "math",
+    description: "Convert hexadecimal to decimal and perform hex arithmetic.",
+    metaDescription: "Free hex calculator. Convert hexadecimal to decimal, binary, and octal.",
+    icon: "hash",
+    inputs: [
+      { id: "hex1", label: "Hex Value 1 (decimal input)", type: "number", defaultValue: 255 },
+      { id: "hex2", label: "Hex Value 2 (decimal input)", type: "number", defaultValue: 16 },
+    ],
+    calculate: (v) => {
+      const sum = v.hex1 + v.hex2;
+      const diff = v.hex1 - v.hex2;
+      return [
+        { label: "Hex 1", value: `0x${Math.abs(Math.floor(v.hex1)).toString(16).toUpperCase()}`, highlight: true },
+        { label: "Hex 2", value: `0x${Math.abs(Math.floor(v.hex2)).toString(16).toUpperCase()}` },
+        { label: "Sum (Hex)", value: `0x${Math.abs(Math.floor(sum)).toString(16).toUpperCase()}` },
+        { label: "Sum (Decimal)", value: `${sum}` },
+      ];
+    },
+    formula: { expression: "Convert, compute, display in hex", variables: ["Hex digits: 0-9, A-F"] },
+    howToUse: "Enter two decimal numbers. The calculator shows hex conversions and arithmetic.",
+    faqs: [{ question: "Where is hex used?", answer: "Colors (#FF0000), memory addresses, MAC addresses, and many programming contexts." }],
+    relatedCalcs: mathRelated("hex-calculator"),
+  },
+  // 33. Percent Error Calculator
+  {
+    slug: "percent-error-calculator", name: "Percent Error Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the percent error between an experimental and theoretical value.",
+    metaDescription: "Free percent error calculator. Find the percentage error between measured and actual values.",
+    icon: "hash",
+    inputs: [
+      { id: "experimental", label: "Experimental Value", type: "number", defaultValue: 9.8, step: 0.01 },
+      { id: "theoretical", label: "Theoretical Value", type: "number", defaultValue: 9.81, step: 0.01 },
+    ],
+    calculate: (v) => {
+      if (v.theoretical === 0) return [{ label: "Error", value: "Theoretical value cannot be zero" }];
+      const error = Math.abs(v.experimental - v.theoretical);
+      const pctError = (error / Math.abs(v.theoretical)) * 100;
+      return [
+        { label: "Percent Error", value: `${pctError.toFixed(4)}%`, highlight: true },
+        { label: "Absolute Error", value: error.toFixed(6) },
+        { label: "Relative Error", value: (error / Math.abs(v.theoretical)).toFixed(6) },
+      ];
+    },
+    formula: { expression: "% Error = |Experimental − Theoretical| / |Theoretical| × 100", variables: ["Always positive (absolute value)"] },
+    howToUse: "Enter your measured value and the accepted/theoretical value.",
+    faqs: [{ question: "What is acceptable percent error?", answer: "Depends on the field. In chemistry: <5% is good. In physics: <1% for precise experiments." }],
+    relatedCalcs: mathRelated("percent-error-calculator"),
+  },
+  // 34. Ratio Calculator
+  {
+    slug: "ratio-calculator", name: "Ratio Calculator", category: "Math", categorySlug: "math",
+    description: "Simplify ratios and solve for missing values in proportions (a:b = c:d).",
+    metaDescription: "Free ratio calculator. Simplify ratios and solve proportions with missing values.",
+    icon: "hash",
+    inputs: [
+      { id: "a", label: "A", type: "number", defaultValue: 12 },
+      { id: "b", label: "B", type: "number", defaultValue: 18 },
+    ],
+    calculate: (v) => {
+      const gcdFn = (a: number, b: number): number => { a = Math.abs(a); b = Math.abs(b); return b === 0 ? a : gcdFn(b, a % b); };
+      const g = gcdFn(Math.round(v.a), Math.round(v.b));
+      const sa = Math.round(v.a) / g;
+      const sb = Math.round(v.b) / g;
+      return [
+        { label: "Simplified Ratio", value: `${sa}:${sb}`, highlight: true },
+        { label: "As Fraction", value: `${sa}/${sb}` },
+        { label: "As Decimal", value: (v.a / v.b).toFixed(4) },
+        { label: "As Percentage", value: `${((v.a / v.b) * 100).toFixed(2)}%` },
+      ];
+    },
+    formula: { expression: "Divide both by GCD to simplify", variables: ["a:b = (a/GCD):(b/GCD)"] },
+    howToUse: "Enter two numbers to simplify their ratio.",
+    faqs: [{ question: "What is a ratio?", answer: "A ratio compares two quantities. 3:4 means 'for every 3 of A, there are 4 of B.'" }],
+    relatedCalcs: mathRelated("ratio-calculator"),
+  },
+  // 35. Z-Score Calculator
+  {
+    slug: "z-score-calculator", name: "Z-Score Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the z-score (standard score) for a value given the mean and standard deviation.",
+    metaDescription: "Free z-score calculator. Find how many standard deviations a value is from the mean.",
+    icon: "hash",
+    inputs: [
+      { id: "value", label: "Value (x)", type: "number", defaultValue: 85, step: 0.1 },
+      { id: "mean", label: "Mean (μ)", type: "number", defaultValue: 75, step: 0.1 },
+      { id: "sd", label: "Standard Deviation (σ)", type: "number", defaultValue: 10, step: 0.1 },
+    ],
+    calculate: (v) => {
+      if (v.sd === 0) return [{ label: "Error", value: "SD cannot be zero" }];
+      const z = (v.value - v.mean) / v.sd;
+      // Approximate cumulative probability
+      const t = 1 / (1 + 0.2316419 * Math.abs(z));
+      const d = 0.3989422804014327;
+      const p = d * Math.exp(-z * z / 2) * (0.3193815 * t - 0.3565638 * t * t + 1.781478 * t ** 3 - 1.821256 * t ** 4 + 1.330274 * t ** 5);
+      const cdf = z > 0 ? 1 - p : p;
+      return [
+        { label: "Z-Score", value: z.toFixed(4), highlight: true },
+        { label: "Percentile", value: `${(cdf * 100).toFixed(2)}%` },
+        { label: "Above/Below Mean", value: z >= 0 ? "Above" : "Below" },
+      ];
+    },
+    formula: { expression: "z = (x − μ) / σ", variables: ["x = value", "μ = mean", "σ = standard deviation"] },
+    howToUse: "Enter a data point, the population mean, and standard deviation to find the z-score.",
+    faqs: [{ question: "What does a z-score mean?", answer: "A z-score of 2 means the value is 2 standard deviations above the mean. About 95% of data falls within z = ±2." }],
+    relatedCalcs: mathRelated("z-score-calculator"),
+  },
+  // 36. Circle Calculator
+  {
+    slug: "circle-calculator", name: "Circle Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the area, circumference, and diameter of a circle from any known measurement.",
+    metaDescription: "Free circle calculator. Find area, circumference, and diameter from radius or other measurements.",
+    icon: "hash",
+    inputs: [
+      { id: "radius", label: "Radius", type: "number", defaultValue: 10, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const area = Math.PI * v.radius ** 2;
+      const circumference = 2 * Math.PI * v.radius;
+      return [
+        { label: "Area", value: area.toFixed(4), highlight: true },
+        { label: "Circumference", value: circumference.toFixed(4) },
+        { label: "Diameter", value: `${(v.radius * 2).toFixed(2)}` },
+      ];
+    },
+    formula: { expression: "Area = πr²; Circumference = 2πr; Diameter = 2r", variables: ["r = radius"] },
+    howToUse: "Enter the radius to calculate area, circumference, and diameter.",
+    faqs: [{ question: "What is π?", answer: "Pi (π) ≈ 3.14159... is the ratio of a circle's circumference to its diameter. It's an irrational number." }],
+    relatedCalcs: mathRelated("circle-calculator"),
+  },
+  // 37. Pythagorean Theorem Calculator
+  {
+    slug: "pythagorean-theorem-calculator", name: "Pythagorean Theorem Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the missing side of a right triangle using the Pythagorean theorem (a² + b² = c²).",
+    metaDescription: "Free Pythagorean theorem calculator. Find the missing side of a right triangle.",
+    icon: "hash",
+    inputs: [
+      { id: "a", label: "Side a", type: "number", defaultValue: 3, step: 0.1 },
+      { id: "b", label: "Side b", type: "number", defaultValue: 4, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const c = Math.sqrt(v.a ** 2 + v.b ** 2);
+      const area = 0.5 * v.a * v.b;
+      const perimeter = v.a + v.b + c;
+      return [
+        { label: "Hypotenuse (c)", value: c.toFixed(4), highlight: true },
+        { label: "a² + b²", value: `${(v.a ** 2 + v.b ** 2).toFixed(2)}` },
+        { label: "Area", value: area.toFixed(2) },
+        { label: "Perimeter", value: perimeter.toFixed(2) },
+      ];
+    },
+    formula: { expression: "c = √(a² + b²)", variables: ["a and b are the two legs", "c is the hypotenuse"] },
+    howToUse: "Enter the two legs of a right triangle to find the hypotenuse.",
+    faqs: [{ question: "What are Pythagorean triples?", answer: "Integer solutions like 3-4-5, 5-12-13, 8-15-17. They form right triangles with whole-number sides." }],
+    relatedCalcs: mathRelated("pythagorean-theorem-calculator"),
+  },
+  // 38. Scientific Notation Calculator
+  {
+    slug: "scientific-notation-calculator", name: "Scientific Notation Calculator", category: "Math", categorySlug: "math",
+    description: "Convert numbers to and from scientific notation (e.g., 6.022 × 10²³).",
+    metaDescription: "Free scientific notation calculator. Convert numbers to and from scientific notation.",
+    icon: "hash",
+    inputs: [
+      { id: "value", label: "Number", type: "number", defaultValue: 602200000000, step: 1 },
+    ],
+    calculate: (v) => {
+      const exp = v.value === 0 ? 0 : Math.floor(Math.log10(Math.abs(v.value)));
+      const coeff = v.value / Math.pow(10, exp);
+      return [
+        { label: "Scientific Notation", value: `${coeff.toFixed(4)} × 10^${exp}`, highlight: true },
+        { label: "E Notation", value: v.value.toExponential(4) },
+        { label: "Standard Form", value: v.value.toLocaleString() },
+      ];
+    },
+    formula: { expression: "a × 10^n where 1 ≤ |a| < 10", variables: ["n = floor(log₁₀|x|)"] },
+    howToUse: "Enter any number to see it in scientific notation.",
+    faqs: [{ question: "When is scientific notation used?", answer: "For very large (speed of light: 3×10⁸) or very small numbers (electron mass: 9.1×10⁻³¹)." }],
+    relatedCalcs: mathRelated("scientific-notation-calculator"),
+  },
+  // 39. Average Calculator
+  {
+    slug: "average-calculator", name: "Average Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the arithmetic mean, geometric mean, and harmonic mean of a set of numbers.",
+    metaDescription: "Free average calculator. Find arithmetic, geometric, and harmonic means of numbers.",
+    icon: "hash",
+    inputs: [
+      { id: "v1", label: "Value 1", type: "number", defaultValue: 10 },
+      { id: "v2", label: "Value 2", type: "number", defaultValue: 20 },
+      { id: "v3", label: "Value 3", type: "number", defaultValue: 30 },
+      { id: "v4", label: "Value 4", type: "number", defaultValue: 40 },
+      { id: "v5", label: "Value 5", type: "number", defaultValue: 50 },
+    ],
+    calculate: (v) => {
+      const data = [v.v1, v.v2, v.v3, v.v4, v.v5];
+      const n = data.length;
+      const arithmetic = data.reduce((a, b) => a + b, 0) / n;
+      const geometric = Math.pow(data.reduce((a, b) => a * b, 1), 1 / n);
+      const harmonic = n / data.reduce((sum, x) => sum + 1 / x, 0);
+      return [
+        { label: "Arithmetic Mean", value: arithmetic.toFixed(2), highlight: true },
+        { label: "Geometric Mean", value: geometric.toFixed(2) },
+        { label: "Harmonic Mean", value: harmonic.toFixed(2) },
+        { label: "Sum", value: data.reduce((a, b) => a + b, 0).toLocaleString() },
+      ];
+    },
+    formula: { expression: "Arithmetic: Σx/n; Geometric: (Πx)^(1/n); Harmonic: n/Σ(1/x)", variables: ["n = count of values"] },
+    howToUse: "Enter up to 5 values to calculate different types of averages.",
+    faqs: [{ question: "Which average should I use?", answer: "Arithmetic for most cases. Geometric for rates of change. Harmonic for rates and ratios (like speed)." }],
+    relatedCalcs: mathRelated("average-calculator"),
+  },
+  // 40. Right Triangle Calculator
+  {
+    slug: "right-triangle-calculator", name: "Right Triangle Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate all sides, angles, area, and perimeter of a right triangle from two known values.",
+    metaDescription: "Free right triangle calculator. Find all sides, angles, and area from any two measurements.",
+    icon: "hash",
+    inputs: [
+      { id: "a", label: "Side a (adjacent)", type: "number", defaultValue: 5, step: 0.1 },
+      { id: "b", label: "Side b (opposite)", type: "number", defaultValue: 12, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const c = Math.sqrt(v.a ** 2 + v.b ** 2);
+      const angleA = Math.atan(v.b / v.a) * (180 / Math.PI);
+      const angleB = 90 - angleA;
+      const area = 0.5 * v.a * v.b;
+      return [
+        { label: "Hypotenuse", value: c.toFixed(4), highlight: true },
+        { label: "Angle A", value: `${angleA.toFixed(2)}°` },
+        { label: "Angle B", value: `${angleB.toFixed(2)}°` },
+        { label: "Area", value: area.toFixed(2) },
+        { label: "Perimeter", value: (v.a + v.b + c).toFixed(2) },
+      ];
+    },
+    formula: { expression: "c = √(a²+b²); Angle = arctan(opposite/adjacent)", variables: ["All angles sum to 180°", "One angle = 90°"] },
+    howToUse: "Enter the two legs to calculate the hypotenuse, angles, area, and perimeter.",
+    faqs: [{ question: "What makes a triangle 'right'?", answer: "A right triangle has exactly one 90° angle. The side opposite the right angle is the hypotenuse." }],
+    relatedCalcs: mathRelated("right-triangle-calculator"),
+  },
+  // 41. Triangle Calculator
+  {
+    slug: "triangle-calculator", name: "Triangle Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the area, perimeter, and angles of a triangle from three side lengths using Heron's formula.",
+    metaDescription: "Free triangle calculator. Find area, perimeter, and angles from three side lengths.",
+    icon: "hash",
+    inputs: [
+      { id: "a", label: "Side a", type: "number", defaultValue: 5, step: 0.1 },
+      { id: "b", label: "Side b", type: "number", defaultValue: 7, step: 0.1 },
+      { id: "c", label: "Side c", type: "number", defaultValue: 10, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const s = (v.a + v.b + v.c) / 2;
+      const areaSquared = s * (s - v.a) * (s - v.b) * (s - v.c);
+      if (areaSquared <= 0) return [{ label: "Error", value: "Invalid triangle sides" }];
+      const area = Math.sqrt(areaSquared);
+      const angleA = Math.acos((v.b ** 2 + v.c ** 2 - v.a ** 2) / (2 * v.b * v.c)) * (180 / Math.PI);
+      const angleB = Math.acos((v.a ** 2 + v.c ** 2 - v.b ** 2) / (2 * v.a * v.c)) * (180 / Math.PI);
+      const angleC = 180 - angleA - angleB;
+      return [
+        { label: "Area", value: area.toFixed(4), highlight: true },
+        { label: "Perimeter", value: (v.a + v.b + v.c).toFixed(2) },
+        { label: "Angle A", value: `${angleA.toFixed(2)}°` },
+        { label: "Angle B", value: `${angleB.toFixed(2)}°` },
+        { label: "Angle C", value: `${angleC.toFixed(2)}°` },
+      ];
+    },
+    formula: { expression: "Heron's: Area = √(s(s-a)(s-b)(s-c)) where s = (a+b+c)/2", variables: ["Angles via law of cosines"] },
+    howToUse: "Enter three side lengths. The calculator finds area and angles using Heron's formula and law of cosines.",
+    faqs: [{ question: "When is a triangle valid?", answer: "Each side must be less than the sum of the other two (triangle inequality)." }],
+    relatedCalcs: mathRelated("triangle-calculator"),
+  },
+  // 42. Surface Area Calculator
+  {
+    slug: "surface-area-calculator", name: "Surface Area Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the surface area of common 3D shapes: sphere, cylinder, cone, and rectangular prism.",
+    metaDescription: "Free surface area calculator for spheres, cylinders, cones, and rectangular prisms.",
+    icon: "hash",
+    inputs: [
+      { id: "shape", label: "Shape", type: "select", defaultValue: 0, options: [{ value: 0, label: "Sphere" }, { value: 1, label: "Cylinder" }, { value: 2, label: "Cone" }, { value: 3, label: "Rectangular Prism" }] },
+      { id: "dim1", label: "Dimension 1 (radius/length)", type: "number", defaultValue: 5, step: 0.1 },
+      { id: "dim2", label: "Dimension 2 (height/width)", type: "number", defaultValue: 10, step: 0.1 },
+      { id: "dim3", label: "Dimension 3 (depth, prism only)", type: "number", defaultValue: 3, step: 0.1 },
+    ],
+    calculate: (v) => {
+      let sa: number, name: string;
+      switch (v.shape) {
+        case 0: sa = 4 * Math.PI * v.dim1 ** 2; name = "Sphere"; break;
+        case 1: sa = 2 * Math.PI * v.dim1 * (v.dim1 + v.dim2); name = "Cylinder"; break;
+        case 2: { const slant = Math.sqrt(v.dim1 ** 2 + v.dim2 ** 2); sa = Math.PI * v.dim1 * (v.dim1 + slant); name = "Cone"; break; }
+        case 3: sa = 2 * (v.dim1 * v.dim2 + v.dim2 * v.dim3 + v.dim1 * v.dim3); name = "Rectangular Prism"; break;
+        default: sa = 0; name = "";
+      }
+      return [
+        { label: `${name} Surface Area`, value: sa.toFixed(2), highlight: true },
+      ];
+    },
+    formula: { expression: "Sphere: 4πr²; Cylinder: 2πr(r+h); Cone: πr(r+l); Prism: 2(lw+wh+lh)", variables: ["r=radius, h=height, l=slant height"] },
+    howToUse: "Select a shape and enter dimensions to calculate surface area.",
+    faqs: [{ question: "What is surface area used for?", answer: "Calculating material needed to cover an object, heat transfer, painting, wrapping, and manufacturing." }],
+    relatedCalcs: mathRelated("surface-area-calculator"),
+  },
+  // 43. Sample Size Calculator
+  {
+    slug: "sample-size-calculator", name: "Sample Size Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the required sample size for a survey given confidence level, margin of error, and population.",
+    metaDescription: "Free sample size calculator. Determine how many survey responses you need for reliable results.",
+    icon: "hash",
+    inputs: [
+      { id: "confidence", label: "Confidence Level", type: "select", defaultValue: 1.96, options: [{ value: 1.645, label: "90%" }, { value: 1.96, label: "95%" }, { value: 2.576, label: "99%" }] },
+      { id: "margin", label: "Margin of Error (%)", type: "number", defaultValue: 5, suffix: "%", step: 0.5 },
+      { id: "population", label: "Population Size", type: "number", defaultValue: 10000 },
+    ],
+    calculate: (v) => {
+      const p = 0.5; // max variability
+      const e = v.margin / 100;
+      const z = v.confidence;
+      const n0 = (z ** 2 * p * (1 - p)) / (e ** 2);
+      const n = Math.ceil(n0 / (1 + (n0 - 1) / v.population));
+      return [
+        { label: "Required Sample Size", value: n.toLocaleString(), highlight: true },
+        { label: "Infinite Pop. Sample", value: Math.ceil(n0).toLocaleString() },
+        { label: "Response Rate Factor", value: `Get ${Math.ceil(n / 0.8)} surveys (80% rate)` },
+      ];
+    },
+    formula: { expression: "n = n₀ / (1 + (n₀-1)/N); n₀ = z²p(1-p)/e²", variables: ["z = z-score for confidence", "p = 0.5 (maximum)", "e = margin of error"] },
+    howToUse: "Select confidence level, set margin of error, and enter population size.",
+    faqs: [{ question: "Why is p set to 0.5?", answer: "Using p=0.5 gives the maximum sample size (worst case), ensuring your results are reliable regardless of the actual proportion." }],
+    relatedCalcs: mathRelated("sample-size-calculator"),
+  },
+  // 44. Confidence Interval Calculator
+  {
+    slug: "confidence-interval-calculator", name: "Confidence Interval Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the confidence interval for a population mean from sample statistics.",
+    metaDescription: "Free confidence interval calculator. Find the CI for a population mean from sample data.",
+    icon: "hash",
+    inputs: [
+      { id: "mean", label: "Sample Mean", type: "number", defaultValue: 50, step: 0.1 },
+      { id: "sd", label: "Standard Deviation", type: "number", defaultValue: 10, step: 0.1 },
+      { id: "n", label: "Sample Size", type: "number", defaultValue: 100, min: 2 },
+      { id: "confidence", label: "Confidence Level", type: "select", defaultValue: 1.96, options: [{ value: 1.645, label: "90%" }, { value: 1.96, label: "95%" }, { value: 2.576, label: "99%" }] },
+    ],
+    calculate: (v) => {
+      const se = v.sd / Math.sqrt(v.n);
+      const margin = v.confidence * se;
+      return [
+        { label: "Confidence Interval", value: `${(v.mean - margin).toFixed(2)} – ${(v.mean + margin).toFixed(2)}`, highlight: true },
+        { label: "Margin of Error", value: `±${margin.toFixed(4)}` },
+        { label: "Standard Error", value: se.toFixed(4) },
+      ];
+    },
+    formula: { expression: "CI = x̄ ± z × (σ/√n)", variables: ["x̄ = sample mean", "σ = standard deviation", "n = sample size"] },
+    howToUse: "Enter sample mean, standard deviation, sample size, and confidence level.",
+    faqs: [{ question: "What does 95% confidence mean?", answer: "If you repeated the study 100 times, about 95 of the intervals would contain the true population mean." }],
+    relatedCalcs: mathRelated("confidence-interval-calculator"),
+  },
+  // 45. P-Value Calculator
+  {
+    slug: "p-value-calculator", name: "P-Value Calculator", category: "Math", categorySlug: "math",
+    description: "Calculate the p-value from a z-score or t-statistic for hypothesis testing.",
+    metaDescription: "Free p-value calculator. Find the p-value from a z-score for statistical hypothesis testing.",
+    icon: "hash",
+    inputs: [
+      { id: "zScore", label: "Z-Score / Test Statistic", type: "number", defaultValue: 1.96, step: 0.01 },
+      { id: "tail", label: "Test Type", type: "select", defaultValue: 2, options: [{ value: 1, label: "One-Tailed" }, { value: 2, label: "Two-Tailed" }] },
+    ],
+    calculate: (v) => {
+      const z = Math.abs(v.zScore);
+      const t = 1 / (1 + 0.2316419 * z);
+      const d = 0.3989422804014327;
+      const p1 = d * Math.exp(-z * z / 2) * (0.3193815 * t - 0.3565638 * t * t + 1.781478 * t ** 3 - 1.821256 * t ** 4 + 1.330274 * t ** 5);
+      const pValue = v.tail === 2 ? 2 * p1 : p1;
+      return [
+        { label: "P-Value", value: pValue < 0.0001 ? pValue.toExponential(4) : pValue.toFixed(6), highlight: true },
+        { label: "Significant (α=0.05)?", value: pValue < 0.05 ? "Yes ✓" : "No" },
+        { label: "Significant (α=0.01)?", value: pValue < 0.01 ? "Yes ✓" : "No" },
+      ];
+    },
+    formula: { expression: "P-value from standard normal distribution", variables: ["Two-tailed = 2 × one-tailed", "Approximation using polynomial"] },
+    howToUse: "Enter your test statistic and select one or two-tailed test.",
+    faqs: [{ question: "What is a p-value?", answer: "The probability of observing results as extreme as the test statistic, assuming the null hypothesis is true. Lower = stronger evidence against null." }],
+    relatedCalcs: mathRelated("p-value-calculator"),
+  },
+  // 46. Long Division Calculator
+  {
+    slug: "long-division-calculator", name: "Long Division Calculator", category: "Math", categorySlug: "math",
+    description: "Perform long division and see the quotient, remainder, and decimal result.",
+    metaDescription: "Free long division calculator. Get quotient, remainder, and decimal result for any division.",
+    icon: "hash",
+    inputs: [
+      { id: "dividend", label: "Dividend (number being divided)", type: "number", defaultValue: 127 },
+      { id: "divisor", label: "Divisor (dividing by)", type: "number", defaultValue: 5 },
+    ],
+    calculate: (v) => {
+      if (v.divisor === 0) return [{ label: "Error", value: "Cannot divide by zero" }];
+      const quotient = Math.floor(v.dividend / v.divisor);
+      const remainder = v.dividend % v.divisor;
+      const decimal = v.dividend / v.divisor;
+      return [
+        { label: "Quotient", value: `${quotient}`, highlight: true },
+        { label: "Remainder", value: `${remainder}` },
+        { label: "Result", value: `${quotient} R ${remainder}` },
+        { label: "Decimal", value: decimal.toFixed(6) },
+      ];
+    },
+    formula: { expression: "Dividend = Divisor × Quotient + Remainder", variables: ["Quotient = floor(Dividend / Divisor)"] },
+    howToUse: "Enter the dividend and divisor. See the quotient, remainder, and decimal result.",
+    faqs: [{ question: "What is a remainder?", answer: "The amount left over after division. 17 ÷ 5 = 3 remainder 2 (because 5 × 3 = 15, and 17 − 15 = 2)." }],
+    relatedCalcs: mathRelated("long-division-calculator"),
+  },
 ];

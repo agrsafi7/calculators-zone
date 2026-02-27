@@ -1724,4 +1724,694 @@ export const financeCalculators: CalculatorConfig[] = [
     ],
     relatedCalcs: financeRelated("tip-calculator"),
   },
+  // 47. Mortgage Payoff Calculator
+  {
+    slug: "mortgage-payoff-calculator", name: "Mortgage Payoff Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate how quickly you can pay off your mortgage with extra payments and see total interest saved.",
+    metaDescription: "Free mortgage payoff calculator. See how extra payments accelerate your mortgage payoff and save interest.",
+    icon: "dollar",
+    inputs: [
+      { id: "balance", label: "Remaining Balance", type: "number", defaultValue: 250000, prefix: "$" },
+      { id: "rate", label: "Interest Rate (%)", type: "number", defaultValue: 6.5, suffix: "%", step: 0.1 },
+      { id: "remaining", label: "Remaining Term (years)", type: "number", defaultValue: 25 },
+      { id: "extra", label: "Extra Monthly Payment", type: "number", defaultValue: 200, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const months = v.remaining * 12;
+      const r = loanCalc(v.balance, v.rate, months);
+      const mr = v.rate / 100 / 12;
+      let bal = v.balance, totalInt = 0, m = 0;
+      while (bal > 0 && m < months) {
+        const intPmt = bal * mr;
+        const princPmt = Math.min(r.monthly - intPmt + v.extra, bal);
+        totalInt += intPmt;
+        bal -= princPmt;
+        m++;
+      }
+      return [
+        { label: "New Payoff Time", value: `${Math.floor(m / 12)} yrs ${m % 12} mos`, highlight: true },
+        { label: "Original Payoff Time", value: `${v.remaining} years` },
+        { label: "Time Saved", value: `${Math.floor((months - m) / 12)} yrs ${(months - m) % 12} mos` },
+        { label: "Interest Saved", value: fmt0(r.totalInterest - totalInt) },
+      ];
+    },
+    formula: { expression: "Recalculate amortization with extra principal payments each month", variables: ["Extra payments reduce principal faster"] },
+    howToUse: "Enter your remaining balance, rate, term, and extra monthly payment to see how much time and interest you save.",
+    faqs: [{ question: "Do extra payments go to principal?", answer: "Yes, extra payments typically reduce the principal directly, which means less interest accrues in future months." }],
+    relatedCalcs: financeRelated("mortgage-payoff-calculator"),
+  },
+  // 48. House Affordability Calculator
+  {
+    slug: "house-affordability-calculator", name: "House Affordability Calculator", category: "Finance", categorySlug: "finance",
+    description: "Estimate how much house you can afford based on your income, debts, and down payment.",
+    metaDescription: "Free house affordability calculator. Find out how much home you can afford based on income and debts.",
+    icon: "dollar",
+    inputs: [
+      { id: "annualIncome", label: "Annual Income", type: "number", defaultValue: 85000, prefix: "$" },
+      { id: "monthlyDebts", label: "Monthly Debts", type: "number", defaultValue: 500, prefix: "$" },
+      { id: "downPayment", label: "Down Payment", type: "number", defaultValue: 50000, prefix: "$" },
+      { id: "rate", label: "Mortgage Rate (%)", type: "number", defaultValue: 6.5, suffix: "%", step: 0.1 },
+      { id: "term", label: "Loan Term (years)", type: "number", defaultValue: 30 },
+    ],
+    calculate: (v) => {
+      const monthlyIncome = v.annualIncome / 12;
+      const maxPayment28 = monthlyIncome * 0.28;
+      const maxPayment36 = monthlyIncome * 0.36 - v.monthlyDebts;
+      const maxMonthly = Math.min(maxPayment28, maxPayment36);
+      const mr = v.rate / 100 / 12;
+      const n = v.term * 12;
+      const maxLoan = maxMonthly > 0 ? maxMonthly * ((Math.pow(1 + mr, n) - 1) / (mr * Math.pow(1 + mr, n))) : 0;
+      const maxHome = maxLoan + v.downPayment;
+      return [
+        { label: "Max Home Price", value: fmt0(maxHome), highlight: true },
+        { label: "Max Loan Amount", value: fmt0(maxLoan) },
+        { label: "Max Monthly Payment", value: fmt(maxMonthly) },
+        { label: "DTI at Max", value: pct(((maxMonthly + v.monthlyDebts) / monthlyIncome) * 100) },
+      ];
+    },
+    formula: { expression: "Max Payment = min(28% of income, 36% of income − debts)", variables: ["Max Loan derived from payment using amortization formula"] },
+    howToUse: "Enter your income, existing debts, down payment, and expected mortgage rate. See the maximum home price you can afford.",
+    faqs: [{ question: "What is the 28/36 rule?", answer: "Housing costs should be ≤28% of gross income, and total debt ≤36%. Some lenders allow up to 43%." }],
+    relatedCalcs: financeRelated("house-affordability-calculator"),
+  },
+  // 49. Down Payment Calculator
+  {
+    slug: "down-payment-calculator", name: "Down Payment Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate the down payment amount for a home purchase and see how it affects your mortgage.",
+    metaDescription: "Free down payment calculator. See how different down payment amounts affect your mortgage payment and PMI.",
+    icon: "dollar",
+    inputs: [
+      { id: "homePrice", label: "Home Price", type: "number", defaultValue: 400000, prefix: "$" },
+      { id: "downPct", label: "Down Payment (%)", type: "number", defaultValue: 20, suffix: "%", step: 1 },
+      { id: "rate", label: "Mortgage Rate (%)", type: "number", defaultValue: 6.5, suffix: "%", step: 0.1 },
+      { id: "term", label: "Term (years)", type: "number", defaultValue: 30 },
+    ],
+    calculate: (v) => {
+      const dp = v.homePrice * (v.downPct / 100);
+      const loan = v.homePrice - dp;
+      const r = loanCalc(loan, v.rate, v.term * 12);
+      const pmi = v.downPct < 20 ? loan * 0.005 / 12 : 0;
+      return [
+        { label: "Down Payment Amount", value: fmt0(dp), highlight: true },
+        { label: "Loan Amount", value: fmt0(loan) },
+        { label: "Monthly Payment", value: fmt(r.monthly) },
+        { label: "Monthly PMI", value: pmi > 0 ? fmt(pmi) : "None (≥20%)" },
+        { label: "Total Payment + PMI", value: fmt(r.monthly + pmi) },
+      ];
+    },
+    formula: { expression: "Down Payment = Home Price × %", variables: ["PMI applies if <20% down", "PMI ≈ 0.5% of loan annually"] },
+    howToUse: "Enter the home price and desired down payment percentage to see the impact on your mortgage.",
+    faqs: [{ question: "Do I need 20% down?", answer: "No. FHA loans require as little as 3.5%. Conventional loans start at 3-5%. But <20% means paying PMI." }],
+    relatedCalcs: financeRelated("down-payment-calculator"),
+  },
+  // 50. CD Calculator
+  {
+    slug: "cd-calculator", name: "CD Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate the maturity value and interest earned on a Certificate of Deposit.",
+    metaDescription: "Free CD calculator. Calculate interest earned and maturity value for certificates of deposit.",
+    icon: "dollar",
+    inputs: [
+      { id: "deposit", label: "Initial Deposit", type: "number", defaultValue: 10000, prefix: "$" },
+      { id: "rate", label: "APY (%)", type: "number", defaultValue: 5, suffix: "%", step: 0.1 },
+      { id: "term", label: "Term (months)", type: "number", defaultValue: 12 },
+      { id: "compound", label: "Compounding", type: "select", defaultValue: 12, options: [{ value: 1, label: "Annually" }, { value: 4, label: "Quarterly" }, { value: 12, label: "Monthly" }, { value: 365, label: "Daily" }] },
+    ],
+    calculate: (v) => {
+      const t = v.term / 12;
+      const fv = v.deposit * Math.pow(1 + v.rate / 100 / v.compound, v.compound * t);
+      const interest = fv - v.deposit;
+      return [
+        { label: "Maturity Value", value: fmt(fv), highlight: true },
+        { label: "Total Interest", value: fmt(interest) },
+        { label: "Monthly Interest (avg)", value: fmt(interest / v.term) },
+      ];
+    },
+    formula: { expression: "FV = P × (1 + r/n)^(nt)", variables: ["P = deposit", "r = APY", "n = compounds/year", "t = years"] },
+    howToUse: "Enter deposit amount, APY, term, and compounding frequency to see your CD's maturity value.",
+    faqs: [{ question: "Is my CD insured?", answer: "Yes, CDs at FDIC-insured banks are protected up to $250,000 per depositor per institution." }],
+    relatedCalcs: financeRelated("cd-calculator"),
+  },
+  // 51. Bond Calculator
+  {
+    slug: "bond-calculator", name: "Bond Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate the price, yield, or interest payments of a bond investment.",
+    metaDescription: "Free bond calculator. Calculate bond price, yield to maturity, and coupon payments.",
+    icon: "dollar",
+    inputs: [
+      { id: "faceValue", label: "Face Value", type: "number", defaultValue: 1000, prefix: "$" },
+      { id: "couponRate", label: "Coupon Rate (%)", type: "number", defaultValue: 5, suffix: "%", step: 0.1 },
+      { id: "years", label: "Years to Maturity", type: "number", defaultValue: 10 },
+      { id: "marketRate", label: "Market Rate / YTM (%)", type: "number", defaultValue: 4, suffix: "%", step: 0.1 },
+    ],
+    calculate: (v) => {
+      const coupon = v.faceValue * (v.couponRate / 100);
+      const r = v.marketRate / 100;
+      const pvCoupons = coupon * ((1 - Math.pow(1 + r, -v.years)) / r);
+      const pvFace = v.faceValue / Math.pow(1 + r, v.years);
+      const price = pvCoupons + pvFace;
+      return [
+        { label: "Bond Price", value: fmt(price), highlight: true },
+        { label: "Annual Coupon", value: fmt(coupon) },
+        { label: "Current Yield", value: pct((coupon / price) * 100) },
+        { label: "Premium/Discount", value: price > v.faceValue ? "Premium" : price < v.faceValue ? "Discount" : "Par" },
+      ];
+    },
+    formula: { expression: "Price = Σ(Coupon/(1+r)^t) + Face/(1+r)^n", variables: ["PV of coupon payments + PV of face value"] },
+    howToUse: "Enter face value, coupon rate, years to maturity, and market rate to calculate the bond's fair price.",
+    faqs: [{ question: "What is yield to maturity?", answer: "YTM is the total return expected if the bond is held to maturity, accounting for coupon payments and price gain/loss." }],
+    relatedCalcs: financeRelated("bond-calculator"),
+  },
+  // 52. Roth IRA Calculator
+  {
+    slug: "roth-ira-calculator", name: "Roth IRA Calculator", category: "Finance", categorySlug: "finance",
+    description: "Project the growth of your Roth IRA with tax-free withdrawals in retirement.",
+    metaDescription: "Free Roth IRA calculator. Project tax-free growth and retirement income from your Roth IRA contributions.",
+    icon: "dollar",
+    inputs: [
+      { id: "current", label: "Current Balance", type: "number", defaultValue: 10000, prefix: "$" },
+      { id: "annual", label: "Annual Contribution", type: "number", defaultValue: 7000, prefix: "$" },
+      { id: "rate", label: "Expected Return (%)", type: "number", defaultValue: 7, suffix: "%", step: 0.1 },
+      { id: "years", label: "Years Until Retirement", type: "number", defaultValue: 30 },
+    ],
+    calculate: (v) => {
+      const r = v.rate / 100 / 12;
+      const n = v.years * 12;
+      const mo = v.annual / 12;
+      const fv = v.current * Math.pow(1 + r, n) + mo * ((Math.pow(1 + r, n) - 1) / r);
+      const contributed = v.current + v.annual * v.years;
+      return [
+        { label: "Tax-Free Balance", value: fmt0(fv), highlight: true },
+        { label: "Total Contributed", value: fmt0(contributed) },
+        { label: "Tax-Free Growth", value: fmt0(fv - contributed) },
+        { label: "Monthly Retirement Income (4%)", value: fmt((fv * 0.04) / 12) },
+      ];
+    },
+    formula: { expression: "FV = P(1+r)^n + PMT×[(1+r)^n−1]/r", variables: ["All growth and withdrawals are tax-free"] },
+    howToUse: "Enter your current Roth IRA balance, annual contribution, expected return, and years to retirement.",
+    faqs: [{ question: "Who can contribute to a Roth IRA?", answer: "Single filers earning under $161,000 and married couples under $240,000 (2024). Contribution limit is $7,000/year ($8,000 if 50+)." }],
+    relatedCalcs: financeRelated("roth-ira-calculator"),
+  },
+  // 53. RMD Calculator
+  {
+    slug: "rmd-calculator", name: "RMD Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate your Required Minimum Distribution from retirement accounts based on age and balance.",
+    metaDescription: "Free RMD calculator. Calculate required minimum distributions from Traditional IRAs and 401(k)s.",
+    icon: "dollar",
+    inputs: [
+      { id: "balance", label: "Account Balance", type: "number", defaultValue: 500000, prefix: "$" },
+      { id: "age", label: "Your Age", type: "number", defaultValue: 73, min: 72, max: 120 },
+    ],
+    calculate: (v) => {
+      const lifetable: Record<number, number> = { 72: 27.4, 73: 26.5, 74: 25.5, 75: 24.6, 76: 23.7, 77: 22.9, 78: 22.0, 79: 21.1, 80: 20.2, 81: 19.4, 82: 18.5, 83: 17.7, 84: 16.8, 85: 16.0, 86: 15.2, 87: 14.4, 88: 13.7, 89: 12.9, 90: 12.2 };
+      const factor = lifetable[v.age] || Math.max(27.4 - (v.age - 72) * 0.85, 2);
+      const rmd = v.balance / factor;
+      return [
+        { label: "Annual RMD", value: fmt0(rmd), highlight: true },
+        { label: "Monthly RMD", value: fmt(rmd / 12) },
+        { label: "Distribution Factor", value: factor.toFixed(1) },
+        { label: "RMD as % of Balance", value: pct((rmd / v.balance) * 100) },
+      ];
+    },
+    formula: { expression: "RMD = Account Balance / Distribution Factor", variables: ["Factor from IRS Uniform Lifetime Table"] },
+    howToUse: "Enter your retirement account balance and age. RMDs start at age 73 (under SECURE 2.0 Act).",
+    faqs: [{ question: "When must I take RMDs?", answer: "RMDs must begin by April 1 of the year after you turn 73. Failure to take RMDs results in a 25% penalty on the amount not withdrawn." }],
+    relatedCalcs: financeRelated("rmd-calculator"),
+  },
+  // 54. Depreciation Calculator
+  {
+    slug: "depreciation-calculator", name: "Depreciation Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate asset depreciation using straight-line, declining balance, or sum-of-years methods.",
+    metaDescription: "Free depreciation calculator. Calculate annual depreciation using straight-line and declining balance methods.",
+    icon: "dollar",
+    inputs: [
+      { id: "cost", label: "Asset Cost", type: "number", defaultValue: 50000, prefix: "$" },
+      { id: "salvage", label: "Salvage Value", type: "number", defaultValue: 5000, prefix: "$" },
+      { id: "life", label: "Useful Life (years)", type: "number", defaultValue: 5 },
+    ],
+    calculate: (v) => {
+      const slAnnual = (v.cost - v.salvage) / v.life;
+      const dbRate = 2 / v.life;
+      const dbYear1 = v.cost * dbRate;
+      return [
+        { label: "Straight-Line (annual)", value: fmt(slAnnual), highlight: true },
+        { label: "SL Monthly", value: fmt(slAnnual / 12) },
+        { label: "Double Declining Year 1", value: fmt(dbYear1) },
+        { label: "Total Depreciation", value: fmt0(v.cost - v.salvage) },
+      ];
+    },
+    formula: { expression: "SL = (Cost − Salvage) / Life", variables: ["DDB Rate = 2 / Life", "Applied to book value each year"] },
+    howToUse: "Enter asset cost, salvage value, and useful life to calculate annual depreciation.",
+    faqs: [{ question: "Which method should I use?", answer: "Straight-line is simplest and most common. Declining balance front-loads depreciation, which can provide larger tax deductions early." }],
+    relatedCalcs: financeRelated("depreciation-calculator"),
+  },
+  // 55. Budget Calculator
+  {
+    slug: "budget-calculator", name: "Budget Calculator", category: "Finance", categorySlug: "finance",
+    description: "Create a monthly budget using the 50/30/20 rule. Allocate income to needs, wants, and savings.",
+    metaDescription: "Free budget calculator. Plan your monthly budget with the 50/30/20 rule for needs, wants, and savings.",
+    icon: "dollar",
+    inputs: [
+      { id: "income", label: "Monthly Income", type: "number", defaultValue: 5000, prefix: "$" },
+      { id: "needsPct", label: "Needs (%)", type: "number", defaultValue: 50, suffix: "%" },
+      { id: "wantsPct", label: "Wants (%)", type: "number", defaultValue: 30, suffix: "%" },
+      { id: "savingsPct", label: "Savings (%)", type: "number", defaultValue: 20, suffix: "%" },
+    ],
+    calculate: (v) => {
+      const needs = v.income * (v.needsPct / 100);
+      const wants = v.income * (v.wantsPct / 100);
+      const savings = v.income * (v.savingsPct / 100);
+      return [
+        { label: "Needs Budget", value: fmt(needs), highlight: true },
+        { label: "Wants Budget", value: fmt(wants) },
+        { label: "Savings/Debt", value: fmt(savings) },
+        { label: "Annual Savings", value: fmt0(savings * 12) },
+      ];
+    },
+    formula: { expression: "Category = Income × Percentage", variables: ["50/30/20 is a popular guideline"] },
+    howToUse: "Enter your monthly income and adjust the percentages for needs, wants, and savings.",
+    faqs: [{ question: "What counts as needs?", answer: "Housing, utilities, groceries, insurance, minimum debt payments, transportation — essentials you must pay." }],
+    relatedCalcs: financeRelated("budget-calculator"),
+  },
+  // 56. Debt Consolidation Calculator
+  {
+    slug: "debt-consolidation-calculator", name: "Debt Consolidation Calculator", category: "Finance", categorySlug: "finance",
+    description: "Compare your current debts with a single consolidation loan to see potential savings.",
+    metaDescription: "Free debt consolidation calculator. See if consolidating your debts into one loan saves money.",
+    icon: "dollar",
+    inputs: [
+      { id: "totalDebt", label: "Total Current Debt", type: "number", defaultValue: 30000, prefix: "$" },
+      { id: "avgRate", label: "Average Current Rate (%)", type: "number", defaultValue: 18, suffix: "%", step: 0.1 },
+      { id: "currentPayment", label: "Total Current Monthly Payments", type: "number", defaultValue: 800, prefix: "$" },
+      { id: "newRate", label: "Consolidation Rate (%)", type: "number", defaultValue: 8, suffix: "%", step: 0.1 },
+      { id: "newTerm", label: "Consolidation Term (months)", type: "number", defaultValue: 48 },
+    ],
+    calculate: (v) => {
+      const r = loanCalc(v.totalDebt, v.newRate, v.newTerm);
+      const currentMonths = (() => { const mr = v.avgRate / 100 / 12; if (v.currentPayment <= v.totalDebt * mr) return Infinity; return Math.ceil(-Math.log(1 - (v.totalDebt * mr) / v.currentPayment) / Math.log(1 + mr)); })();
+      const currentTotal = v.currentPayment * currentMonths;
+      return [
+        { label: "New Monthly Payment", value: fmt(r.monthly), highlight: true },
+        { label: "Monthly Savings", value: fmt(v.currentPayment - r.monthly) },
+        { label: "New Total Cost", value: fmt0(r.totalPayment) },
+        { label: "Current Total Cost", value: currentMonths === Infinity ? "Never paid off" : fmt0(currentTotal) },
+        { label: "Total Savings", value: currentMonths === Infinity ? "Significant" : fmt0(currentTotal - r.totalPayment) },
+      ];
+    },
+    formula: { expression: "Compare current payments vs consolidation loan payment", variables: ["Standard amortization formula for new loan"] },
+    howToUse: "Enter your total debts and average rate, then compare with a consolidation loan's rate and term.",
+    faqs: [{ question: "Is consolidation always better?", answer: "Not always. A longer term may reduce monthly payments but increase total interest. Also consider origination fees." }],
+    relatedCalcs: financeRelated("debt-consolidation-calculator"),
+  },
+  // 57. Pension Calculator
+  {
+    slug: "pension-calculator", name: "Pension Calculator", category: "Finance", categorySlug: "finance",
+    description: "Estimate your pension income based on years of service, final salary, and benefit multiplier.",
+    metaDescription: "Free pension calculator. Estimate retirement pension income from years of service and salary.",
+    icon: "dollar",
+    inputs: [
+      { id: "finalSalary", label: "Final Average Salary", type: "number", defaultValue: 80000, prefix: "$" },
+      { id: "yearsOfService", label: "Years of Service", type: "number", defaultValue: 25 },
+      { id: "multiplier", label: "Benefit Multiplier (%)", type: "number", defaultValue: 2, suffix: "%", step: 0.1 },
+    ],
+    calculate: (v) => {
+      const annualPension = v.finalSalary * (v.multiplier / 100) * v.yearsOfService;
+      const monthlyPension = annualPension / 12;
+      const replacementRate = (annualPension / v.finalSalary) * 100;
+      return [
+        { label: "Annual Pension", value: fmt0(annualPension), highlight: true },
+        { label: "Monthly Pension", value: fmt(monthlyPension) },
+        { label: "Income Replacement", value: pct(replacementRate) },
+      ];
+    },
+    formula: { expression: "Pension = Final Salary × Multiplier × Years of Service", variables: ["Typical multiplier: 1.5-2.5% per year"] },
+    howToUse: "Enter your final average salary, years of service, and your plan's benefit multiplier.",
+    faqs: [{ question: "What is a typical multiplier?", answer: "Government pensions often use 1.5-2.5%. After 30 years at 2%, you'd receive 60% of your final salary." }],
+    relatedCalcs: financeRelated("pension-calculator"),
+  },
+  // 58. IRR Calculator
+  {
+    slug: "irr-calculator", name: "IRR Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate the Internal Rate of Return for an investment with an initial cost and annual cash flows.",
+    metaDescription: "Free IRR calculator. Calculate internal rate of return for investment projects with multiple cash flows.",
+    icon: "dollar",
+    inputs: [
+      { id: "initial", label: "Initial Investment", type: "number", defaultValue: 50000, prefix: "$" },
+      { id: "cf1", label: "Year 1 Cash Flow", type: "number", defaultValue: 15000, prefix: "$" },
+      { id: "cf2", label: "Year 2 Cash Flow", type: "number", defaultValue: 18000, prefix: "$" },
+      { id: "cf3", label: "Year 3 Cash Flow", type: "number", defaultValue: 22000, prefix: "$" },
+      { id: "cf4", label: "Year 4 Cash Flow", type: "number", defaultValue: 12000, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const cfs = [-v.initial, v.cf1, v.cf2, v.cf3, v.cf4];
+      let rate = 0.1;
+      for (let iter = 0; iter < 200; iter++) {
+        let npv = 0, dnpv = 0;
+        for (let t = 0; t < cfs.length; t++) {
+          npv += cfs[t] / Math.pow(1 + rate, t);
+          dnpv += -t * cfs[t] / Math.pow(1 + rate, t + 1);
+        }
+        const newRate = rate - npv / dnpv;
+        if (Math.abs(newRate - rate) < 1e-10) break;
+        rate = newRate;
+      }
+      const totalReturn = v.cf1 + v.cf2 + v.cf3 + v.cf4;
+      return [
+        { label: "IRR", value: pct(rate * 100), highlight: true },
+        { label: "Total Cash Flows", value: fmt0(totalReturn) },
+        { label: "Net Profit", value: fmt0(totalReturn - v.initial) },
+        { label: "ROI", value: pct(((totalReturn - v.initial) / v.initial) * 100) },
+      ];
+    },
+    formula: { expression: "NPV = Σ CF_t / (1+IRR)^t = 0, solve for IRR", variables: ["Newton's method iteration"] },
+    howToUse: "Enter the initial investment and expected annual cash flows. The calculator finds the rate that makes NPV zero.",
+    faqs: [{ question: "What is a good IRR?", answer: "Generally, an IRR above your cost of capital is good. Many businesses target 15-25% for new projects." }],
+    relatedCalcs: financeRelated("irr-calculator"),
+  },
+  // 59. HELOC Calculator
+  {
+    slug: "heloc-calculator", name: "HELOC Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate how much you can borrow with a Home Equity Line of Credit and estimate monthly payments.",
+    metaDescription: "Free HELOC calculator. Estimate your available home equity and HELOC monthly payments.",
+    icon: "dollar",
+    inputs: [
+      { id: "homeValue", label: "Home Value", type: "number", defaultValue: 400000, prefix: "$" },
+      { id: "mortgageBalance", label: "Mortgage Balance", type: "number", defaultValue: 250000, prefix: "$" },
+      { id: "ltvLimit", label: "Max LTV (%)", type: "number", defaultValue: 85, suffix: "%" },
+      { id: "rate", label: "HELOC Rate (%)", type: "number", defaultValue: 8.5, suffix: "%", step: 0.1 },
+      { id: "drawAmount", label: "Amount to Draw", type: "number", defaultValue: 50000, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const maxBorrow = v.homeValue * (v.ltvLimit / 100) - v.mortgageBalance;
+      const equity = v.homeValue - v.mortgageBalance;
+      const interestOnly = v.drawAmount * (v.rate / 100 / 12);
+      return [
+        { label: "Max HELOC Amount", value: fmt0(Math.max(maxBorrow, 0)), highlight: true },
+        { label: "Total Home Equity", value: fmt0(equity) },
+        { label: "Interest-Only Payment", value: fmt(interestOnly) },
+        { label: "Equity Used", value: pct(((v.mortgageBalance + v.drawAmount) / v.homeValue) * 100) },
+      ];
+    },
+    formula: { expression: "Max HELOC = Home Value × LTV% − Mortgage Balance", variables: ["Interest-only = Draw × Rate / 12"] },
+    howToUse: "Enter your home value, mortgage balance, LTV limit, HELOC rate, and desired draw amount.",
+    faqs: [{ question: "HELOC vs home equity loan?", answer: "HELOC is a revolving line of credit with variable rates. Home equity loans are lump-sum with fixed rates." }],
+    relatedCalcs: financeRelated("heloc-calculator"),
+  },
+  // 60. FHA Loan Calculator
+  {
+    slug: "fha-loan-calculator", name: "FHA Loan Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate monthly payments for an FHA loan including upfront and annual mortgage insurance premiums.",
+    metaDescription: "Free FHA loan calculator. Estimate monthly payments with FHA mortgage insurance premiums.",
+    icon: "dollar",
+    inputs: [
+      { id: "homePrice", label: "Home Price", type: "number", defaultValue: 300000, prefix: "$" },
+      { id: "downPct", label: "Down Payment (%)", type: "number", defaultValue: 3.5, suffix: "%", step: 0.5 },
+      { id: "rate", label: "Interest Rate (%)", type: "number", defaultValue: 6, suffix: "%", step: 0.1 },
+      { id: "term", label: "Term (years)", type: "number", defaultValue: 30 },
+    ],
+    calculate: (v) => {
+      const dp = v.homePrice * (v.downPct / 100);
+      const baseLoan = v.homePrice - dp;
+      const upfrontMIP = baseLoan * 0.0175;
+      const totalLoan = baseLoan + upfrontMIP;
+      const r = loanCalc(totalLoan, v.rate, v.term * 12);
+      const annualMIP = baseLoan * 0.0055;
+      const monthlyMIP = annualMIP / 12;
+      return [
+        { label: "Monthly P&I", value: fmt(r.monthly), highlight: true },
+        { label: "Monthly MIP", value: fmt(monthlyMIP) },
+        { label: "Total Monthly", value: fmt(r.monthly + monthlyMIP) },
+        { label: "Upfront MIP", value: fmt0(upfrontMIP) },
+        { label: "Total Loan (incl UFMIP)", value: fmt0(totalLoan) },
+      ];
+    },
+    formula: { expression: "Upfront MIP = 1.75% of base loan; Annual MIP ≈ 0.55%", variables: ["MIP is added to loan amount", "Annual MIP paid monthly"] },
+    howToUse: "Enter home price, down payment (min 3.5%), rate, and term. See payments with FHA mortgage insurance.",
+    faqs: [{ question: "Can I remove FHA MIP?", answer: "For loans with <10% down, MIP lasts the life of the loan. With ≥10% down, it drops off after 11 years. Refinancing to conventional is another option." }],
+    relatedCalcs: financeRelated("fha-loan-calculator"),
+  },
+  // 61. Rental Property Calculator
+  {
+    slug: "rental-property-calculator", name: "Rental Property Calculator", category: "Finance", categorySlug: "finance",
+    description: "Analyze rental property investment returns including cash flow, cap rate, and cash-on-cash return.",
+    metaDescription: "Free rental property calculator. Analyze ROI, cash flow, cap rate, and returns on rental investments.",
+    icon: "dollar",
+    inputs: [
+      { id: "purchasePrice", label: "Purchase Price", type: "number", defaultValue: 300000, prefix: "$" },
+      { id: "downPayment", label: "Down Payment (%)", type: "number", defaultValue: 25, suffix: "%" },
+      { id: "rate", label: "Mortgage Rate (%)", type: "number", defaultValue: 7, suffix: "%", step: 0.1 },
+      { id: "monthlyRent", label: "Monthly Rent", type: "number", defaultValue: 2200, prefix: "$" },
+      { id: "expenses", label: "Monthly Expenses (tax, ins, maint)", type: "number", defaultValue: 600, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const dp = v.purchasePrice * (v.downPayment / 100);
+      const loan = v.purchasePrice - dp;
+      const r = loanCalc(loan, v.rate, 360);
+      const noi = (v.monthlyRent - v.expenses) * 12;
+      const cashFlow = v.monthlyRent - r.monthly - v.expenses;
+      const capRate = (noi / v.purchasePrice) * 100;
+      const cocReturn = (cashFlow * 12 / dp) * 100;
+      return [
+        { label: "Monthly Cash Flow", value: fmt(cashFlow), highlight: true },
+        { label: "Cap Rate", value: pct(capRate) },
+        { label: "Cash-on-Cash Return", value: pct(cocReturn) },
+        { label: "Monthly Mortgage", value: fmt(r.monthly) },
+        { label: "Annual NOI", value: fmt0(noi) },
+      ];
+    },
+    formula: { expression: "Cap Rate = NOI / Purchase Price; CoC = Cash Flow / Down Payment", variables: ["NOI = Rent − Expenses (excl mortgage)"] },
+    howToUse: "Enter purchase details, expected rent, and expenses. See your cash flow and investment returns.",
+    faqs: [{ question: "What is a good cap rate?", answer: "Cap rates of 5-10% are common. Higher cap rates = higher returns but often higher risk areas." }],
+    relatedCalcs: financeRelated("rental-property-calculator"),
+  },
+  // 62. Payback Period Calculator
+  {
+    slug: "payback-period-calculator", name: "Payback Period Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate how long it takes to recoup an investment from its annual cash flows.",
+    metaDescription: "Free payback period calculator. Find how long to recover your investment from annual returns.",
+    icon: "dollar",
+    inputs: [
+      { id: "investment", label: "Initial Investment", type: "number", defaultValue: 50000, prefix: "$" },
+      { id: "annualReturn", label: "Annual Net Cash Flow", type: "number", defaultValue: 12000, prefix: "$" },
+    ],
+    calculate: (v) => {
+      if (v.annualReturn <= 0) return [{ label: "Error", value: "Cash flow must be positive" }];
+      const years = v.investment / v.annualReturn;
+      const fullYears = Math.floor(years);
+      const remainingMonths = Math.round((years - fullYears) * 12);
+      return [
+        { label: "Payback Period", value: `${fullYears} yrs ${remainingMonths} mos`, highlight: true },
+        { label: "Decimal Years", value: years.toFixed(2) },
+        { label: "5-Year Return", value: fmt0(v.annualReturn * 5 - v.investment) },
+      ];
+    },
+    formula: { expression: "Payback = Investment / Annual Cash Flow", variables: ["Simple payback, no discounting"] },
+    howToUse: "Enter initial investment and expected annual returns to find the payback period.",
+    faqs: [{ question: "What is a good payback period?", answer: "Generally under 3-5 years for most business investments. Shorter is better for risk management." }],
+    relatedCalcs: financeRelated("payback-period-calculator"),
+  },
+  // 63. Home Equity Loan Calculator
+  {
+    slug: "home-equity-loan-calculator", name: "Home Equity Loan Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate monthly payments for a fixed-rate home equity loan.",
+    metaDescription: "Free home equity loan calculator. Estimate monthly payments and total cost for home equity loans.",
+    icon: "dollar",
+    inputs: [
+      { id: "loanAmount", label: "Loan Amount", type: "number", defaultValue: 50000, prefix: "$" },
+      { id: "rate", label: "Interest Rate (%)", type: "number", defaultValue: 7.5, suffix: "%", step: 0.1 },
+      { id: "term", label: "Term (years)", type: "number", defaultValue: 15 },
+    ],
+    calculate: (v) => {
+      const r = loanCalc(v.loanAmount, v.rate, v.term * 12);
+      return [
+        { label: "Monthly Payment", value: fmt(r.monthly), highlight: true },
+        { label: "Total Interest", value: fmt0(r.totalInterest) },
+        { label: "Total Cost", value: fmt0(r.totalPayment) },
+      ];
+    },
+    formula: { expression: "Standard amortization: M = P × [r(1+r)^n] / [(1+r)^n − 1]", variables: ["Fixed rate, fixed term"] },
+    howToUse: "Enter the loan amount, interest rate, and term to see your monthly payment.",
+    faqs: [{ question: "Is home equity loan interest deductible?", answer: "Yes, if the loan is used to buy, build, or substantially improve your home (up to $750K combined mortgage debt)." }],
+    relatedCalcs: financeRelated("home-equity-loan-calculator"),
+  },
+  // 64. Mutual Fund Calculator
+  {
+    slug: "mutual-fund-calculator", name: "Mutual Fund Calculator", category: "Finance", categorySlug: "finance",
+    description: "Project mutual fund investment growth with regular SIP contributions and expected returns.",
+    metaDescription: "Free mutual fund calculator. Project growth with SIP contributions and compound returns.",
+    icon: "dollar",
+    inputs: [
+      { id: "initial", label: "Initial Investment", type: "number", defaultValue: 5000, prefix: "$" },
+      { id: "monthly", label: "Monthly SIP", type: "number", defaultValue: 500, prefix: "$" },
+      { id: "rate", label: "Expected Return (%)", type: "number", defaultValue: 10, suffix: "%", step: 0.1 },
+      { id: "years", label: "Investment Period (years)", type: "number", defaultValue: 15 },
+    ],
+    calculate: (v) => {
+      const r = v.rate / 100 / 12;
+      const n = v.years * 12;
+      const fv = v.initial * Math.pow(1 + r, n) + v.monthly * ((Math.pow(1 + r, n) - 1) / r);
+      const invested = v.initial + v.monthly * n;
+      return [
+        { label: "Future Value", value: fmt0(fv), highlight: true },
+        { label: "Total Invested", value: fmt0(invested) },
+        { label: "Wealth Gained", value: fmt0(fv - invested) },
+        { label: "Growth Multiple", value: `${(fv / invested).toFixed(2)}×` },
+      ];
+    },
+    formula: { expression: "FV = P(1+r)^n + SIP × [(1+r)^n − 1] / r", variables: ["SIP = Systematic Investment Plan"] },
+    howToUse: "Enter initial investment, monthly SIP amount, expected return, and period.",
+    faqs: [{ question: "What is SIP?", answer: "Systematic Investment Plan — investing a fixed amount regularly (monthly). It averages out market volatility through dollar-cost averaging." }],
+    relatedCalcs: financeRelated("mutual-fund-calculator"),
+  },
+  // 65. Rent Calculator
+  {
+    slug: "rent-calculator", name: "Rent Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate how much rent you can afford based on your income and the common 30% rule.",
+    metaDescription: "Free rent calculator. Find how much rent you can afford based on income using the 30% rule.",
+    icon: "dollar",
+    inputs: [
+      { id: "monthlyIncome", label: "Monthly Gross Income", type: "number", defaultValue: 5000, prefix: "$" },
+      { id: "rentPct", label: "Rent Percentage of Income (%)", type: "number", defaultValue: 30, suffix: "%" },
+      { id: "utilities", label: "Estimated Monthly Utilities", type: "number", defaultValue: 150, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const maxRent = v.monthlyIncome * (v.rentPct / 100);
+      const maxRentAfterUtil = maxRent - v.utilities;
+      return [
+        { label: "Max Rent Budget", value: fmt(maxRent), highlight: true },
+        { label: "After Utilities", value: fmt(maxRentAfterUtil) },
+        { label: "Annual Rent Cost", value: fmt0(maxRent * 12) },
+        { label: "Remaining Income", value: fmt(v.monthlyIncome - maxRent) },
+      ];
+    },
+    formula: { expression: "Max Rent = Monthly Income × Rent%", variables: ["30% rule is a common guideline"] },
+    howToUse: "Enter your monthly income and desired rent percentage to find your maximum rent budget.",
+    faqs: [{ question: "Is 30% a hard rule?", answer: "No. It's a guideline. In high-cost cities, many spend 40-50%. The key is balancing rent with savings and other financial goals." }],
+    relatedCalcs: financeRelated("rent-calculator"),
+  },
+  // 66. College Cost Calculator
+  {
+    slug: "college-cost-calculator", name: "College Cost Calculator", category: "Finance", categorySlug: "finance",
+    description: "Estimate the total cost of college education including tuition growth and room & board.",
+    metaDescription: "Free college cost calculator. Estimate total college costs with tuition inflation over 4 years.",
+    icon: "dollar",
+    inputs: [
+      { id: "annualTuition", label: "Annual Tuition", type: "number", defaultValue: 30000, prefix: "$" },
+      { id: "roomBoard", label: "Annual Room & Board", type: "number", defaultValue: 12000, prefix: "$" },
+      { id: "years", label: "Years Until Start", type: "number", defaultValue: 5 },
+      { id: "inflation", label: "Tuition Inflation (%/yr)", type: "number", defaultValue: 5, suffix: "%", step: 0.5 },
+    ],
+    calculate: (v) => {
+      let total = 0;
+      const annualCost = v.annualTuition + v.roomBoard;
+      for (let y = 0; y < 4; y++) {
+        total += annualCost * Math.pow(1 + v.inflation / 100, v.years + y);
+      }
+      const currentCost = annualCost * 4;
+      return [
+        { label: "Total 4-Year Cost", value: fmt0(total), highlight: true },
+        { label: "Year 1 Cost", value: fmt0(annualCost * Math.pow(1 + v.inflation / 100, v.years)) },
+        { label: "Current 4-Year Cost", value: fmt0(currentCost) },
+        { label: "Monthly Savings Needed", value: fmt(total / (v.years * 12)) },
+      ];
+    },
+    formula: { expression: "Future Cost = Current × (1 + inflation)^years", variables: ["Summed over 4 years of college"] },
+    howToUse: "Enter current tuition, room & board, years until enrollment, and expected tuition inflation.",
+    faqs: [{ question: "How fast does tuition increase?", answer: "Historically 5-8% per year, outpacing general inflation. Public and private rates differ significantly." }],
+    relatedCalcs: financeRelated("college-cost-calculator"),
+  },
+  // 67. Auto Lease Calculator
+  {
+    slug: "auto-lease-calculator", name: "Auto Lease Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate monthly auto lease payments with residual value, money factor, taxes, and fees.",
+    metaDescription: "Free auto lease calculator. Estimate car lease payments including taxes, residual, and money factor.",
+    icon: "dollar",
+    inputs: [
+      { id: "msrp", label: "MSRP", type: "number", defaultValue: 35000, prefix: "$" },
+      { id: "negotiatedPrice", label: "Negotiated Price", type: "number", defaultValue: 33000, prefix: "$" },
+      { id: "downPayment", label: "Down Payment", type: "number", defaultValue: 2000, prefix: "$" },
+      { id: "residualPct", label: "Residual (%)", type: "number", defaultValue: 58, suffix: "%" },
+      { id: "moneyFactor", label: "Money Factor", type: "number", defaultValue: 0.0018, step: 0.0001 },
+      { id: "term", label: "Term (months)", type: "number", defaultValue: 36 },
+      { id: "taxRate", label: "Tax Rate (%)", type: "number", defaultValue: 8, suffix: "%", step: 0.25 },
+    ],
+    calculate: (v) => {
+      const residual = v.msrp * (v.residualPct / 100);
+      const capCost = v.negotiatedPrice - v.downPayment;
+      const depreciation = (capCost - residual) / v.term;
+      const finance = (capCost + residual) * v.moneyFactor;
+      const preTax = depreciation + finance;
+      const monthly = preTax * (1 + v.taxRate / 100);
+      return [
+        { label: "Monthly Payment", value: fmt(monthly), highlight: true },
+        { label: "Pre-Tax Payment", value: fmt(preTax) },
+        { label: "Total Lease Cost", value: fmt0(monthly * v.term + v.downPayment) },
+        { label: "Implied APR", value: pct(v.moneyFactor * 2400) },
+        { label: "Residual Value", value: fmt0(residual) },
+      ];
+    },
+    formula: { expression: "Payment = (Cap − Residual)/Term + (Cap + Residual) × MF + Tax", variables: ["APR ≈ MF × 2400"] },
+    howToUse: "Enter MSRP, negotiated price, residual, money factor, and term to estimate your lease payment.",
+    faqs: [{ question: "Should I negotiate MSRP or money factor?", answer: "Both. The cap cost (negotiated price) is the biggest lever. A lower money factor also reduces your finance charges." }],
+    relatedCalcs: financeRelated("auto-lease-calculator"),
+  },
+  // 68. Boat Loan Calculator
+  {
+    slug: "boat-loan-calculator", name: "Boat Loan Calculator", category: "Finance", categorySlug: "finance",
+    description: "Calculate monthly payments for a boat loan including down payment and loan term options.",
+    metaDescription: "Free boat loan calculator. Estimate monthly boat payments with interest and down payment.",
+    icon: "dollar",
+    inputs: [
+      { id: "price", label: "Boat Price", type: "number", defaultValue: 45000, prefix: "$" },
+      { id: "downPayment", label: "Down Payment", type: "number", defaultValue: 5000, prefix: "$" },
+      { id: "rate", label: "Interest Rate (%)", type: "number", defaultValue: 7, suffix: "%", step: 0.1 },
+      { id: "term", label: "Term (years)", type: "number", defaultValue: 10 },
+    ],
+    calculate: (v) => {
+      const loan = v.price - v.downPayment;
+      const r = loanCalc(loan, v.rate, v.term * 12);
+      return [
+        { label: "Monthly Payment", value: fmt(r.monthly), highlight: true },
+        { label: "Loan Amount", value: fmt0(loan) },
+        { label: "Total Interest", value: fmt0(r.totalInterest) },
+        { label: "Total Cost", value: fmt0(r.totalPayment + v.downPayment) },
+      ];
+    },
+    formula: { expression: "Standard loan amortization", variables: ["Boat loans typically 10-20 years"] },
+    howToUse: "Enter boat price, down payment, rate, and term to estimate monthly payments.",
+    faqs: [{ question: "What are typical boat loan rates?", answer: "Boat loan rates range from 5-9% depending on credit, boat age, and loan amount. New boats get better rates." }],
+    relatedCalcs: financeRelated("boat-loan-calculator"),
+  },
+  // 69. Marriage Tax Calculator
+  {
+    slug: "marriage-tax-calculator", name: "Marriage Tax Calculator", category: "Finance", categorySlug: "finance",
+    description: "Compare your tax liability filing as single vs married filing jointly to find the marriage tax bonus or penalty.",
+    metaDescription: "Free marriage tax calculator. See if filing jointly saves or costs you money compared to filing separately.",
+    icon: "dollar",
+    inputs: [
+      { id: "income1", label: "Spouse 1 Income", type: "number", defaultValue: 75000, prefix: "$" },
+      { id: "income2", label: "Spouse 2 Income", type: "number", defaultValue: 65000, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const calcTax = (income: number, brackets: { limit: number; rate: number }[]) => {
+        let tax = 0, rem = income, prev = 0;
+        for (const b of brackets) { const c = Math.min(rem, b.limit - prev); if (c <= 0) break; tax += c * b.rate; rem -= c; prev = b.limit; }
+        return tax;
+      };
+      const single = [{ limit: 11600, rate: 0.10 }, { limit: 47150, rate: 0.12 }, { limit: 100525, rate: 0.22 }, { limit: 191950, rate: 0.24 }, { limit: 243725, rate: 0.32 }, { limit: 609350, rate: 0.35 }, { limit: Infinity, rate: 0.37 }];
+      const married = [{ limit: 23200, rate: 0.10 }, { limit: 94300, rate: 0.12 }, { limit: 201050, rate: 0.22 }, { limit: 383900, rate: 0.24 }, { limit: 487450, rate: 0.32 }, { limit: 731200, rate: 0.35 }, { limit: Infinity, rate: 0.37 }];
+      const tax1 = calcTax(v.income1 - 14600, single);
+      const tax2 = calcTax(v.income2 - 14600, single);
+      const taxJoint = calcTax(v.income1 + v.income2 - 29200, married);
+      const diff = (tax1 + tax2) - taxJoint;
+      return [
+        { label: diff >= 0 ? "Marriage Bonus" : "Marriage Penalty", value: fmt(Math.abs(diff)), highlight: true },
+        { label: "Tax as Singles", value: fmt0(tax1 + tax2) },
+        { label: "Tax as Married", value: fmt0(taxJoint) },
+      ];
+    },
+    formula: { expression: "Compare single taxes vs married filing jointly", variables: ["2024 brackets with standard deductions"] },
+    howToUse: "Enter each spouse's income to see if marriage creates a tax bonus or penalty.",
+    faqs: [{ question: "What causes a marriage penalty?", answer: "When both spouses earn similar high incomes, the combined income pushes into higher brackets faster than two single returns." }],
+    relatedCalcs: financeRelated("marriage-tax-calculator"),
+  },
 ];

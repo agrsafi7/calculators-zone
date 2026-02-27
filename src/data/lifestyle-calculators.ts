@@ -415,4 +415,363 @@ export const lifestyleCalculators: CalculatorConfig[] = [
     faqs: [{ question: "What is the largest number supported?", answer: "Up to billions (999,999,999,999). Larger numbers would need additional place value names." }],
     relatedCalcs: lifeRelated("number-to-words-converter"),
   },
+  // Dice Roller
+  {
+    slug: "dice-roller", name: "Dice Roller", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Roll one or more dice with any number of sides. Perfect for board games and RPGs.",
+    metaDescription: "Free dice roller. Roll multiple dice with custom sides for board games, D&D, and more.",
+    icon: "smile",
+    inputs: [
+      { id: "numDice", label: "Number of Dice", type: "number", defaultValue: 2, min: 1, max: 20 },
+      { id: "sides", label: "Sides per Die", type: "number", defaultValue: 6, min: 2, max: 100 },
+    ],
+    calculate: (v) => {
+      const rolls: number[] = [];
+      for (let i = 0; i < Math.min(v.numDice, 20); i++) rolls.push(Math.floor(Math.random() * v.sides) + 1);
+      const total = rolls.reduce((a, b) => a + b, 0);
+      return [
+        { label: "Total", value: `${total}`, highlight: true },
+        { label: "Rolls", value: rolls.join(", ") },
+        { label: "Average Roll", value: (total / rolls.length).toFixed(1) },
+        { label: "Max Possible", value: `${v.numDice * v.sides}` },
+      ];
+    },
+    formula: { expression: "Each die: random(1 to sides)", variables: ["Click Calculate to re-roll"] },
+    howToUse: "Select number of dice and sides per die, then click Calculate to roll.",
+    faqs: [{ question: "Is this truly random?", answer: "Uses Math.random() — pseudo-random and good for games, but not cryptographic." }],
+    relatedCalcs: lifeRelated("dice-roller"),
+  },
+  // Electricity Cost Calculator
+  {
+    slug: "electricity-calculator", name: "Electricity Cost Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the electricity cost of running an appliance based on wattage, usage, and rate.",
+    metaDescription: "Free electricity cost calculator. Estimate daily, monthly, and yearly electricity costs for any appliance.",
+    icon: "smile",
+    inputs: [
+      { id: "watts", label: "Wattage (W)", type: "number", defaultValue: 100, step: 1 },
+      { id: "hoursPerDay", label: "Hours Used per Day", type: "number", defaultValue: 8, step: 0.5 },
+      { id: "rate", label: "Electricity Rate ($/kWh)", type: "number", defaultValue: 0.12, step: 0.01 },
+    ],
+    calculate: (v) => {
+      const dailyKwh = (v.watts * v.hoursPerDay) / 1000;
+      const dailyCost = dailyKwh * v.rate;
+      return [
+        { label: "Monthly Cost", value: `$${(dailyCost * 30).toFixed(2)}`, highlight: true },
+        { label: "Daily Cost", value: `$${dailyCost.toFixed(2)}` },
+        { label: "Annual Cost", value: `$${(dailyCost * 365).toFixed(2)}` },
+        { label: "Daily kWh", value: `${dailyKwh.toFixed(2)} kWh` },
+      ];
+    },
+    formula: { expression: "Cost = (Watts × Hours / 1000) × Rate", variables: ["kWh = kilowatt-hours"] },
+    howToUse: "Enter the appliance wattage, daily usage hours, and your electricity rate.",
+    faqs: [{ question: "How do I find wattage?", answer: "Check the label on your appliance or its manual. Common: LED bulb 10W, laptop 50W, AC unit 1000-3500W." }],
+    relatedCalcs: lifeRelated("electricity-calculator"),
+  },
+  // Concrete Calculator
+  {
+    slug: "concrete-calculator", name: "Concrete Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate how much concrete you need for a project in cubic yards and bags.",
+    metaDescription: "Free concrete calculator. Estimate cubic yards and bags of concrete needed for slabs, footings, and columns.",
+    icon: "smile",
+    inputs: [
+      { id: "length", label: "Length (feet)", type: "number", defaultValue: 10, step: 0.5 },
+      { id: "width", label: "Width (feet)", type: "number", defaultValue: 10, step: 0.5 },
+      { id: "depth", label: "Depth (inches)", type: "number", defaultValue: 4, step: 0.5 },
+    ],
+    calculate: (v) => {
+      const cubicFeet = v.length * v.width * (v.depth / 12);
+      const cubicYards = cubicFeet / 27;
+      const bags60 = Math.ceil(cubicFeet / 0.45);
+      const bags80 = Math.ceil(cubicFeet / 0.6);
+      return [
+        { label: "Cubic Yards", value: cubicYards.toFixed(2), highlight: true },
+        { label: "Cubic Feet", value: cubicFeet.toFixed(1) },
+        { label: "60-lb Bags", value: `${bags60}` },
+        { label: "80-lb Bags", value: `${bags80}` },
+      ];
+    },
+    formula: { expression: "Volume = L × W × (D/12) cubic feet; ÷ 27 = cubic yards", variables: ["60-lb bag ≈ 0.45 cu ft", "80-lb bag ≈ 0.6 cu ft"] },
+    howToUse: "Enter length, width, and depth of your concrete project.",
+    faqs: [{ question: "Should I order extra?", answer: "Yes, order 5-10% extra for waste, spillage, and uneven ground." }],
+    relatedCalcs: lifeRelated("concrete-calculator"),
+  },
+  // BTU Calculator
+  {
+    slug: "btu-calculator", name: "BTU Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the BTU capacity needed to heat or cool a room based on square footage.",
+    metaDescription: "Free BTU calculator. Estimate heating/cooling BTU requirements for any room size.",
+    icon: "smile",
+    inputs: [
+      { id: "sqft", label: "Room Size (sq ft)", type: "number", defaultValue: 300, step: 10 },
+      { id: "ceiling", label: "Ceiling Height (ft)", type: "number", defaultValue: 8, step: 0.5 },
+      { id: "insulation", label: "Insulation Quality", type: "select", defaultValue: 1, options: [{ value: 1.2, label: "Poor" }, { value: 1, label: "Average" }, { value: 0.8, label: "Good" }] },
+    ],
+    calculate: (v) => {
+      const baseBtu = v.sqft * 20 * v.insulation;
+      const heightFactor = v.ceiling > 8 ? 1 + (v.ceiling - 8) * 0.1 : 1;
+      const btu = baseBtu * heightFactor;
+      const tons = btu / 12000;
+      return [
+        { label: "BTUs Needed", value: `${Math.round(btu).toLocaleString()} BTU`, highlight: true },
+        { label: "Tons of Cooling", value: `${tons.toFixed(2)} tons` },
+        { label: "Watts Equivalent", value: `${Math.round(btu * 0.293)} W` },
+      ];
+    },
+    formula: { expression: "BTU ≈ Sq Ft × 20 × Insulation Factor × Height Factor", variables: ["20 BTU per sq ft is standard", "Adjusted for insulation and ceiling height"] },
+    howToUse: "Enter room size, ceiling height, and insulation quality to estimate BTU needs.",
+    faqs: [{ question: "What is a BTU?", answer: "British Thermal Unit — the energy to heat 1 pound of water by 1°F. Used to rate AC and heating capacity." }],
+    relatedCalcs: lifeRelated("btu-calculator"),
+  },
+  // Wind Chill Calculator
+  {
+    slug: "wind-chill-calculator", name: "Wind Chill Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the wind chill temperature — how cold it actually feels with wind.",
+    metaDescription: "Free wind chill calculator. Find the 'feels like' temperature based on air temperature and wind speed.",
+    icon: "smile",
+    inputs: [
+      { id: "temp", label: "Air Temperature (°F)", type: "number", defaultValue: 20, step: 1 },
+      { id: "wind", label: "Wind Speed (mph)", type: "number", defaultValue: 15, step: 1 },
+    ],
+    calculate: (v) => {
+      if (v.temp > 50 || v.wind < 3) return [{ label: "Wind Chill", value: `${v.temp}°F (no effect)`, highlight: true }];
+      const wc = 35.74 + 0.6215 * v.temp - 35.75 * Math.pow(v.wind, 0.16) + 0.4275 * v.temp * Math.pow(v.wind, 0.16);
+      const frostbiteMin = wc < -18 ? "15 minutes" : wc < 0 ? "30 minutes" : "Low risk";
+      return [
+        { label: "Wind Chill", value: `${Math.round(wc)}°F`, highlight: true },
+        { label: "Feels Like (°C)", value: `${Math.round((wc - 32) * 5 / 9)}°C` },
+        { label: "Frostbite Risk", value: frostbiteMin },
+      ];
+    },
+    formula: { expression: "WC = 35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16", variables: ["T = temperature (°F)", "V = wind speed (mph)", "NWS formula"] },
+    howToUse: "Enter air temperature and wind speed. Valid when temp ≤ 50°F and wind ≥ 3 mph.",
+    faqs: [{ question: "What is wind chill?", answer: "It measures the cooling effect of wind on exposed skin. Faster winds make it feel colder than the actual temperature." }],
+    relatedCalcs: lifeRelated("wind-chill-calculator"),
+  },
+  // Dew Point Calculator
+  {
+    slug: "dew-point-calculator", name: "Dew Point Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the dew point temperature from air temperature and relative humidity.",
+    metaDescription: "Free dew point calculator. Find the dew point from temperature and humidity.",
+    icon: "smile",
+    inputs: [
+      { id: "temp", label: "Air Temperature (°C)", type: "number", defaultValue: 25, step: 0.1 },
+      { id: "humidity", label: "Relative Humidity (%)", type: "number", defaultValue: 60, min: 1, max: 100, step: 1 },
+    ],
+    calculate: (v) => {
+      const a = 17.27, b = 237.7;
+      const alpha = (a * v.temp) / (b + v.temp) + Math.log(v.humidity / 100);
+      const dewPoint = (b * alpha) / (a - alpha);
+      let comfort = "Comfortable";
+      if (dewPoint > 24) comfort = "Extremely Humid";
+      else if (dewPoint > 20) comfort = "Very Humid";
+      else if (dewPoint > 16) comfort = "Somewhat Humid";
+      else if (dewPoint > 10) comfort = "Comfortable";
+      else comfort = "Dry";
+      return [
+        { label: "Dew Point", value: `${dewPoint.toFixed(1)}°C`, highlight: true },
+        { label: "Dew Point (°F)", value: `${(dewPoint * 9 / 5 + 32).toFixed(1)}°F` },
+        { label: "Comfort Level", value: comfort },
+      ];
+    },
+    formula: { expression: "Td = 237.7 × α / (17.27 − α)", variables: ["α = 17.27×T/(237.7+T) + ln(RH/100)", "Magnus formula"] },
+    howToUse: "Enter air temperature and relative humidity to calculate the dew point.",
+    faqs: [{ question: "What does dew point mean?", answer: "The temperature at which air becomes saturated and moisture condenses. Higher dew point = more humidity and discomfort." }],
+    relatedCalcs: lifeRelated("dew-point-calculator"),
+  },
+  // Roman Numeral Converter
+  {
+    slug: "roman-numeral-converter", name: "Roman Numeral Converter", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Convert between decimal numbers and Roman numerals.",
+    metaDescription: "Free Roman numeral converter. Convert numbers to Roman numerals and vice versa.",
+    icon: "smile",
+    inputs: [
+      { id: "number", label: "Number (1-3999)", type: "number", defaultValue: 2025, min: 1, max: 3999 },
+    ],
+    calculate: (v) => {
+      const val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+      const rom = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+      let n = Math.floor(Math.min(Math.max(v.number, 1), 3999));
+      let result = "";
+      for (let i = 0; i < val.length; i++) {
+        while (n >= val[i]) { result += rom[i]; n -= val[i]; }
+      }
+      return [
+        { label: "Roman Numeral", value: result, highlight: true },
+        { label: "Decimal", value: `${Math.floor(v.number)}` },
+      ];
+    },
+    formula: { expression: "Subtract largest Roman value repeatedly", variables: ["I=1, V=5, X=10, L=50, C=100, D=500, M=1000"] },
+    howToUse: "Enter a number between 1 and 3999 to convert to Roman numerals.",
+    faqs: [{ question: "Why max 3999?", answer: "Standard Roman numerals can't represent 4000+. Extended notation exists but isn't commonly used." }],
+    relatedCalcs: lifeRelated("roman-numeral-converter"),
+  },
+  // Square Footage Calculator
+  {
+    slug: "square-footage-calculator", name: "Square Footage Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the square footage of a room or area from length and width measurements.",
+    metaDescription: "Free square footage calculator. Calculate area in square feet from dimensions.",
+    icon: "smile",
+    inputs: [
+      { id: "length", label: "Length (feet)", type: "number", defaultValue: 15, step: 0.5 },
+      { id: "width", label: "Width (feet)", type: "number", defaultValue: 12, step: 0.5 },
+    ],
+    calculate: (v) => {
+      const sqft = v.length * v.width;
+      const sqm = sqft * 0.0929;
+      const acres = sqft / 43560;
+      return [
+        { label: "Square Footage", value: `${sqft.toFixed(1)} sq ft`, highlight: true },
+        { label: "Square Meters", value: `${sqm.toFixed(2)} m²` },
+        { label: "Acres", value: acres.toFixed(6) },
+      ];
+    },
+    formula: { expression: "Area = Length × Width", variables: ["1 sq ft = 0.0929 m²"] },
+    howToUse: "Enter length and width in feet to calculate square footage.",
+    faqs: [{ question: "How do I measure an irregular room?", answer: "Break it into rectangles, calculate each area, then add them together." }],
+    relatedCalcs: lifeRelated("square-footage-calculator"),
+  },
+  // Tip Calculator (already exists in finance, add lifestyle version)
+  // Fuel Cost Calculator
+  {
+    slug: "fuel-cost-calculator", name: "Fuel Cost Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the fuel cost for any trip based on distance, fuel economy, and gas price.",
+    metaDescription: "Free fuel cost calculator. Estimate gas costs for trips based on distance and vehicle MPG.",
+    icon: "smile",
+    inputs: [
+      { id: "distance", label: "Distance (miles)", type: "number", defaultValue: 250, step: 1 },
+      { id: "mpg", label: "Fuel Economy (MPG)", type: "number", defaultValue: 28, step: 0.1 },
+      { id: "gasPrice", label: "Gas Price ($/gal)", type: "number", defaultValue: 3.50, step: 0.01 },
+    ],
+    calculate: (v) => {
+      if (v.mpg === 0) return [{ label: "Error", value: "MPG cannot be zero" }];
+      const gallons = v.distance / v.mpg;
+      const cost = gallons * v.gasPrice;
+      return [
+        { label: "Total Fuel Cost", value: `$${cost.toFixed(2)}`, highlight: true },
+        { label: "Gallons Needed", value: gallons.toFixed(1) },
+        { label: "Cost per Mile", value: `$${(cost / v.distance).toFixed(3)}` },
+      ];
+    },
+    formula: { expression: "Cost = (Distance / MPG) × Price per Gallon", variables: ["Simple fuel calculation"] },
+    howToUse: "Enter trip distance, your vehicle's fuel economy, and current gas price.",
+    faqs: [{ question: "How do I improve MPG?", answer: "Maintain proper tire pressure, reduce speed, avoid aggressive driving, remove excess weight, and keep up with maintenance." }],
+    relatedCalcs: lifeRelated("fuel-cost-calculator"),
+  },
+  // Time Card Calculator
+  {
+    slug: "time-card-calculator", name: "Time Card Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate total work hours and pay from clock-in and clock-out times.",
+    metaDescription: "Free time card calculator. Track daily work hours from start and end times with break deduction.",
+    icon: "smile",
+    inputs: [
+      { id: "startH", label: "Start Hour (0-23)", type: "number", defaultValue: 9, min: 0, max: 23 },
+      { id: "startM", label: "Start Minute", type: "number", defaultValue: 0, min: 0, max: 59 },
+      { id: "endH", label: "End Hour (0-23)", type: "number", defaultValue: 17, min: 0, max: 23 },
+      { id: "endM", label: "End Minute", type: "number", defaultValue: 30, min: 0, max: 59 },
+      { id: "breakMin", label: "Break (minutes)", type: "number", defaultValue: 30, min: 0 },
+      { id: "rate", label: "Hourly Rate ($)", type: "number", defaultValue: 25, step: 0.5 },
+    ],
+    calculate: (v) => {
+      let totalMin = (v.endH * 60 + v.endM) - (v.startH * 60 + v.startM) - v.breakMin;
+      if (totalMin < 0) totalMin += 1440;
+      const hours = totalMin / 60;
+      const pay = hours * v.rate;
+      return [
+        { label: "Hours Worked", value: `${Math.floor(totalMin / 60)}h ${totalMin % 60}m`, highlight: true },
+        { label: "Decimal Hours", value: hours.toFixed(2) },
+        { label: "Daily Pay", value: `$${pay.toFixed(2)}` },
+        { label: "Weekly (×5)", value: `$${(pay * 5).toFixed(2)}` },
+      ];
+    },
+    formula: { expression: "Hours = (End − Start − Break) / 60", variables: ["Pay = Hours × Rate"] },
+    howToUse: "Enter clock-in time, clock-out time, break duration, and hourly rate.",
+    faqs: [{ question: "Does this handle overnight shifts?", answer: "Yes, if end time is before start time, it assumes the shift crosses midnight." }],
+    relatedCalcs: lifeRelated("time-card-calculator"),
+  },
+  // Horsepower Calculator
+  {
+    slug: "horsepower-calculator", name: "Horsepower Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate horsepower from torque and RPM, or estimate engine HP from vehicle performance.",
+    metaDescription: "Free horsepower calculator. Calculate HP from torque and RPM.",
+    icon: "smile",
+    inputs: [
+      { id: "torque", label: "Torque (lb-ft)", type: "number", defaultValue: 300, step: 1 },
+      { id: "rpm", label: "RPM", type: "number", defaultValue: 5000, step: 100 },
+    ],
+    calculate: (v) => {
+      const hp = (v.torque * v.rpm) / 5252;
+      const kw = hp * 0.7457;
+      return [
+        { label: "Horsepower", value: `${hp.toFixed(1)} HP`, highlight: true },
+        { label: "Kilowatts", value: `${kw.toFixed(1)} kW` },
+        { label: "Metric HP (PS)", value: `${(hp * 1.01387).toFixed(1)} PS` },
+      ];
+    },
+    formula: { expression: "HP = Torque × RPM / 5252", variables: ["1 HP ≈ 0.7457 kW", "5252 = 33000/(2π)"] },
+    howToUse: "Enter torque and RPM to calculate horsepower.",
+    faqs: [{ question: "HP vs torque?", answer: "Torque is rotational force. HP is the rate of doing work (torque × speed). High torque = acceleration. High HP = top speed." }],
+    relatedCalcs: lifeRelated("horsepower-calculator"),
+  },
+  // Password Generator
+  {
+    slug: "password-generator", name: "Password Generator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Generate secure random passwords with customizable length and character types.",
+    metaDescription: "Free password generator. Create strong random passwords with letters, numbers, and symbols.",
+    icon: "smile",
+    inputs: [
+      { id: "length", label: "Password Length", type: "number", defaultValue: 16, min: 4, max: 64 },
+      { id: "includeUpper", label: "Include Uppercase (1=yes)", type: "number", defaultValue: 1, min: 0, max: 1 },
+      { id: "includeNumbers", label: "Include Numbers (1=yes)", type: "number", defaultValue: 1, min: 0, max: 1 },
+      { id: "includeSymbols", label: "Include Symbols (1=yes)", type: "number", defaultValue: 1, min: 0, max: 1 },
+    ],
+    calculate: (v) => {
+      let chars = "abcdefghijklmnopqrstuvwxyz";
+      if (v.includeUpper) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      if (v.includeNumbers) chars += "0123456789";
+      if (v.includeSymbols) chars += "!@#$%^&*()_+-=[]{}|;:,.<>?";
+      let password = "";
+      for (let i = 0; i < v.length; i++) password += chars[Math.floor(Math.random() * chars.length)];
+      const entropy = Math.log2(chars.length) * v.length;
+      let strength = "Weak";
+      if (entropy > 80) strength = "Very Strong";
+      else if (entropy > 60) strength = "Strong";
+      else if (entropy > 40) strength = "Moderate";
+      return [
+        { label: "Password", value: password, highlight: true },
+        { label: "Strength", value: strength },
+        { label: "Entropy", value: `${entropy.toFixed(0)} bits` },
+        { label: "Character Pool", value: `${chars.length} chars` },
+      ];
+    },
+    formula: { expression: "Random selection from character pool", variables: ["Entropy = log₂(pool size) × length"] },
+    howToUse: "Set length and character options, then click Calculate to generate a new password.",
+    faqs: [{ question: "How long should my password be?", answer: "At least 12-16 characters. Longer is better. Use a password manager to store unique passwords for each account." }],
+    relatedCalcs: lifeRelated("password-generator"),
+  },
+  // Molarity Calculator
+  {
+    slug: "molarity-calculator", name: "Molarity Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the molarity (moles per liter) of a solution from solute mass and volume.",
+    metaDescription: "Free molarity calculator. Calculate solution concentration in mol/L from mass and molar mass.",
+    icon: "smile",
+    inputs: [
+      { id: "mass", label: "Solute Mass (grams)", type: "number", defaultValue: 58.44, step: 0.01 },
+      { id: "molarMass", label: "Molar Mass (g/mol)", type: "number", defaultValue: 58.44, step: 0.01 },
+      { id: "volume", label: "Solution Volume (liters)", type: "number", defaultValue: 1, step: 0.01 },
+    ],
+    calculate: (v) => {
+      if (v.molarMass === 0 || v.volume === 0) return [{ label: "Error", value: "Values cannot be zero" }];
+      const moles = v.mass / v.molarMass;
+      const molarity = moles / v.volume;
+      return [
+        { label: "Molarity", value: `${molarity.toFixed(4)} M`, highlight: true },
+        { label: "Moles of Solute", value: moles.toFixed(4) },
+        { label: "In mmol/L", value: `${(molarity * 1000).toFixed(2)} mM` },
+      ];
+    },
+    formula: { expression: "Molarity = (Mass / Molar Mass) / Volume", variables: ["M = mol/L", "Mass in grams", "Volume in liters"] },
+    howToUse: "Enter solute mass, its molar mass, and solution volume to calculate molarity.",
+    faqs: [{ question: "What is molarity?", answer: "Molarity (M) is the number of moles of solute per liter of solution. A 1M NaCl solution has 58.44g NaCl per liter." }],
+    relatedCalcs: lifeRelated("molarity-calculator"),
+  },
 ];
