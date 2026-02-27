@@ -165,8 +165,11 @@ const Index = () => {
                           <Icon className="w-5 h-5" />
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-semibold text-muted-foreground bg-secondary px-2 py-0.5 rounded-full">
-                            {count} tools
+                          <span
+                            className="text-xs font-bold px-2.5 py-1 rounded-full text-primary-foreground"
+                            style={{ backgroundColor: cat.color }}
+                          >
+                            {count}
                           </span>
                           <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
