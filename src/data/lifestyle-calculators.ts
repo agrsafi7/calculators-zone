@@ -774,4 +774,447 @@ export const lifestyleCalculators: CalculatorConfig[] = [
     faqs: [{ question: "What is molarity?", answer: "Molarity (M) is the number of moles of solute per liter of solution. A 1M NaCl solution has 58.44g NaCl per liter." }],
     relatedCalcs: lifeRelated("molarity-calculator"),
   },
+  // Height Calculator
+  {
+    slug: "height-calculator", name: "Height Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Predict a child's adult height based on parents' heights using the mid-parental height method.",
+    metaDescription: "Free height calculator. Predict adult height from parents' heights using mid-parental method.",
+    icon: "smile",
+    inputs: [
+      { id: "gender", label: "Child's Gender", type: "select", defaultValue: 0, options: [{ value: 0, label: "Boy" }, { value: 1, label: "Girl" }] },
+      { id: "fatherHeight", label: "Father's Height (cm)", type: "number", defaultValue: 175, step: 0.1 },
+      { id: "motherHeight", label: "Mother's Height (cm)", type: "number", defaultValue: 163, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const predicted = v.gender === 0
+        ? (v.fatherHeight + v.motherHeight + 13) / 2
+        : (v.fatherHeight + v.motherHeight - 13) / 2;
+      const inFeet = predicted / 30.48;
+      const feet = Math.floor(inFeet);
+      const inches = Math.round((inFeet - feet) * 12);
+      return [
+        { label: "Predicted Height", value: `${predicted.toFixed(1)} cm`, highlight: true },
+        { label: "In Feet/Inches", value: `${feet}'${inches}"` },
+        { label: "Range (±5cm)", value: `${(predicted - 5).toFixed(0)} – ${(predicted + 5).toFixed(0)} cm` },
+      ];
+    },
+    formula: { expression: "Boys: (Father + Mother + 13) / 2; Girls: (Father + Mother − 13) / 2", variables: ["Mid-parental height method", "±5cm accuracy"] },
+    howToUse: "Enter the child's gender and both parents' heights to predict adult height.",
+    faqs: [{ question: "How accurate is this?", answer: "Mid-parental height predicts within ±5cm for ~50% of children. Genetics, nutrition, and health also play roles." }],
+    relatedCalcs: lifeRelated("height-calculator"),
+  },
+  // Shoe Size Conversion
+  {
+    slug: "shoe-size-converter", name: "Shoe Size Converter", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Convert shoe sizes between US, UK, EU, and centimeter measurements.",
+    metaDescription: "Free shoe size converter. Convert between US, UK, EU shoe sizes and foot length in cm.",
+    icon: "smile",
+    inputs: [
+      { id: "size", label: "US Size", type: "number", defaultValue: 10, step: 0.5, min: 1 },
+      { id: "gender", label: "Gender", type: "select", defaultValue: 0, options: [{ value: 0, label: "Men" }, { value: 1, label: "Women" }] },
+    ],
+    calculate: (v) => {
+      const cm = v.gender === 0 ? (v.size + 18) * 0.847 + 7.62 : (v.size + 17) * 0.847 + 7.62;
+      const uk = v.gender === 0 ? v.size - 0.5 : v.size - 2;
+      const eu = v.gender === 0 ? v.size + 33 : v.size + 31;
+      return [
+        { label: "US Size", value: `${v.size}`, highlight: true },
+        { label: "UK Size", value: `${uk}` },
+        { label: "EU Size", value: `${eu}` },
+        { label: "Foot Length", value: `${cm.toFixed(1)} cm` },
+      ];
+    },
+    formula: { expression: "Approximate conversions between sizing systems", variables: ["US Men = UK + 0.5", "US Women = EU − 31"] },
+    howToUse: "Enter your US shoe size and gender to see equivalent sizes in other systems.",
+    faqs: [{ question: "Do shoe sizes vary by brand?", answer: "Yes, shoe sizes can vary significantly between brands. Always try shoes on or check brand-specific size charts." }],
+    relatedCalcs: lifeRelated("shoe-size-converter"),
+  },
+  // Golf Handicap Calculator
+  {
+    slug: "golf-handicap-calculator", name: "Golf Handicap Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate your golf handicap index from recent scores, course rating, and slope rating.",
+    metaDescription: "Free golf handicap calculator. Estimate your handicap index from recent round scores.",
+    icon: "smile",
+    inputs: [
+      { id: "score1", label: "Score 1", type: "number", defaultValue: 92 },
+      { id: "score2", label: "Score 2", type: "number", defaultValue: 88 },
+      { id: "score3", label: "Score 3", type: "number", defaultValue: 95 },
+      { id: "courseRating", label: "Course Rating", type: "number", defaultValue: 72, step: 0.1 },
+      { id: "slopeRating", label: "Slope Rating", type: "number", defaultValue: 113, min: 55, max: 155 },
+    ],
+    calculate: (v) => {
+      const diffs = [v.score1, v.score2, v.score3].map(s => (s - v.courseRating) * 113 / v.slopeRating);
+      const best = Math.min(...diffs);
+      const avg = diffs.reduce((a, b) => a + b, 0) / diffs.length;
+      const handicap = Math.max(0, best * 0.96);
+      return [
+        { label: "Handicap Index", value: handicap.toFixed(1), highlight: true },
+        { label: "Best Differential", value: best.toFixed(1) },
+        { label: "Avg Differential", value: avg.toFixed(1) },
+      ];
+    },
+    formula: { expression: "Differential = (Score − Course Rating) × 113 / Slope", variables: ["Handicap ≈ Best Differential × 0.96"] },
+    howToUse: "Enter recent scores, course rating, and slope rating to estimate your handicap.",
+    faqs: [{ question: "What is slope rating?", answer: "Slope (55-155) measures course difficulty for bogey golfers relative to scratch golfers. Standard is 113." }],
+    relatedCalcs: lifeRelated("golf-handicap-calculator"),
+  },
+  // Tire Size Calculator
+  {
+    slug: "tire-size-calculator", name: "Tire Size Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate tire dimensions (diameter, circumference, sidewall height) from tire size notation.",
+    metaDescription: "Free tire size calculator. Calculate tire diameter, circumference, and sidewall from size notation.",
+    icon: "smile",
+    inputs: [
+      { id: "width", label: "Tire Width (mm)", type: "number", defaultValue: 225 },
+      { id: "aspect", label: "Aspect Ratio (%)", type: "number", defaultValue: 55 },
+      { id: "rim", label: "Rim Diameter (inches)", type: "number", defaultValue: 17 },
+    ],
+    calculate: (v) => {
+      const sidewall = v.width * (v.aspect / 100);
+      const diameter = (sidewall * 2 / 25.4) + v.rim;
+      const circumference = diameter * Math.PI;
+      const revsPerMile = 63360 / circumference;
+      return [
+        { label: "Overall Diameter", value: `${diameter.toFixed(1)} inches`, highlight: true },
+        { label: "Sidewall Height", value: `${sidewall.toFixed(1)} mm` },
+        { label: "Circumference", value: `${circumference.toFixed(1)} inches` },
+        { label: "Revs per Mile", value: `${Math.round(revsPerMile)}` },
+      ];
+    },
+    formula: { expression: "Diameter = (2 × Width × Aspect% / 25.4) + Rim", variables: ["225/55R17 = 225mm wide, 55% aspect, 17\" rim"] },
+    howToUse: "Enter tire width (mm), aspect ratio, and rim diameter from your tire size (e.g., 225/55R17).",
+    faqs: [{ question: "What does the R mean?", answer: "R stands for Radial construction, the most common tire type. The number after R is the rim diameter in inches." }],
+    relatedCalcs: lifeRelated("tire-size-calculator"),
+  },
+  // Tile Calculator
+  {
+    slug: "tile-calculator", name: "Tile Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate how many tiles you need for a room based on area and tile size, including waste allowance.",
+    metaDescription: "Free tile calculator. Estimate tiles needed for floors and walls with waste factor.",
+    icon: "smile",
+    inputs: [
+      { id: "areaLength", label: "Room Length (feet)", type: "number", defaultValue: 12, step: 0.5 },
+      { id: "areaWidth", label: "Room Width (feet)", type: "number", defaultValue: 10, step: 0.5 },
+      { id: "tileSize", label: "Tile Size (inches)", type: "number", defaultValue: 12, step: 1 },
+      { id: "waste", label: "Waste Factor (%)", type: "number", defaultValue: 10, suffix: "%" },
+    ],
+    calculate: (v) => {
+      const areaSqFt = v.areaLength * v.areaWidth;
+      const tileSqFt = (v.tileSize * v.tileSize) / 144;
+      const tilesNeeded = Math.ceil(areaSqFt / tileSqFt);
+      const withWaste = Math.ceil(tilesNeeded * (1 + v.waste / 100));
+      return [
+        { label: "Tiles Needed (with waste)", value: `${withWaste}`, highlight: true },
+        { label: "Tiles (no waste)", value: `${tilesNeeded}` },
+        { label: "Room Area", value: `${areaSqFt} sq ft` },
+        { label: "Boxes (12/box)", value: `${Math.ceil(withWaste / 12)}` },
+      ];
+    },
+    formula: { expression: "Tiles = (Room Area / Tile Area) × (1 + Waste%)", variables: ["Add 10% for straight cuts, 15% for diagonal"] },
+    howToUse: "Enter room dimensions, tile size, and waste percentage.",
+    faqs: [{ question: "How much waste should I plan?", answer: "10% for straight layouts, 15% for diagonal, 20% for complex patterns or many cuts." }],
+    relatedCalcs: lifeRelated("tile-calculator"),
+  },
+  // Gravel Calculator
+  {
+    slug: "gravel-calculator", name: "Gravel Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate how much gravel you need in tons and cubic yards for a project.",
+    metaDescription: "Free gravel calculator. Estimate gravel needed in cubic yards and tons for landscaping and driveways.",
+    icon: "smile",
+    inputs: [
+      { id: "length", label: "Length (feet)", type: "number", defaultValue: 20, step: 0.5 },
+      { id: "width", label: "Width (feet)", type: "number", defaultValue: 10, step: 0.5 },
+      { id: "depth", label: "Depth (inches)", type: "number", defaultValue: 3, step: 0.5 },
+    ],
+    calculate: (v) => {
+      const cubicFeet = v.length * v.width * (v.depth / 12);
+      const cubicYards = cubicFeet / 27;
+      const tons = cubicYards * 1.4;
+      return [
+        { label: "Cubic Yards", value: cubicYards.toFixed(2), highlight: true },
+        { label: "Tons", value: tons.toFixed(2) },
+        { label: "Cubic Feet", value: cubicFeet.toFixed(1) },
+      ];
+    },
+    formula: { expression: "Volume = L × W × D/12 (cubic feet) ÷ 27 = cubic yards", variables: ["1 cubic yard of gravel ≈ 1.4 tons"] },
+    howToUse: "Enter the length, width, and depth of the area you need to cover.",
+    faqs: [{ question: "How deep should gravel be?", answer: "Driveways: 3-4 inches. Walkways: 2-3 inches. Drainage: 6-12 inches. Decorative: 2 inches." }],
+    relatedCalcs: lifeRelated("gravel-calculator"),
+  },
+  // Heat Index Calculator
+  {
+    slug: "heat-index-calculator", name: "Heat Index Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the heat index — how hot it really feels based on temperature and humidity.",
+    metaDescription: "Free heat index calculator. Find the 'feels like' temperature from air temp and relative humidity.",
+    icon: "smile",
+    inputs: [
+      { id: "temp", label: "Air Temperature (°F)", type: "number", defaultValue: 95, step: 1 },
+      { id: "humidity", label: "Relative Humidity (%)", type: "number", defaultValue: 55, min: 0, max: 100 },
+    ],
+    calculate: (v) => {
+      const T = v.temp, R = v.humidity;
+      const hi = -42.379 + 2.04901523*T + 10.14333127*R - 0.22475541*T*R - 0.00683783*T*T - 0.05481717*R*R + 0.00122874*T*T*R + 0.00085282*T*R*R - 0.00000199*T*T*R*R;
+      let danger = "Caution";
+      if (hi >= 130) danger = "Extreme Danger";
+      else if (hi >= 105) danger = "Danger";
+      else if (hi >= 90) danger = "Extreme Caution";
+      return [
+        { label: "Heat Index", value: `${Math.round(hi)}°F`, highlight: true },
+        { label: "Heat Index (°C)", value: `${Math.round((hi - 32) * 5 / 9)}°C` },
+        { label: "Danger Level", value: danger },
+      ];
+    },
+    formula: { expression: "Rothfusz regression equation (NWS)", variables: ["Valid for temp ≥ 80°F and humidity ≥ 40%"] },
+    howToUse: "Enter air temperature (°F) and relative humidity (%). Works best above 80°F.",
+    faqs: [{ question: "What is heat index?", answer: "The 'feels like' temperature accounting for humidity. High humidity reduces sweat evaporation, making it feel hotter." }],
+    relatedCalcs: lifeRelated("heat-index-calculator"),
+  },
+  // Roofing Calculator
+  {
+    slug: "roofing-calculator", name: "Roofing Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate how many squares of roofing material you need based on roof dimensions and pitch.",
+    metaDescription: "Free roofing calculator. Estimate roofing squares and bundles needed for your roof area.",
+    icon: "smile",
+    inputs: [
+      { id: "length", label: "Building Length (feet)", type: "number", defaultValue: 40 },
+      { id: "width", label: "Building Width (feet)", type: "number", defaultValue: 30 },
+      { id: "pitch", label: "Roof Pitch (rise per 12 run)", type: "number", defaultValue: 6, min: 0, max: 24 },
+      { id: "waste", label: "Waste (%)", type: "number", defaultValue: 15, suffix: "%" },
+    ],
+    calculate: (v) => {
+      const pitchMultiplier = Math.sqrt(1 + (v.pitch / 12) ** 2);
+      const roofArea = v.length * v.width * pitchMultiplier;
+      const withWaste = roofArea * (1 + v.waste / 100);
+      const squares = withWaste / 100;
+      const bundles = Math.ceil(squares * 3);
+      return [
+        { label: "Roof Area", value: `${Math.round(roofArea)} sq ft`, highlight: true },
+        { label: "Roofing Squares", value: `${squares.toFixed(1)} squares` },
+        { label: "Bundles Needed", value: `${bundles}` },
+        { label: "Pitch Multiplier", value: pitchMultiplier.toFixed(3) },
+      ];
+    },
+    formula: { expression: "Area = Length × Width × √(1 + (pitch/12)²)", variables: ["1 square = 100 sq ft", "3 bundles per square"] },
+    howToUse: "Enter building dimensions and roof pitch. The calculator accounts for pitch slope and waste.",
+    faqs: [{ question: "What is roof pitch?", answer: "Pitch is the rise in inches for every 12 inches of horizontal run. A 6/12 pitch rises 6 inches per foot." }],
+    relatedCalcs: lifeRelated("roofing-calculator"),
+  },
+  // Mulch Calculator
+  {
+    slug: "mulch-calculator", name: "Mulch Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate how much mulch you need in cubic yards and bags for your garden beds.",
+    metaDescription: "Free mulch calculator. Estimate cubic yards and bags of mulch for garden beds and landscaping.",
+    icon: "smile",
+    inputs: [
+      { id: "length", label: "Area Length (feet)", type: "number", defaultValue: 20, step: 0.5 },
+      { id: "width", label: "Area Width (feet)", type: "number", defaultValue: 10, step: 0.5 },
+      { id: "depth", label: "Depth (inches)", type: "number", defaultValue: 3, step: 0.5 },
+    ],
+    calculate: (v) => {
+      const cubicFeet = v.length * v.width * (v.depth / 12);
+      const cubicYards = cubicFeet / 27;
+      const bags2cuft = Math.ceil(cubicFeet / 2);
+      return [
+        { label: "Cubic Yards", value: cubicYards.toFixed(2), highlight: true },
+        { label: "Cubic Feet", value: cubicFeet.toFixed(1) },
+        { label: "Bags (2 cu ft)", value: `${bags2cuft}` },
+      ];
+    },
+    formula: { expression: "Volume = L × W × (Depth/12) cubic feet ÷ 27 = cubic yards", variables: ["Standard bag = 2 cubic feet"] },
+    howToUse: "Enter the area dimensions and desired mulch depth.",
+    faqs: [{ question: "How deep should mulch be?", answer: "2-4 inches is ideal. Too thin won't suppress weeds, too thick can suffocate roots and trap moisture." }],
+    relatedCalcs: lifeRelated("mulch-calculator"),
+  },
+  // Stair Calculator
+  {
+    slug: "stair-calculator", name: "Stair Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate the number of stairs, riser height, and tread depth for a staircase.",
+    metaDescription: "Free stair calculator. Calculate number of stairs, riser height, and tread depth for building code compliance.",
+    icon: "smile",
+    inputs: [
+      { id: "totalRise", label: "Total Rise (inches)", type: "number", defaultValue: 108, step: 0.5 },
+      { id: "riserHeight", label: "Desired Riser Height (inches)", type: "number", defaultValue: 7.5, step: 0.25 },
+    ],
+    calculate: (v) => {
+      const numStairs = Math.round(v.totalRise / v.riserHeight);
+      const actualRiser = v.totalRise / numStairs;
+      const tread = 25 - actualRiser; // 7-11 rule: riser + tread ≈ 17-18"
+      const stairAngle = Math.atan(actualRiser / Math.max(tread, 1)) * (180 / Math.PI);
+      return [
+        { label: "Number of Stairs", value: `${numStairs}`, highlight: true },
+        { label: "Actual Riser Height", value: `${actualRiser.toFixed(2)}"` },
+        { label: "Suggested Tread Depth", value: `${Math.max(tread, 10).toFixed(2)}"` },
+        { label: "Stair Angle", value: `${stairAngle.toFixed(1)}°` },
+        { label: "Total Run", value: `${(numStairs * Math.max(tread, 10)).toFixed(0)}"` },
+      ];
+    },
+    formula: { expression: "Stairs = Total Rise / Riser Height (rounded)", variables: ["Code: Risers 7-7.75\", Treads 10-11\"", "Riser + Tread ≈ 17-18\""] },
+    howToUse: "Enter the total height to climb and desired riser height.",
+    faqs: [{ question: "What is building code for stairs?", answer: "IRC code: max riser 7.75\", min tread 10\", max variation between risers 3/8\". Always check local codes." }],
+    relatedCalcs: lifeRelated("stair-calculator"),
+  },
+  // GDP Calculator
+  {
+    slug: "gdp-calculator", name: "GDP Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate GDP using the expenditure approach: GDP = C + I + G + (X − M).",
+    metaDescription: "Free GDP calculator. Calculate Gross Domestic Product using the expenditure approach.",
+    icon: "smile",
+    inputs: [
+      { id: "consumption", label: "Consumption (C)", type: "number", defaultValue: 14000, prefix: "$" },
+      { id: "investment", label: "Investment (I)", type: "number", defaultValue: 3500, prefix: "$" },
+      { id: "government", label: "Government (G)", type: "number", defaultValue: 3200, prefix: "$" },
+      { id: "exports", label: "Exports (X)", type: "number", defaultValue: 2500, prefix: "$" },
+      { id: "imports", label: "Imports (M)", type: "number", defaultValue: 3100, prefix: "$" },
+    ],
+    calculate: (v) => {
+      const netExports = v.exports - v.imports;
+      const gdp = v.consumption + v.investment + v.government + netExports;
+      return [
+        { label: "GDP", value: `$${gdp.toLocaleString()}B`, highlight: true },
+        { label: "Net Exports", value: `$${netExports.toLocaleString()}B` },
+        { label: "C as % of GDP", value: `${((v.consumption / gdp) * 100).toFixed(1)}%` },
+      ];
+    },
+    formula: { expression: "GDP = C + I + G + (X − M)", variables: ["C = Consumption", "I = Investment", "G = Government", "X−M = Net Exports"] },
+    howToUse: "Enter the four GDP components (in billions) to calculate total GDP.",
+    faqs: [{ question: "What is GDP?", answer: "Gross Domestic Product measures the total value of goods and services produced in a country in a given period." }],
+    relatedCalcs: lifeRelated("gdp-calculator"),
+  },
+  // Day of the Week Calculator
+  {
+    slug: "day-of-week-calculator", name: "Day of the Week Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Find out what day of the week any date falls on, past or future.",
+    metaDescription: "Free day of the week calculator. Find what day any date falls on.",
+    icon: "smile",
+    inputs: [
+      { id: "year", label: "Year", type: "number", defaultValue: 2000, min: 1 },
+      { id: "month", label: "Month (1-12)", type: "number", defaultValue: 1, min: 1, max: 12 },
+      { id: "day", label: "Day (1-31)", type: "number", defaultValue: 1, min: 1, max: 31 },
+    ],
+    calculate: (v) => {
+      const d = new Date(v.year, v.month - 1, v.day);
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const isLeap = (v.year % 4 === 0 && v.year % 100 !== 0) || v.year % 400 === 0;
+      return [
+        { label: "Day of Week", value: days[d.getDay()], highlight: true },
+        { label: "Date", value: d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }) },
+        { label: "Leap Year?", value: isLeap ? "Yes" : "No" },
+      ];
+    },
+    formula: { expression: "JavaScript Date object calculation", variables: ["Handles all dates including historical"] },
+    howToUse: "Enter any date to find out what day of the week it falls on.",
+    faqs: [{ question: "What day was I born?", answer: "Enter your birth date to find out!" }],
+    relatedCalcs: lifeRelated("day-of-week-calculator"),
+  },
+  // Voltage Drop Calculator
+  {
+    slug: "voltage-drop-calculator", name: "Voltage Drop Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate voltage drop in electrical wire based on wire gauge, length, and current.",
+    metaDescription: "Free voltage drop calculator. Calculate wire voltage drop for electrical installations.",
+    icon: "smile",
+    inputs: [
+      { id: "voltage", label: "Source Voltage (V)", type: "number", defaultValue: 120 },
+      { id: "current", label: "Current (Amps)", type: "number", defaultValue: 20, step: 0.1 },
+      { id: "length", label: "One-Way Length (feet)", type: "number", defaultValue: 100, step: 1 },
+      { id: "gauge", label: "Wire Gauge (AWG)", type: "select", defaultValue: 12, options: [{ value: 14, label: "14 AWG" }, { value: 12, label: "12 AWG" }, { value: 10, label: "10 AWG" }, { value: 8, label: "8 AWG" }, { value: 6, label: "6 AWG" }] },
+    ],
+    calculate: (v) => {
+      const resistance: Record<number, number> = { 14: 3.14, 12: 1.98, 10: 1.24, 8: 0.778, 6: 0.491 };
+      const r = (resistance[v.gauge] || 1.98) / 1000;
+      const vDrop = 2 * v.length * r * v.current;
+      const pctDrop = (vDrop / v.voltage) * 100;
+      return [
+        { label: "Voltage Drop", value: `${vDrop.toFixed(2)} V`, highlight: true },
+        { label: "Drop Percentage", value: `${pctDrop.toFixed(1)}%` },
+        { label: "Voltage at Load", value: `${(v.voltage - vDrop).toFixed(1)} V` },
+        { label: "Status", value: pctDrop <= 3 ? "Good (≤3%)" : pctDrop <= 5 ? "Acceptable (≤5%)" : "Too High (>5%)" },
+      ];
+    },
+    formula: { expression: "VD = 2 × Length × Resistance/ft × Current", variables: ["NEC recommends ≤3% for branch circuits", "≤5% total including feeder"] },
+    howToUse: "Enter source voltage, current draw, wire length, and gauge to check voltage drop.",
+    faqs: [{ question: "Why does voltage drop matter?", answer: "Excessive voltage drop causes dim lights, motors running hot, and equipment malfunction. NEC recommends ≤3% for branch circuits." }],
+    relatedCalcs: lifeRelated("voltage-drop-calculator"),
+  },
+  // Resistor Calculator
+  {
+    slug: "resistor-calculator", name: "Resistor Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate total resistance for resistors in series and parallel configurations.",
+    metaDescription: "Free resistor calculator. Calculate series and parallel resistance combinations.",
+    icon: "smile",
+    inputs: [
+      { id: "r1", label: "Resistor 1 (Ω)", type: "number", defaultValue: 100, step: 0.1 },
+      { id: "r2", label: "Resistor 2 (Ω)", type: "number", defaultValue: 220, step: 0.1 },
+      { id: "r3", label: "Resistor 3 (Ω)", type: "number", defaultValue: 330, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const series = v.r1 + v.r2 + v.r3;
+      const parallel = 1 / (1 / v.r1 + 1 / v.r2 + 1 / v.r3);
+      return [
+        { label: "Series Total", value: `${series.toFixed(1)} Ω`, highlight: true },
+        { label: "Parallel Total", value: `${parallel.toFixed(2)} Ω` },
+        { label: "R1 + R2 (series)", value: `${(v.r1 + v.r2).toFixed(1)} Ω` },
+        { label: "R1 ∥ R2 (parallel)", value: `${(1 / (1 / v.r1 + 1 / v.r2)).toFixed(2)} Ω` },
+      ];
+    },
+    formula: { expression: "Series: R = R1 + R2 + R3; Parallel: 1/R = 1/R1 + 1/R2 + 1/R3", variables: ["Series increases total resistance", "Parallel decreases total resistance"] },
+    howToUse: "Enter resistance values for up to 3 resistors to see series and parallel totals.",
+    faqs: [{ question: "When to use series vs parallel?", answer: "Series increases resistance (voltage dividers). Parallel decreases resistance (current sharing). Use both in complex circuits." }],
+    relatedCalcs: lifeRelated("resistor-calculator"),
+  },
+  // Bandwidth Calculator
+  {
+    slug: "bandwidth-calculator", name: "Bandwidth Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate file download/upload time based on file size and internet speed.",
+    metaDescription: "Free bandwidth calculator. Estimate download and upload times from file size and internet speed.",
+    icon: "smile",
+    inputs: [
+      { id: "fileSize", label: "File Size (MB)", type: "number", defaultValue: 1000, step: 1 },
+      { id: "speed", label: "Internet Speed (Mbps)", type: "number", defaultValue: 100, step: 1 },
+    ],
+    calculate: (v) => {
+      if (v.speed <= 0) return [{ label: "Error", value: "Speed must be > 0" }];
+      const fileBits = v.fileSize * 8;
+      const seconds = fileBits / v.speed;
+      const minutes = seconds / 60;
+      const hours = minutes / 60;
+      return [
+        { label: "Download Time", value: seconds < 60 ? `${seconds.toFixed(1)} seconds` : minutes < 60 ? `${minutes.toFixed(1)} minutes` : `${hours.toFixed(2)} hours`, highlight: true },
+        { label: "In Seconds", value: `${seconds.toFixed(1)}s` },
+        { label: "Actual (80% efficiency)", value: `${(seconds / 0.8).toFixed(1)}s` },
+      ];
+    },
+    formula: { expression: "Time = File Size (Mb) / Speed (Mbps)", variables: ["1 MB = 8 Mb", "Real speed ≈ 80% of advertised"] },
+    howToUse: "Enter file size in MB and your internet speed in Mbps.",
+    faqs: [{ question: "Why is actual speed lower?", answer: "Overhead from protocols, network congestion, server limits, and Wi-Fi losses typically reduce throughput to 60-80% of rated speed." }],
+    relatedCalcs: lifeRelated("bandwidth-calculator"),
+  },
+  // IP Subnet Calculator
+  {
+    slug: "ip-subnet-calculator", name: "IP Subnet Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Calculate subnet details from a CIDR prefix length: network address, broadcast, and usable host range.",
+    metaDescription: "Free IP subnet calculator. Calculate network, broadcast, and host range from CIDR notation.",
+    icon: "smile",
+    inputs: [
+      { id: "prefix", label: "CIDR Prefix Length (/)", type: "number", defaultValue: 24, min: 0, max: 32 },
+    ],
+    calculate: (v) => {
+      const totalIPs = Math.pow(2, 32 - v.prefix);
+      const usableHosts = Math.max(totalIPs - 2, 0);
+      const maskOctets: number[] = [];
+      for (let i = 0; i < 4; i++) {
+        const bits = Math.min(Math.max(v.prefix - i * 8, 0), 8);
+        maskOctets.push(256 - Math.pow(2, 8 - bits));
+      }
+      return [
+        { label: "Subnet Mask", value: maskOctets.join("."), highlight: true },
+        { label: "Total IPs", value: totalIPs.toLocaleString() },
+        { label: "Usable Hosts", value: usableHosts.toLocaleString() },
+        { label: "Wildcard Mask", value: maskOctets.map(o => 255 - o).join(".") },
+      ];
+    },
+    formula: { expression: "Total IPs = 2^(32 − prefix); Usable = Total − 2", variables: ["/24 = 256 IPs, 254 hosts", "/16 = 65536 IPs"] },
+    howToUse: "Enter the CIDR prefix length (e.g., 24 for /24) to calculate subnet details.",
+    faqs: [{ question: "Why minus 2 for usable hosts?", answer: "The first IP is the network address and the last is the broadcast address — neither can be assigned to hosts." }],
+    relatedCalcs: lifeRelated("ip-subnet-calculator"),
+  },
 ];

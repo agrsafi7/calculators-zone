@@ -393,4 +393,129 @@ export const scienceCalculators: CalculatorConfig[] = [
     faqs: [{ question: "What is torque?", answer: "Torque is the rotational equivalent of force. It causes objects to rotate around an axis." }],
     relatedCalcs: sciRelated("torque-calculator"),
   },
+  // Molecular Weight Calculator
+  {
+    slug: "molecular-weight-calculator", name: "Molecular Weight Calculator", category: "Science", categorySlug: "science",
+    description: "Calculate molecular weight by entering the count of common elements (H, C, N, O, S, etc.).",
+    metaDescription: "Free molecular weight calculator. Calculate molecular mass from element composition.",
+    icon: "flask",
+    inputs: [
+      { id: "carbon", label: "Carbon (C) atoms", type: "number", defaultValue: 6, min: 0 },
+      { id: "hydrogen", label: "Hydrogen (H) atoms", type: "number", defaultValue: 12, min: 0 },
+      { id: "oxygen", label: "Oxygen (O) atoms", type: "number", defaultValue: 6, min: 0 },
+      { id: "nitrogen", label: "Nitrogen (N) atoms", type: "number", defaultValue: 0, min: 0 },
+    ],
+    calculate: (v) => {
+      const mw = v.carbon * 12.011 + v.hydrogen * 1.008 + v.oxygen * 15.999 + v.nitrogen * 14.007;
+      const formula = [v.carbon > 0 ? `C${v.carbon > 1 ? v.carbon : ""}` : "", v.hydrogen > 0 ? `H${v.hydrogen > 1 ? v.hydrogen : ""}` : "", v.oxygen > 0 ? `O${v.oxygen > 1 ? v.oxygen : ""}` : "", v.nitrogen > 0 ? `N${v.nitrogen > 1 ? v.nitrogen : ""}` : ""].filter(Boolean).join("");
+      return [
+        { label: "Molecular Weight", value: `${mw.toFixed(3)} g/mol`, highlight: true },
+        { label: "Formula", value: formula || "—" },
+      ];
+    },
+    formula: { expression: "MW = Σ (atoms × atomic mass)", variables: ["C=12.011, H=1.008, O=15.999, N=14.007"] },
+    howToUse: "Enter the number of each type of atom in the molecule.",
+    faqs: [{ question: "What is C6H12O6?", answer: "Glucose — molecular weight 180.156 g/mol." }],
+    relatedCalcs: sciRelated("molecular-weight-calculator"),
+  },
+  // Speed Calculator
+  {
+    slug: "speed-calculator", name: "Speed Calculator", category: "Science", categorySlug: "science",
+    description: "Calculate speed, distance, or time using the formula speed = distance / time.",
+    metaDescription: "Free speed calculator. Calculate speed, distance, or time from two known values.",
+    icon: "flask",
+    inputs: [
+      { id: "distance", label: "Distance (km)", type: "number", defaultValue: 100, step: 0.1 },
+      { id: "hours", label: "Time - Hours", type: "number", defaultValue: 1, min: 0 },
+      { id: "minutes", label: "Time - Minutes", type: "number", defaultValue: 30, min: 0, max: 59 },
+    ],
+    calculate: (v) => {
+      const totalHours = v.hours + v.minutes / 60;
+      if (totalHours <= 0) return [{ label: "Error", value: "Time must be > 0" }];
+      const speed = v.distance / totalHours;
+      return [
+        { label: "Speed", value: `${speed.toFixed(2)} km/h`, highlight: true },
+        { label: "Speed (mph)", value: `${(speed / 1.60934).toFixed(2)} mph` },
+        { label: "Speed (m/s)", value: `${(speed / 3.6).toFixed(2)} m/s` },
+      ];
+    },
+    formula: { expression: "Speed = Distance / Time", variables: ["d = distance", "t = time", "v = speed"] },
+    howToUse: "Enter distance and time to calculate speed, or use to solve for any variable.",
+    faqs: [{ question: "Speed vs velocity?", answer: "Speed is scalar (magnitude only). Velocity is a vector (magnitude + direction)." }],
+    relatedCalcs: sciRelated("speed-calculator"),
+  },
+  // Mass Calculator
+  {
+    slug: "mass-calculator", name: "Mass Calculator", category: "Science", categorySlug: "science",
+    description: "Calculate mass from force and acceleration, density and volume, or weight and gravity.",
+    metaDescription: "Free mass calculator. Calculate mass from force, density, or weight using physics formulas.",
+    icon: "flask",
+    inputs: [
+      { id: "force", label: "Force (N)", type: "number", defaultValue: 98.1, step: 0.1 },
+      { id: "acceleration", label: "Acceleration (m/s²)", type: "number", defaultValue: 9.81, step: 0.01 },
+    ],
+    calculate: (v) => {
+      if (v.acceleration === 0) return [{ label: "Error", value: "Acceleration cannot be zero" }];
+      const mass = v.force / v.acceleration;
+      return [
+        { label: "Mass", value: `${mass.toFixed(4)} kg`, highlight: true },
+        { label: "In grams", value: `${(mass * 1000).toFixed(2)} g` },
+        { label: "In pounds", value: `${(mass * 2.20462).toFixed(4)} lbs` },
+        { label: "Weight on Earth", value: `${(mass * 9.81).toFixed(2)} N` },
+      ];
+    },
+    formula: { expression: "m = F / a (from F = ma)", variables: ["F = Force (N)", "a = Acceleration (m/s²)"] },
+    howToUse: "Enter force and acceleration to calculate mass using Newton's second law.",
+    faqs: [{ question: "Mass vs weight?", answer: "Mass is the amount of matter (constant). Weight is the gravitational force on that mass (varies by location)." }],
+    relatedCalcs: sciRelated("mass-calculator"),
+  },
+  // Electricity/Power Calculator
+  {
+    slug: "electricity-power-calculator", name: "Electrical Power Calculator", category: "Science", categorySlug: "science",
+    description: "Calculate electrical power, current, voltage, or resistance using P = IV and Ohm's law.",
+    metaDescription: "Free electrical power calculator. Calculate watts, amps, volts, and ohms from any two values.",
+    icon: "flask",
+    inputs: [
+      { id: "voltage", label: "Voltage (V)", type: "number", defaultValue: 120, step: 0.1 },
+      { id: "current", label: "Current (A)", type: "number", defaultValue: 10, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const power = v.voltage * v.current;
+      const resistance = v.current > 0 ? v.voltage / v.current : 0;
+      return [
+        { label: "Power", value: `${power.toFixed(1)} W`, highlight: true },
+        { label: "In kW", value: `${(power / 1000).toFixed(3)} kW` },
+        { label: "Resistance", value: `${resistance.toFixed(2)} Ω` },
+        { label: "Energy (1 hr)", value: `${(power / 1000).toFixed(3)} kWh` },
+      ];
+    },
+    formula: { expression: "P = V × I; R = V / I", variables: ["P = Power (Watts)", "V = Voltage", "I = Current"] },
+    howToUse: "Enter voltage and current to calculate power and resistance.",
+    faqs: [{ question: "What is a watt?", answer: "A watt measures the rate of energy transfer. 1 watt = 1 joule per second = 1 volt × 1 amp." }],
+    relatedCalcs: sciRelated("electricity-power-calculator"),
+  },
+  // Weight Calculator
+  {
+    slug: "weight-calculator", name: "Weight Calculator", category: "Science", categorySlug: "science",
+    description: "Calculate your weight on different planets and celestial bodies based on your Earth weight.",
+    metaDescription: "Free weight on other planets calculator. See what you'd weigh on Mars, Jupiter, Moon, and more.",
+    icon: "flask",
+    inputs: [
+      { id: "earthWeight", label: "Weight on Earth (kg)", type: "number", defaultValue: 70, step: 0.1 },
+    ],
+    calculate: (v) => {
+      const g: Record<string, number> = { Moon: 0.166, Mars: 0.378, Jupiter: 2.528, Saturn: 1.065, Venus: 0.907, Mercury: 0.378 };
+      return [
+        { label: "Earth", value: `${v.earthWeight.toFixed(1)} kg`, highlight: true },
+        { label: "Moon", value: `${(v.earthWeight * g.Moon).toFixed(1)} kg` },
+        { label: "Mars", value: `${(v.earthWeight * g.Mars).toFixed(1)} kg` },
+        { label: "Jupiter", value: `${(v.earthWeight * g.Jupiter).toFixed(1)} kg` },
+        { label: "Venus", value: `${(v.earthWeight * g.Venus).toFixed(1)} kg` },
+      ];
+    },
+    formula: { expression: "Weight = Earth Weight × (Planet g / Earth g)", variables: ["Moon: 0.166g", "Mars: 0.378g", "Jupiter: 2.528g"] },
+    howToUse: "Enter your weight on Earth to see what you'd weigh on other planets.",
+    faqs: [{ question: "Is this mass or weight?", answer: "This shows weight (force of gravity). Your mass stays the same everywhere — only the gravitational pull changes." }],
+    relatedCalcs: sciRelated("weight-calculator"),
+  },
 ];
