@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { Clock, Trash2 } from "lucide-react";
 
 type Mode = "basic" | "scientific";
@@ -25,6 +25,8 @@ const HeroCalculator = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [lastAnswer, setLastAnswer] = useState("0");
   const [inv, setInv] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
 
   const handleInput = useCallback((val: string) => {
     if (display === "0" && val !== "." && !"sincostanlogln√".includes(val[0])) {
@@ -101,6 +103,42 @@ const HeroCalculator = () => {
     }
   }, [expression, angleMode, lastAnswer]);
 
+  // Keyboard support
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      const key = e.key;
+      if (/^[0-9]$/.test(key)) { handleInput(key); e.preventDefault(); }
+      else if (key === ".") { handleInput("."); e.preventDefault(); }
+      else if (key === "+") { handleOperator("+"); e.preventDefault(); }
+      else if (key === "-") { handleOperator("-"); e.preventDefault(); }
+      else if (key === "*") { handleOperator("×"); e.preventDefault(); }
+      else if (key === "/") { handleOperator("÷"); e.preventDefault(); }
+      else if (key === "%") { handleInput("%"); e.preventDefault(); }
+      else if (key === "(") { handleInput("("); e.preventDefault(); }
+      else if (key === ")") { handleInput(")"); e.preventDefault(); }
+      else if (key === "Enter" || key === "=") { handleEquals(); e.preventDefault(); }
+      else if (key === "Backspace") { handleBackspace(); e.preventDefault(); }
+      else if (key === "Escape" || key === "c" || key === "C") { handleClear(); e.preventDefault(); }
+      else if (key === "^") { handleInput("^"); e.preventDefault(); }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleInput, handleOperator, handleEquals, handleBackspace, handleClear]);
+
+  // Swipe gesture for mode switching
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(deltaX) > 60) {
+      if (deltaX < 0) { setMode("scientific"); }
+      else { setMode("basic"); setInv(false); }
+    }
+  }, []);
+
   const btn = "flex items-center justify-center rounded-2xl font-semibold transition-all active:scale-95 select-none";
   const btnNum = `${btn} bg-[hsl(var(--muted))] text-foreground hover:brightness-125 h-14 text-lg`;
   const btnOp = `${btn} bg-[hsl(220,25%,25%)] text-[hsl(220,60%,75%)] hover:brightness-125 h-14 text-lg`;
@@ -109,7 +147,7 @@ const HeroCalculator = () => {
   const btnSciActive = `${btn} bg-primary/20 text-primary hover:brightness-125 h-12 text-sm`;
 
   return (
-    <div className="bg-card rounded-2xl border border-border shadow-xl overflow-hidden">
+    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-xl overflow-hidden">
       {/* Tabs */}
       <div className="flex border-b border-border">
         <button
