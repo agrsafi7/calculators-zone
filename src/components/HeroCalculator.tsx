@@ -139,12 +139,12 @@ const HeroCalculator = () => {
     }
   }, []);
 
-  const btn = "flex items-center justify-center rounded-2xl font-semibold transition-all active:scale-95 select-none";
-  const btnNum = `${btn} bg-[hsl(var(--muted))] text-foreground hover:brightness-125 h-14 text-lg`;
-  const btnOp = `${btn} bg-[hsl(220,25%,25%)] text-[hsl(220,60%,75%)] hover:brightness-125 h-14 text-lg`;
-  const btnEquals = `${btn} bg-[hsl(210,60%,78%)] text-[hsl(220,30%,15%)] hover:brightness-110 h-14 text-xl font-bold`;
-  const btnSci = `${btn} bg-[hsl(var(--muted))] text-muted-foreground hover:brightness-125 h-12 text-sm`;
-  const btnSciActive = `${btn} bg-primary/20 text-primary hover:brightness-125 h-12 text-sm`;
+  const btn = "flex items-center justify-center rounded-xl font-semibold transition-all active:scale-95 select-none";
+  const btnNum = `${btn} bg-[hsl(var(--muted))] text-foreground hover:brightness-125 h-10 text-sm`;
+  const btnOp = `${btn} bg-[hsl(220,25%,25%)] text-[hsl(220,60%,75%)] hover:brightness-125 h-10 text-sm`;
+  const btnEquals = `${btn} bg-[hsl(210,60%,78%)] text-[hsl(220,30%,15%)] hover:brightness-110 h-10 text-base font-bold`;
+  const btnSci = `${btn} bg-[hsl(var(--muted))] text-muted-foreground hover:brightness-125 h-9 text-xs`;
+  const btnSciActive = `${btn} bg-primary/20 text-primary hover:brightness-125 h-9 text-xs`;
 
   return (
     <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-xl overflow-hidden">
@@ -152,7 +152,7 @@ const HeroCalculator = () => {
       <div className="flex border-b border-border">
         <button
           onClick={() => { setMode("basic"); setInv(false); }}
-          className={`flex-1 py-3 text-sm font-semibold transition-colors ${
+          className={`flex-1 py-2 text-xs font-semibold transition-colors ${
             mode === "basic"
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground hover:bg-secondary"
@@ -162,7 +162,7 @@ const HeroCalculator = () => {
         </button>
         <button
           onClick={() => setMode("scientific")}
-          className={`flex-1 py-3 text-sm font-semibold transition-colors ${
+          className={`flex-1 py-2 text-xs font-semibold transition-colors ${
             mode === "scientific"
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground hover:bg-secondary"
@@ -172,24 +172,24 @@ const HeroCalculator = () => {
         </button>
       </div>
 
-      <div className="p-4 space-y-3">
+      <div className="p-3 space-y-2">
         {/* Display */}
-        <div className="bg-secondary rounded-xl p-4 text-right border border-border">
-          <div className="flex items-center justify-between mb-2">
+        <div className="bg-secondary rounded-lg p-3 text-right border border-border">
+          <div className="flex items-center justify-between mb-1">
             <button
               onClick={() => setShowHistory(!showHistory)}
               className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Clock className="w-5 h-5" />
+              <Clock className="w-4 h-4" />
             </button>
-            {expression && <p className="text-xs text-muted-foreground truncate ml-2">{expression}</p>}
+            {expression && <p className="text-[11px] text-muted-foreground truncate ml-2">{expression}</p>}
           </div>
-          <p className="text-4xl font-bold text-foreground truncate">{display}</p>
+          <p className="text-2xl font-bold text-foreground truncate">{display}</p>
         </div>
 
         {/* History panel */}
         {showHistory && (
-          <div className="bg-secondary/50 rounded-xl border border-border max-h-36 overflow-y-auto">
+          <div className="bg-secondary/50 rounded-lg border border-border max-h-28 overflow-y-auto">
             {history.length === 0 ? (
               <p className="text-xs text-muted-foreground text-center py-3">No calculations yet</p>
             ) : (
@@ -217,8 +217,8 @@ const HeroCalculator = () => {
 
         {/* Scientific buttons */}
         {mode === "scientific" && (
-          <div className="space-y-2">
-            <div className="grid grid-cols-4 gap-2">
+          <div className="space-y-1.5">
+            <div className="grid grid-cols-4 gap-1.5">
               {/* Deg/Rad toggle */}
               <button
                 className={`${btn} col-span-2 h-12 text-sm rounded-2xl ${
@@ -233,19 +233,19 @@ const HeroCalculator = () => {
               <button className={btnSci} onClick={() => handleInput("!")}>x!</button>
               <button className={inv ? btnSciActive : btnSci} onClick={() => setInv(!inv)}>Inv</button>
             </div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-4 gap-1.5">
               <button className={btnSci} onClick={() => handleInput(inv ? "asin(" : "sin(")}>{inv ? "sin⁻¹" : "sin"}</button>
               <button className={btnSci} onClick={() => handleInput("ln(")}>ln</button>
               <button className={btnSci} onClick={() => handleInput("π")}>π</button>
               <button className={btnSci} onClick={() => handleInput(inv ? "acos(" : "cos(")}>{inv ? "cos⁻¹" : "cos"}</button>
             </div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-4 gap-1.5">
               <button className={btnSci} onClick={() => handleInput("log(")}>log</button>
               <button className={btnSci} onClick={() => handleInput("e")}>e</button>
               <button className={btnSci} onClick={() => handleInput(inv ? "atan(" : "tan(")}>{inv ? "tan⁻¹" : "tan"}</button>
               <button className={btnSci} onClick={() => handleInput("√(")}>√</button>
             </div>
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-4 gap-1.5">
               <button className={btnSci} onClick={() => handleInput("Ans")}>Ans</button>
               <button className={btnSci} onClick={() => handleInput("e")}>EXP</button>
               <button className={btnSci} onClick={() => handleInput("^")}>xʸ</button>
@@ -255,7 +255,7 @@ const HeroCalculator = () => {
         )}
 
         {/* Main grid */}
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-4 gap-1.5">
           <button className={btnOp} onClick={() => handleInput("(")}>{"("}</button>
           <button className={btnOp} onClick={() => handleInput(")")}>{")"}</button>
           <button className={btnOp} onClick={() => handleInput("%")}>%</button>
