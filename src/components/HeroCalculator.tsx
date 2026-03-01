@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Clock, Trash2 } from "lucide-react";
 
 type Mode = "basic" | "scientific";
@@ -8,6 +8,14 @@ interface HistoryEntry {
   result: string;
 }
 
+const factorial = (n: number): number => {
+  if (n < 0) return NaN;
+  if (n === 0 || n === 1) return 1;
+  let r = 1;
+  for (let i = 2; i <= n; i++) r *= i;
+  return r;
+};
+
 const HeroCalculator = () => {
   const [mode, setMode] = useState<Mode>("basic");
   const [display, setDisplay] = useState("0");
@@ -15,60 +23,75 @@ const HeroCalculator = () => {
   const [angleMode, setAngleMode] = useState<"deg" | "rad">("deg");
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [showHistory, setShowHistory] = useState(false);
+  const [lastAnswer, setLastAnswer] = useState("0");
+  const [inv, setInv] = useState(false);
 
-  const handleInput = (val: string) => {
-    if (display === "0" && val !== ".") {
+  const handleInput = useCallback((val: string) => {
+    if (display === "0" && val !== "." && !"sincostanlogln√".includes(val[0])) {
       setDisplay(val);
     } else {
       setDisplay(display + val);
     }
-    setExpression(expression + val);
-  };
+    setExpression(prev => prev + val);
+  }, [display]);
 
-  const handleOperator = (op: string) => {
+  const handleOperator = useCallback((op: string) => {
     setDisplay(op);
-    setExpression(expression + op);
-  };
+    setExpression(prev => prev + op);
+  }, []);
 
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
     setDisplay("0");
     setExpression("");
-  };
+  }, []);
 
-  const handleBackspace = () => {
+  const handleBackspace = useCallback(() => {
     if (display.length > 1) {
       setDisplay(display.slice(0, -1));
     } else {
       setDisplay("0");
     }
-    setExpression(expression.slice(0, -1));
-  };
+    setExpression(prev => prev.slice(0, -1));
+  }, [display]);
 
-  const handleEquals = () => {
+  const handleEquals = useCallback(() => {
     try {
       let expr = expression
         .replace(/×/g, "*")
         .replace(/÷/g, "/")
         .replace(/π/g, String(Math.PI))
-        .replace(/e(?![x])/g, String(Math.E));
+        .replace(/e(?![x])/g, String(Math.E))
+        .replace(/Ans/g, lastAnswer);
 
-      if (mode === "scientific") {
-        const toRad = angleMode === "deg" ? (v: number) => (v * Math.PI) / 180 : (v: number) => v;
-        expr = expr
-          .replace(/sin\(([^)]+)\)/g, (_, v) => String(Math.sin(toRad(parseFloat(v)))))
-          .replace(/cos\(([^)]+)\)/g, (_, v) => String(Math.cos(toRad(parseFloat(v)))))
-          .replace(/tan\(([^)]+)\)/g, (_, v) => String(Math.tan(toRad(parseFloat(v)))))
-          .replace(/√\(([^)]+)\)/g, (_, v) => String(Math.sqrt(parseFloat(v))))
-          .replace(/log\(([^)]+)\)/g, (_, v) => String(Math.log10(parseFloat(v))))
-          .replace(/ln\(([^)]+)\)/g, (_, v) => String(Math.log(parseFloat(v))));
-      }
+      const toRad = angleMode === "deg" ? (v: number) => (v * Math.PI) / 180 : (v: number) => v;
+      const fromRad = angleMode === "deg" ? (v: number) => (v * 180) / Math.PI : (v: number) => v;
+
+      // Handle inverse trig
+      expr = expr
+        .replace(/asin\(([^)]+)\)/g, (_, v) => String(fromRad(Math.asin(parseFloat(v)))))
+        .replace(/acos\(([^)]+)\)/g, (_, v) => String(fromRad(Math.acos(parseFloat(v)))))
+        .replace(/atan\(([^)]+)\)/g, (_, v) => String(fromRad(Math.atan(parseFloat(v)))));
+
+      // Handle regular trig
+      expr = expr
+        .replace(/sin\(([^)]+)\)/g, (_, v) => String(Math.sin(toRad(parseFloat(v)))))
+        .replace(/cos\(([^)]+)\)/g, (_, v) => String(Math.cos(toRad(parseFloat(v)))))
+        .replace(/tan\(([^)]+)\)/g, (_, v) => String(Math.tan(toRad(parseFloat(v)))))
+        .replace(/√\(([^)]+)\)/g, (_, v) => String(Math.sqrt(parseFloat(v))))
+        .replace(/log\(([^)]+)\)/g, (_, v) => String(Math.log10(parseFloat(v))))
+        .replace(/ln\(([^)]+)\)/g, (_, v) => String(Math.log(parseFloat(v))))
+        .replace(/(\d+)!/g, (_, v) => String(factorial(parseInt(v))));
+
+      // Handle power operator
+      expr = expr.replace(/\^/g, "**");
 
       const result = new Function("return " + expr)();
       const formatted = Number.isFinite(result)
         ? parseFloat(result.toFixed(10)).toString()
         : "Error";
       if (formatted !== "Error") {
-        setHistory((prev) => [{ expression, result: formatted }, ...prev].slice(0, 10));
+        setHistory(prev => [{ expression, result: formatted }, ...prev].slice(0, 10));
+        setLastAnswer(formatted);
       }
       setDisplay(formatted);
       setExpression(formatted);
@@ -76,21 +99,22 @@ const HeroCalculator = () => {
       setDisplay("Error");
       setExpression("");
     }
-  };
+  }, [expression, angleMode, lastAnswer]);
 
-  const btnBase = "flex items-center justify-center rounded-lg font-semibold text-sm transition-colors active:scale-95 select-none";
-  const btnNum = `${btnBase} bg-card border border-border text-foreground hover:bg-secondary h-10`;
-  const btnOp = `${btnBase} bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 h-10`;
-  const btnAction = `${btnBase} bg-primary text-primary-foreground hover:bg-primary/90 h-10`;
-  const btnSci = `${btnBase} bg-secondary text-muted-foreground border border-border hover:bg-muted h-9 text-xs`;
+  const btn = "flex items-center justify-center rounded-2xl font-semibold transition-all active:scale-95 select-none";
+  const btnNum = `${btn} bg-[hsl(var(--muted))] text-foreground hover:brightness-125 h-14 text-lg`;
+  const btnOp = `${btn} bg-[hsl(220,25%,25%)] text-[hsl(220,60%,75%)] hover:brightness-125 h-14 text-lg`;
+  const btnEquals = `${btn} bg-[hsl(210,60%,78%)] text-[hsl(220,30%,15%)] hover:brightness-110 h-14 text-xl font-bold`;
+  const btnSci = `${btn} bg-[hsl(var(--muted))] text-muted-foreground hover:brightness-125 h-12 text-sm`;
+  const btnSciActive = `${btn} bg-primary/20 text-primary hover:brightness-125 h-12 text-sm`;
 
   return (
-    <div className="bg-card rounded-xl border border-border shadow-lg overflow-hidden">
+    <div className="bg-card rounded-2xl border border-border shadow-xl overflow-hidden">
       {/* Tabs */}
       <div className="flex border-b border-border">
         <button
-          onClick={() => setMode("basic")}
-          className={`flex-1 py-2.5 text-sm font-semibold transition-colors ${
+          onClick={() => { setMode("basic"); setInv(false); }}
+          className={`flex-1 py-3 text-sm font-semibold transition-colors ${
             mode === "basic"
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground hover:bg-secondary"
@@ -100,7 +124,7 @@ const HeroCalculator = () => {
         </button>
         <button
           onClick={() => setMode("scientific")}
-          className={`flex-1 py-2.5 text-sm font-semibold transition-colors ${
+          className={`flex-1 py-3 text-sm font-semibold transition-colors ${
             mode === "scientific"
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground hover:bg-secondary"
@@ -110,25 +134,24 @@ const HeroCalculator = () => {
         </button>
       </div>
 
-      <div className="p-3 space-y-2">
+      <div className="p-4 space-y-3">
         {/* Display */}
-        <div className="bg-secondary rounded-lg p-3 text-right">
-          <div className="flex items-center justify-between mb-1">
+        <div className="bg-secondary rounded-xl p-4 text-right border border-border">
+          <div className="flex items-center justify-between mb-2">
             <button
               onClick={() => setShowHistory(!showHistory)}
-              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Clock className="w-3 h-3" />
-              History {history.length > 0 && `(${history.length})`}
+              <Clock className="w-5 h-5" />
             </button>
             {expression && <p className="text-xs text-muted-foreground truncate ml-2">{expression}</p>}
           </div>
-          <p className="text-2xl font-bold text-foreground truncate">{display}</p>
+          <p className="text-4xl font-bold text-foreground truncate">{display}</p>
         </div>
 
         {/* History panel */}
         {showHistory && (
-          <div className="bg-secondary/50 rounded-lg border border-border max-h-36 overflow-y-auto">
+          <div className="bg-secondary/50 rounded-xl border border-border max-h-36 overflow-y-auto">
             {history.length === 0 ? (
               <p className="text-xs text-muted-foreground text-center py-3">No calculations yet</p>
             ) : (
@@ -136,7 +159,7 @@ const HeroCalculator = () => {
                 <div className="flex items-center justify-between px-3 pt-2 pb-1">
                   <span className="text-xs font-medium text-muted-foreground">Recent</span>
                   <button onClick={() => setHistory([])} className="text-muted-foreground hover:text-destructive transition-colors">
-                    <Trash2 className="w-3 h-3" />
+                    <Trash2 className="w-3.5 h-3.5" />
                   </button>
                 </div>
                 {history.map((h, i) => (
@@ -156,57 +179,69 @@ const HeroCalculator = () => {
 
         {/* Scientific buttons */}
         {mode === "scientific" && (
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-1 mb-1">
+          <div className="space-y-2">
+            <div className="grid grid-cols-4 gap-2">
+              {/* Deg/Rad toggle */}
               <button
-                onClick={() => setAngleMode("deg")}
-                className={`text-xs px-2 py-0.5 rounded ${angleMode === "deg" ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground"}`}
+                className={`${btn} col-span-2 h-12 text-sm rounded-2xl ${
+                  angleMode === "deg" ? "bg-[hsl(var(--muted))]" : "bg-[hsl(var(--muted))]"
+                }`}
+                onClick={() => setAngleMode(angleMode === "deg" ? "rad" : "deg")}
               >
-                Deg
+                <span className={`px-3 py-1 rounded-xl ${angleMode === "deg" ? "text-primary font-bold" : "text-muted-foreground"}`}>Deg</span>
+                <span className="text-border mx-1">|</span>
+                <span className={`px-3 py-1 rounded-xl ${angleMode === "rad" ? "text-primary font-bold" : "text-muted-foreground"}`}>Rad</span>
               </button>
-              <button
-                onClick={() => setAngleMode("rad")}
-                className={`text-xs px-2 py-0.5 rounded ${angleMode === "rad" ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground"}`}
-              >
-                Rad
-              </button>
+              <button className={btnSci} onClick={() => handleInput("!")}>x!</button>
+              <button className={inv ? btnSciActive : btnSci} onClick={() => setInv(!inv)}>Inv</button>
             </div>
-            <div className="grid grid-cols-5 gap-1">
-              {["sin(", "cos(", "tan(", "π", "e"].map((b) => (
-                <button key={b} className={btnSci} onClick={() => handleInput(b)}>{b.replace("(", "")}</button>
-              ))}
-              {["√(", "log(", "ln(", "(", ")"].map((b) => (
-                <button key={b} className={btnSci} onClick={() => handleInput(b)}>{b.replace("(", "")}</button>
-              ))}
+            <div className="grid grid-cols-4 gap-2">
+              <button className={btnSci} onClick={() => handleInput(inv ? "asin(" : "sin(")}>{inv ? "sin⁻¹" : "sin"}</button>
+              <button className={btnSci} onClick={() => handleInput("ln(")}>ln</button>
+              <button className={btnSci} onClick={() => handleInput("π")}>π</button>
+              <button className={btnSci} onClick={() => handleInput(inv ? "acos(" : "cos(")}>{inv ? "cos⁻¹" : "cos"}</button>
+            </div>
+            <div className="grid grid-cols-4 gap-2">
+              <button className={btnSci} onClick={() => handleInput("log(")}>log</button>
+              <button className={btnSci} onClick={() => handleInput("e")}>e</button>
+              <button className={btnSci} onClick={() => handleInput(inv ? "atan(" : "tan(")}>{inv ? "tan⁻¹" : "tan"}</button>
+              <button className={btnSci} onClick={() => handleInput("√(")}>√</button>
+            </div>
+            <div className="grid grid-cols-4 gap-2">
+              <button className={btnSci} onClick={() => handleInput("Ans")}>Ans</button>
+              <button className={btnSci} onClick={() => handleInput("e")}>EXP</button>
+              <button className={btnSci} onClick={() => handleInput("^")}>xʸ</button>
+              <button className={btnEquals} onClick={handleEquals}>=</button>
             </div>
           </div>
         )}
 
         {/* Main grid */}
-        <div className="grid grid-cols-4 gap-1.5">
-          <button className={btnOp} onClick={handleClear}>AC</button>
-          <button className={btnOp} onClick={handleBackspace}>⌫</button>
+        <div className="grid grid-cols-4 gap-2">
+          <button className={btnOp} onClick={() => handleInput("(")}>{"("}</button>
+          <button className={btnOp} onClick={() => handleInput(")")}>{")"}</button>
           <button className={btnOp} onClick={() => handleInput("%")}>%</button>
+          <button className={btnOp} onClick={handleClear}>AC</button>
+
+          {["7", "8", "9"].map(n => (
+            <button key={n} className={btnNum} onClick={() => handleInput(n)}>{n}</button>
+          ))}
           <button className={btnOp} onClick={() => handleOperator("÷")}>÷</button>
 
-          {["7", "8", "9"].map((n) => (
+          {["4", "5", "6"].map(n => (
             <button key={n} className={btnNum} onClick={() => handleInput(n)}>{n}</button>
           ))}
           <button className={btnOp} onClick={() => handleOperator("×")}>×</button>
 
-          {["4", "5", "6"].map((n) => (
+          {["1", "2", "3"].map(n => (
             <button key={n} className={btnNum} onClick={() => handleInput(n)}>{n}</button>
           ))}
           <button className={btnOp} onClick={() => handleOperator("-")}>−</button>
 
-          {["1", "2", "3"].map((n) => (
-            <button key={n} className={btnNum} onClick={() => handleInput(n)}>{n}</button>
-          ))}
-          <button className={btnOp} onClick={() => handleOperator("+")}>+</button>
-
-          <button className={btnNum} onClick={() => handleInput("0")} style={{ gridColumn: "span 2" }}>0</button>
+          <button className={btnNum} onClick={() => handleInput("0")}>0</button>
           <button className={btnNum} onClick={() => handleInput(".")}>.</button>
-          <button className={btnAction} onClick={handleEquals}>=</button>
+          <button className={btnEquals} onClick={handleEquals}>=</button>
+          <button className={btnOp} onClick={() => handleOperator("+")}>+</button>
         </div>
       </div>
     </div>
