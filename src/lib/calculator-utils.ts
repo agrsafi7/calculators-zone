@@ -1,5 +1,6 @@
 import { CalculatorInfo, popularCalculators } from "@/data/calculators";
 import { financeCalculators } from "@/data/finance-calculators";
+import { financeCalculatorsExtended } from "@/data/finance-calculators-extended";
 import { healthCalculators } from "@/data/health-calculators";
 import { mathCalculators } from "@/data/math-calculators";
 import { conversionCalculators } from "@/data/conversion-calculators";
@@ -49,6 +50,7 @@ const configToInfo = (configs: { slug: string; name: string; category: string; c
 export const allCalculators: CalculatorInfo[] = [
   ...popularCalculators,
   ...configToInfo(financeCalculators),
+  ...configToInfo(financeCalculatorsExtended),
   ...configToInfo(healthCalculators),
   ...configToInfo(mathCalculators),
   ...configToInfo(conversionCalculators),
