@@ -145,6 +145,7 @@ export interface CalculatorConfig {
   name: string;
   category: string;
   categorySlug: string;
+  subcategory?: string;
   description: string;
   metaDescription: string;
   icon: string;
