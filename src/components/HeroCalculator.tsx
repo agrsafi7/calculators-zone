@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { Clock, Trash2 } from "lucide-react";
 
 type Mode = "basic" | "scientific";
@@ -16,6 +16,50 @@ const factorial = (n: number): number => {
   return r;
 };
 
+const safeEvaluate = (expr: string, angleMode: "deg" | "rad", lastAnswer: string): string | null => {
+  try {
+    let e = expr
+      .replace(/×/g, "*")
+      .replace(/÷/g, "/")
+      .replace(/π/g, String(Math.PI))
+      .replace(/e(?![x])/g, String(Math.E))
+      .replace(/Ans/g, lastAnswer);
+
+    const toRad = angleMode === "deg" ? (v: number) => (v * Math.PI) / 180 : (v: number) => v;
+    const fromRad = angleMode === "deg" ? (v: number) => (v * 180) / Math.PI : (v: number) => v;
+
+    e = e
+      .replace(/asin\(([^)]+)\)/g, (_, v) => String(fromRad(Math.asin(parseFloat(v)))))
+      .replace(/acos\(([^)]+)\)/g, (_, v) => String(fromRad(Math.acos(parseFloat(v)))))
+      .replace(/atan\(([^)]+)\)/g, (_, v) => String(fromRad(Math.atan(parseFloat(v)))));
+
+    e = e
+      .replace(/sin\(([^)]+)\)/g, (_, v) => String(Math.sin(toRad(parseFloat(v)))))
+      .replace(/cos\(([^)]+)\)/g, (_, v) => String(Math.cos(toRad(parseFloat(v)))))
+      .replace(/tan\(([^)]+)\)/g, (_, v) => String(Math.tan(toRad(parseFloat(v)))))
+      .replace(/√\(([^)]+)\)/g, (_, v) => String(Math.sqrt(parseFloat(v))))
+      .replace(/log\(([^)]+)\)/g, (_, v) => String(Math.log10(parseFloat(v))))
+      .replace(/ln\(([^)]+)\)/g, (_, v) => String(Math.log(parseFloat(v))))
+      .replace(/(\d+)!/g, (_, v) => String(factorial(parseInt(v))));
+
+    e = e.replace(/\^/g, "**");
+
+    // Check if expression is complete enough to evaluate
+    const openParens = (e.match(/\(/g) || []).length;
+    const closeParens = (e.match(/\)/g) || []).length;
+    if (openParens > closeParens) return null;
+
+    // Don't evaluate if ends with an operator
+    if (/[+\-*/%]$/.test(e.trim())) return null;
+
+    const result = new Function("return " + e)();
+    if (!Number.isFinite(result)) return null;
+    return parseFloat(result.toFixed(10)).toString();
+  } catch {
+    return null;
+  }
+};
+
 const HeroCalculator = () => {
   const [mode, setMode] = useState<Mode>("basic");
   const [display, setDisplay] = useState("0");
@@ -27,6 +71,14 @@ const HeroCalculator = () => {
   const [inv, setInv] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
+
+  // Real-time preview calculation
+  const preview = useMemo(() => {
+    if (!expression || expression === display) return null;
+    const result = safeEvaluate(expression, angleMode, lastAnswer);
+    if (result && result !== expression && result !== display) return result;
+    return null;
+  }, [expression, angleMode, lastAnswer, display]);
 
   const handleInput = useCallback((val: string) => {
     if (display === "0" && val !== "." && !"sincostanlogln√".includes(val[0])) {
@@ -57,47 +109,13 @@ const HeroCalculator = () => {
   }, [display]);
 
   const handleEquals = useCallback(() => {
-    try {
-      let expr = expression
-        .replace(/×/g, "*")
-        .replace(/÷/g, "/")
-        .replace(/π/g, String(Math.PI))
-        .replace(/e(?![x])/g, String(Math.E))
-        .replace(/Ans/g, lastAnswer);
-
-      const toRad = angleMode === "deg" ? (v: number) => (v * Math.PI) / 180 : (v: number) => v;
-      const fromRad = angleMode === "deg" ? (v: number) => (v * 180) / Math.PI : (v: number) => v;
-
-      // Handle inverse trig
-      expr = expr
-        .replace(/asin\(([^)]+)\)/g, (_, v) => String(fromRad(Math.asin(parseFloat(v)))))
-        .replace(/acos\(([^)]+)\)/g, (_, v) => String(fromRad(Math.acos(parseFloat(v)))))
-        .replace(/atan\(([^)]+)\)/g, (_, v) => String(fromRad(Math.atan(parseFloat(v)))));
-
-      // Handle regular trig
-      expr = expr
-        .replace(/sin\(([^)]+)\)/g, (_, v) => String(Math.sin(toRad(parseFloat(v)))))
-        .replace(/cos\(([^)]+)\)/g, (_, v) => String(Math.cos(toRad(parseFloat(v)))))
-        .replace(/tan\(([^)]+)\)/g, (_, v) => String(Math.tan(toRad(parseFloat(v)))))
-        .replace(/√\(([^)]+)\)/g, (_, v) => String(Math.sqrt(parseFloat(v))))
-        .replace(/log\(([^)]+)\)/g, (_, v) => String(Math.log10(parseFloat(v))))
-        .replace(/ln\(([^)]+)\)/g, (_, v) => String(Math.log(parseFloat(v))))
-        .replace(/(\d+)!/g, (_, v) => String(factorial(parseInt(v))));
-
-      // Handle power operator
-      expr = expr.replace(/\^/g, "**");
-
-      const result = new Function("return " + expr)();
-      const formatted = Number.isFinite(result)
-        ? parseFloat(result.toFixed(10)).toString()
-        : "Error";
-      if (formatted !== "Error") {
-        setHistory(prev => [{ expression, result: formatted }, ...prev].slice(0, 10));
-        setLastAnswer(formatted);
-      }
-      setDisplay(formatted);
-      setExpression(formatted);
-    } catch {
+    const result = safeEvaluate(expression, angleMode, lastAnswer);
+    if (result) {
+      setHistory(prev => [{ expression, result }, ...prev].slice(0, 10));
+      setLastAnswer(result);
+      setDisplay(result);
+      setExpression(result);
+    } else {
       setDisplay("Error");
       setExpression("");
     }
@@ -185,6 +203,10 @@ const HeroCalculator = () => {
             {expression && <p className="text-[11px] text-muted-foreground truncate ml-2">{expression}</p>}
           </div>
           <p className="text-2xl font-bold text-foreground truncate">{display}</p>
+          {/* Real-time preview */}
+          {preview && (
+            <p className="text-sm text-primary/70 mt-0.5 truncate">= {preview}</p>
+          )}
         </div>
 
         {/* History panel */}
@@ -219,11 +241,8 @@ const HeroCalculator = () => {
         {mode === "scientific" && (
           <div className="space-y-1.5">
             <div className="grid grid-cols-4 gap-1.5">
-              {/* Deg/Rad toggle */}
               <button
-                className={`${btn} col-span-2 h-12 text-sm rounded-2xl ${
-                  angleMode === "deg" ? "bg-[hsl(var(--muted))]" : "bg-[hsl(var(--muted))]"
-                }`}
+                className={`${btn} col-span-2 h-12 text-sm rounded-2xl bg-[hsl(var(--muted))]`}
                 onClick={() => setAngleMode(angleMode === "deg" ? "rad" : "deg")}
               >
                 <span className={`px-3 py-1 rounded-xl ${angleMode === "deg" ? "text-primary font-bold" : "text-muted-foreground"}`}>Deg</span>
