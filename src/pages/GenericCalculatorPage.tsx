@@ -6,12 +6,16 @@ import { datetimeCalculators } from "@/data/datetime-calculators";
 import { scienceCalculators } from "@/data/science-calculators";
 import { lifestyleCalculators } from "@/data/lifestyle-calculators";
 import { financeCalculators } from "@/data/finance-calculators";
+import { financeCalculatorsExtended } from "@/data/finance-calculators-extended";
+import { healthCalculatorsExtended } from "@/data/health-calculators-extended";
 import CalculatorTemplate from "@/components/CalculatorTemplate";
 import NotFound from "./NotFound";
 
 const allConfigs = [
   ...financeCalculators,
+  ...financeCalculatorsExtended,
   ...healthCalculators,
+  ...healthCalculatorsExtended,
   ...mathCalculators,
   ...conversionCalculators,
   ...datetimeCalculators,
