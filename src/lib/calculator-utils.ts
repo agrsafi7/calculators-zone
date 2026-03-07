@@ -2,6 +2,7 @@ import { CalculatorInfo, popularCalculators } from "@/data/calculators";
 import { financeCalculators } from "@/data/finance-calculators";
 import { financeCalculatorsExtended } from "@/data/finance-calculators-extended";
 import { healthCalculators } from "@/data/health-calculators";
+import { healthCalculatorsExtended } from "@/data/health-calculators-extended";
 import { mathCalculators } from "@/data/math-calculators";
 import { conversionCalculators } from "@/data/conversion-calculators";
 import { datetimeCalculators } from "@/data/datetime-calculators";
@@ -36,7 +37,7 @@ export const addRecentCalculator = (calc: { slug: string; categorySlug: string; 
 };
 
 // Convert CalculatorConfig[] to CalculatorInfo[]
-const configToInfo = (configs: { slug: string; name: string; category: string; categorySlug: string; description: string; icon: string }[]): CalculatorInfo[] =>
+const configToInfo = (configs: { slug: string; name: string; category: string; categorySlug: string; description: string; icon: string; subcategory?: string }[]): (CalculatorInfo & { subcategory?: string })[] =>
   configs.map((c) => ({
     slug: c.slug,
     name: c.name,
@@ -44,14 +45,16 @@ const configToInfo = (configs: { slug: string; name: string; category: string; c
     categorySlug: c.categorySlug,
     description: c.description,
     icon: c.icon,
+    subcategory: c.subcategory,
   }));
 
 // All calculators as a flat searchable list
-export const allCalculators: CalculatorInfo[] = [
+export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = [
   ...popularCalculators,
   ...configToInfo(financeCalculators),
   ...configToInfo(financeCalculatorsExtended),
   ...configToInfo(healthCalculators),
+  ...configToInfo(healthCalculatorsExtended),
   ...configToInfo(mathCalculators),
   ...configToInfo(conversionCalculators),
   ...configToInfo(datetimeCalculators),
@@ -73,4 +76,9 @@ export const searchCalculators = (query: string): CalculatorInfo[] => {
   return uniqueCalculators
     .filter((c) => c.name.toLowerCase().includes(q) || c.category.toLowerCase().includes(q) || c.description.toLowerCase().includes(q))
     .slice(0, 8);
+};
+
+// Helper to get calculator count per category
+export const getCategoryCalculatorCount = (categorySlug: string): number => {
+  return uniqueCalculators.filter(c => c.categorySlug === categorySlug).length;
 };

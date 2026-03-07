@@ -22,6 +22,24 @@ const CategoryPage = () => {
     );
   }, [allCalcs, filter]);
 
+  // Group by subcategory
+  const grouped = useMemo(() => {
+    const groups: Record<string, typeof calculators> = {};
+    const ungrouped: typeof calculators = [];
+    calculators.forEach((c) => {
+      const sub = (c as any).subcategory;
+      if (sub) {
+        if (!groups[sub]) groups[sub] = [];
+        groups[sub].push(c);
+      } else {
+        ungrouped.push(c);
+      }
+    });
+    return { groups, ungrouped };
+  }, [calculators]);
+
+  const hasSubcategories = Object.keys(grouped.groups).length > 0;
+
   if (!category) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
@@ -32,6 +50,30 @@ const CategoryPage = () => {
   }
 
   const CatIcon = getCategoryIcon(category.icon);
+
+  const renderCalcGrid = (calcs: typeof calculators) => (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      {calcs.map((calc) => {
+        const Icon = getCategoryIcon(calc.icon);
+        return (
+          <Link
+            key={calc.slug}
+            to={`/${calc.categorySlug}/${calc.slug}`}
+            className="card-elevated bg-card rounded-xl border border-border p-5 group"
+          >
+            <div className="flex items-start justify-between mb-3">
+              <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
+                <Icon className="w-5 h-5 text-primary" />
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <h3 className="font-semibold text-sm mb-1">{calc.name}</h3>
+            <p className="text-xs text-muted-foreground">{calc.description}</p>
+          </Link>
+        );
+      })}
+    </div>
+  );
 
   return (
     <div>
@@ -55,7 +97,7 @@ const CategoryPage = () => {
               </div>
               <div>
                 <h1 className="text-3xl font-black">{category.name} Calculators</h1>
-                <p className="text-muted-foreground text-sm">{category.description}</p>
+                <p className="text-muted-foreground text-sm">{category.description} — {allCalcs.length} calculators</p>
               </div>
             </div>
 
@@ -81,28 +123,30 @@ const CategoryPage = () => {
 
             <AdPlaceholder size="leaderboard" />
 
-            {/* Calculator grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
-              {calculators.map((calc) => {
-                const Icon = getCategoryIcon(calc.icon);
-                return (
-                  <Link
-                    key={calc.slug}
-                    to={`/${calc.categorySlug}/${calc.slug}`}
-                    className="card-elevated bg-card rounded-xl border border-border p-5 group"
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+            {/* Subcategory sections */}
+            {hasSubcategories ? (
+              <div className="mt-8 space-y-10">
+                {grouped.ungrouped.length > 0 && (
+                  <div>
+                    <h2 className="text-lg font-bold mb-4">General</h2>
+                    {renderCalcGrid(grouped.ungrouped)}
+                  </div>
+                )}
+                {Object.entries(grouped.groups).map(([subcategory, calcs]) => (
+                  <div key={subcategory}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <h2 className="text-lg font-bold">{subcategory}</h2>
+                      <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">{calcs.length}</span>
                     </div>
-                    <h3 className="font-semibold text-sm mb-1">{calc.name}</h3>
-                    <p className="text-xs text-muted-foreground">{calc.description}</p>
-                  </Link>
-                );
-              })}
-            </div>
+                    {renderCalcGrid(calcs)}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="mt-8">
+                {renderCalcGrid(calculators)}
+              </div>
+            )}
 
             {calculators.length === 0 && (
               <div className="text-center py-12 text-muted-foreground">

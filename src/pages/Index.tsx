@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, CheckCircle, Star, Calculator, Search } from "lucide-react";
 import { categories, popularCalculators, getCategoryIcon } from "@/data/calculators";
+import { uniqueCalculators, getCategoryCalculatorCount } from "@/lib/calculator-utils";
 import { financeCalculators } from "@/data/finance-calculators";
 import { healthCalculators } from "@/data/health-calculators";
 import { mathCalculators } from "@/data/math-calculators";
@@ -14,17 +15,9 @@ import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
 import HeroCalculator from "@/components/HeroCalculator";
 
-const categoryCalcCounts: Record<string, number> = {
-  finance: financeCalculators.length,
-  health: healthCalculators.length,
-  math: mathCalculators.length,
-  conversions: conversionCalculators.length,
-  datetime: datetimeCalculators.length,
-  science: scienceCalculators.length,
-  lifestyle: lifestyleCalculators.length,
-};
+const totalCalcs = uniqueCalculators.length;
 
-const categoryFeatured: Record<string, { name: string; slug: string }[]> = {
+const allCalcArrays: Record<string, { name: string; slug: string }[]> = {
   finance: financeCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
   health: healthCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
   math: mathCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
@@ -33,8 +26,6 @@ const categoryFeatured: Record<string, { name: string; slug: string }[]> = {
   science: scienceCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
   lifestyle: lifestyleCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
 };
-
-const totalCalcs = Object.values(categoryCalcCounts).reduce((a, b) => a + b, 0);
 
 const Sidebar = () => (
   <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
@@ -91,7 +82,6 @@ const Index = () => {
       <section className="hero-section py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            {/* Left: Calculator */}
             <div>
               <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-4">
                 <Calculator className="w-3 h-3" />
@@ -106,7 +96,6 @@ const Index = () => {
               <HeroCalculator />
             </div>
 
-            {/* Right: Search + Info */}
             <div className="space-y-6">
               <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
                 <Search className="w-3 h-3" />
@@ -149,8 +138,8 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {categories.map((cat) => {
                   const Icon = getCategoryIcon(cat.icon);
-                  const count = categoryCalcCounts[cat.slug] || 0;
-                  const featured = categoryFeatured[cat.slug] || [];
+                  const count = getCategoryCalculatorCount(cat.slug);
+                  const featured = allCalcArrays[cat.slug] || [];
                   return (
                     <Link
                       key={cat.slug}
@@ -216,7 +205,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* SEO About Section */}
       <section className="container mx-auto px-4 py-12 border-t border-border">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">About Calculators</h2>
