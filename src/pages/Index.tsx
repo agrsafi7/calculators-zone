@@ -52,7 +52,7 @@ const categoryCards = [
     name: "Date & Time",
     slug: "datetime",
     icon: "calendar",
-    items: ["Age Calculator", "Date Difference", "Business Days", "Time Zones & Countdown"],
+    items: ["Date Difference", "Date Addition & Subtraction", "Countdown", "Age & Life Duration", "Work & Business Time", "Time Duration", "Time Conversions", "Calendar Calculators", "Holidays & Events", "Time Zone Tools", "Scheduling & Planning", "Productivity Time", "Sleep & Lifestyle Time", "Travel Time", "Astronomy Time", "Miscellaneous Time"],
   },
 ];
 
