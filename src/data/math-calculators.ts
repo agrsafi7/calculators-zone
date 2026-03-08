@@ -1503,7 +1503,6 @@ const _mathCalculators: CalculatorConfig[] = [
         { label: "Factor Pairs", value: factors.filter((_, i) => i < factors.length / 2).map(f => `${f}×${n / f}`).join(", ") },
       ];
     },
-    },
     formula: { expression: "Check divisibility from 1 to √n", variables: ["If n/i is integer, both i and n/i are factors"] },
     howToUse: "Enter a positive integer to find all its factors.",
     faqs: [{ question: "What is a factor?", answer: "A factor divides evenly into a number with no remainder. Factors of 12 are 1, 2, 3, 4, 6, 12." }],
@@ -1547,3 +1546,8 @@ const _mathCalculators: CalculatorConfig[] = [
     relatedCalcs: mathRelated("statistics-calculator"),
   },
 ];
+
+export const mathCalculators = _mathCalculators.map(c => ({
+  ...c,
+  subcategory: mathSubcategoryMap[c.slug] || "General",
+}));

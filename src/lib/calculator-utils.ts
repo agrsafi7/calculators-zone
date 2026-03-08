@@ -4,6 +4,7 @@ import { financeCalculatorsExtended } from "@/data/finance-calculators-extended"
 import { healthCalculators } from "@/data/health-calculators";
 import { healthCalculatorsExtended } from "@/data/health-calculators-extended";
 import { mathCalculators } from "@/data/math-calculators";
+import { mathCalculatorsExtended } from "@/data/math-calculators-extended";
 import { conversionCalculators } from "@/data/conversion-calculators";
 import { datetimeCalculators } from "@/data/datetime-calculators";
 import { scienceCalculators } from "@/data/science-calculators";
@@ -56,6 +57,7 @@ export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = [
   ...configToInfo(healthCalculators),
   ...configToInfo(healthCalculatorsExtended),
   ...configToInfo(mathCalculators),
+  ...configToInfo(mathCalculatorsExtended),
   ...configToInfo(conversionCalculators),
   ...configToInfo(datetimeCalculators),
   ...configToInfo(scienceCalculators),
