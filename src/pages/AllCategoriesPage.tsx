@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { getCategoryIcon } from "@/data/calculators";
-import { getCategoryCalculatorCount } from "@/lib/calculator-utils";
+import { getCategoryCalculatorCount, uniqueCalculators } from "@/lib/calculator-utils";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import RecentlyUsed from "@/components/RecentlyUsed";
 
 const allCategories = [
   { name: "Finance", slug: "finance", icon: "dollar", desc: "Mortgage, loans, investments, taxes, and retirement planning." },
@@ -14,6 +15,12 @@ const allCategories = [
   { name: "Lifestyle", slug: "lifestyle", icon: "smile", desc: "Cooking, construction, automotive, and daily life tools." },
 ];
 
+const getFeaturedCalculators = (categorySlug: string) => {
+  return uniqueCalculators
+    .filter((c) => c.categorySlug === categorySlug)
+    .slice(0, 4);
+};
+
 const AllCategoriesPage = () => {
   return (
     <div>
@@ -22,23 +29,44 @@ const AllCategoriesPage = () => {
       <div className="container mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold mb-2">All Calculator Categories</h1>
         <p className="text-muted-foreground mb-8">Browse our complete collection organized by category.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        {/* Recently Used */}
+        <div className="mb-8">
+          <RecentlyUsed />
+        </div>
+
+        <div className="space-y-8">
           {allCategories.map((cat) => {
             const Icon = getCategoryIcon(cat.icon);
             const count = getCategoryCalculatorCount(cat.slug);
+            const featured = getFeaturedCalculators(cat.slug);
             return (
-              <Link key={cat.slug} to={`/category/${cat.slug}`} className="bg-card border border-border rounded-xl p-6 hover:border-primary/30 hover:shadow-md transition-all group">
-                <div className="flex items-center gap-3 mb-3">
+              <div key={cat.slug} className="bg-card border border-border rounded-xl p-6">
+                <Link to={`/category/${cat.slug}`} className="flex items-center gap-3 mb-2 group">
                   <div className="w-10 h-10 bg-foreground rounded-lg flex items-center justify-center">
                     <Icon className="w-5 h-5 text-background" />
                   </div>
                   <div>
-                    <h2 className="font-bold">{cat.name}</h2>
+                    <h2 className="font-bold group-hover:text-primary transition-colors">{cat.name}</h2>
                     <span className="text-xs text-muted-foreground">{count} calculators</span>
                   </div>
+                </Link>
+                <p className="text-sm text-muted-foreground mb-4">{cat.desc}</p>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {featured.map((calc) => (
+                    <Link
+                      key={calc.slug}
+                      to={`/${calc.categorySlug}/${calc.slug}`}
+                      className="text-sm px-3 py-2 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors truncate"
+                    >
+                      {calc.name}
+                    </Link>
+                  ))}
                 </div>
-                <p className="text-sm text-muted-foreground">{cat.desc}</p>
-              </Link>
+                <Link to={`/category/${cat.slug}`} className="inline-block mt-3 text-xs font-semibold text-primary hover:underline">
+                  View all {count} calculators →
+                </Link>
+              </div>
             );
           })}
         </div>
