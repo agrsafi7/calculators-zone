@@ -24,7 +24,7 @@ const dtRelated = (exclude: string) => [
   { name: "Countdown", slug: "countdown-calculator", icon: "clock", category: "datetime" },
 ].filter((c) => c.slug !== exclude);
 
-export const datetimeCalculators: CalculatorConfig[] = [
+const _datetimeCalculators: CalculatorConfig[] = [
   {
     slug: "age-calculator", name: "Age Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate your exact age in years, months, days, hours, and minutes from your date of birth.",

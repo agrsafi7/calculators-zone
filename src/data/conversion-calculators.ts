@@ -31,7 +31,7 @@ const convRelated = (exclude: string) => [
   { name: "Speed Converter", slug: "speed-converter", icon: "convert", category: "conversions" },
 ].filter((c) => c.slug !== exclude);
 
-export const conversionCalculators: CalculatorConfig[] = [
+const _conversionCalculators: CalculatorConfig[] = [
   {
     slug: "length-converter", name: "Length Converter", category: "Units", categorySlug: "conversions",
     description: "Convert between meters, feet, inches, centimeters, kilometers, miles, and more.",

@@ -55,7 +55,7 @@ const lifeRelated = (exclude: string) => [
   { name: "Gas Mileage", slug: "gas-mileage-calculator", icon: "smile", category: "lifestyle" },
 ].filter((c) => c.slug !== exclude);
 
-export const lifestyleCalculators: CalculatorConfig[] = [
+const _lifestyleCalculators: CalculatorConfig[] = [
   {
     slug: "age-in-months-calculator", name: "Age in Months Calculator", category: "Lifestyle", categorySlug: "lifestyle",
     description: "Calculate your exact age in months from your date of birth.",

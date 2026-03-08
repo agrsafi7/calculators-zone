@@ -32,7 +32,7 @@ const sciRelated = (exclude: string) => [
   { name: "Ideal Gas Law", slug: "ideal-gas-law-calculator", icon: "flask", category: "science" },
 ].filter((c) => c.slug !== exclude);
 
-export const scienceCalculators: CalculatorConfig[] = [
+const _scienceCalculators: CalculatorConfig[] = [
   {
     slug: "force-calculator", name: "Force Calculator", category: "Science", categorySlug: "science",
     description: "Calculate force using Newton's second law: F = m × a.",
