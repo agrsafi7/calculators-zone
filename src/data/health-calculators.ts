@@ -7,7 +7,7 @@ const healthRelated = (exclude: string) => [
   { name: "TDEE Calculator", slug: "tdee-calculator", icon: "heart", category: "health" },
 ].filter((c) => c.slug !== exclude);
 
-export const healthCalculators: CalculatorConfig[] = [
+const _healthCalculators: CalculatorConfig[] = [
   // 1. BMR Calculator
   {
     slug: "bmr-calculator",
@@ -1102,3 +1102,49 @@ export const healthCalculators: CalculatorConfig[] = [
     relatedCalcs: healthRelated("weight-watcher-points-calculator"),
   },
 ];
+
+const healthSubcategoryMap: Record<string, string> = {
+  // Body Composition
+  "bmr-calculator": "Body Composition",
+  "body-fat-calculator": "Body Composition",
+  "ideal-weight-calculator": "Body Composition",
+  "lean-body-mass-calculator": "Body Composition",
+  "body-surface-area-calculator": "Body Composition",
+  "army-body-fat-calculator": "Body Composition",
+  "body-type-calculator": "Body Composition",
+  "anorexic-bmi-calculator": "Body Composition",
+  "overweight-calculator": "Body Composition",
+  "healthy-weight-calculator": "Body Composition",
+  // Nutrition
+  "calorie-calculator": "Nutrition",
+  "daily-calorie-needs-calculator": "Nutrition",
+  "macro-calculator": "Nutrition",
+  "tdee-calculator": "Nutrition",
+  "protein-intake-calculator": "Nutrition",
+  "carbohydrate-intake-calculator": "Nutrition",
+  "fat-intake-calculator": "Nutrition",
+  "water-intake-calculator": "Nutrition",
+  "weight-watcher-points-calculator": "Nutrition",
+  // Fitness Training
+  "heart-rate-calculator": "Fitness Training",
+  "target-heart-rate-calculator": "Fitness Training",
+  "pace-calculator": "Fitness Training",
+  "steps-to-calories-calculator": "Fitness Training",
+  "one-rep-max-calculator": "Fitness Training",
+  "calories-burned-calculator": "Fitness Training",
+  // Pregnancy & Women's Health
+  "pregnancy-calculator": "Pregnancy & Women's Health",
+  "ovulation-calculator": "Pregnancy & Women's Health",
+  "child-growth-percentile-calculator": "Pregnancy & Women's Health",
+  "pregnancy-weight-gain-calculator": "Pregnancy & Women's Health",
+  "period-calculator": "Pregnancy & Women's Health",
+  "conception-calculator": "Pregnancy & Women's Health",
+  // Medical Risk
+  "bac-calculator": "Medical Risk",
+  "gfr-calculator": "Medical Risk",
+};
+
+export const healthCalculators: CalculatorConfig[] = _healthCalculators.map(c => ({
+  ...c,
+  subcategory: healthSubcategoryMap[c.slug] || "General",
+}));
