@@ -1,5 +1,29 @@
 import { CalculatorConfig } from "@/components/CalculatorTemplate";
 
+const convSubcategoryMap: Record<string, string> = {
+  "length-converter": "Length & Distance",
+  "weight-converter": "Weight & Mass",
+  "mass-converter": "Weight & Mass",
+  "temperature-converter": "Temperature",
+  "area-converter": "Area & Volume",
+  "volume-converter": "Area & Volume",
+  "speed-converter": "Speed & Motion",
+  "time-converter": "Time",
+  "energy-converter": "Energy & Power",
+  "pressure-converter": "Energy & Power",
+  "power-converter": "Energy & Power",
+  "data-storage-converter": "Digital & Data",
+  "fuel-consumption-converter": "Fuel & Automotive",
+  "angle-converter": "Angle & Rotation",
+  "currency-converter": "Currency",
+  "miles-to-kilometers-converter": "Length & Distance",
+  "kilograms-to-pounds-converter": "Weight & Mass",
+  "celsius-to-fahrenheit-converter": "Temperature",
+  "liters-to-gallons-converter": "Area & Volume",
+  "inches-to-centimeters-converter": "Length & Distance",
+};
+
+
 const convRelated = (exclude: string) => [
   { name: "Length Converter", slug: "length-converter", icon: "convert", category: "conversions" },
   { name: "Weight Converter", slug: "weight-converter", icon: "convert", category: "conversions" },

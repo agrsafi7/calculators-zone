@@ -1,5 +1,22 @@
 import { CalculatorConfig } from "@/components/CalculatorTemplate";
 
+const dtSubcategoryMap: Record<string, string> = {
+  "age-calculator": "Age Calculators",
+  "chronological-age-calculator": "Age Calculators",
+  "date-difference-calculator": "Date Calculators",
+  "days-between-dates-calculator": "Date Calculators",
+  "add-subtract-days-calculator": "Date Calculators",
+  "due-date-calculator": "Date Calculators",
+  "time-duration-calculator": "Time Calculators",
+  "business-days-calculator": "Work & Business",
+  "work-hours-calculator": "Work & Business",
+  "retirement-date-calculator": "Work & Business",
+  "time-zone-converter": "Time Zones",
+  "countdown-calculator": "Countdown & Tracking",
+  "week-number-calculator": "Date Calculators",
+};
+
+
 const dtRelated = (exclude: string) => [
   { name: "Age Calculator", slug: "age-calculator", icon: "clock", category: "datetime" },
   { name: "Date Difference", slug: "date-difference-calculator", icon: "clock", category: "datetime" },

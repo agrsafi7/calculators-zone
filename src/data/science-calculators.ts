@@ -1,5 +1,30 @@
 import { CalculatorConfig } from "@/components/CalculatorTemplate";
 
+const sciSubcategoryMap: Record<string, string> = {
+  "force-calculator": "Mechanics",
+  "velocity-calculator": "Mechanics",
+  "acceleration-calculator": "Mechanics",
+  "kinetic-energy-calculator": "Mechanics",
+  "potential-energy-calculator": "Mechanics",
+  "pressure-calculator": "Mechanics",
+  "torque-calculator": "Mechanics",
+  "speed-calculator": "Mechanics",
+  "mass-calculator": "Mechanics",
+  "ohms-law-calculator": "Electricity & Magnetism",
+  "voltage-calculator": "Electricity & Magnetism",
+  "electricity-power-calculator": "Electricity & Magnetism",
+  "density-calculator": "General Physics",
+  "molar-mass-calculator": "Chemistry",
+  "ph-calculator": "Chemistry",
+  "molecular-weight-calculator": "Chemistry",
+  "half-life-calculator": "Nuclear & Radioactivity",
+  "ideal-gas-law-calculator": "Chemistry",
+  "wavelength-calculator": "Waves & Optics",
+  "frequency-calculator": "Waves & Optics",
+  "weight-calculator": "Astronomy & Space",
+};
+
+
 const sciRelated = (exclude: string) => [
   { name: "Force Calculator", slug: "force-calculator", icon: "flask", category: "science" },
   { name: "Density Calculator", slug: "density-calculator", icon: "flask", category: "science" },
