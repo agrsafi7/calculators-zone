@@ -11,8 +11,8 @@ const mk = (
   name: string,
   subcategory: string,
   description: string,
-  inputs: Array<{ id: string; label: string; type: string; placeholder?: string; defaultValue?: any; min?: number; max?: number; step?: number }>,
-  calculate: (inputs: Record<string, any>) => Array<{ label: string; value: string; highlight?: boolean }>,
+  inputs: CalculatorConfig["inputs"],
+  calculate: CalculatorConfig["calculate"],
   formula?: { expression: string; variables: string[] }
 ): CalculatorConfig => ({
   slug,
