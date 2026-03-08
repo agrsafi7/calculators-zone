@@ -33,6 +33,9 @@ const App = () => (
               <Route path="/finance/mortgage-calculator" element={<MortgageCalculator />} />
               <Route path="/health/bmi-calculator" element={<BmiCalculator />} />
               <Route path="/math/percentage-calculator" element={<PercentageCalculator />} />
+              {/* All categories & popular tools */}
+              <Route path="/categories" element={<AllCategoriesPage />} />
+              <Route path="/popular" element={<PopularToolsPage />} />
               {/* Category listing pages */}
               <Route path="/category/:slug" element={<CategoryPage />} />
               {/* Generic dynamic calculator pages for all categories */}

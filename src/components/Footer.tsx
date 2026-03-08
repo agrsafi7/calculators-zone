@@ -5,8 +5,8 @@ const totalCalcs = uniqueCalculators.length;
 
 const mainLinks = [
   { label: "Home", href: "/" },
-  { label: "All Calculators", href: "/category/finance" },
-  { label: "Popular Tools", href: "/category/math" },
+  { label: "All Calculators", href: "/categories" },
+  { label: "Popular Tools", href: "/popular" },
   { label: "About Us", href: "/disclaimer" },
   { label: "Contact", href: "/contact" },
 ];
