@@ -16,6 +16,8 @@ const allCategories = [
   { name: "Lifestyle", slug: "lifestyle", icon: "smile", desc: "Cooking, construction, automotive, and daily life tools." },
 ];
 
+const popularSlugs = new Set(popularCalculators.map((c) => c.slug));
+
 const getFeaturedCalculators = (categorySlug: string) => {
   return uniqueCalculators
     .filter((c) => c.categorySlug === categorySlug)
