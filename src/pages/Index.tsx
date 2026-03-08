@@ -136,6 +136,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Recently Used */}
+      <section className="container mx-auto px-4 py-6">
+        <RecentlyUsed />
+      </section>
+
       {/* Ad */}
       <section className="py-6">
         <AdPlaceholder size="leaderboard" />
