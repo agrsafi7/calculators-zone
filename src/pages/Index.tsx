@@ -75,24 +75,12 @@ const commonlyUsed = [
 ];
 
 const trendingTools = [
-  {
-    name: "Mortgage Repayment Calculator",
-    description: "Calculate monthly payments and total interest for your home loan.",
-    slug: "mortgage-calculator",
-    categorySlug: "finance",
-  },
-  {
-    name: "Scientific Notation Solver",
-    description: "Convert numbers to and from scientific notation instantly.",
-    slug: "scientific-notation-calculator",
-    categorySlug: "math",
-  },
-  {
-    name: "Sales Tax & Tip Calculator",
-    description: "Quickly calculate total costs including local taxes and gratuity.",
-    slug: "sales-tax-calculator",
-    categorySlug: "finance",
-  },
+  { name: "Mortgage Repayment Calculator", description: "Calculate monthly payments and total interest for your home loan.", slug: "mortgage-calculator", categorySlug: "finance" },
+  { name: "Scientific Notation Solver", description: "Convert numbers to and from scientific notation instantly.", slug: "scientific-notation-calculator", categorySlug: "math" },
+  { name: "Sales Tax & Tip Calculator", description: "Quickly calculate total costs including local taxes and gratuity.", slug: "sales-tax-calculator", categorySlug: "finance" },
+  { name: "BMI Calculator", description: "Find your Body Mass Index and understand your weight category.", slug: "bmi-calculator", categorySlug: "health" },
+  { name: "Percentage Calculator", description: "Calculate percentages, increases, decreases, and ratios.", slug: "percentage-calculator", categorySlug: "math" },
+  { name: "Age Calculator", description: "Find your exact age in years, months, and days.", slug: "age-calculator", categorySlug: "datetime" },
 ];
 
 const Index = () => {
@@ -201,9 +189,14 @@ const Index = () => {
 
       {/* Trending Tools */}
       <section className="container mx-auto px-4 py-8">
-        <div className="mb-6">
-          <h2 className="text-2xl font-bold">Trending Tools</h2>
-          <p className="text-sm text-muted-foreground mt-1">Most visited calculators this week</p>
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-2xl font-bold">Trending Tools</h2>
+            <p className="text-sm text-muted-foreground mt-1">Most visited calculators this week</p>
+          </div>
+          <Link to="/popular" className="text-sm font-semibold text-primary flex items-center gap-1 hover:underline">
+            View All <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
