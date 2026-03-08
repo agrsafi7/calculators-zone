@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Home, Heart, Calculator, Hash, ChevronDown } from "lucide-react";
 import { categories, getCategoryIcon, popularCalculators } from "@/data/calculators";
