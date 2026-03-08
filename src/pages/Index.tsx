@@ -1,225 +1,241 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight, CheckCircle, Star, Calculator, Search } from "lucide-react";
-import { categories, popularCalculators, getCategoryIcon } from "@/data/calculators";
+import { ArrowRight, Home, Heart, Calculator, Hash, ArrowRightLeft, FlaskConical, Globe, Hammer, Wrench, BookOpen, Coffee } from "lucide-react";
+import { categories, getCategoryIcon, popularCalculators } from "@/data/calculators";
 import { uniqueCalculators, getCategoryCalculatorCount } from "@/lib/calculator-utils";
-import { financeCalculators } from "@/data/finance-calculators";
-import { healthCalculators } from "@/data/health-calculators";
-import { mathCalculators } from "@/data/math-calculators";
-import { conversionCalculators } from "@/data/conversion-calculators";
-import { datetimeCalculators } from "@/data/datetime-calculators";
-import { scienceCalculators } from "@/data/science-calculators";
-import { lifestyleCalculators } from "@/data/lifestyle-calculators";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
-import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
 import HeroCalculator from "@/components/HeroCalculator";
 
 const totalCalcs = uniqueCalculators.length;
 
-const allCalcArrays: Record<string, { name: string; slug: string }[]> = {
-  finance: financeCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
-  health: healthCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
-  math: mathCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
-  conversions: conversionCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
-  datetime: datetimeCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
-  science: scienceCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
-  lifestyle: lifestyleCalculators.slice(0, 4).map(c => ({ name: c.name, slug: c.slug })),
-};
+// Category cards matching reference design with bullet points
+const categoryCards = [
+  {
+    name: "Finance",
+    slug: "finance",
+    icon: "dollar",
+    items: ["Mortgage", "Loans", "Investment"],
+  },
+  {
+    name: "Health",
+    slug: "health",
+    icon: "heart",
+    items: ["BMI & Calories", "Ideal Weight", "Heart Rate"],
+  },
+  {
+    name: "Math",
+    slug: "math",
+    icon: "hash",
+    items: ["Algebra & Geometry", "Fractions", "Matrix Operations"],
+  },
+  {
+    name: "Converters",
+    slug: "conversions",
+    icon: "convert",
+    items: ["Metric/Imperial", "Currency", "Data Storage"],
+  },
+  {
+    name: "Education",
+    slug: "math",
+    icon: "hash",
+    items: ["GPA & Grade", "SAT Score", "Study Planning"],
+  },
+  {
+    name: "Construction",
+    slug: "lifestyle",
+    icon: "home",
+    items: ["Concrete & Flooring", "Roofing", "Paint Estimation"],
+  },
+  {
+    name: "Conversion Tools",
+    slug: "conversions",
+    icon: "convert",
+    items: ["Torque & Pressure", "Energy", "Power Units"],
+  },
+  {
+    name: "Daily Life",
+    slug: "lifestyle",
+    icon: "smile",
+    items: ["Tip & Bill Split", "Time Difference", "Cooking Conversions"],
+  },
+  {
+    name: "Science",
+    slug: "science",
+    icon: "flask",
+    items: ["Physics & Chemistry", "Astronomy", "Period Table Tools"],
+  },
+];
 
-const Sidebar = () => (
-  <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
-    <AdPlaceholder size="rectangle" />
+const commonlyUsed = [
+  { name: "Mortgage Calculator", slug: "mortgage-calculator", categorySlug: "finance", icon: Home },
+  { name: "BMI Calculator", slug: "bmi-calculator", categorySlug: "health", icon: Heart },
+  { name: "Age Calculator", slug: "age-calculator", categorySlug: "datetime", icon: Calculator },
+  { name: "Scientific Notation", slug: "scientific-notation-calculator", categorySlug: "math", icon: Hash },
+];
 
-    <div className="bg-navy text-primary-foreground rounded-xl p-6">
-      <div className="flex items-center gap-2 mb-3">
-        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-        <h3 className="font-bold text-sm">Why Calculators?</h3>
-      </div>
-      <p className="text-xs opacity-80 mb-4">
-        We provide accurate, reliable, and free calculation tools for professionals and students alike. Trusted by financial advisors and educators worldwide.
-      </p>
-      <ul className="space-y-2 mb-4">
-        {[`${totalCalcs}+ Free Calculators`, "Mobile Optimized Tools", "Instant Results"].map((item) => (
-          <li key={item} className="flex items-center gap-2 text-xs">
-            <CheckCircle className="w-3.5 h-3.5 text-green-400" />
-            {item}
-          </li>
-        ))}
-      </ul>
-      <Link
-        to="/category/finance"
-        className="block w-full text-center py-2 rounded-lg bg-destructive text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
-      >
-        Browse All Tools
-      </Link>
-    </div>
-
-    <RecentlyUsed />
-
-    <div className="bg-card rounded-xl border border-border p-5">
-      <h3 className="font-bold text-sm mb-4">Latest Updates</h3>
-      <ul className="space-y-4">
-        {[
-          { title: "How to calculate your Mortgage APR effectively", time: "2 days ago" },
-          { title: "Understanding BMI vs. Body Fat Percentage", time: "5 days ago" },
-          { title: "Top 10 Math Tricks for Students", time: "1 week ago" },
-        ].map((item) => (
-          <li key={item.title}>
-            <p className="text-sm font-medium text-foreground leading-snug">{item.title}</p>
-            <p className="text-xs text-muted-foreground mt-0.5">{item.time}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </aside>
-);
+const trendingTools = [
+  {
+    name: "Mortgage Repayment Calculator",
+    description: "Calculate monthly payments and total interest for your home loan.",
+    slug: "mortgage-calculator",
+    categorySlug: "finance",
+  },
+  {
+    name: "Scientific Notation Solver",
+    description: "Convert numbers to and from scientific notation instantly.",
+    slug: "scientific-notation-calculator",
+    categorySlug: "math",
+  },
+  {
+    name: "Sales Tax & Tip Calculator",
+    description: "Quickly calculate total costs including local taxes and gratuity.",
+    slug: "sales-tax-calculator",
+    categorySlug: "finance",
+  },
+];
 
 const Index = () => {
   return (
     <div>
-      <SEO title="Free Online Calculators" description={`Access ${totalCalcs}+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly tools trusted by millions.`} canonical="/" />
-      <section className="hero-section py-12 md:py-20">
+      <SEO
+        title="Free Online Calculators — CalcHub"
+        description={`Access ${totalCalcs}+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly.`}
+        canonical="/"
+      />
+
+      {/* Hero Section */}
+      <section className="hero-section py-10 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div>
-              <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold mb-4">
-                <Calculator className="w-3 h-3" />
-                QUICK CALCULATE
-              </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4">
-                Free Online Calculators for Every Need
-              </h1>
-              <p className="text-muted-foreground text-sm mb-6">
-                Access over {totalCalcs}+ precision tools for finance, health, science, and daily life.
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left: Calculator */}
+            <div className="max-w-md">
               <HeroCalculator />
             </div>
 
+            {/* Right: Search + commonly used */}
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
-                <Search className="w-3 h-3" />
-                FIND A CALCULATOR
+              <div>
+                <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-black leading-tight mb-3">
+                  Search {totalCalcs.toLocaleString()}+ specialized calculators…
+                </h1>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Fast, accurate, and free calculators for your finances, health, education, and daily needs.
+                </p>
               </div>
-              <h2 className="text-2xl font-bold">What do you want to calculate?</h2>
-              <SearchBar large placeholder="Search calculators..." />
-              <div className="bg-card rounded-xl border border-border p-5 space-y-3">
-                <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4 text-primary fill-primary" />
-                  <span className="font-semibold text-sm">Trusted by 2M+ users monthly</span>
-                </div>
-                <ul className="space-y-2">
-                  {[`${totalCalcs}+ Free Calculators`, "Instant & Accurate Results", "Works on All Devices"].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <CheckCircle className="w-3.5 h-3.5 text-primary" />
-                      {item}
-                    </li>
+
+              <SearchBar large placeholder="Try 'Mortgage Payment' or 'BMI'..." />
+
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                  Commonly Used
+                </p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {commonlyUsed.map((calc) => (
+                    <Link
+                      key={calc.slug}
+                      to={`/${calc.categorySlug}/${calc.slug}`}
+                      className="flex items-center gap-2.5 px-3.5 py-2.5 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all group"
+                    >
+                      <calc.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                      <span className="text-sm font-medium truncate">{calc.name}</span>
+                    </Link>
                   ))}
-                </ul>
+                </div>
               </div>
-              <RecentlyUsed />
             </div>
           </div>
         </div>
       </section>
 
+      {/* Ad */}
       <section className="py-6">
         <AdPlaceholder size="leaderboard" />
       </section>
 
+      {/* Explore Categories */}
       <section className="container mx-auto px-4 py-8">
-        <div className="flex gap-8">
-          <div className="flex-1 min-w-0">
-            <div className="mb-12">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold">Browse Categories</h2>
-                <span className="text-sm font-medium text-muted-foreground">{totalCalcs} calculators across {categories.length} categories</span>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {categories.map((cat) => {
-                  const Icon = getCategoryIcon(cat.icon);
-                  const count = getCategoryCalculatorCount(cat.slug);
-                  const featured = allCalcArrays[cat.slug] || [];
-                  return (
-                    <Link
-                      key={cat.slug}
-                      to={`/category/${cat.slug}`}
-                      className="card-elevated bg-card rounded-xl border border-border p-5 group"
-                    >
-                      <div className="flex items-start justify-between mb-3">
-                        <div
-                          className="w-10 h-10 rounded-lg flex items-center justify-center"
-                          style={{ backgroundColor: `${cat.color}15`, color: cat.color }}
-                        >
-                          <Icon className="w-5 h-5" />
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span
-                            className="text-xs font-bold px-2.5 py-1 rounded-full text-primary-foreground"
-                            style={{ backgroundColor: cat.color }}
-                          >
-                            {count}
-                          </span>
-                          <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </div>
-                      </div>
-                      <h3 className="font-semibold text-sm mb-1">{cat.name}</h3>
-                      <p className="text-xs text-muted-foreground mb-3">{cat.description}</p>
-                      <div className="flex flex-wrap gap-1.5">
-                        {featured.map((f) => (
-                          <span key={f.slug} className="category-tag">{f.name}</span>
-                        ))}
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Popular Calculators</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                {popularCalculators.map((calc) => {
-                  const Icon = getCategoryIcon(calc.icon);
-                  return (
-                    <Link
-                      key={calc.slug}
-                      to={`/${calc.categorySlug}/${calc.slug}`}
-                      className="card-elevated bg-card rounded-xl border border-border p-4 flex items-center gap-3 group"
-                    >
-                      <div className="w-9 h-9 rounded-lg bg-secondary flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold">{calc.shortName || calc.name}</p>
-                        <p className="text-xs text-muted-foreground">{calc.category}</p>
-                      </div>
-                    </Link>
-                  );
-                })}
-              </div>
-            </div>
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h2 className="text-2xl font-bold">Explore Categories</h2>
+            <p className="text-sm text-muted-foreground mt-1">Browse our extensive library of calculation tools</p>
           </div>
+          <Link to="/category/finance" className="text-sm font-semibold text-primary flex items-center gap-1 hover:underline">
+            View All <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
 
-          <Sidebar />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {categoryCards.map((cat, i) => {
+            const Icon = getCategoryIcon(cat.icon);
+            return (
+              <Link
+                key={i}
+                to={`/category/${cat.slug}`}
+                className="card-elevated bg-card rounded-xl border border-border p-5 group"
+              >
+                <div className="flex items-center gap-2.5 mb-3">
+                  <div className="w-8 h-8 bg-foreground rounded-md flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-background" />
+                  </div>
+                  <h3 className="font-bold text-sm">{cat.name}</h3>
+                </div>
+                <ul className="space-y-1.5">
+                  {cat.items.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span className="w-1 h-1 bg-muted-foreground rounded-full shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-12 border-t border-border">
+      {/* Ad */}
+      <section className="py-6">
+        <AdPlaceholder size="leaderboard" />
+      </section>
+
+      {/* Trending Tools */}
+      <section className="container mx-auto px-4 py-8">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold">Trending Tools</h2>
+          <p className="text-sm text-muted-foreground mt-1">Most visited calculators this week</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {trendingTools.map((tool) => (
+            <div key={tool.slug} className="bg-card rounded-xl border border-border p-5 flex flex-col">
+              <h3 className="font-bold text-sm mb-2">{tool.name}</h3>
+              <p className="text-sm text-muted-foreground mb-4 flex-1">{tool.description}</p>
+              <Link
+                to={`/${tool.categorySlug}/${tool.slug}`}
+                className="block w-full text-center py-2.5 bg-secondary text-foreground text-sm font-semibold rounded-lg hover:bg-secondary/80 transition-colors"
+              >
+                Calculate
+              </Link>
+            </div>
+          ))}
+          {/* Ad slot in trending */}
+          <div className="hidden lg:flex bg-card rounded-xl border border-border items-center justify-center row-span-2">
+            <AdPlaceholder size="rectangle" />
+          </div>
+        </div>
+      </section>
+
+      {/* Footer disclaimer text */}
+      <section className="container mx-auto px-4 py-10 border-t border-border">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4">About Calculators</h2>
+          <h2 className="text-2xl font-bold mb-4">About CalcHub</h2>
           <div className="prose prose-sm max-w-none text-muted-foreground space-y-4">
             <p>
-              Calculators is your one-stop destination for fast, comprehensive, and completely free online calculators across a wide range of categories. With over {totalCalcs} tools spanning finance, health &amp; fitness, math, unit conversions, science, date &amp; time, and lifestyle — we help millions of users every month make quick, accurate calculations without the hassle of sign-ups or downloads.
+              CalcHub is your one-stop destination for fast, comprehensive, and completely free online calculators across a wide range of categories. With over {totalCalcs} tools spanning finance, health &amp; fitness, math, unit conversions, science, date &amp; time, and lifestyle — we help millions of users every month make quick, accurate calculations.
             </p>
             <p>
-              Whether you're a student solving complex equations, a professional calculating mortgage rates, or someone tracking daily calorie intake — our tools are designed with precision and simplicity in mind. Each calculator is individually developed, rigorously tested, and optimized for all devices so you get reliable results every time, on desktop or mobile.
-            </p>
-            <p>
-              We believe the internet should be a source of free, accessible information. That's why all our calculators and tools are 100% free to use, require no registration, and are constantly updated to reflect the latest formulas and standards. From <Link to="/finance/mortgage-calculator" className="text-primary hover:underline">mortgage calculators</Link> and <Link to="/health/bmi-calculator" className="text-primary hover:underline">BMI calculators</Link> to <Link to="/math/percentage-calculator" className="text-primary hover:underline">percentage calculators</Link> and <Link to="/conversions/length-converter" className="text-primary hover:underline">unit converters</Link> — we've got you covered.
-            </p>
-            <p>
-              Our mission is simple: to be the most trusted, go-to calculator resource on the web. If you find an error or have a suggestion for a new tool, we'd love to hear from you. Your feedback helps us continuously improve and expand our library of calculators.
+              Whether you're a student solving complex equations, a professional calculating mortgage rates, or someone tracking daily calorie intake — our tools are designed with precision and simplicity in mind. Each calculator is individually developed, rigorously tested, and optimized for all devices.
             </p>
           </div>
         </div>

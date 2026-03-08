@@ -44,12 +44,9 @@ const safeEvaluate = (expr: string, angleMode: "deg" | "rad", lastAnswer: string
 
     e = e.replace(/\^/g, "**");
 
-    // Check if expression is complete enough to evaluate
     const openParens = (e.match(/\(/g) || []).length;
     const closeParens = (e.match(/\)/g) || []).length;
     if (openParens > closeParens) return null;
-
-    // Don't evaluate if ends with an operator
     if (/[+\-*/%]$/.test(e.trim())) return null;
 
     const result = new Function("return " + e)();
@@ -72,7 +69,6 @@ const HeroCalculator = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
 
-  // Real-time preview calculation
   const preview = useMemo(() => {
     if (!expression || expression === display) return null;
     const result = safeEvaluate(expression, angleMode, lastAnswer);
@@ -121,7 +117,6 @@ const HeroCalculator = () => {
     }
   }, [expression, angleMode, lastAnswer]);
 
-  // Keyboard support
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
@@ -144,7 +139,6 @@ const HeroCalculator = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handleInput, handleOperator, handleEquals, handleBackspace, handleClear]);
 
-  // Swipe gesture for mode switching
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   }, []);
@@ -158,54 +152,50 @@ const HeroCalculator = () => {
   }, []);
 
   const btn = "flex items-center justify-center rounded-xl font-semibold transition-all active:scale-95 select-none";
-  const btnNum = `${btn} bg-[hsl(var(--muted))] text-foreground hover:brightness-125 h-10 text-sm`;
-  const btnOp = `${btn} bg-[hsl(220,25%,25%)] text-[hsl(220,60%,75%)] hover:brightness-125 h-10 text-sm`;
-  const btnEquals = `${btn} bg-[hsl(210,60%,78%)] text-[hsl(220,30%,15%)] hover:brightness-110 h-10 text-base font-bold`;
-  const btnSci = `${btn} bg-[hsl(var(--muted))] text-muted-foreground hover:brightness-125 h-9 text-xs`;
+  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 h-12 text-sm`;
+  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 h-12 text-sm`;
+  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 h-12 text-base font-bold col-span-2`;
+  const btnSci = `${btn} bg-secondary text-muted-foreground hover:bg-secondary/80 h-9 text-xs`;
   const btnSciActive = `${btn} bg-primary/20 text-primary hover:brightness-125 h-9 text-xs`;
 
   return (
-    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-xl overflow-hidden">
+    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden">
       {/* Tabs */}
-      <div className="flex border-b border-border">
+      <div className="flex">
         <button
           onClick={() => { setMode("basic"); setInv(false); }}
-          className={`flex-1 py-2 text-xs font-semibold transition-colors ${
+          className={`flex-1 py-3 text-sm font-semibold transition-colors border-b-2 ${
             mode === "basic"
-              ? "bg-primary text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+              ? "border-foreground text-foreground"
+              : "border-transparent text-muted-foreground hover:text-foreground"
           }`}
         >
           Basic
         </button>
         <button
           onClick={() => setMode("scientific")}
-          className={`flex-1 py-2 text-xs font-semibold transition-colors ${
+          className={`flex-1 py-3 text-sm font-semibold transition-colors border-b-2 ${
             mode === "scientific"
-              ? "bg-primary text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+              ? "border-foreground text-foreground"
+              : "border-transparent text-muted-foreground hover:text-foreground"
           }`}
         >
           Scientific
         </button>
       </div>
 
-      <div className="p-3 space-y-2">
+      <div className="p-4 space-y-3">
         {/* Display */}
-        <div className="bg-secondary rounded-lg p-3 text-right border border-border">
+        <div className="bg-secondary rounded-xl p-4 text-right border border-border">
           <div className="flex items-center justify-between mb-1">
-            <button
-              onClick={() => setShowHistory(!showHistory)}
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <button onClick={() => setShowHistory(!showHistory)} className="text-muted-foreground hover:text-foreground transition-colors">
               <Clock className="w-4 h-4" />
             </button>
-            {expression && <p className="text-[11px] text-muted-foreground truncate ml-2">{expression}</p>}
+            {expression && <p className="text-xs text-muted-foreground truncate ml-2">{expression}</p>}
           </div>
-          <p className="text-2xl font-bold text-foreground truncate">{display}</p>
-          {/* Real-time preview */}
+          <p className="text-3xl font-bold text-foreground truncate">{display}</p>
           {preview && (
-            <p className="text-sm text-primary/70 mt-0.5 truncate">= {preview}</p>
+            <p className="text-sm text-primary/70 mt-1 truncate">= {preview}</p>
           )}
         </div>
 
@@ -239,12 +229,9 @@ const HeroCalculator = () => {
 
         {/* Scientific buttons */}
         {mode === "scientific" && (
-          <div className="space-y-1.5">
-            <div className="grid grid-cols-4 gap-1.5">
-              <button
-                className={`${btn} col-span-2 h-12 text-sm rounded-2xl bg-[hsl(var(--muted))]`}
-                onClick={() => setAngleMode(angleMode === "deg" ? "rad" : "deg")}
-              >
+          <div className="space-y-2">
+            <div className="grid grid-cols-4 gap-2">
+              <button className={`${btn} col-span-2 h-10 text-sm rounded-2xl bg-secondary`} onClick={() => setAngleMode(angleMode === "deg" ? "rad" : "deg")}>
                 <span className={`px-3 py-1 rounded-xl ${angleMode === "deg" ? "text-primary font-bold" : "text-muted-foreground"}`}>Deg</span>
                 <span className="text-border mx-1">|</span>
                 <span className={`px-3 py-1 rounded-xl ${angleMode === "rad" ? "text-primary font-bold" : "text-muted-foreground"}`}>Rad</span>
@@ -252,53 +239,61 @@ const HeroCalculator = () => {
               <button className={btnSci} onClick={() => handleInput("!")}>x!</button>
               <button className={inv ? btnSciActive : btnSci} onClick={() => setInv(!inv)}>Inv</button>
             </div>
-            <div className="grid grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-4 gap-2">
               <button className={btnSci} onClick={() => handleInput(inv ? "asin(" : "sin(")}>{inv ? "sin⁻¹" : "sin"}</button>
               <button className={btnSci} onClick={() => handleInput("ln(")}>ln</button>
               <button className={btnSci} onClick={() => handleInput("π")}>π</button>
               <button className={btnSci} onClick={() => handleInput(inv ? "acos(" : "cos(")}>{inv ? "cos⁻¹" : "cos"}</button>
             </div>
-            <div className="grid grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-4 gap-2">
               <button className={btnSci} onClick={() => handleInput("log(")}>log</button>
               <button className={btnSci} onClick={() => handleInput("e")}>e</button>
               <button className={btnSci} onClick={() => handleInput(inv ? "atan(" : "tan(")}>{inv ? "tan⁻¹" : "tan"}</button>
               <button className={btnSci} onClick={() => handleInput("√(")}>√</button>
             </div>
-            <div className="grid grid-cols-4 gap-1.5">
+            <div className="grid grid-cols-4 gap-2">
               <button className={btnSci} onClick={() => handleInput("Ans")}>Ans</button>
               <button className={btnSci} onClick={() => handleInput("e")}>EXP</button>
               <button className={btnSci} onClick={() => handleInput("^")}>xʸ</button>
-              <button className={btnEquals} onClick={handleEquals}>=</button>
+              <button className={`${btn} bg-primary text-primary-foreground hover:opacity-90 h-9 text-sm font-bold`} onClick={handleEquals}>=</button>
             </div>
           </div>
         )}
 
         {/* Main grid */}
-        <div className="grid grid-cols-4 gap-1.5">
-          <button className={btnOp} onClick={() => handleInput("(")}>{"("}</button>
-          <button className={btnOp} onClick={() => handleInput(")")}>{")"}</button>
-          <button className={btnOp} onClick={() => handleInput("%")}>%</button>
-          <button className={btnOp} onClick={handleClear}>AC</button>
+        <div className="grid grid-cols-4 gap-2">
+          <button className={btnNum} onClick={handleClear}>C</button>
+          <button className={btnNum} onClick={() => {
+            const current = expression || display;
+            if (current.startsWith("-")) {
+              setExpression(current.slice(1));
+              setDisplay(display.startsWith("-") ? display.slice(1) : display);
+            } else {
+              setExpression("-" + current);
+              setDisplay("-" + display);
+            }
+          }}>+/−</button>
+          <button className={btnNum} onClick={() => handleInput("%")}>%</button>
+          <button className={btnOp} onClick={() => handleOperator("+")}>+</button>
 
           {["7", "8", "9"].map(n => (
             <button key={n} className={btnNum} onClick={() => handleInput(n)}>{n}</button>
           ))}
-          <button className={btnOp} onClick={() => handleOperator("÷")}>÷</button>
+          <button className={btnOp} onClick={() => handleOperator("×")}>×</button>
 
           {["4", "5", "6"].map(n => (
             <button key={n} className={btnNum} onClick={() => handleInput(n)}>{n}</button>
           ))}
-          <button className={btnOp} onClick={() => handleOperator("×")}>×</button>
+          <button className={btnOp} onClick={() => handleOperator("-")}>−</button>
 
           {["1", "2", "3"].map(n => (
             <button key={n} className={btnNum} onClick={() => handleInput(n)}>{n}</button>
           ))}
-          <button className={btnOp} onClick={() => handleOperator("-")}>−</button>
+          <button className={btnOp} onClick={() => handleOperator("÷")}>÷</button>
 
           <button className={btnNum} onClick={() => handleInput("0")}>0</button>
           <button className={btnNum} onClick={() => handleInput(".")}>.</button>
           <button className={btnEquals} onClick={handleEquals}>=</button>
-          <button className={btnOp} onClick={() => handleOperator("+")}>+</button>
         </div>
       </div>
     </div>
