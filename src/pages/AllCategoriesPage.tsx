@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { getCategoryIcon } from "@/data/calculators";
+import { getCategoryIcon, popularCalculators } from "@/data/calculators";
 import { getCategoryCalculatorCount, uniqueCalculators } from "@/lib/calculator-utils";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { Flame } from "lucide-react";
 import RecentlyUsed from "@/components/RecentlyUsed";
 
 const allCategories = [
@@ -14,6 +15,8 @@ const allCategories = [
   { name: "Date & Time", slug: "datetime", icon: "calendar", desc: "Age, date difference, time zones, and countdown tools." },
   { name: "Lifestyle", slug: "lifestyle", icon: "smile", desc: "Cooking, construction, automotive, and daily life tools." },
 ];
+
+const popularSlugs = new Set(popularCalculators.map((c) => c.slug));
 
 const getFeaturedCalculators = (categorySlug: string) => {
   return uniqueCalculators
@@ -57,8 +60,11 @@ const AllCategoriesPage = () => {
                     <Link
                       key={calc.slug}
                       to={`/${calc.categorySlug}/${calc.slug}`}
-                      className="text-sm px-3 py-2 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors truncate"
+                      className="text-sm px-3 py-2 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors truncate flex items-center gap-1.5"
                     >
+                      {popularSlugs.has(calc.slug) && (
+                        <Flame className="w-3.5 h-3.5 text-primary shrink-0" />
+                      )}
                       {calc.name}
                     </Link>
                   ))}

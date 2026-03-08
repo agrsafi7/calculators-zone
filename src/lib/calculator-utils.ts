@@ -41,6 +41,10 @@ export const addRecentCalculator = (calc: { slug: string; categorySlug: string; 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(recent.slice(0, MAX_RECENT)));
 };
 
+export const clearRecentCalculators = () => {
+  localStorage.removeItem(STORAGE_KEY);
+};
+
 // Convert CalculatorConfig[] to CalculatorInfo[]
 const configToInfo = (configs: { slug: string; name: string; category: string; categorySlug: string; description: string; icon: string; subcategory?: string }[]): (CalculatorInfo & { subcategory?: string })[] =>
   configs.map((c) => ({
