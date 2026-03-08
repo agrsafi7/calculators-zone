@@ -1501,7 +1501,12 @@ const _mathCalculators: CalculatorConfig[] = [
         { label: "Number of Factors", value: `${factors.length}` },
         { label: "Is Prime?", value: isPrime ? "Yes" : "No" },
         { label: "Factor Pairs", value: factors.filter((_, i) => i < factors.length / 2).map(f => `${f}×${n / f}`).join(", ") },
-      ];
+];
+
+export const mathCalculators = _mathCalculators.map(c => ({
+  ...c,
+  subcategory: mathSubcategoryMap[c.slug] || "General",
+}));
     },
     formula: { expression: "Check divisibility from 1 to √n", variables: ["If n/i is integer, both i and n/i are factors"] },
     howToUse: "Enter a positive integer to find all its factors.",
