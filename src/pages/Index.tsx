@@ -169,6 +169,9 @@ const Index = () => {
                     <Icon className="w-4 h-4 text-background" />
                   </div>
                   <h3 className="font-bold text-sm">{cat.name}</h3>
+                  <span className="ml-auto text-xs font-semibold bg-secondary text-muted-foreground px-2 py-0.5 rounded-full">
+                    {getCategoryCalculatorCount(cat.slug)}
+                  </span>
                 </div>
                 <ul className="space-y-1.5">
                   {cat.items.map((item) => (
