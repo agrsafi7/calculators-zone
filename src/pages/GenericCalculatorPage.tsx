@@ -34,6 +34,7 @@ const allConfigs = [
   ...scienceCalculatorsExtra,
   ...lifestyleCalculators,
   ...lifestyleCalculatorsExtended,
+  ...lifestyleCalculatorsExtra,
 ];
 
 const GenericCalculatorPage = () => {
