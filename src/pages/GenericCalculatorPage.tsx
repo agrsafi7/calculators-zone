@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { healthCalculators } from "@/data/health-calculators";
 import { mathCalculators } from "@/data/math-calculators";
+import { mathCalculatorsExtended } from "@/data/math-calculators-extended";
 import { conversionCalculators } from "@/data/conversion-calculators";
 import { datetimeCalculators } from "@/data/datetime-calculators";
 import { scienceCalculators } from "@/data/science-calculators";
@@ -17,6 +18,7 @@ const allConfigs = [
   ...healthCalculators,
   ...healthCalculatorsExtended,
   ...mathCalculators,
+  ...mathCalculatorsExtended,
   ...conversionCalculators,
   ...datetimeCalculators,
   ...scienceCalculators,
