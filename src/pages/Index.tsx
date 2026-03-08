@@ -46,7 +46,7 @@ const categoryCards = [
     name: "Lifestyle & Daily Life",
     slug: "lifestyle",
     icon: "smile",
-    items: ["Tip & Bill Split", "Cooking Conversions", "Construction & DIY", "Pet & Travel"],
+    items: ["Time & Date", "Personal Life", "Relationships", "Home & Household", "Travel", "Food & Cooking", "Shopping", "Productivity", "Digital Life", "Transportation", "Events & Parties", "Health Lifestyle", "Pet Care", "Entertainment", "Personal Finance"],
   },
   {
     name: "Date & Time",
