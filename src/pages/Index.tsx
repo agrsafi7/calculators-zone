@@ -150,7 +150,7 @@ const Index = () => {
               <Link
                 key={i}
                 to={`/category/${cat.slug}`}
-                className="card-elevated bg-card rounded-xl border border-border p-5 group"
+                className="bg-card rounded-xl border border-border p-5 group transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30"
               >
                 <div className="flex items-center gap-2.5 mb-3">
                   <div className="w-8 h-8 bg-foreground rounded-md flex items-center justify-center">
