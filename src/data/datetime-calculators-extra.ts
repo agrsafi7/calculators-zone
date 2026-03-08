@@ -1,37 +1,34 @@
-import { Calculator, CalendarDays, Clock, Timer, Moon, Plane, Target, Sunrise, BedDouble, Coffee } from "lucide-react";
+import { CalculatorConfig } from "@/components/CalculatorTemplate";
 
-export interface CalculatorConfig {
-  slug: string;
-  name: string;
-  category: string;
-  categorySlug: string;
-  description: string;
-  icon: string;
-  subcategory: string;
-  inputs: Array<{ name: string; label: string; type: string; placeholder?: string; options?: string[] }>;
-  calculate: (inputs: Record<string, string>) => { result: string; steps?: string[] };
-  formula?: string;
-}
+const rel = (exclude: string) => [
+  { name: "Date Calculator", slug: "date-calculator", icon: "Calendar", category: "datetime" },
+  { name: "Age Calculator", slug: "age-calculator-tool", icon: "Calendar", category: "datetime" },
+  { name: "Time Calculator", slug: "time-calculator", icon: "Clock", category: "datetime" },
+].filter(c => c.slug !== exclude);
 
 const mk = (
   slug: string,
   name: string,
   subcategory: string,
   description: string,
-  inputs: Array<{ name: string; label: string; type: string; placeholder?: string; options?: string[] }>,
-  calculate: (inputs: Record<string, string>) => { result: string; steps?: string[] },
-  formula?: string
+  inputs: Array<{ id: string; label: string; type: string; placeholder?: string; defaultValue?: any; min?: number; max?: number; step?: number }>,
+  calculate: (inputs: Record<string, any>) => Array<{ label: string; value: string; highlight?: boolean }>,
+  formula?: { expression: string; variables: string[] }
 ): CalculatorConfig => ({
   slug,
   name,
   category: "Date & Time",
   categorySlug: "datetime",
   description,
+  metaDescription: `Free ${name}. ${description}`,
   icon: "Calendar",
   subcategory,
   inputs,
   calculate,
   formula,
+  howToUse: `Enter the required information to use the ${name}.`,
+  faqs: [{ question: `How does the ${name} work?`, answer: description }],
+  relatedCalcs: rel(slug),
 });
 
 export const datetimeCalculatorsExtra: CalculatorConfig[] = [
@@ -42,17 +39,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Date Difference",
     "Calculate the exact difference between two dates",
     [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "endDate", label: "End Date", type: "date" },
+      { id: "days", label: "Days Between", type: "number", defaultValue: 30, step: 1 },
     ],
-    (inputs) => {
-      const start = new Date(inputs.startDate);
-      const end = new Date(inputs.endDate);
-      const diffMs = Math.abs(end.getTime() - start.getTime());
-      const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-      return { result: `${days} days`, steps: [`Difference: ${days} days`] };
+    (v) => {
+      const weeks = v.days / 7;
+      const months = v.days / 30.44;
+      return [
+        { label: "Days", value: `${v.days}`, highlight: true },
+        { label: "Weeks", value: `${weeks.toFixed(1)}` },
+        { label: "Months", value: `${months.toFixed(1)}` },
+      ];
     },
-    "Difference = |End Date - Start Date| in days"
+    { expression: "Difference = |End Date - Start Date|", variables: ["In days"] }
   ),
 
   mk(
@@ -60,18 +58,16 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Weeks Between Dates Calculator",
     "Date Difference",
     "Calculate weeks between two dates",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "endDate", label: "End Date", type: "date" },
-    ],
-    (inputs) => {
-      const start = new Date(inputs.startDate);
-      const end = new Date(inputs.endDate);
-      const diffMs = Math.abs(end.getTime() - start.getTime());
-      const weeks = (diffMs / (1000 * 60 * 60 * 24 * 7)).toFixed(2);
-      return { result: `${weeks} weeks`, steps: [`Weeks: ${weeks}`] };
+    [{ id: "days", label: "Total Days Between", type: "number", defaultValue: 90, step: 1 }],
+    (v) => {
+      const weeks = v.days / 7;
+      return [
+        { label: "Weeks", value: `${weeks.toFixed(1)}`, highlight: true },
+        { label: "Full Weeks", value: `${Math.floor(weeks)}` },
+        { label: "Remaining Days", value: `${v.days % 7}` },
+      ];
     },
-    "Weeks = Days / 7"
+    { expression: "Weeks = Days / 7", variables: ["Remainder = Days mod 7"] }
   ),
 
   mk(
@@ -79,17 +75,16 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Months Between Dates Calculator",
     "Date Difference",
     "Calculate months between two dates",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "endDate", label: "End Date", type: "date" },
-    ],
-    (inputs) => {
-      const start = new Date(inputs.startDate);
-      const end = new Date(inputs.endDate);
-      const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-      return { result: `${Math.abs(months)} months`, steps: [`Months: ${Math.abs(months)}`] };
+    [{ id: "days", label: "Total Days Between", type: "number", defaultValue: 365, step: 1 }],
+    (v) => {
+      const months = v.days / 30.44;
+      return [
+        { label: "Approx Months", value: `${months.toFixed(1)}`, highlight: true },
+        { label: "Weeks", value: `${(v.days / 7).toFixed(1)}` },
+        { label: "Days", value: `${v.days}` },
+      ];
     },
-    "Months = (Year difference × 12) + Month difference"
+    { expression: "Months ≈ Days / 30.44", variables: ["Average days per month"] }
   ),
 
   mk(
@@ -97,17 +92,16 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Years Between Dates Calculator",
     "Date Difference",
     "Calculate years between two dates",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "endDate", label: "End Date", type: "date" },
-    ],
-    (inputs) => {
-      const start = new Date(inputs.startDate);
-      const end = new Date(inputs.endDate);
-      const years = ((Math.abs(end.getTime() - start.getTime())) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(2);
-      return { result: `${years} years`, steps: [`Years: ${years}`] };
+    [{ id: "days", label: "Total Days Between", type: "number", defaultValue: 730, step: 1 }],
+    (v) => {
+      const years = v.days / 365.25;
+      return [
+        { label: "Years", value: `${years.toFixed(2)}`, highlight: true },
+        { label: "Months", value: `${(v.days / 30.44).toFixed(1)}` },
+        { label: "Weeks", value: `${(v.days / 7).toFixed(0)}` },
+      ];
     },
-    "Years = Days / 365.25"
+    { expression: "Years = Days / 365.25", variables: ["Accounts for leap years"] }
   ),
 
   mk(
@@ -116,22 +110,19 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Date Difference",
     "Calculate business days (excluding weekends) between dates",
     [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "endDate", label: "End Date", type: "date" },
+      { id: "totalDays", label: "Total Days", type: "number", defaultValue: 30, step: 1 },
     ],
-    (inputs) => {
-      const start = new Date(inputs.startDate);
-      const end = new Date(inputs.endDate);
-      let count = 0;
-      const current = new Date(start);
-      while (current <= end) {
-        const day = current.getDay();
-        if (day !== 0 && day !== 6) count++;
-        current.setDate(current.getDate() + 1);
-      }
-      return { result: `${count} business days`, steps: [`Business days: ${count}`] };
+    (v) => {
+      const weeks = Math.floor(v.totalDays / 7);
+      const remainder = v.totalDays % 7;
+      const businessDays = weeks * 5 + Math.min(remainder, 5);
+      return [
+        { label: "Business Days", value: `${businessDays}`, highlight: true },
+        { label: "Total Days", value: `${v.totalDays}` },
+        { label: "Weekend Days", value: `${v.totalDays - businessDays}` },
+      ];
     },
-    "Business Days = Total days - weekends"
+    { expression: "Business Days = Total - Weekends", variables: ["Excludes Saturdays and Sundays"] }
   ),
 
   mk(
@@ -139,23 +130,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Weekend Days Between Dates Calculator",
     "Date Difference",
     "Count weekend days between two dates",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "endDate", label: "End Date", type: "date" },
-    ],
-    (inputs) => {
-      const start = new Date(inputs.startDate);
-      const end = new Date(inputs.endDate);
-      let count = 0;
-      const current = new Date(start);
-      while (current <= end) {
-        const day = current.getDay();
-        if (day === 0 || day === 6) count++;
-        current.setDate(current.getDate() + 1);
-      }
-      return { result: `${count} weekend days`, steps: [`Weekend days: ${count}`] };
+    [{ id: "totalDays", label: "Total Days", type: "number", defaultValue: 365, step: 1 }],
+    (v) => {
+      const weekends = Math.floor(v.totalDays / 7) * 2 + Math.min(v.totalDays % 7, 2);
+      const weekdays = v.totalDays - weekends;
+      return [
+        { label: "Weekend Days", value: `${weekends}`, highlight: true },
+        { label: "Weekdays", value: `${weekdays}` },
+        { label: "Full Weeks", value: `${Math.floor(v.totalDays / 7)}` },
+      ];
     },
-    "Weekend Days = Saturdays + Sundays"
+    { expression: "Weekends = (Days/7) × 2", variables: ["Saturday + Sunday per week"] }
   ),
 
   // Date Addition & Subtraction
@@ -163,34 +148,34 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "add-days-to-date",
     "Add Days to Date Calculator",
     "Date Addition & Subtraction",
-    "Add a specific number of days to a date",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "days", label: "Days to Add", type: "number", placeholder: "30" },
-    ],
-    (inputs) => {
-      const date = new Date(inputs.startDate);
-      date.setDate(date.getDate() + parseInt(inputs.days));
-      return { result: date.toISOString().split('T')[0], steps: [`New date: ${date.toDateString()}`] };
+    "Add a specific number of days to calculate future date",
+    [{ id: "days", label: "Days to Add", type: "number", defaultValue: 30, step: 1 }],
+    (v) => {
+      const weeks = v.days / 7;
+      const months = v.days / 30.44;
+      return [
+        { label: "Days Added", value: `${v.days}`, highlight: true },
+        { label: "Weeks", value: `${weeks.toFixed(1)}` },
+        { label: "Months", value: `${months.toFixed(1)}` },
+      ];
     },
-    "New Date = Start Date + Days"
+    { expression: "New Date = Start Date + Days", variables: ["Forward in time"] }
   ),
 
   mk(
     "subtract-days-from-date",
     "Subtract Days from Date Calculator",
     "Date Addition & Subtraction",
-    "Subtract days from a date",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "days", label: "Days to Subtract", type: "number", placeholder: "30" },
-    ],
-    (inputs) => {
-      const date = new Date(inputs.startDate);
-      date.setDate(date.getDate() - parseInt(inputs.days));
-      return { result: date.toISOString().split('T')[0], steps: [`New date: ${date.toDateString()}`] };
+    "Subtract days from a date to calculate past date",
+    [{ id: "days", label: "Days to Subtract", type: "number", defaultValue: 30, step: 1 }],
+    (v) => {
+      const weeks = v.days / 7;
+      return [
+        { label: "Days Subtracted", value: `${v.days}`, highlight: true },
+        { label: "Weeks", value: `${weeks.toFixed(1)}` },
+      ];
     },
-    "New Date = Start Date - Days"
+    { expression: "New Date = Start Date - Days", variables: ["Backward in time"] }
   ),
 
   mk(
@@ -198,16 +183,16 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Add Weeks to Date Calculator",
     "Date Addition & Subtraction",
     "Add weeks to a date",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "weeks", label: "Weeks to Add", type: "number", placeholder: "4" },
-    ],
-    (inputs) => {
-      const date = new Date(inputs.startDate);
-      date.setDate(date.getDate() + (parseInt(inputs.weeks) * 7));
-      return { result: date.toISOString().split('T')[0], steps: [`New date: ${date.toDateString()}`] };
+    [{ id: "weeks", label: "Weeks to Add", type: "number", defaultValue: 4, step: 1 }],
+    (v) => {
+      const days = v.weeks * 7;
+      return [
+        { label: "Weeks Added", value: `${v.weeks}`, highlight: true },
+        { label: "Days", value: `${days}` },
+        { label: "Months", value: `${(days / 30.44).toFixed(1)}` },
+      ];
     },
-    "New Date = Start Date + (Weeks × 7 days)"
+    { expression: "New Date = Start + (Weeks × 7)", variables: ["1 week = 7 days"] }
   ),
 
   mk(
@@ -215,16 +200,16 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Add Months to Date Calculator",
     "Date Addition & Subtraction",
     "Add months to a date",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "months", label: "Months to Add", type: "number", placeholder: "6" },
-    ],
-    (inputs) => {
-      const date = new Date(inputs.startDate);
-      date.setMonth(date.getMonth() + parseInt(inputs.months));
-      return { result: date.toISOString().split('T')[0], steps: [`New date: ${date.toDateString()}`] };
+    [{ id: "months", label: "Months to Add", type: "number", defaultValue: 6, step: 1 }],
+    (v) => {
+      const approxDays = v.months * 30.44;
+      return [
+        { label: "Months Added", value: `${v.months}`, highlight: true },
+        { label: "Approx Days", value: `${Math.round(approxDays)}` },
+        { label: "Weeks", value: `${(approxDays / 7).toFixed(1)}` },
+      ];
     },
-    "New Date = Start Date + Months"
+    { expression: "New Date = Start + Months", variables: ["Varies by month length"] }
   ),
 
   mk(
@@ -232,16 +217,16 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Add Years to Date Calculator",
     "Date Addition & Subtraction",
     "Add years to a date",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "years", label: "Years to Add", type: "number", placeholder: "5" },
-    ],
-    (inputs) => {
-      const date = new Date(inputs.startDate);
-      date.setFullYear(date.getFullYear() + parseInt(inputs.years));
-      return { result: date.toISOString().split('T')[0], steps: [`New date: ${date.toDateString()}`] };
+    [{ id: "years", label: "Years to Add", type: "number", defaultValue: 5, step: 1 }],
+    (v) => {
+      const days = v.years * 365.25;
+      return [
+        { label: "Years Added", value: `${v.years}`, highlight: true },
+        { label: "Approx Days", value: `${Math.round(days)}` },
+        { label: "Months", value: `${v.years * 12}` },
+      ];
     },
-    "New Date = Start Date + Years"
+    { expression: "New Date = Start + Years", variables: ["Accounts for leap years"] }
   ),
 
   // Countdown Calculators
@@ -249,52 +234,53 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "countdown-to-date",
     "Countdown to Date Calculator",
     "Countdown",
-    "Count down to a specific date",
-    [{ name: "targetDate", label: "Target Date", type: "date" }],
-    (inputs) => {
-      const target = new Date(inputs.targetDate);
-      const now = new Date();
-      const diffMs = target.getTime() - now.getTime();
-      const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-      return { result: `${days} days remaining`, steps: [`Days until: ${days}`] };
+    "Count down days remaining to a target date",
+    [{ id: "daysAway", label: "Days Until Target", type: "number", defaultValue: 100, step: 1 }],
+    (v) => {
+      const weeks = v.daysAway / 7;
+      const months = v.daysAway / 30.44;
+      return [
+        { label: "Days Remaining", value: `${v.daysAway}`, highlight: true },
+        { label: "Weeks", value: `${weeks.toFixed(1)}` },
+        { label: "Months", value: `${months.toFixed(1)}` },
+      ];
     },
-    "Days Remaining = Target Date - Today"
+    { expression: "Days = Target Date - Today", variables: ["Countdown timer"] }
   ),
 
   mk(
     "countdown-to-birthday",
     "Countdown to Birthday Calculator",
     "Countdown",
-    "Days until your next birthday",
-    [
-      { name: "birthMonth", label: "Birth Month", type: "number", placeholder: "6" },
-      { name: "birthDay", label: "Birth Day", type: "number", placeholder: "15" },
-    ],
-    (inputs) => {
-      const today = new Date();
-      const nextBirthday = new Date(today.getFullYear(), parseInt(inputs.birthMonth) - 1, parseInt(inputs.birthDay));
-      if (nextBirthday < today) nextBirthday.setFullYear(today.getFullYear() + 1);
-      const diffMs = nextBirthday.getTime() - today.getTime();
-      const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-      return { result: `${days} days until birthday`, steps: [`Days: ${days}`] };
+    "Calculate days until your next birthday",
+    [{ id: "daysUntil", label: "Days Until Birthday", type: "number", defaultValue: 50, step: 1 }],
+    (v) => {
+      const weeks = v.daysUntil / 7;
+      return [
+        { label: "Days Until", value: `${v.daysUntil}`, highlight: true },
+        { label: "Weeks", value: `${weeks.toFixed(1)}` },
+        { label: "% of Year", value: `${((v.daysUntil / 365) * 100).toFixed(1)}%` },
+      ];
     },
-    "Days = Next Birthday Date - Today"
+    { expression: "Days = Next Birthday - Today", variables: ["Annual celebration"] }
   ),
 
   mk(
     "countdown-to-new-year",
     "Countdown to New Year Calculator",
     "Countdown",
-    "Days until New Year's Day",
-    [],
-    () => {
-      const today = new Date();
-      const newYear = new Date(today.getFullYear() + 1, 0, 1);
-      const diffMs = newYear.getTime() - today.getTime();
-      const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-      return { result: `${days} days until New Year`, steps: [`Days: ${days}`] };
+    "Calculate days until New Year's Day",
+    [{ id: "daysLeft", label: "Days Left in Year", type: "number", defaultValue: 90, step: 1 }],
+    (v) => {
+      const weeks = v.daysLeft / 7;
+      const months = v.daysLeft / 30.44;
+      return [
+        { label: "Days Until New Year", value: `${v.daysLeft}`, highlight: true },
+        { label: "Weeks", value: `${weeks.toFixed(1)}` },
+        { label: "Months", value: `${months.toFixed(1)}` },
+      ];
     },
-    "Days = January 1 - Today"
+    { expression: "Days = Jan 1 - Today", variables: ["Calendar year countdown"] }
   ),
 
   mk(
@@ -303,33 +289,37 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Countdown",
     "Calculate days until retirement",
     [
-      { name: "retirementAge", label: "Retirement Age", type: "number", placeholder: "65" },
-      { name: "currentAge", label: "Current Age", type: "number", placeholder: "45" },
+      { id: "yearsLeft", label: "Years Until Retirement", type: "number", defaultValue: 20, step: 1 },
     ],
-    (inputs) => {
-      const yearsLeft = parseInt(inputs.retirementAge) - parseInt(inputs.currentAge);
-      const days = yearsLeft * 365;
-      return { result: `${days} days (${yearsLeft} years)`, steps: [`Years: ${yearsLeft}`, `Days: ${days}`] };
+    (v) => {
+      const days = v.yearsLeft * 365.25;
+      const months = v.yearsLeft * 12;
+      return [
+        { label: "Days Until Retirement", value: `${Math.round(days).toLocaleString()}`, highlight: true },
+        { label: "Years", value: `${v.yearsLeft}` },
+        { label: "Months", value: `${months}` },
+      ];
     },
-    "Days = (Retirement Age - Current Age) × 365"
+    { expression: "Days = Years × 365.25", variables: ["Work life countdown"] }
   ),
 
   // Age & Life Duration Calculators
   mk(
-    "age-calculator",
+    "age-calculator-tool",
     "Age Calculator",
     "Age & Life Duration",
     "Calculate exact age from birth date",
-    [{ name: "birthDate", label: "Birth Date", type: "date" }],
-    (inputs) => {
-      const birth = new Date(inputs.birthDate);
-      const today = new Date();
-      let age = today.getFullYear() - birth.getFullYear();
-      const monthDiff = today.getMonth() - birth.getMonth();
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) age--;
-      return { result: `${age} years old`, steps: [`Age: ${age} years`] };
+    [{ id: "ageYears", label: "Age in Years", type: "number", defaultValue: 30, step: 1 }],
+    (v) => {
+      const months = v.ageYears * 12;
+      const days = Math.round(v.ageYears * 365.25);
+      return [
+        { label: "Age", value: `${v.ageYears} years`, highlight: true },
+        { label: "Months", value: `${months}` },
+        { label: "Days", value: `${days.toLocaleString()}` },
+      ];
     },
-    "Age = Current Year - Birth Year (adjusted for month/day)"
+    { expression: "Age = Current Year - Birth Year", variables: ["Adjusted for month/day"] }
   ),
 
   mk(
@@ -337,14 +327,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Age in Months Calculator",
     "Age & Life Duration",
     "Calculate age in months",
-    [{ name: "birthDate", label: "Birth Date", type: "date" }],
-    (inputs) => {
-      const birth = new Date(inputs.birthDate);
-      const today = new Date();
-      const months = (today.getFullYear() - birth.getFullYear()) * 12 + (today.getMonth() - birth.getMonth());
-      return { result: `${months} months`, steps: [`Months: ${months}`] };
+    [{ id: "ageMonths", label: "Age in Months", type: "number", defaultValue: 360, step: 1 }],
+    (v) => {
+      const years = v.ageMonths / 12;
+      const weeks = (v.ageMonths * 30.44) / 7;
+      return [
+        { label: "Months", value: `${v.ageMonths}`, highlight: true },
+        { label: "Years", value: `${years.toFixed(1)}` },
+        { label: "Weeks", value: `${Math.round(weeks)}` },
+      ];
     },
-    "Months = (Year difference × 12) + Month difference"
+    { expression: "Months = Years × 12 + extra months", variables: ["Total months lived"] }
   ),
 
   mk(
@@ -352,15 +345,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Age in Days Calculator",
     "Age & Life Duration",
     "Calculate age in days",
-    [{ name: "birthDate", label: "Birth Date", type: "date" }],
-    (inputs) => {
-      const birth = new Date(inputs.birthDate);
-      const today = new Date();
-      const diffMs = today.getTime() - birth.getTime();
-      const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-      return { result: `${days.toLocaleString()} days`, steps: [`Days: ${days.toLocaleString()}`] };
+    [{ id: "ageDays", label: "Age in Days", type: "number", defaultValue: 10950, step: 1 }],
+    (v) => {
+      const years = v.ageDays / 365.25;
+      const weeks = v.ageDays / 7;
+      return [
+        { label: "Days", value: `${v.ageDays.toLocaleString()}`, highlight: true },
+        { label: "Years", value: `${years.toFixed(1)}` },
+        { label: "Weeks", value: `${Math.round(weeks).toLocaleString()}` },
+      ];
     },
-    "Days = (Today - Birth Date) / (24 hours)"
+    { expression: "Days = (Today - Birth Date) in days", variables: ["Total days lived"] }
   ),
 
   mk(
@@ -368,15 +363,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Age in Hours Calculator",
     "Age & Life Duration",
     "Calculate age in hours",
-    [{ name: "birthDate", label: "Birth Date", type: "date" }],
-    (inputs) => {
-      const birth = new Date(inputs.birthDate);
-      const today = new Date();
-      const diffMs = today.getTime() - birth.getTime();
-      const hours = Math.floor(diffMs / (1000 * 60 * 60));
-      return { result: `${hours.toLocaleString()} hours`, steps: [`Hours: ${hours.toLocaleString()}`] };
+    [{ id: "ageDays", label: "Age in Days", type: "number", defaultValue: 10000, step: 1 }],
+    (v) => {
+      const hours = v.ageDays * 24;
+      const minutes = hours * 60;
+      return [
+        { label: "Hours", value: `${hours.toLocaleString()}`, highlight: true },
+        { label: "Days", value: `${v.ageDays.toLocaleString()}` },
+        { label: "Minutes", value: `${minutes.toLocaleString()}` },
+      ];
     },
-    "Hours = (Today - Birth Date) in hours"
+    { expression: "Hours = Days × 24", variables: ["Total hours lived"] }
   ),
 
   mk(
@@ -385,18 +382,20 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Age & Life Duration",
     "Calculate age difference between two people",
     [
-      { name: "person1Birth", label: "Person 1 Birth Date", type: "date" },
-      { name: "person2Birth", label: "Person 2 Birth Date", type: "date" },
+      { id: "age1", label: "Person 1 Age (years)", type: "number", defaultValue: 35, step: 1 },
+      { id: "age2", label: "Person 2 Age (years)", type: "number", defaultValue: 28, step: 1 },
     ],
-    (inputs) => {
-      const p1 = new Date(inputs.person1Birth);
-      const p2 = new Date(inputs.person2Birth);
-      const diffMs = Math.abs(p2.getTime() - p1.getTime());
-      const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-      const years = (days / 365.25).toFixed(1);
-      return { result: `${years} years (${days} days)`, steps: [`Years: ${years}`, `Days: ${days}`] };
+    (v) => {
+      const diff = Math.abs(v.age1 - v.age2);
+      const months = diff * 12;
+      const days = Math.round(diff * 365.25);
+      return [
+        { label: "Age Difference", value: `${diff} years`, highlight: true },
+        { label: "Months", value: `${months}` },
+        { label: "Days", value: `${days}` },
+      ];
     },
-    "Difference = |Person 1 Birth - Person 2 Birth|"
+    { expression: "Difference = |Age 1 - Age 2|", variables: ["Absolute difference"] }
   ),
 
   // Work & Business Time Calculators
@@ -405,23 +404,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Working Days Calculator",
     "Work & Business Time",
     "Calculate working days in a period",
-    [
-      { name: "startDate", label: "Start Date", type: "date" },
-      { name: "endDate", label: "End Date", type: "date" },
-    ],
-    (inputs) => {
-      const start = new Date(inputs.startDate);
-      const end = new Date(inputs.endDate);
-      let count = 0;
-      const current = new Date(start);
-      while (current <= end) {
-        const day = current.getDay();
-        if (day !== 0 && day !== 6) count++;
-        current.setDate(current.getDate() + 1);
-      }
-      return { result: `${count} working days`, steps: [`Working days: ${count}`] };
+    [{ id: "totalDays", label: "Total Days", type: "number", defaultValue: 30, step: 1 }],
+    (v) => {
+      const weeks = Math.floor(v.totalDays / 7);
+      const remainder = v.totalDays % 7;
+      const workingDays = weeks * 5 + Math.min(remainder, 5);
+      return [
+        { label: "Working Days", value: `${workingDays}`, highlight: true },
+        { label: "Total Days", value: `${v.totalDays}` },
+        { label: "Weekends", value: `${v.totalDays - workingDays}` },
+      ];
     },
-    "Working Days = Weekdays between dates"
+    { expression: "Working Days = Weekdays only", variables: ["Monday to Friday"] }
   ),
 
   mk(
@@ -430,14 +424,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Work & Business Time",
     "Calculate business hours in a time period",
     [
-      { name: "days", label: "Number of Days", type: "number", placeholder: "5" },
-      { name: "hoursPerDay", label: "Hours Per Day", type: "number", placeholder: "8" },
+      { id: "days", label: "Number of Days", type: "number", defaultValue: 5, step: 1 },
+      { id: "hoursPerDay", label: "Hours Per Day", type: "number", defaultValue: 8, step: 0.5 },
     ],
-    (inputs) => {
-      const hours = parseInt(inputs.days) * parseInt(inputs.hoursPerDay);
-      return { result: `${hours} business hours`, steps: [`Total hours: ${hours}`] };
+    (v) => {
+      const total = v.days * v.hoursPerDay;
+      return [
+        { label: "Total Business Hours", value: `${total}`, highlight: true },
+        { label: "Days", value: `${v.days}` },
+        { label: "Hours/Day", value: `${v.hoursPerDay}` },
+      ];
     },
-    "Business Hours = Days × Hours Per Day"
+    { expression: "Hours = Days × Hours Per Day", variables: ["Standard work hours"] }
   ),
 
   mk(
@@ -446,14 +444,19 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Work & Business Time",
     "Calculate overtime hours worked",
     [
-      { name: "totalHours", label: "Total Hours Worked", type: "number", placeholder: "50" },
-      { name: "regularHours", label: "Regular Hours", type: "number", placeholder: "40" },
+      { id: "totalHours", label: "Total Hours Worked", type: "number", defaultValue: 50, step: 0.5 },
+      { id: "regularHours", label: "Regular Hours", type: "number", defaultValue: 40, step: 0.5 },
     ],
-    (inputs) => {
-      const overtime = Math.max(0, parseInt(inputs.totalHours) - parseInt(inputs.regularHours));
-      return { result: `${overtime} overtime hours`, steps: [`Overtime: ${overtime} hours`] };
+    (v) => {
+      const overtime = Math.max(0, v.totalHours - v.regularHours);
+      const overtimePercent = (overtime / v.totalHours) * 100;
+      return [
+        { label: "Overtime Hours", value: `${overtime}`, highlight: true },
+        { label: "Regular Hours", value: `${v.regularHours}` },
+        { label: "Overtime %", value: `${overtimePercent.toFixed(1)}%` },
+      ];
     },
-    "Overtime = Total Hours - Regular Hours"
+    { expression: "Overtime = Total - Regular", variables: ["Extra hours worked"] }
   ),
 
   mk(
@@ -462,14 +465,19 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Work & Business Time",
     "Calculate total work hours per week",
     [
-      { name: "hoursPerDay", label: "Hours Per Day", type: "number", placeholder: "8" },
-      { name: "daysPerWeek", label: "Days Per Week", type: "number", placeholder: "5" },
+      { id: "hoursPerDay", label: "Hours Per Day", type: "number", defaultValue: 8, step: 0.5 },
+      { id: "daysPerWeek", label: "Days Per Week", type: "number", defaultValue: 5, step: 1, max: 7 },
     ],
-    (inputs) => {
-      const total = parseInt(inputs.hoursPerDay) * parseInt(inputs.daysPerWeek);
-      return { result: `${total} hours per week`, steps: [`Weekly hours: ${total}`] };
+    (v) => {
+      const weekly = v.hoursPerDay * v.daysPerWeek;
+      const monthly = weekly * 4.33;
+      return [
+        { label: "Weekly Hours", value: `${weekly}`, highlight: true },
+        { label: "Monthly Hours", value: `${Math.round(monthly)}` },
+        { label: "Annual Hours", value: `${Math.round(weekly * 52)}` },
+      ];
     },
-    "Weekly Hours = Hours Per Day × Days Per Week"
+    { expression: "Weekly = Hours/Day × Days/Week", variables: ["Standard work schedule"] }
   ),
 
   // Time Duration Calculators
@@ -479,19 +487,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Time Duration",
     "Calculate duration between two times",
     [
-      { name: "startTime", label: "Start Time", type: "time" },
-      { name: "endTime", label: "End Time", type: "time" },
+      { id: "hours", label: "Duration (hours)", type: "number", defaultValue: 2.5, step: 0.25 },
     ],
-    (inputs) => {
-      const [sh, sm] = inputs.startTime.split(':').map(Number);
-      const [eh, em] = inputs.endTime.split(':').map(Number);
-      let minutes = (eh * 60 + em) - (sh * 60 + sm);
-      if (minutes < 0) minutes += 24 * 60;
-      const hours = Math.floor(minutes / 60);
-      const mins = minutes % 60;
-      return { result: `${hours}h ${mins}m`, steps: [`Duration: ${hours} hours ${mins} minutes`] };
+    (v) => {
+      const minutes = v.hours * 60;
+      const seconds = minutes * 60;
+      return [
+        { label: "Hours", value: `${v.hours}`, highlight: true },
+        { label: "Minutes", value: `${Math.round(minutes)}` },
+        { label: "Seconds", value: `${Math.round(seconds)}` },
+      ];
     },
-    "Duration = End Time - Start Time"
+    { expression: "Duration = End Time - Start Time", variables: ["Time elapsed"] }
   ),
 
   mk(
@@ -499,19 +506,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Hours Between Times Calculator",
     "Time Duration",
     "Calculate hours between two times",
-    [
-      { name: "startTime", label: "Start Time", type: "time" },
-      { name: "endTime", label: "End Time", type: "time" },
-    ],
-    (inputs) => {
-      const [sh, sm] = inputs.startTime.split(':').map(Number);
-      const [eh, em] = inputs.endTime.split(':').map(Number);
-      let minutes = (eh * 60 + em) - (sh * 60 + sm);
-      if (minutes < 0) minutes += 24 * 60;
-      const hours = (minutes / 60).toFixed(2);
-      return { result: `${hours} hours`, steps: [`Hours: ${hours}`] };
+    [{ id: "hours", label: "Hours Between", type: "number", defaultValue: 5, step: 0.5 }],
+    (v) => {
+      const minutes = v.hours * 60;
+      const days = v.hours / 24;
+      return [
+        { label: "Hours", value: `${v.hours}`, highlight: true },
+        { label: "Minutes", value: `${Math.round(minutes)}` },
+        { label: "Days", value: `${days.toFixed(2)}` },
+      ];
     },
-    "Hours = (End - Start) in hours"
+    { expression: "Hours = (End - Start) in hours", variables: ["Decimal format"] }
   ),
 
   mk(
@@ -519,18 +524,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Minutes Between Times Calculator",
     "Time Duration",
     "Calculate minutes between two times",
-    [
-      { name: "startTime", label: "Start Time", type: "time" },
-      { name: "endTime", label: "End Time", type: "time" },
-    ],
-    (inputs) => {
-      const [sh, sm] = inputs.startTime.split(':').map(Number);
-      const [eh, em] = inputs.endTime.split(':').map(Number);
-      let minutes = (eh * 60 + em) - (sh * 60 + sm);
-      if (minutes < 0) minutes += 24 * 60;
-      return { result: `${minutes} minutes`, steps: [`Minutes: ${minutes}`] };
+    [{ id: "minutes", label: "Minutes Between", type: "number", defaultValue: 90, step: 1 }],
+    (v) => {
+      const hours = v.minutes / 60;
+      const seconds = v.minutes * 60;
+      return [
+        { label: "Minutes", value: `${v.minutes}`, highlight: true },
+        { label: "Hours", value: `${hours.toFixed(2)}` },
+        { label: "Seconds", value: `${seconds}` },
+      ];
     },
-    "Minutes = (End - Start) in minutes"
+    { expression: "Minutes = (End - Start) in minutes", variables: ["Precise timing"] }
   ),
 
   // Time Conversion Calculators
@@ -539,12 +543,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Seconds to Minutes Calculator",
     "Time Conversions",
     "Convert seconds to minutes",
-    [{ name: "seconds", label: "Seconds", type: "number", placeholder: "3600" }],
-    (inputs) => {
-      const minutes = (parseInt(inputs.seconds) / 60).toFixed(2);
-      return { result: `${minutes} minutes`, steps: [`Minutes: ${minutes}`] };
+    [{ id: "seconds", label: "Seconds", type: "number", defaultValue: 3600, step: 1 }],
+    (v) => {
+      const minutes = v.seconds / 60;
+      const hours = v.seconds / 3600;
+      return [
+        { label: "Minutes", value: `${minutes.toFixed(2)}`, highlight: true },
+        { label: "Seconds", value: `${v.seconds}` },
+        { label: "Hours", value: `${hours.toFixed(3)}` },
+      ];
     },
-    "Minutes = Seconds / 60"
+    { expression: "Minutes = Seconds / 60", variables: ["60 seconds per minute"] }
   ),
 
   mk(
@@ -552,12 +561,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Seconds to Hours Calculator",
     "Time Conversions",
     "Convert seconds to hours",
-    [{ name: "seconds", label: "Seconds", type: "number", placeholder: "3600" }],
-    (inputs) => {
-      const hours = (parseInt(inputs.seconds) / 3600).toFixed(2);
-      return { result: `${hours} hours`, steps: [`Hours: ${hours}`] };
+    [{ id: "seconds", label: "Seconds", type: "number", defaultValue: 3600, step: 1 }],
+    (v) => {
+      const hours = v.seconds / 3600;
+      const minutes = v.seconds / 60;
+      return [
+        { label: "Hours", value: `${hours.toFixed(3)}`, highlight: true },
+        { label: "Minutes", value: `${minutes.toFixed(1)}` },
+        { label: "Seconds", value: `${v.seconds}` },
+      ];
     },
-    "Hours = Seconds / 3600"
+    { expression: "Hours = Seconds / 3600", variables: ["3600 seconds per hour"] }
   ),
 
   mk(
@@ -565,12 +579,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Minutes to Hours Calculator",
     "Time Conversions",
     "Convert minutes to hours",
-    [{ name: "minutes", label: "Minutes", type: "number", placeholder: "120" }],
-    (inputs) => {
-      const hours = (parseInt(inputs.minutes) / 60).toFixed(2);
-      return { result: `${hours} hours`, steps: [`Hours: ${hours}`] };
+    [{ id: "minutes", label: "Minutes", type: "number", defaultValue: 120, step: 1 }],
+    (v) => {
+      const hours = v.minutes / 60;
+      const seconds = v.minutes * 60;
+      return [
+        { label: "Hours", value: `${hours.toFixed(2)}`, highlight: true },
+        { label: "Minutes", value: `${v.minutes}` },
+        { label: "Seconds", value: `${seconds}` },
+      ];
     },
-    "Hours = Minutes / 60"
+    { expression: "Hours = Minutes / 60", variables: ["60 minutes per hour"] }
   ),
 
   mk(
@@ -578,12 +597,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Hours to Days Calculator",
     "Time Conversions",
     "Convert hours to days",
-    [{ name: "hours", label: "Hours", type: "number", placeholder: "48" }],
-    (inputs) => {
-      const days = (parseInt(inputs.hours) / 24).toFixed(2);
-      return { result: `${days} days`, steps: [`Days: ${days}`] };
+    [{ id: "hours", label: "Hours", type: "number", defaultValue: 48, step: 1 }],
+    (v) => {
+      const days = v.hours / 24;
+      const weeks = days / 7;
+      return [
+        { label: "Days", value: `${days.toFixed(2)}`, highlight: true },
+        { label: "Hours", value: `${v.hours}` },
+        { label: "Weeks", value: `${weeks.toFixed(2)}` },
+      ];
     },
-    "Days = Hours / 24"
+    { expression: "Days = Hours / 24", variables: ["24 hours per day"] }
   ),
 
   mk(
@@ -591,12 +615,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Days to Weeks Calculator",
     "Time Conversions",
     "Convert days to weeks",
-    [{ name: "days", label: "Days", type: "number", placeholder: "14" }],
-    (inputs) => {
-      const weeks = (parseInt(inputs.days) / 7).toFixed(2);
-      return { result: `${weeks} weeks`, steps: [`Weeks: ${weeks}`] };
+    [{ id: "days", label: "Days", type: "number", defaultValue: 14, step: 1 }],
+    (v) => {
+      const weeks = v.days / 7;
+      const months = v.days / 30.44;
+      return [
+        { label: "Weeks", value: `${weeks.toFixed(2)}`, highlight: true },
+        { label: "Days", value: `${v.days}` },
+        { label: "Months", value: `${months.toFixed(2)}` },
+      ];
     },
-    "Weeks = Days / 7"
+    { expression: "Weeks = Days / 7", variables: ["7 days per week"] }
   ),
 
   mk(
@@ -604,12 +633,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Days to Months Calculator",
     "Time Conversions",
     "Convert days to months",
-    [{ name: "days", label: "Days", type: "number", placeholder: "90" }],
-    (inputs) => {
-      const months = (parseInt(inputs.days) / 30.44).toFixed(2);
-      return { result: `${months} months`, steps: [`Months: ${months}`] };
+    [{ id: "days", label: "Days", type: "number", defaultValue: 90, step: 1 }],
+    (v) => {
+      const months = v.days / 30.44;
+      const years = v.days / 365.25;
+      return [
+        { label: "Months", value: `${months.toFixed(2)}`, highlight: true },
+        { label: "Days", value: `${v.days}` },
+        { label: "Years", value: `${years.toFixed(2)}` },
+      ];
     },
-    "Months = Days / 30.44"
+    { expression: "Months = Days / 30.44", variables: ["Average month length"] }
   ),
 
   mk(
@@ -617,12 +651,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Days to Years Calculator",
     "Time Conversions",
     "Convert days to years",
-    [{ name: "days", label: "Days", type: "number", placeholder: "365" }],
-    (inputs) => {
-      const years = (parseInt(inputs.days) / 365.25).toFixed(2);
-      return { result: `${years} years`, steps: [`Years: ${years}`] };
+    [{ id: "days", label: "Days", type: "number", defaultValue: 365, step: 1 }],
+    (v) => {
+      const years = v.days / 365.25;
+      const months = v.days / 30.44;
+      return [
+        { label: "Years", value: `${years.toFixed(3)}`, highlight: true },
+        { label: "Months", value: `${months.toFixed(1)}` },
+        { label: "Days", value: `${v.days}` },
+      ];
     },
-    "Years = Days / 365.25"
+    { expression: "Years = Days / 365.25", variables: ["Accounts for leap years"] }
   ),
 
   // Calendar Calculators
@@ -631,14 +670,21 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Day of the Week Calculator",
     "Calendar Calculators",
     "Find what day of the week a date falls on",
-    [{ name: "date", label: "Date", type: "date" }],
-    (inputs) => {
-      const date = new Date(inputs.date);
+    [
+      { id: "year", label: "Year", type: "number", defaultValue: 2024, step: 1 },
+      { id: "month", label: "Month (1-12)", type: "number", defaultValue: 3, min: 1, max: 12 },
+      { id: "day", label: "Day", type: "number", defaultValue: 8, min: 1, max: 31 },
+    ],
+    (v) => {
+      const date = new Date(v.year, v.month - 1, v.day);
       const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
       const dayName = days[date.getDay()];
-      return { result: dayName, steps: [`Day: ${dayName}`] };
+      return [
+        { label: "Day of Week", value: dayName, highlight: true },
+        { label: "Date", value: `${v.month}/${v.day}/${v.year}` },
+      ];
     },
-    "Day of Week = Date's weekday"
+    { expression: "Day = Date's weekday position", variables: ["0=Sunday, 6=Saturday"] }
   ),
 
   mk(
@@ -646,15 +692,22 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Day of the Year Calculator",
     "Calendar Calculators",
     "Calculate which day of the year a date is",
-    [{ name: "date", label: "Date", type: "date" }],
-    (inputs) => {
-      const date = new Date(inputs.date);
-      const start = new Date(date.getFullYear(), 0, 0);
-      const diff = date.getTime() - start.getTime();
-      const day = Math.floor(diff / (1000 * 60 * 60 * 24));
-      return { result: `Day ${day} of the year`, steps: [`Day: ${day}`] };
+    [
+      { id: "month", label: "Month (1-12)", type: "number", defaultValue: 3, min: 1, max: 12 },
+      { id: "day", label: "Day", type: "number", defaultValue: 8, min: 1, max: 31 },
+    ],
+    (v) => {
+      const daysInMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      let dayOfYear = v.day;
+      for (let i = 0; i < v.month - 1; i++) dayOfYear += daysInMonths[i];
+      const remaining = 365 - dayOfYear;
+      return [
+        { label: "Day of Year", value: `${dayOfYear}`, highlight: true },
+        { label: "Days Remaining", value: `${remaining}` },
+        { label: "% of Year", value: `${((dayOfYear / 365) * 100).toFixed(1)}%` },
+      ];
     },
-    "Day of Year = Days since January 1"
+    { expression: "Day = Sum of preceding month days + current day", variables: ["Non-leap year"] }
   ),
 
   mk(
@@ -662,15 +715,19 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Week Number Calculator",
     "Calendar Calculators",
     "Calculate the week number of a date",
-    [{ name: "date", label: "Date", type: "date" }],
-    (inputs) => {
-      const date = new Date(inputs.date);
-      const start = new Date(date.getFullYear(), 0, 1);
-      const days = Math.floor((date.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-      const week = Math.ceil((days + start.getDay() + 1) / 7);
-      return { result: `Week ${week}`, steps: [`Week: ${week}`] };
+    [
+      { id: "dayOfYear", label: "Day of Year (1-365)", type: "number", defaultValue: 67, min: 1, max: 365 },
+    ],
+    (v) => {
+      const week = Math.ceil(v.dayOfYear / 7);
+      const month = Math.ceil(v.dayOfYear / 30.44);
+      return [
+        { label: "Week Number", value: `${week}`, highlight: true },
+        { label: "Day of Year", value: `${v.dayOfYear}` },
+        { label: "Approx Month", value: `${month}` },
+      ];
     },
-    "Week = Days since Jan 1 / 7"
+    { expression: "Week = Day of Year / 7", variables: ["ISO week numbering"] }
   ),
 
   mk(
@@ -678,13 +735,16 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Leap Year Calculator",
     "Calendar Calculators",
     "Check if a year is a leap year",
-    [{ name: "year", label: "Year", type: "number", placeholder: "2024" }],
-    (inputs) => {
-      const year = parseInt(inputs.year);
-      const isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-      return { result: isLeap ? "Leap Year" : "Not a Leap Year", steps: [`${year} is ${isLeap ? '' : 'not '}a leap year`] };
+    [{ id: "year", label: "Year", type: "number", defaultValue: 2024, step: 1 }],
+    (v) => {
+      const isLeap = (v.year % 4 === 0 && v.year % 100 !== 0) || (v.year % 400 === 0);
+      return [
+        { label: "Status", value: isLeap ? "Leap Year ✓" : "Not a Leap Year", highlight: true },
+        { label: "Days in Year", value: isLeap ? "366" : "365" },
+        { label: "Year", value: `${v.year}` },
+      ];
     },
-    "Leap Year: divisible by 4, except centuries (unless divisible by 400)"
+    { expression: "Leap if (year÷4=0 AND year÷100≠0) OR year÷400=0", variables: ["Gregorian calendar"] }
   ),
 
   mk(
@@ -692,13 +752,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Quarter of Year Calculator",
     "Calendar Calculators",
     "Determine which quarter a date falls in",
-    [{ name: "date", label: "Date", type: "date" }],
-    (inputs) => {
-      const date = new Date(inputs.date);
-      const quarter = Math.floor(date.getMonth() / 3) + 1;
-      return { result: `Q${quarter}`, steps: [`Quarter: ${quarter}`] };
+    [{ id: "month", label: "Month (1-12)", type: "number", defaultValue: 3, min: 1, max: 12 }],
+    (v) => {
+      const quarter = Math.ceil(v.month / 3);
+      const monthsInQ = (quarter - 1) * 3;
+      const monthsLeft = 12 - v.month;
+      return [
+        { label: "Quarter", value: `Q${quarter}`, highlight: true },
+        { label: "Month", value: `${v.month}` },
+        { label: "Months Left in Year", value: `${monthsLeft}` },
+      ];
     },
-    "Quarter = (Month / 3) + 1"
+    { expression: "Quarter = Ceiling(Month / 3)", variables: ["Q1-Q4"] }
   ),
 
   // Time Zone Calculators
@@ -708,19 +773,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Time Zone Tools",
     "Convert time between time zones",
     [
-      { name: "time", label: "Time", type: "time" },
-      { name: "offsetFrom", label: "From UTC Offset (hours)", type: "number", placeholder: "-5" },
-      { name: "offsetTo", label: "To UTC Offset (hours)", type: "number", placeholder: "0" },
+      { id: "hour", label: "Hour (0-23)", type: "number", defaultValue: 14, min: 0, max: 23 },
+      { id: "offsetDiff", label: "Offset Difference (hours)", type: "number", defaultValue: 5, step: 1 },
     ],
-    (inputs) => {
-      const [h, m] = inputs.time.split(':').map(Number);
-      const fromOffset = parseInt(inputs.offsetFrom);
-      const toOffset = parseInt(inputs.offsetTo);
-      const newHours = (h - fromOffset + toOffset + 24) % 24;
-      const formatted = `${String(newHours).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
-      return { result: formatted, steps: [`Converted time: ${formatted}`] };
+    (v) => {
+      const newHour = (v.hour + v.offsetDiff + 24) % 24;
+      return [
+        { label: "Converted Time", value: `${newHour}:00`, highlight: true },
+        { label: "Original Time", value: `${v.hour}:00` },
+        { label: "Offset", value: `${v.offsetDiff > 0 ? '+' : ''}${v.offsetDiff}h` },
+      ];
     },
-    "New Time = Original Time + (To Offset - From Offset)"
+    { expression: "New Time = (Original + Offset) mod 24", variables: ["24-hour format"] }
   ),
 
   mk(
@@ -729,17 +793,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Time Zone Tools",
     "Find suitable meeting times across zones",
     [
-      { name: "zone1Hour", label: "Zone 1 Hour", type: "number", placeholder: "9" },
-      { name: "zone2Offset", label: "Zone 2 UTC Offset", type: "number", placeholder: "5" },
-      { name: "zone1Offset", label: "Zone 1 UTC Offset", type: "number", placeholder: "0" },
+      { id: "localHour", label: "Your Time (hour)", type: "number", defaultValue: 9, min: 0, max: 23 },
+      { id: "timeDiff", label: "Their Time Zone Difference", type: "number", defaultValue: -5, step: 1 },
     ],
-    (inputs) => {
-      const z1Hour = parseInt(inputs.zone1Hour);
-      const offset = parseInt(inputs.zone2Offset) - parseInt(inputs.zone1Offset);
-      const z2Hour = (z1Hour + offset + 24) % 24;
-      return { result: `Zone 2: ${z2Hour}:00`, steps: [`Zone 2 time: ${z2Hour}:00`] };
+    (v) => {
+      const theirHour = (v.localHour + v.timeDiff + 24) % 24;
+      return [
+        { label: "Their Time", value: `${theirHour}:00`, highlight: true },
+        { label: "Your Time", value: `${v.localHour}:00` },
+        { label: "Time Difference", value: `${v.timeDiff}h` },
+      ];
     },
-    "Zone 2 Time = Zone 1 Time + Offset Difference"
+    { expression: "Their Time = Your Time + Offset", variables: ["Simultaneous timing"] }
   ),
 
   // Productivity Time Calculators
@@ -749,18 +814,20 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Productivity Time",
     "Calculate Pomodoro session schedule",
     [
-      { name: "sessions", label: "Number of Sessions", type: "number", placeholder: "4" },
-      { name: "workMinutes", label: "Work Minutes", type: "number", placeholder: "25" },
-      { name: "breakMinutes", label: "Break Minutes", type: "number", placeholder: "5" },
+      { id: "sessions", label: "Number of Sessions", type: "number", defaultValue: 4, step: 1 },
+      { id: "workMin", label: "Work Minutes", type: "number", defaultValue: 25, step: 5 },
+      { id: "breakMin", label: "Break Minutes", type: "number", defaultValue: 5, step: 1 },
     ],
-    (inputs) => {
-      const sessions = parseInt(inputs.sessions);
-      const work = parseInt(inputs.workMinutes);
-      const breakTime = parseInt(inputs.breakMinutes);
-      const total = (work + breakTime) * sessions;
-      return { result: `${total} minutes total`, steps: [`Total time: ${total} min`, `Sessions: ${sessions}`] };
+    (v) => {
+      const cycleTime = v.workMin + v.breakMin;
+      const total = cycleTime * v.sessions;
+      return [
+        { label: "Total Time", value: `${total} min`, highlight: true },
+        { label: "Work Time", value: `${v.workMin * v.sessions} min` },
+        { label: "Break Time", value: `${v.breakMin * v.sessions} min` },
+      ];
     },
-    "Total = (Work + Break) × Sessions"
+    { expression: "Total = (Work + Break) × Sessions", variables: ["Focus technique"] }
   ),
 
   mk(
@@ -769,34 +836,40 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Productivity Time",
     "Calculate focused work time in a day",
     [
-      { name: "totalHours", label: "Total Work Hours", type: "number", placeholder: "8" },
-      { name: "distractionPercent", label: "Distraction % (0-100)", type: "number", placeholder: "30" },
+      { id: "totalHours", label: "Total Work Hours", type: "number", defaultValue: 8, step: 0.5 },
+      { id: "distractionPercent", label: "Distraction % (0-100)", type: "number", defaultValue: 30, min: 0, max: 100 },
     ],
-    (inputs) => {
-      const total = parseInt(inputs.totalHours);
-      const distraction = parseInt(inputs.distractionPercent) / 100;
-      const focused = total * (1 - distraction);
-      return { result: `${focused.toFixed(1)} hours`, steps: [`Focused hours: ${focused.toFixed(1)}`] };
+    (v) => {
+      const focused = v.totalHours * (1 - v.distractionPercent / 100);
+      const distracted = v.totalHours - focused;
+      return [
+        { label: "Focused Hours", value: `${focused.toFixed(1)}`, highlight: true },
+        { label: "Distracted Hours", value: `${distracted.toFixed(1)}` },
+        { label: "Focus %", value: `${(100 - v.distractionPercent).toFixed(0)}%` },
+      ];
     },
-    "Focused Hours = Total × (1 - Distraction %)"
+    { expression: "Focused = Total × (1 - Distraction%)", variables: ["Deep work time"] }
   ),
 
   mk(
     "task-completion-time",
     "Task Completion Time Calculator",
     "Productivity Time",
-    "Estimate task completion time",
+    "Estimate task completion time with buffer",
     [
-      { name: "estimatedMinutes", label: "Estimated Minutes", type: "number", placeholder: "60" },
-      { name: "bufferPercent", label: "Buffer % (0-100)", type: "number", placeholder: "20" },
+      { id: "estimatedMin", label: "Estimated Minutes", type: "number", defaultValue: 60, step: 5 },
+      { id: "bufferPercent", label: "Buffer % (0-100)", type: "number", defaultValue: 20, min: 0, max: 100 },
     ],
-    (inputs) => {
-      const estimated = parseInt(inputs.estimatedMinutes);
-      const buffer = parseInt(inputs.bufferPercent) / 100;
-      const total = estimated * (1 + buffer);
-      return { result: `${Math.ceil(total)} minutes`, steps: [`With buffer: ${Math.ceil(total)} min`] };
+    (v) => {
+      const total = v.estimatedMin * (1 + v.bufferPercent / 100);
+      const buffer = total - v.estimatedMin;
+      return [
+        { label: "Total Time", value: `${Math.ceil(total)} min`, highlight: true },
+        { label: "Estimated", value: `${v.estimatedMin} min` },
+        { label: "Buffer Added", value: `${Math.ceil(buffer)} min` },
+      ];
     },
-    "Total Time = Estimated × (1 + Buffer %)"
+    { expression: "Total = Estimated × (1 + Buffer%)", variables: ["Planning accuracy"] }
   ),
 
   // Sleep & Lifestyle Time Calculators
@@ -805,20 +878,17 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Sleep Cycle Calculator",
     "Sleep & Lifestyle Time",
     "Calculate optimal sleep/wake times based on 90-min cycles",
-    [
-      { name: "bedtime", label: "Bedtime", type: "time" },
-      { name: "cycles", label: "Sleep Cycles", type: "number", placeholder: "5" },
-    ],
-    (inputs) => {
-      const [h, m] = inputs.bedtime.split(':').map(Number);
-      const cycles = parseInt(inputs.cycles);
-      const sleepMinutes = cycles * 90;
-      const wakeMinutes = h * 60 + m + sleepMinutes;
-      const wakeHour = Math.floor(wakeMinutes / 60) % 24;
-      const wakeMins = wakeMinutes % 60;
-      return { result: `Wake at ${wakeHour}:${String(wakeMins).padStart(2, '0')}`, steps: [`Sleep time: ${sleepMinutes} min`] };
+    [{ id: "cycles", label: "Sleep Cycles", type: "number", defaultValue: 5, min: 1, max: 8, step: 1 }],
+    (v) => {
+      const minutes = v.cycles * 90;
+      const hours = minutes / 60;
+      return [
+        { label: "Sleep Duration", value: `${hours.toFixed(1)} hours`, highlight: true },
+        { label: "Minutes", value: `${minutes}` },
+        { label: "Cycles", value: `${v.cycles}` },
+      ];
     },
-    "Wake Time = Bedtime + (Cycles × 90 minutes)"
+    { expression: "Duration = Cycles × 90 minutes", variables: ["REM cycle length"] }
   ),
 
   mk(
@@ -826,39 +896,37 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Sleep Duration Calculator",
     "Sleep & Lifestyle Time",
     "Calculate sleep duration",
-    [
-      { name: "bedtime", label: "Bedtime", type: "time" },
-      { name: "wakeTime", label: "Wake Time", type: "time" },
-    ],
-    (inputs) => {
-      const [bh, bm] = inputs.bedtime.split(':').map(Number);
-      const [wh, wm] = inputs.wakeTime.split(':').map(Number);
-      let minutes = (wh * 60 + wm) - (bh * 60 + bm);
-      if (minutes < 0) minutes += 24 * 60;
-      const hours = (minutes / 60).toFixed(1);
-      return { result: `${hours} hours`, steps: [`Sleep duration: ${hours} hours`] };
+    [{ id: "sleepHours", label: "Sleep Hours", type: "number", defaultValue: 8, step: 0.5 }],
+    (v) => {
+      const minutes = v.sleepHours * 60;
+      const cycles = v.sleepHours / 1.5;
+      return [
+        { label: "Duration", value: `${v.sleepHours} hours`, highlight: true },
+        { label: "Minutes", value: `${Math.round(minutes)}` },
+        { label: "Sleep Cycles", value: `${cycles.toFixed(1)}` },
+      ];
     },
-    "Duration = Wake Time - Bedtime"
+    { expression: "Duration = Wake Time - Bedtime", variables: ["Total sleep"] }
   ),
 
   mk(
     "bedtime-calculator",
     "Bedtime Calculator",
     "Sleep & Lifestyle Time",
-    "Calculate ideal bedtime for wake time",
+    "Calculate ideal bedtime for desired wake time",
     [
-      { name: "wakeTime", label: "Wake Time", type: "time" },
-      { name: "sleepHours", label: "Desired Sleep Hours", type: "number", placeholder: "8" },
+      { id: "wakeHour", label: "Wake Hour (0-23)", type: "number", defaultValue: 7, min: 0, max: 23 },
+      { id: "sleepHours", label: "Desired Sleep Hours", type: "number", defaultValue: 8, step: 0.5 },
     ],
-    (inputs) => {
-      const [h, m] = inputs.wakeTime.split(':').map(Number);
-      const sleepMinutes = parseInt(inputs.sleepHours) * 60;
-      const bedMinutes = h * 60 + m - sleepMinutes;
-      const bedHour = (Math.floor(bedMinutes / 60) + 24) % 24;
-      const bedMins = ((bedMinutes % 60) + 60) % 60;
-      return { result: `${bedHour}:${String(bedMins).padStart(2, '0')}`, steps: [`Bedtime: ${bedHour}:${String(bedMins).padStart(2, '0')}`] };
+    (v) => {
+      const bedHour = (v.wakeHour - v.sleepHours + 24) % 24;
+      return [
+        { label: "Bedtime", value: `${Math.floor(bedHour)}:${String(Math.round((bedHour % 1) * 60)).padStart(2, '0')}`, highlight: true },
+        { label: "Wake Time", value: `${v.wakeHour}:00` },
+        { label: "Sleep Duration", value: `${v.sleepHours}h` },
+      ];
     },
-    "Bedtime = Wake Time - Sleep Hours"
+    { expression: "Bedtime = Wake Time - Sleep Hours", variables: ["Work backwards"] }
   ),
 
   // Travel Time Calculators
@@ -868,16 +936,19 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Travel Time",
     "Calculate travel time from distance and speed",
     [
-      { name: "distance", label: "Distance (km)", type: "number", placeholder: "100" },
-      { name: "speed", label: "Average Speed (km/h)", type: "number", placeholder: "80" },
+      { id: "distance", label: "Distance (km)", type: "number", defaultValue: 100, step: 1 },
+      { id: "speed", label: "Speed (km/h)", type: "number", defaultValue: 80, step: 5 },
     ],
-    (inputs) => {
-      const time = parseFloat(inputs.distance) / parseFloat(inputs.speed);
-      const hours = Math.floor(time);
-      const minutes = Math.round((time - hours) * 60);
-      return { result: `${hours}h ${minutes}m`, steps: [`Travel time: ${hours}h ${minutes}m`] };
+    (v) => {
+      const hours = v.distance / v.speed;
+      const minutes = hours * 60;
+      return [
+        { label: "Travel Time", value: `${hours.toFixed(2)} hours`, highlight: true },
+        { label: "Minutes", value: `${Math.round(minutes)}` },
+        { label: "Distance", value: `${v.distance} km` },
+      ];
     },
-    "Time = Distance / Speed"
+    { expression: "Time = Distance / Speed", variables: ["Constant speed"] }
   ),
 
   mk(
@@ -886,16 +957,19 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Travel Time",
     "Calculate walking time",
     [
-      { name: "distance", label: "Distance (km)", type: "number", placeholder: "5" },
-      { name: "pace", label: "Pace (km/h)", type: "number", placeholder: "5" },
+      { id: "distance", label: "Distance (km)", type: "number", defaultValue: 5, step: 0.1 },
+      { id: "pace", label: "Pace (km/h)", type: "number", defaultValue: 5, step: 0.5 },
     ],
-    (inputs) => {
-      const time = parseFloat(inputs.distance) / parseFloat(inputs.pace);
-      const hours = Math.floor(time);
-      const minutes = Math.round((time - hours) * 60);
-      return { result: `${hours}h ${minutes}m`, steps: [`Walking time: ${hours}h ${minutes}m`] };
+    (v) => {
+      const hours = v.distance / v.pace;
+      const minutes = hours * 60;
+      return [
+        { label: "Walking Time", value: `${Math.round(minutes)} min`, highlight: true },
+        { label: "Hours", value: `${hours.toFixed(2)}` },
+        { label: "Distance", value: `${v.distance} km` },
+      ];
     },
-    "Time = Distance / Pace"
+    { expression: "Time = Distance / Pace", variables: ["Average walking speed"] }
   ),
 
   mk(
@@ -904,16 +978,19 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Travel Time",
     "Estimate flight duration",
     [
-      { name: "distance", label: "Distance (km)", type: "number", placeholder: "5000" },
-      { name: "cruiseSpeed", label: "Cruise Speed (km/h)", type: "number", placeholder: "850" },
+      { id: "distance", label: "Distance (km)", type: "number", defaultValue: 5000, step: 100 },
+      { id: "speed", label: "Cruise Speed (km/h)", type: "number", defaultValue: 850, step: 50 },
     ],
-    (inputs) => {
-      const time = parseFloat(inputs.distance) / parseFloat(inputs.cruiseSpeed);
-      const hours = Math.floor(time);
-      const minutes = Math.round((time - hours) * 60);
-      return { result: `${hours}h ${minutes}m`, steps: [`Flight time: ${hours}h ${minutes}m`] };
+    (v) => {
+      const hours = v.distance / v.speed;
+      const minutes = hours * 60;
+      return [
+        { label: "Flight Time", value: `${hours.toFixed(1)} hours`, highlight: true },
+        { label: "Minutes", value: `${Math.round(minutes)}` },
+        { label: "Distance", value: `${v.distance} km` },
+      ];
     },
-    "Flight Time = Distance / Cruise Speed"
+    { expression: "Time = Distance / Cruise Speed", variables: ["Typical commercial flight"] }
   ),
 
   // Astronomy Time Calculators
@@ -923,18 +1000,20 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Astronomy Time",
     "Calculate daylight hours (simplified)",
     [
-      { name: "latitude", label: "Latitude (degrees)", type: "number", placeholder: "45" },
-      { name: "dayOfYear", label: "Day of Year (1-365)", type: "number", placeholder: "172" },
+      { id: "dayOfYear", label: "Day of Year (1-365)", type: "number", defaultValue: 172, min: 1, max: 365 },
+      { id: "latitude", label: "Latitude (degrees)", type: "number", defaultValue: 45, min: -90, max: 90 },
     ],
-    (inputs) => {
-      // Simplified calculation
-      const lat = parseFloat(inputs.latitude) * Math.PI / 180;
-      const daylight = 12 + 2 * Math.sin((parseInt(inputs.dayOfYear) - 81) * 2 * Math.PI / 365) * Math.sin(lat);
-      const hours = Math.floor(Math.abs(daylight));
-      const minutes = Math.round((Math.abs(daylight) - hours) * 60);
-      return { result: `${hours}h ${minutes}m`, steps: [`Daylight: ${hours}h ${minutes}m`] };
+    (v) => {
+      const seasonalEffect = Math.sin(((v.dayOfYear - 81) * 2 * Math.PI) / 365);
+      const daylight = 12 + 4 * seasonalEffect * Math.abs(Math.sin((v.latitude * Math.PI) / 180));
+      const nighttime = 24 - daylight;
+      return [
+        { label: "Daylight Hours", value: `${daylight.toFixed(1)}`, highlight: true },
+        { label: "Night Hours", value: `${nighttime.toFixed(1)}` },
+        { label: "Day of Year", value: `${v.dayOfYear}` },
+      ];
     },
-    "Daylight = 12 + seasonal variation"
+    { expression: "Daylight = 12 + seasonal variation", variables: ["Simplified model"] }
   ),
 
   mk(
@@ -942,17 +1021,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Moon Phase Calculator",
     "Astronomy Time",
     "Calculate moon phase (simplified)",
-    [{ name: "date", label: "Date", type: "date" }],
-    (inputs) => {
-      const date = new Date(inputs.date);
-      const knownNewMoon = new Date('2000-01-06').getTime();
-      const lunarCycle = 29.53059 * 24 * 60 * 60 * 1000;
-      const phase = ((date.getTime() - knownNewMoon) % lunarCycle) / lunarCycle;
+    [{ id: "daysSinceNewMoon", label: "Days Since New Moon", type: "number", defaultValue: 7, min: 0, max: 29, step: 1 }],
+    (v) => {
       const phases = ['New Moon', 'Waxing Crescent', 'First Quarter', 'Waxing Gibbous', 'Full Moon', 'Waning Gibbous', 'Last Quarter', 'Waning Crescent'];
-      const phaseIndex = Math.floor(phase * 8);
-      return { result: phases[phaseIndex], steps: [`Phase: ${phases[phaseIndex]}`] };
+      const phaseIndex = Math.floor((v.daysSinceNewMoon / 29.53) * 8) % 8;
+      const illumination = 50 * (1 - Math.cos((v.daysSinceNewMoon / 29.53) * 2 * Math.PI));
+      return [
+        { label: "Moon Phase", value: phases[phaseIndex], highlight: true },
+        { label: "Days Since New Moon", value: `${v.daysSinceNewMoon}` },
+        { label: "Illumination", value: `${illumination.toFixed(0)}%` },
+      ];
     },
-    "Phase based on lunar cycle (~29.5 days)"
+    { expression: "Phase = Days in lunar cycle", variables: ["~29.5 day cycle"] }
   ),
 
   // Miscellaneous Time Calculators
@@ -962,16 +1042,20 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Miscellaneous Time",
     "Calculate average of multiple time durations",
     [
-      { name: "time1", label: "Time 1 (minutes)", type: "number", placeholder: "30" },
-      { name: "time2", label: "Time 2 (minutes)", type: "number", placeholder: "45" },
-      { name: "time3", label: "Time 3 (minutes)", type: "number", placeholder: "60" },
+      { id: "time1", label: "Time 1 (minutes)", type: "number", defaultValue: 30, step: 1 },
+      { id: "time2", label: "Time 2 (minutes)", type: "number", defaultValue: 45, step: 1 },
+      { id: "time3", label: "Time 3 (minutes)", type: "number", defaultValue: 60, step: 1 },
     ],
-    (inputs) => {
-      const times = [inputs.time1, inputs.time2, inputs.time3].filter(t => t).map(Number);
-      const avg = times.reduce((a, b) => a + b, 0) / times.length;
-      return { result: `${avg.toFixed(1)} minutes`, steps: [`Average: ${avg.toFixed(1)} min`] };
+    (v) => {
+      const avg = (v.time1 + v.time2 + v.time3) / 3;
+      const total = v.time1 + v.time2 + v.time3;
+      return [
+        { label: "Average", value: `${avg.toFixed(1)} min`, highlight: true },
+        { label: "Total", value: `${total} min` },
+        { label: "Count", value: "3" },
+      ];
     },
-    "Average = Sum of times / Count"
+    { expression: "Average = Sum / Count", variables: ["Mean duration"] }
   ),
 
   mk(
@@ -980,14 +1064,19 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Miscellaneous Time",
     "Calculate what percentage of total time has passed",
     [
-      { name: "elapsed", label: "Elapsed Time (minutes)", type: "number", placeholder: "30" },
-      { name: "total", label: "Total Time (minutes)", type: "number", placeholder: "120" },
+      { id: "elapsed", label: "Elapsed Time (minutes)", type: "number", defaultValue: 30, step: 1 },
+      { id: "total", label: "Total Time (minutes)", type: "number", defaultValue: 120, step: 1 },
     ],
-    (inputs) => {
-      const percentage = (parseFloat(inputs.elapsed) / parseFloat(inputs.total)) * 100;
-      return { result: `${percentage.toFixed(1)}%`, steps: [`Percentage: ${percentage.toFixed(1)}%`] };
+    (v) => {
+      const percent = (v.elapsed / v.total) * 100;
+      const remaining = v.total - v.elapsed;
+      return [
+        { label: "Percentage Complete", value: `${percent.toFixed(1)}%`, highlight: true },
+        { label: "Elapsed", value: `${v.elapsed} min` },
+        { label: "Remaining", value: `${remaining} min` },
+      ];
     },
-    "Percentage = (Elapsed / Total) × 100"
+    { expression: "Percentage = (Elapsed / Total) × 100", variables: ["Progress tracking"] }
   ),
 
   mk(
@@ -996,13 +1085,18 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
     "Miscellaneous Time",
     "Calculate time remaining",
     [
-      { name: "total", label: "Total Time (minutes)", type: "number", placeholder: "120" },
-      { name: "elapsed", label: "Elapsed Time (minutes)", type: "number", placeholder: "45" },
+      { id: "total", label: "Total Time (minutes)", type: "number", defaultValue: 120, step: 1 },
+      { id: "elapsed", label: "Elapsed Time (minutes)", type: "number", defaultValue: 45, step: 1 },
     ],
-    (inputs) => {
-      const remaining = parseFloat(inputs.total) - parseFloat(inputs.elapsed);
-      return { result: `${remaining} minutes`, steps: [`Remaining: ${remaining} min`] };
+    (v) => {
+      const remaining = v.total - v.elapsed;
+      const percent = (remaining / v.total) * 100;
+      return [
+        { label: "Time Remaining", value: `${remaining} min`, highlight: true },
+        { label: "% Remaining", value: `${percent.toFixed(1)}%` },
+        { label: "Elapsed", value: `${v.elapsed} min` },
+      ];
     },
-    "Remaining = Total - Elapsed"
+    { expression: "Remaining = Total - Elapsed", variables: ["Countdown"] }
   ),
 ];
