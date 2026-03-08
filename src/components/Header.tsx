@@ -151,6 +151,16 @@ const Header = () => {
               </Link>
             ))}
           </nav>
+          <div className="flex items-center justify-between pt-3 border-t border-border mt-2">
+            <span className="text-sm font-medium text-muted-foreground">Dark Mode</span>
+            <button
+              onClick={toggleDark}
+              className="w-9 h-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDark ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+            </button>
+          </div>
         </div>
       )}
     </header>

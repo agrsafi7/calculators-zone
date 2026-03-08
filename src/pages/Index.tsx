@@ -101,8 +101,8 @@ const Index = () => {
               <HeroCalculator />
             </div>
 
-            {/* Right: Search + commonly used */}
-            <div className="flex flex-col justify-between">
+            {/* Right: Search + commonly used (desktop only) */}
+            <div className="hidden lg:flex flex-col justify-between">
               <div>
                 <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-black leading-tight mb-3">
                   Search {totalCalcs.toLocaleString()}+ specialized calculators…
@@ -150,14 +150,9 @@ const Index = () => {
 
       {/* Explore Categories */}
       <section className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-2xl font-bold">Explore Categories</h2>
-            <p className="text-sm text-muted-foreground mt-1">Browse our extensive library of calculation tools</p>
-          </div>
-          <Link to="/category/finance" className="text-sm font-semibold text-primary flex items-center gap-1 hover:underline">
-            View All <ArrowRight className="w-4 h-4" />
-          </Link>
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-black underline underline-offset-8 decoration-primary decoration-4">Explore Categories</h2>
+          <p className="text-sm text-muted-foreground mt-3">Browse our extensive library of calculation tools</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
