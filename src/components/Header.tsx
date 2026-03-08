@@ -3,7 +3,7 @@ import { Menu, X, Search } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchCalculators } from "@/lib/calculator-utils";
-import { getCategoryIcon, type CalculatorInfo } from "@/data/calculators";
+import { getCategoryIcon, categories, type CalculatorInfo } from "@/data/calculators";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,6 +11,7 @@ const Header = () => {
   const [results, setResults] = useState<CalculatorInfo[]>([]);
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const mobileRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ const Header = () => {
     setOpen(query.trim().length > 0);
   }, [query]);
 
+  // Close search dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
@@ -26,6 +28,19 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  // Close mobile menu on outside click
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const handler = (e: MouseEvent) => {
+      const header = mobileRef.current;
+      if (header && !header.contains(e.target as Node)) {
+        setMobileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [mobileOpen]);
+
   const handleSelect = (calc: CalculatorInfo) => {
     setQuery("");
     setOpen(false);
@@ -33,7 +48,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-card border-b border-border">
+    <header ref={mobileRef} className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
@@ -82,15 +97,18 @@ const Header = () => {
           )}
         </div>
 
-        {/* Right actions */}
-        <div className="hidden md:flex items-center gap-3 shrink-0">
-          <button className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-            Log In
-          </button>
-          <button className="px-4 py-1.5 bg-foreground text-background text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity">
-            Sign Up
-          </button>
-        </div>
+        {/* Category links (desktop) */}
+        <nav className="hidden md:flex items-center gap-1 shrink-0">
+          {categories.slice(0, 5).map((cat) => (
+            <Link
+              key={cat.slug}
+              to={`/category/${cat.slug}`}
+              className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+            >
+              {cat.name}
+            </Link>
+          ))}
+        </nav>
 
         <button
           className="md:hidden text-foreground"
@@ -110,14 +128,18 @@ const Header = () => {
               className="w-full pl-9 pr-3 py-2 rounded-lg border border-border bg-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </div>
-          <div className="flex items-center gap-3 pt-2">
-            <button className="flex-1 py-2 text-sm font-medium text-foreground border border-border rounded-lg">
-              Log In
-            </button>
-            <button className="flex-1 py-2 bg-foreground text-background text-sm font-semibold rounded-lg">
-              Sign Up
-            </button>
-          </div>
+          <nav className="flex flex-col gap-1 pt-2">
+            {categories.map((cat) => (
+              <Link
+                key={cat.slug}
+                to={`/category/${cat.slug}`}
+                onClick={() => setMobileOpen(false)}
+                className="px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
+              >
+                {cat.name}
+              </Link>
+            ))}
+          </nav>
         </div>
       )}
     </header>
