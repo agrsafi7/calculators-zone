@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { getCategoryIcon } from "@/data/calculators";
+import { getCategoryIcon, popularCalculators } from "@/data/calculators";
 import { getCategoryCalculatorCount, uniqueCalculators } from "@/lib/calculator-utils";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { Flame } from "lucide-react";
 import RecentlyUsed from "@/components/RecentlyUsed";
 
 const allCategories = [
