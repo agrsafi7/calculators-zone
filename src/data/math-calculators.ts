@@ -7,7 +7,60 @@ const mathRelated = (exclude: string) => [
   { name: "Area Calculator", slug: "area-calculator", icon: "hash", category: "math" },
 ].filter((c) => c.slug !== exclude);
 
-export const mathCalculators: CalculatorConfig[] = [
+const mathSubcategoryMap: Record<string, string> = {
+  "percentage-increase-calculator": "Algebra",
+  "percentage-decrease-calculator": "Algebra",
+  "fraction-calculator": "Algebra",
+  "mixed-fraction-calculator": "Algebra",
+  "decimal-to-fraction-calculator": "Algebra",
+  "fraction-to-decimal-calculator": "Algebra",
+  "scientific-calculator": "Algebra",
+  "quadratic-equation-calculator": "Algebra",
+  "linear-equation-calculator": "Algebra",
+  "scientific-notation-calculator": "Algebra",
+  "long-division-calculator": "Algebra",
+  "rounding-calculator": "Algebra",
+  "number-sequence-calculator": "Algebra",
+  "factor-calculator": "Algebra",
+  "ratio-calculator": "Algebra",
+  "percent-error-calculator": "Algebra",
+  "standard-deviation-calculator": "Statistics",
+  "mean-median-mode-calculator": "Statistics",
+  "probability-calculator": "Statistics",
+  "permutation-combination-calculator": "Statistics",
+  "z-score-calculator": "Statistics",
+  "sample-size-calculator": "Statistics",
+  "confidence-interval-calculator": "Statistics",
+  "p-value-calculator": "Statistics",
+  "statistics-calculator": "Statistics",
+  "average-calculator": "Statistics",
+  "slope-calculator": "Geometry",
+  "distance-formula-calculator": "Geometry",
+  "midpoint-calculator": "Geometry",
+  "area-calculator": "Geometry",
+  "volume-calculator": "Geometry",
+  "circle-calculator": "Geometry",
+  "pythagorean-theorem-calculator": "Geometry",
+  "right-triangle-calculator": "Geometry",
+  "triangle-calculator": "Geometry",
+  "surface-area-calculator": "Geometry",
+  "binary-calculator": "Number Theory",
+  "hex-calculator": "Number Theory",
+  "lcm-calculator": "Number Theory",
+  "gcf-calculator": "Number Theory",
+  "prime-factorization-calculator": "Number Theory",
+  "matrix-calculator": "Matrix & Linear Algebra",
+  "determinant-calculator": "Matrix & Linear Algebra",
+  "log-calculator": "Algebra",
+  "exponent-calculator": "Algebra",
+  "square-root-calculator": "Algebra",
+  "cube-root-calculator": "Algebra",
+  "gpa-calculator": "Grade Calculators",
+  "grade-calculator": "Grade Calculators",
+  "final-grade-calculator": "Grade Calculators",
+};
+
+const _mathCalculators: CalculatorConfig[] = [
   // 1. Percentage Increase
   {
     slug: "percentage-increase-calculator",
@@ -1493,3 +1546,8 @@ export const mathCalculators: CalculatorConfig[] = [
     relatedCalcs: mathRelated("statistics-calculator"),
   },
 ];
+
+export const mathCalculators = _mathCalculators.map(c => ({
+  ...c,
+  subcategory: mathSubcategoryMap[c.slug] || "General",
+}));
