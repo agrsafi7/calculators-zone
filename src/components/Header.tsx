@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Moon, Sun } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchCalculators } from "@/lib/calculator-utils";
 import { getCategoryIcon, categories, type CalculatorInfo } from "@/data/calculators";
+import { useDarkMode } from "@/hooks/use-dark-mode";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
