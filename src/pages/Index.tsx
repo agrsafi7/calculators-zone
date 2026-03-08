@@ -75,24 +75,12 @@ const commonlyUsed = [
 ];
 
 const trendingTools = [
-  {
-    name: "Mortgage Repayment Calculator",
-    description: "Calculate monthly payments and total interest for your home loan.",
-    slug: "mortgage-calculator",
-    categorySlug: "finance",
-  },
-  {
-    name: "Scientific Notation Solver",
-    description: "Convert numbers to and from scientific notation instantly.",
-    slug: "scientific-notation-calculator",
-    categorySlug: "math",
-  },
-  {
-    name: "Sales Tax & Tip Calculator",
-    description: "Quickly calculate total costs including local taxes and gratuity.",
-    slug: "sales-tax-calculator",
-    categorySlug: "finance",
-  },
+  { name: "Mortgage Repayment Calculator", description: "Calculate monthly payments and total interest for your home loan.", slug: "mortgage-calculator", categorySlug: "finance" },
+  { name: "Scientific Notation Solver", description: "Convert numbers to and from scientific notation instantly.", slug: "scientific-notation-calculator", categorySlug: "math" },
+  { name: "Sales Tax & Tip Calculator", description: "Quickly calculate total costs including local taxes and gratuity.", slug: "sales-tax-calculator", categorySlug: "finance" },
+  { name: "BMI Calculator", description: "Find your Body Mass Index and understand your weight category.", slug: "bmi-calculator", categorySlug: "health" },
+  { name: "Percentage Calculator", description: "Calculate percentages, increases, decreases, and ratios.", slug: "percentage-calculator", categorySlug: "math" },
+  { name: "Age Calculator", description: "Find your exact age in years, months, and days.", slug: "age-calculator", categorySlug: "datetime" },
 ];
 
 const Index = () => {
