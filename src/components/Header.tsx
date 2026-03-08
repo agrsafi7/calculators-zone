@@ -7,6 +7,7 @@ import { getCategoryIcon, categories, type CalculatorInfo } from "@/data/calcula
 import { useDarkMode } from "@/hooks/use-dark-mode";
 
 const Header = () => {
+  const { isDark, toggle: toggleDark } = useDarkMode();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<CalculatorInfo[]>([]);
