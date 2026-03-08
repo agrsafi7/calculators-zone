@@ -95,14 +95,14 @@ const Index = () => {
       {/* Hero Section */}
       <section className="hero-section py-10 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* Left: Calculator */}
             <div className="max-w-md">
               <HeroCalculator />
             </div>
 
             {/* Right: Search + commonly used */}
-            <div className="space-y-6">
+            <div className="flex flex-col justify-between">
               <div>
                 <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-black leading-tight mb-3">
                   Search {totalCalcs.toLocaleString()}+ specialized calculators…
@@ -112,9 +112,11 @@ const Index = () => {
                 </p>
               </div>
 
-              <SearchBar large placeholder="Try 'Mortgage Payment' or 'BMI'..." />
+              <div className="mt-6">
+                <SearchBar large placeholder="Try 'Mortgage Payment' or 'BMI'..." />
+              </div>
 
-              <div>
+              <div className="mt-6">
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                   Commonly Used
                 </p>

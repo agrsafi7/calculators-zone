@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Moon, Sun } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { searchCalculators } from "@/lib/calculator-utils";
 import { getCategoryIcon, categories, type CalculatorInfo } from "@/data/calculators";
+import { useDarkMode } from "@/hooks/use-dark-mode";
 
 const Header = () => {
+  const { isDark, toggle: toggleDark } = useDarkMode();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<CalculatorInfo[]>([]);
@@ -109,6 +111,15 @@ const Header = () => {
             </Link>
           ))}
         </nav>
+
+        {/* Dark mode toggle */}
+        <button
+          onClick={toggleDark}
+          className="w-9 h-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors shrink-0"
+          aria-label="Toggle dark mode"
+        >
+          {isDark ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+        </button>
 
         <button
           className="md:hidden text-foreground"
