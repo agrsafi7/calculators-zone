@@ -14,6 +14,7 @@ import { scienceCalculatorsExtended } from "@/data/science-calculators-extended"
 import { scienceCalculatorsExtra } from "@/data/science-calculators-extra";
 import { lifestyleCalculators } from "@/data/lifestyle-calculators";
 import { lifestyleCalculatorsExtended } from "@/data/lifestyle-calculators-extended";
+import { lifestyleCalculatorsExtra } from "@/data/lifestyle-calculators-extra";
 
 const STORAGE_KEY = "calculators_recent";
 const MAX_RECENT = 5;
