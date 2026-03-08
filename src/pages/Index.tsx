@@ -101,8 +101,8 @@ const Index = () => {
               <HeroCalculator />
             </div>
 
-            {/* Right: Search + commonly used (desktop only) */}
-            <div className="hidden lg:flex flex-col justify-between">
+            {/* Right: Search + commonly used */}
+            <div className="flex flex-col justify-between">
               <div>
                 <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-black leading-tight mb-3">
                   Search {totalCalcs.toLocaleString()}+ specialized calculators…
