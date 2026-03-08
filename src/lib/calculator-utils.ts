@@ -73,6 +73,7 @@ export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = [
   ...configToInfo(conversionCalculatorsExtended),
   ...configToInfo(datetimeCalculators),
   ...configToInfo(datetimeCalculatorsExtended),
+  ...configToInfo(datetimeCalculatorsExtra),
   ...configToInfo(scienceCalculators),
   ...configToInfo(scienceCalculatorsExtended),
   ...configToInfo(scienceCalculatorsExtra),
