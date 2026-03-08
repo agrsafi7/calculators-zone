@@ -95,9 +95,9 @@ const Index = () => {
       {/* Hero Section */}
       <section className="hero-section py-10 md:py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* Left: Calculator */}
-            <div className="max-w-md">
+            <div className="max-w-md mx-auto lg:mx-0">
               <HeroCalculator />
             </div>
 
@@ -169,6 +169,9 @@ const Index = () => {
                     <Icon className="w-4 h-4 text-background" />
                   </div>
                   <h3 className="font-bold text-sm">{cat.name}</h3>
+                  <span className="ml-auto text-xs font-semibold bg-secondary text-muted-foreground px-2 py-0.5 rounded-full">
+                    {getCategoryCalculatorCount(cat.slug)}
+                  </span>
                 </div>
                 <ul className="space-y-1.5">
                   {cat.items.map((item) => (
