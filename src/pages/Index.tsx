@@ -6,7 +6,7 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import SEO from "@/components/SEO";
 import HeroCalculator from "@/components/HeroCalculator";
-
+import RecentlyUsed from "@/components/RecentlyUsed";
 const totalCalcs = uniqueCalculators.length;
 
 // Category cards matching reference design with bullet points
