@@ -30,6 +30,7 @@ const allConfigs = [
   ...datetimeCalculatorsExtended,
   ...scienceCalculators,
   ...scienceCalculatorsExtended,
+  ...scienceCalculatorsExtra,
   ...lifestyleCalculators,
   ...lifestyleCalculatorsExtended,
 ];
