@@ -21,7 +21,7 @@ const financeRelated = (exclude: string) => [
   { name: "Savings Calculator", slug: "savings-calculator", icon: "dollar", category: "finance" },
 ].filter((c) => c.slug !== exclude);
 
-export const financeCalculators: CalculatorConfig[] = [
+const _financeCalculators: CalculatorConfig[] = [
   // 1. Loan Calculator
   {
     slug: "loan-calculator",
@@ -2592,3 +2592,93 @@ export const financeCalculators: CalculatorConfig[] = [
     relatedCalcs: financeRelated("average-return-calculator"),
   },
 ];
+
+const financeSubcategoryMap: Record<string, string> = {
+  // Loan Calculators
+  "loan-calculator": "Loan Calculators",
+  "auto-loan-calculator": "Loan Calculators",
+  "personal-loan-calculator": "Loan Calculators",
+  "student-loan-calculator": "Loan Calculators",
+  "refinance-calculator": "Loan Calculators",
+  "mortgage-refinance-calculator": "Loan Calculators",
+  "amortization-calculator": "Loan Calculators",
+  "mortgage-amortization-schedule-calculator": "Loan Calculators",
+  "business-loan-calculator": "Loan Calculators",
+  "lease-calculator": "Loan Calculators",
+  "mortgage-payoff-calculator": "Loan Calculators",
+  "fha-loan-calculator": "Loan Calculators",
+  "heloc-calculator": "Loan Calculators",
+  "home-equity-loan-calculator": "Loan Calculators",
+  "boat-loan-calculator": "Loan Calculators",
+  "auto-lease-calculator": "Loan Calculators",
+  "va-mortgage-calculator": "Loan Calculators",
+  // Investment Calculators
+  "interest-rate-calculator": "Investment Calculators",
+  "compound-interest-calculator": "Investment Calculators",
+  "simple-interest-calculator": "Investment Calculators",
+  "investment-calculator": "Investment Calculators",
+  "roi-calculator": "Investment Calculators",
+  "savings-calculator": "Investment Calculators",
+  "cd-calculator": "Investment Calculators",
+  "bond-calculator": "Investment Calculators",
+  "mutual-fund-calculator": "Investment Calculators",
+  "irr-calculator": "Investment Calculators",
+  "payback-period-calculator": "Investment Calculators",
+  "annuity-calculator": "Investment Calculators",
+  "present-value-calculator": "Investment Calculators",
+  "future-value-calculator": "Investment Calculators",
+  "annuity-payout-calculator": "Investment Calculators",
+  "roth-ira-calculator": "Investment Calculators",
+  "average-return-calculator": "Investment Calculators",
+  // Retirement Calculators
+  "retirement-calculator": "Retirement Calculators",
+  "401k-calculator": "Retirement Calculators",
+  "ira-calculator": "Retirement Calculators",
+  "rmd-calculator": "Retirement Calculators",
+  "pension-calculator": "Retirement Calculators",
+  "social-security-calculator": "Retirement Calculators",
+  // Tax Calculators
+  "tax-calculator": "Tax Calculators",
+  "income-tax-calculator": "Tax Calculators",
+  "capital-gains-tax-calculator": "Tax Calculators",
+  "sales-tax-calculator": "Tax Calculators",
+  "vat-calculator": "Tax Calculators",
+  "property-tax-calculator": "Tax Calculators",
+  "marriage-tax-calculator": "Tax Calculators",
+  "estate-tax-calculator": "Tax Calculators",
+  // Business Calculators
+  "profit-margin-calculator": "Business Calculators",
+  "break-even-calculator": "Business Calculators",
+  "markup-calculator": "Business Calculators",
+  "discount-calculator": "Business Calculators",
+  "depreciation-calculator": "Business Calculators",
+  // Real Estate Calculators
+  "rent-vs-buy-calculator": "Real Estate Calculators",
+  "house-affordability-calculator": "Real Estate Calculators",
+  "down-payment-calculator": "Real Estate Calculators",
+  "rental-property-calculator": "Real Estate Calculators",
+  // Personal Finance
+  "salary-calculator": "Personal Finance",
+  "hourly-to-salary-calculator": "Personal Finance",
+  "overtime-pay-calculator": "Personal Finance",
+  "commission-calculator": "Personal Finance",
+  "bonus-calculator": "Personal Finance",
+  "take-home-pay-calculator": "Personal Finance",
+  "budget-calculator": "Personal Finance",
+  "debt-consolidation-calculator": "Personal Finance",
+  "tip-calculator": "Personal Finance",
+  "rent-calculator": "Personal Finance",
+  "credit-card-payment-calculator": "Personal Finance",
+  "credit-card-interest-calculator": "Personal Finance",
+  "debt-payoff-calculator": "Personal Finance",
+  "debt-to-income-ratio-calculator": "Personal Finance",
+  "credit-cards-payoff-calculator": "Personal Finance",
+  "college-cost-calculator": "Personal Finance",
+  "inflation-calculator": "Personal Finance",
+  "apr-calculator": "Personal Finance",
+};
+
+export const financeCalculators: CalculatorConfig[] = _financeCalculators.map(c => ({
+  ...c,
+  subcategory: financeSubcategoryMap[c.slug] || "General",
+}));
