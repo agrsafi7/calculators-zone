@@ -79,6 +79,18 @@ const CategoryCard = ({ cat, index }: { cat: typeof categoryCards[0]; index: num
   const visibleItems = expanded ? cat.items : cat.items.slice(0, 3);
   const hasMore = cat.items.length > 3;
 
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, [expanded, cat.items]);
+
+  const collapsedCount = 3;
+  const collapsedHeight = collapsedCount * 32; // ~32px per item
+
   return (
     <div
       className="group bg-card rounded-2xl border border-border p-5 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-0.5"
@@ -97,23 +109,30 @@ const CategoryCard = ({ cat, index }: { cat: typeof categoryCards[0]; index: num
         </div>
       </Link>
 
-      <ul className="space-y-1">
-        {visibleItems.map((item, i) => (
-          <li
-            key={item}
-            className="flex items-center gap-2.5 text-sm text-muted-foreground py-1 transition-all duration-200"
-            style={{ animationDelay: `${i * 30}ms` }}
-          >
-            <span className="w-1.5 h-1.5 bg-primary/40 rounded-full shrink-0" />
-            {item}
-          </li>
-        ))}
-      </ul>
+      <div
+        ref={contentRef}
+        className="overflow-hidden transition-[height] duration-300 ease-in-out"
+        style={{ height: expanded ? contentHeight : Math.min(collapsedHeight, contentHeight ?? collapsedHeight) }}
+      >
+        <ul className="space-y-1">
+          {cat.items.map((item, i) => (
+            <li
+              key={item}
+              className={`flex items-center gap-2.5 text-sm text-muted-foreground py-1 transition-opacity duration-300 ${
+                !expanded && i >= collapsedCount ? "opacity-0" : "opacity-100"
+              }`}
+            >
+              <span className="w-1.5 h-1.5 bg-primary/40 rounded-full shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {hasMore && (
         <button
           onClick={(e) => { e.preventDefault(); setExpanded(!expanded); }}
-          className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-primary/70 hover:text-primary transition-colors group/btn"
+          className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-primary/70 hover:text-primary transition-colors"
         >
           <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
           {expanded ? "Show less" : `+${cat.items.length - 3} more`}
