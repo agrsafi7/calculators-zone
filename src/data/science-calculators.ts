@@ -1,5 +1,30 @@
 import { CalculatorConfig } from "@/components/CalculatorTemplate";
 
+const sciSubcategoryMap: Record<string, string> = {
+  "force-calculator": "Mechanics",
+  "velocity-calculator": "Mechanics",
+  "acceleration-calculator": "Mechanics",
+  "kinetic-energy-calculator": "Mechanics",
+  "potential-energy-calculator": "Mechanics",
+  "pressure-calculator": "Mechanics",
+  "torque-calculator": "Mechanics",
+  "speed-calculator": "Mechanics",
+  "mass-calculator": "Mechanics",
+  "ohms-law-calculator": "Electricity & Magnetism",
+  "voltage-calculator": "Electricity & Magnetism",
+  "electricity-power-calculator": "Electricity & Magnetism",
+  "density-calculator": "General Physics",
+  "molar-mass-calculator": "Chemistry",
+  "ph-calculator": "Chemistry",
+  "molecular-weight-calculator": "Chemistry",
+  "half-life-calculator": "Nuclear & Radioactivity",
+  "ideal-gas-law-calculator": "Chemistry",
+  "wavelength-calculator": "Waves & Optics",
+  "frequency-calculator": "Waves & Optics",
+  "weight-calculator": "Astronomy & Space",
+};
+
+
 const sciRelated = (exclude: string) => [
   { name: "Force Calculator", slug: "force-calculator", icon: "flask", category: "science" },
   { name: "Density Calculator", slug: "density-calculator", icon: "flask", category: "science" },
@@ -7,7 +32,7 @@ const sciRelated = (exclude: string) => [
   { name: "Ideal Gas Law", slug: "ideal-gas-law-calculator", icon: "flask", category: "science" },
 ].filter((c) => c.slug !== exclude);
 
-export const scienceCalculators: CalculatorConfig[] = [
+const _scienceCalculators: CalculatorConfig[] = [
   {
     slug: "force-calculator", name: "Force Calculator", category: "Science", categorySlug: "science",
     description: "Calculate force using Newton's second law: F = m × a.",
@@ -519,3 +544,8 @@ export const scienceCalculators: CalculatorConfig[] = [
     relatedCalcs: sciRelated("weight-calculator"),
   },
 ];
+
+export const scienceCalculators = _scienceCalculators.map(c => ({
+  ...c,
+  subcategory: sciSubcategoryMap[c.slug] || "General Physics",
+}));

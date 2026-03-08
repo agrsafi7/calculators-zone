@@ -1,5 +1,53 @@
 import { CalculatorConfig } from "@/components/CalculatorTemplate";
 
+const lifeSubcategoryMap: Record<string, string> = {
+  "age-in-months-calculator": "Age & Personal",
+  "sleep-calculator": "Health & Wellness",
+  "love-calculator": "Fun & Entertainment",
+  "compatibility-calculator": "Fun & Entertainment",
+  "bmi-for-kids-calculator": "Health & Wellness",
+  "pet-age-calculator": "Pets",
+  "dog-age-calculator": "Pets",
+  "cat-age-calculator": "Pets",
+  "travel-budget-calculator": "Travel & Auto",
+  "gas-mileage-calculator": "Travel & Auto",
+  "trip-cost-calculator": "Travel & Auto",
+  "fuel-cost-calculator": "Travel & Auto",
+  "cooking-measurement-converter": "Cooking & Kitchen",
+  "recipe-converter": "Cooking & Kitchen",
+  "random-number-generator": "Fun & Entertainment",
+  "number-to-words-converter": "Fun & Entertainment",
+  "dice-roller": "Fun & Entertainment",
+  "roman-numeral-converter": "Fun & Entertainment",
+  "day-of-week-calculator": "Fun & Entertainment",
+  "electricity-calculator": "Home & Construction",
+  "concrete-calculator": "Home & Construction",
+  "btu-calculator": "Home & Construction",
+  "square-footage-calculator": "Home & Construction",
+  "tile-calculator": "Home & Construction",
+  "gravel-calculator": "Home & Construction",
+  "roofing-calculator": "Home & Construction",
+  "mulch-calculator": "Home & Construction",
+  "stair-calculator": "Home & Construction",
+  "wind-chill-calculator": "Weather",
+  "dew-point-calculator": "Weather",
+  "heat-index-calculator": "Weather",
+  "password-generator": "Tech & Digital",
+  "bandwidth-calculator": "Tech & Digital",
+  "ip-subnet-calculator": "Tech & Digital",
+  "voltage-drop-calculator": "Tech & Digital",
+  "resistor-calculator": "Tech & Digital",
+  "molarity-calculator": "Science & Chemistry",
+  "height-calculator": "Health & Wellness",
+  "shoe-size-converter": "Fashion & Shopping",
+  "golf-handicap-calculator": "Sports & Fitness",
+  "tire-size-calculator": "Travel & Auto",
+  "horsepower-calculator": "Travel & Auto",
+  "time-card-calculator": "Work & Productivity",
+  "gdp-calculator": "Economics",
+};
+
+
 const lifeRelated = (exclude: string) => [
   { name: "Age Calculator", slug: "age-calculator", icon: "smile", category: "lifestyle" },
   { name: "Sleep Calculator", slug: "sleep-calculator", icon: "smile", category: "lifestyle" },
@@ -7,7 +55,7 @@ const lifeRelated = (exclude: string) => [
   { name: "Gas Mileage", slug: "gas-mileage-calculator", icon: "smile", category: "lifestyle" },
 ].filter((c) => c.slug !== exclude);
 
-export const lifestyleCalculators: CalculatorConfig[] = [
+const _lifestyleCalculators: CalculatorConfig[] = [
   {
     slug: "age-in-months-calculator", name: "Age in Months Calculator", category: "Lifestyle", categorySlug: "lifestyle",
     description: "Calculate your exact age in months from your date of birth.",
@@ -1218,3 +1266,8 @@ export const lifestyleCalculators: CalculatorConfig[] = [
     relatedCalcs: lifeRelated("ip-subnet-calculator"),
   },
 ];
+
+export const lifestyleCalculators = _lifestyleCalculators.map(c => ({
+  ...c,
+  subcategory: lifeSubcategoryMap[c.slug] || "General",
+}));

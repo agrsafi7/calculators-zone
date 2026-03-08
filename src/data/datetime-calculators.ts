@@ -1,5 +1,22 @@
 import { CalculatorConfig } from "@/components/CalculatorTemplate";
 
+const dtSubcategoryMap: Record<string, string> = {
+  "age-calculator": "Age Calculators",
+  "chronological-age-calculator": "Age Calculators",
+  "date-difference-calculator": "Date Calculators",
+  "days-between-dates-calculator": "Date Calculators",
+  "add-subtract-days-calculator": "Date Calculators",
+  "due-date-calculator": "Date Calculators",
+  "time-duration-calculator": "Time Calculators",
+  "business-days-calculator": "Work & Business",
+  "work-hours-calculator": "Work & Business",
+  "retirement-date-calculator": "Work & Business",
+  "time-zone-converter": "Time Zones",
+  "countdown-calculator": "Countdown & Tracking",
+  "week-number-calculator": "Date Calculators",
+};
+
+
 const dtRelated = (exclude: string) => [
   { name: "Age Calculator", slug: "age-calculator", icon: "clock", category: "datetime" },
   { name: "Date Difference", slug: "date-difference-calculator", icon: "clock", category: "datetime" },
@@ -7,7 +24,7 @@ const dtRelated = (exclude: string) => [
   { name: "Countdown", slug: "countdown-calculator", icon: "clock", category: "datetime" },
 ].filter((c) => c.slug !== exclude);
 
-export const datetimeCalculators: CalculatorConfig[] = [
+const _datetimeCalculators: CalculatorConfig[] = [
   {
     slug: "age-calculator", name: "Age Calculator", category: "Date & Time", categorySlug: "datetime",
     description: "Calculate your exact age in years, months, days, hours, and minutes from your date of birth.",
@@ -401,3 +418,8 @@ export const datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("chronological-age-calculator"),
   },
 ];
+
+export const datetimeCalculators = _datetimeCalculators.map(c => ({
+  ...c,
+  subcategory: dtSubcategoryMap[c.slug] || "General",
+}));

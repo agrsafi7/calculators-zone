@@ -6,9 +6,13 @@ import { healthCalculatorsExtended } from "@/data/health-calculators-extended";
 import { mathCalculators } from "@/data/math-calculators";
 import { mathCalculatorsExtended } from "@/data/math-calculators-extended";
 import { conversionCalculators } from "@/data/conversion-calculators";
+import { conversionCalculatorsExtended } from "@/data/conversion-calculators-extended";
 import { datetimeCalculators } from "@/data/datetime-calculators";
+import { datetimeCalculatorsExtended } from "@/data/datetime-calculators-extended";
 import { scienceCalculators } from "@/data/science-calculators";
+import { scienceCalculatorsExtended } from "@/data/science-calculators-extended";
 import { lifestyleCalculators } from "@/data/lifestyle-calculators";
+import { lifestyleCalculatorsExtended } from "@/data/lifestyle-calculators-extended";
 
 const STORAGE_KEY = "calculators_recent";
 const MAX_RECENT = 5;
@@ -59,9 +63,13 @@ export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = [
   ...configToInfo(mathCalculators),
   ...configToInfo(mathCalculatorsExtended),
   ...configToInfo(conversionCalculators),
+  ...configToInfo(conversionCalculatorsExtended),
   ...configToInfo(datetimeCalculators),
+  ...configToInfo(datetimeCalculatorsExtended),
   ...configToInfo(scienceCalculators),
+  ...configToInfo(scienceCalculatorsExtended),
   ...configToInfo(lifestyleCalculators),
+  ...configToInfo(lifestyleCalculatorsExtended),
 ];
 
 // Deduplicate by slug
