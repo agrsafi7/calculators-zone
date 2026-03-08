@@ -12,6 +12,8 @@ import PercentageCalculator from "./pages/PercentageCalculator";
 import GenericCalculatorPage from "./pages/GenericCalculatorPage";
 import CategoryPage from "./pages/CategoryPage";
 import { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } from "./pages/LegalPages";
+import AllCategoriesPage from "./pages/AllCategoriesPage";
+import PopularToolsPage from "./pages/PopularToolsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
