@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Home, Heart, Calculator, Hash, ArrowRightLeft, FlaskConical, Globe, Hammer, Wrench, BookOpen, Coffee } from "lucide-react";
+import { ArrowRight, Home, Heart, Calculator, Hash, ChevronDown } from "lucide-react";
 import { categories, getCategoryIcon, popularCalculators } from "@/data/calculators";
 import { uniqueCalculators, getCategoryCalculatorCount } from "@/lib/calculator-utils";
 import AdPlaceholder from "@/components/AdPlaceholder";
@@ -9,49 +10,49 @@ import HeroCalculator from "@/components/HeroCalculator";
 import RecentlyUsed from "@/components/RecentlyUsed";
 const totalCalcs = uniqueCalculators.length;
 
-// Category cards matching reference design with bullet points
+// Category cards with collapsible subcategories
 const categoryCards = [
   {
     name: "Finance",
     slug: "finance",
     icon: "dollar",
-    items: ["Mortgage", "Loans", "Investment"],
+    items: ["Mortgage & Loans", "Investment & Savings", "Tax & Salary", "Credit & Debt"],
   },
   {
     name: "Health & Fitness",
     slug: "health",
     icon: "heart",
-    items: ["BMI & Calories", "Ideal Weight", "Heart Rate"],
+    items: ["BMI & Body Composition", "Calories & Nutrition", "Heart Rate & Fitness", "Pregnancy & Growth"],
   },
   {
     name: "Math & Education",
     slug: "math",
     icon: "hash",
-    items: ["Algebra & Geometry", "GPA & Grade", "Fractions"],
+    items: ["Algebra & Equations", "Geometry & Trigonometry", "Statistics & Probability", "GPA & Grade"],
   },
   {
     name: "Unit Converters",
     slug: "conversions",
     icon: "convert",
-    items: ["Metric/Imperial", "Currency", "Torque & Pressure"],
+    items: ["Length & Weight", "Temperature & Speed", "Energy & Pressure", "Currency & Data"],
   },
   {
     name: "Science",
     slug: "science",
     icon: "flask",
-    items: ["Physics & Chemistry", "Astronomy", "Periodic Table Tools"],
+    items: ["Physics", "Chemistry", "Biology", "Astronomy", "Environmental Science", "Geology & Earth Science", "Thermodynamics", "Optics", "Fluid Mechanics", "Nuclear Physics"],
   },
   {
     name: "Lifestyle & Daily Life",
     slug: "lifestyle",
     icon: "smile",
-    items: ["Tip & Bill Split", "Cooking Conversions", "Construction"],
+    items: ["Tip & Bill Split", "Cooking Conversions", "Construction & DIY", "Pet & Travel"],
   },
   {
     name: "Date & Time",
     slug: "datetime",
     icon: "calendar",
-    items: ["Age Calculator", "Date Difference", "Time Zones"],
+    items: ["Age Calculator", "Date Difference", "Business Days", "Time Zones & Countdown"],
   },
 ];
 
@@ -70,6 +71,57 @@ const trendingTools = [
   { name: "Percentage Calculator", description: "Calculate percentages, increases, decreases, and ratios.", slug: "percentage-calculator", categorySlug: "math" },
   { name: "Age Calculator", description: "Find your exact age in years, months, and days.", slug: "age-calculator", categorySlug: "datetime" },
 ];
+
+const CategoryCard = ({ cat, index }: { cat: typeof categoryCards[0]; index: number }) => {
+  const [expanded, setExpanded] = useState(false);
+  const Icon = getCategoryIcon(cat.icon);
+  const count = getCategoryCalculatorCount(cat.slug);
+  const visibleItems = expanded ? cat.items : cat.items.slice(0, 3);
+  const hasMore = cat.items.length > 3;
+
+  return (
+    <div
+      className="group bg-card rounded-2xl border border-border p-5 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-0.5"
+    >
+      <Link to={`/category/${cat.slug}`} className="block">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300">
+            <Icon className="w-5 h-5 text-primary" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
+          </div>
+          <span className="text-xs font-bold bg-primary/10 text-primary px-2.5 py-1 rounded-full">
+            {count}
+          </span>
+        </div>
+      </Link>
+
+      <ul className="space-y-1">
+        {visibleItems.map((item, i) => (
+          <li
+            key={item}
+            className="flex items-center gap-2.5 text-sm text-muted-foreground py-1 transition-all duration-200"
+            style={{ animationDelay: `${i * 30}ms` }}
+          >
+            <span className="w-1.5 h-1.5 bg-primary/40 rounded-full shrink-0" />
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      {hasMore && (
+        <button
+          onClick={(e) => { e.preventDefault(); setExpanded(!expanded); }}
+          className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-primary/70 hover:text-primary transition-colors group/btn"
+        >
+          <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
+          {expanded ? "Show less" : `+${cat.items.length - 3} more`}
+        </button>
+      )}
+    </div>
+  );
+};
 
 const Index = () => {
   return (
@@ -144,34 +196,9 @@ const Index = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {categoryCards.map((cat, i) => {
-            const Icon = getCategoryIcon(cat.icon);
-            return (
-              <Link
-                key={i}
-                to={`/category/${cat.slug}`}
-                className="bg-card rounded-xl border border-border p-5 group transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-lg hover:shadow-primary/10 hover:border-primary/30"
-              >
-                <div className="flex items-center gap-2.5 mb-3">
-                  <div className="w-8 h-8 bg-foreground rounded-md flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-background" />
-                  </div>
-                  <h3 className="font-bold text-sm">{cat.name}</h3>
-                  <span className="ml-auto text-xs font-semibold bg-secondary text-muted-foreground px-2 py-0.5 rounded-full">
-                    {getCategoryCalculatorCount(cat.slug)}
-                  </span>
-                </div>
-                <ul className="space-y-1.5">
-                  {cat.items.map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <span className="w-1 h-1 bg-muted-foreground rounded-full shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </Link>
-            );
-          })}
+          {categoryCards.map((cat, i) => (
+            <CategoryCard key={i} cat={cat} index={i} />
+          ))}
         </div>
       </section>
 
