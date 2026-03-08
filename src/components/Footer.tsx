@@ -7,7 +7,8 @@ const mainLinks = [
   { label: "Home", href: "/" },
   { label: "All Calculators", href: "/category/finance" },
   { label: "Popular Tools", href: "/category/math" },
-  { label: "Mobile App", href: "/" },
+  { label: "About Us", href: "/disclaimer" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const categoryLinks = [
