@@ -18,52 +18,40 @@ const categoryCards = [
     items: ["Mortgage", "Loans", "Investment"],
   },
   {
-    name: "Health",
+    name: "Health & Fitness",
     slug: "health",
     icon: "heart",
     items: ["BMI & Calories", "Ideal Weight", "Heart Rate"],
   },
   {
-    name: "Math",
+    name: "Math & Education",
     slug: "math",
     icon: "hash",
-    items: ["Algebra & Geometry", "Fractions", "Matrix Operations"],
+    items: ["Algebra & Geometry", "GPA & Grade", "Fractions"],
   },
   {
-    name: "Converters",
+    name: "Unit Converters",
     slug: "conversions",
     icon: "convert",
-    items: ["Metric/Imperial", "Currency", "Data Storage"],
-  },
-  {
-    name: "Education",
-    slug: "math",
-    icon: "hash",
-    items: ["GPA & Grade", "SAT Score", "Study Planning"],
-  },
-  {
-    name: "Construction",
-    slug: "lifestyle",
-    icon: "home",
-    items: ["Concrete & Flooring", "Roofing", "Paint Estimation"],
-  },
-  {
-    name: "Conversion Tools",
-    slug: "conversions",
-    icon: "convert",
-    items: ["Torque & Pressure", "Energy", "Power Units"],
-  },
-  {
-    name: "Daily Life",
-    slug: "lifestyle",
-    icon: "smile",
-    items: ["Tip & Bill Split", "Time Difference", "Cooking Conversions"],
+    items: ["Metric/Imperial", "Currency", "Torque & Pressure"],
   },
   {
     name: "Science",
     slug: "science",
     icon: "flask",
-    items: ["Physics & Chemistry", "Astronomy", "Period Table Tools"],
+    items: ["Physics & Chemistry", "Astronomy", "Periodic Table Tools"],
+  },
+  {
+    name: "Lifestyle & Daily Life",
+    slug: "lifestyle",
+    icon: "smile",
+    items: ["Tip & Bill Split", "Cooking Conversions", "Construction"],
+  },
+  {
+    name: "Date & Time",
+    slug: "datetime",
+    icon: "calendar",
+    items: ["Age Calculator", "Date Difference", "Time Zones"],
   },
 ];
 
@@ -97,7 +85,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
             {/* Left: Calculator */}
-            <div className="max-w-md mx-auto lg:mx-0">
+            <div className="w-full max-w-full lg:max-w-md mx-auto lg:mx-0">
               <HeroCalculator />
             </div>
 
