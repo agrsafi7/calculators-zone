@@ -512,3 +512,8 @@ const _conversionCalculators: CalculatorConfig[] = [
     relatedCalcs: convRelated("inches-to-centimeters-converter"),
   },
 ];
+
+export const conversionCalculators = _conversionCalculators.map(c => ({
+  ...c,
+  subcategory: convSubcategoryMap[c.slug] || "General",
+}));

@@ -418,3 +418,8 @@ const _datetimeCalculators: CalculatorConfig[] = [
     relatedCalcs: dtRelated("chronological-age-calculator"),
   },
 ];
+
+export const datetimeCalculators = _datetimeCalculators.map(c => ({
+  ...c,
+  subcategory: dtSubcategoryMap[c.slug] || "General",
+}));

@@ -1266,3 +1266,8 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     relatedCalcs: lifeRelated("ip-subnet-calculator"),
   },
 ];
+
+export const lifestyleCalculators = _lifestyleCalculators.map(c => ({
+  ...c,
+  subcategory: lifeSubcategoryMap[c.slug] || "General",
+}));

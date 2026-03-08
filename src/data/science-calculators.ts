@@ -544,3 +544,8 @@ const _scienceCalculators: CalculatorConfig[] = [
     relatedCalcs: sciRelated("weight-calculator"),
   },
 ];
+
+export const scienceCalculators = _scienceCalculators.map(c => ({
+  ...c,
+  subcategory: sciSubcategoryMap[c.slug] || "General Physics",
+}));
