@@ -60,8 +60,11 @@ const AllCategoriesPage = () => {
                     <Link
                       key={calc.slug}
                       to={`/${calc.categorySlug}/${calc.slug}`}
-                      className="text-sm px-3 py-2 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors truncate"
+                      className="text-sm px-3 py-2 bg-secondary/50 rounded-lg hover:bg-secondary transition-colors truncate flex items-center gap-1.5"
                     >
+                      {popularSlugs.has(calc.slug) && (
+                        <Flame className="w-3.5 h-3.5 text-primary shrink-0" />
+                      )}
                       {calc.name}
                     </Link>
                   ))}
