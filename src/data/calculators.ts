@@ -1,4 +1,4 @@
-import { Calculator, DollarSign, Heart, Hash, ArrowRightLeft, FlaskConical, Smile, Home, Clock } from "lucide-react";
+import { Calculator, DollarSign, Heart, Hash, ArrowRightLeft, FlaskConical, Smile, Home, Clock, Car, ChefHat } from "lucide-react";
 
 export interface CalculatorInfo {
   slug: string;
@@ -76,6 +76,30 @@ export const categories: CategoryInfo[] = [
     description: "Everyday calculators for sleep, travel, pets, cooking, and personal hobbies.",
     tags: ["Sleep", "Pet Age", "Travel"],
   },
+  {
+    name: "Automotive",
+    slug: "automotive",
+    icon: "car",
+    color: "hsl(45 93% 47%)",
+    description: "Fuel cost, MPG, car depreciation, tire sizing, and horsepower calculators.",
+    tags: ["Fuel Cost", "MPG", "Depreciation"],
+  },
+  {
+    name: "Real Estate",
+    slug: "realestate",
+    icon: "home",
+    color: "hsl(160 60% 45%)",
+    description: "Property tax, rent vs buy, ROI, square footage, and stamp duty calculators.",
+    tags: ["Property Tax", "Rent vs Buy", "ROI"],
+  },
+  {
+    name: "Cooking & Kitchen",
+    slug: "cooking",
+    icon: "chef",
+    color: "hsl(15 80% 55%)",
+    description: "Recipe scaling, baking ratios, cooking times, and kitchen unit conversions.",
+    tags: ["Recipe Scaler", "Baking", "Cooking Time"],
+  },
 ];
 
 export const popularCalculators: CalculatorInfo[] = [
@@ -96,7 +120,9 @@ export const getCategoryIcon = (icon: string) => {
     case "flask": return FlaskConical;
     case "smile": return Smile;
     case "clock": return Clock;
+    case "car": return Car;
     case "home": return Home;
+    case "chef": return ChefHat;
     default: return Calculator;
   }
 };

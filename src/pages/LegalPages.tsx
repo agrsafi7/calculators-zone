@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const LegalPage = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="animate-stagger-1">
@@ -100,7 +101,7 @@ export const ContactPage = () => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       toast({ title: "Missing fields", description: "Please fill in Name, Email, and Message.", variant: "destructive" });
@@ -108,16 +109,21 @@ export const ContactPage = () => {
     }
     setSending(true);
 
-    // Construct mailto link to open user's email client
-    const subject = encodeURIComponent(form.subject || "Contact from CalcHub");
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:support@calchub.com?subject=${subject}&body=${body}`;
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: { name: form.name, email: form.email, subject: form.subject, message: form.message },
+      });
 
-    setTimeout(() => {
-      setSending(false);
-      toast({ title: "Email client opened!", description: "Your default email app should open with the message pre-filled." });
+      if (error) throw error;
+
+      toast({ title: "Message sent!", description: "Thank you for reaching out. We'll get back to you soon." });
       setForm({ name: "", email: "", subject: "", message: "" });
-    }, 1000);
+    } catch (err) {
+      console.error("Contact form error:", err);
+      toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -163,7 +169,7 @@ export const ContactPage = () => {
           disabled={sending}
           className="w-full py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
         >
-          {sending ? "Opening email client..." : "Send Message"}
+          {sending ? "Sending..." : "Send Message"}
         </button>
       </form>
 
@@ -172,14 +178,6 @@ export const ContactPage = () => {
         <li><strong className="text-foreground">Email:</strong> support@calchub.com</li>
         <li><strong className="text-foreground">Business Inquiries:</strong> partners@calchub.com</li>
       </ul>
-
-      <div className="bg-secondary/50 rounded-xl p-5 mt-6 not-prose">
-        <h3 className="font-bold text-sm text-foreground mb-2">💡 Want messages sent directly to your Gmail?</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          To receive contact form messages directly in your Gmail, you can enable <strong>Lovable Cloud</strong> which provides 
-          a backend to send emails via an Edge Function. Just ask me to "set up email sending to my Gmail" and I'll guide you through it!
-        </p>
-      </div>
     </LegalPage>
   );
 };
