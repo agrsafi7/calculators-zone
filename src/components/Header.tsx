@@ -1,34 +1,17 @@
 import { Link } from "react-router-dom";
-import { Menu, X, Search, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { searchCalculators } from "@/lib/calculator-utils";
-import { getCategoryIcon, categories, type CalculatorInfo } from "@/data/calculators";
+import { categories, type CalculatorInfo } from "@/data/calculators";
 import { useDarkMode } from "@/hooks/use-dark-mode";
+import SearchBar from "@/components/SearchBar";
 
 const Header = () => {
   const { isDark, toggle: toggleDark } = useDarkMode();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState<CalculatorInfo[]>([]);
-  const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setResults(searchCalculators(query));
-    setOpen(query.trim().length > 0);
-  }, [query]);
-
-  // Close search dropdown on outside click
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
 
   // Close mobile menu on outside click
   useEffect(() => {
