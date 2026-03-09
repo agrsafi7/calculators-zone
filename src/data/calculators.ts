@@ -120,7 +120,9 @@ export const getCategoryIcon = (icon: string) => {
     case "flask": return FlaskConical;
     case "smile": return Smile;
     case "clock": return Clock;
+    case "car": return Car;
     case "home": return Home;
+    case "chef": return ChefHat;
     default: return Calculator;
   }
 };
