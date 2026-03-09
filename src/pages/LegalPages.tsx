@@ -169,7 +169,7 @@ export const ContactPage = () => {
           disabled={sending}
           className="w-full py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
         >
-          {sending ? "Opening email client..." : "Send Message"}
+          {sending ? "Sending..." : "Send Message"}
         </button>
       </form>
 
@@ -178,14 +178,6 @@ export const ContactPage = () => {
         <li><strong className="text-foreground">Email:</strong> support@calchub.com</li>
         <li><strong className="text-foreground">Business Inquiries:</strong> partners@calchub.com</li>
       </ul>
-
-      <div className="bg-secondary/50 rounded-xl p-5 mt-6 not-prose">
-        <h3 className="font-bold text-sm text-foreground mb-2">💡 Want messages sent directly to your Gmail?</h3>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          To receive contact form messages directly in your Gmail, you can enable <strong>Lovable Cloud</strong> which provides 
-          a backend to send emails via an Edge Function. Just ask me to "set up email sending to my Gmail" and I'll guide you through it!
-        </p>
-      </div>
     </LegalPage>
   );
 };
