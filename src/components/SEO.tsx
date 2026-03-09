@@ -6,15 +6,46 @@ interface SEOProps {
   canonical?: string;
   type?: "website" | "article";
   keywords?: string;
+  ogImage?: string;
   jsonLd?: Record<string, unknown>;
   breadcrumbs?: { name: string; url: string }[];
   faqs?: { question: string; answer: string }[];
 }
 
-const SEO = ({ title, description, canonical, type = "website", keywords, jsonLd, breadcrumbs, faqs }: SEOProps) => {
+// OG images per category
+const categoryOgImages: Record<string, string> = {
+  finance: "/og/og-finance.jpg",
+  health: "/og/og-health.jpg",
+  math: "/og/og-math.jpg",
+  conversions: "/og/og-conversions.jpg",
+  science: "/og/og-science.jpg",
+  datetime: "/og/og-datetime.jpg",
+  lifestyle: "/og/og-lifestyle.jpg",
+};
+
+export const getCategoryOgImage = (categorySlug: string): string => {
+  return categoryOgImages[categorySlug] || "/og/og-default.jpg";
+};
+
+const SEO = ({ title, description, canonical, type = "website", keywords, ogImage, jsonLd, breadcrumbs, faqs }: SEOProps) => {
   const siteName = "CalcHub";
   const fullTitle = `${title} | ${siteName}`;
   const baseUrl = "https://calchub.com";
+  
+  // Determine OG image based on canonical URL or provided ogImage
+  let finalOgImage = ogImage || "/og/og-default.jpg";
+  if (!ogImage && canonical) {
+    // Check if it's a category page
+    const categoryMatch = canonical.match(/^\/category\/(\w+)/);
+    if (categoryMatch) {
+      finalOgImage = getCategoryOgImage(categoryMatch[1]);
+    }
+    // Check if it's a calculator page
+    const calcMatch = canonical.match(/^\/(\w+)\/[\w-]+$/);
+    if (calcMatch && calcMatch[1] !== "category") {
+      finalOgImage = getCategoryOgImage(calcMatch[1]);
+    }
+  }
 
   const breadcrumbSchema = breadcrumbs?.length
     ? {
@@ -77,11 +108,16 @@ const SEO = ({ title, description, canonical, type = "website", keywords, jsonLd
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content={siteName} />
+      <meta property="og:image" content={`${baseUrl}${finalOgImage}`} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={title} />
       {canonical && <link rel="canonical" href={`${baseUrl}${canonical}`} />}
       {canonical && <meta property="og:url" content={`${baseUrl}${canonical}`} />}
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={`${baseUrl}${finalOgImage}`} />
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
       <meta name="geo.region" content="US" />
       <meta name="geo.region" content="GB" />
