@@ -183,7 +183,7 @@ const Index = () => {
       </section>
 
       {/* Explore Categories */}
-      <section className="container mx-auto px-4 py-8">
+      <section className="container mx-auto px-4 py-8 animate-stagger-3">
         <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-black underline underline-offset-8 decoration-primary decoration-4">Explore Categories</h2>
           <p className="text-sm text-muted-foreground mt-3">Browse our extensive library of calculation tools</p>
