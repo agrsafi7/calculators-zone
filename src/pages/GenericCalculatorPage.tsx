@@ -16,6 +16,9 @@ import { lifestyleCalculatorsExtra } from "@/data/lifestyle-calculators-extra";
 import { financeCalculators } from "@/data/finance-calculators";
 import { financeCalculatorsExtended } from "@/data/finance-calculators-extended";
 import { healthCalculatorsExtended } from "@/data/health-calculators-extended";
+import { automotiveCalculators } from "@/data/automotive-calculators";
+import { realEstateCalculators } from "@/data/realestate-calculators";
+import { cookingCalculators } from "@/data/cooking-calculators";
 import CalculatorTemplate from "@/components/CalculatorTemplate";
 import NotFound from "./NotFound";
 
@@ -37,6 +40,9 @@ const allConfigs = [
   ...lifestyleCalculators,
   ...lifestyleCalculatorsExtended,
   ...lifestyleCalculatorsExtra,
+  ...automotiveCalculators,
+  ...realEstateCalculators,
+  ...cookingCalculators,
 ];
 
 const GenericCalculatorPage = () => {
