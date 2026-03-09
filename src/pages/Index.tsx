@@ -75,7 +75,6 @@ const trendingTools = [
 const CategoryCard = ({ cat, index }: { cat: typeof categoryCards[0]; index: number }) => {
   const [expanded, setExpanded] = useState(false);
   const Icon = getCategoryIcon(cat.icon);
-  const count = getCategoryCalculatorCount(cat.slug);
   const visibleItems = expanded ? cat.items : cat.items.slice(0, 3);
   const hasMore = cat.items.length > 3;
 
