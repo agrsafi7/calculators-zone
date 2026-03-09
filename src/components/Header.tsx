@@ -1,26 +1,21 @@
 import { Link } from "react-router-dom";
 import { Menu, X, Moon, Sun } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { categories, type CalculatorInfo } from "@/data/calculators";
+import { useEffect, useRef, useState } from "react";
+import { categories } from "@/data/calculators";
 import { useDarkMode } from "@/hooks/use-dark-mode";
 import SearchBar from "@/components/SearchBar";
 
 const Header = () => {
   const { isDark, toggle: toggleDark } = useDarkMode();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
   const mobileRef = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   // Close mobile menu on outside click
   useEffect(() => {
     if (!mobileOpen) return;
     const handler = (e: MouseEvent) => {
       const header = mobileRef.current;
-      if (header && !header.contains(e.target as Node)) {
-        setMobileOpen(false);
-      }
+      if (header && !header.contains(e.target as Node)) setMobileOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -42,38 +37,9 @@ const Header = () => {
           <span className="text-lg font-bold text-foreground">CalcHub</span>
         </Link>
 
-        {/* Center search */}
-        <div ref={ref} className="hidden md:block relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <input
-            type="text"
-            placeholder="Search calculators..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="w-full pl-9 pr-3 py-2 rounded-lg border border-border bg-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-          />
-          {open && results.length > 0 && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-xl shadow-lg z-50 overflow-hidden max-h-80 overflow-y-auto">
-              {results.map((calc) => {
-                const Icon = getCategoryIcon(calc.icon);
-                return (
-                  <button
-                    key={calc.slug}
-                    onClick={() => handleSelect(calc)}
-                    className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-secondary transition-colors text-left"
-                  >
-                    <div className="w-7 h-7 rounded-md bg-secondary flex items-center justify-center shrink-0">
-                      <Icon className="w-3.5 h-3.5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">{calc.name}</p>
-                      <p className="text-xs text-muted-foreground">{calc.category}</p>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          )}
+        {/* Center search - shared behavior with Hero */}
+        <div className="hidden md:block flex-1 max-w-md">
+          <SearchBar placeholder="Search tools..." />
         </div>
 
         {/* Category links (desktop) */}
@@ -100,7 +66,8 @@ const Header = () => {
 
         <button
           className="md:hidden text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -108,14 +75,8 @@ const Header = () => {
 
       {mobileOpen && (
         <div className="md:hidden border-t border-border bg-card px-4 py-4 space-y-3">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search calculators..."
-              className="w-full pl-9 pr-3 py-2 rounded-lg border border-border bg-secondary text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-            />
-          </div>
+          <SearchBar placeholder="Search tools..." onAfterSelect={() => setMobileOpen(false)} />
+
           <nav className="flex flex-col gap-1 pt-2">
             {categories.map((cat) => (
               <Link
@@ -128,6 +89,7 @@ const Header = () => {
               </Link>
             ))}
           </nav>
+
           <div className="flex items-center justify-between pt-3 border-t border-border mt-2">
             <span className="text-sm font-medium text-muted-foreground">Dark Mode</span>
             <button
