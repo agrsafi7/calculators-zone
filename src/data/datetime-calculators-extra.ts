@@ -482,8 +482,8 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
 
   // Time Duration Calculators
   mk(
-    "time-duration-calculator",
-    "Time Duration Calculator",
+    "time-duration-hours-converter",
+    "Time Duration (Hours) Converter",
     "Time Duration",
     "Calculate duration between two times",
     [

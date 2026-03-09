@@ -75,7 +75,6 @@ const trendingTools = [
 const CategoryCard = ({ cat, index }: { cat: typeof categoryCards[0]; index: number }) => {
   const [expanded, setExpanded] = useState(false);
   const Icon = getCategoryIcon(cat.icon);
-  const count = getCategoryCalculatorCount(cat.slug);
   const visibleItems = expanded ? cat.items : cat.items.slice(0, 3);
   const hasMore = cat.items.length > 3;
 
@@ -103,9 +102,8 @@ const CategoryCard = ({ cat, index }: { cat: typeof categoryCards[0]; index: num
           <div className="flex-1 min-w-0">
             <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
           </div>
-          <span className="text-xs font-bold bg-primary/10 text-primary px-2.5 py-1 rounded-full">
-            {count}
-          </span>
+          
+            
         </div>
       </Link>
 

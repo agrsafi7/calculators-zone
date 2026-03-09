@@ -136,7 +136,7 @@ const CategoryPage = () => {
                   <div key={subcategory}>
                     <div className="flex items-center gap-3 mb-4">
                       <h2 className="text-lg font-bold">{subcategory}</h2>
-                      <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">{calcs.length}</span>
+                      
                     </div>
                     {renderCalcGrid(calcs)}
                   </div>
