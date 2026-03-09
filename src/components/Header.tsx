@@ -26,12 +26,6 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, [mobileOpen]);
 
-  const handleSelect = (calc: CalculatorInfo) => {
-    setQuery("");
-    setOpen(false);
-    navigate(`/${calc.categorySlug}/${calc.slug}`);
-  };
-
   return (
     <header ref={mobileRef} className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
