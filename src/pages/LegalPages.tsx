@@ -101,7 +101,7 @@ export const ContactPage = () => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       toast({ title: "Missing fields", description: "Please fill in Name, Email, and Message.", variant: "destructive" });
@@ -109,16 +109,21 @@ export const ContactPage = () => {
     }
     setSending(true);
 
-    // Construct mailto link to open user's email client
-    const subject = encodeURIComponent(form.subject || "Contact from CalcHub");
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:support@calchub.com?subject=${subject}&body=${body}`;
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: { name: form.name, email: form.email, subject: form.subject, message: form.message },
+      });
 
-    setTimeout(() => {
-      setSending(false);
-      toast({ title: "Email client opened!", description: "Your default email app should open with the message pre-filled." });
+      if (error) throw error;
+
+      toast({ title: "Message sent!", description: "Thank you for reaching out. We'll get back to you soon." });
       setForm({ name: "", email: "", subject: "", message: "" });
-    }, 1000);
+    } catch (err) {
+      console.error("Contact form error:", err);
+      toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
