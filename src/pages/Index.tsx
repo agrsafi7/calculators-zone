@@ -61,6 +61,27 @@ const categoryCards = [
     items: ["Age Calculator", "Date Difference", "Countdown Timer", "Business Days Calculator", "Time Zone Converter"],
     description: "Master time-related calculations with our precise date and time tools. Calculate your exact age down to the day, find the difference between two dates, or count business days for project planning. Our countdown calculators help you track important events, while time zone converters ensure you never miss an international meeting. Perfect for event planners, project managers, travelers, and anyone who needs accurate time calculations. From historical date differences to future event countdowns, CalcHub's date and time calculators handle all your temporal needs with precision and ease.",
   },
+  {
+    name: "Automotive",
+    slug: "automotive",
+    icon: "car",
+    items: ["Fuel Cost Calculator", "Car Depreciation", "MPG Calculator", "Tire Size Calculator", "Engine Horsepower"],
+    description: "Plan your vehicle expenses and maintenance with our automotive calculators. Estimate fuel costs for road trips, calculate your car's depreciation over time, track your vehicle's fuel efficiency, compare tire sizes, and estimate engine horsepower. Whether you're buying a new car, planning a cross-country drive, or optimizing your vehicle's performance, our automotive tools provide accurate, data-driven results. Trusted by car enthusiasts, commuters, and professionals across the US, UK, and Australia.",
+  },
+  {
+    name: "Real Estate",
+    slug: "realestate",
+    icon: "home",
+    items: ["Property Tax Calculator", "Rent vs Buy", "Real Estate ROI", "Square Footage", "Stamp Duty Calculator"],
+    description: "Make smarter property decisions with our real estate calculators. Estimate property taxes, compare renting versus buying, calculate investment ROI, measure square footage, and estimate stamp duty or transfer taxes. Our tools cover residential and investment property analysis for homebuyers, investors, and real estate professionals. From first-time home buyers to seasoned property investors, CalcHub's real estate tools help you navigate one of life's biggest financial decisions with confidence.",
+  },
+  {
+    name: "Cooking & Kitchen",
+    slug: "cooking",
+    icon: "chef",
+    items: ["Recipe Scaler", "Baking Ratios", "Cooking Time", "Calorie Per Serving", "Cooking Unit Converter"],
+    description: "Perfect your recipes and streamline kitchen tasks with our cooking calculators. Scale recipes for any number of servings, calculate baker's percentages for bread and pastry, estimate cooking times for meat, determine calories per serving for homemade meals, and convert between cups, tablespoons, and milliliters. Designed for home cooks, professional chefs, meal preppers, and baking enthusiasts who want precision in the kitchen without the guesswork.",
+  },
 ];
 
 const commonlyUsed = [
