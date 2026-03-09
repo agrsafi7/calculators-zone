@@ -202,7 +202,7 @@ const Index = () => {
       </section>
 
       {/* Trending Tools */}
-      <section className="container mx-auto px-4 py-8">
+      <section className="container mx-auto px-4 py-8 animate-stagger-4">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold">Trending Tools</h2>

@@ -26,11 +26,8 @@ const popularCalcLinks = [
   { label: "BMI Calculator", href: "/health/bmi-calculator" },
   { label: "Percentage Calculator", href: "/math/percentage-calculator" },
   { label: "Age Calculator", href: "/datetime/age-calculator" },
-  { label: "Length Converter", href: "/conversions/length-converter" },
   { label: "Calorie Calculator", href: "/health/calorie-calculator" },
-  { label: "GPA Calculator", href: "/math/gpa-calculator" },
   { label: "Tip Calculator", href: "/lifestyle/tip-calculator" },
-  { label: "Force Calculator", href: "/science/force-calculator" },
   { label: "Salary Calculator", href: "/finance/salary-calculator" },
 ];
 
