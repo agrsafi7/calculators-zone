@@ -15,6 +15,7 @@ import CategoryPage from "./pages/CategoryPage";
 import { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } from "./pages/LegalPages";
 import AllCategoriesPage from "./pages/AllCategoriesPage";
 import PopularToolsPage from "./pages/PopularToolsPage";
+import SitemapPage from "./pages/SitemapPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,8 @@ const App = () => (
               {/* All categories & popular tools */}
               <Route path="/categories" element={<AllCategoriesPage />} />
               <Route path="/popular" element={<PopularToolsPage />} />
+              {/* Sitemap */}
+              <Route path="/sitemap" element={<SitemapPage />} />
               {/* Category listing pages */}
               <Route path="/category/:slug" element={<CategoryPage />} />
               {/* Generic dynamic calculator pages for all categories */}
