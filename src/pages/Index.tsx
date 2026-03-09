@@ -121,8 +121,9 @@ const Index = () => {
     <div>
       <SEO
         title="Free Online Calculators — CalcHub"
-        description={`Access ${totalCalcs}+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly.`}
+        description={`Access ${totalCalcs}+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly tools trusted in the US, UK, Canada, and Australia.`}
         canonical="/"
+        keywords="online calculator, free calculator, mortgage calculator, BMI calculator, percentage calculator, age calculator, unit converter, GPA calculator, calorie calculator, loan calculator, tip calculator, scientific calculator, math calculator, finance calculator, health calculator"
       />
 
       {/* Hero Section */}

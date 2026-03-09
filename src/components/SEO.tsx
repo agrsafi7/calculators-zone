@@ -5,15 +5,16 @@ interface SEOProps {
   description: string;
   canonical?: string;
   type?: "website" | "article";
+  keywords?: string;
   jsonLd?: Record<string, unknown>;
   breadcrumbs?: { name: string; url: string }[];
   faqs?: { question: string; answer: string }[];
 }
 
-const SEO = ({ title, description, canonical, type = "website", jsonLd, breadcrumbs, faqs }: SEOProps) => {
-  const siteName = "Calculators";
+const SEO = ({ title, description, canonical, type = "website", keywords, jsonLd, breadcrumbs, faqs }: SEOProps) => {
+  const siteName = "CalcHub";
   const fullTitle = `${title} | ${siteName}`;
-  const baseUrl = "https://calculators.com";
+  const baseUrl = "https://calchub.com";
 
   const breadcrumbSchema = breadcrumbs?.length
     ? {
@@ -40,10 +41,38 @@ const SEO = ({ title, description, canonical, type = "website", jsonLd, breadcru
       }
     : null;
 
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteName,
+    url: baseUrl,
+    logo: `${baseUrl}/favicon.png`,
+    sameAs: [],
+    description: "Free online calculators for finance, health, math, science, conversions, and daily life.",
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteName,
+    url: baseUrl,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${baseUrl}/?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  const isHomepage = canonical === "/";
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
@@ -53,6 +82,13 @@ const SEO = ({ title, description, canonical, type = "website", jsonLd, breadcru
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="geo.region" content="US" />
+      <meta name="geo.region" content="GB" />
+      <meta name="geo.region" content="CA" />
+      <meta name="geo.region" content="AU" />
+      <meta name="content-language" content="en" />
+      <html lang="en" />
       {jsonLd && (
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       )}
@@ -61,6 +97,12 @@ const SEO = ({ title, description, canonical, type = "website", jsonLd, breadcru
       )}
       {faqSchema && (
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      )}
+      {isHomepage && (
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+      )}
+      {isHomepage && (
+        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
       )}
     </Helmet>
   );

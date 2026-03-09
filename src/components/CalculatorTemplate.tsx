@@ -5,8 +5,9 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
-import { addRecentCalculator } from "@/lib/calculator-utils";
+import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { getCategoryIcon } from "@/data/calculators";
+import { categorySEOData, getMetaKeywords } from "@/lib/seo-keywords";
 import {
   Accordion,
   AccordionContent,
@@ -25,7 +26,6 @@ const CHART_COLORS = [
 ];
 
 const parseNumericValue = (val: string): number | null => {
-  // Skip values that contain commas-separated lists, text sequences, or non-numeric content
   if (/[a-zA-Z]{2,}/.test(val.replace(/[,$%()]/g, ""))) return null;
   if (val.includes(",") && val.split(",").length > 2) return null;
   const cleaned = val.replace(/[^0-9.\-]/g, "");
@@ -52,67 +52,23 @@ const ResultChart = ({ results }: { results: ResultItem[] }) => {
       <ResponsiveContainer width="100%" height={260}>
         {usePie ? (
           <PieChart>
-            <Pie
-              data={chartData}
-              cx="50%"
-              cy="50%"
-              innerRadius={55}
-              outerRadius={95}
-              paddingAngle={3}
-              dataKey="value"
-              stroke="none"
-            >
-              {chartData.map((_, i) => (
-                <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
-              ))}
+            <Pie data={chartData} cx="50%" cy="50%" innerRadius={55} outerRadius={95} paddingAngle={3} dataKey="value" stroke="none">
+              {chartData.map((_, i) => (<Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />))}
             </Pie>
             <RechartsTooltip
-              formatter={(value: number, name: string) => [
-                `${value.toLocaleString()} (${((value / total) * 100).toFixed(1)}%)`,
-                name,
-              ]}
-              contentStyle={{
-                background: "hsl(var(--card))",
-                border: "1px solid hsl(var(--border))",
-                borderRadius: "8px",
-                fontSize: "12px",
-              }}
+              formatter={(value: number, name: string) => [`${value.toLocaleString()} (${((value / total) * 100).toFixed(1)}%)`, name]}
+              contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: "8px", fontSize: "12px" }}
             />
-            <Legend
-              wrapperStyle={{ fontSize: "12px" }}
-              formatter={(value: string) => (
-                <span className="text-foreground">{value}</span>
-              )}
-            />
+            <Legend wrapperStyle={{ fontSize: "12px" }} formatter={(value: string) => (<span className="text-foreground">{value}</span>)} />
           </PieChart>
         ) : (
           <BarChart data={chartData} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-            <XAxis
-              dataKey="name"
-              tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
-              tickLine={false}
-              axisLine={{ stroke: "hsl(var(--border))" }}
-            />
-            <YAxis
-              tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }}
-              tickLine={false}
-              axisLine={{ stroke: "hsl(var(--border))" }}
-              tickFormatter={(v) => v.toLocaleString()}
-            />
-            <RechartsTooltip
-              contentStyle={{
-                background: "hsl(var(--card))",
-                border: "1px solid hsl(var(--border))",
-                borderRadius: "8px",
-                fontSize: "12px",
-              }}
-              formatter={(value: number) => [value.toLocaleString(), "Value"]}
-            />
+            <XAxis dataKey="name" tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={{ stroke: "hsl(var(--border))" }} />
+            <YAxis tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} tickLine={false} axisLine={{ stroke: "hsl(var(--border))" }} tickFormatter={(v) => v.toLocaleString()} />
+            <RechartsTooltip contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: "8px", fontSize: "12px" }} formatter={(value: number) => [value.toLocaleString(), "Value"]} />
             <Bar dataKey="value" radius={[6, 6, 0, 0]}>
-              {chartData.map((_, i) => (
-                <Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />
-              ))}
+              {chartData.map((_, i) => (<Cell key={i} fill={CHART_COLORS[i % CHART_COLORS.length]} />))}
             </Bar>
           </BarChart>
         )}
@@ -157,6 +113,27 @@ export interface CalculatorConfig {
   relatedCalcs: { name: string; slug: string; icon: string; category: string }[];
 }
 
+// Get cross-category related calculators for internal linking
+const getCrossCategoryLinks = (currentSlug: string, currentCategorySlug: string) => {
+  const otherCalcs = uniqueCalculators.filter(
+    (c) => c.categorySlug !== currentCategorySlug && c.slug !== currentSlug
+  );
+  // Pick 4 popular ones from different categories
+  const picked: typeof otherCalcs = [];
+  const usedCategories = new Set<string>();
+  const popularSlugs = ["mortgage-calculator", "bmi-calculator", "percentage-calculator", "age-calculator", "length-converter", "force-calculator", "tip-calculator", "calorie-calculator"];
+  
+  for (const slug of popularSlugs) {
+    if (picked.length >= 4) break;
+    const calc = otherCalcs.find((c) => c.slug === slug && !usedCategories.has(c.categorySlug));
+    if (calc) {
+      picked.push(calc);
+      usedCategories.add(calc.categorySlug);
+    }
+  }
+  return picked;
+};
+
 const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
   const getDefaults = () => {
     const d: Record<string, number> = {};
@@ -183,6 +160,8 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
     }
   }, [values, config]);
 
+  const crossLinks = useMemo(() => getCrossCategoryLinks(config.slug, config.categorySlug), [config.slug, config.categorySlug]);
+
   const handleChange = (id: string, val: number) => {
     setValues((prev) => ({ ...prev, [id]: val }));
   };
@@ -195,6 +174,8 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
     { name: config.name, url: `/${config.categorySlug}/${config.slug}` },
   ];
 
+  const categoryKeywords = getMetaKeywords(config.categorySlug);
+
   return (
     <div>
       <SEO
@@ -203,6 +184,7 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
         canonical={`/${config.categorySlug}/${config.slug}`}
         breadcrumbs={breadcrumbs}
         faqs={config.faqs}
+        keywords={categoryKeywords}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
@@ -211,6 +193,7 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
           applicationCategory: "UtilityApplication",
           operatingSystem: "All",
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          applicationSubCategory: config.category,
         }}
       />
 
@@ -314,7 +297,7 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
             {/* How to use */}
             <section className="mb-8">
               <h2 className="text-xl font-bold mb-3 flex items-center gap-2">
-                <span className="text-primary">💡</span> How to use this calculator
+                <span className="text-primary">💡</span> How to Use the {config.name}
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">{config.howToUse}</p>
               <h3 className="font-semibold text-base mb-2">Formula</h3>
@@ -325,6 +308,40 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                     <span key={i}>{v}</span>
                   ))}
                 </div>
+              </div>
+            </section>
+
+            {/* Internal links - Explore More section */}
+            <section className="mb-8">
+              <h2 className="text-xl font-bold mb-4">Explore More Calculators</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {crossLinks.map((calc) => {
+                  const Icon = getCategoryIcon(calc.icon);
+                  return (
+                    <Link
+                      key={calc.slug}
+                      to={`/${calc.categorySlug}/${calc.slug}`}
+                      className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-sm transition-all group"
+                    >
+                      <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center shrink-0">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-sm group-hover:text-primary transition-colors">{calc.name}</p>
+                        <p className="text-xs text-muted-foreground truncate">{calc.category} • {calc.description}</p>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Link to={`/category/${config.categorySlug}`} className="text-xs font-medium text-primary hover:underline">
+                  All {config.category} Calculators →
+                </Link>
+                <span className="text-xs text-muted-foreground">|</span>
+                <Link to="/" className="text-xs font-medium text-primary hover:underline">
+                  Browse All Categories →
+                </Link>
               </div>
             </section>
 
@@ -339,6 +356,29 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </section>
+
+            {/* SEO content block with keyword-rich text */}
+            <section className="mb-8 border-t border-border pt-6">
+              <h2 className="text-lg font-bold mb-3">About the {config.name}</h2>
+              <div className="text-sm text-muted-foreground space-y-3 leading-relaxed">
+                <p>
+                  The <strong>{config.name}</strong> is a free online tool that helps you {config.metaDescription.toLowerCase()}. 
+                  This calculator is part of our <Link to={`/category/${config.categorySlug}`} className="text-primary hover:underline font-medium">{config.category} calculators</Link> collection, 
+                  trusted by users in the United States, United Kingdom, Canada, and Australia.
+                </p>
+                <p>
+                  Whether you're a student, professional, or just need a quick answer, our {config.name.toLowerCase()} provides instant, 
+                  accurate results with no sign-up required. All calculations run directly in your browser for maximum speed and privacy.
+                </p>
+                <p>
+                  Looking for more tools? Try our popular calculators: {' '}
+                  <Link to="/finance/mortgage-calculator" className="text-primary hover:underline">Mortgage Calculator</Link>, {' '}
+                  <Link to="/health/bmi-calculator" className="text-primary hover:underline">BMI Calculator</Link>, {' '}
+                  <Link to="/math/percentage-calculator" className="text-primary hover:underline">Percentage Calculator</Link>, and {' '}
+                  <Link to="/datetime/age-calculator" className="text-primary hover:underline">Age Calculator</Link>.
+                </p>
+              </div>
             </section>
 
             <AdPlaceholder size="leaderboard" />
@@ -359,7 +399,7 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                         to={`/${calc.category}/${calc.slug}`}
                         className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-secondary transition-colors text-sm"
                       >
-                        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+                        <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center shrink-0">
                           <Icon className="w-4 h-4 text-primary" />
                         </div>
                         {calc.name}
@@ -369,6 +409,25 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                 })}
               </ul>
             </div>
+
+            {/* Popular across site */}
+            <div className="bg-card rounded-xl border border-border p-5">
+              <h3 className="font-bold text-sm mb-4">🔥 Popular Calculators</h3>
+              <ul className="space-y-1.5">
+                {[
+                  { name: "Mortgage Calculator", path: "/finance/mortgage-calculator" },
+                  { name: "BMI Calculator", path: "/health/bmi-calculator" },
+                  { name: "Percentage Calculator", path: "/math/percentage-calculator" },
+                  { name: "Age Calculator", path: "/datetime/age-calculator" },
+                  { name: "Length Converter", path: "/conversions/length-converter" },
+                ].filter(l => !l.path.includes(config.slug)).slice(0, 4).map((link) => (
+                  <li key={link.path}>
+                    <Link to={link.path} className="text-sm text-primary hover:underline">{link.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
             <AdPlaceholder size="rectangle" />
             <RecentlyUsed />
           </aside>

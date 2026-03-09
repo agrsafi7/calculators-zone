@@ -4,6 +4,7 @@ import { ArrowUpRight, Search, X } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { categories, getCategoryIcon } from "@/data/calculators";
 import { uniqueCalculators } from "@/lib/calculator-utils";
+import { categorySEOData, getMetaKeywords } from "@/lib/seo-keywords";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
@@ -13,6 +14,7 @@ const CategoryPage = () => {
   const [filter, setFilter] = useState("");
   const category = categories.find((c) => c.slug === slug);
   const allCalcs = uniqueCalculators.filter((c) => c.categorySlug === slug);
+  const seoData = slug ? categorySEOData[slug] : undefined;
 
   const calculators = useMemo(() => {
     if (!filter.trim()) return allCalcs;
@@ -22,7 +24,6 @@ const CategoryPage = () => {
     );
   }, [allCalcs, filter]);
 
-  // Group by subcategory
   const grouped = useMemo(() => {
     const groups: Record<string, typeof calculators> = {};
     const ungrouped: typeof calculators = [];
@@ -77,7 +78,13 @@ const CategoryPage = () => {
 
   return (
     <div>
-      <SEO title={`${category.name} Calculators`} description={category.description} canonical={`/category/${category.slug}`} breadcrumbs={[{name:"Home",url:"/"},{name:category.name,url:`/category/${category.slug}`}]} />
+      <SEO
+        title={`${category.name} Calculators — Free Online Tools`}
+        description={seoData?.contentIntro?.slice(0, 155) || category.description}
+        canonical={`/category/${category.slug}`}
+        keywords={slug ? getMetaKeywords(slug) : undefined}
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: category.name, url: `/category/${category.slug}` }]}
+      />
       <Breadcrumbs items={[
         { label: "Home", href: "/" },
         { label: category.name },
@@ -100,6 +107,26 @@ const CategoryPage = () => {
                 <p className="text-muted-foreground text-sm">{category.description} — {allCalcs.length} calculators</p>
               </div>
             </div>
+
+            {/* SEO intro content */}
+            {seoData && (
+              <div className="mb-6 text-sm text-muted-foreground leading-relaxed space-y-3">
+                <p>{seoData.contentIntro}</p>
+                {seoData.topCalcLinks.length > 0 && (
+                  <p>
+                    <strong className="text-foreground">Popular tools:</strong>{" "}
+                    {seoData.topCalcLinks.map((link, i) => (
+                      <span key={link.calcSlug}>
+                        <Link to={`/${link.slug}/${link.calcSlug}`} className="text-primary hover:underline font-medium">
+                          {link.name}
+                        </Link>
+                        {i < seoData.topCalcLinks.length - 1 ? ", " : "."}
+                      </span>
+                    ))}
+                  </p>
+                )}
+              </div>
+            )}
 
             {/* Search / filter */}
             <div className="relative mb-6">
@@ -136,7 +163,6 @@ const CategoryPage = () => {
                   <div key={subcategory}>
                     <div className="flex items-center gap-3 mb-4">
                       <h2 className="text-lg font-bold">{subcategory}</h2>
-                      
                     </div>
                     {renderCalcGrid(calcs)}
                   </div>
@@ -153,6 +179,74 @@ const CategoryPage = () => {
                 <p className="text-sm">{filter ? "No calculators match your search." : "Calculators coming soon for this category."}</p>
               </div>
             )}
+
+            {/* Cross-category links for SEO */}
+            {seoData && seoData.relatedCategories.length > 0 && (
+              <section className="mt-10 border-t border-border pt-8">
+                <h2 className="text-xl font-bold mb-4">Explore Related Categories</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                  {seoData.relatedCategories.map((rc) => {
+                    const relCat = categories.find((c) => c.slug === rc.slug);
+                    const RcIcon = getCategoryIcon(relCat?.icon || "calculator");
+                    return (
+                      <Link
+                        key={rc.slug}
+                        to={`/category/${rc.slug}`}
+                        className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-sm transition-all group"
+                      >
+                        <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center shrink-0">
+                          <RcIcon className="w-5 h-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-sm group-hover:text-primary transition-colors">{rc.name} Calculators</p>
+                          <p className="text-xs text-muted-foreground">{relCat?.description}</p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+
+                {/* Popular cross-site links */}
+                <h3 className="font-bold text-sm mb-3">Most Popular Calculators</h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { name: "Mortgage Calculator", path: "/finance/mortgage-calculator" },
+                    { name: "BMI Calculator", path: "/health/bmi-calculator" },
+                    { name: "Percentage Calculator", path: "/math/percentage-calculator" },
+                    { name: "Age Calculator", path: "/datetime/age-calculator" },
+                    { name: "Length Converter", path: "/conversions/length-converter" },
+                    { name: "Calorie Calculator", path: "/health/calorie-calculator" },
+                    { name: "GPA Calculator", path: "/math/gpa-calculator" },
+                    { name: "Tip Calculator", path: "/lifestyle/tip-calculator" },
+                  ].map((link) => (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      className="px-3 py-1.5 bg-secondary text-sm font-medium rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* SEO bottom content */}
+            <section className="mt-8 border-t border-border pt-6">
+              <h2 className="text-lg font-bold mb-3">About {category.name} Calculators</h2>
+              <div className="text-sm text-muted-foreground space-y-3 leading-relaxed">
+                <p>
+                  CalcHub's <strong>{category.name.toLowerCase()} calculators</strong> are designed for users in the United States, 
+                  United Kingdom, Canada, and Australia. All tools are free, require no registration, and work on any device — 
+                  desktop, tablet, or mobile.
+                </p>
+                <p>
+                  Each calculator uses established formulas and provides instant results directly in your browser. 
+                  Whether you're a student, professional, or simply curious, our {allCalcs.length} {category.name.toLowerCase()} tools 
+                  are here to help. <Link to="/" className="text-primary hover:underline font-medium">Explore all categories →</Link>
+                </p>
+              </div>
+            </section>
 
             <div className="mt-8">
               <AdPlaceholder size="leaderboard" />
