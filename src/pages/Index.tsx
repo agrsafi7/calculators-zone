@@ -103,7 +103,7 @@ const CategoryCard = ({ cat, index }: { cat: typeof categoryCards[0]; index: num
             <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
           </div>
           
-            {count}
+            
           </span>
         </div>
       </Link>
