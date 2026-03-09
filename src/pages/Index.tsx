@@ -104,7 +104,6 @@ const CategoryCard = ({ cat, index }: { cat: typeof categoryCards[0]; index: num
           </div>
           
             
-          </span>
         </div>
       </Link>
 
