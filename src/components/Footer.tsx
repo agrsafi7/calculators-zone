@@ -13,9 +13,25 @@ const mainLinks = [
 
 const categoryLinks = [
   { label: "Finance", href: "/category/finance" },
-  { label: "Health", href: "/category/health" },
-  { label: "Math", href: "/category/math" },
+  { label: "Health & Fitness", href: "/category/health" },
+  { label: "Math & Education", href: "/category/math" },
+  { label: "Unit Conversions", href: "/category/conversions" },
   { label: "Science", href: "/category/science" },
+  { label: "Date & Time", href: "/category/datetime" },
+  { label: "Lifestyle", href: "/category/lifestyle" },
+];
+
+const popularCalcLinks = [
+  { label: "Mortgage Calculator", href: "/finance/mortgage-calculator" },
+  { label: "BMI Calculator", href: "/health/bmi-calculator" },
+  { label: "Percentage Calculator", href: "/math/percentage-calculator" },
+  { label: "Age Calculator", href: "/datetime/age-calculator" },
+  { label: "Length Converter", href: "/conversions/length-converter" },
+  { label: "Calorie Calculator", href: "/health/calorie-calculator" },
+  { label: "GPA Calculator", href: "/math/gpa-calculator" },
+  { label: "Tip Calculator", href: "/lifestyle/tip-calculator" },
+  { label: "Force Calculator", href: "/science/force-calculator" },
+  { label: "Salary Calculator", href: "/finance/salary-calculator" },
 ];
 
 const legalLinks = [
@@ -29,9 +45,9 @@ const Footer = () => {
   return (
     <footer className="footer-section">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand */}
-          <div>
+          <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-7 h-7 bg-primary-foreground rounded-md flex items-center justify-center">
                 <div className="w-3.5 h-3.5 grid grid-cols-2 gap-0.5">
@@ -43,8 +59,12 @@ const Footer = () => {
               </div>
               <span className="text-lg font-bold text-primary-foreground">CalcHub</span>
             </div>
-            <p className="text-sm opacity-70 mb-5 leading-relaxed">
-              CalcHub is your one-stop destination for over {totalCalcs.toLocaleString()} specialized calculators. From complex financial modeling to daily conversions, we provide accurate tools for everyone.
+            <p className="text-sm opacity-70 mb-4 leading-relaxed">
+              CalcHub is your one-stop destination for over {totalCalcs.toLocaleString()} free online calculators. 
+              Trusted by millions of users in the US, UK, Canada, and Australia for finance, health, math, science, and daily life calculations.
+            </p>
+            <p className="text-xs opacity-50 mb-5">
+              Free calculators • No sign-up required • Works on all devices
             </p>
             <div className="flex items-center gap-3">
               <Link
@@ -59,24 +79,10 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Main Links */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mb-4">Main Links</h4>
-            <ul className="space-y-2.5">
-              {mainLinks.map((link) => (
-                <li key={link.label}>
-                  <Link to={link.href} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Categories */}
           <div>
             <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mb-4">Categories</h4>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2">
               {categoryLinks.map((link) => (
                 <li key={link.label}>
                   <Link to={link.href} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
@@ -87,10 +93,34 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Popular Calculators */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mb-4">Legal</h4>
-            <ul className="space-y-2.5">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mb-4">Popular Tools</h4>
+            <ul className="space-y-2">
+              {popularCalcLinks.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal & Main */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              {mainLinks.map((link) => (
+                <li key={link.label}>
+                  <Link to={link.href} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-primary-foreground mt-6 mb-4">Legal</h4>
+            <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.label}>
                   <Link to={link.href} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
