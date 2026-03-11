@@ -77,28 +77,12 @@ export const categories: CategoryInfo[] = [
     tags: ["Sleep", "Pet Age", "Travel"],
   },
   {
-    name: "Automotive",
-    slug: "automotive",
-    icon: "car",
+    name: "Other Calculators",
+    slug: "other",
+    icon: "layers",
     color: "hsl(45 93% 47%)",
-    description: "Fuel cost, MPG, car depreciation, tire sizing, and horsepower calculators.",
-    tags: ["Fuel Cost", "MPG", "Depreciation"],
-  },
-  {
-    name: "Real Estate",
-    slug: "realestate",
-    icon: "home",
-    color: "hsl(160 60% 45%)",
-    description: "Property tax, rent vs buy, ROI, square footage, and stamp duty calculators.",
-    tags: ["Property Tax", "Rent vs Buy", "ROI"],
-  },
-  {
-    name: "Cooking & Kitchen",
-    slug: "cooking",
-    icon: "chef",
-    color: "hsl(15 80% 55%)",
-    description: "Recipe scaling, baking ratios, cooking times, and kitchen unit conversions.",
-    tags: ["Recipe Scaler", "Baking", "Cooking Time"],
+    description: "Automotive, real estate, cooking, DIY, weather, crafts, and 100+ more specialized calculators.",
+    tags: ["Fuel Cost", "Property Tax", "Concrete"],
   },
 ];
 
