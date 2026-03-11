@@ -1,4 +1,4 @@
-import { Calculator, DollarSign, Heart, Hash, ArrowRightLeft, FlaskConical, Smile, Home, Clock, Car, ChefHat } from "lucide-react";
+import { Calculator, DollarSign, Heart, Hash, ArrowRightLeft, FlaskConical, Smile, Home, Clock, Car, ChefHat, Layers } from "lucide-react";
 
 export interface CalculatorInfo {
   slug: string;
