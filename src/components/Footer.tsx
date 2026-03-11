@@ -19,9 +19,7 @@ const categoryLinks = [
   { label: "Science", href: "/category/science" },
   { label: "Date & Time", href: "/category/datetime" },
   { label: "Lifestyle", href: "/category/lifestyle" },
-  { label: "Automotive", href: "/category/automotive" },
-  { label: "Real Estate", href: "/category/realestate" },
-  { label: "Cooking & Kitchen", href: "/category/cooking" },
+  { label: "Other Calculators", href: "/category/other" },
 ];
 
 const popularCalcLinks = [

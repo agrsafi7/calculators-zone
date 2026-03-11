@@ -83,9 +83,9 @@ export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = [
   ...configToInfo(lifestyleCalculators),
   ...configToInfo(lifestyleCalculatorsExtended),
   ...configToInfo(lifestyleCalculatorsExtra),
-  ...configToInfo(automotiveCalculators),
-  ...configToInfo(realEstateCalculators),
-  ...configToInfo(cookingCalculators),
+  ...configToInfo(otherCalculators),
+  ...configToInfo(otherCalculatorsExtended),
+  ...configToInfo(otherCalculatorsExtra),
 ];
 
 // Deduplicate by slug
