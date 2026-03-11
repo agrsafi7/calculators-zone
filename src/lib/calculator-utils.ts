@@ -16,9 +16,9 @@ import { scienceCalculatorsExtra } from "@/data/science-calculators-extra";
 import { lifestyleCalculators } from "@/data/lifestyle-calculators";
 import { lifestyleCalculatorsExtended } from "@/data/lifestyle-calculators-extended";
 import { lifestyleCalculatorsExtra } from "@/data/lifestyle-calculators-extra";
-import { automotiveCalculators } from "@/data/automotive-calculators";
-import { realEstateCalculators } from "@/data/realestate-calculators";
-import { cookingCalculators } from "@/data/cooking-calculators";
+import { otherCalculators } from "@/data/other-calculators";
+import { otherCalculatorsExtended } from "@/data/other-calculators-extended";
+import { otherCalculatorsExtra } from "@/data/other-calculators-extra";
 
 const STORAGE_KEY = "calculators_recent";
 const MAX_RECENT = 5;
