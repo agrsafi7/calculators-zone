@@ -107,6 +107,7 @@ export const getCategoryIcon = (icon: string) => {
     case "car": return Car;
     case "home": return Home;
     case "chef": return ChefHat;
+    case "layers": return Layers;
     default: return Calculator;
   }
 };
