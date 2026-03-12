@@ -19,6 +19,7 @@ import { lifestyleCalculatorsExtra } from "@/data/lifestyle-calculators-extra";
 import { otherCalculators } from "@/data/other-calculators";
 import { otherCalculatorsExtended } from "@/data/other-calculators-extended";
 import { otherCalculatorsExtra } from "@/data/other-calculators-extra";
+import { otherCalculatorsBatch2 } from "@/data/other-calculators-batch2";
 
 const STORAGE_KEY = "calculators_recent";
 const MAX_RECENT = 5;
