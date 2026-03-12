@@ -44,6 +44,7 @@ const allConfigs = [
   ...otherCalculators,
   ...otherCalculatorsExtended,
   ...otherCalculatorsExtra,
+  ...otherCalculatorsBatch2,
 ];
 
 const GenericCalculatorPage = () => {

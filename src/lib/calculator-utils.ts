@@ -87,7 +87,75 @@ export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = [
   ...configToInfo(otherCalculators),
   ...configToInfo(otherCalculatorsExtended),
   ...configToInfo(otherCalculatorsExtra),
+  ...configToInfo(otherCalculatorsBatch2),
 ];
+
+// Assign subcategories to existing other calculators that don't have them
+const otherSubcategoryMap: Record<string, string> = {
+  "fuel-cost-calculator": "Automotive",
+  "car-depreciation-calculator": "Automotive",
+  "mpg-calculator": "Automotive",
+  "tire-size-calculator": "Automotive",
+  "engine-horsepower-calculator": "Automotive",
+  "property-tax-calculator": "Real Estate",
+  "rent-vs-buy-calculator": "Real Estate",
+  "real-estate-roi-calculator": "Real Estate",
+  "square-footage-calculator": "Real Estate",
+  "stamp-duty-calculator": "Real Estate",
+  "recipe-scaler-calculator": "Cooking & Kitchen",
+  "baking-ratio-calculator": "Cooking & Kitchen",
+  "cooking-time-calculator": "Cooking & Kitchen",
+  "calorie-per-serving-calculator": "Cooking & Kitchen",
+  "unit-conversion-cooking": "Cooking & Kitchen",
+  "electricity-cost-calculator": "Electricity & Energy",
+  "discount-calculator": "Business & Commerce",
+  "markup-calculator": "Business & Commerce",
+  "margin-calculator": "Business & Commerce",
+  "break-even-calculator": "Business & Commerce",
+  "vat-calculator": "Business & Commerce",
+  "cost-per-unit-calculator": "Business & Commerce",
+  "profit-calculator": "Business & Commerce",
+  "reading-time-calculator": "Productivity",
+  "typing-speed-calculator": "Productivity",
+  "password-strength-calculator": "Technology & Computing",
+  "aspect-ratio-calculator": "Photography & Media",
+  "dpi-calculator": "Photography & Media",
+  "binary-to-decimal-calculator": "Technology & Computing",
+  "hex-to-decimal-calculator": "Technology & Computing",
+  "roman-numeral-converter": "Number Systems",
+  "concrete-calculator": "Construction & Home",
+  "paint-calculator": "Construction & Home",
+  "flooring-calculator": "Construction & Home",
+  "mulch-calculator": "Gardening & Landscaping",
+  "gravel-calculator": "Construction & Home",
+  "soil-calculator": "Gardening & Landscaping",
+  "pool-volume-calculator": "Construction & Home",
+  "gold-price-calculator": "Finance & Shopping",
+  "shoe-size-converter": "Fashion & Lifestyle",
+  "ring-size-calculator": "Fashion & Lifestyle",
+  "lcm-calculator": "Number Theory",
+  "gcd-calculator": "Number Theory",
+  "logarithm-calculator": "Number Theory",
+  "fibonacci-calculator": "Number Theory",
+  "ratio-calculator": "Number Theory",
+  "prime-checker-calculator": "Number Theory",
+  "exponent-calculator": "Number Theory",
+  "z-score-calculator": "Statistics",
+  "variance-calculator": "Statistics",
+  "probability-calculator": "Statistics",
+  "permutation-calculator": "Statistics",
+  "combination-calculator": "Statistics",
+  "photography-exposure-calculator": "Photography & Media",
+  "candle-making-calculator": "Sewing & Crafts",
+  "knitting-gauge-calculator": "Sewing & Crafts",
+  "wedding-budget-calculator": "Events & Planning",
+};
+
+allCalculators.forEach(c => {
+  if (c.categorySlug === "other" && !c.subcategory && otherSubcategoryMap[c.slug]) {
+    (c as any).subcategory = otherSubcategoryMap[c.slug];
+  }
+});
 
 // Deduplicate by slug
 const seen = new Set<string>();
