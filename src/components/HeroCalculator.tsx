@@ -58,7 +58,7 @@ const safeEvaluate = (expr: string, angleMode: "deg" | "rad", lastAnswer: string
 };
 
 const HeroCalculator = () => {
-  const [mode, setMode] = useState<Mode>("basic");
+  const [mode, setMode] = useState<Mode>("scientific");
   const [display, setDisplay] = useState("0");
   const [expression, setExpression] = useState("");
   const [angleMode, setAngleMode] = useState<"deg" | "rad">("deg");
@@ -191,7 +191,6 @@ const HeroCalculator = () => {
   const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80 h-12 text-xs`;
   const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 h-12 text-base font-bold`;
   const btnSci = `${btn} bg-secondary text-muted-foreground hover:bg-secondary/80 h-9 text-xs`;
-  const btnSciActive = `${btn} bg-primary/20 text-primary hover:brightness-125 h-9 text-xs`;
 
   return (
     <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden">
@@ -272,15 +271,34 @@ const HeroCalculator = () => {
               <button className={btnSci} onClick={() => handleInput(inv ? "asin(" : "sin(")}>{inv ? "sin⁻¹" : "sin"}</button>
               <button className={btnSci} onClick={() => handleInput(inv ? "acos(" : "cos(")}>{inv ? "cos⁻¹" : "cos"}</button>
               <button className={btnSci} onClick={() => handleInput(inv ? "atan(" : "tan(")}>{inv ? "tan⁻¹" : "tan"}</button>
-              <button className={`${btn} col-span-2 h-9 text-xs rounded-xl bg-secondary`} onClick={() => setAngleMode(angleMode === "deg" ? "rad" : "deg")}>
-                <span className={`px-2 py-0.5 rounded-lg ${angleMode === "deg" ? "text-primary font-bold" : "text-muted-foreground"}`}>Deg</span>
-                <span className={`px-2 py-0.5 rounded-lg ${angleMode === "rad" ? "text-primary font-bold" : "text-muted-foreground"}`}>Rad</span>
-              </button>
+              {/* Deg/Rad toggle */}
+              <div className="col-span-2 flex h-9 rounded-xl bg-muted border border-border overflow-hidden">
+                <button
+                  onClick={() => setAngleMode("deg")}
+                  className={`flex-1 text-xs font-bold transition-all ${
+                    angleMode === "deg"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  Deg
+                </button>
+                <button
+                  onClick={() => setAngleMode("rad")}
+                  className={`flex-1 text-xs font-bold transition-all ${
+                    angleMode === "rad"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  Rad
+                </button>
+              </div>
             </div>
             <div className="grid grid-cols-5 gap-1.5">
-              <button className={btnSci} onClick={() => handleInput(inv ? "asin(" : "sin⁻¹(")}>{inv ? "sin⁻¹" : "sin⁻¹"}</button>
-              <button className={btnSci} onClick={() => handleInput(inv ? "acos(" : "cos⁻¹(")}>{inv ? "cos⁻¹" : "cos⁻¹"}</button>
-              <button className={btnSci} onClick={() => handleInput(inv ? "atan(" : "tan⁻¹(")}>{inv ? "tan⁻¹" : "tan⁻¹"}</button>
+              <button className={btnSci} onClick={() => handleInput("asin(")}>sin⁻¹</button>
+              <button className={btnSci} onClick={() => handleInput("acos(")}>cos⁻¹</button>
+              <button className={btnSci} onClick={() => handleInput("atan(")}>tan⁻¹</button>
               <button className={btnSci} onClick={() => handleInput("π")}>π</button>
               <button className={btnSci} onClick={() => handleInput("e")}>e</button>
             </div>
