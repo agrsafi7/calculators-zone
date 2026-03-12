@@ -19,6 +19,7 @@ import { healthCalculatorsExtended } from "@/data/health-calculators-extended";
 import { otherCalculators } from "@/data/other-calculators";
 import { otherCalculatorsExtended } from "@/data/other-calculators-extended";
 import { otherCalculatorsExtra } from "@/data/other-calculators-extra";
+import { otherCalculatorsBatch2 } from "@/data/other-calculators-batch2";
 import CalculatorTemplate from "@/components/CalculatorTemplate";
 import NotFound from "./NotFound";
 
