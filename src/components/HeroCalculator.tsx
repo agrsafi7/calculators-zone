@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
 import { Clock, Trash2 } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 type Mode = "basic" | "scientific";
 
@@ -58,6 +59,7 @@ const safeEvaluate = (expr: string, angleMode: "deg" | "rad", lastAnswer: string
 };
 
 const HeroCalculator = () => {
+  const isMobile = useIsMobile();
   const [mode, setMode] = useState<Mode>("scientific");
   const [display, setDisplay] = useState("0");
   const [expression, setExpression] = useState("");
@@ -69,6 +71,11 @@ const HeroCalculator = () => {
   const [memory, setMemory] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
+
+  // Set default mode based on screen size
+  useEffect(() => {
+    setMode(isMobile ? "basic" : "scientific");
+  }, [isMobile]);
 
   const preview = useMemo(() => {
     if (!expression || expression === display) return null;
@@ -185,6 +192,9 @@ const HeroCalculator = () => {
     }
   }, []);
 
+  // On desktop, don't show basic/scientific tabs - always scientific
+  const showTabs = isMobile;
+
   const btn = "flex items-center justify-center rounded-xl font-semibold transition-all active:scale-95 select-none";
   const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 h-12 text-sm`;
   const btnOp = `${btn} bg-foreground text-background hover:opacity-90 h-12 text-sm`;
@@ -194,29 +204,31 @@ const HeroCalculator = () => {
 
   return (
     <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden">
-      {/* Tabs */}
-      <div className="flex">
-        <button
-          onClick={() => { setMode("basic"); setInv(false); }}
-          className={`flex-1 py-3 text-sm font-semibold transition-colors border-b-2 ${
-            mode === "basic"
-              ? "border-foreground text-foreground"
-              : "border-transparent text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Basic
-        </button>
-        <button
-          onClick={() => setMode("scientific")}
-          className={`flex-1 py-3 text-sm font-semibold transition-colors border-b-2 ${
-            mode === "scientific"
-              ? "border-foreground text-foreground"
-              : "border-transparent text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Scientific
-        </button>
-      </div>
+      {/* Tabs - only on mobile */}
+      {showTabs && (
+        <div className="flex">
+          <button
+            onClick={() => { setMode("basic"); setInv(false); }}
+            className={`flex-1 py-3 text-sm font-semibold transition-colors border-b-2 ${
+              mode === "basic"
+                ? "border-foreground text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Basic
+          </button>
+          <button
+            onClick={() => setMode("scientific")}
+            className={`flex-1 py-3 text-sm font-semibold transition-colors border-b-2 ${
+              mode === "scientific"
+                ? "border-foreground text-foreground"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            Scientific
+          </button>
+        </div>
+      )}
 
       <div className="p-4 space-y-3">
         {/* Display */}
@@ -326,7 +338,7 @@ const HeroCalculator = () => {
           </div>
         )}
 
-        {/* Main grid — calculator.net style: 6 columns */}
+        {/* Main grid — 6 columns */}
         <div className="grid grid-cols-6 gap-1.5">
           {/* Row 1 */}
           <button className={btnNum} onClick={() => handleInput("7")}>7</button>

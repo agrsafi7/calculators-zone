@@ -21,6 +21,16 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, [mobileOpen]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
   return (
     <header ref={mobileRef} className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
@@ -55,10 +65,10 @@ const Header = () => {
           ))}
         </nav>
 
-        {/* Dark mode toggle */}
+        {/* Dark mode toggle - desktop only (mobile has it in menu) */}
         <button
           onClick={toggleDark}
-          className="w-9 h-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors shrink-0"
+          className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors shrink-0"
           aria-label="Toggle dark mode"
         >
           {isDark ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
@@ -73,32 +83,35 @@ const Header = () => {
         </button>
       </div>
 
+      {/* Mobile menu - overlay style */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-card px-4 py-4 space-y-3">
-          <SearchBar placeholder="Search tools..." onAfterSelect={() => setMobileOpen(false)} />
+        <div className="md:hidden fixed inset-0 top-14 z-50 bg-card/98 backdrop-blur-sm overflow-y-auto">
+          <div className="px-4 py-4 space-y-3">
+            <SearchBar placeholder="Search tools..." onAfterSelect={() => setMobileOpen(false)} />
 
-          <nav className="flex flex-col gap-1 pt-2">
-            {categories.map((cat) => (
-              <Link
-                key={cat.slug}
-                to={`/category/${cat.slug}`}
-                onClick={() => setMobileOpen(false)}
-                className="px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
+            <nav className="flex flex-col gap-1 pt-2">
+              {categories.map((cat) => (
+                <Link
+                  key={cat.slug}
+                  to={`/category/${cat.slug}`}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex items-center justify-between pt-3 border-t border-border mt-2">
+              <span className="text-sm font-medium text-muted-foreground">Dark Mode</span>
+              <button
+                onClick={toggleDark}
+                className="w-9 h-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+                aria-label="Toggle dark mode"
               >
-                {cat.name}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center justify-between pt-3 border-t border-border mt-2">
-            <span className="text-sm font-medium text-muted-foreground">Dark Mode</span>
-            <button
-              onClick={toggleDark}
-              className="w-9 h-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-              aria-label="Toggle dark mode"
-            >
-              {isDark ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
-            </button>
+                {isDark ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
+              </button>
+            </div>
           </div>
         </div>
       )}

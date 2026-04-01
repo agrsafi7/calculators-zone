@@ -74,7 +74,11 @@ const commonlyUsed = [
   { name: "Mortgage Calculator", slug: "mortgage-calculator", categorySlug: "finance", icon: Home },
   { name: "BMI Calculator", slug: "bmi-calculator", categorySlug: "health", icon: Heart },
   { name: "Age Calculator", slug: "age-calculator", categorySlug: "datetime", icon: Calculator },
-  { name: "Scientific Notation", slug: "scientific-notation-calculator", categorySlug: "math", icon: Hash },
+  { name: "Percentage Calculator", slug: "percentage-calculator", categorySlug: "math", icon: Hash },
+  { name: "Tip Calculator", slug: "tip-calculator", categorySlug: "lifestyle", icon: Calculator },
+  { name: "Loan Calculator", slug: "loan-calculator", categorySlug: "finance", icon: Home },
+  { name: "GPA Calculator", slug: "gpa-calculator", categorySlug: "math", icon: Hash },
+  { name: "Calorie Calculator", slug: "calorie-calculator", categorySlug: "health", icon: Heart },
 ];
 
 const trendingTools = [
@@ -92,11 +96,11 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
   return (
     <Link
       to={`/category/${cat.slug}`}
-      className="group bg-card rounded-2xl border border-border p-5 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-0.5 cursor-pointer block"
+      className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-0.5 cursor-pointer block"
     >
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300">
-          <Icon className="w-5 h-5 text-primary" />
+      <div className="flex items-center gap-2.5 mb-3">
+        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300">
+          <Icon className="w-4 h-4 text-primary" />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
@@ -104,20 +108,20 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
         <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
 
-      <ul className="space-y-1 mb-3">
-        {cat.items.map((item) => (
+      <ul className="space-y-0.5 mb-2">
+        {cat.items.slice(0, 4).map((item) => (
           <li
             key={item}
-            className="flex items-center gap-2.5 text-sm text-muted-foreground py-1"
+            className="flex items-center gap-2 text-xs text-muted-foreground py-0.5"
           >
-            <span className="w-1.5 h-1.5 bg-primary/40 rounded-full shrink-0" />
+            <span className="w-1 h-1 bg-primary/40 rounded-full shrink-0" />
             {item}
           </li>
         ))}
       </ul>
 
-      <p className="text-xs text-muted-foreground/80 line-clamp-2 leading-relaxed">
-        {cat.description.slice(0, 120)}...
+      <p className="text-[11px] text-muted-foreground/70 line-clamp-2 leading-relaxed hidden sm:block">
+        {cat.description.slice(0, 100)}...
       </p>
     </Link>
   );
@@ -134,42 +138,35 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="hero-section py-10 md:py-16 animate-stagger-1">
+      <section className="hero-section py-4 md:py-8 animate-stagger-1">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-10 items-start">
             {/* Left: Calculator */}
             <div className="w-full max-w-full lg:max-w-md mx-auto lg:mx-0">
               <HeroCalculator />
             </div>
 
             {/* Right: Search + commonly used — fixed height, doesn't stretch */}
-            <div className="flex flex-col justify-start lg:sticky lg:top-24">
+            <div className="flex flex-col justify-start lg:sticky lg:top-20">
+              <h1 className="sr-only">CalcHub — {totalCalcs.toLocaleString()}+ Free Online Calculators</h1>
+
               <div>
-                <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-black leading-tight mb-3">
-                  Search {totalCalcs.toLocaleString()}+ specialized calculators…
-                </h1>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Fast, accurate, and free calculators for your finances, health, education, and daily needs.
-                </p>
+                <SearchBar large placeholder="Search calculators — try 'Mortgage' or 'BMI'..." />
               </div>
 
-              <div className="mt-6">
-                <SearchBar large placeholder="Try 'Mortgage Payment' or 'BMI'..." />
-              </div>
-
-              <div className="mt-6">
+              <div className="mt-5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                   Commonly Used
                 </p>
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-2 gap-2">
                   {commonlyUsed.map((calc) => (
                     <Link
                       key={calc.slug}
                       to={`/${calc.categorySlug}/${calc.slug}`}
-                      className="flex items-center gap-2.5 px-3.5 py-2.5 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all group"
+                      className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all group text-xs sm:text-sm"
                     >
-                      <calc.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
-                      <span className="text-sm font-medium truncate">{calc.name}</span>
+                      <calc.icon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                      <span className="font-medium truncate">{calc.name}</span>
                     </Link>
                   ))}
                 </div>
@@ -196,7 +193,7 @@ const Index = () => {
           <p className="text-sm text-muted-foreground mt-3">Browse our extensive library of calculation tools</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {categoryCards.map((cat, i) => (
             <CategoryCard key={i} cat={cat} />
           ))}
