@@ -74,7 +74,11 @@ const commonlyUsed = [
   { name: "Mortgage Calculator", slug: "mortgage-calculator", categorySlug: "finance", icon: Home },
   { name: "BMI Calculator", slug: "bmi-calculator", categorySlug: "health", icon: Heart },
   { name: "Age Calculator", slug: "age-calculator", categorySlug: "datetime", icon: Calculator },
-  { name: "Scientific Notation", slug: "scientific-notation-calculator", categorySlug: "math", icon: Hash },
+  { name: "Percentage Calculator", slug: "percentage-calculator", categorySlug: "math", icon: Hash },
+  { name: "Tip Calculator", slug: "tip-calculator", categorySlug: "lifestyle", icon: Calculator },
+  { name: "Loan Calculator", slug: "loan-calculator", categorySlug: "finance", icon: Home },
+  { name: "GPA Calculator", slug: "gpa-calculator", categorySlug: "math", icon: Hash },
+  { name: "Calorie Calculator", slug: "calorie-calculator", categorySlug: "health", icon: Heart },
 ];
 
 const trendingTools = [
