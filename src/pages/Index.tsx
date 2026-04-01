@@ -138,42 +138,35 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="hero-section py-10 md:py-16 animate-stagger-1">
+      <section className="hero-section py-4 md:py-8 animate-stagger-1">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-10 items-start">
             {/* Left: Calculator */}
             <div className="w-full max-w-full lg:max-w-md mx-auto lg:mx-0">
               <HeroCalculator />
             </div>
 
             {/* Right: Search + commonly used — fixed height, doesn't stretch */}
-            <div className="flex flex-col justify-start lg:sticky lg:top-24">
+            <div className="flex flex-col justify-start lg:sticky lg:top-20">
+              <h1 className="sr-only">CalcHub — {totalCalcs.toLocaleString()}+ Free Online Calculators</h1>
+
               <div>
-                <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-black leading-tight mb-3">
-                  Search {totalCalcs.toLocaleString()}+ specialized calculators…
-                </h1>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Fast, accurate, and free calculators for your finances, health, education, and daily needs.
-                </p>
+                <SearchBar large placeholder="Search calculators — try 'Mortgage' or 'BMI'..." />
               </div>
 
-              <div className="mt-6">
-                <SearchBar large placeholder="Try 'Mortgage Payment' or 'BMI'..." />
-              </div>
-
-              <div className="mt-6">
+              <div className="mt-5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                   Commonly Used
                 </p>
-                <div className="grid grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-2 gap-2">
                   {commonlyUsed.map((calc) => (
                     <Link
                       key={calc.slug}
                       to={`/${calc.categorySlug}/${calc.slug}`}
-                      className="flex items-center gap-2.5 px-3.5 py-2.5 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all group"
+                      className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all group text-xs sm:text-sm"
                     >
-                      <calc.icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
-                      <span className="text-sm font-medium truncate">{calc.name}</span>
+                      <calc.icon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                      <span className="font-medium truncate">{calc.name}</span>
                     </Link>
                   ))}
                 </div>
