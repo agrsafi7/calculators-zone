@@ -96,11 +96,11 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
   return (
     <Link
       to={`/category/${cat.slug}`}
-      className="group bg-card rounded-2xl border border-border p-5 transition-all duration-300 ease-out hover:shadow-xl hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-0.5 cursor-pointer block"
+      className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-0.5 cursor-pointer block"
     >
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300">
-          <Icon className="w-5 h-5 text-primary" />
+      <div className="flex items-center gap-2.5 mb-3">
+        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300">
+          <Icon className="w-4 h-4 text-primary" />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
@@ -108,20 +108,20 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
         <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
       </div>
 
-      <ul className="space-y-1 mb-3">
-        {cat.items.map((item) => (
+      <ul className="space-y-0.5 mb-2">
+        {cat.items.slice(0, 4).map((item) => (
           <li
             key={item}
-            className="flex items-center gap-2.5 text-sm text-muted-foreground py-1"
+            className="flex items-center gap-2 text-xs text-muted-foreground py-0.5"
           >
-            <span className="w-1.5 h-1.5 bg-primary/40 rounded-full shrink-0" />
+            <span className="w-1 h-1 bg-primary/40 rounded-full shrink-0" />
             {item}
           </li>
         ))}
       </ul>
 
-      <p className="text-xs text-muted-foreground/80 line-clamp-2 leading-relaxed">
-        {cat.description.slice(0, 120)}...
+      <p className="text-[11px] text-muted-foreground/70 line-clamp-2 leading-relaxed hidden sm:block">
+        {cat.description.slice(0, 100)}...
       </p>
     </Link>
   );
