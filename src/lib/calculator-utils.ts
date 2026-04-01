@@ -89,6 +89,7 @@ export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = [
   ...configToInfo(otherCalculatorsExtended),
   ...configToInfo(otherCalculatorsExtra),
   ...configToInfo(otherCalculatorsBatch2),
+  ...configToInfo(otherCalculatorsBatch3),
 ];
 
 // Assign subcategories to existing other calculators that don't have them
