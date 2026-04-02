@@ -140,14 +140,14 @@ const Index = () => {
       {/* Hero Section */}
       <section className="hero-section py-4 md:py-8 animate-stagger-1">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-4 lg:gap-10 items-start">
+          <div className="flex flex-col lg:grid lg:grid-cols-[1fr_280px] gap-4 lg:gap-6 items-start">
             {/* Left: Calculator */}
-            <div className="w-full max-w-full lg:max-w-md mx-auto lg:mx-0">
+            <div className="w-full">
               <HeroCalculator />
             </div>
 
-            {/* Right: Search + commonly used — fixed height, doesn't stretch */}
-            <div className="flex flex-col justify-start lg:sticky lg:top-20">
+            {/* Right: Search + commonly used — fixed width, doesn't stretch */}
+            <div className="flex flex-col justify-start lg:sticky lg:top-20 w-full">
               <h1 className="sr-only">CalcHub — {totalCalcs.toLocaleString()}+ Free Online Calculators</h1>
 
               <div>
