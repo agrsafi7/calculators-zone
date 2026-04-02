@@ -72,7 +72,6 @@ const HeroCalculator = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
 
-  // Set default mode based on screen size
   useEffect(() => {
     setMode(isMobile ? "basic" : "scientific");
   }, [isMobile]);
@@ -192,15 +191,14 @@ const HeroCalculator = () => {
     }
   }, []);
 
-  // On desktop, don't show basic/scientific tabs - always scientific
   const showTabs = isMobile;
 
-  const btn = "flex items-center justify-center rounded-xl font-semibold transition-all active:scale-95 select-none";
-  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 h-12 text-sm`;
-  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 h-12 text-sm`;
-  const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80 h-12 text-xs`;
-  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 h-12 text-base font-bold`;
-  const btnSci = `${btn} bg-secondary text-muted-foreground hover:bg-secondary/80 h-9 text-xs`;
+  const btn = "flex items-center justify-center rounded font-semibold transition-all active:scale-95 select-none border border-border/50";
+  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 text-sm`;
+  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 text-sm`;
+  const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80 text-xs`;
+  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 text-base font-bold`;
+  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary text-xs`;
 
   return (
     <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden">
@@ -230,45 +228,45 @@ const HeroCalculator = () => {
         </div>
       )}
 
-      <div className="p-4 space-y-3">
+      <div className="p-3 space-y-2">
         {/* Display */}
-        <div className="bg-secondary rounded-xl p-4 text-right border border-border">
-          <div className="flex items-center justify-between mb-1">
+        <div className="bg-secondary rounded-lg p-3 text-right border border-border">
+          <div className="flex items-center justify-between mb-0.5">
             <div className="flex items-center gap-2">
               <button onClick={() => setShowHistory(!showHistory)} className="text-muted-foreground hover:text-foreground transition-colors">
-                <Clock className="w-4 h-4" />
+                <Clock className="w-3.5 h-3.5" />
               </button>
               {memory !== 0 && <span className="text-[10px] text-primary font-semibold bg-primary/10 px-1.5 rounded">M</span>}
             </div>
-            {expression && <p className="text-xs text-muted-foreground truncate ml-2">{expression}</p>}
+            {expression && <p className="text-[11px] text-muted-foreground truncate ml-2">{expression}</p>}
           </div>
-          <p className="text-3xl font-bold text-foreground truncate">{display}</p>
+          <p className="text-2xl font-bold text-foreground truncate">{display}</p>
           {preview && (
-            <p className="text-sm text-primary/70 mt-1 truncate">= {preview}</p>
+            <p className="text-xs text-primary/70 mt-0.5 truncate">= {preview}</p>
           )}
         </div>
 
         {/* History panel */}
         {showHistory && (
-          <div className="bg-secondary/50 rounded-lg border border-border max-h-28 overflow-y-auto">
+          <div className="bg-secondary/50 rounded-lg border border-border max-h-24 overflow-y-auto">
             {history.length === 0 ? (
-              <p className="text-xs text-muted-foreground text-center py-3">No calculations yet</p>
+              <p className="text-xs text-muted-foreground text-center py-2">No calculations yet</p>
             ) : (
               <>
-                <div className="flex items-center justify-between px-3 pt-2 pb-1">
+                <div className="flex items-center justify-between px-3 pt-1.5 pb-0.5">
                   <span className="text-xs font-medium text-muted-foreground">Recent</span>
                   <button onClick={() => setHistory([])} className="text-muted-foreground hover:text-destructive transition-colors">
-                    <Trash2 className="w-3.5 h-3.5" />
+                    <Trash2 className="w-3 h-3" />
                   </button>
                 </div>
                 {history.map((h, i) => (
                   <button
                     key={i}
                     onClick={() => { setDisplay(h.result); setExpression(h.result); setShowHistory(false); }}
-                    className="w-full text-right px-3 py-1.5 hover:bg-secondary transition-colors"
+                    className="w-full text-right px-3 py-1 hover:bg-secondary transition-colors"
                   >
-                    <p className="text-xs text-muted-foreground truncate">{h.expression}</p>
-                    <p className="text-sm font-semibold text-foreground">= {h.result}</p>
+                    <p className="text-[11px] text-muted-foreground truncate">{h.expression}</p>
+                    <p className="text-xs font-semibold text-foreground">= {h.result}</p>
                   </button>
                 ))}
               </>
@@ -276,109 +274,108 @@ const HeroCalculator = () => {
           </div>
         )}
 
-        {/* Scientific buttons */}
+        {/* Scientific mode: horizontal 10-column grid like calculator.net */}
         {mode === "scientific" && (
-          <div className="space-y-2">
-            <div className="grid grid-cols-5 gap-1.5">
-              <button className={btnSci} onClick={() => handleInput(inv ? "asin(" : "sin(")}>{inv ? "sin⁻¹" : "sin"}</button>
-              <button className={btnSci} onClick={() => handleInput(inv ? "acos(" : "cos(")}>{inv ? "cos⁻¹" : "cos"}</button>
-              <button className={btnSci} onClick={() => handleInput(inv ? "atan(" : "tan(")}>{inv ? "tan⁻¹" : "tan"}</button>
-              {/* Deg/Rad toggle */}
-              <div className="col-span-2 flex h-9 rounded-xl bg-muted border border-border overflow-hidden">
-                <button
-                  onClick={() => setAngleMode("deg")}
-                  className={`flex-1 text-xs font-bold transition-all ${
-                    angleMode === "deg"
-                      ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  Deg
-                </button>
-                <button
-                  onClick={() => setAngleMode("rad")}
-                  className={`flex-1 text-xs font-bold transition-all ${
-                    angleMode === "rad"
-                      ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  Rad
-                </button>
-              </div>
+          <div className="grid grid-cols-10 gap-1" style={{ gridAutoRows: "minmax(32px, auto)" }}>
+            {/* Row 1: sin cos tan | Deg○ Rad○ | 7 8 9 + Back */}
+            <button className={btnSci} onClick={() => handleInput("sin(")}>sin</button>
+            <button className={btnSci} onClick={() => handleInput("cos(")}>cos</button>
+            <button className={btnSci} onClick={() => handleInput("tan(")}>tan</button>
+            <div className="col-span-2 flex items-center justify-center gap-2 text-[11px]">
+              <label className="flex items-center gap-0.5 cursor-pointer">
+                <input type="radio" name="angle" checked={angleMode === "deg"} onChange={() => setAngleMode("deg")} className="w-3 h-3 accent-primary" />
+                <span className={angleMode === "deg" ? "font-bold text-foreground" : "text-muted-foreground"}>Deg</span>
+              </label>
+              <label className="flex items-center gap-0.5 cursor-pointer">
+                <input type="radio" name="angle" checked={angleMode === "rad"} onChange={() => setAngleMode("rad")} className="w-3 h-3 accent-primary" />
+                <span className={angleMode === "rad" ? "font-bold text-foreground" : "text-muted-foreground"}>Rad</span>
+              </label>
             </div>
-            <div className="grid grid-cols-5 gap-1.5">
-              <button className={btnSci} onClick={() => handleInput("asin(")}>sin⁻¹</button>
-              <button className={btnSci} onClick={() => handleInput("acos(")}>cos⁻¹</button>
-              <button className={btnSci} onClick={() => handleInput("atan(")}>tan⁻¹</button>
-              <button className={btnSci} onClick={() => handleInput("π")}>π</button>
-              <button className={btnSci} onClick={() => handleInput("e")}>e</button>
-            </div>
-            <div className="grid grid-cols-5 gap-1.5">
-              <button className={btnSci} onClick={() => handleInput("^")}>xʸ</button>
-              <button className={btnSci} onClick={() => handleInput("^3")}>x³</button>
-              <button className={btnSci} onClick={() => handleInput("^2")}>x²</button>
-              <button className={btnSci} onClick={() => handleInput("e^")}>eˣ</button>
-              <button className={btnSci} onClick={() => handleInput("10^")}>10ˣ</button>
-            </div>
-            <div className="grid grid-cols-5 gap-1.5">
-              <button className={btnSci} onClick={() => handleInput("^(1/")}>ʸ√x</button>
-              <button className={btnSci} onClick={() => handleInput("^(1/3)")}>³√x</button>
-              <button className={btnSci} onClick={() => handleInput("√(")}>√x</button>
-              <button className={btnSci} onClick={() => handleInput("ln(")}>ln</button>
-              <button className={btnSci} onClick={() => handleInput("log(")}>log</button>
-            </div>
-            <div className="grid grid-cols-5 gap-1.5">
-              <button className={btnSci} onClick={() => handleInput("(")}>{"("}</button>
-              <button className={btnSci} onClick={() => handleInput(")")}>{")"}</button>
-              <button className={btnSci} onClick={() => { const v = parseFloat(display); if (v !== 0) { setDisplay((1/v).toString()); setExpression((1/v).toString()); } }}>1/x</button>
-              <button className={btnSci} onClick={() => handleInput("%")}>%</button>
-              <button className={btnSci} onClick={() => handleInput("!")}>n!</button>
-            </div>
+            <button className={btnNum} onClick={() => handleInput("7")}>7</button>
+            <button className={btnNum} onClick={() => handleInput("8")}>8</button>
+            <button className={btnNum} onClick={() => handleInput("9")}>9</button>
+            <button className={btnOp} onClick={() => handleOperator("+")}>+</button>
+            <button className={btnFunc} onClick={handleBackspace}>Back</button>
+
+            {/* Row 2: sin⁻¹ cos⁻¹ tan⁻¹ π e | 4 5 6 - Ans */}
+            <button className={btnSci} onClick={() => handleInput("asin(")}>sin⁻¹</button>
+            <button className={btnSci} onClick={() => handleInput("acos(")}>cos⁻¹</button>
+            <button className={btnSci} onClick={() => handleInput("atan(")}>tan⁻¹</button>
+            <button className={btnSci} onClick={() => handleInput("π")}>π</button>
+            <button className={btnSci} onClick={() => handleInput("e")}>e</button>
+            <button className={btnNum} onClick={() => handleInput("4")}>4</button>
+            <button className={btnNum} onClick={() => handleInput("5")}>5</button>
+            <button className={btnNum} onClick={() => handleInput("6")}>6</button>
+            <button className={btnOp} onClick={() => handleOperator("-")}>−</button>
+            <button className={btnFunc} onClick={() => handleInput("Ans")}>Ans</button>
+
+            {/* Row 3: xʸ x³ x² eˣ 10ˣ | 1 2 3 × M+ */}
+            <button className={btnSci} onClick={() => handleInput("^")}>xʸ</button>
+            <button className={btnSci} onClick={() => handleInput("^3")}>x³</button>
+            <button className={btnSci} onClick={() => handleInput("^2")}>x²</button>
+            <button className={btnSci} onClick={() => handleInput("e^")}>eˣ</button>
+            <button className={btnSci} onClick={() => handleInput("10^")}>10ˣ</button>
+            <button className={btnNum} onClick={() => handleInput("1")}>1</button>
+            <button className={btnNum} onClick={() => handleInput("2")}>2</button>
+            <button className={btnNum} onClick={() => handleInput("3")}>3</button>
+            <button className={btnOp} onClick={() => handleOperator("×")}>×</button>
+            <button className={btnFunc} onClick={handleMemoryAdd}>M+</button>
+
+            {/* Row 4: ʸ√x ³√x √x ln log | 0 . EXP ÷ M- */}
+            <button className={btnSci} onClick={() => handleInput("^(1/")}>ʸ√x</button>
+            <button className={btnSci} onClick={() => handleInput("^(1/3)")}>³√x</button>
+            <button className={btnSci} onClick={() => handleInput("√(")}>√x</button>
+            <button className={btnSci} onClick={() => handleInput("ln(")}>ln</button>
+            <button className={btnSci} onClick={() => handleInput("log(")}>log</button>
+            <button className={btnNum} onClick={() => handleInput("0")}>0</button>
+            <button className={btnNum} onClick={() => handleInput(".")}>.</button>
+            <button className={btnFunc} onClick={() => handleInput("e")}>EXP</button>
+            <button className={btnOp} onClick={() => handleOperator("÷")}>÷</button>
+            <button className={btnFunc} onClick={handleMemorySub}>M-</button>
+
+            {/* Row 5: ( ) 1/x % n! | ± RND AC = MR */}
+            <button className={btnSci} onClick={() => handleInput("(")}>{"("}</button>
+            <button className={btnSci} onClick={() => handleInput(")")}>{")"}</button>
+            <button className={btnSci} onClick={() => { const v = parseFloat(display); if (v !== 0) { setDisplay((1/v).toString()); setExpression((1/v).toString()); } }}>1/x</button>
+            <button className={btnSci} onClick={() => handleInput("%")}>%</button>
+            <button className={btnSci} onClick={() => handleInput("!")}>n!</button>
+            <button className={btnFunc} onClick={handleToggleSign}>±</button>
+            <button className={btnFunc} onClick={handleRandom}>RND</button>
+            <button className={`${btnFunc} text-destructive font-bold`} onClick={handleClear}>AC</button>
+            <button className={btnEquals} onClick={handleEquals}>=</button>
+            <button className={btnFunc} onClick={handleMemoryRecall}>MR</button>
           </div>
         )}
 
-        {/* Main grid — 6 columns */}
-        <div className="grid grid-cols-6 gap-1.5">
-          {/* Row 1 */}
-          <button className={btnNum} onClick={() => handleInput("7")}>7</button>
-          <button className={btnNum} onClick={() => handleInput("8")}>8</button>
-          <button className={btnNum} onClick={() => handleInput("9")}>9</button>
-          <button className={btnOp} onClick={() => handleOperator("+")}>+</button>
-          <button className={btnFunc} onClick={handleBackspace}>Back</button>
-          <button className={btnFunc} onClick={() => handleInput("Ans")}>Ans</button>
+        {/* Basic mode: compact 4-column grid for mobile */}
+        {mode === "basic" && (
+          <div className="grid grid-cols-4 gap-1.5">
+            <button className={`${btnFunc} h-11 text-destructive font-bold`} onClick={handleClear}>AC</button>
+            <button className={`${btnFunc} h-11`} onClick={handleBackspace}>Back</button>
+            <button className={`${btnFunc} h-11`} onClick={() => handleInput("%")}>%</button>
+            <button className={`${btnOp} h-11`} onClick={() => handleOperator("÷")}>÷</button>
 
-          {/* Row 2 */}
-          <button className={btnNum} onClick={() => handleInput("4")}>4</button>
-          <button className={btnNum} onClick={() => handleInput("5")}>5</button>
-          <button className={btnNum} onClick={() => handleInput("6")}>6</button>
-          <button className={btnOp} onClick={() => handleOperator("-")}>−</button>
-          <button className={btnFunc} onClick={() => handleInput("(")}>{"("}</button>
-          <button className={btnFunc} onClick={() => handleInput(")")}>{")"}</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("7")}>7</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("8")}>8</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("9")}>9</button>
+            <button className={`${btnOp} h-11`} onClick={() => handleOperator("×")}>×</button>
 
-          {/* Row 3 */}
-          <button className={btnNum} onClick={() => handleInput("1")}>1</button>
-          <button className={btnNum} onClick={() => handleInput("2")}>2</button>
-          <button className={btnNum} onClick={() => handleInput("3")}>3</button>
-          <button className={btnOp} onClick={() => handleOperator("×")}>×</button>
-          <button className={btnFunc} onClick={handleMemoryAdd}>M+</button>
-          <button className={btnFunc} onClick={handleMemorySub}>M-</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("4")}>4</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("5")}>5</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("6")}>6</button>
+            <button className={`${btnOp} h-11`} onClick={() => handleOperator("-")}>−</button>
 
-          {/* Row 4 */}
-          <button className={btnNum} onClick={() => handleInput("0")}>0</button>
-          <button className={btnNum} onClick={() => handleInput(".")}>.</button>
-          <button className={btnFunc} onClick={() => handleInput("e")}>EXP</button>
-          <button className={btnOp} onClick={() => handleOperator("÷")}>÷</button>
-          <button className={btnFunc} onClick={handleMemoryRecall}>MR</button>
-          <button className={btnFunc} onClick={() => setMemory(0)}>MC</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("1")}>1</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("2")}>2</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("3")}>3</button>
+            <button className={`${btnOp} h-11`} onClick={() => handleOperator("+")}>+</button>
 
-          {/* Row 5 */}
-          <button className={btnFunc} onClick={handleToggleSign}>±</button>
-          <button className={btnFunc} onClick={handleRandom}>RND</button>
-          <button className={`${btnFunc} text-destructive font-bold`} onClick={handleClear}>AC</button>
-          <button className={`${btnEquals} col-span-2`} onClick={handleEquals}>=</button>
-          <button className={btnFunc} onClick={() => handleInput("%")}>%</button>
-        </div>
+            <button className={`${btnNum} h-11`} onClick={handleToggleSign}>±</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput("0")}>0</button>
+            <button className={`${btnNum} h-11`} onClick={() => handleInput(".")}>.</button>
+            <button className={`${btnEquals} h-11`} onClick={handleEquals}>=</button>
+          </div>
+        )}
       </div>
     </div>
   );
