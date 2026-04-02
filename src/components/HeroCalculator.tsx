@@ -228,7 +228,7 @@ const HeroCalculator = () => {
         </div>
       )}
 
-      <div className="p-3 space-y-2">
+      <div className="p-2 lg:p-3 space-y-1.5 lg:space-y-2">
         {/* Display */}
         <div className="bg-secondary rounded-lg p-3 text-right border border-border">
           <div className="flex items-center justify-between mb-0.5">
