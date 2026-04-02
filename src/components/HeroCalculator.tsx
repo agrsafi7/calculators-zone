@@ -194,14 +194,14 @@ const HeroCalculator = () => {
   const showTabs = isMobile;
 
   const btn = "flex items-center justify-center rounded font-semibold transition-all active:scale-95 select-none border border-border/50";
-  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 text-sm`;
-  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 text-sm`;
-  const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80 text-xs`;
-  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 text-base font-bold`;
-  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary text-xs`;
+  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 text-[11px] lg:text-sm`;
+  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 text-[11px] lg:text-sm`;
+  const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80 text-[10px] lg:text-xs`;
+  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 text-sm lg:text-base font-bold`;
+  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary text-[10px] lg:text-xs`;
 
   return (
-    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden">
+    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden max-w-full">
       {/* Tabs - only on mobile */}
       {showTabs && (
         <div className="flex">
@@ -228,9 +228,9 @@ const HeroCalculator = () => {
         </div>
       )}
 
-      <div className="p-3 space-y-2">
+      <div className="p-2 lg:p-3 space-y-1.5 lg:space-y-2">
         {/* Display */}
-        <div className="bg-secondary rounded-lg p-3 text-right border border-border">
+        <div className="bg-secondary rounded-lg p-2 lg:p-3 text-right border border-border">
           <div className="flex items-center justify-between mb-0.5">
             <div className="flex items-center gap-2">
               <button onClick={() => setShowHistory(!showHistory)} className="text-muted-foreground hover:text-foreground transition-colors">
@@ -240,7 +240,7 @@ const HeroCalculator = () => {
             </div>
             {expression && <p className="text-[11px] text-muted-foreground truncate ml-2">{expression}</p>}
           </div>
-          <p className="text-2xl font-bold text-foreground truncate">{display}</p>
+          <p className="text-xl lg:text-2xl font-bold text-foreground truncate">{display}</p>
           {preview && (
             <p className="text-xs text-primary/70 mt-0.5 truncate">= {preview}</p>
           )}
@@ -276,18 +276,18 @@ const HeroCalculator = () => {
 
         {/* Scientific mode: horizontal 10-column grid like calculator.net */}
         {mode === "scientific" && (
-          <div className="grid grid-cols-10 gap-1" style={{ gridAutoRows: "minmax(32px, auto)" }}>
+          <div className="grid grid-cols-10 gap-0.5 lg:gap-1" style={{ gridAutoRows: "minmax(28px, 32px)" }}>
             {/* Row 1: sin cos tan | Deg○ Rad○ | 7 8 9 + Back */}
             <button className={btnSci} onClick={() => handleInput("sin(")}>sin</button>
             <button className={btnSci} onClick={() => handleInput("cos(")}>cos</button>
             <button className={btnSci} onClick={() => handleInput("tan(")}>tan</button>
-            <div className="col-span-2 flex items-center justify-center gap-2 text-[11px]">
+            <div className="col-span-2 flex items-center justify-center gap-1 lg:gap-2 text-[10px] lg:text-[11px]">
               <label className="flex items-center gap-0.5 cursor-pointer">
-                <input type="radio" name="angle" checked={angleMode === "deg"} onChange={() => setAngleMode("deg")} className="w-3 h-3 accent-primary" />
+                <input type="radio" name="angle" checked={angleMode === "deg"} onChange={() => setAngleMode("deg")} className="w-2.5 h-2.5 lg:w-3 lg:h-3 accent-primary" />
                 <span className={angleMode === "deg" ? "font-bold text-foreground" : "text-muted-foreground"}>Deg</span>
               </label>
               <label className="flex items-center gap-0.5 cursor-pointer">
-                <input type="radio" name="angle" checked={angleMode === "rad"} onChange={() => setAngleMode("rad")} className="w-3 h-3 accent-primary" />
+                <input type="radio" name="angle" checked={angleMode === "rad"} onChange={() => setAngleMode("rad")} className="w-2.5 h-2.5 lg:w-3 lg:h-3 accent-primary" />
                 <span className={angleMode === "rad" ? "font-bold text-foreground" : "text-muted-foreground"}>Rad</span>
               </label>
             </div>
