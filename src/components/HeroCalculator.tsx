@@ -201,7 +201,7 @@ const HeroCalculator = () => {
   const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary text-[10px] lg:text-xs`;
 
   return (
-    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden">
+    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden max-w-full">
       {/* Tabs - only on mobile */}
       {showTabs && (
         <div className="flex">
