@@ -194,11 +194,11 @@ const HeroCalculator = () => {
   const showTabs = isMobile;
 
   const btn = "flex items-center justify-center rounded font-semibold transition-all active:scale-95 select-none border border-border/50";
-  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 text-sm`;
-  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 text-sm`;
-  const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80 text-xs`;
-  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 text-base font-bold`;
-  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary text-xs`;
+  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 text-[11px] lg:text-sm`;
+  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 text-[11px] lg:text-sm`;
+  const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80 text-[10px] lg:text-xs`;
+  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 text-sm lg:text-base font-bold`;
+  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary text-[10px] lg:text-xs`;
 
   return (
     <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden">
