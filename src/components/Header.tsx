@@ -85,21 +85,28 @@ const Header = () => {
 
       {/* Mobile menu - overlay style */}
       {mobileOpen && (
-        <div className="md:hidden fixed inset-0 top-14 z-50 bg-card/98 backdrop-blur-sm overflow-y-auto">
+        <div className="md:hidden fixed inset-0 top-14 z-50 bg-card overflow-y-auto border-t border-border shadow-xl">
           <div className="px-4 py-4 space-y-3">
             <SearchBar placeholder="Search tools..." onAfterSelect={() => setMobileOpen(false)} />
 
-            <nav className="flex flex-col gap-1 pt-2">
-              {categories.map((cat) => (
-                <Link
-                  key={cat.slug}
-                  to={`/category/${cat.slug}`}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-3 py-2 text-sm font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
-                >
-                  {cat.name}
-                </Link>
-              ))}
+            <nav className="flex flex-col gap-0.5 pt-2">
+              {categories.map((cat) => {
+                const isActive = window.location.pathname.includes(`/category/${cat.slug}`);
+                return (
+                  <Link
+                    key={cat.slug}
+                    to={`/category/${cat.slug}`}
+                    onClick={() => setMobileOpen(false)}
+                    className={`px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                      isActive
+                        ? "bg-primary text-primary-foreground"
+                        : "text-foreground hover:bg-secondary active:bg-secondary"
+                    }`}
+                  >
+                    {cat.name}
+                  </Link>
+                );
+              })}
             </nav>
 
             <div className="flex items-center justify-between pt-3 border-t border-border mt-2">

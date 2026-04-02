@@ -281,13 +281,13 @@ const HeroCalculator = () => {
             <button className={btnSci} onClick={() => handleInput("sin(")}>sin</button>
             <button className={btnSci} onClick={() => handleInput("cos(")}>cos</button>
             <button className={btnSci} onClick={() => handleInput("tan(")}>tan</button>
-            <div className="col-span-2 flex items-center justify-center gap-2 text-[11px]">
+            <div className="col-span-2 flex items-center justify-center gap-1 lg:gap-2 text-[10px] lg:text-[11px]">
               <label className="flex items-center gap-0.5 cursor-pointer">
-                <input type="radio" name="angle" checked={angleMode === "deg"} onChange={() => setAngleMode("deg")} className="w-3 h-3 accent-primary" />
+                <input type="radio" name="angle" checked={angleMode === "deg"} onChange={() => setAngleMode("deg")} className="w-2.5 h-2.5 lg:w-3 lg:h-3 accent-primary" />
                 <span className={angleMode === "deg" ? "font-bold text-foreground" : "text-muted-foreground"}>Deg</span>
               </label>
               <label className="flex items-center gap-0.5 cursor-pointer">
-                <input type="radio" name="angle" checked={angleMode === "rad"} onChange={() => setAngleMode("rad")} className="w-3 h-3 accent-primary" />
+                <input type="radio" name="angle" checked={angleMode === "rad"} onChange={() => setAngleMode("rad")} className="w-2.5 h-2.5 lg:w-3 lg:h-3 accent-primary" />
                 <span className={angleMode === "rad" ? "font-bold text-foreground" : "text-muted-foreground"}>Rad</span>
               </label>
             </div>
