@@ -240,7 +240,7 @@ const HeroCalculator = () => {
             </div>
             {expression && <p className="text-[11px] text-muted-foreground truncate ml-2">{expression}</p>}
           </div>
-          <p className="text-2xl font-bold text-foreground truncate">{display}</p>
+          <p className="text-xl lg:text-2xl font-bold text-foreground truncate">{display}</p>
           {preview && (
             <p className="text-xs text-primary/70 mt-0.5 truncate">= {preview}</p>
           )}
