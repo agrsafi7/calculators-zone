@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, RotateCcw } from "lucide-react";
 import AdPlaceholder from "@/components/AdPlaceholder";
@@ -12,18 +12,31 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid,
+  Tooltip as RechartsTooltip, ResponsiveContainer, Cell,
+} from "recharts";
 
 const relatedCalculators = [
   { name: "Calorie Calculator", slug: "calorie-calculator", icon: "heart", category: "health" },
   { name: "Pregnancy Due Date", slug: "pregnancy-calculator", icon: "heart", category: "health" },
+  { name: "Body Fat Calculator", slug: "body-fat-calculator", icon: "heart", category: "health" },
+  { name: "Ideal Weight", slug: "ideal-weight-calculator", icon: "heart", category: "health" },
 ];
 
 const getBmiCategory = (bmi: number) => {
-  if (bmi < 18.5) return { label: "Underweight", color: "hsl(199 89% 48%)" };
-  if (bmi < 25) return { label: "Normal weight", color: "hsl(142 71% 45%)" };
-  if (bmi < 30) return { label: "Overweight", color: "hsl(25 95% 53%)" };
-  return { label: "Obese", color: "hsl(0 84% 60%)" };
+  if (bmi < 18.5) return { label: "Underweight", color: "hsl(199, 89%, 48%)" };
+  if (bmi < 25) return { label: "Normal weight", color: "hsl(142, 71%, 45%)" };
+  if (bmi < 30) return { label: "Overweight", color: "hsl(25, 95%, 53%)" };
+  return { label: "Obese", color: "hsl(0, 84%, 60%)" };
 };
+
+const bmiRanges = [
+  { name: "Underweight", min: 10, max: 18.5, color: "hsl(199, 89%, 48%)" },
+  { name: "Normal", min: 18.5, max: 25, color: "hsl(142, 71%, 45%)" },
+  { name: "Overweight", min: 25, max: 30, color: "hsl(25, 95%, 53%)" },
+  { name: "Obese", min: 30, max: 40, color: "hsl(0, 84%, 60%)" },
+];
 
 const BmiCalculator = () => {
   const [unit, setUnit] = useState<"imperial" | "metric">("imperial");
@@ -66,6 +79,31 @@ const BmiCalculator = () => {
   // BMI gauge
   const gaugePercent = result ? Math.min(Math.max(((result - 10) / 30) * 100, 0), 100) : 0;
 
+  // Healthy weight range
+  const healthyRange = useMemo(() => {
+    let heightM: number;
+    if (unit === "imperial") {
+      const totalInches = heightFt * 12 + heightIn;
+      heightM = totalInches * 0.0254;
+    } else {
+      heightM = heightCm / 100;
+    }
+    const minWeight = 18.5 * heightM * heightM;
+    const maxWeight = 24.9 * heightM * heightM;
+    if (unit === "imperial") {
+      return { min: Math.round(minWeight * 2.205), max: Math.round(maxWeight * 2.205), unit: "lbs" };
+    }
+    return { min: Math.round(minWeight), max: Math.round(maxWeight), unit: "kg" };
+  }, [unit, heightFt, heightIn, heightCm]);
+
+  // Bar chart data for BMI range visualization
+  const barData = bmiRanges.map((range) => ({
+    name: range.name,
+    range: range.max - range.min,
+    color: range.color,
+    isYou: result ? result >= range.min && result < range.max : false,
+  }));
+
   return (
     <div>
       <SEO title="BMI Calculator" description="Free BMI calculator. Calculate your Body Mass Index with imperial or metric units. Understand healthy weight ranges." canonical="/health/bmi-calculator" breadcrumbs={[{name:"Home",url:"/"},{name:"Health",url:"/category/health"},{name:"BMI Calculator",url:"/health/bmi-calculator"}]} faqs={[{question:"Is BMI accurate for everyone?",answer:"BMI doesn't account for muscle mass or body composition."},{question:"What is a healthy BMI range?",answer:"A BMI between 18.5 and 24.9 is considered normal weight."}]} />
@@ -82,7 +120,7 @@ const BmiCalculator = () => {
           <div className="flex-1 min-w-0">
             <h1 className="text-2xl md:text-3xl font-black mb-3">BMI Calculator</h1>
             <p className="text-muted-foreground text-sm max-w-xl mb-6">
-              Calculate your Body Mass Index to understand if your weight is healthy for your height. BMI is a widely used screening tool for weight categories.
+              Calculate your Body Mass Index to understand if your weight is healthy for your height.
             </p>
 
             <AdPlaceholder size="leaderboard" />
@@ -94,18 +132,11 @@ const BmiCalculator = () => {
                     <span className="text-primary">≡</span> Your Details
                   </h3>
 
-                  {/* Unit toggle */}
                   <div className="flex rounded-lg border border-border overflow-hidden mb-4">
-                    <button
-                      onClick={() => setUnit("imperial")}
-                      className={`flex-1 py-2 text-xs font-medium transition-colors ${unit === "imperial" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground"}`}
-                    >
+                    <button onClick={() => setUnit("imperial")} className={`flex-1 py-2 text-xs font-medium transition-colors ${unit === "imperial" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground"}`}>
                       Imperial (lb/ft)
                     </button>
-                    <button
-                      onClick={() => setUnit("metric")}
-                      className={`flex-1 py-2 text-xs font-medium transition-colors ${unit === "metric" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground"}`}
-                    >
+                    <button onClick={() => setUnit("metric")} className={`flex-1 py-2 text-xs font-medium transition-colors ${unit === "metric" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground"}`}>
                       Metric (kg/cm)
                     </button>
                   </div>
@@ -115,31 +146,16 @@ const BmiCalculator = () => {
                       <>
                         <div>
                           <label className="text-xs font-medium text-muted-foreground block mb-1.5">Weight (lbs)</label>
-                          <input
-                            type="number"
-                            value={weight}
-                            onChange={(e) => setWeight(Number(e.target.value))}
-                            className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                          />
+                          <input type="number" value={weight} onChange={(e) => setWeight(Number(e.target.value))} className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
                         </div>
                         <div className="flex gap-2">
                           <div className="flex-1">
                             <label className="text-xs font-medium text-muted-foreground block mb-1.5">Height (ft)</label>
-                            <input
-                              type="number"
-                              value={heightFt}
-                              onChange={(e) => setHeightFt(Number(e.target.value))}
-                              className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                            />
+                            <input type="number" value={heightFt} onChange={(e) => setHeightFt(Number(e.target.value))} className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
                           </div>
                           <div className="flex-1">
                             <label className="text-xs font-medium text-muted-foreground block mb-1.5">Height (in)</label>
-                            <input
-                              type="number"
-                              value={heightIn}
-                              onChange={(e) => setHeightIn(Number(e.target.value))}
-                              className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                            />
+                            <input type="number" value={heightIn} onChange={(e) => setHeightIn(Number(e.target.value))} className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
                           </div>
                         </div>
                       </>
@@ -147,37 +163,21 @@ const BmiCalculator = () => {
                       <>
                         <div>
                           <label className="text-xs font-medium text-muted-foreground block mb-1.5">Weight (kg)</label>
-                          <input
-                            type="number"
-                            value={weightKg}
-                            onChange={(e) => setWeightKg(Number(e.target.value))}
-                            className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                          />
+                          <input type="number" value={weightKg} onChange={(e) => setWeightKg(Number(e.target.value))} className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
                         </div>
                         <div>
                           <label className="text-xs font-medium text-muted-foreground block mb-1.5">Height (cm)</label>
-                          <input
-                            type="number"
-                            value={heightCm}
-                            onChange={(e) => setHeightCm(Number(e.target.value))}
-                            className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                          />
+                          <input type="number" value={heightCm} onChange={(e) => setHeightCm(Number(e.target.value))} className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
                         </div>
                       </>
                     )}
                   </div>
 
                   <div className="flex gap-2 mt-6">
-                    <button
-                      onClick={calculate}
-                      className="flex-1 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
-                    >
+                    <button onClick={calculate} className="flex-1 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">
                       Calculate BMI
                     </button>
-                    <button
-                      onClick={handleReset}
-                      className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-foreground transition-colors"
-                    >
+                    <button onClick={handleReset} className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-foreground transition-colors">
                       <RotateCcw className="w-4 h-4" />
                     </button>
                   </div>
@@ -193,43 +193,94 @@ const BmiCalculator = () => {
 
                       {/* Gauge bar */}
                       <div className="w-full max-w-xs">
-                        <div className="h-3 rounded-full bg-secondary overflow-hidden relative">
+                        <div className="h-4 rounded-full overflow-hidden relative flex">
+                          <div className="flex-1 bg-[hsl(199,89%,48%)]" />
+                          <div className="flex-1 bg-[hsl(142,71%,45%)]" />
+                          <div className="flex-1 bg-[hsl(25,95%,53%)]" />
+                          <div className="flex-1 bg-[hsl(0,84%,60%)]" />
+                          {/* Indicator */}
                           <div
-                            className="absolute left-0 top-0 h-full rounded-full transition-all duration-500"
-                            style={{ width: `${gaugePercent}%`, background: `linear-gradient(90deg, hsl(199 89% 48%), hsl(142 71% 45%), hsl(25 95% 53%), hsl(0 84% 60%))` }}
+                            className="absolute top-0 h-full w-1 bg-foreground rounded shadow-lg transition-all duration-500"
+                            style={{ left: `${gaugePercent}%` }}
                           />
                         </div>
                         <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
-                          <span>Underweight</span>
+                          <span>Under</span>
                           <span>Normal</span>
-                          <span>Overweight</span>
+                          <span>Over</span>
                           <span>Obese</span>
                         </div>
                       </div>
 
-                      <div className="mt-6 text-left w-full space-y-2 text-sm">
-                        <div className="flex justify-between p-2 rounded bg-secondary">
-                          <span className="text-muted-foreground">Underweight</span>
-                          <span className="font-medium">&lt; 18.5</span>
-                        </div>
-                        <div className="flex justify-between p-2 rounded bg-secondary">
-                          <span className="text-muted-foreground">Normal</span>
-                          <span className="font-medium">18.5 – 24.9</span>
-                        </div>
-                        <div className="flex justify-between p-2 rounded bg-secondary">
-                          <span className="text-muted-foreground">Overweight</span>
-                          <span className="font-medium">25 – 29.9</span>
-                        </div>
-                        <div className="flex justify-between p-2 rounded bg-secondary">
-                          <span className="text-muted-foreground">Obese</span>
-                          <span className="font-medium">≥ 30</span>
-                        </div>
+                      {/* Healthy weight range */}
+                      <div className="mt-4 p-3 rounded-lg bg-primary/10 border border-primary/20 w-full max-w-xs">
+                        <p className="text-xs text-muted-foreground">Healthy weight for your height</p>
+                        <p className="text-lg font-bold text-primary">{healthyRange.min} – {healthyRange.max} {healthyRange.unit}</p>
                       </div>
                     </>
                   )}
                 </div>
               </div>
             </div>
+
+            {/* BMI Range Chart */}
+            {result !== null && (
+              <div className="bg-card rounded-xl border border-border p-6 mt-4">
+                <h3 className="font-semibold text-sm mb-4">BMI Categories — Where You Stand</h3>
+                <ResponsiveContainer width="100%" height={200}>
+                  <BarChart data={barData} layout="vertical" margin={{ top: 5, right: 30, left: 60, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={false} />
+                    <XAxis type="number" tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} />
+                    <YAxis type="category" dataKey="name" tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }} width={70} />
+                    <RechartsTooltip
+                      contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: "8px", fontSize: "12px" }}
+                    />
+                    <Bar dataKey="range" name="BMI Range" radius={[0, 4, 4, 0]}>
+                      {barData.map((entry, i) => (
+                        <Cell
+                          key={i}
+                          fill={entry.color}
+                          fillOpacity={entry.isYou ? 1 : 0.3}
+                          stroke={entry.isYou ? entry.color : "none"}
+                          strokeWidth={entry.isYou ? 2 : 0}
+                        />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+                {result && (
+                  <p className="text-center text-xs text-muted-foreground mt-2">
+                    Your BMI of <strong className="text-foreground">{result}</strong> places you in the <strong style={{ color: category?.color }}>{category?.label}</strong> category
+                  </p>
+                )}
+              </div>
+            )}
+
+            {/* BMI Reference Table */}
+            {result !== null && (
+              <div className="bg-card rounded-xl border border-border p-6 mt-4">
+                <h3 className="font-semibold text-sm mb-4">BMI Reference Table</h3>
+                <div className="space-y-2">
+                  {bmiRanges.map((range) => {
+                    const isActive = result >= range.min && result < range.max;
+                    return (
+                      <div
+                        key={range.name}
+                        className={`flex justify-between items-center p-3 rounded-lg transition-colors ${isActive ? "ring-2" : "bg-secondary"}`}
+                        style={isActive ? { background: `${range.color}15`, boxShadow: `0 0 0 2px ${range.color}` } : {}}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="w-3 h-3 rounded-full" style={{ background: range.color }} />
+                          <span className={`text-sm ${isActive ? "font-bold" : "text-muted-foreground"}`}>{range.name}</span>
+                          {isActive && <span className="text-[10px] bg-foreground text-background px-1.5 py-0.5 rounded font-bold">YOU</span>}
+                        </div>
+                        <span className="font-medium text-sm">{range.min} – {range.max}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             <div className="my-8">
               <AdPlaceholder size="responsive" />
@@ -257,15 +308,11 @@ const BmiCalculator = () => {
               <Accordion type="single" collapsible className="border border-border rounded-xl overflow-hidden">
                 <AccordionItem value="q1" className="border-b border-border px-5">
                   <AccordionTrigger className="text-sm font-medium">Is BMI accurate for everyone?</AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground">
-                    BMI is a useful screening tool but doesn't account for muscle mass, bone density, or body composition. Athletes may have a high BMI despite being healthy. Consult a healthcare provider for a comprehensive assessment.
-                  </AccordionContent>
+                  <AccordionContent className="text-sm text-muted-foreground">BMI is a useful screening tool but doesn't account for muscle mass, bone density, or body composition. Athletes may have a high BMI despite being healthy.</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="q2" className="px-5">
                   <AccordionTrigger className="text-sm font-medium">What is a healthy BMI range?</AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground">
-                    A BMI between 18.5 and 24.9 is considered normal weight. However, optimal health depends on many factors beyond BMI, including diet, exercise, and genetics.
-                  </AccordionContent>
+                  <AccordionContent className="text-sm text-muted-foreground">A BMI between 18.5 and 24.9 is considered normal weight. However, optimal health depends on many factors beyond BMI.</AccordionContent>
                 </AccordionItem>
               </Accordion>
             </section>
@@ -284,7 +331,7 @@ const BmiCalculator = () => {
                   return (
                     <li key={calc.slug}>
                       <Link to={`/${calc.category}/${calc.slug}`} className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-secondary transition-colors text-sm">
-                        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+                        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                           <Icon className="w-4 h-4 text-primary" />
                         </div>
                         {calc.name}

@@ -22,7 +22,7 @@ const LegalPage = ({ title, children }: { title: string; children: React.ReactNo
 export const PrivacyPolicy = () => (
   <LegalPage title="Privacy Policy">
     <p><strong className="text-foreground">Last updated:</strong> March 9, 2026</p>
-    <p>CalcHub ("we", "us", or "our") operates the CalcHub website. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.</p>
+    <p>TheCalculator.us ("we", "us", or "our") operates the TheCalculator.us website. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Information We Collect</h2>
     <p>We collect several types of information for various purposes to provide and improve our Service to you:</p>
@@ -32,7 +32,7 @@ export const PrivacyPolicy = () => (
     </ul>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Use of Data</h2>
-    <p>CalcHub uses the collected data for various purposes:</p>
+    <p>TheCalculator.us uses the collected data for various purposes:</p>
     <ul className="list-disc pl-5 space-y-1">
       <li>To provide and maintain the Service</li>
       <li>To notify you about changes to our Service</li>
@@ -53,22 +53,22 @@ export const PrivacyPolicy = () => (
 export const TermsOfService = () => (
   <LegalPage title="Terms of Service">
     <p><strong className="text-foreground">Last updated:</strong> March 9, 2026</p>
-    <p>Please read these Terms of Service ("Terms") carefully before using CalcHub.</p>
+    <p>Please read these Terms of Service ("Terms") carefully before using TheCalculator.us.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Acceptance of Terms</h2>
-    <p>By accessing or using CalcHub, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.</p>
+    <p>By accessing or using TheCalculator.us, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the Service.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Use of the Service</h2>
-    <p>CalcHub provides online calculators for informational and educational purposes only. The results provided by our calculators should not be considered as professional financial, medical, or legal advice.</p>
+    <p>TheCalculator.us provides online calculators for informational and educational purposes only. The results provided by our calculators should not be considered as professional financial, medical, or legal advice.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Accuracy Disclaimer</h2>
     <p>While we strive to provide accurate calculations, we make no warranties or representations about the accuracy, reliability, or completeness of any information on this site. Users should verify results independently before making important decisions.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Intellectual Property</h2>
-    <p>The Service and its original content, features, and functionality are owned by CalcHub and are protected by international copyright, trademark, and other intellectual property laws.</p>
+    <p>The Service and its original content, features, and functionality are owned by TheCalculator.us and are protected by international copyright, trademark, and other intellectual property laws.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Limitation of Liability</h2>
-    <p>In no event shall CalcHub be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the Service.</p>
+    <p>In no event shall TheCalculator.us be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the Service.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Contact</h2>
     <p>Questions about these Terms? <Link to="/contact" className="text-primary hover:underline font-medium">Contact us</Link>.</p>
@@ -80,16 +80,16 @@ export const Disclaimer = () => (
     <p><strong className="text-foreground">Last updated:</strong> March 9, 2026</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">General Disclaimer</h2>
-    <p>The information provided by CalcHub is for general informational and educational purposes only. All information on the site is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the site.</p>
+    <p>The information provided by TheCalculator.us is for general informational and educational purposes only. All information on the site is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the site.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Financial Disclaimer</h2>
-    <p>The financial calculators on CalcHub are provided for illustrative purposes only. They are not intended to provide specific financial, investment, tax, legal, accounting, or other professional advice. Always consult a qualified professional before making financial decisions.</p>
+    <p>The financial calculators on TheCalculator.us are provided for illustrative purposes only. They are not intended to provide specific financial, investment, tax, legal, accounting, or other professional advice. Always consult a qualified professional before making financial decisions.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Health Disclaimer</h2>
     <p>Health-related calculators (BMI, calorie, etc.) are provided for general reference only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">No Liability</h2>
-    <p>Under no circumstances shall CalcHub be responsible for any loss or damage resulting from reliance on information or calculator results provided through this website.</p>
+    <p>Under no circumstances shall TheCalculator.us be responsible for any loss or damage resulting from reliance on information or calculator results provided through this website.</p>
   </LegalPage>
 );
 
@@ -175,8 +175,8 @@ export const ContactPage = () => {
 
       <h2 className="text-lg font-bold text-foreground mt-6">Other Ways to Reach Us</h2>
       <ul className="list-disc pl-5 space-y-1">
-        <li><strong className="text-foreground">Email:</strong> support@calchub.com</li>
-        <li><strong className="text-foreground">Business Inquiries:</strong> partners@calchub.com</li>
+        <li><strong className="text-foreground">Email:</strong> support@thecalculator.us</li>
+        <li><strong className="text-foreground">Business Inquiries:</strong> partners@thecalculator.us</li>
       </ul>
     </LegalPage>
   );

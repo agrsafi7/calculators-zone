@@ -21,7 +21,7 @@ const trendingTools = [
 const PopularToolsPage = () => {
   return (
     <div>
-      <SEO title="Popular & Trending Calculators — CalcHub" description="Discover the most popular and trending calculators used by millions. From mortgage to BMI, find the tools everyone loves." canonical="/popular" />
+      <SEO title="Popular & Trending Calculators — TheCalculator.us" description="Discover the most popular and trending calculators used by millions. From mortgage to BMI, find the tools everyone loves." canonical="/popular" />
       <Breadcrumbs items={[{ label: "Popular Tools" }]} />
       <div className="container mx-auto px-4 py-10">
         <div className="flex items-center gap-3 mb-2">
