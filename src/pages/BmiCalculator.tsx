@@ -267,7 +267,7 @@ const BmiCalculator = () => {
                       <div
                         key={range.name}
                         className={`flex justify-between items-center p-3 rounded-lg transition-colors ${isActive ? "ring-2" : "bg-secondary"}`}
-                        style={isActive ? { background: `${range.color}15`, ringColor: range.color } : {}}
+                        style={isActive ? { background: `${range.color}15`, boxShadow: `0 0 0 2px ${range.color}` } : {}}
                       >
                         <div className="flex items-center gap-2">
                           <span className="w-3 h-3 rounded-full" style={{ background: range.color }} />
