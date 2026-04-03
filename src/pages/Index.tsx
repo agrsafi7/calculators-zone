@@ -17,49 +17,49 @@ const categoryCards = [
     slug: "finance",
     icon: "dollar",
     items: ["Mortgage Calculator", "Loan Repayment", "Investment Returns", "Tax Estimator", "Retirement Planner"],
-    description: "Take control of your financial future with our comprehensive suite of finance calculators. Whether you're planning to buy your first home, comparing loan options, or mapping out your retirement strategy, our tools provide accurate, real-time calculations to help you make informed decisions. From mortgage payments and auto loan comparisons to compound interest projections and tax estimations, each calculator is designed with precision and simplicity. Our finance tools help individuals, families, and professionals navigate complex financial scenarios with confidence. Plan smarter, save more, and achieve your financial goals with CalcHub's trusted financial calculators.",
+    description: "Take control of your financial future with our comprehensive suite of finance calculators. Whether you're planning to buy your first home, comparing loan options, or mapping out your retirement strategy, our tools provide accurate, real-time calculations to help you make informed decisions. From mortgage payments and auto loan comparisons to compound interest projections and tax estimations, each calculator is designed with precision and simplicity. Our finance tools help individuals, families, and professionals navigate complex financial scenarios with confidence. Plan smarter, save more, and achieve your financial goals with TheCalculator.us's trusted financial calculators.",
   },
   {
     name: "Health & Fitness",
     slug: "health",
     icon: "heart",
     items: ["BMI Calculator", "Calorie Counter", "Heart Rate Zones", "Body Fat Estimator", "Pregnancy Due Date"],
-    description: "Your health journey starts with understanding your body. Our health and fitness calculators provide essential metrics to help you track progress, set realistic goals, and maintain a balanced lifestyle. Calculate your Body Mass Index (BMI) to understand your weight category, estimate daily calorie needs based on your activity level, or determine your ideal heart rate zones for effective workouts. Whether you're managing weight, planning a pregnancy, or optimizing athletic performance, our scientifically-backed tools deliver accurate results. Empower yourself with knowledge and take the guesswork out of health decisions with CalcHub's comprehensive health calculators.",
+    description: "Your health journey starts with understanding your body. Our health and fitness calculators provide essential metrics to help you track progress, set realistic goals, and maintain a balanced lifestyle. Calculate your Body Mass Index (BMI) to understand your weight category, estimate daily calorie needs based on your activity level, or determine your ideal heart rate zones for effective workouts. Whether you're managing weight, planning a pregnancy, or optimizing athletic performance, our scientifically-backed tools deliver accurate results. Empower yourself with knowledge and take the guesswork out of health decisions with TheCalculator.us's comprehensive health calculators.",
   },
   {
     name: "Math & Education",
     slug: "math",
     icon: "hash",
     items: ["Percentage Calculator", "Fraction Solver", "GPA Calculator", "Quadratic Equation", "Standard Deviation"],
-    description: "Master mathematical concepts with our extensive collection of math and education calculators. From basic arithmetic to advanced algebra, our tools help students, teachers, and professionals solve problems quickly and accurately. Calculate percentages for discounts and tips, solve complex equations, convert fractions to decimals, or compute your GPA with ease. Our step-by-step approach helps you understand the underlying concepts while delivering instant results. Whether you're preparing for exams, checking homework, or solving real-world problems, CalcHub's math calculators are your reliable companion for academic and professional success.",
+    description: "Master mathematical concepts with our extensive collection of math and education calculators. From basic arithmetic to advanced algebra, our tools help students, teachers, and professionals solve problems quickly and accurately. Calculate percentages for discounts and tips, solve complex equations, convert fractions to decimals, or compute your GPA with ease. Our step-by-step approach helps you understand the underlying concepts while delivering instant results. Whether you're preparing for exams, checking homework, or solving real-world problems, TheCalculator.us's math calculators are your reliable companion for academic and professional success.",
   },
   {
     name: "Unit Converters",
     slug: "conversions",
     icon: "convert",
     items: ["Length Converter", "Weight Converter", "Temperature Converter", "Speed Converter", "Data Storage Converter"],
-    description: "Seamlessly convert between measurement units with our comprehensive unit conversion tools. Whether you're working with metric or imperial systems, our converters handle length, weight, temperature, volume, speed, and much more. Perfect for travelers comparing distances, chefs adjusting recipes, engineers calculating specifications, or students solving physics problems. Each converter supports multiple units and provides instant, accurate results. No more manual calculations or confusing conversion tables—simply enter your value and get results in any unit you need. CalcHub's unit converters make international measurements effortless and error-free.",
+    description: "Seamlessly convert between measurement units with our comprehensive unit conversion tools. Whether you're working with metric or imperial systems, our converters handle length, weight, temperature, volume, speed, and much more. Perfect for travelers comparing distances, chefs adjusting recipes, engineers calculating specifications, or students solving physics problems. Each converter supports multiple units and provides instant, accurate results. No more manual calculations or confusing conversion tables—simply enter your value and get results in any unit you need. TheCalculator.us's unit converters make international measurements effortless and error-free.",
   },
   {
     name: "Science",
     slug: "science",
     icon: "flask",
     items: ["Force Calculator", "Ohm's Law", "pH Calculator", "Density Calculator", "Wavelength Converter"],
-    description: "Explore the physical world with our powerful science calculators. Designed for students, researchers, and curious minds, our tools cover physics, chemistry, biology, astronomy, and environmental science. Calculate force, velocity, and acceleration for physics problems. Determine pH levels and molar concentrations for chemistry experiments. Explore wavelengths, frequencies, and energy conversions across the electromagnetic spectrum. Each calculator is built on established scientific formulas and provides accurate results for academic research, laboratory work, and practical applications. Unlock the mysteries of science with CalcHub's comprehensive scientific calculation tools.",
+    description: "Explore the physical world with our powerful science calculators. Designed for students, researchers, and curious minds, our tools cover physics, chemistry, biology, astronomy, and environmental science. Calculate force, velocity, and acceleration for physics problems. Determine pH levels and molar concentrations for chemistry experiments. Explore wavelengths, frequencies, and energy conversions across the electromagnetic spectrum. Each calculator is built on established scientific formulas and provides accurate results for academic research, laboratory work, and practical applications. Unlock the mysteries of science with TheCalculator.us's comprehensive scientific calculation tools.",
   },
   {
     name: "Lifestyle & Daily Life",
     slug: "lifestyle",
     icon: "smile",
     items: ["Tip Calculator", "Sleep Calculator", "Pet Age Converter", "Recipe Scaler", "Fuel Cost Calculator"],
-    description: "Simplify everyday decisions with our practical lifestyle calculators. From splitting restaurant bills and calculating tips to planning road trips and scaling recipes, these tools make daily tasks effortless. Determine how much sleep you need for optimal health, convert your pet's age to human years, or estimate fuel costs for your next journey. Our lifestyle calculators are designed for real-world scenarios, helping you save time and make smarter choices in your daily routine. Whether at home, work, or on the go, CalcHub's lifestyle tools are your everyday problem-solving companions.",
+    description: "Simplify everyday decisions with our practical lifestyle calculators. From splitting restaurant bills and calculating tips to planning road trips and scaling recipes, these tools make daily tasks effortless. Determine how much sleep you need for optimal health, convert your pet's age to human years, or estimate fuel costs for your next journey. Our lifestyle calculators are designed for real-world scenarios, helping you save time and make smarter choices in your daily routine. Whether at home, work, or on the go, TheCalculator.us's lifestyle tools are your everyday problem-solving companions.",
   },
   {
     name: "Date & Time",
     slug: "datetime",
     icon: "calendar",
     items: ["Age Calculator", "Date Difference", "Countdown Timer", "Business Days Calculator", "Time Zone Converter"],
-    description: "Master time-related calculations with our precise date and time tools. Calculate your exact age down to the day, find the difference between two dates, or count business days for project planning. Our countdown calculators help you track important events, while time zone converters ensure you never miss an international meeting. Perfect for event planners, project managers, travelers, and anyone who needs accurate time calculations. From historical date differences to future event countdowns, CalcHub's date and time calculators handle all your temporal needs with precision and ease.",
+    description: "Master time-related calculations with our precise date and time tools. Calculate your exact age down to the day, find the difference between two dates, or count business days for project planning. Our countdown calculators help you track important events, while time zone converters ensure you never miss an international meeting. Perfect for event planners, project managers, travelers, and anyone who needs accurate time calculations. From historical date differences to future event countdowns, TheCalculator.us's date and time calculators handle all your temporal needs with precision and ease.",
   },
   {
     name: "Other Calculators",
@@ -131,7 +131,7 @@ const Index = () => {
   return (
     <div>
       <SEO
-        title="Free Online Calculators — CalcHub"
+        title="Free Online Calculators — TheCalculator.us"
         description={`Access ${totalCalcs}+ free online calculators for finance, health, math, science, and daily life. Fast, accurate, and mobile-friendly tools trusted in the US, UK, Canada, and Australia.`}
         canonical="/"
         keywords="online calculator, free calculator, mortgage calculator, BMI calculator, percentage calculator, age calculator, unit converter, GPA calculator, calorie calculator, loan calculator, tip calculator, scientific calculator, math calculator, finance calculator, health calculator"
@@ -148,7 +148,7 @@ const Index = () => {
 
             {/* Right: Search + commonly used — fixed width, doesn't stretch */}
             <div className="flex flex-col justify-start lg:sticky lg:top-20 w-full">
-              <h1 className="sr-only">CalcHub — {totalCalcs.toLocaleString()}+ Free Online Calculators</h1>
+              <h1 className="sr-only">TheCalculator.us — {totalCalcs.toLocaleString()}+ Free Online Calculators</h1>
 
               <div>
                 <SearchBar large placeholder="Search calculators — try 'Mortgage' or 'BMI'..." />
@@ -240,10 +240,10 @@ const Index = () => {
       {/* Enhanced About Section */}
       <section className="container mx-auto px-4 py-10 border-t border-border">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold mb-4">About CalcHub — Your Trusted Calculator Resource</h2>
+          <h2 className="text-2xl font-bold mb-4">About TheCalculator.us — Your Trusted Calculator Resource</h2>
           <div className="prose prose-sm max-w-none text-muted-foreground space-y-4">
             <p>
-              Welcome to <strong>CalcHub</strong>, your comprehensive destination for over {totalCalcs} free online calculators designed to simplify complex calculations across every aspect of life. Whether you're a student tackling algebra homework, a homeowner exploring mortgage options, or a fitness enthusiast tracking nutrition goals, our tools deliver fast, accurate results on any device.
+              Welcome to <strong>TheCalculator.us</strong>, your comprehensive destination for over {totalCalcs} free online calculators designed to simplify complex calculations across every aspect of life. Whether you're a student tackling algebra homework, a homeowner exploring mortgage options, or a fitness enthusiast tracking nutrition goals, our tools deliver fast, accurate results on any device.
             </p>
             
             <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Popular Calculators You'll Love</h3>
@@ -254,12 +254,12 @@ const Index = () => {
               For students and educators, our <Link to="/math/scientific-notation-calculator" className="text-primary hover:underline font-medium">Scientific Notation Calculator</Link> handles large and small numbers with ease, while the <Link to="/math/gpa-calculator" className="text-primary hover:underline font-medium">GPA Calculator</Link> helps track academic performance across semesters. Need to know your exact age? Our <Link to="/datetime/age-calculator" className="text-primary hover:underline font-medium">Age Calculator</Link> computes years, months, and days with precision.
             </p>
 
-            <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Why Choose CalcHub?</h3>
+            <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Why Choose TheCalculator.us?</h3>
             <p>
-              Every calculator on CalcHub is individually crafted with accuracy and usability in mind. We combine intuitive interfaces with rigorous mathematical formulas to ensure you get reliable results every time. Our tools work seamlessly on desktops, tablets, and smartphones—no downloads or sign-ups required.
+              Every calculator on TheCalculator.us is individually crafted with accuracy and usability in mind. We combine intuitive interfaces with rigorous mathematical formulas to ensure you get reliable results every time. Our tools work seamlessly on desktops, tablets, and smartphones—no downloads or sign-ups required.
             </p>
             <p>
-              From <Link to="/finance/salary-calculator" className="text-primary hover:underline font-medium">salary and tax calculations</Link> to <Link to="/conversions/length-converter" className="text-primary hover:underline font-medium">unit conversions</Link> and <Link to="/science/force-calculator" className="text-primary hover:underline font-medium">physics formulas</Link>, CalcHub empowers millions of users monthly to make informed decisions. Explore our categories, bookmark your favorites, and calculate with confidence.
+              From <Link to="/finance/salary-calculator" className="text-primary hover:underline font-medium">salary and tax calculations</Link> to <Link to="/conversions/length-converter" className="text-primary hover:underline font-medium">unit conversions</Link> and <Link to="/science/force-calculator" className="text-primary hover:underline font-medium">physics formulas</Link>, TheCalculator.us empowers millions of users monthly to make informed decisions. Explore our categories, bookmark your favorites, and calculate with confidence.
             </p>
           </div>
         </div>

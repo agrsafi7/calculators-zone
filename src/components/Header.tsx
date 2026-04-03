@@ -44,7 +44,7 @@ const Header = () => {
               <div className="bg-primary-foreground rounded-[1px]" />
             </div>
           </div>
-          <span className="text-lg font-bold text-foreground">CalcHub</span>
+          <span className="text-lg font-bold text-foreground">TheCalculator.us</span>
         </Link>
 
         {/* Center search - shared behavior with Hero */}

@@ -27,7 +27,7 @@ const getFeaturedCalculators = (categorySlug: string) => {
 const AllCategoriesPage = () => {
   return (
     <div>
-      <SEO title="All Calculator Categories — CalcHub" description="Browse all calculator categories including finance, health, math, science, unit converters, and more." canonical="/categories" />
+      <SEO title="All Calculator Categories — TheCalculator.us" description="Browse all calculator categories including finance, health, math, science, unit converters, and more." canonical="/categories" />
       <Breadcrumbs items={[{ label: "All Categories" }]} />
       <div className="container mx-auto px-4 py-10">
         <h1 className="text-3xl font-bold mb-2">All Calculator Categories</h1>

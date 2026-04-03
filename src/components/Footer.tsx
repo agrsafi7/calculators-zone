@@ -55,10 +55,10 @@ const Footer = () => {
                   <div className="bg-foreground rounded-[1px]" />
                 </div>
               </div>
-              <span className="text-lg font-bold text-primary-foreground">CalcHub</span>
+              <span className="text-lg font-bold text-primary-foreground">TheCalculator.us</span>
             </div>
             <p className="text-sm opacity-70 mb-4 leading-relaxed">
-              CalcHub is your one-stop destination for over {totalCalcs.toLocaleString()} free online calculators. 
+              TheCalculator.us is your one-stop destination for over {totalCalcs.toLocaleString()} free online calculators. 
               Trusted by millions of users in the US, UK, Canada, and Australia for finance, health, math, science, and daily life calculations.
             </p>
             <p className="text-xs opacity-50 mb-5">
@@ -131,7 +131,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center text-sm opacity-60">
-          © {new Date().getFullYear()} CalcHub Interactive. All rights reserved. Accuracy not guaranteed for medical or legal decisions.
+          © {new Date().getFullYear()} TheCalculator.us Interactive. All rights reserved. Accuracy not guaranteed for medical or legal decisions.
         </div>
       </div>
     </footer>

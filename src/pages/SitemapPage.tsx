@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { uniqueCalculators } from "@/lib/calculator-utils";
 import { categories } from "@/data/calculators";
 
-const BASE_URL = "https://calchub.com";
+const BASE_URL = "https://thecalculator.us";
 
 const SitemapPage = () => {
   const today = new Date().toISOString().split("T")[0];

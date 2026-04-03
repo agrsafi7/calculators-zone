@@ -236,7 +236,7 @@ const CategoryPage = () => {
               <h2 className="text-lg font-bold mb-3">About {category.name} Calculators</h2>
               <div className="text-sm text-muted-foreground space-y-3 leading-relaxed">
                 <p>
-                  CalcHub's <strong>{category.name.toLowerCase()} calculators</strong> are designed for users in the United States, 
+                  TheCalculator.us's <strong>{category.name.toLowerCase()} calculators</strong> are designed for users in the United States, 
                   United Kingdom, Canada, and Australia. All tools are free, require no registration, and work on any device — 
                   desktop, tablet, or mobile.
                 </p>
