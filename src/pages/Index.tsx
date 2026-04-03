@@ -138,9 +138,9 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="hero-section py-4 md:py-8 animate-stagger-1">
+      <section className="hero-section py-2 md:py-4 animate-stagger-1">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:grid lg:grid-cols-[1fr_300px] gap-4 lg:gap-5 items-start">
+          <div className="flex flex-col lg:grid lg:grid-cols-[1fr_280px] gap-3 lg:gap-4 items-start">
             {/* Left: Calculator */}
             <div className="w-full">
               <HeroCalculator />
