@@ -105,7 +105,7 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
         <div className="flex-1 min-w-0">
           <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
         </div>
-        <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+        <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
       </div>
 
       <ul className="space-y-0.5 mb-2">
