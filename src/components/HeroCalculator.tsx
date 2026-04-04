@@ -280,7 +280,7 @@ const HeroCalculator = () => {
 
         {/* DESKTOP: Scientific mode - horizontal 10-column grid */}
         {mode === "scientific" && !isMobile && (
-          <div className="grid grid-cols-10 gap-0.5 lg:gap-1" style={{ gridAutoRows: "minmax(28px, 32px)" }}>
+          <div className="grid grid-cols-10 gap-0.5 lg:gap-1" style={{ gridAutoRows: "minmax(24px, 28px)" }}>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("sin(")}>sin</button>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("cos(")}>cos</button>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("tan(")}>tan</button>
