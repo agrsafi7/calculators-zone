@@ -96,7 +96,7 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
   return (
     <Link
       to={`/category/${cat.slug}`}
-      className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-0.5 cursor-pointer block"
+      className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 cursor-pointer block hover-glow btn-press"
     >
       <div className="flex items-center gap-2.5 mb-3">
         <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300">
