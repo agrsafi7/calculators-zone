@@ -247,7 +247,7 @@ const HeroCalculator = () => {
   );
 
   return (
-    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden max-w-full">
+    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden max-w-full animate-scale-in hover-glow">
       {/* Tabs - only on mobile */}
       {showTabs && (
         <div className="flex">
