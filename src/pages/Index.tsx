@@ -99,8 +99,8 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
       className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 cursor-pointer block hover-glow btn-press"
     >
       <div className="flex items-center gap-2.5 mb-3">
-        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300">
-          <Icon className="w-4 h-4 text-primary" />
+        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300 group-hover:scale-110">
+          <Icon className="w-4 h-4 text-primary transition-transform duration-300 group-hover:rotate-6" />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
