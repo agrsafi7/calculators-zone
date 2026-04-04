@@ -46,7 +46,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
+            <a href="https://thecalculators.us" className="flex items-center gap-2 mb-4">
               <div className="w-7 h-7 bg-primary-foreground rounded-md flex items-center justify-center">
                 <div className="w-3.5 h-3.5 grid grid-cols-2 gap-0.5">
                   <div className="bg-foreground rounded-[1px]" />
@@ -56,7 +56,7 @@ const Footer = () => {
                 </div>
               </div>
               <span className="text-lg font-bold text-primary-foreground">TheCalculator.us</span>
-            </div>
+            </a>
             <p className="text-sm opacity-70 mb-4 leading-relaxed">
               TheCalculator.us is your one-stop destination for over {totalCalcs.toLocaleString()} free online calculators. 
               Trusted by millions of users in the US, UK, Canada, and Australia for finance, health, math, science, and daily life calculations.

@@ -1,19 +1,24 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun } from "lucide-react";
+import { Menu, X, Moon, Sun, Search } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { categories } from "@/data/calculators";
 import { useDarkMode } from "@/hooks/use-dark-mode";
 import SearchBar from "@/components/SearchBar";
 
+const SITE_URL = "https://thecalculators.us";
+
 const Header = () => {
   const { isDark, toggle: toggleDark } = useDarkMode();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   // Close menu on route change
   useEffect(() => {
     setMobileOpen(false);
+    setSearchOpen(false);
   }, [location.pathname]);
 
   // Prevent body scroll when mobile menu is open
@@ -26,10 +31,21 @@ const Header = () => {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // Close search on click outside
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        setSearchOpen(false);
+      }
+    };
+    if (searchOpen) document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [searchOpen]);
+
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
+        <a href={SITE_URL} className="flex items-center gap-2 shrink-0">
           <div className="w-7 h-7 bg-foreground rounded-md flex items-center justify-center">
             <div className="w-3.5 h-3.5 grid grid-cols-2 gap-0.5">
               <div className="bg-primary-foreground rounded-[1px]" />
@@ -39,10 +55,23 @@ const Header = () => {
             </div>
           </div>
           <span className="text-lg font-bold text-foreground">TheCalculator.us</span>
-        </Link>
+        </a>
 
-        <div className="hidden md:block flex-1 max-w-md">
-          <SearchBar placeholder="Search tools..." />
+        {/* Desktop: expandable search */}
+        <div className="hidden md:flex items-center flex-1 max-w-md justify-end" ref={searchRef}>
+          {searchOpen ? (
+            <div className="w-full animate-in fade-in slide-in-from-right-4 duration-200">
+              <SearchBar placeholder="Search tools..." />
+            </div>
+          ) : (
+            <button
+              onClick={() => setSearchOpen(true)}
+              className="w-9 h-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              aria-label="Open search"
+            >
+              <Search className="w-4.5 h-4.5" />
+            </button>
+          )}
         </div>
 
         <nav className="hidden md:flex items-center gap-1 shrink-0">
@@ -50,7 +79,11 @@ const Header = () => {
             <Link
               key={cat.slug}
               to={`/category/${cat.slug}`}
-              className="px-3 py-1.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+                location.pathname.includes(`/category/${cat.slug}`)
+                  ? "bg-primary text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+              }`}
             >
               {cat.name}
             </Link>
@@ -77,13 +110,11 @@ const Header = () => {
       {/* Mobile menu with backdrop */}
       {mobileOpen && (
         <>
-          {/* Backdrop - clicking this closes the menu */}
           <div
             className="md:hidden fixed inset-0 top-14 z-40 bg-black/40"
             onClick={() => setMobileOpen(false)}
             onTouchStart={() => setMobileOpen(false)}
           />
-          {/* Menu panel */}
           <div
             ref={menuRef}
             className="md:hidden fixed top-14 left-0 right-0 z-50 bg-card overflow-y-auto border-t border-border shadow-xl max-h-[calc(100vh-3.5rem)]"
