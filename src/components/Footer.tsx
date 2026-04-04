@@ -111,9 +111,15 @@ const Footer = () => {
             <ul className="space-y-2">
               {mainLinks.map((link) => (
                 <li key={link.label}>
-                  <Link to={link.href} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
-                    {link.label}
-                  </Link>
+                  {link.href.startsWith("http") ? (
+                    <a href={link.href} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.href} className="text-sm opacity-70 hover:opacity-100 transition-opacity">
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
