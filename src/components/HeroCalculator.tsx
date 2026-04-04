@@ -193,12 +193,12 @@ const HeroCalculator = () => {
 
   const showTabs = isMobile;
 
-  const btn = "flex items-center justify-center rounded font-semibold transition-all active:scale-95 select-none border border-border/50";
-  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80`;
-  const btnOp = `${btn} bg-foreground text-background hover:opacity-90`;
+  const btn = "flex items-center justify-center rounded font-semibold transition-all duration-150 active:scale-[0.93] select-none border border-border/50 hover:shadow-sm";
+  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 hover:border-primary/20`;
+  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 hover:shadow-md`;
   const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80`;
-  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 font-bold`;
-  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary`;
+  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 hover:shadow-lg hover:shadow-primary/20 font-bold`;
+  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary hover:text-foreground`;
 
   // Display section (shared)
   const displaySection = (
