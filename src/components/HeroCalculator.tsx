@@ -193,12 +193,12 @@ const HeroCalculator = () => {
 
   const showTabs = isMobile;
 
-  const btn = "flex items-center justify-center rounded font-semibold transition-all active:scale-95 select-none border border-border/50";
-  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80`;
-  const btnOp = `${btn} bg-foreground text-background hover:opacity-90`;
+  const btn = "flex items-center justify-center rounded font-semibold transition-all duration-150 active:scale-[0.93] select-none border border-border/50 hover:shadow-sm";
+  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 hover:border-primary/20`;
+  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 hover:shadow-md`;
   const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80`;
-  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 font-bold`;
-  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary`;
+  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 hover:shadow-lg hover:shadow-primary/20 font-bold`;
+  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary hover:text-foreground`;
 
   // Display section (shared)
   const displaySection = (
@@ -247,7 +247,7 @@ const HeroCalculator = () => {
   );
 
   return (
-    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden max-w-full">
+    <div ref={containerRef} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} className="bg-card rounded-2xl border border-border shadow-lg overflow-hidden max-w-full animate-scale-in hover-glow">
       {/* Tabs - only on mobile */}
       {showTabs && (
         <div className="flex">
@@ -278,9 +278,9 @@ const HeroCalculator = () => {
         {displaySection}
         {historyPanel}
 
-        {/* DESKTOP: Scientific mode - horizontal 10-column grid */}
+        {/* DESKTOP: Scientific mode - compact horizontal 10-column grid */}
         {mode === "scientific" && !isMobile && (
-          <div className="grid grid-cols-10 gap-0.5 lg:gap-1" style={{ gridAutoRows: "minmax(24px, 28px)" }}>
+          <div className="grid grid-cols-10 gap-px lg:gap-0.5" style={{ gridAutoRows: "minmax(22px, 26px)" }}>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("sin(")}>sin</button>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("cos(")}>cos</button>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("tan(")}>tan</button>

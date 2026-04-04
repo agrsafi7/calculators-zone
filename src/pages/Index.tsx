@@ -96,16 +96,16 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
   return (
     <Link
       to={`/category/${cat.slug}`}
-      className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-0.5 cursor-pointer block"
+      className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 cursor-pointer block hover-glow btn-press"
     >
       <div className="flex items-center gap-2.5 mb-3">
-        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300">
-          <Icon className="w-4 h-4 text-primary" />
+        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300 group-hover:scale-110">
+          <Icon className="w-4 h-4 text-primary transition-transform duration-300 group-hover:rotate-6" />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
         </div>
-        <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+        <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
       </div>
 
       <ul className="space-y-0.5 mb-2">
@@ -163,7 +163,7 @@ const Index = () => {
                     <Link
                       key={calc.slug}
                       to={`/${calc.categorySlug}/${calc.slug}`}
-                      className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all group text-xs sm:text-sm"
+                      className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group text-xs sm:text-sm btn-press"
                     >
                       <calc.icon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
                       <span className="font-medium truncate">{calc.name}</span>
