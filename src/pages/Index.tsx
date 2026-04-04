@@ -163,7 +163,7 @@ const Index = () => {
                     <Link
                       key={calc.slug}
                       to={`/${calc.categorySlug}/${calc.slug}`}
-                      className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm transition-all group text-xs sm:text-sm"
+                      className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group text-xs sm:text-sm btn-press"
                     >
                       <calc.icon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
                       <span className="font-medium truncate">{calc.name}</span>
