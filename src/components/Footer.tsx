@@ -4,7 +4,7 @@ import { uniqueCalculators } from "@/lib/calculator-utils";
 const totalCalcs = uniqueCalculators.length;
 
 const mainLinks = [
-  { label: "Home", href: "https://thecalculators.us" },
+  { label: "Home", href: "https://thecalculator.us" },
   { label: "All Calculators", href: "/categories" },
   { label: "Popular Tools", href: "/popular" },
   { label: "About Us", href: "/disclaimer" },
