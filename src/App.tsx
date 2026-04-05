@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageLoadingSkeleton from "@/components/PageLoadingSkeleton";
+import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index";
 import { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } from "./pages/LegalPages";
 
@@ -34,22 +35,24 @@ const App = () => (
           <Header />
           <main className="flex-1">
             <Suspense fallback={<PageLoadingSkeleton />}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/finance/mortgage-calculator" element={<MortgageCalculator />} />
-                <Route path="/health/bmi-calculator" element={<BmiCalculator />} />
-                <Route path="/math/percentage-calculator" element={<PercentageCalculator />} />
-                <Route path="/categories" element={<AllCategoriesPage />} />
-                <Route path="/popular" element={<PopularToolsPage />} />
-                <Route path="/sitemap" element={<SitemapPage />} />
-                <Route path="/category/:slug" element={<CategoryPage />} />
-                <Route path="/:categorySlug/:slug" element={<GenericCalculatorPage />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-service" element={<TermsOfService />} />
-                <Route path="/disclaimer" element={<Disclaimer />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <PageTransition>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/finance/mortgage-calculator" element={<MortgageCalculator />} />
+                  <Route path="/health/bmi-calculator" element={<BmiCalculator />} />
+                  <Route path="/math/percentage-calculator" element={<PercentageCalculator />} />
+                  <Route path="/categories" element={<AllCategoriesPage />} />
+                  <Route path="/popular" element={<PopularToolsPage />} />
+                  <Route path="/sitemap" element={<SitemapPage />} />
+                  <Route path="/category/:slug" element={<CategoryPage />} />
+                  <Route path="/:categorySlug/:slug" element={<GenericCalculatorPage />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/terms-of-service" element={<TermsOfService />} />
+                  <Route path="/disclaimer" element={<Disclaimer />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </PageTransition>
             </Suspense>
           </main>
           <Footer />

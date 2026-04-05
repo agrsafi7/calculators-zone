@@ -278,71 +278,74 @@ const HeroCalculator = () => {
         {displaySection}
         {historyPanel}
 
-        {/* DESKTOP: Scientific mode - compact horizontal 10-column grid */}
+        {/* DESKTOP: Scientific mode - portrait 5-column grid */}
         {mode === "scientific" && !isMobile && (
-          <div className="grid grid-cols-10 gap-px lg:gap-0.5" style={{ gridAutoRows: "minmax(22px, 26px)" }}>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("sin(")}>sin</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("cos(")}>cos</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("tan(")}>tan</button>
-            <div className="col-span-2 flex items-center justify-center gap-1 lg:gap-2 text-[10px] lg:text-[11px]">
+          <div className="grid grid-cols-5 gap-0.5" style={{ gridAutoRows: "minmax(26px, 30px)" }}>
+            {/* Row 1: Deg/Rad toggle + scientific functions */}
+            <div className="col-span-2 flex items-center justify-center gap-1.5 text-[10px]">
               <label className="flex items-center gap-0.5 cursor-pointer">
-                <input type="radio" name="angle" checked={angleMode === "deg"} onChange={() => setAngleMode("deg")} className="w-2.5 h-2.5 lg:w-3 lg:h-3 accent-primary" />
+                <input type="radio" name="angle-d" checked={angleMode === "deg"} onChange={() => setAngleMode("deg")} className="w-2.5 h-2.5 accent-primary" />
                 <span className={angleMode === "deg" ? "font-bold text-foreground" : "text-muted-foreground"}>Deg</span>
               </label>
               <label className="flex items-center gap-0.5 cursor-pointer">
-                <input type="radio" name="angle" checked={angleMode === "rad"} onChange={() => setAngleMode("rad")} className="w-2.5 h-2.5 lg:w-3 lg:h-3 accent-primary" />
+                <input type="radio" name="angle-d" checked={angleMode === "rad"} onChange={() => setAngleMode("rad")} className="w-2.5 h-2.5 accent-primary" />
                 <span className={angleMode === "rad" ? "font-bold text-foreground" : "text-muted-foreground"}>Rad</span>
               </label>
             </div>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("7")}>7</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("8")}>8</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("9")}>9</button>
-            <button className={`${btnOp} text-[11px] lg:text-sm`} onClick={() => handleOperator("+")}>+</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs`} onClick={handleBackspace}>Back</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("sin(")}>sin</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("cos(")}>cos</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("tan(")}>tan</button>
 
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("asin(")}>sin⁻¹</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("acos(")}>cos⁻¹</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("atan(")}>tan⁻¹</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("π")}>π</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("e")}>e</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("4")}>4</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("5")}>5</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("6")}>6</button>
-            <button className={`${btnOp} text-[11px] lg:text-sm`} onClick={() => handleOperator("-")}>−</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs`} onClick={() => handleInput("Ans")}>Ans</button>
+            {/* Row 2 */}
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("asin(")}>sin⁻¹</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("acos(")}>cos⁻¹</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("atan(")}>tan⁻¹</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("ln(")}>ln</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("log(")}>log</button>
 
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("^")}>xʸ</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("^3")}>x³</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("^2")}>x²</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("e^")}>eˣ</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("10^")}>10ˣ</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("1")}>1</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("2")}>2</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("3")}>3</button>
-            <button className={`${btnOp} text-[11px] lg:text-sm`} onClick={() => handleOperator("×")}>×</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs`} onClick={handleMemoryAdd}>M+</button>
+            {/* Row 3 */}
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("^")}>xʸ</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("^2")}>x²</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("√(")}>√x</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("π")}>π</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("e")}>e</button>
 
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("^(1/")}>ʸ√x</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("^(1/3)")}>³√x</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("√(")}>√x</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("ln(")}>ln</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("log(")}>log</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput("0")}>0</button>
-            <button className={`${btnNum} text-[11px] lg:text-sm`} onClick={() => handleInput(".")}>.</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs`} onClick={() => handleInput("e")}>EXP</button>
-            <button className={`${btnOp} text-[11px] lg:text-sm`} onClick={() => handleOperator("÷")}>÷</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs`} onClick={handleMemorySub}>M-</button>
+            {/* Row 4 */}
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("(")}>{"("}</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput(")")}>{")"}</button>
+            <button className={`${btnSci} text-[10px]`} onClick={() => handleInput("!")}>n!</button>
+            <button className={`${btnFunc} text-[10px]`} onClick={handleMemoryAdd}>M+</button>
+            <button className={`${btnFunc} text-[10px]`} onClick={handleMemorySub}>M-</button>
 
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("(")}>{"("}</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput(")")}>{")"}</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => { const v = parseFloat(display); if (v !== 0) { setDisplay((1/v).toString()); setExpression((1/v).toString()); } }}>1/x</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("%")}>%</button>
-            <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("!")}>n!</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs`} onClick={handleToggleSign}>±</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs`} onClick={handleRandom}>RND</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs text-destructive font-bold`} onClick={handleClear}>AC</button>
-            <button className={`${btnEquals} text-sm lg:text-base`} onClick={handleEquals}>=</button>
-            <button className={`${btnFunc} text-[10px] lg:text-xs`} onClick={handleMemoryRecall}>MR</button>
+            {/* Row 5: AC Back % ÷ MR */}
+            <button className={`${btnFunc} text-[11px] text-destructive font-bold`} onClick={handleClear}>AC</button>
+            <button className={`${btnFunc} text-[11px]`} onClick={handleBackspace}>Back</button>
+            <button className={`${btnFunc} text-[11px]`} onClick={() => handleInput("%")}>%</button>
+            <button className={`${btnOp} text-[11px]`} onClick={() => handleOperator("÷")}>÷</button>
+            <button className={`${btnFunc} text-[10px]`} onClick={handleMemoryRecall}>MR</button>
+
+            {/* Row 6-9: Number pad */}
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("7")}>7</button>
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("8")}>8</button>
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("9")}>9</button>
+            <button className={`${btnOp} text-xs`} onClick={() => handleOperator("×")}>×</button>
+            <button className={`${btnFunc} text-[10px]`} onClick={() => handleInput("Ans")}>Ans</button>
+
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("4")}>4</button>
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("5")}>5</button>
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("6")}>6</button>
+            <button className={`${btnOp} text-xs`} onClick={() => handleOperator("-")}>−</button>
+            <button className={`${btnFunc} text-[10px]`} onClick={handleToggleSign}>±</button>
+
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("1")}>1</button>
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("2")}>2</button>
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput("3")}>3</button>
+            <button className={`${btnOp} text-xs`} onClick={() => handleOperator("+")}>+</button>
+            <button className={`${btnFunc} text-[10px]`} onClick={handleRandom}>RND</button>
+
+            <button className={`${btnNum} text-xs col-span-2`} onClick={() => handleInput("0")}>0</button>
+            <button className={`${btnNum} text-xs`} onClick={() => handleInput(".")}>.</button>
+            <button className={`${btnEquals} text-sm col-span-2`} onClick={handleEquals}>=</button>
           </div>
         )}
 

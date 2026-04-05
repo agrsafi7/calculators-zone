@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowUpRight, Search, X } from "lucide-react";
+import { ArrowUpRight, Search, X, LayoutGrid, List } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { categories, getCategoryIcon } from "@/data/calculators";
 import { uniqueCalculators } from "@/lib/calculator-utils";
@@ -12,6 +12,7 @@ import SEO from "@/components/SEO";
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [filter, setFilter] = useState("");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const category = categories.find((c) => c.slug === slug);
   const allCalcs = uniqueCalculators.filter((c) => c.categorySlug === slug);
   const seoData = slug ? categorySEOData[slug] : undefined;
@@ -53,27 +54,53 @@ const CategoryPage = () => {
   const CatIcon = getCategoryIcon(category.icon);
 
   const renderCalcGrid = (calcs: typeof calculators) => (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {calcs.map((calc) => {
-        const Icon = getCategoryIcon(calc.icon);
-        return (
-          <Link
-            key={calc.slug}
-            to={`/${calc.categorySlug}/${calc.slug}`}
-            className="card-elevated bg-card rounded-xl border border-border p-5 group"
-          >
-            <div className="flex items-start justify-between mb-3">
-              <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
+    viewMode === "grid" ? (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {calcs.map((calc, i) => {
+          const Icon = getCategoryIcon(calc.icon);
+          return (
+            <Link
+              key={calc.slug}
+              to={`/${calc.categorySlug}/${calc.slug}`}
+              className="group bg-card rounded-xl border border-border p-5 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 animate-fade-in"
+              style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, animationFillMode: "both" }}
+            >
+              <div className="flex items-start justify-between mb-3">
+                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300 group-hover:scale-110">
+                  <Icon className="w-5 h-5 text-primary transition-transform duration-300 group-hover:rotate-6" />
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
+              </div>
+              <h3 className="font-semibold text-sm mb-1 group-hover:text-primary transition-colors">{calc.name}</h3>
+              <p className="text-xs text-muted-foreground line-clamp-2">{calc.description}</p>
+            </Link>
+          );
+        })}
+      </div>
+    ) : (
+      <div className="space-y-2">
+        {calcs.map((calc, i) => {
+          const Icon = getCategoryIcon(calc.icon);
+          return (
+            <Link
+              key={calc.slug}
+              to={`/${calc.categorySlug}/${calc.slug}`}
+              className="group flex items-center gap-4 bg-card rounded-xl border border-border p-4 transition-all duration-200 hover:shadow-md hover:border-primary/20 animate-fade-in"
+              style={{ animationDelay: `${Math.min(i * 20, 200)}ms`, animationFillMode: "both" }}
+            >
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                 <Icon className="w-5 h-5 text-primary" />
               </div>
-              <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <h3 className="font-semibold text-sm mb-1">{calc.name}</h3>
-            <p className="text-xs text-muted-foreground">{calc.description}</p>
-          </Link>
-        );
-      })}
-    </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-sm group-hover:text-primary transition-colors">{calc.name}</h3>
+                <p className="text-xs text-muted-foreground truncate">{calc.description}</p>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+            </Link>
+          );
+        })}
+      </div>
+    )
   );
 
   return (
@@ -128,24 +155,40 @@ const CategoryPage = () => {
               </div>
             )}
 
-            {/* Search / filter */}
-            <div className="relative mb-6">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <input
-                type="text"
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-                placeholder={`Filter ${allCalcs.length} calculators…`}
-                className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
-              />
-              {filter && (
+            {/* Search / filter + view toggle */}
+            <div className="flex gap-2 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input
+                  type="text"
+                  value={filter}
+                  onChange={(e) => setFilter(e.target.value)}
+                  placeholder={`Filter ${allCalcs.length} calculators…`}
+                  className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+                />
+                {filter && (
+                  <button
+                    onClick={() => setFilter("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+              <div className="flex rounded-xl border border-border overflow-hidden shrink-0">
                 <button
-                  onClick={() => setFilter("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2.5 transition-colors ${viewMode === "grid" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:bg-secondary"}`}
                 >
-                  <X className="w-4 h-4" />
+                  <LayoutGrid className="w-4 h-4" />
                 </button>
-              )}
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`p-2.5 transition-colors ${viewMode === "list" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:bg-secondary"}`}
+                >
+                  <List className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             <AdPlaceholder size="leaderboard" />
