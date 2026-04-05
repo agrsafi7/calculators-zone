@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageLoadingSkeleton from "@/components/PageLoadingSkeleton";
 import Index from "./pages/Index";
+import { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } from "./pages/LegalPages";
 
 const MortgageCalculator = lazy(() => import("./pages/MortgageCalculator"));
 const BmiCalculator = lazy(() => import("./pages/BmiCalculator"));
@@ -19,8 +20,6 @@ const AllCategoriesPage = lazy(() => import("./pages/AllCategoriesPage"));
 const PopularToolsPage = lazy(() => import("./pages/PopularToolsPage"));
 const SitemapPage = lazy(() => import("./pages/SitemapPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
-const { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } = await import("./pages/LegalPages");
 
 const queryClient = new QueryClient();
 
