@@ -155,24 +155,40 @@ const CategoryPage = () => {
               </div>
             )}
 
-            {/* Search / filter */}
-            <div className="relative mb-6">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-              <input
-                type="text"
-                value={filter}
-                onChange={(e) => setFilter(e.target.value)}
-                placeholder={`Filter ${allCalcs.length} calculators…`}
-                className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
-              />
-              {filter && (
+            {/* Search / filter + view toggle */}
+            <div className="flex gap-2 mb-6">
+              <div className="relative flex-1">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                <input
+                  type="text"
+                  value={filter}
+                  onChange={(e) => setFilter(e.target.value)}
+                  placeholder={`Filter ${allCalcs.length} calculators…`}
+                  className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+                />
+                {filter && (
+                  <button
+                    onClick={() => setFilter("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+              <div className="flex rounded-xl border border-border overflow-hidden shrink-0">
                 <button
-                  onClick={() => setFilter("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2.5 transition-colors ${viewMode === "grid" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:bg-secondary"}`}
                 >
-                  <X className="w-4 h-4" />
+                  <LayoutGrid className="w-4 h-4" />
                 </button>
-              )}
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`p-2.5 transition-colors ${viewMode === "list" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:bg-secondary"}`}
+                >
+                  <List className="w-4 h-4" />
+                </button>
+              </div>
             </div>
 
             <AdPlaceholder size="leaderboard" />
