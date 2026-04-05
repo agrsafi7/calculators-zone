@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageLoadingSkeleton from "@/components/PageLoadingSkeleton";
+import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index";
 import { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } from "./pages/LegalPages";
 
