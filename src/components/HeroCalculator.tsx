@@ -278,9 +278,9 @@ const HeroCalculator = () => {
         {displaySection}
         {historyPanel}
 
-        {/* DESKTOP: Scientific mode - compact horizontal 10-column grid */}
+        {/* DESKTOP: Scientific mode - portrait 5-column grid */}
         {mode === "scientific" && !isMobile && (
-          <div className="grid grid-cols-10 gap-px lg:gap-0.5" style={{ gridAutoRows: "minmax(22px, 26px)" }}>
+          <div className="grid grid-cols-5 gap-0.5" style={{ gridAutoRows: "minmax(26px, 30px)" }}>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("sin(")}>sin</button>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("cos(")}>cos</button>
             <button className={`${btnSci} text-[10px] lg:text-xs`} onClick={() => handleInput("tan(")}>tan</button>
