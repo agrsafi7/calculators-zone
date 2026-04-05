@@ -5,7 +5,7 @@ import { categories } from "@/data/calculators";
 import { useDarkMode } from "@/hooks/use-dark-mode";
 import SearchBar from "@/components/SearchBar";
 
-const SITE_URL = "https://thecalculators.us";
+const SITE_URL = "https://thecalculator.us";
 
 const Header = () => {
   const { isDark, toggle: toggleDark } = useDarkMode();
