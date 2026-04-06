@@ -111,21 +111,6 @@ const Header = () => {
           )}
         </div>
 
-        <nav className="hidden md:flex items-center gap-1 shrink-0">
-          {categories.slice(0, 4).map((cat) => (
-            <Link
-              key={cat.slug}
-              to={`/category/${cat.slug}`}
-              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                location.pathname.includes(`/category/${cat.slug}`)
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-              }`}
-            >
-              {cat.name}
-            </Link>
-          ))}
-        </nav>
 
         <button
           onClick={toggleDark}
