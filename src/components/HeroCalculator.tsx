@@ -193,12 +193,12 @@ const HeroCalculator = () => {
 
   const showTabs = isMobile;
 
-  const btn = "flex items-center justify-center rounded font-semibold transition-all duration-150 active:scale-[0.93] select-none border border-border/50 hover:shadow-sm";
-  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 hover:border-primary/20`;
-  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 hover:shadow-md`;
-  const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80`;
-  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 hover:shadow-lg hover:shadow-primary/20 font-bold`;
-  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary hover:text-foreground`;
+  const btn = "flex items-center justify-center rounded font-semibold transition-all duration-100 active:scale-[0.9] active:brightness-90 select-none border border-border/50 hover:shadow-sm hover:brightness-110 focus-visible:ring-2 focus-visible:ring-primary/30";
+  const btnNum = `${btn} bg-secondary text-foreground hover:bg-secondary/80 hover:border-primary/20 active:shadow-inner`;
+  const btnOp = `${btn} bg-foreground text-background hover:opacity-90 hover:shadow-md active:shadow-inner`;
+  const btnFunc = `${btn} bg-muted text-muted-foreground hover:bg-muted/80 active:shadow-inner`;
+  const btnEquals = `${btn} bg-primary text-primary-foreground hover:opacity-90 hover:shadow-lg hover:shadow-primary/20 font-bold active:shadow-inner`;
+  const btnSci = `${btn} bg-secondary/70 text-muted-foreground hover:bg-secondary hover:text-foreground active:shadow-inner`;
 
   // Display section (shared)
   const displaySection = (
@@ -280,7 +280,7 @@ const HeroCalculator = () => {
 
         {/* DESKTOP: Scientific mode - portrait 5-column grid */}
         {mode === "scientific" && !isMobile && (
-          <div className="grid grid-cols-5 gap-0.5" style={{ gridAutoRows: "minmax(26px, 30px)" }}>
+          <div className="grid grid-cols-5 gap-px" style={{ gridAutoRows: "minmax(22px, 25px)" }}>
             {/* Row 1: Deg/Rad toggle + scientific functions */}
             <div className="col-span-2 flex items-center justify-center gap-1.5 text-[10px]">
               <label className="flex items-center gap-0.5 cursor-pointer">
