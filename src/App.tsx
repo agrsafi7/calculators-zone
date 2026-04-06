@@ -57,6 +57,7 @@ const App = () => (
             </Suspense>
           </main>
           <Footer />
+          <BackToTop />
         </div>
       </BrowserRouter>
     </TooltipProvider>
