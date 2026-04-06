@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun, Search } from "lucide-react";
+import { Menu, X, Moon, Sun, Search, ChevronDown, Calculator } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { categories } from "@/data/calculators";
 import { useDarkMode } from "@/hooks/use-dark-mode";
 import SearchBar from "@/components/SearchBar";
+import CalculatorMegaMenu from "@/components/CalculatorMegaMenu";
 
 const SITE_URL = "https://thecalculator.us";
 
@@ -11,14 +12,17 @@ const Header = () => {
   const { isDark, toggle: toggleDark } = useDarkMode();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [calcMenuOpen, setCalcMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
+  const calcMenuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   // Close menu on route change
   useEffect(() => {
     setMobileOpen(false);
     setSearchOpen(false);
+    setCalcMenuOpen(false);
   }, [location.pathname]);
 
   // Prevent body scroll when mobile menu is open
@@ -41,6 +45,17 @@ const Header = () => {
     if (searchOpen) document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [searchOpen]);
+
+  // Close calc menu on click outside (desktop)
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (calcMenuRef.current && !calcMenuRef.current.contains(e.target as Node)) {
+        setCalcMenuOpen(false);
+      }
+    };
+    if (calcMenuOpen) document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [calcMenuOpen]);
 
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
@@ -74,8 +89,30 @@ const Header = () => {
           )}
         </div>
 
+        {/* Desktop: Calculators dropdown */}
+        <div className="hidden md:block relative shrink-0" ref={calcMenuRef}>
+          <button
+            onClick={() => setCalcMenuOpen((v) => !v)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
+              calcMenuOpen
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+            }`}
+          >
+            <Calculator className="w-4 h-4" />
+            Calculators
+            <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${calcMenuOpen ? "rotate-180" : ""}`} />
+          </button>
+
+          {calcMenuOpen && (
+            <div className="absolute right-0 top-full mt-2 w-[480px] max-h-[70vh] overflow-y-auto bg-card border border-border rounded-xl shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+              <CalculatorMegaMenu onClose={() => setCalcMenuOpen(false)} />
+            </div>
+          )}
+        </div>
+
         <nav className="hidden md:flex items-center gap-1 shrink-0">
-          {categories.slice(0, 5).map((cat) => (
+          {categories.slice(0, 4).map((cat) => (
             <Link
               key={cat.slug}
               to={`/category/${cat.slug}`}
@@ -122,7 +159,14 @@ const Header = () => {
             <div className="px-4 py-4 space-y-3">
               <SearchBar placeholder="Search tools..." onAfterSelect={() => setMobileOpen(false)} />
 
-              <nav className="flex flex-col gap-0.5 pt-2">
+              {/* Calculators mega menu in mobile */}
+              <div className="pt-2">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 px-1">Calculators</p>
+                <CalculatorMegaMenu onClose={() => setMobileOpen(false)} />
+              </div>
+
+              <nav className="flex flex-col gap-0.5 pt-2 border-t border-border">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 px-1">Categories</p>
                 {categories.map((cat) => {
                   const isActive = location.pathname.includes(`/category/${cat.slug}`);
                   return (

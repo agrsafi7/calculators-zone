@@ -280,7 +280,7 @@ const HeroCalculator = () => {
 
         {/* DESKTOP: Scientific mode - portrait 5-column grid */}
         {mode === "scientific" && !isMobile && (
-          <div className="grid grid-cols-5 gap-0.5" style={{ gridAutoRows: "minmax(26px, 30px)" }}>
+          <div className="grid grid-cols-5 gap-px" style={{ gridAutoRows: "minmax(22px, 25px)" }}>
             {/* Row 1: Deg/Rad toggle + scientific functions */}
             <div className="col-span-2 flex items-center justify-center gap-1.5 text-[10px]">
               <label className="flex items-center gap-0.5 cursor-pointer">
