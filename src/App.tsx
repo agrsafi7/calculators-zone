@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageLoadingSkeleton from "@/components/PageLoadingSkeleton";
 import PageTransition from "@/components/PageTransition";
@@ -56,6 +57,7 @@ const App = () => (
             </Suspense>
           </main>
           <Footer />
+          <BackToTop />
         </div>
       </BrowserRouter>
     </TooltipProvider>

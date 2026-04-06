@@ -111,21 +111,6 @@ const Header = () => {
           )}
         </div>
 
-        <nav className="hidden md:flex items-center gap-1 shrink-0">
-          {categories.slice(0, 4).map((cat) => (
-            <Link
-              key={cat.slug}
-              to={`/category/${cat.slug}`}
-              className={`px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-                location.pathname.includes(`/category/${cat.slug}`)
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-              }`}
-            >
-              {cat.name}
-            </Link>
-          ))}
-        </nav>
 
         <button
           onClick={toggleDark}
@@ -165,26 +150,6 @@ const Header = () => {
                 <CalculatorMegaMenu onClose={() => setMobileOpen(false)} />
               </div>
 
-              <nav className="flex flex-col gap-0.5 pt-2 border-t border-border">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 px-1">Categories</p>
-                {categories.map((cat) => {
-                  const isActive = location.pathname.includes(`/category/${cat.slug}`);
-                  return (
-                    <Link
-                      key={cat.slug}
-                      to={`/category/${cat.slug}`}
-                      onClick={() => setMobileOpen(false)}
-                      className={`px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
-                        isActive
-                          ? "bg-primary text-primary-foreground"
-                          : "text-foreground hover:bg-secondary active:bg-secondary"
-                      }`}
-                    >
-                      {cat.name}
-                    </Link>
-                  );
-                })}
-              </nav>
 
               <div className="flex items-center justify-between pt-3 border-t border-border mt-2">
                 <span className="text-sm font-medium text-muted-foreground">Dark Mode</span>

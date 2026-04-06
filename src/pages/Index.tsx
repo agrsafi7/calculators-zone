@@ -1,13 +1,10 @@
-import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Home, Heart, Calculator, Hash, ChevronRight } from "lucide-react";
-import { categories, getCategoryIcon, popularCalculators } from "@/data/calculators";
-import { uniqueCalculators, getCategoryCalculatorCount } from "@/lib/calculator-utils";
+import { categories, getCategoryIcon } from "@/data/calculators";
+import { uniqueCalculators } from "@/lib/calculator-utils";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import SEO from "@/components/SEO";
-import HeroCalculator from "@/components/HeroCalculator";
-import RecentlyUsed from "@/components/RecentlyUsed";
 const totalCalcs = uniqueCalculators.length;
 
 // Category cards with descriptions and subcategory items
@@ -17,56 +14,56 @@ const categoryCards = [
     slug: "finance",
     icon: "dollar",
     items: ["Mortgage Calculator", "Loan Repayment", "Investment Returns", "Tax Estimator", "Retirement Planner"],
-    description: "Take control of your financial future with our comprehensive suite of finance calculators. Whether you're planning to buy your first home, comparing loan options, or mapping out your retirement strategy, our tools provide accurate, real-time calculations to help you make informed decisions. From mortgage payments and auto loan comparisons to compound interest projections and tax estimations, each calculator is designed with precision and simplicity. Our finance tools help individuals, families, and professionals navigate complex financial scenarios with confidence. Plan smarter, save more, and achieve your financial goals with TheCalculator.us's trusted financial calculators.",
+    description: "Take control of your financial future with our comprehensive suite of finance calculators. Whether you're planning to buy your first home, comparing loan options, or mapping out your retirement strategy, our tools provide accurate, real-time calculations to help you make informed decisions.",
   },
   {
     name: "Health & Fitness",
     slug: "health",
     icon: "heart",
     items: ["BMI Calculator", "Calorie Counter", "Heart Rate Zones", "Body Fat Estimator", "Pregnancy Due Date"],
-    description: "Your health journey starts with understanding your body. Our health and fitness calculators provide essential metrics to help you track progress, set realistic goals, and maintain a balanced lifestyle. Calculate your Body Mass Index (BMI) to understand your weight category, estimate daily calorie needs based on your activity level, or determine your ideal heart rate zones for effective workouts. Whether you're managing weight, planning a pregnancy, or optimizing athletic performance, our scientifically-backed tools deliver accurate results. Empower yourself with knowledge and take the guesswork out of health decisions with TheCalculator.us's comprehensive health calculators.",
+    description: "Your health journey starts with understanding your body. Our health and fitness calculators provide essential metrics to help you track progress, set realistic goals, and maintain a balanced lifestyle.",
   },
   {
     name: "Math & Education",
     slug: "math",
     icon: "hash",
     items: ["Percentage Calculator", "Fraction Solver", "GPA Calculator", "Quadratic Equation", "Standard Deviation"],
-    description: "Master mathematical concepts with our extensive collection of math and education calculators. From basic arithmetic to advanced algebra, our tools help students, teachers, and professionals solve problems quickly and accurately. Calculate percentages for discounts and tips, solve complex equations, convert fractions to decimals, or compute your GPA with ease. Our step-by-step approach helps you understand the underlying concepts while delivering instant results. Whether you're preparing for exams, checking homework, or solving real-world problems, TheCalculator.us's math calculators are your reliable companion for academic and professional success.",
+    description: "Master mathematical concepts with our extensive collection of math and education calculators. From basic arithmetic to advanced algebra, our tools help students, teachers, and professionals solve problems quickly and accurately.",
   },
   {
     name: "Unit Converters",
     slug: "conversions",
     icon: "convert",
     items: ["Length Converter", "Weight Converter", "Temperature Converter", "Speed Converter", "Data Storage Converter"],
-    description: "Seamlessly convert between measurement units with our comprehensive unit conversion tools. Whether you're working with metric or imperial systems, our converters handle length, weight, temperature, volume, speed, and much more. Perfect for travelers comparing distances, chefs adjusting recipes, engineers calculating specifications, or students solving physics problems. Each converter supports multiple units and provides instant, accurate results. No more manual calculations or confusing conversion tables—simply enter your value and get results in any unit you need. TheCalculator.us's unit converters make international measurements effortless and error-free.",
+    description: "Seamlessly convert between measurement units with our comprehensive unit conversion tools. Whether you're working with metric or imperial systems, our converters handle length, weight, temperature, volume, speed, and much more.",
   },
   {
     name: "Science",
     slug: "science",
     icon: "flask",
     items: ["Force Calculator", "Ohm's Law", "pH Calculator", "Density Calculator", "Wavelength Converter"],
-    description: "Explore the physical world with our powerful science calculators. Designed for students, researchers, and curious minds, our tools cover physics, chemistry, biology, astronomy, and environmental science. Calculate force, velocity, and acceleration for physics problems. Determine pH levels and molar concentrations for chemistry experiments. Explore wavelengths, frequencies, and energy conversions across the electromagnetic spectrum. Each calculator is built on established scientific formulas and provides accurate results for academic research, laboratory work, and practical applications. Unlock the mysteries of science with TheCalculator.us's comprehensive scientific calculation tools.",
+    description: "Explore the physical world with our powerful science calculators. Designed for students, researchers, and curious minds, our tools cover physics, chemistry, biology, astronomy, and environmental science.",
   },
   {
     name: "Lifestyle & Daily Life",
     slug: "lifestyle",
     icon: "smile",
     items: ["Tip Calculator", "Sleep Calculator", "Pet Age Converter", "Recipe Scaler", "Fuel Cost Calculator"],
-    description: "Simplify everyday decisions with our practical lifestyle calculators. From splitting restaurant bills and calculating tips to planning road trips and scaling recipes, these tools make daily tasks effortless. Determine how much sleep you need for optimal health, convert your pet's age to human years, or estimate fuel costs for your next journey. Our lifestyle calculators are designed for real-world scenarios, helping you save time and make smarter choices in your daily routine. Whether at home, work, or on the go, TheCalculator.us's lifestyle tools are your everyday problem-solving companions.",
+    description: "Simplify everyday decisions with our practical lifestyle calculators. From splitting restaurant bills and calculating tips to planning road trips and scaling recipes, these tools make daily tasks effortless.",
   },
   {
     name: "Date & Time",
     slug: "datetime",
     icon: "calendar",
     items: ["Age Calculator", "Date Difference", "Countdown Timer", "Business Days Calculator", "Time Zone Converter"],
-    description: "Master time-related calculations with our precise date and time tools. Calculate your exact age down to the day, find the difference between two dates, or count business days for project planning. Our countdown calculators help you track important events, while time zone converters ensure you never miss an international meeting. Perfect for event planners, project managers, travelers, and anyone who needs accurate time calculations. From historical date differences to future event countdowns, TheCalculator.us's date and time calculators handle all your temporal needs with precision and ease.",
+    description: "Master time-related calculations with our precise date and time tools. Calculate your exact age down to the day, find the difference between two dates, or count business days for project planning.",
   },
   {
     name: "Other Calculators",
     slug: "other",
     icon: "layers",
     items: ["Fuel Cost Calculator", "Property Tax", "Concrete Calculator", "Paint Calculator", "Solar Panel Calculator"],
-    description: "Browse 100+ specialized calculators covering automotive, real estate, cooking, DIY home projects, weather, crafts, number theory, and much more. From fuel cost estimations and property tax calculations to concrete volume, gold pricing, and wedding budgets — find the right tool for any unique calculation need.",
+    description: "Browse 100+ specialized calculators covering automotive, real estate, cooking, DIY home projects, weather, crafts, number theory, and much more.",
   },
 ];
 
@@ -110,10 +107,7 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
 
       <ul className="space-y-0.5 mb-2">
         {cat.items.slice(0, 4).map((item) => (
-          <li
-            key={item}
-            className="flex items-center gap-2 text-xs text-muted-foreground py-0.5"
-          >
+          <li key={item} className="flex items-center gap-2 text-xs text-muted-foreground py-0.5">
             <span className="w-1 h-1 bg-primary/40 rounded-full shrink-0" />
             {item}
           </li>
@@ -138,47 +132,39 @@ const Index = () => {
       />
 
       {/* Hero Section */}
-      <section className="hero-section py-2 md:py-4 animate-stagger-1">
+      <section className="hero-section py-6 md:py-10 animate-stagger-1">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:grid lg:grid-cols-[260px_1fr] gap-3 lg:gap-4 items-start">
-            {/* Left: Calculator in portrait mode — first on mobile too */}
-            <div className="w-full order-1 lg:order-1">
-              <HeroCalculator />
+          <div className="max-w-2xl mx-auto text-center">
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-3">
+              Calculate <span className="text-primary">Anything</span>, Instantly.
+            </h1>
+            <p className="text-sm md:text-base text-muted-foreground mb-6 max-w-lg mx-auto">
+              {totalCalcs.toLocaleString()}+ free online calculators for finance, health, math, science & everyday life. Fast, accurate & works on any device.
+            </p>
+
+            <div className="max-w-lg mx-auto">
+              <SearchBar large placeholder="Search calculators — try 'Mortgage' or 'BMI'..." />
             </div>
 
-            {/* Right: Search + commonly used */}
-            <div className="flex flex-col justify-start lg:sticky lg:top-20 w-full order-2 lg:order-2">
-              <h1 className="sr-only">TheCalculator.us — {totalCalcs.toLocaleString()}+ Free Online Calculators</h1>
-
-              <div>
-                <SearchBar large placeholder="Search calculators — try 'Mortgage' or 'BMI'..." />
-              </div>
-
-              <div className="mt-5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                  Commonly Used
-                </p>
-                <div className="grid grid-cols-2 gap-2">
-                  {commonlyUsed.map((calc) => (
-                    <Link
-                      key={calc.slug}
-                      to={`/${calc.categorySlug}/${calc.slug}`}
-                      className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group text-xs sm:text-sm btn-press"
-                    >
-                      <calc.icon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
-                      <span className="font-medium truncate">{calc.name}</span>
-                    </Link>
-                  ))}
-                </div>
+            <div className="mt-8">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                Commonly Used
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-xl mx-auto">
+                {commonlyUsed.map((calc) => (
+                  <Link
+                    key={calc.slug}
+                    to={`/${calc.categorySlug}/${calc.slug}`}
+                    className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group text-xs sm:text-sm btn-press"
+                  >
+                    <calc.icon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                    <span className="font-medium truncate">{calc.name}</span>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Recently Used */}
-      <section className="container mx-auto px-4 py-6">
-        <RecentlyUsed />
       </section>
 
       {/* Ad */}
@@ -230,36 +216,27 @@ const Index = () => {
               </Link>
             </div>
           ))}
-          {/* Ad slot in trending */}
           <div className="hidden lg:flex bg-card rounded-xl border border-border items-center justify-center row-span-2">
             <AdPlaceholder size="rectangle" />
           </div>
         </div>
       </section>
 
-      {/* Enhanced About Section */}
+      {/* About Section */}
       <section className="container mx-auto px-4 py-10 border-t border-border">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">About TheCalculator.us — Your Trusted Calculator Resource</h2>
           <div className="prose prose-sm max-w-none text-muted-foreground space-y-4">
             <p>
-              Welcome to <strong>TheCalculator.us</strong>, your comprehensive destination for over {totalCalcs} free online calculators designed to simplify complex calculations across every aspect of life. Whether you're a student tackling algebra homework, a homeowner exploring mortgage options, or a fitness enthusiast tracking nutrition goals, our tools deliver fast, accurate results on any device.
+              Welcome to <strong>TheCalculator.us</strong>, your comprehensive destination for over {totalCalcs} free online calculators designed to simplify complex calculations across every aspect of life.
             </p>
-            
             <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Popular Calculators You'll Love</h3>
             <p>
-              Our most-used tools include the <Link to="/finance/mortgage-calculator" className="text-primary hover:underline font-medium">Mortgage Calculator</Link> for estimating monthly home payments and total interest costs, the <Link to="/health/bmi-calculator" className="text-primary hover:underline font-medium">BMI Calculator</Link> for understanding your body mass index and health category, and the <Link to="/math/percentage-calculator" className="text-primary hover:underline font-medium">Percentage Calculator</Link> for quick percentage computations in shopping, grades, or business.
+              Our most-used tools include the <Link to="/finance/mortgage-calculator" className="text-primary hover:underline font-medium">Mortgage Calculator</Link>, the <Link to="/health/bmi-calculator" className="text-primary hover:underline font-medium">BMI Calculator</Link>, and the <Link to="/math/percentage-calculator" className="text-primary hover:underline font-medium">Percentage Calculator</Link>.
             </p>
-            <p>
-              For students and educators, our <Link to="/math/scientific-notation-calculator" className="text-primary hover:underline font-medium">Scientific Notation Calculator</Link> handles large and small numbers with ease, while the <Link to="/math/gpa-calculator" className="text-primary hover:underline font-medium">GPA Calculator</Link> helps track academic performance across semesters. Need to know your exact age? Our <Link to="/datetime/age-calculator" className="text-primary hover:underline font-medium">Age Calculator</Link> computes years, months, and days with precision.
-            </p>
-
             <h3 className="text-lg font-semibold text-foreground mt-6 mb-2">Why Choose TheCalculator.us?</h3>
             <p>
-              Every calculator on TheCalculator.us is individually crafted with accuracy and usability in mind. We combine intuitive interfaces with rigorous mathematical formulas to ensure you get reliable results every time. Our tools work seamlessly on desktops, tablets, and smartphones—no downloads or sign-ups required.
-            </p>
-            <p>
-              From <Link to="/finance/salary-calculator" className="text-primary hover:underline font-medium">salary and tax calculations</Link> to <Link to="/conversions/length-converter" className="text-primary hover:underline font-medium">unit conversions</Link> and <Link to="/science/force-calculator" className="text-primary hover:underline font-medium">physics formulas</Link>, TheCalculator.us empowers millions of users monthly to make informed decisions. Explore our categories, bookmark your favorites, and calculate with confidence.
+              Every calculator is individually crafted with accuracy and usability in mind. Our tools work seamlessly on desktops, tablets, and smartphones—no downloads or sign-ups required.
             </p>
           </div>
         </div>
