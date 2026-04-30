@@ -1,7 +1,7 @@
 import { uniqueCalculators } from "@/lib/calculator-utils";
 import { categories } from "@/data/calculators";
 
-const BASE_URL = "https://calculators.com";
+const BASE_URL = "https://www.thecalculator.us";
 
 export const generateSitemapXml = (): string => {
   const today = new Date().toISOString().split("T")[0];
