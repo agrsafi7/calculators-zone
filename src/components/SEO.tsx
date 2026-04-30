@@ -30,7 +30,7 @@ export const getCategoryOgImage = (categorySlug: string): string => {
 const SEO = ({ title, description, canonical, type = "website", keywords, ogImage, jsonLd, breadcrumbs, faqs }: SEOProps) => {
   const siteName = "TheCalculator.us";
   const fullTitle = `${title} | ${siteName}`;
-  const baseUrl = "https://thecalculator.us";
+  const baseUrl = "https://www.thecalculator.us";
   
   // Determine OG image based on canonical URL or provided ogImage
   let finalOgImage = ogImage || "/og/og-default.jpg";
