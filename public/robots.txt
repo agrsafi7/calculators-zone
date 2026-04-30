@@ -16,4 +16,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://calchub.com/sitemap.xml
+Sitemap: https://www.thecalculator.us/sitemap.xml
