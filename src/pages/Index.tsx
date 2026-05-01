@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Home, Heart, Calculator, Hash, ChevronRight } from "lucide-react";
 import { categories, getCategoryIcon } from "@/data/calculators";
-import { uniqueCalculators } from "@/lib/calculator-utils";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import SEO from "@/components/SEO";
-const totalCalcs = uniqueCalculators.length;
+const totalCalcs = 1093;
 
 // Category cards with descriptions and subcategory items
 const categoryCards = [
