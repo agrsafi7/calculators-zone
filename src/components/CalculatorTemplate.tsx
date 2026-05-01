@@ -336,11 +336,11 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 <Link to={`/category/${config.categorySlug}`} className="text-xs font-medium text-primary hover:underline">
-                  All {config.category} Calculators →
+                  Browse all {config.category} calculators
                 </Link>
                 <span className="text-xs text-muted-foreground">|</span>
-                <Link to="/" className="text-xs font-medium text-primary hover:underline">
-                  Browse All Categories →
+                <Link to="/categories" className="text-xs font-medium text-primary hover:underline">
+                  Browse all calculator categories
                 </Link>
               </div>
             </section>

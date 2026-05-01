@@ -37,8 +37,12 @@ const PopularToolsPage = () => {
                 <h2 className="font-bold text-sm">{tool.name}</h2>
               </div>
               <p className="text-sm text-muted-foreground mb-4 flex-1">{tool.description}</p>
-              <Link to={`/${tool.categorySlug}/${tool.slug}`} className="block w-full text-center py-2.5 bg-secondary text-foreground text-sm font-semibold rounded-lg hover:bg-secondary/80 transition-colors">
-                Calculate
+              <Link
+                to={`/${tool.categorySlug}/${tool.slug}`}
+                aria-label={`Open ${tool.name}`}
+                className="block w-full text-center py-2.5 bg-secondary text-foreground text-sm font-semibold rounded-lg hover:bg-secondary/80 transition-colors"
+              >
+                Open {tool.name}
               </Link>
             </div>
           ))}

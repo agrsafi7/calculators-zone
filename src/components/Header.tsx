@@ -6,7 +6,7 @@ import { useDarkMode } from "@/hooks/use-dark-mode";
 import SearchBar from "@/components/SearchBar";
 import CalculatorMegaMenu from "@/components/CalculatorMegaMenu";
 
-const SITE_URL = "https://thecalculator.us";
+const SITE_URL = "/";
 
 const Header = () => {
   const { isDark, toggle: toggleDark } = useDarkMode();
@@ -60,7 +60,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-card border-b border-border">
       <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
-        <a href={SITE_URL} className="flex items-center gap-2 shrink-0">
+        <Link to={SITE_URL} className="flex items-center gap-2 shrink-0" aria-label="Go to homepage">
           <div className="w-7 h-7 bg-foreground rounded-md flex items-center justify-center">
             <div className="w-3.5 h-3.5 grid grid-cols-2 gap-0.5">
               <div className="bg-primary-foreground rounded-[1px]" />
@@ -70,7 +70,7 @@ const Header = () => {
             </div>
           </div>
           <span className="text-lg font-bold text-foreground">TheCalculator.us</span>
-        </a>
+        </Link>
 
         {/* Desktop: expandable search */}
         <div className="hidden md:flex items-center flex-1 max-w-md justify-end" ref={searchRef}>

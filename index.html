@@ -13,7 +13,9 @@
     <meta name="geo.region" content="US" />
     <meta name="content-language" content="en" />
 
-    <link rel="canonical" href="https://www.thecalculator.us/" />
+    <link rel="canonical" href="https://thecalculator.us/" />
+    <link rel="alternate" href="https://thecalculator.us/" hreflang="en" />
+    <link rel="alternate" href="https://thecalculator.us/" hreflang="x-default" />
     <link rel="icon" href="/favicon.png" type="image/png" />
 
     <!-- Google Search Console – uncomment and paste your code after verifying -->
@@ -21,12 +23,12 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.thecalculator.us/" />
+    <meta property="og:url" content="https://thecalculator.us/" />
     <meta property="og:title" content="Free Online Calculators – Math, Finance, Health & More | TheCalculator.us" />
     <meta property="og:description" content="500+ free online calculators for finance, health, math, science, conversions and daily life. Fast, accurate, and mobile-friendly." />
     <meta property="og:site_name" content="TheCalculator.us" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="https://www.thecalculator.us/og/og-default.jpg" />
+    <meta property="og:image" content="https://thecalculator.us/og/og-default.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
@@ -34,7 +36,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Free Online Calculators – Math, Finance, Health & More | TheCalculator.us" />
     <meta name="twitter:description" content="500+ free online calculators for finance, health, math, science and daily life." />
-    <meta name="twitter:image" content="https://www.thecalculator.us/og/og-default.jpg" />
+    <meta name="twitter:image" content="https://thecalculator.us/og/og-default.jpg" />
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -43,23 +45,23 @@
       "@graph": [
         {
           "@type": "WebSite",
-          "@id": "https://www.thecalculator.us/#website",
-          "url": "https://www.thecalculator.us/",
+          "@id": "https://thecalculator.us/#website",
+          "url": "https://thecalculator.us/",
           "name": "TheCalculator.us",
           "description": "500+ free online calculators for finance, health, math, science, conversions and daily life.",
-          "publisher": { "@id": "https://www.thecalculator.us/#organization" },
+          "publisher": { "@id": "https://thecalculator.us/#organization" },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": { "@type": "EntryPoint", "urlTemplate": "https://www.thecalculator.us/?q={search_term_string}" },
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://thecalculator.us/?q={search_term_string}" },
             "query-input": "required name=search_term_string"
           }
         },
         {
           "@type": "Organization",
-          "@id": "https://www.thecalculator.us/#organization",
+          "@id": "https://thecalculator.us/#organization",
           "name": "TheCalculator.us",
-          "url": "https://www.thecalculator.us/",
-          "logo": { "@type": "ImageObject", "url": "https://www.thecalculator.us/favicon.png" },
+          "url": "https://thecalculator.us/",
+          "logo": { "@type": "ImageObject", "url": "https://thecalculator.us/favicon.png" },
           "description": "Free online calculators for finance, health, math, science, conversions and daily life."
         }
       ]
@@ -70,7 +72,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main aria-label="Loading TheCalculator.us" style="min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:#ffffff;color:#0f172a;">
+        <section style="max-width:1100px;margin:0 auto;padding:32px 16px 40px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;">
+            <div aria-hidden="true" style="width:40px;height:40px;border-radius:10px;background:#0f172a;display:grid;place-items:center;">
+              <div style="width:18px;height:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;">
+                <span style="display:block;background:#ffffff;border-radius:2px;"></span>
+                <span style="display:block;background:#ffffff;border-radius:2px;"></span>
+                <span style="display:block;background:#ffffff;border-radius:2px;"></span>
+                <span style="display:block;background:#ffffff;border-radius:2px;"></span>
+              </div>
+            </div>
+            <div>
+              <p style="margin:0;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2563eb;">TheCalculator.us</p>
+              <p style="margin:2px 0 0;font-size:14px;color:#475569;">Free online calculators for everyday decisions</p>
+            </div>
+          </div>
+
+          <h1 style="margin:0 0 12px;font-size:clamp(32px,6vw,56px);line-height:1.05;font-weight:800;letter-spacing:0;color:#0f172a;max-width:760px;">Free online calculators for math, finance, health and daily life.</h1>
+          <p style="margin:0 0 24px;max-width:720px;font-size:18px;line-height:1.6;color:#475569;">Access 500+ fast, accurate tools including mortgage, BMI, percentage, age, loan and conversion calculators.</p>
+
+          <form action="/" method="get" role="search" aria-label="Search calculators" style="display:flex;flex-wrap:wrap;gap:12px;max-width:760px;margin-bottom:28px;">
+            <label for="calculator-search" style="position:absolute;left:-9999px;">Search calculators</label>
+            <input id="calculator-search" name="q" type="search" placeholder="Search calculators" style="flex:1 1 320px;min-height:56px;padding:0 18px;border:1px solid #cbd5e1;border-radius:14px;font-size:16px;color:#0f172a;background:#ffffff;" />
+            <button type="submit" style="min-height:56px;padding:0 22px;border:0;border-radius:14px;background:#2563eb;color:#ffffff;font-size:16px;font-weight:700;cursor:pointer;">Search</button>
+          </form>
+
+          <nav aria-label="Popular calculators">
+            <ul style="display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0;">
+              <li><a href="/finance/mortgage-calculator" style="display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0;color:#0f172a;text-decoration:none;font-weight:600;">Mortgage Calculator</a></li>
+              <li><a href="/health/bmi-calculator" style="display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0;color:#0f172a;text-decoration:none;font-weight:600;">BMI Calculator</a></li>
+              <li><a href="/math/percentage-calculator" style="display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0;color:#0f172a;text-decoration:none;font-weight:600;">Percentage Calculator</a></li>
+              <li><a href="/datetime/age-calculator" style="display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid #e2e8f0;color:#0f172a;text-decoration:none;font-weight:600;">Age Calculator</a></li>
+            </ul>
+          </nav>
+        </section>
+      </main>
+    </div>
+    <noscript>
+      <main style="max-width:1100px;margin:0 auto;padding:24px 16px 40px;font-family:Arial,Helvetica,sans-serif;line-height:1.6;">
+        <h1>Free Online Calculators | TheCalculator.us</h1>
+        <p>JavaScript is disabled, but you can still browse calculator pages and categories directly.</p>
+        <p>
+          <a href="/categories">Browse all calculator categories</a>
+        </p>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
