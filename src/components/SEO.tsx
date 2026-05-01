@@ -30,7 +30,7 @@ export const getCategoryOgImage = (categorySlug: string): string => {
 const SEO = ({ title, description, canonical, type = "website", keywords, ogImage, jsonLd, breadcrumbs, faqs }: SEOProps) => {
   const siteName = "TheCalculator.us";
   const fullTitle = `${title} | ${siteName}`;
-  const baseUrl = "https://www.thecalculator.us";
+  const baseUrl = "https://thecalculator.us";
   
   // Determine OG image based on canonical URL or provided ogImage
   let finalOgImage = ogImage || "/og/og-default.jpg";
@@ -113,16 +113,14 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
       {canonical && <link rel="canonical" href={`${baseUrl}${canonical}`} />}
+      {canonical && <link rel="alternate" href={`${baseUrl}${canonical}`} hrefLang="en" />}
+      {canonical && <link rel="alternate" href={`${baseUrl}${canonical}`} hrefLang="x-default" />}
       {canonical && <meta property="og:url" content={`${baseUrl}${canonical}`} />}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={`${baseUrl}${finalOgImage}`} />
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-      <meta name="geo.region" content="US" />
-      <meta name="geo.region" content="GB" />
-      <meta name="geo.region" content="CA" />
-      <meta name="geo.region" content="AU" />
       <meta name="content-language" content="en" />
       <html lang="en" />
       {jsonLd && (
