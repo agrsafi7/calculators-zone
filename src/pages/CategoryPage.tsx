@@ -286,7 +286,7 @@ const CategoryPage = () => {
                 <p>
                   Each calculator uses established formulas and provides instant results directly in your browser. 
                   Whether you're a student, professional, or simply curious, our {allCalcs.length} {category.name.toLowerCase()} tools 
-                  are here to help. <Link to="/" className="text-primary hover:underline font-medium">Explore all categories →</Link>
+                  are here to help. <Link to="/categories" className="text-primary hover:underline font-medium">Browse all calculator categories</Link>
                 </p>
               </div>
             </section>
