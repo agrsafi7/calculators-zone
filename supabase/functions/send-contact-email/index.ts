@@ -12,7 +12,11 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const { name, email, subject, message } = await req.json();
+    const body = await req.json();
+    const name = typeof body?.name === "string" ? body.name.trim() : "";
+    const email = typeof body?.email === "string" ? body.email.trim() : "";
+    const subject = typeof body?.subject === "string" ? body.subject.trim() : "";
+    const message = typeof body?.message === "string" ? body.message.trim() : "";
 
     if (!name || !email || !message) {
       return new Response(
@@ -20,6 +24,36 @@ Deno.serve(async (req) => {
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+
+    // Length limits to prevent abusive payloads
+    if (
+      name.length > 200 ||
+      email.length > 320 ||
+      subject.length > 300 ||
+      message.length > 5000
+    ) {
+      return new Response(
+        JSON.stringify({ error: "Input exceeds allowed length" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Basic email format validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid email address" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // HTML-escape helper to prevent injection in notification email
+    const esc = (s: string) =>
+      s
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
 
     // Store in database
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
@@ -53,14 +87,14 @@ Deno.serve(async (req) => {
           body: JSON.stringify({
             from: "CalcHub Contact <onboarding@resend.dev>",
             to: [notificationEmail],
-            subject: `[CalcHub Contact] ${subject || "New Message"}`,
+            subject: `[CalcHub Contact] ${esc(subject || "New Message")}`,
             html: `
               <h2>New Contact Form Submission</h2>
-              <p><strong>Name:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Subject:</strong> ${subject || "N/A"}</p>
+              <p><strong>Name:</strong> ${esc(name)}</p>
+              <p><strong>Email:</strong> ${esc(email)}</p>
+              <p><strong>Subject:</strong> ${esc(subject || "N/A")}</p>
               <hr />
-              <p>${message.replace(/\n/g, "<br />")}</p>
+              <p>${esc(message).replace(/\n/g, "<br />")}</p>
             `,
           }),
         });
