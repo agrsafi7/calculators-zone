@@ -3,4134 +3,4134 @@
 
   <!-- HOMEPAGE -->
   <url>
-    <loc>https://www.thecalculator.us/</loc>
+    <loc>https://thecalculator.us/</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- CATEGORY PAGES -->
-  <url><loc>https://www.thecalculator.us/category/finance</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.thecalculator.us/category/health</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.thecalculator.us/category/math</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.thecalculator.us/category/conversions</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.thecalculator.us/category/science</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.thecalculator.us/category/datetime</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.thecalculator.us/category/lifestyle</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.thecalculator.us/category/other</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.thecalculator.us/category/automotive</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.thecalculator.us/category/cooking</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.thecalculator.us/category/realestate</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalculator.us/category/finance</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thecalculator.us/category/health</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thecalculator.us/category/math</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thecalculator.us/category/conversions</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalculator.us/category/science</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalculator.us/category/datetime</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalculator.us/category/lifestyle</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalculator.us/category/other</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalculator.us/category/automotive</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalculator.us/category/cooking</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalculator.us/category/realestate</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
   <!-- STATIC PAGES -->
-  <url><loc>https://www.thecalculator.us/categories</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.thecalculator.us/popular</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.thecalculator.us/privacy-policy</loc><lastmod>2026-04-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://www.thecalculator.us/terms-of-service</loc><lastmod>2026-04-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://www.thecalculator.us/disclaimer</loc><lastmod>2026-04-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://www.thecalculator.us/contact</loc><lastmod>2026-04-30</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://thecalculator.us/categories</loc><lastmod>2026-04-30</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalculator.us/popular</loc><lastmod>2026-04-30</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalculator.us/privacy-policy</loc><lastmod>2026-04-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://thecalculator.us/terms-of-service</loc><lastmod>2026-04-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://thecalculator.us/disclaimer</loc><lastmod>2026-04-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://thecalculator.us/contact</loc><lastmod>2026-04-30</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
 
   <!-- CALCULATOR PAGES (684 calculators) -->
   <url>
-    <loc>https://www.thecalculator.us/automotive/car-depreciation-calculator</loc>
+    <loc>https://thecalculator.us/automotive/car-depreciation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/automotive/engine-horsepower-calculator</loc>
+    <loc>https://thecalculator.us/automotive/engine-horsepower-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/automotive/fuel-cost-calculator</loc>
+    <loc>https://thecalculator.us/automotive/fuel-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/automotive/mpg-calculator</loc>
+    <loc>https://thecalculator.us/automotive/mpg-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/automotive/tire-size-calculator</loc>
+    <loc>https://thecalculator.us/automotive/tire-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/angle-converter</loc>
+    <loc>https://thecalculator.us/conversions/angle-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/area-converter</loc>
+    <loc>https://thecalculator.us/conversions/area-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/celsius-to-fahrenheit-converter</loc>
+    <loc>https://thecalculator.us/conversions/celsius-to-fahrenheit-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/currency-converter</loc>
+    <loc>https://thecalculator.us/conversions/currency-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/data-storage-converter</loc>
+    <loc>https://thecalculator.us/conversions/data-storage-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/energy-converter</loc>
+    <loc>https://thecalculator.us/conversions/energy-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/fuel-consumption-converter</loc>
+    <loc>https://thecalculator.us/conversions/fuel-consumption-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/inches-to-centimeters-converter</loc>
+    <loc>https://thecalculator.us/conversions/inches-to-centimeters-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/kilograms-to-pounds-converter</loc>
+    <loc>https://thecalculator.us/conversions/kilograms-to-pounds-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/length-converter</loc>
+    <loc>https://thecalculator.us/conversions/length-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/liters-to-gallons-converter</loc>
+    <loc>https://thecalculator.us/conversions/liters-to-gallons-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/mass-converter</loc>
+    <loc>https://thecalculator.us/conversions/mass-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/miles-to-kilometers-converter</loc>
+    <loc>https://thecalculator.us/conversions/miles-to-kilometers-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/power-converter</loc>
+    <loc>https://thecalculator.us/conversions/power-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/pressure-converter</loc>
+    <loc>https://thecalculator.us/conversions/pressure-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/speed-converter</loc>
+    <loc>https://thecalculator.us/conversions/speed-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/temperature-converter</loc>
+    <loc>https://thecalculator.us/conversions/temperature-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/time-converter</loc>
+    <loc>https://thecalculator.us/conversions/time-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/volume-converter</loc>
+    <loc>https://thecalculator.us/conversions/volume-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/conversions/weight-converter</loc>
+    <loc>https://thecalculator.us/conversions/weight-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/cooking/baking-ratio-calculator</loc>
+    <loc>https://thecalculator.us/cooking/baking-ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/cooking/calorie-per-serving-calculator</loc>
+    <loc>https://thecalculator.us/cooking/calorie-per-serving-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/cooking/cooking-time-calculator</loc>
+    <loc>https://thecalculator.us/cooking/cooking-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/cooking/recipe-scaler-calculator</loc>
+    <loc>https://thecalculator.us/cooking/recipe-scaler-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/cooking/unit-conversion-cooking</loc>
+    <loc>https://thecalculator.us/cooking/unit-conversion-cooking</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/add-subtract-days-calculator</loc>
+    <loc>https://thecalculator.us/datetime/add-subtract-days-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/age-calculator</loc>
+    <loc>https://thecalculator.us/datetime/age-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/business-days-calculator</loc>
+    <loc>https://thecalculator.us/datetime/business-days-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/chronological-age-calculator</loc>
+    <loc>https://thecalculator.us/datetime/chronological-age-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/countdown-calculator</loc>
+    <loc>https://thecalculator.us/datetime/countdown-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/date-difference-calculator</loc>
+    <loc>https://thecalculator.us/datetime/date-difference-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/days-between-dates-calculator</loc>
+    <loc>https://thecalculator.us/datetime/days-between-dates-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/due-date-calculator</loc>
+    <loc>https://thecalculator.us/datetime/due-date-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/retirement-date-calculator</loc>
+    <loc>https://thecalculator.us/datetime/retirement-date-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/time-duration-calculator</loc>
+    <loc>https://thecalculator.us/datetime/time-duration-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/time-zone-converter</loc>
+    <loc>https://thecalculator.us/datetime/time-zone-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/week-number-calculator</loc>
+    <loc>https://thecalculator.us/datetime/week-number-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/datetime/work-hours-calculator</loc>
+    <loc>https://thecalculator.us/datetime/work-hours-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/401k-calculator</loc>
+    <loc>https://thecalculator.us/finance/401k-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/after-tax-return-calculator</loc>
+    <loc>https://thecalculator.us/finance/after-tax-return-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/amortization-calculator</loc>
+    <loc>https://thecalculator.us/finance/amortization-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/annuity-calculator</loc>
+    <loc>https://thecalculator.us/finance/annuity-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/annuity-payout-calculator</loc>
+    <loc>https://thecalculator.us/finance/annuity-payout-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/apr-calculator</loc>
+    <loc>https://thecalculator.us/finance/apr-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/auto-lease-calculator</loc>
+    <loc>https://thecalculator.us/finance/auto-lease-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/auto-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/auto-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/average-return-calculator</loc>
+    <loc>https://thecalculator.us/finance/average-return-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/balloon-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/balloon-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/bitcoin-halving-calculator</loc>
+    <loc>https://thecalculator.us/finance/bitcoin-halving-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/biweekly-mortgage-calculator</loc>
+    <loc>https://thecalculator.us/finance/biweekly-mortgage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/boat-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/boat-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/bond-calculator</loc>
+    <loc>https://thecalculator.us/finance/bond-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/bonus-calculator</loc>
+    <loc>https://thecalculator.us/finance/bonus-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/break-even-calculator</loc>
+    <loc>https://thecalculator.us/finance/break-even-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/budget-calculator</loc>
+    <loc>https://thecalculator.us/finance/budget-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/budget-percentage-calculator</loc>
+    <loc>https://thecalculator.us/finance/budget-percentage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/business-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/business-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/business-valuation-calculator</loc>
+    <loc>https://thecalculator.us/finance/business-valuation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/cagr-calculator</loc>
+    <loc>https://thecalculator.us/finance/cagr-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/cap-rate-calculator</loc>
+    <loc>https://thecalculator.us/finance/cap-rate-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/capital-gains-calculator</loc>
+    <loc>https://thecalculator.us/finance/capital-gains-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/capital-gains-tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/capital-gains-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/cash-on-cash-return-calculator</loc>
+    <loc>https://thecalculator.us/finance/cash-on-cash-return-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/cd-calculator</loc>
+    <loc>https://thecalculator.us/finance/cd-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/cogs-calculator</loc>
+    <loc>https://thecalculator.us/finance/cogs-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/college-cost-calculator</loc>
+    <loc>https://thecalculator.us/finance/college-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/commission-calculator</loc>
+    <loc>https://thecalculator.us/finance/commission-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/compound-interest-calculator</loc>
+    <loc>https://thecalculator.us/finance/compound-interest-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/contribution-margin-calculator</loc>
+    <loc>https://thecalculator.us/finance/contribution-margin-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/cost-per-unit-calculator</loc>
+    <loc>https://thecalculator.us/finance/cost-per-unit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/credit-card-interest-calculator</loc>
+    <loc>https://thecalculator.us/finance/credit-card-interest-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/credit-card-payment-calculator</loc>
+    <loc>https://thecalculator.us/finance/credit-card-payment-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/credit-cards-payoff-calculator</loc>
+    <loc>https://thecalculator.us/finance/credit-cards-payoff-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/crypto-mining-calculator</loc>
+    <loc>https://thecalculator.us/finance/crypto-mining-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/crypto-profit-calculator</loc>
+    <loc>https://thecalculator.us/finance/crypto-profit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/dcf-calculator</loc>
+    <loc>https://thecalculator.us/finance/dcf-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/debt-avalanche-calculator</loc>
+    <loc>https://thecalculator.us/finance/debt-avalanche-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/debt-consolidation-calculator</loc>
+    <loc>https://thecalculator.us/finance/debt-consolidation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/debt-payoff-calculator</loc>
+    <loc>https://thecalculator.us/finance/debt-payoff-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/debt-snowball-calculator</loc>
+    <loc>https://thecalculator.us/finance/debt-snowball-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/debt-to-income-ratio-calculator</loc>
+    <loc>https://thecalculator.us/finance/debt-to-income-ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/depreciation-calculator</loc>
+    <loc>https://thecalculator.us/finance/depreciation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/discount-calculator</loc>
+    <loc>https://thecalculator.us/finance/discount-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/dividend-growth-calculator</loc>
+    <loc>https://thecalculator.us/finance/dividend-growth-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/dividend-yield-calculator</loc>
+    <loc>https://thecalculator.us/finance/dividend-yield-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/dollar-cost-averaging-calculator</loc>
+    <loc>https://thecalculator.us/finance/dollar-cost-averaging-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/down-payment-calculator</loc>
+    <loc>https://thecalculator.us/finance/down-payment-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/drip-calculator</loc>
+    <loc>https://thecalculator.us/finance/drip-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/ebitda-calculator</loc>
+    <loc>https://thecalculator.us/finance/ebitda-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/emergency-fund-calculator</loc>
+    <loc>https://thecalculator.us/finance/emergency-fund-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/estate-tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/estate-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/etf-expense-ratio-calculator</loc>
+    <loc>https://thecalculator.us/finance/etf-expense-ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/expense-ratio-calculator</loc>
+    <loc>https://thecalculator.us/finance/expense-ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/extra-payment-mortgage-calculator</loc>
+    <loc>https://thecalculator.us/finance/extra-payment-mortgage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/fha-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/fha-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/financial-goal-calculator</loc>
+    <loc>https://thecalculator.us/finance/financial-goal-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/financial-independence-calculator</loc>
+    <loc>https://thecalculator.us/finance/financial-independence-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/fire-calculator</loc>
+    <loc>https://thecalculator.us/finance/fire-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/four-percent-rule-calculator</loc>
+    <loc>https://thecalculator.us/finance/four-percent-rule-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/future-value-calculator</loc>
+    <loc>https://thecalculator.us/finance/future-value-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/gross-profit-calculator</loc>
+    <loc>https://thecalculator.us/finance/gross-profit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/heloc-calculator</loc>
+    <loc>https://thecalculator.us/finance/heloc-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/home-equity-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/home-equity-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/hourly-to-salary-calculator</loc>
+    <loc>https://thecalculator.us/finance/hourly-to-salary-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/house-affordability-calculator</loc>
+    <loc>https://thecalculator.us/finance/house-affordability-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/house-flip-profit-calculator</loc>
+    <loc>https://thecalculator.us/finance/house-flip-profit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/income-tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/income-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/inflation-adjusted-return-calculator</loc>
+    <loc>https://thecalculator.us/finance/inflation-adjusted-return-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/inflation-calculator</loc>
+    <loc>https://thecalculator.us/finance/inflation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/interest-only-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/interest-only-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/interest-rate-calculator</loc>
+    <loc>https://thecalculator.us/finance/interest-rate-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/inventory-turnover-calculator</loc>
+    <loc>https://thecalculator.us/finance/inventory-turnover-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/investment-calculator</loc>
+    <loc>https://thecalculator.us/finance/investment-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/ira-calculator</loc>
+    <loc>https://thecalculator.us/finance/ira-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/irr-calculator</loc>
+    <loc>https://thecalculator.us/finance/irr-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/lease-calculator</loc>
+    <loc>https://thecalculator.us/finance/lease-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/lifestyle-inflation-calculator</loc>
+    <loc>https://thecalculator.us/finance/lifestyle-inflation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/loan-against-property-calculator</loc>
+    <loc>https://thecalculator.us/finance/loan-against-property-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/loan-balance-calculator</loc>
+    <loc>https://thecalculator.us/finance/loan-balance-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/loan-comparison-calculator</loc>
+    <loc>https://thecalculator.us/finance/loan-comparison-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/loan-eligibility-calculator</loc>
+    <loc>https://thecalculator.us/finance/loan-eligibility-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/loan-prepayment-calculator</loc>
+    <loc>https://thecalculator.us/finance/loan-prepayment-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/markup-calculator</loc>
+    <loc>https://thecalculator.us/finance/markup-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/marriage-tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/marriage-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/millionaire-calculator</loc>
+    <loc>https://thecalculator.us/finance/millionaire-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/mirr-calculator</loc>
+    <loc>https://thecalculator.us/finance/mirr-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/mortgage-amortization-schedule-calculator</loc>
+    <loc>https://thecalculator.us/finance/mortgage-amortization-schedule-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/mortgage-payoff-calculator</loc>
+    <loc>https://thecalculator.us/finance/mortgage-payoff-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/mortgage-refinance-calculator</loc>
+    <loc>https://thecalculator.us/finance/mortgage-refinance-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/mortgage-required-income-calculator</loc>
+    <loc>https://thecalculator.us/finance/mortgage-required-income-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/mortgage-tax-savings-calculator</loc>
+    <loc>https://thecalculator.us/finance/mortgage-tax-savings-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/mutual-fund-calculator</loc>
+    <loc>https://thecalculator.us/finance/mutual-fund-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/net-income-calculator</loc>
+    <loc>https://thecalculator.us/finance/net-income-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/net-profit-calculator</loc>
+    <loc>https://thecalculator.us/finance/net-profit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/net-worth-calculator</loc>
+    <loc>https://thecalculator.us/finance/net-worth-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/nft-profit-calculator</loc>
+    <loc>https://thecalculator.us/finance/nft-profit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/npv-calculator</loc>
+    <loc>https://thecalculator.us/finance/npv-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/operating-margin-calculator</loc>
+    <loc>https://thecalculator.us/finance/operating-margin-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/overtime-pay-calculator</loc>
+    <loc>https://thecalculator.us/finance/overtime-pay-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/passive-income-calculator</loc>
+    <loc>https://thecalculator.us/finance/passive-income-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/payback-period-calculator</loc>
+    <loc>https://thecalculator.us/finance/payback-period-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/payroll-tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/payroll-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/pension-calculator</loc>
+    <loc>https://thecalculator.us/finance/pension-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/pension-growth-calculator</loc>
+    <loc>https://thecalculator.us/finance/pension-growth-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/personal-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/personal-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/portfolio-allocation-calculator</loc>
+    <loc>https://thecalculator.us/finance/portfolio-allocation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/portfolio-return-calculator</loc>
+    <loc>https://thecalculator.us/finance/portfolio-return-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/present-value-calculator</loc>
+    <loc>https://thecalculator.us/finance/present-value-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/profit-margin-calculator</loc>
+    <loc>https://thecalculator.us/finance/profit-margin-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/property-appreciation-calculator</loc>
+    <loc>https://thecalculator.us/finance/property-appreciation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/property-tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/property-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/real-estate-roi-calculator</loc>
+    <loc>https://thecalculator.us/finance/real-estate-roi-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/refinance-calculator</loc>
+    <loc>https://thecalculator.us/finance/refinance-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/rent-calculator</loc>
+    <loc>https://thecalculator.us/finance/rent-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/rent-vs-buy-calculator</loc>
+    <loc>https://thecalculator.us/finance/rent-vs-buy-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/rental-cash-flow-calculator</loc>
+    <loc>https://thecalculator.us/finance/rental-cash-flow-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/rental-property-calculator</loc>
+    <loc>https://thecalculator.us/finance/rental-property-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/rental-yield-calculator</loc>
+    <loc>https://thecalculator.us/finance/rental-yield-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/retirement-calculator</loc>
+    <loc>https://thecalculator.us/finance/retirement-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/retirement-contribution-calculator</loc>
+    <loc>https://thecalculator.us/finance/retirement-contribution-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/retirement-income-calculator</loc>
+    <loc>https://thecalculator.us/finance/retirement-income-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/retirement-savings-calculator</loc>
+    <loc>https://thecalculator.us/finance/retirement-savings-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/retirement-withdrawal-calculator</loc>
+    <loc>https://thecalculator.us/finance/retirement-withdrawal-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/risk-vs-return-calculator</loc>
+    <loc>https://thecalculator.us/finance/risk-vs-return-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/rmd-calculator</loc>
+    <loc>https://thecalculator.us/finance/rmd-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/roa-calculator</loc>
+    <loc>https://thecalculator.us/finance/roa-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/roe-calculator</loc>
+    <loc>https://thecalculator.us/finance/roe-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/roi-calculator</loc>
+    <loc>https://thecalculator.us/finance/roi-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/roth-ira-calculator</loc>
+    <loc>https://thecalculator.us/finance/roth-ira-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/rule-of-72-calculator</loc>
+    <loc>https://thecalculator.us/finance/rule-of-72-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/salary-calculator</loc>
+    <loc>https://thecalculator.us/finance/salary-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/salary-comparison-calculator</loc>
+    <loc>https://thecalculator.us/finance/salary-comparison-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/sales-tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/sales-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/savings-calculator</loc>
+    <loc>https://thecalculator.us/finance/savings-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/self-employment-tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/self-employment-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/simple-interest-calculator</loc>
+    <loc>https://thecalculator.us/finance/simple-interest-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/social-security-break-even-calculator</loc>
+    <loc>https://thecalculator.us/finance/social-security-break-even-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/social-security-calculator</loc>
+    <loc>https://thecalculator.us/finance/social-security-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/staking-reward-calculator</loc>
+    <loc>https://thecalculator.us/finance/staking-reward-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/stock-average-price-calculator</loc>
+    <loc>https://thecalculator.us/finance/stock-average-price-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/stock-profit-calculator</loc>
+    <loc>https://thecalculator.us/finance/stock-profit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/student-loan-calculator</loc>
+    <loc>https://thecalculator.us/finance/student-loan-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/take-home-pay-calculator</loc>
+    <loc>https://thecalculator.us/finance/take-home-pay-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/tax-bracket-calculator</loc>
+    <loc>https://thecalculator.us/finance/tax-bracket-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/tax-calculator</loc>
+    <loc>https://thecalculator.us/finance/tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/tax-refund-calculator</loc>
+    <loc>https://thecalculator.us/finance/tax-refund-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/time-value-of-money-calculator</loc>
+    <loc>https://thecalculator.us/finance/time-value-of-money-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/tip-calculator</loc>
+    <loc>https://thecalculator.us/finance/tip-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/va-mortgage-calculator</loc>
+    <loc>https://thecalculator.us/finance/va-mortgage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/vat-calculator</loc>
+    <loc>https://thecalculator.us/finance/vat-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/wealth-growth-calculator</loc>
+    <loc>https://thecalculator.us/finance/wealth-growth-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/finance/working-capital-calculator</loc>
+    <loc>https://thecalculator.us/finance/working-capital-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/anorexic-bmi-calculator</loc>
+    <loc>https://thecalculator.us/health/anorexic-bmi-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/army-body-fat-calculator</loc>
+    <loc>https://thecalculator.us/health/army-body-fat-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/baby-growth-percentile-calculator</loc>
+    <loc>https://thecalculator.us/health/baby-growth-percentile-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/bac-calculator</loc>
+    <loc>https://thecalculator.us/health/bac-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/blood-pressure-map-calculator</loc>
+    <loc>https://thecalculator.us/health/blood-pressure-map-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/bmr-calculator</loc>
+    <loc>https://thecalculator.us/health/bmr-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/body-adiposity-index-calculator</loc>
+    <loc>https://thecalculator.us/health/body-adiposity-index-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/body-density-calculator</loc>
+    <loc>https://thecalculator.us/health/body-density-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/body-fat-calculator</loc>
+    <loc>https://thecalculator.us/health/body-fat-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/body-recomposition-calculator</loc>
+    <loc>https://thecalculator.us/health/body-recomposition-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/body-roundness-index-calculator</loc>
+    <loc>https://thecalculator.us/health/body-roundness-index-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/body-surface-area-calculator</loc>
+    <loc>https://thecalculator.us/health/body-surface-area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/body-type-calculator</loc>
+    <loc>https://thecalculator.us/health/body-type-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/calorie-calculator</loc>
+    <loc>https://thecalculator.us/health/calorie-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/calories-burned-calculator</loc>
+    <loc>https://thecalculator.us/health/calories-burned-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/carbohydrate-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/carbohydrate-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/cardiac-output-calculator</loc>
+    <loc>https://thecalculator.us/health/cardiac-output-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/child-growth-percentile-calculator</loc>
+    <loc>https://thecalculator.us/health/child-growth-percentile-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/cholesterol-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/cholesterol-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/circadian-rhythm-calculator</loc>
+    <loc>https://thecalculator.us/health/circadian-rhythm-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/conception-calculator</loc>
+    <loc>https://thecalculator.us/health/conception-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/cycling-power-calculator</loc>
+    <loc>https://thecalculator.us/health/cycling-power-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/daily-activity-level-calculator</loc>
+    <loc>https://thecalculator.us/health/daily-activity-level-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/daily-calorie-deficit-calculator</loc>
+    <loc>https://thecalculator.us/health/daily-calorie-deficit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/daily-calorie-needs-calculator</loc>
+    <loc>https://thecalculator.us/health/daily-calorie-needs-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/daily-calorie-surplus-calculator</loc>
+    <loc>https://thecalculator.us/health/daily-calorie-surplus-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/daily-nutrient-requirement-calculator</loc>
+    <loc>https://thecalculator.us/health/daily-nutrient-requirement-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/daily-water-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/daily-water-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/dehydration-risk-calculator</loc>
+    <loc>https://thecalculator.us/health/dehydration-risk-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/diabetes-risk-calculator</loc>
+    <loc>https://thecalculator.us/health/diabetes-risk-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/fat-free-mass-index-calculator</loc>
+    <loc>https://thecalculator.us/health/fat-free-mass-index-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/fat-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/fat-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/fat-mass-index-calculator</loc>
+    <loc>https://thecalculator.us/health/fat-mass-index-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/fertility-window-calculator</loc>
+    <loc>https://thecalculator.us/health/fertility-window-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/fiber-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/fiber-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/food-energy-calculator</loc>
+    <loc>https://thecalculator.us/health/food-energy-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/gfr-calculator</loc>
+    <loc>https://thecalculator.us/health/gfr-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/glycemic-index-calculator</loc>
+    <loc>https://thecalculator.us/health/glycemic-index-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/glycemic-load-calculator</loc>
+    <loc>https://thecalculator.us/health/glycemic-load-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/healthy-weight-calculator</loc>
+    <loc>https://thecalculator.us/health/healthy-weight-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/heart-disease-risk-calculator</loc>
+    <loc>https://thecalculator.us/health/heart-disease-risk-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/heart-rate-calculator</loc>
+    <loc>https://thecalculator.us/health/heart-rate-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/heart-rate-recovery-calculator</loc>
+    <loc>https://thecalculator.us/health/heart-rate-recovery-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/heart-rate-zone-calculator</loc>
+    <loc>https://thecalculator.us/health/heart-rate-zone-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/hydration-level-calculator</loc>
+    <loc>https://thecalculator.us/health/hydration-level-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/ideal-weight-calculator</loc>
+    <loc>https://thecalculator.us/health/ideal-weight-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/implantation-calculator</loc>
+    <loc>https://thecalculator.us/health/implantation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/kidney-function-calculator</loc>
+    <loc>https://thecalculator.us/health/kidney-function-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/lean-body-mass-calculator</loc>
+    <loc>https://thecalculator.us/health/lean-body-mass-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/lean-mass-index-calculator</loc>
+    <loc>https://thecalculator.us/health/lean-mass-index-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/liver-function-score-calculator</loc>
+    <loc>https://thecalculator.us/health/liver-function-score-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/macro-calculator</loc>
+    <loc>https://thecalculator.us/health/macro-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/maximum-heart-rate-calculator</loc>
+    <loc>https://thecalculator.us/health/maximum-heart-rate-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/meal-calorie-calculator</loc>
+    <loc>https://thecalculator.us/health/meal-calorie-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/metabolic-age-calculator</loc>
+    <loc>https://thecalculator.us/health/metabolic-age-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/mineral-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/mineral-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/muscle-gain-calculator</loc>
+    <loc>https://thecalculator.us/health/muscle-gain-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/one-rep-max-calculator</loc>
+    <loc>https://thecalculator.us/health/one-rep-max-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/other</loc>
+    <loc>https://thecalculator.us/health/other</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/overweight-calculator</loc>
+    <loc>https://thecalculator.us/health/overweight-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/ovulation-calculator</loc>
+    <loc>https://thecalculator.us/health/ovulation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/pace-calculator</loc>
+    <loc>https://thecalculator.us/health/pace-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/period-calculator</loc>
+    <loc>https://thecalculator.us/health/period-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/pregnancy-bmi-calculator</loc>
+    <loc>https://thecalculator.us/health/pregnancy-bmi-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/pregnancy-calculator</loc>
+    <loc>https://thecalculator.us/health/pregnancy-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/pregnancy-trimester-calculator</loc>
+    <loc>https://thecalculator.us/health/pregnancy-trimester-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/pregnancy-week-calculator</loc>
+    <loc>https://thecalculator.us/health/pregnancy-week-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/pregnancy-weight-gain-calculator</loc>
+    <loc>https://thecalculator.us/health/pregnancy-weight-gain-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/protein-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/protein-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/relative-fat-mass-calculator</loc>
+    <loc>https://thecalculator.us/health/relative-fat-mass-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/resting-heart-rate-calculator</loc>
+    <loc>https://thecalculator.us/health/resting-heart-rate-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/running-distance-calculator</loc>
+    <loc>https://thecalculator.us/health/running-distance-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/running-speed-calculator</loc>
+    <loc>https://thecalculator.us/health/running-speed-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/skinfold-body-fat-calculator</loc>
+    <loc>https://thecalculator.us/health/skinfold-body-fat-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/sleep-cycle-calculator</loc>
+    <loc>https://thecalculator.us/health/sleep-cycle-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/sleep-debt-calculator</loc>
+    <loc>https://thecalculator.us/health/sleep-debt-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/sodium-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/sodium-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/step-count-to-calories-calculator</loc>
+    <loc>https://thecalculator.us/health/step-count-to-calories-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/steps-to-calories-calculator</loc>
+    <loc>https://thecalculator.us/health/steps-to-calories-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/strength-level-calculator</loc>
+    <loc>https://thecalculator.us/health/strength-level-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/stress-level-calculator</loc>
+    <loc>https://thecalculator.us/health/stress-level-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/stroke-risk-calculator</loc>
+    <loc>https://thecalculator.us/health/stroke-risk-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/sugar-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/sugar-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/swimming-pace-calculator</loc>
+    <loc>https://thecalculator.us/health/swimming-pace-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/target-heart-rate-calculator</loc>
+    <loc>https://thecalculator.us/health/target-heart-rate-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/tdee-calculator</loc>
+    <loc>https://thecalculator.us/health/tdee-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/training-zone-calculator</loc>
+    <loc>https://thecalculator.us/health/training-zone-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/vitamin-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/vitamin-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/vo2-max-calculator</loc>
+    <loc>https://thecalculator.us/health/vo2-max-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/waist-to-height-ratio-calculator</loc>
+    <loc>https://thecalculator.us/health/waist-to-height-ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/waist-to-hip-ratio-calculator</loc>
+    <loc>https://thecalculator.us/health/waist-to-hip-ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/water-intake-calculator</loc>
+    <loc>https://thecalculator.us/health/water-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/weekly-weight-loss-calculator</loc>
+    <loc>https://thecalculator.us/health/weekly-weight-loss-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/weight-change-calculator</loc>
+    <loc>https://thecalculator.us/health/weight-change-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/weight-gain-calculator</loc>
+    <loc>https://thecalculator.us/health/weight-gain-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/weight-loss-percentage-calculator</loc>
+    <loc>https://thecalculator.us/health/weight-loss-percentage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/weight-loss-target-calculator</loc>
+    <loc>https://thecalculator.us/health/weight-loss-target-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/weight-maintenance-calories-calculator</loc>
+    <loc>https://thecalculator.us/health/weight-maintenance-calories-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/weight-watcher-points-calculator</loc>
+    <loc>https://thecalculator.us/health/weight-watcher-points-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/workout-calorie-burn-calculator</loc>
+    <loc>https://thecalculator.us/health/workout-calorie-burn-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/health/workout-intensity-calculator</loc>
+    <loc>https://thecalculator.us/health/workout-intensity-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/age-in-months-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/age-in-months-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/bandwidth-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/bandwidth-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/bmi-for-kids-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/bmi-for-kids-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/btu-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/btu-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/cat-age-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/cat-age-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/compatibility-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/compatibility-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/concrete-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/concrete-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/cooking-measurement-converter</loc>
+    <loc>https://thecalculator.us/lifestyle/cooking-measurement-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/day-of-week-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/day-of-week-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/dew-point-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/dew-point-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/dice-roller</loc>
+    <loc>https://thecalculator.us/lifestyle/dice-roller</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/dog-age-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/dog-age-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/electricity-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/electricity-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/fuel-cost-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/fuel-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/gas-mileage-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/gas-mileage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/gdp-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/gdp-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/golf-handicap-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/golf-handicap-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/gravel-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/gravel-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/heat-index-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/heat-index-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/height-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/height-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/horsepower-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/horsepower-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/ip-subnet-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/ip-subnet-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/love-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/love-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/molarity-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/molarity-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/mulch-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/mulch-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/number-to-words-converter</loc>
+    <loc>https://thecalculator.us/lifestyle/number-to-words-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/password-generator</loc>
+    <loc>https://thecalculator.us/lifestyle/password-generator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/pet-age-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/pet-age-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/random-number-generator</loc>
+    <loc>https://thecalculator.us/lifestyle/random-number-generator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/recipe-converter</loc>
+    <loc>https://thecalculator.us/lifestyle/recipe-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/resistor-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/resistor-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/roman-numeral-converter</loc>
+    <loc>https://thecalculator.us/lifestyle/roman-numeral-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/roofing-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/roofing-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/shoe-size-converter</loc>
+    <loc>https://thecalculator.us/lifestyle/shoe-size-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/sleep-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/sleep-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/square-footage-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/square-footage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/stair-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/stair-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/tile-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/tile-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/time-card-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/time-card-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/tire-size-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/tire-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/travel-budget-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/travel-budget-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/trip-cost-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/trip-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/voltage-drop-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/voltage-drop-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/lifestyle/wind-chill-calculator</loc>
+    <loc>https://thecalculator.us/lifestyle/wind-chill-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/absolute-value-equation-solver</loc>
+    <loc>https://thecalculator.us/math/absolute-value-equation-solver</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/angle-conversion-calculator</loc>
+    <loc>https://thecalculator.us/math/angle-conversion-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/arc-length-calculator</loc>
+    <loc>https://thecalculator.us/math/arc-length-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/area-calculator</loc>
+    <loc>https://thecalculator.us/math/area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/assignment-time-calculator</loc>
+    <loc>https://thecalculator.us/math/assignment-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/attendance-percentage-calculator</loc>
+    <loc>https://thecalculator.us/math/attendance-percentage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/average-calculator</loc>
+    <loc>https://thecalculator.us/math/average-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/base-16-calculator</loc>
+    <loc>https://thecalculator.us/math/base-16-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/base-2-calculator</loc>
+    <loc>https://thecalculator.us/math/base-2-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/base-8-calculator</loc>
+    <loc>https://thecalculator.us/math/base-8-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/binary-calculator</loc>
+    <loc>https://thecalculator.us/math/binary-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/binomial-distribution-calculator</loc>
+    <loc>https://thecalculator.us/math/binomial-distribution-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/cgpa-calculator</loc>
+    <loc>https://thecalculator.us/math/cgpa-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/chi-square-calculator</loc>
+    <loc>https://thecalculator.us/math/chi-square-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/chord-length-calculator</loc>
+    <loc>https://thecalculator.us/math/chord-length-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/circle-calculator</loc>
+    <loc>https://thecalculator.us/math/circle-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/class-average-calculator</loc>
+    <loc>https://thecalculator.us/math/class-average-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/coefficient-of-variation-calculator</loc>
+    <loc>https://thecalculator.us/math/coefficient-of-variation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/completing-the-square-calculator</loc>
+    <loc>https://thecalculator.us/math/completing-the-square-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/cone-volume-calculator</loc>
+    <loc>https://thecalculator.us/math/cone-volume-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/confidence-interval-calculator</loc>
+    <loc>https://thecalculator.us/math/confidence-interval-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/coprime-calculator</loc>
+    <loc>https://thecalculator.us/math/coprime-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/correlation-coefficient-calculator</loc>
+    <loc>https://thecalculator.us/math/correlation-coefficient-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/cosecant-calculator</loc>
+    <loc>https://thecalculator.us/math/cosecant-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/cotangent-calculator</loc>
+    <loc>https://thecalculator.us/math/cotangent-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/course-load-calculator</loc>
+    <loc>https://thecalculator.us/math/course-load-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/course-percentage-calculator</loc>
+    <loc>https://thecalculator.us/math/course-percentage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/credit-hour-gpa-calculator</loc>
+    <loc>https://thecalculator.us/math/credit-hour-gpa-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/critical-points-calculator</loc>
+    <loc>https://thecalculator.us/math/critical-points-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/cross-product-calculator</loc>
+    <loc>https://thecalculator.us/math/cross-product-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/cube-root-calculator</loc>
+    <loc>https://thecalculator.us/math/cube-root-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/decimal-to-fraction-calculator</loc>
+    <loc>https://thecalculator.us/math/decimal-to-fraction-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/degrees-to-radians-calculator</loc>
+    <loc>https://thecalculator.us/math/degrees-to-radians-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/derivative-calculator</loc>
+    <loc>https://thecalculator.us/math/derivative-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/determinant-calculator</loc>
+    <loc>https://thecalculator.us/math/determinant-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/directional-derivative-calculator</loc>
+    <loc>https://thecalculator.us/math/directional-derivative-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/distance-formula-calculator</loc>
+    <loc>https://thecalculator.us/math/distance-formula-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/dot-product-calculator</loc>
+    <loc>https://thecalculator.us/math/dot-product-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/eigenvalue-calculator</loc>
+    <loc>https://thecalculator.us/math/eigenvalue-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/eigenvector-calculator</loc>
+    <loc>https://thecalculator.us/math/eigenvector-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/ellipse-area-calculator</loc>
+    <loc>https://thecalculator.us/math/ellipse-area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/ellipse-perimeter-calculator</loc>
+    <loc>https://thecalculator.us/math/ellipse-perimeter-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/equation-simplifier</loc>
+    <loc>https://thecalculator.us/math/equation-simplifier</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/euler-totient-calculator</loc>
+    <loc>https://thecalculator.us/math/euler-totient-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/exam-preparation-time-calculator</loc>
+    <loc>https://thecalculator.us/math/exam-preparation-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/exam-score-needed-calculator</loc>
+    <loc>https://thecalculator.us/math/exam-score-needed-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/exponent-calculator</loc>
+    <loc>https://thecalculator.us/math/exponent-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/factor-calculator</loc>
+    <loc>https://thecalculator.us/math/factor-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/factoring-polynomials-calculator</loc>
+    <loc>https://thecalculator.us/math/factoring-polynomials-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/final-grade-calculator</loc>
+    <loc>https://thecalculator.us/math/final-grade-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/fraction-calculator</loc>
+    <loc>https://thecalculator.us/math/fraction-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/fraction-to-decimal-calculator</loc>
+    <loc>https://thecalculator.us/math/fraction-to-decimal-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/frustum-volume-calculator</loc>
+    <loc>https://thecalculator.us/math/frustum-volume-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/function-composition-calculator</loc>
+    <loc>https://thecalculator.us/math/function-composition-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/gcd-multiple-numbers-calculator</loc>
+    <loc>https://thecalculator.us/math/gcd-multiple-numbers-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/gcf-calculator</loc>
+    <loc>https://thecalculator.us/math/gcf-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/geometric-distribution-calculator</loc>
+    <loc>https://thecalculator.us/math/geometric-distribution-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/gpa-calculator</loc>
+    <loc>https://thecalculator.us/math/gpa-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/grade-calculator</loc>
+    <loc>https://thecalculator.us/math/grade-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/gradient-calculator</loc>
+    <loc>https://thecalculator.us/math/gradient-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/hex-calculator</loc>
+    <loc>https://thecalculator.us/math/hex-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/homework-time-calculator</loc>
+    <loc>https://thecalculator.us/math/homework-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/implicit-differentiation-calculator</loc>
+    <loc>https://thecalculator.us/math/implicit-differentiation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/inequality-solver</loc>
+    <loc>https://thecalculator.us/math/inequality-solver</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/inflection-point-calculator</loc>
+    <loc>https://thecalculator.us/math/inflection-point-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/integral-calculator</loc>
+    <loc>https://thecalculator.us/math/integral-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/inverse-function-calculator</loc>
+    <loc>https://thecalculator.us/math/inverse-function-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/kite-area-calculator</loc>
+    <loc>https://thecalculator.us/math/kite-area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/kurtosis-calculator</loc>
+    <loc>https://thecalculator.us/math/kurtosis-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/law-of-cosines-calculator</loc>
+    <loc>https://thecalculator.us/math/law-of-cosines-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/law-of-sines-calculator</loc>
+    <loc>https://thecalculator.us/math/law-of-sines-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/lcm-calculator</loc>
+    <loc>https://thecalculator.us/math/lcm-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/lcm-multiple-numbers-calculator</loc>
+    <loc>https://thecalculator.us/math/lcm-multiple-numbers-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/learning-pace-calculator</loc>
+    <loc>https://thecalculator.us/math/learning-pace-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/limit-calculator</loc>
+    <loc>https://thecalculator.us/math/limit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/linear-equation-calculator</loc>
+    <loc>https://thecalculator.us/math/linear-equation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/linear-equation-solver</loc>
+    <loc>https://thecalculator.us/math/linear-equation-solver</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/linear-regression-calculator</loc>
+    <loc>https://thecalculator.us/math/linear-regression-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/log-calculator</loc>
+    <loc>https://thecalculator.us/math/log-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/long-division-calculator</loc>
+    <loc>https://thecalculator.us/math/long-division-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/maclaurin-series-calculator</loc>
+    <loc>https://thecalculator.us/math/maclaurin-series-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/matrix-addition-calculator</loc>
+    <loc>https://thecalculator.us/math/matrix-addition-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/matrix-calculator</loc>
+    <loc>https://thecalculator.us/math/matrix-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/matrix-determinant-calculator</loc>
+    <loc>https://thecalculator.us/math/matrix-determinant-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/matrix-inverse-calculator</loc>
+    <loc>https://thecalculator.us/math/matrix-inverse-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/matrix-multiplication-calculator</loc>
+    <loc>https://thecalculator.us/math/matrix-multiplication-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/matrix-rank-calculator</loc>
+    <loc>https://thecalculator.us/math/matrix-rank-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/matrix-subtraction-calculator</loc>
+    <loc>https://thecalculator.us/math/matrix-subtraction-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/matrix-trace-calculator</loc>
+    <loc>https://thecalculator.us/math/matrix-trace-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/mean-median-mode-calculator</loc>
+    <loc>https://thecalculator.us/math/mean-median-mode-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/midpoint-calculator</loc>
+    <loc>https://thecalculator.us/math/midpoint-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/mixed-fraction-calculator</loc>
+    <loc>https://thecalculator.us/math/mixed-fraction-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/modular-arithmetic-calculator</loc>
+    <loc>https://thecalculator.us/math/modular-arithmetic-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/modulus-calculator</loc>
+    <loc>https://thecalculator.us/math/modulus-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/normal-distribution-calculator</loc>
+    <loc>https://thecalculator.us/math/normal-distribution-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/number-base-converter</loc>
+    <loc>https://thecalculator.us/math/number-base-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/number-sequence-calculator</loc>
+    <loc>https://thecalculator.us/math/number-sequence-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/p-value-calculator</loc>
+    <loc>https://thecalculator.us/math/p-value-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/parabola-calculator</loc>
+    <loc>https://thecalculator.us/math/parabola-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/partial-derivative-calculator</loc>
+    <loc>https://thecalculator.us/math/partial-derivative-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/partial-fraction-decomposition-calculator</loc>
+    <loc>https://thecalculator.us/math/partial-fraction-decomposition-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/percent-error-calculator</loc>
+    <loc>https://thecalculator.us/math/percent-error-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/percentage-decrease-calculator</loc>
+    <loc>https://thecalculator.us/math/percentage-decrease-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/percentage-increase-calculator</loc>
+    <loc>https://thecalculator.us/math/percentage-increase-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/percentile-calculator</loc>
+    <loc>https://thecalculator.us/math/percentile-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/permutation-combination-calculator</loc>
+    <loc>https://thecalculator.us/math/permutation-combination-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/poisson-distribution-calculator</loc>
+    <loc>https://thecalculator.us/math/poisson-distribution-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/polygon-area-calculator</loc>
+    <loc>https://thecalculator.us/math/polygon-area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/polynomial-calculator</loc>
+    <loc>https://thecalculator.us/math/polynomial-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/polynomial-long-division-calculator</loc>
+    <loc>https://thecalculator.us/math/polynomial-long-division-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/polynomial-roots-calculator</loc>
+    <loc>https://thecalculator.us/math/polynomial-roots-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/prime-factorization-calculator</loc>
+    <loc>https://thecalculator.us/math/prime-factorization-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/prime-number-generator</loc>
+    <loc>https://thecalculator.us/math/prime-number-generator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/prism-volume-calculator</loc>
+    <loc>https://thecalculator.us/math/prism-volume-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/probability-calculator</loc>
+    <loc>https://thecalculator.us/math/probability-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/pythagorean-theorem-calculator</loc>
+    <loc>https://thecalculator.us/math/pythagorean-theorem-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/quadratic-equation-calculator</loc>
+    <loc>https://thecalculator.us/math/quadratic-equation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/quartile-calculator</loc>
+    <loc>https://thecalculator.us/math/quartile-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/radians-to-degrees-calculator</loc>
+    <loc>https://thecalculator.us/math/radians-to-degrees-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/ratio-calculator</loc>
+    <loc>https://thecalculator.us/math/ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/rational-expression-simplifier</loc>
+    <loc>https://thecalculator.us/math/rational-expression-simplifier</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/reading-time-calculator</loc>
+    <loc>https://thecalculator.us/math/reading-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/regression-calculator</loc>
+    <loc>https://thecalculator.us/math/regression-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/regular-polygon-calculator</loc>
+    <loc>https://thecalculator.us/math/regular-polygon-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/required-final-grade-calculator</loc>
+    <loc>https://thecalculator.us/math/required-final-grade-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/rhombus-area-calculator</loc>
+    <loc>https://thecalculator.us/math/rhombus-area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/right-triangle-calculator</loc>
+    <loc>https://thecalculator.us/math/right-triangle-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/rounding-calculator</loc>
+    <loc>https://thecalculator.us/math/rounding-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/sample-size-calculator</loc>
+    <loc>https://thecalculator.us/math/sample-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/scientific-calculator</loc>
+    <loc>https://thecalculator.us/math/scientific-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/scientific-notation-calculator</loc>
+    <loc>https://thecalculator.us/math/scientific-notation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/secant-calculator</loc>
+    <loc>https://thecalculator.us/math/secant-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/second-derivative-calculator</loc>
+    <loc>https://thecalculator.us/math/second-derivative-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/sector-area-calculator</loc>
+    <loc>https://thecalculator.us/math/sector-area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/semester-grade-calculator</loc>
+    <loc>https://thecalculator.us/math/semester-grade-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/skewness-calculator</loc>
+    <loc>https://thecalculator.us/math/skewness-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/slope-calculator</loc>
+    <loc>https://thecalculator.us/math/slope-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/square-root-calculator</loc>
+    <loc>https://thecalculator.us/math/square-root-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/standard-deviation-calculator</loc>
+    <loc>https://thecalculator.us/math/standard-deviation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/statistics-calculator</loc>
+    <loc>https://thecalculator.us/math/statistics-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/study-efficiency-calculator</loc>
+    <loc>https://thecalculator.us/math/study-efficiency-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/study-schedule-calculator</loc>
+    <loc>https://thecalculator.us/math/study-schedule-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/study-time-calculator</loc>
+    <loc>https://thecalculator.us/math/study-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/surface-area-calculator</loc>
+    <loc>https://thecalculator.us/math/surface-area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/synthetic-division-calculator</loc>
+    <loc>https://thecalculator.us/math/synthetic-division-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/system-of-equations-calculator</loc>
+    <loc>https://thecalculator.us/math/system-of-equations-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/tangent-line-calculator</loc>
+    <loc>https://thecalculator.us/math/tangent-line-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/taylor-series-calculator</loc>
+    <loc>https://thecalculator.us/math/taylor-series-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/test-score-calculator</loc>
+    <loc>https://thecalculator.us/math/test-score-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/torus-volume-calculator</loc>
+    <loc>https://thecalculator.us/math/torus-volume-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/trapezoid-area-calculator</loc>
+    <loc>https://thecalculator.us/math/trapezoid-area-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/triangle-calculator</loc>
+    <loc>https://thecalculator.us/math/triangle-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/trigonometric-equation-solver</loc>
+    <loc>https://thecalculator.us/math/trigonometric-equation-solver</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/trigonometric-identities-calculator</loc>
+    <loc>https://thecalculator.us/math/trigonometric-identities-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/trigonometric-simplifier</loc>
+    <loc>https://thecalculator.us/math/trigonometric-simplifier</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/unit-circle-calculator</loc>
+    <loc>https://thecalculator.us/math/unit-circle-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/variance-calculator</loc>
+    <loc>https://thecalculator.us/math/variance-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/vector-calculator</loc>
+    <loc>https://thecalculator.us/math/vector-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/vector-magnitude-calculator</loc>
+    <loc>https://thecalculator.us/math/vector-magnitude-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/volume-calculator</loc>
+    <loc>https://thecalculator.us/math/volume-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/weighted-grade-calculator</loc>
+    <loc>https://thecalculator.us/math/weighted-grade-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/math/z-score-calculator</loc>
+    <loc>https://thecalculator.us/math/z-score-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/age-in-days-calculator</loc>
+    <loc>https://thecalculator.us/other/age-in-days-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/aquarium-volume-calculator</loc>
+    <loc>https://thecalculator.us/other/aquarium-volume-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/aspect-ratio-calculator</loc>
+    <loc>https://thecalculator.us/other/aspect-ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/audio-file-size-calculator</loc>
+    <loc>https://thecalculator.us/other/audio-file-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/baby-due-date-calculator</loc>
+    <loc>https://thecalculator.us/other/baby-due-date-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/baking-ratio-calculator</loc>
+    <loc>https://thecalculator.us/other/baking-ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/bandwidth-calculator</loc>
+    <loc>https://thecalculator.us/other/bandwidth-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/battery-life-calculator</loc>
+    <loc>https://thecalculator.us/other/battery-life-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/binary-converter</loc>
+    <loc>https://thecalculator.us/other/binary-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/binary-to-decimal-calculator</loc>
+    <loc>https://thecalculator.us/other/binary-to-decimal-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/blood-alcohol-calculator</loc>
+    <loc>https://thecalculator.us/other/blood-alcohol-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/blood-pressure-calculator</loc>
+    <loc>https://thecalculator.us/other/blood-pressure-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/break-even-calculator</loc>
+    <loc>https://thecalculator.us/other/break-even-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/caffeine-calculator</loc>
+    <loc>https://thecalculator.us/other/caffeine-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/calorie-per-serving-calculator</loc>
+    <loc>https://thecalculator.us/other/calorie-per-serving-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/calories-burned-calculator</loc>
+    <loc>https://thecalculator.us/other/calories-burned-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/candle-making-calculator</loc>
+    <loc>https://thecalculator.us/other/candle-making-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/candle-wax-calculator</loc>
+    <loc>https://thecalculator.us/other/candle-wax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/car-depreciation-calculator</loc>
+    <loc>https://thecalculator.us/other/car-depreciation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/car-insurance-calculator</loc>
+    <loc>https://thecalculator.us/other/car-insurance-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/car-lease-calculator</loc>
+    <loc>https://thecalculator.us/other/car-lease-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/carbon-footprint-calculator</loc>
+    <loc>https://thecalculator.us/other/carbon-footprint-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/cat-age-calculator</loc>
+    <loc>https://thecalculator.us/other/cat-age-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/ceiling-fan-size-calculator</loc>
+    <loc>https://thecalculator.us/other/ceiling-fan-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/child-height-predictor</loc>
+    <loc>https://thecalculator.us/other/child-height-predictor</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/closing-cost-calculator</loc>
+    <loc>https://thecalculator.us/other/closing-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/combination-calculator</loc>
+    <loc>https://thecalculator.us/other/combination-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/concrete-calculator</loc>
+    <loc>https://thecalculator.us/other/concrete-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/cooking-time-calculator</loc>
+    <loc>https://thecalculator.us/other/cooking-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/cost-per-unit-calculator</loc>
+    <loc>https://thecalculator.us/other/cost-per-unit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/currency-exchange-calculator</loc>
+    <loc>https://thecalculator.us/other/currency-exchange-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/curtain-calculator</loc>
+    <loc>https://thecalculator.us/other/curtain-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/cycling-speed-calculator</loc>
+    <loc>https://thecalculator.us/other/cycling-speed-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/data-transfer-calculator</loc>
+    <loc>https://thecalculator.us/other/data-transfer-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/deck-calculator</loc>
+    <loc>https://thecalculator.us/other/deck-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/deck-stain-calculator</loc>
+    <loc>https://thecalculator.us/other/deck-stain-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/dew-point-calculator</loc>
+    <loc>https://thecalculator.us/other/dew-point-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/diaper-cost-calculator</loc>
+    <loc>https://thecalculator.us/other/diaper-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/discount-calculator</loc>
+    <loc>https://thecalculator.us/other/discount-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/dog-age-calculator</loc>
+    <loc>https://thecalculator.us/other/dog-age-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/download-time-calculator</loc>
+    <loc>https://thecalculator.us/other/download-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/dpi-calculator</loc>
+    <loc>https://thecalculator.us/other/dpi-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/electricity-bill-calculator</loc>
+    <loc>https://thecalculator.us/other/electricity-bill-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/electricity-cost-calculator</loc>
+    <loc>https://thecalculator.us/other/electricity-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/emergency-fund-calculator</loc>
+    <loc>https://thecalculator.us/other/emergency-fund-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/engine-horsepower-calculator</loc>
+    <loc>https://thecalculator.us/other/engine-horsepower-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/ev-charging-calculator</loc>
+    <loc>https://thecalculator.us/other/ev-charging-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/event-budget-calculator</loc>
+    <loc>https://thecalculator.us/other/event-budget-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/event-seating-calculator</loc>
+    <loc>https://thecalculator.us/other/event-seating-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/exponent-calculator</loc>
+    <loc>https://thecalculator.us/other/exponent-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/fabric-calculator</loc>
+    <loc>https://thecalculator.us/other/fabric-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/fence-calculator</loc>
+    <loc>https://thecalculator.us/other/fence-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/fertilizer-calculator</loc>
+    <loc>https://thecalculator.us/other/fertilizer-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/fibonacci-calculator</loc>
+    <loc>https://thecalculator.us/other/fibonacci-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/flight-time-calculator</loc>
+    <loc>https://thecalculator.us/other/flight-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/flooring-calculator</loc>
+    <loc>https://thecalculator.us/other/flooring-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/fuel-cost-calculator</loc>
+    <loc>https://thecalculator.us/other/fuel-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/gcd-calculator</loc>
+    <loc>https://thecalculator.us/other/gcd-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/gold-price-calculator</loc>
+    <loc>https://thecalculator.us/other/gold-price-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/grade-average-calculator</loc>
+    <loc>https://thecalculator.us/other/grade-average-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/grade-calculator</loc>
+    <loc>https://thecalculator.us/other/grade-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/gravel-calculator</loc>
+    <loc>https://thecalculator.us/other/gravel-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/heat-index-calculator</loc>
+    <loc>https://thecalculator.us/other/heat-index-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/hex-to-decimal-calculator</loc>
+    <loc>https://thecalculator.us/other/hex-to-decimal-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/home-affordability-calculator</loc>
+    <loc>https://thecalculator.us/other/home-affordability-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/hourly-rate-calculator</loc>
+    <loc>https://thecalculator.us/other/hourly-rate-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/hvac-sizing-calculator</loc>
+    <loc>https://thecalculator.us/other/hvac-sizing-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/image-file-size-calculator</loc>
+    <loc>https://thecalculator.us/other/image-file-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/inflation-calculator</loc>
+    <loc>https://thecalculator.us/other/inflation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/insulation-calculator</loc>
+    <loc>https://thecalculator.us/other/insulation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/internet-speed-calculator</loc>
+    <loc>https://thecalculator.us/other/internet-speed-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/invoice-calculator</loc>
+    <loc>https://thecalculator.us/other/invoice-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/knitting-gauge-calculator</loc>
+    <loc>https://thecalculator.us/other/knitting-gauge-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/lawn-fertilizer-calculator</loc>
+    <loc>https://thecalculator.us/other/lawn-fertilizer-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/lawn-seed-calculator</loc>
+    <loc>https://thecalculator.us/other/lawn-seed-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/lcm-calculator</loc>
+    <loc>https://thecalculator.us/other/lcm-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/led-savings-calculator</loc>
+    <loc>https://thecalculator.us/other/led-savings-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/logarithm-calculator</loc>
+    <loc>https://thecalculator.us/other/logarithm-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/luggage-weight-calculator</loc>
+    <loc>https://thecalculator.us/other/luggage-weight-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/margin-calculator</loc>
+    <loc>https://thecalculator.us/other/margin-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/markup-calculator</loc>
+    <loc>https://thecalculator.us/other/markup-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/median-calculator</loc>
+    <loc>https://thecalculator.us/other/median-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/modulo-calculator</loc>
+    <loc>https://thecalculator.us/other/modulo-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/moving-cost-calculator</loc>
+    <loc>https://thecalculator.us/other/moving-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/mpg-calculator</loc>
+    <loc>https://thecalculator.us/other/mpg-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/mulch-calculator</loc>
+    <loc>https://thecalculator.us/other/mulch-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/oil-change-calculator</loc>
+    <loc>https://thecalculator.us/other/oil-change-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/one-rep-max-calculator</loc>
+    <loc>https://thecalculator.us/other/one-rep-max-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/paint-calculator</loc>
+    <loc>https://thecalculator.us/other/paint-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/paint-color-mixer</loc>
+    <loc>https://thecalculator.us/other/paint-color-mixer</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/paper-size-calculator</loc>
+    <loc>https://thecalculator.us/other/paper-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/party-food-calculator</loc>
+    <loc>https://thecalculator.us/other/party-food-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/password-strength-calculator</loc>
+    <loc>https://thecalculator.us/other/password-strength-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/percentage-change-calculator</loc>
+    <loc>https://thecalculator.us/other/percentage-change-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/permutation-calculator</loc>
+    <loc>https://thecalculator.us/other/permutation-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/pet-food-calculator</loc>
+    <loc>https://thecalculator.us/other/pet-food-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/photo-print-size-calculator</loc>
+    <loc>https://thecalculator.us/other/photo-print-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/photography-exposure-calculator</loc>
+    <loc>https://thecalculator.us/other/photography-exposure-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/pool-volume-calculator</loc>
+    <loc>https://thecalculator.us/other/pool-volume-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/price-per-sqft-calculator</loc>
+    <loc>https://thecalculator.us/other/price-per-sqft-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/prime-number-checker</loc>
+    <loc>https://thecalculator.us/other/prime-number-checker</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/probability-calculator</loc>
+    <loc>https://thecalculator.us/other/probability-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/profit-calculator</loc>
+    <loc>https://thecalculator.us/other/profit-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/profit-margin-calculator</loc>
+    <loc>https://thecalculator.us/other/profit-margin-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/property-tax-calculator</loc>
+    <loc>https://thecalculator.us/other/property-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/proportion-calculator</loc>
+    <loc>https://thecalculator.us/other/proportion-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/protein-calculator</loc>
+    <loc>https://thecalculator.us/other/protein-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/rainfall-calculator</loc>
+    <loc>https://thecalculator.us/other/rainfall-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/raised-bed-soil-calculator</loc>
+    <loc>https://thecalculator.us/other/raised-bed-soil-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/random-number-generator</loc>
+    <loc>https://thecalculator.us/other/random-number-generator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/ratio-calculator</loc>
+    <loc>https://thecalculator.us/other/ratio-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/reading-time-calculator</loc>
+    <loc>https://thecalculator.us/other/reading-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/real-estate-roi-calculator</loc>
+    <loc>https://thecalculator.us/other/real-estate-roi-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/recipe-scaler-calculator</loc>
+    <loc>https://thecalculator.us/other/recipe-scaler-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/rent-vs-buy-calculator</loc>
+    <loc>https://thecalculator.us/other/rent-vs-buy-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/ring-size-calculator</loc>
+    <loc>https://thecalculator.us/other/ring-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/road-trip-calculator</loc>
+    <loc>https://thecalculator.us/other/road-trip-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/roman-numeral-converter</loc>
+    <loc>https://thecalculator.us/other/roman-numeral-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/running-pace-calculator</loc>
+    <loc>https://thecalculator.us/other/running-pace-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/savings-goal-calculator</loc>
+    <loc>https://thecalculator.us/other/savings-goal-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/scholarship-calculator</loc>
+    <loc>https://thecalculator.us/other/scholarship-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/screen-resolution-calculator</loc>
+    <loc>https://thecalculator.us/other/screen-resolution-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/screen-size-calculator</loc>
+    <loc>https://thecalculator.us/other/screen-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/seed-spacing-calculator</loc>
+    <loc>https://thecalculator.us/other/seed-spacing-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/shipping-cost-calculator</loc>
+    <loc>https://thecalculator.us/other/shipping-cost-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/shoe-size-converter</loc>
+    <loc>https://thecalculator.us/other/shoe-size-converter</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/shoe-size-converter-intl</loc>
+    <loc>https://thecalculator.us/other/shoe-size-converter-intl</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/soil-calculator</loc>
+    <loc>https://thecalculator.us/other/soil-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/solar-panel-calculator</loc>
+    <loc>https://thecalculator.us/other/solar-panel-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/square-footage-calculator</loc>
+    <loc>https://thecalculator.us/other/square-footage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/square-root-calculator</loc>
+    <loc>https://thecalculator.us/other/square-root-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/stamp-duty-calculator</loc>
+    <loc>https://thecalculator.us/other/stamp-duty-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/steps-to-distance-calculator</loc>
+    <loc>https://thecalculator.us/other/steps-to-distance-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/storage-converter-calculator</loc>
+    <loc>https://thecalculator.us/other/storage-converter-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/study-time-calculator</loc>
+    <loc>https://thecalculator.us/other/study-time-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/swimming-calories-calculator</loc>
+    <loc>https://thecalculator.us/other/swimming-calories-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/tile-calculator</loc>
+    <loc>https://thecalculator.us/other/tile-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/tip-split-calculator</loc>
+    <loc>https://thecalculator.us/other/tip-split-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/tire-size-calculator</loc>
+    <loc>https://thecalculator.us/other/tire-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/typing-speed-calculator</loc>
+    <loc>https://thecalculator.us/other/typing-speed-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/unit-conversion-cooking</loc>
+    <loc>https://thecalculator.us/other/unit-conversion-cooking</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/uv-index-exposure-calculator</loc>
+    <loc>https://thecalculator.us/other/uv-index-exposure-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/variance-calculator</loc>
+    <loc>https://thecalculator.us/other/variance-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/vat-calculator</loc>
+    <loc>https://thecalculator.us/other/vat-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/video-file-size-calculator</loc>
+    <loc>https://thecalculator.us/other/video-file-size-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/wallpaper-calculator</loc>
+    <loc>https://thecalculator.us/other/wallpaper-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/water-intake-calculator</loc>
+    <loc>https://thecalculator.us/other/water-intake-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/wedding-budget-calculator</loc>
+    <loc>https://thecalculator.us/other/wedding-budget-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/weighted-average-calculator</loc>
+    <loc>https://thecalculator.us/other/weighted-average-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/wind-chill-calculator</loc>
+    <loc>https://thecalculator.us/other/wind-chill-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/word-count-calculator</loc>
+    <loc>https://thecalculator.us/other/word-count-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/yarn-calculator</loc>
+    <loc>https://thecalculator.us/other/yarn-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/other/z-score-calculator</loc>
+    <loc>https://thecalculator.us/other/z-score-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/realestate/property-tax-calculator</loc>
+    <loc>https://thecalculator.us/realestate/property-tax-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/realestate/real-estate-roi-calculator</loc>
+    <loc>https://thecalculator.us/realestate/real-estate-roi-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/realestate/rent-vs-buy-calculator</loc>
+    <loc>https://thecalculator.us/realestate/rent-vs-buy-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/realestate/square-footage-calculator</loc>
+    <loc>https://thecalculator.us/realestate/square-footage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/realestate/stamp-duty-calculator</loc>
+    <loc>https://thecalculator.us/realestate/stamp-duty-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/acceleration-calculator</loc>
+    <loc>https://thecalculator.us/science/acceleration-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/density-calculator</loc>
+    <loc>https://thecalculator.us/science/density-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/electricity-power-calculator</loc>
+    <loc>https://thecalculator.us/science/electricity-power-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/force-calculator</loc>
+    <loc>https://thecalculator.us/science/force-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/frequency-calculator</loc>
+    <loc>https://thecalculator.us/science/frequency-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/half-life-calculator</loc>
+    <loc>https://thecalculator.us/science/half-life-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/ideal-gas-law-calculator</loc>
+    <loc>https://thecalculator.us/science/ideal-gas-law-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/kinetic-energy-calculator</loc>
+    <loc>https://thecalculator.us/science/kinetic-energy-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/mass-calculator</loc>
+    <loc>https://thecalculator.us/science/mass-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/molar-mass-calculator</loc>
+    <loc>https://thecalculator.us/science/molar-mass-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/molecular-weight-calculator</loc>
+    <loc>https://thecalculator.us/science/molecular-weight-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/ohms-law-calculator</loc>
+    <loc>https://thecalculator.us/science/ohms-law-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/ph-calculator</loc>
+    <loc>https://thecalculator.us/science/ph-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/potential-energy-calculator</loc>
+    <loc>https://thecalculator.us/science/potential-energy-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/pressure-calculator</loc>
+    <loc>https://thecalculator.us/science/pressure-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/speed-calculator</loc>
+    <loc>https://thecalculator.us/science/speed-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/torque-calculator</loc>
+    <loc>https://thecalculator.us/science/torque-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/velocity-calculator</loc>
+    <loc>https://thecalculator.us/science/velocity-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/voltage-calculator</loc>
+    <loc>https://thecalculator.us/science/voltage-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/wavelength-calculator</loc>
+    <loc>https://thecalculator.us/science/wavelength-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thecalculator.us/science/weight-calculator</loc>
+    <loc>https://thecalculator.us/science/weight-calculator</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
