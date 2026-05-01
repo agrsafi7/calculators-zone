@@ -199,7 +199,7 @@ const Index = () => {
             <p className="text-sm text-muted-foreground mt-1">Most visited calculators this week</p>
           </div>
           <Link to="/popular" className="text-sm font-semibold text-primary flex items-center gap-1 hover:underline">
-            View All <ArrowRight className="w-4 h-4" />
+            View all trending calculators <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
@@ -210,9 +210,10 @@ const Index = () => {
               <p className="text-sm text-muted-foreground mb-4 flex-1">{tool.description}</p>
               <Link
                 to={`/${tool.categorySlug}/${tool.slug}`}
+                aria-label={`Open ${tool.name}`}
                 className="block w-full text-center py-2.5 bg-secondary text-foreground text-sm font-semibold rounded-lg hover:bg-secondary/80 transition-colors"
               >
-                Calculate
+                Open {tool.name}
               </Link>
             </div>
           ))}
