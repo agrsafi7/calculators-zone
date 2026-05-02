@@ -214,7 +214,7 @@ const PercentageCalculator = () => {
             <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
               Calculation Mode
             </p>
-            <ToggleSwitch
+            <ToggleSwitch<CalcMode>
               fullWidth
               value={mode}
               onChange={setMode}
