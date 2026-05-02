@@ -1,6 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, RotateCcw } from "lucide-react";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
@@ -12,6 +11,29 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  CalculatorLayout,
+  InputPanel,
+  ResultsPanel,
+  InputField,
+  ToggleSwitch,
+  CTAButton,
+  LegendRow,
+  ResultStatRow,
+  CHART_COLORS,
+} from "@/components/calculator-ui";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip as RechartsTooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 const relatedCalculators = [
   { name: "GPA Calculator", slug: "gpa-calculator", icon: "hash", category: "math" },
@@ -24,29 +46,50 @@ const PercentageCalculator = () => {
   const [mode, setMode] = useState<CalcMode>("whatPercent");
   const [val1, setVal1] = useState(25);
   const [val2, setVal2] = useState(200);
-  const [result, setResult] = useState<string>("");
 
   useEffect(() => {
-    addRecentCalculator({ slug: "percentage-calculator", categorySlug: "math", name: "Percentage Calculator", category: "Math" });
+    addRecentCalculator({
+      slug: "percentage-calculator",
+      categorySlug: "math",
+      name: "Percentage Calculator",
+      category: "Math",
+    });
   }, []);
 
-  const calculate = () => {
+  const computed = useMemo(() => {
     if (mode === "whatPercent") {
-      setResult(`${val1} is ${((val1 / val2) * 100).toFixed(2)}% of ${val2}`);
-    } else if (mode === "percentOf") {
-      setResult(`${val1}% of ${val2} = ${((val1 / 100) * val2).toFixed(2)}`);
-    } else {
-      const change = ((val2 - val1) / val1) * 100;
-      setResult(`Change from ${val1} to ${val2} = ${change >= 0 ? "+" : ""}${change.toFixed(2)}%`);
+      const pct = (val1 / val2) * 100;
+      return {
+        center: `${pct.toFixed(2)}%`,
+        descriptor: `${val1} of ${val2}`,
+        sentence: `${val1} is ${pct.toFixed(2)}% of ${val2}`,
+        partA: val1,
+        partB: Math.max(val2 - val1, 0),
+      };
     }
-  };
-
-  useEffect(() => { calculate(); }, [mode, val1, val2]);
+    if (mode === "percentOf") {
+      const result = (val1 / 100) * val2;
+      return {
+        center: result.toFixed(2),
+        descriptor: `${val1}% of ${val2}`,
+        sentence: `${val1}% of ${val2} = ${result.toFixed(2)}`,
+        partA: result,
+        partB: Math.max(val2 - result, 0),
+      };
+    }
+    const change = ((val2 - val1) / val1) * 100;
+    return {
+      center: `${change >= 0 ? "+" : ""}${change.toFixed(2)}%`,
+      descriptor: `${val1} → ${val2}`,
+      sentence: `Change from ${val1} to ${val2} = ${change >= 0 ? "+" : ""}${change.toFixed(2)}%`,
+      partA: Math.abs(val2 - val1),
+      partB: Math.min(val1, val2),
+    };
+  }, [mode, val1, val2]);
 
   const handleReset = () => {
     setVal1(25);
     setVal2(200);
-    setResult("");
   };
 
   const modeLabels: Record<CalcMode, { label: string; input1: string; input2: string }> = {
@@ -54,111 +97,47 @@ const PercentageCalculator = () => {
     percentOf: { label: "X% of Y", input1: "Percentage (X)", input2: "Value (Y)" },
     change: { label: "% Change", input1: "From Value", input2: "To Value" },
   };
-
   const current = modeLabels[mode];
 
+  // Donut: part vs remainder
+  const donutData = [
+    { name: mode === "change" ? "Difference" : "Part", value: computed.partA, color: CHART_COLORS.blue },
+    { name: mode === "change" ? "Smaller" : "Remainder", value: computed.partB, color: CHART_COLORS.lightBlue },
+  ];
+
+  const barData = [
+    { name: "X", value: val1, color: CHART_COLORS.blue },
+    { name: "Y", value: val2, color: CHART_COLORS.navy },
+  ];
+
   return (
-    <div>
-      <SEO title="Percentage Calculator" description="Free percentage calculator. Calculate percentages, percentage of a number, and percentage change. Quick and accurate." canonical="/math/percentage-calculator" />
-      <nav className="container mx-auto px-4 py-4 text-sm text-muted-foreground flex items-center gap-1.5">
-        <Link to="/" className="hover:text-foreground">Home</Link>
-        <ChevronRight className="w-3 h-3" />
-        <Link to="/category/math" className="hover:text-foreground">Math</Link>
-        <ChevronRight className="w-3 h-3" />
-        <span className="text-foreground">Percentage Calculator</span>
-      </nav>
-
-      <div className="container mx-auto px-4 pb-12">
-        <div className="flex flex-col lg:flex-row gap-8">
-          <div className="flex-1 min-w-0">
-            <h1 className="text-2xl md:text-3xl font-black mb-3">Percentage Calculator</h1>
-            <p className="text-muted-foreground text-sm max-w-xl mb-6">
-              Quickly calculate percentages, percentage of a number, and percentage change between two values. Useful for discounts, tips, grades, and data analysis.
-            </p>
-
-            <AdPlaceholder size="leaderboard" />
-
-            <div className="bg-card rounded-xl border border-border p-5 md:p-8 mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                <div>
-                  <h3 className="font-semibold text-sm mb-4 flex items-center gap-2">
-                    <span className="text-primary">≡</span> Calculation Mode
-                  </h3>
-
-                  {/* Mode tabs */}
-                  <div className="flex rounded-lg border border-border overflow-hidden mb-4">
-                    {(["whatPercent", "percentOf", "change"] as CalcMode[]).map((m) => (
-                      <button
-                        key={m}
-                        onClick={() => setMode(m)}
-                        className={`flex-1 py-2 text-xs font-medium transition-colors ${mode === m ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground"}`}
-                      >
-                        {modeLabels[m].label}
-                      </button>
-                    ))}
-                  </div>
-
-                  <div className="space-y-4">
-                    <div>
-                      <label className="text-xs font-medium text-muted-foreground block mb-1.5">{current.input1}</label>
-                      <input
-                        type="number"
-                        value={val1}
-                        onChange={(e) => setVal1(Number(e.target.value))}
-                        className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-xs font-medium text-muted-foreground block mb-1.5">{current.input2}</label>
-                      <input
-                        type="number"
-                        value={val2}
-                        onChange={(e) => setVal2(Number(e.target.value))}
-                        className="w-full px-3 py-2.5 rounded-lg border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex gap-2 mt-6">
-                    <button
-                      onClick={calculate}
-                      className="flex-1 py-2.5 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
-                    >
-                      Calculate
-                    </button>
-                    <button
-                      onClick={handleReset}
-                      className="p-2.5 rounded-lg border border-border text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <RotateCcw className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex flex-col items-center justify-center text-center">
-                  <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">Result</p>
-                  <div className="bg-secondary rounded-xl p-6 w-full">
-                    <p className="text-xl md:text-2xl font-black text-foreground">{result}</p>
-                  </div>
-
-                  <div className="mt-6 w-full text-left space-y-3 text-sm text-muted-foreground">
-                    <p><strong className="text-foreground">Tip:</strong> To find what percent A is of B, divide A by B and multiply by 100.</p>
-                    <p><strong className="text-foreground">Example:</strong> 25 is 12.5% of 200 because 25 ÷ 200 × 100 = 12.5%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="my-8">
+    <>
+      <SEO
+        title="Percentage Calculator"
+        description="Free percentage calculator. Calculate percentages, percentage of a number, and percentage change. Quick and accurate."
+        canonical="/math/percentage-calculator"
+      />
+      <CalculatorLayout
+        title="Percentage Calculator"
+        description="Quickly calculate percentages, percentage of a number, and percentage change between two values."
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Math", url: "/category/math" },
+          { name: "Percentage Calculator" },
+        ]}
+        belowCard={
+          <>
+            <div className="my-6">
               <AdPlaceholder size="responsive" />
             </div>
 
-            <section className="mb-8">
+            <section className="mb-8 bg-card rounded-2xl border border-border p-6 shadow-sm">
               <h2 className="text-xl font-bold mb-3 flex items-center gap-2">
                 <span className="text-primary">💡</span> How to use this calculator
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Choose a calculation mode: find what percentage one number is of another, calculate a percentage of a value, or find the percentage change between two numbers.
+                Choose a calculation mode: find what percentage one number is of another,
+                calculate a percentage of a value, or find the percentage change between two numbers.
               </p>
               <h3 className="font-semibold text-base mb-2">Common Formulas</h3>
               <div className="formula-block mb-2">
@@ -172,37 +151,49 @@ const PercentageCalculator = () => {
 
             <section className="mb-8">
               <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
-              <Accordion type="single" collapsible className="border border-border rounded-xl overflow-hidden">
+              <Accordion
+                type="single"
+                collapsible
+                className="border border-border rounded-2xl overflow-hidden bg-card"
+              >
                 <AccordionItem value="q1" className="border-b border-border px-5">
-                  <AccordionTrigger className="text-sm font-medium">How do I calculate a discount?</AccordionTrigger>
+                  <AccordionTrigger className="text-sm font-medium">
+                    How do I calculate a discount?
+                  </AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
-                    To calculate a discount, use the "X% of Y" mode. Enter the discount percentage and the original price. For example, 20% of $50 = $10 discount, so the final price is $40.
+                    Use the "X% of Y" mode. Enter the discount percentage and the original price.
+                    For example, 20% of $50 = $10 discount, so the final price is $40.
                   </AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="q2" className="px-5">
-                  <AccordionTrigger className="text-sm font-medium">What is percentage change used for?</AccordionTrigger>
+                  <AccordionTrigger className="text-sm font-medium">
+                    What is percentage change used for?
+                  </AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">
-                    Percentage change measures how much a value has increased or decreased relative to its original value. It's commonly used in finance (stock returns), science (experimental results), and everyday comparisons (price changes).
+                    Percentage change measures how much a value has increased or decreased relative
+                    to its original value. Common in finance, science, and price comparisons.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
             </section>
 
             <AdPlaceholder size="leaderboard" />
-          </div>
-
-          <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
-            <div className="bg-card rounded-xl border border-border p-5">
-              <h3 className="font-bold text-sm mb-4 flex items-center gap-2">
-                <span className="text-primary">≡</span> Related Calculators
-              </h3>
+          </>
+        }
+        sidebar={
+          <>
+            <div className="bg-card rounded-2xl border border-border p-5 shadow-sm">
+              <h3 className="font-bold text-sm mb-4">Related Calculators</h3>
               <ul className="space-y-1">
                 {relatedCalculators.map((calc) => {
                   const Icon = getCategoryIcon(calc.icon);
                   return (
                     <li key={calc.slug}>
-                      <Link to={`/${calc.category}/${calc.slug}`} className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-secondary transition-colors text-sm">
-                        <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center shrink-0">
+                      <Link
+                        to={`/${calc.category}/${calc.slug}`}
+                        className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-secondary transition-colors text-sm"
+                      >
+                        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                           <Icon className="w-4 h-4 text-primary" />
                         </div>
                         {calc.name}
@@ -214,10 +205,144 @@ const PercentageCalculator = () => {
             </div>
             <AdPlaceholder size="rectangle" />
             <RecentlyUsed />
-          </aside>
-        </div>
-      </div>
-    </div>
+          </>
+        }
+      >
+        {/* LEFT: Inputs */}
+        <InputPanel>
+          <div>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+              Calculation Mode
+            </p>
+            <ToggleSwitch
+              fullWidth
+              value={mode}
+              onChange={setMode}
+              options={[
+                { value: "whatPercent", label: "% of" },
+                { value: "percentOf", label: "X% of Y" },
+                { value: "change", label: "Change" },
+              ]}
+            />
+          </div>
+
+          <InputField
+            label={current.input1}
+            value={val1}
+            onChange={(v) => setVal1(Number(v))}
+          />
+          <InputField
+            label={current.input2}
+            value={val2}
+            onChange={(v) => setVal2(Number(v))}
+          />
+
+          <div className="pt-2 flex gap-2">
+            <CTAButton>Calculate</CTAButton>
+            <button
+              onClick={handleReset}
+              className="px-4 py-3 rounded-lg border border-border text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+            >
+              Reset
+            </button>
+          </div>
+        </InputPanel>
+
+        {/* RIGHT: Results */}
+        <ResultsPanel>
+          <div className="flex items-center justify-between">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">
+              Result
+            </p>
+            <span className="text-[10px] text-muted-foreground bg-card border border-border rounded-full px-3 py-1">
+              {current.label}
+            </span>
+          </div>
+
+          <h2 className="text-base font-bold text-foreground">{computed.descriptor}</h2>
+
+          {/* Donut */}
+          <div className="relative">
+            <ResponsiveContainer width="100%" height={200}>
+              <PieChart>
+                <Pie
+                  data={donutData}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={85}
+                  dataKey="value"
+                  strokeWidth={3}
+                  stroke="hsl(var(--card))"
+                >
+                  {donutData.map((entry, i) => (
+                    <Cell key={i} fill={entry.color} />
+                  ))}
+                </Pie>
+                <RechartsTooltip
+                  contentStyle={{
+                    background: "hsl(var(--card))",
+                    border: "1px solid hsl(var(--border))",
+                    borderRadius: "8px",
+                    fontSize: "12px",
+                  }}
+                />
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+              <p className="text-2xl md:text-3xl font-black text-foreground">{computed.center}</p>
+              <p className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
+                Result
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-1">
+            {donutData.map((d) => (
+              <LegendRow
+                key={d.name}
+                color={d.color}
+                label={d.name}
+                value={d.value.toFixed(2)}
+              />
+            ))}
+          </div>
+
+          {/* Bar comparison */}
+          <div>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+              X vs Y
+            </p>
+            <ResponsiveContainer width="100%" height={120}>
+              <BarChart data={barData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                <XAxis dataKey="name" tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} />
+                <YAxis tick={{ fontSize: 11, fill: "hsl(var(--muted-foreground))" }} />
+                <RechartsTooltip
+                  contentStyle={{
+                    background: "hsl(var(--card))",
+                    border: "1px solid hsl(var(--border))",
+                    borderRadius: "8px",
+                    fontSize: "12px",
+                  }}
+                />
+                <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                  {barData.map((entry, i) => (
+                    <Cell key={i} fill={entry.color} />
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          <div className="border-t border-border pt-2">
+            <ResultStatRow label="X" value={String(val1)} />
+            <ResultStatRow label="Y" value={String(val2)} />
+            <ResultStatRow label="Result" value={computed.center} emphasize />
+          </div>
+        </ResultsPanel>
+      </CalculatorLayout>
+    </>
   );
 };
 
