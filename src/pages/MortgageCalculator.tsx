@@ -243,7 +243,7 @@ const MortgageCalculator = () => {
                     <Bar
                       dataKey="interest"
                       name="Interest"
-                      fill={SEG_COLORS.navy}
+                      fill={SEG_COLORS.interest}
                       radius={[2, 2, 0, 0]}
                       stackId="a"
                     />
