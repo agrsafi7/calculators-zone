@@ -71,7 +71,7 @@ const commonlyUsed = [
   { name: "BMI Calculator", slug: "bmi-calculator", categorySlug: "health", icon: Heart },
   { name: "Age Calculator", slug: "age-calculator", categorySlug: "datetime", icon: Calculator },
   { name: "Percentage Calculator", slug: "percentage-calculator", categorySlug: "math", icon: Hash },
-  { name: "Tip Calculator", slug: "tip-calculator", categorySlug: "lifestyle", icon: Calculator },
+  { name: "Tip Calculator", slug: "tip-calculator", categorySlug: "finance", icon: Calculator },
   { name: "Loan Calculator", slug: "loan-calculator", categorySlug: "finance", icon: Home },
   { name: "GPA Calculator", slug: "gpa-calculator", categorySlug: "math", icon: Hash },
   { name: "Calorie Calculator", slug: "calorie-calculator", categorySlug: "health", icon: Heart },
