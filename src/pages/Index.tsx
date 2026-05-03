@@ -138,7 +138,27 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
             {/* Left: Calculator */}
             <div className="order-2 lg:order-1">
-              <Suspense fallback={<div className="bg-card rounded-2xl shadow-lg border border-border h-[480px]" />}>
+              <Suspense
+                fallback={
+                  <div
+                    className="bg-card rounded-2xl shadow-lg border border-border p-5 w-full animate-pulse"
+                    role="status"
+                    aria-label="Loading calculator"
+                  >
+                    <div className="h-16 rounded-lg bg-muted mb-4" />
+                    <div className="grid grid-cols-5 gap-2 mb-3">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <div key={i} className="h-9 rounded bg-muted" />
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-4 gap-2">
+                      {Array.from({ length: 20 }).map((_, i) => (
+                        <div key={i} className="h-11 rounded bg-muted" />
+                      ))}
+                    </div>
+                  </div>
+                }
+              >
                 <HeroCalculator />
               </Suspense>
             </div>
@@ -179,6 +199,26 @@ const Index = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Trending Now — pills */}
+      <section className="container mx-auto px-4 pt-2 pb-4 animate-stagger-2">
+        <div className="flex items-center gap-2 mb-3 flex-wrap">
+          <span className="text-xs font-bold uppercase tracking-wider text-primary">🔥 Trending Now</span>
+          <span className="text-xs text-muted-foreground">Most popular this week</span>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {commonlyUsed.map((calc) => (
+            <Link
+              key={calc.slug}
+              to={`/${calc.categorySlug}/${calc.slug}`}
+              className="inline-flex items-center gap-2 px-3.5 py-2 bg-card border border-border rounded-full hover:border-primary/40 hover:bg-primary/5 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium btn-press"
+            >
+              <calc.icon className="w-3.5 h-3.5 text-primary" />
+              <span>{calc.name}</span>
+            </Link>
+          ))}
         </div>
       </section>
 
