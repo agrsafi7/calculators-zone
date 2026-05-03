@@ -132,36 +132,50 @@ const Index = () => {
         keywords="online calculator, free calculator, mortgage calculator, BMI calculator, percentage calculator, age calculator, unit converter, GPA calculator, calorie calculator, loan calculator, tip calculator, scientific calculator, math calculator, finance calculator, health calculator"
       />
 
-      {/* Hero Section */}
-      <section className="hero-section py-6 md:py-10 animate-stagger-1">
+      {/* Hero Section — two-column with calculator + headline */}
+      <section className="hero-section py-8 md:py-16 animate-stagger-1">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-3">
-              Calculate <span className="text-primary">Anything</span>, Instantly.
-            </h1>
-            <p className="text-sm md:text-base text-muted-foreground mb-6 max-w-lg mx-auto">
-              {totalCalcs.toLocaleString()}+ free online calculators for finance, health, math, science & everyday life. Fast, accurate & works on any device.
-            </p>
-
-            <div className="max-w-lg mx-auto">
-              <SearchBar large placeholder="Search calculators — try 'Mortgage' or 'BMI'..." />
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
+            {/* Left: Calculator */}
+            <div className="order-2 lg:order-1">
+              <Suspense fallback={<div className="bg-card rounded-2xl shadow-lg border border-border h-[480px]" />}>
+                <HeroCalculator />
+              </Suspense>
             </div>
 
-            <div className="mt-8">
-              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                Commonly Used
+            {/* Right: Headline + Search + Quick Access */}
+            <div className="order-1 lg:order-2">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-4 leading-[1.05]">
+                Precision Tools for Every Calculation.
+              </h1>
+              <p className="text-base md:text-lg text-muted-foreground mb-6 max-w-xl">
+                Fast, accurate, and easy-to-use calculators for math, finance, and science.
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 max-w-xl mx-auto">
-                {commonlyUsed.map((calc) => (
-                  <Link
-                    key={calc.slug}
-                    to={`/${calc.categorySlug}/${calc.slug}`}
-                    className="flex items-center gap-2 px-3 py-2 bg-card border border-border rounded-lg hover:border-primary/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group text-xs sm:text-sm btn-press"
-                  >
-                    <calc.icon className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
-                    <span className="font-medium truncate">{calc.name}</span>
-                  </Link>
-                ))}
+
+              <div className="max-w-xl">
+                <SearchBar large placeholder="Search for a calculator..." />
+              </div>
+
+              <div className="mt-6">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                  Quick Access
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { name: "BMI", slug: "bmi-calculator", categorySlug: "health", icon: Heart },
+                    { name: "Tip", slug: "tip-calculator", categorySlug: "finance", icon: Receipt },
+                    { name: "Percentage", slug: "percentage-calculator", categorySlug: "math", icon: Percent },
+                  ].map((calc) => (
+                    <Link
+                      key={calc.slug}
+                      to={`/${calc.categorySlug}/${calc.slug}`}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full hover:border-primary/40 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group text-sm font-medium btn-press"
+                    >
+                      <calc.icon className="w-4 h-4 text-primary" />
+                      <span>{calc.name}</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
