@@ -138,7 +138,27 @@ const Index = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
             {/* Left: Calculator */}
             <div className="order-2 lg:order-1">
-              <Suspense fallback={<div className="bg-card rounded-2xl shadow-lg border border-border h-[480px]" />}>
+              <Suspense
+                fallback={
+                  <div
+                    className="bg-card rounded-2xl shadow-lg border border-border p-5 w-full animate-pulse"
+                    role="status"
+                    aria-label="Loading calculator"
+                  >
+                    <div className="h-16 rounded-lg bg-muted mb-4" />
+                    <div className="grid grid-cols-5 gap-2 mb-3">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <div key={i} className="h-9 rounded bg-muted" />
+                      ))}
+                    </div>
+                    <div className="grid grid-cols-4 gap-2">
+                      {Array.from({ length: 20 }).map((_, i) => (
+                        <div key={i} className="h-11 rounded bg-muted" />
+                      ))}
+                    </div>
+                  </div>
+                }
+              >
                 <HeroCalculator />
               </Suspense>
             </div>
