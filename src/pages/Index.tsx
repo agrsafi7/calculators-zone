@@ -71,7 +71,7 @@ const commonlyUsed = [
   { name: "BMI Calculator", slug: "bmi-calculator", categorySlug: "health", icon: Heart },
   { name: "Age Calculator", slug: "age-calculator", categorySlug: "datetime", icon: Calculator },
   { name: "Percentage Calculator", slug: "percentage-calculator", categorySlug: "math", icon: Hash },
-  { name: "Tip Calculator", slug: "tip-calculator", categorySlug: "lifestyle", icon: Calculator },
+  { name: "Tip Calculator", slug: "tip-calculator", categorySlug: "finance", icon: Calculator },
   { name: "Loan Calculator", slug: "loan-calculator", categorySlug: "finance", icon: Home },
   { name: "GPA Calculator", slug: "gpa-calculator", categorySlug: "math", icon: Hash },
   { name: "Calorie Calculator", slug: "calorie-calculator", categorySlug: "health", icon: Heart },
@@ -171,10 +171,10 @@ const Index = () => {
         <AdPlaceholder size="leaderboard" />
       </section>
 
-      {/* Explore Categories */}
-      <section className="container mx-auto px-4 py-8 animate-stagger-3">
+      {/* Browse Categories */}
+      <section className="container mx-auto px-4 py-10 animate-stagger-3">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-black underline underline-offset-8 decoration-primary decoration-4">Explore Categories</h2>
+          <h2 className="text-3xl md:text-4xl font-black tracking-tight">Browse Categories</h2>
           <p className="text-sm text-muted-foreground mt-3">Browse our extensive library of calculation tools</p>
         </div>
 
@@ -190,11 +190,11 @@ const Index = () => {
         <AdPlaceholder size="leaderboard" />
       </section>
 
-      {/* Trending Tools */}
+      {/* Trending Now */}
       <section className="container mx-auto px-4 py-8 animate-stagger-4">
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
           <div>
-            <h2 className="text-2xl font-bold">Trending Tools</h2>
+            <h2 className="text-2xl md:text-3xl font-bold">Trending Now</h2>
             <p className="text-sm text-muted-foreground mt-1">Most visited calculators this week</p>
           </div>
           <Link to="/popular" className="text-sm font-semibold text-primary flex items-center gap-1 hover:underline">
