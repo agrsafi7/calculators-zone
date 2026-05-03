@@ -1,9 +1,11 @@
+import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Home, Heart, Calculator, Hash, ChevronRight } from "lucide-react";
+import { ArrowRight, Home, Heart, Calculator, Hash, ChevronRight, Search, Percent, Receipt } from "lucide-react";
 import { categories, getCategoryIcon } from "@/data/calculators";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import SEO from "@/components/SEO";
+const HeroCalculator = lazy(() => import("@/components/HeroCalculator"));
 const totalCalcs = 1093;
 
 // Category cards with descriptions and subcategory items
