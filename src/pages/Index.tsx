@@ -94,27 +94,27 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
 
   return (
     <Link to={`/category/${cat.slug}`} className="group block btn-press" aria-label={`Browse ${cat.name} calculators`}>
-      <GradientCard className="p-4 h-full">
+      <GradientCard variant="light" className="p-4 h-full">
         <div className="flex items-center gap-2.5 mb-3">
-          <div className="w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10 group-hover:bg-white/15 transition-all">
-            <Icon className="w-4 h-4 text-white" />
+          <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/15 group-hover:bg-primary/15 transition-all">
+            <Icon className="w-4 h-4 text-primary" />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-sm text-white">{cat.name}</h3>
+            <h3 className="font-bold text-sm text-foreground">{cat.name}</h3>
           </div>
-          <ChevronRight className="w-4 h-4 text-white/60 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
+          <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
         </div>
 
         <ul className="space-y-0.5 mb-2">
           {cat.items.slice(0, 4).map((item) => (
-            <li key={item} className="flex items-center gap-2 text-xs text-white/70 py-0.5">
-              <span className="w-1 h-1 bg-purple-400 rounded-full shrink-0" />
+            <li key={item} className="flex items-center gap-2 text-xs text-muted-foreground py-0.5">
+              <span className="w-1 h-1 bg-primary/60 rounded-full shrink-0" />
               {item}
             </li>
           ))}
         </ul>
 
-        <p className="text-[11px] text-white/50 line-clamp-2 leading-relaxed hidden sm:block">
+        <p className="text-[11px] text-muted-foreground/80 line-clamp-2 leading-relaxed hidden sm:block">
           {cat.description.slice(0, 100)}...
         </p>
       </GradientCard>
@@ -242,14 +242,14 @@ const Index = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {trendingTools.map((tool) => (
-            <GradientCard key={tool.slug} className="p-5 min-h-[200px]">
+            <GradientCard key={tool.slug} variant="light" className="p-5 min-h-[200px]">
               <div className="flex flex-col h-full">
-                <h3 className="font-bold text-base text-white mb-2">{tool.name}</h3>
-                <p className="text-sm text-white/70 mb-4 flex-1">{tool.description}</p>
+                <h3 className="font-bold text-base text-foreground mb-2">{tool.name}</h3>
+                <p className="text-sm text-muted-foreground mb-4 flex-1">{tool.description}</p>
                 <Link
                   to={`/${tool.categorySlug}/${tool.slug}`}
                   aria-label={`Open ${tool.name}`}
-                  className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 bg-white/10 backdrop-blur-sm border border-white/15 text-white text-sm font-semibold rounded-lg hover:bg-white/20 transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 bg-primary/10 border border-primary/20 text-primary text-sm font-semibold rounded-lg hover:bg-primary/15 transition-colors"
                 >
                   Open {tool.name}
                   <ArrowRight className="w-3.5 h-3.5" />
