@@ -5,6 +5,7 @@ import { categories, getCategoryIcon } from "@/data/calculators";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import SEO from "@/components/SEO";
+import { GradientCard } from "@/components/ui/gradient-card";
 const HeroCalculator = lazy(() => import("@/components/HeroCalculator"));
 const totalCalcs = 1093;
 
@@ -92,32 +93,31 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
   const Icon = getCategoryIcon(cat.icon);
 
   return (
-    <Link
-      to={`/category/${cat.slug}`}
-      className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 cursor-pointer block hover-glow btn-press"
-    >
-      <div className="flex items-center gap-2.5 mb-3">
-        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300 group-hover:scale-110">
-          <Icon className="w-4 h-4 text-primary transition-transform duration-300 group-hover:rotate-6" />
+    <Link to={`/category/${cat.slug}`} className="group block btn-press" aria-label={`Browse ${cat.name} calculators`}>
+      <GradientCard className="p-4 h-full">
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10 group-hover:bg-white/15 transition-all">
+            <Icon className="w-4 h-4 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="font-bold text-sm text-white">{cat.name}</h3>
+          </div>
+          <ChevronRight className="w-4 h-4 text-white/60 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
         </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
-        </div>
-        <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
-      </div>
 
-      <ul className="space-y-0.5 mb-2">
-        {cat.items.slice(0, 4).map((item) => (
-          <li key={item} className="flex items-center gap-2 text-xs text-muted-foreground py-0.5">
-            <span className="w-1 h-1 bg-primary/40 rounded-full shrink-0" />
-            {item}
-          </li>
-        ))}
-      </ul>
+        <ul className="space-y-0.5 mb-2">
+          {cat.items.slice(0, 4).map((item) => (
+            <li key={item} className="flex items-center gap-2 text-xs text-white/70 py-0.5">
+              <span className="w-1 h-1 bg-purple-400 rounded-full shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
 
-      <p className="text-[11px] text-muted-foreground/70 line-clamp-2 leading-relaxed hidden sm:block">
-        {cat.description.slice(0, 100)}...
-      </p>
+        <p className="text-[11px] text-white/50 line-clamp-2 leading-relaxed hidden sm:block">
+          {cat.description.slice(0, 100)}...
+        </p>
+      </GradientCard>
     </Link>
   );
 };
@@ -202,25 +202,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Trending Now — pills */}
-      <section className="container mx-auto px-4 pt-2 pb-4 animate-stagger-2">
-        <div className="flex items-center gap-2 mb-3 flex-wrap">
-          <span className="text-xs font-bold uppercase tracking-wider text-primary">🔥 Trending Now</span>
-          <span className="text-xs text-muted-foreground">Most popular this week</span>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {commonlyUsed.map((calc) => (
-            <Link
-              key={calc.slug}
-              to={`/${calc.categorySlug}/${calc.slug}`}
-              className="inline-flex items-center gap-2 px-3.5 py-2 bg-card border border-border rounded-full hover:border-primary/40 hover:bg-primary/5 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium btn-press"
-            >
-              <calc.icon className="w-3.5 h-3.5 text-primary" />
-              <span>{calc.name}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+
 
       {/* Ad */}
       <section className="py-6">
@@ -260,17 +242,20 @@ const Index = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {trendingTools.map((tool) => (
-            <div key={tool.slug} className="bg-card rounded-xl border border-border p-5 flex flex-col">
-              <h3 className="font-bold text-sm mb-2">{tool.name}</h3>
-              <p className="text-sm text-muted-foreground mb-4 flex-1">{tool.description}</p>
-              <Link
-                to={`/${tool.categorySlug}/${tool.slug}`}
-                aria-label={`Open ${tool.name}`}
-                className="block w-full text-center py-2.5 bg-secondary text-foreground text-sm font-semibold rounded-lg hover:bg-secondary/80 transition-colors"
-              >
-                Open {tool.name}
-              </Link>
-            </div>
+            <GradientCard key={tool.slug} className="p-5 min-h-[200px]">
+              <div className="flex flex-col h-full">
+                <h3 className="font-bold text-base text-white mb-2">{tool.name}</h3>
+                <p className="text-sm text-white/70 mb-4 flex-1">{tool.description}</p>
+                <Link
+                  to={`/${tool.categorySlug}/${tool.slug}`}
+                  aria-label={`Open ${tool.name}`}
+                  className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 bg-white/10 backdrop-blur-sm border border-white/15 text-white text-sm font-semibold rounded-lg hover:bg-white/20 transition-colors"
+                >
+                  Open {tool.name}
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </GradientCard>
           ))}
           <div className="hidden lg:flex bg-card rounded-xl border border-border items-center justify-center row-span-2">
             <AdPlaceholder size="rectangle" />
