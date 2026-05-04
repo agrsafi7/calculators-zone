@@ -242,14 +242,14 @@ const Index = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {trendingTools.map((tool) => (
-            <GradientCard key={tool.slug} className="p-5 min-h-[200px]">
+            <GradientCard key={tool.slug} variant="light" className="p-5 min-h-[200px]">
               <div className="flex flex-col h-full">
-                <h3 className="font-bold text-base text-white mb-2">{tool.name}</h3>
-                <p className="text-sm text-white/70 mb-4 flex-1">{tool.description}</p>
+                <h3 className="font-bold text-base text-foreground mb-2">{tool.name}</h3>
+                <p className="text-sm text-muted-foreground mb-4 flex-1">{tool.description}</p>
                 <Link
                   to={`/${tool.categorySlug}/${tool.slug}`}
                   aria-label={`Open ${tool.name}`}
-                  className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 bg-white/10 backdrop-blur-sm border border-white/15 text-white text-sm font-semibold rounded-lg hover:bg-white/20 transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 bg-primary/10 border border-primary/20 text-primary text-sm font-semibold rounded-lg hover:bg-primary/15 transition-colors"
                 >
                   Open {tool.name}
                   <ArrowRight className="w-3.5 h-3.5" />
