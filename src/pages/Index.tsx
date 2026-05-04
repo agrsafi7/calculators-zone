@@ -93,32 +93,31 @@ const CategoryCard = ({ cat }: { cat: typeof categoryCards[0] }) => {
   const Icon = getCategoryIcon(cat.icon);
 
   return (
-    <Link
-      to={`/category/${cat.slug}`}
-      className="group bg-card rounded-xl border border-border p-4 transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 cursor-pointer block hover-glow btn-press"
-    >
-      <div className="flex items-center gap-2.5 mb-3">
-        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300 group-hover:scale-110">
-          <Icon className="w-4 h-4 text-primary transition-transform duration-300 group-hover:rotate-6" />
+    <Link to={`/category/${cat.slug}`} className="group block btn-press" aria-label={`Browse ${cat.name} calculators`}>
+      <GradientCard className="p-4 h-full">
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center border border-white/10 group-hover:bg-white/15 transition-all">
+            <Icon className="w-4 h-4 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h3 className="font-bold text-sm text-white">{cat.name}</h3>
+          </div>
+          <ChevronRight className="w-4 h-4 text-white/60 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
         </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="font-bold text-sm group-hover:text-primary transition-colors">{cat.name}</h3>
-        </div>
-        <ChevronRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
-      </div>
 
-      <ul className="space-y-0.5 mb-2">
-        {cat.items.slice(0, 4).map((item) => (
-          <li key={item} className="flex items-center gap-2 text-xs text-muted-foreground py-0.5">
-            <span className="w-1 h-1 bg-primary/40 rounded-full shrink-0" />
-            {item}
-          </li>
-        ))}
-      </ul>
+        <ul className="space-y-0.5 mb-2">
+          {cat.items.slice(0, 4).map((item) => (
+            <li key={item} className="flex items-center gap-2 text-xs text-white/70 py-0.5">
+              <span className="w-1 h-1 bg-purple-400 rounded-full shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
 
-      <p className="text-[11px] text-muted-foreground/70 line-clamp-2 leading-relaxed hidden sm:block">
-        {cat.description.slice(0, 100)}...
-      </p>
+        <p className="text-[11px] text-white/50 line-clamp-2 leading-relaxed hidden sm:block">
+          {cat.description.slice(0, 100)}...
+        </p>
+      </GradientCard>
     </Link>
   );
 };
