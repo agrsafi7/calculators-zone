@@ -5,6 +5,7 @@ import { categories, getCategoryIcon } from "@/data/calculators";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import SEO from "@/components/SEO";
+import { GradientCard } from "@/components/ui/gradient-card";
 const HeroCalculator = lazy(() => import("@/components/HeroCalculator"));
 const totalCalcs = 1093;
 
