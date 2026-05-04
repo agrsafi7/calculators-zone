@@ -242,17 +242,20 @@ const Index = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {trendingTools.map((tool) => (
-            <div key={tool.slug} className="bg-card rounded-xl border border-border p-5 flex flex-col">
-              <h3 className="font-bold text-sm mb-2">{tool.name}</h3>
-              <p className="text-sm text-muted-foreground mb-4 flex-1">{tool.description}</p>
-              <Link
-                to={`/${tool.categorySlug}/${tool.slug}`}
-                aria-label={`Open ${tool.name}`}
-                className="block w-full text-center py-2.5 bg-secondary text-foreground text-sm font-semibold rounded-lg hover:bg-secondary/80 transition-colors"
-              >
-                Open {tool.name}
-              </Link>
-            </div>
+            <GradientCard key={tool.slug} className="p-5 min-h-[200px]">
+              <div className="flex flex-col h-full">
+                <h3 className="font-bold text-base text-white mb-2">{tool.name}</h3>
+                <p className="text-sm text-white/70 mb-4 flex-1">{tool.description}</p>
+                <Link
+                  to={`/${tool.categorySlug}/${tool.slug}`}
+                  aria-label={`Open ${tool.name}`}
+                  className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 bg-white/10 backdrop-blur-sm border border-white/15 text-white text-sm font-semibold rounded-lg hover:bg-white/20 transition-colors"
+                >
+                  Open {tool.name}
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </GradientCard>
           ))}
           <div className="hidden lg:flex bg-card rounded-xl border border-border items-center justify-center row-span-2">
             <AdPlaceholder size="rectangle" />
