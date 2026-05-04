@@ -202,25 +202,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Trending Now — pills */}
-      <section className="container mx-auto px-4 pt-2 pb-4 animate-stagger-2">
-        <div className="flex items-center gap-2 mb-3 flex-wrap">
-          <span className="text-xs font-bold uppercase tracking-wider text-primary">🔥 Trending Now</span>
-          <span className="text-xs text-muted-foreground">Most popular this week</span>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {commonlyUsed.map((calc) => (
-            <Link
-              key={calc.slug}
-              to={`/${calc.categorySlug}/${calc.slug}`}
-              className="inline-flex items-center gap-2 px-3.5 py-2 bg-card border border-border rounded-full hover:border-primary/40 hover:bg-primary/5 hover:-translate-y-0.5 transition-all duration-200 text-sm font-medium btn-press"
-            >
-              <calc.icon className="w-3.5 h-3.5 text-primary" />
-              <span>{calc.name}</span>
-            </Link>
-          ))}
-        </div>
-      </section>
+
 
       {/* Ad */}
       <section className="py-6">
