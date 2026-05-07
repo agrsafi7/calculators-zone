@@ -12,7 +12,7 @@ import SEO from "@/components/SEO";
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [filter, setFilter] = useState("");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const category = categories.find((c) => c.slug === slug);
   const allCalcs = uniqueCalculators.filter((c) => c.categorySlug === slug);
   const seoData = slug ? categorySEOData[slug] : undefined;
