@@ -8,6 +8,7 @@ import SEO from "@/components/SEO";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { getCategoryIcon } from "@/data/calculators";
 import { categorySEOData, getMetaKeywords } from "@/lib/seo-keywords";
+import ScientificNotationExplanation from "@/components/calculator-explanations/ScientificNotationExplanation";
 import {
   Accordion,
   AccordionContent,
@@ -109,6 +110,7 @@ export interface CalculatorConfig {
   calculate: (values: Record<string, number>) => ResultItem[];
   formula: { expression: string; variables: string[] };
   howToUse: string;
+  longExplanation?: string;
   faqs: { question: string; answer: string }[];
   relatedCalcs: { name: string; slug: string; icon: string; category: string }[];
 }
@@ -310,6 +312,8 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                 </div>
               </div>
             </section>
+
+            {config.longExplanation === "scientific-notation" && <ScientificNotationExplanation />}
 
             {/* Internal links - Explore More section */}
             <section className="mb-8">

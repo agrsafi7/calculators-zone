@@ -6,6 +6,8 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import SEO from "@/components/SEO";
 import { GradientCard } from "@/components/ui/gradient-card";
+import CategoryRowList from "@/components/CategoryRowList";
+import { getCategoryCalculatorCount } from "@/lib/calculator-utils";
 const HeroCalculator = lazy(() => import("@/components/HeroCalculator"));
 const totalCalcs = 1093;
 
@@ -216,11 +218,14 @@ const Index = () => {
           <p className="text-sm text-muted-foreground mt-3">Browse our extensive library of calculation tools</p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {categoryCards.map((cat, i) => (
-            <CategoryCard key={i} cat={cat} />
-          ))}
-        </div>
+        <CategoryRowList
+          items={categoryCards.map((c) => ({
+            name: c.name,
+            href: `/category/${c.slug}`,
+            icon: c.icon,
+            count: getCategoryCalculatorCount(c.slug),
+          }))}
+        />
       </section>
 
       {/* Ad */}

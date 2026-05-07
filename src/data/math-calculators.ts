@@ -1171,24 +1171,78 @@ const _mathCalculators: CalculatorConfig[] = [
   // 38. Scientific Notation Calculator
   {
     slug: "scientific-notation-calculator", name: "Scientific Notation Calculator", category: "Math", categorySlug: "math",
-    description: "Convert numbers to and from scientific notation (e.g., 6.022 × 10²³).",
-    metaDescription: "Free scientific notation calculator. Convert numbers to and from scientific notation.",
+    description: "Convert numbers to scientific, E, and engineering notation, or perform operations (+ − × ÷) on two numbers in scientific notation.",
+    metaDescription: "Free scientific notation calculator. Convert numbers and perform addition, subtraction, multiplication, and division in scientific notation.",
     icon: "hash",
     inputs: [
-      { id: "value", label: "Number", type: "number", defaultValue: 602200000000, step: 1 },
+      { id: "mode", label: "Mode", type: "select", defaultValue: 0, options: [
+        { value: 0, label: "Convert a number" },
+        { value: 1, label: "Add (a × 10^b) + (c × 10^d)" },
+        { value: 2, label: "Subtract (a × 10^b) − (c × 10^d)" },
+        { value: 3, label: "Multiply (a × 10^b) × (c × 10^d)" },
+        { value: 4, label: "Divide (a × 10^b) ÷ (c × 10^d)" },
+      ]},
+      { id: "value", label: "Number to convert", type: "number", defaultValue: 9460000000000000, step: 1 },
+      { id: "decimals", label: "Decimal places (precision)", type: "number", defaultValue: 4, min: 0, max: 12, step: 1 },
+      { id: "a", label: "Coefficient a", type: "number", defaultValue: 6.022, step: 0.001 },
+      { id: "b", label: "Exponent b", type: "number", defaultValue: 23, step: 1 },
+      { id: "c", label: "Coefficient c", type: "number", defaultValue: 1.6, step: 0.001 },
+      { id: "d", label: "Exponent d", type: "number", defaultValue: 19, step: 1 },
     ],
     calculate: (v) => {
-      const exp = v.value === 0 ? 0 : Math.floor(Math.log10(Math.abs(v.value)));
-      const coeff = v.value / Math.pow(10, exp);
+      const dp = Math.max(0, Math.min(12, Math.round(v.decimals ?? 4)));
+      const fmtSci = (n: number) => {
+        if (!isFinite(n)) return "—";
+        if (n === 0) return `0 × 10^0`;
+        const exp = Math.floor(Math.log10(Math.abs(n)));
+        const coeff = n / Math.pow(10, exp);
+        return `${coeff.toFixed(dp)} × 10^${exp}`;
+      };
+      const fmtEng = (n: number) => {
+        if (!isFinite(n) || n === 0) return n === 0 ? "0 × 10^0" : "—";
+        const exp = Math.floor(Math.log10(Math.abs(n)) / 3) * 3;
+        const coeff = n / Math.pow(10, exp);
+        return `${coeff.toFixed(dp)} × 10^${exp}`;
+      };
+      const mode = Math.round(v.mode ?? 0);
+      if (mode === 0) {
+        const x = v.value;
+        return [
+          { label: "Scientific Notation", value: fmtSci(x), highlight: true },
+          { label: "E Notation", value: isFinite(x) ? x.toExponential(dp) : "—" },
+          { label: "Engineering Notation", value: fmtEng(x) },
+          { label: "Standard (Decimal) Form", value: isFinite(x) ? x.toLocaleString(undefined, { maximumFractionDigits: 20 }) : "—" },
+          { label: "Order of Magnitude", value: x === 0 ? "0" : `10^${Math.floor(Math.log10(Math.abs(x)))}` },
+        ];
+      }
+      const x = v.a * Math.pow(10, v.b);
+      const y = v.c * Math.pow(10, v.d);
+      let r = 0; let symbol = "+";
+      if (mode === 1) { r = x + y; symbol = "+"; }
+      if (mode === 2) { r = x - y; symbol = "−"; }
+      if (mode === 3) { r = x * y; symbol = "×"; }
+      if (mode === 4) { r = y === 0 ? NaN : x / y; symbol = "÷"; }
       return [
-        { label: "Scientific Notation", value: `${coeff.toFixed(4)} × 10^${exp}`, highlight: true },
-        { label: "E Notation", value: v.value.toExponential(4) },
-        { label: "Standard Form", value: v.value.toLocaleString() },
+        { label: "Result (Scientific)", value: fmtSci(r), highlight: true },
+        { label: "Result (E Notation)", value: isFinite(r) ? r.toExponential(dp) : "—" },
+        { label: "Result (Engineering)", value: fmtEng(r) },
+        { label: "Result (Decimal)", value: isFinite(r) ? r.toLocaleString(undefined, { maximumFractionDigits: 20 }) : "Undefined" },
+        { label: "Operation", value: `(${v.a} × 10^${v.b}) ${symbol} (${v.c} × 10^${v.d})` },
       ];
     },
-    formula: { expression: "a × 10^n where 1 ≤ |a| < 10", variables: ["n = floor(log₁₀|x|)"] },
-    howToUse: "Enter any number to see it in scientific notation.",
-    faqs: [{ question: "When is scientific notation used?", answer: "For very large (speed of light: 3×10⁸) or very small numbers (electron mass: 9.1×10⁻³¹)." }],
+    formula: { expression: "a × 10ⁿ where 1 ≤ |a| < 10 and n is an integer", variables: ["n = floor(log₁₀|x|)", "Engineering: n is a multiple of 3"] },
+    howToUse: "Choose a mode. To convert a number, enter it in the 'Number to convert' field. To perform an operation, pick Add/Subtract/Multiply/Divide and enter the coefficients and exponents for both numbers. Use the precision field to control how many decimal places appear in the coefficient.",
+    longExplanation: "scientific-notation",
+    faqs: [
+      { question: "How do I write a number in scientific notation on a calculator?", answer: "Most calculators use the EE or EXP key. To enter 6.022 × 10²³, press 6.022, then EE (or EXP), then 23. The display usually shows it as 6.022E23 or 6.022 23. On phone calculators, switch to scientific mode and use the same EE button." },
+      { question: "How do I write 9,460,000,000,000,000 in scientific notation?", answer: "Move the decimal point left until you have a number between 1 and 10. 9,460,000,000,000,000 becomes 9.46, and you moved the decimal 15 places, so it is 9.46 × 10¹⁵." },
+      { question: "How do I write 60,500 in scientific notation?", answer: "Move the decimal 4 places to the left: 60,500 = 6.05 × 10⁴." },
+      { question: "How do I write 16,900,000 in scientific notation?", answer: "Move the decimal 7 places to the left: 16,900,000 = 1.69 × 10⁷." },
+      { question: "How do you do operations with scientific notation?", answer: "For × and ÷, multiply/divide the coefficients and add/subtract the exponents. For + and −, first rewrite both numbers with the same exponent, then add or subtract the coefficients." },
+      { question: "How do you work out force using a calculator?", answer: "Use Newton's second law F = m × a. Multiply the mass (kg) by the acceleration (m/s²). For example, 1500 kg × 9.8 m/s² = 14,700 N. Our Force Calculator does this automatically." },
+      { question: "What is E notation?", answer: "E notation is a calculator-friendly form of scientific notation. 6.022 × 10²³ is written as 6.022E23 or 6.022e23." },
+      { question: "When is scientific notation used?", answer: "It is used for very large numbers (speed of light: 3 × 10⁸ m/s) and very small numbers (electron mass: 9.1 × 10⁻³¹ kg) common in science, engineering, and finance." },
+    ],
     relatedCalcs: mathRelated("scientific-notation-calculator"),
   },
   // 39. Average Calculator
