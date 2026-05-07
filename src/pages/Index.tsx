@@ -6,6 +6,8 @@ import AdPlaceholder from "@/components/AdPlaceholder";
 import SearchBar from "@/components/SearchBar";
 import SEO from "@/components/SEO";
 import { GradientCard } from "@/components/ui/gradient-card";
+import CategoryRowList from "@/components/CategoryRowList";
+import { getCategoryCalculatorCount } from "@/lib/calculator-utils";
 const HeroCalculator = lazy(() => import("@/components/HeroCalculator"));
 const totalCalcs = 1093;
 
