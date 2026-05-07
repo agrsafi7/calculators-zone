@@ -100,6 +100,8 @@ const CategoryPage = () => {
           );
         })}
       </div>
+    )
+  );
 
   return (
     <div>
