@@ -78,30 +78,28 @@ const CategoryPage = () => {
         })}
       </div>
     ) : (
-      <div className="space-y-2">
+      <div className="space-y-2.5">
         {calcs.map((calc, i) => {
           const Icon = getCategoryIcon(calc.icon);
           return (
             <Link
               key={calc.slug}
               to={`/${calc.categorySlug}/${calc.slug}`}
-              className="group flex items-center gap-4 bg-card rounded-xl border border-border p-4 transition-all duration-200 hover:shadow-md hover:border-primary/20 animate-fade-in"
-              style={{ animationDelay: `${Math.min(i * 20, 200)}ms`, animationFillMode: "both" }}
+              className="group flex items-center gap-4 bg-card rounded-xl border border-border px-4 sm:px-5 py-4 transition-all duration-200 hover:shadow-sm hover:border-primary/40 hover:-translate-y-0.5 animate-fade-in"
+              style={{ animationDelay: `${Math.min(i * 15, 200)}ms`, animationFillMode: "both" }}
             >
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Icon className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors">
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-sm group-hover:text-primary transition-colors">{calc.name}</h3>
-                <p className="text-xs text-muted-foreground truncate">{calc.description}</p>
+                <h3 className="font-bold text-base sm:text-lg text-foreground truncate group-hover:text-primary transition-colors">{calc.name}</h3>
+                <p className="text-xs text-muted-foreground truncate hidden sm:block">{calc.description}</p>
               </div>
               <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
             </Link>
           );
         })}
       </div>
-    )
-  );
 
   return (
     <div>
