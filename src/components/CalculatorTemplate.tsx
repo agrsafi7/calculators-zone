@@ -109,6 +109,7 @@ export interface CalculatorConfig {
   calculate: (values: Record<string, number>) => ResultItem[];
   formula: { expression: string; variables: string[] };
   howToUse: string;
+  longExplanation?: string;
   faqs: { question: string; answer: string }[];
   relatedCalcs: { name: string; slug: string; icon: string; category: string }[];
 }
