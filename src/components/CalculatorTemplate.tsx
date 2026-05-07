@@ -313,6 +313,8 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
               </div>
             </section>
 
+            {config.longExplanation === "scientific-notation" && <ScientificNotationExplanation />}
+
             {/* Internal links - Explore More section */}
             <section className="mb-8">
               <h2 className="text-xl font-bold mb-4">Explore More Calculators</h2>
