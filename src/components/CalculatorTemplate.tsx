@@ -8,6 +8,7 @@ import SEO from "@/components/SEO";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { getCategoryIcon } from "@/data/calculators";
 import { categorySEOData, getMetaKeywords } from "@/lib/seo-keywords";
+import ScientificNotationExplanation from "@/components/calculator-explanations/ScientificNotationExplanation";
 import {
   Accordion,
   AccordionContent,
