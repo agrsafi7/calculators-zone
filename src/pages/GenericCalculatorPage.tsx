@@ -22,6 +22,8 @@ import { otherCalculatorsExtra } from "@/data/other-calculators-extra";
 import { otherCalculatorsBatch2 } from "@/data/other-calculators-batch2";
 import { otherCalculatorsBatch3 } from "@/data/other-calculators-batch3";
 import CalculatorTemplate from "@/components/CalculatorTemplate";
+import ScienceCalculator from "@/components/science/ScienceCalculator";
+import { scienceTemplateBySlug } from "@/data/science";
 import NotFound from "./NotFound";
 
 const allConfigs = [
@@ -51,6 +53,12 @@ const allConfigs = [
 
 const GenericCalculatorPage = () => {
   const { categorySlug, slug } = useParams<{ categorySlug: string; slug: string }>();
+
+  // Science Calculator Template override — richer UX for select science calculators.
+  if (categorySlug === "science" && slug && scienceTemplateBySlug[slug]) {
+    return <ScienceCalculator key={slug} config={scienceTemplateBySlug[slug]} />;
+  }
+
   const config = allConfigs.find(
     (c) => c.slug === slug && c.categorySlug === categorySlug
   );
