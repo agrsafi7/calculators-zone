@@ -159,9 +159,11 @@ allCalculators.forEach(c => {
   }
 });
 
-// Deduplicate by slug
+// Deduplicate by slug and filter out pruned calculators
+import { DELETED_SLUGS } from "@/data/deleted-slugs";
 const seen = new Set<string>();
 export const uniqueCalculators = allCalculators.filter((c) => {
+  if (DELETED_SLUGS.has(c.slug)) return false;
   if (seen.has(c.slug)) return false;
   seen.add(c.slug);
   return true;

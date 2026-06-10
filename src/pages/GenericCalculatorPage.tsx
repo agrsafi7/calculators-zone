@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
+import { DELETED_REDIRECTS } from "@/data/deleted-slugs";
 import { healthCalculators } from "@/data/health-calculators";
 import { mathCalculators } from "@/data/math-calculators";
 import { mathCalculatorsExtended } from "@/data/math-calculators-extended";
@@ -53,6 +54,12 @@ const allConfigs = [
 
 const GenericCalculatorPage = () => {
   const { categorySlug, slug } = useParams<{ categorySlug: string; slug: string }>();
+
+  // Pruned calculators: client-side redirect to their category page.
+  // (vercel.json handles the 301 at the edge for crawlers.)
+  if (slug && DELETED_REDIRECTS[slug]) {
+    return <Navigate to={`/category/${DELETED_REDIRECTS[slug]}`} replace />;
+  }
 
   // Science Calculator Template override — richer UX for select science calculators.
   if (categorySlug === "science" && slug && scienceTemplateBySlug[slug]) {
