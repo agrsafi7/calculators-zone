@@ -1,30 +1,294 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
       ]
     },
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/science/specific-heat-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/thermal-expansion-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/heat-transfer-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/capacitance-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/inductance-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/lens-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/doppler-effect-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/orbital-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/escape-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/gravitational-force-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/light-year-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/dilution-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/stoichiometry-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/electrochemistry-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/radioactive-decay-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/nuclear-binding-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/reynolds-number-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/earthquake-magnitude-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/atmospheric-pressure-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/wavelength-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/torque-converter-eng",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/power-converter-eng",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/acceleration-converter-eng",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/angular-velocity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/angular-acceleration-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/moment-of-inertia-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/mass-moment-of-inertia-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/capacitance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/inductance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/thermal-expansion-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/specific-heat-capacity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/heat-transfer-coefficient-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/astronomical-distance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/light-year-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/parsec-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/orbital-speed-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/yarn-count-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/chi-square-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/binomial-distribution-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/poisson-distribution-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/geometric-distribution-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/yarn-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/aquarium-volume-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/candle-making-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/knitting-gauge-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/love-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/compatibility-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
     }
   ]
 }
