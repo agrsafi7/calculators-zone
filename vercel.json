@@ -56,13 +56,793 @@
   ],
   "redirects": [
     {
-      "source": "/automotive/engine-horsepower-calculator",
-      "destination": "/category/other",
+      "source": "/conversions/acceleration-converter-eng",
+      "destination": "/category/conversions",
       "statusCode": 301
     },
     {
-      "source": "/cooking/calorie-per-serving-calculator",
-      "destination": "/category/other",
+      "source": "/conversions/air-pressure-altitude-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/aircraft-speed-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/altitude-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/angular-acceleration-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/angular-velocity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/apparent-power-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/area-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/astronomical-distance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/baking-temperature-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/binary-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/bitrate-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/brick-quantity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/bulk-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/bulk-modulus-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/butter-conversion-calculator",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/byte-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/capacitance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/catalytic-activity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/chemical-concentration-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/color-code-converter-ext",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/concrete-volume-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/construction-material-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/data-size-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/data-transfer-rate-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/density-converter-ext",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/dpi-to-ppi-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/dynamic-viscosity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/elastic-modulus-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/electric-charge-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/electric-conductance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/electric-current-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/electric-energy-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/electric-field-strength-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/electric-potential-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/electric-power-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/electric-resistance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/energy-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/engine-displacement-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/epoch-time-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/fabric-weight-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/flight-distance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/flow-rate-converter-ext",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/fluid-velocity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/font-size-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/fuel-consumption-aviation-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/fuel-efficiency-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/gas-constant-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/gas-flow-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/gear-ratio-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/heat-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/heat-energy-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/heat-flux-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/heat-transfer-coefficient-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/hydraulic-conductivity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/illuminance-converter-ext",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/image-aspect-ratio-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/inductance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/ingredient-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/julian-date-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/kinematic-viscosity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/light-energy-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/light-year-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/linear-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/luminance-converter-ext",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/luminous-flux-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/luminous-intensity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/magnetic-field-strength-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/magnetic-flux-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/mass-flow-rate-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/mass-moment-of-inertia-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/material-hardness-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/mechanical-work-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/memory-size-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/molality-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/molar-concentration-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/molar-mass-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/molar-volume-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/molarity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/moment-of-force-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/moment-of-inertia-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/nautical-distance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/network-speed-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/optical-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/optical-power-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/orbital-speed-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/oven-temperature-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/paper-size-converter-ext",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/parsec-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/pixel-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/pixel-to-inch-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/planetary-distance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/point-to-pixel-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/power-converter-eng",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/power-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/power-to-weight-ratio-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/pressure-head-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/print-resolution-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/radiation-absorbed-dose-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/radiation-activity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/radiation-equivalent-dose-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/radiation-exposure-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/radiation-intensity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/radioactivity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/reactive-power-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/recipe-portion-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/roof-pitch-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/rotational-energy-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/rotational-speed-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/sand-volume-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/screen-resolution-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/seconds-to-time-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/shear-modulus-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/specific-gravity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/specific-heat-capacity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/specific-volume-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/specific-weight-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/steel-weight-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/stellar-magnitude-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/strain-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/stress-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/sugar-conversion-calculator",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/surface-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/surface-tension-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/textile-density-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/thermal-conductivity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/thermal-diffusivity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/thermal-expansion-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/thermal-resistance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/thread-count-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/time-format-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/time-interval-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/tire-size-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/torque-converter-eng",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/torque-to-power-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/unix-timestamp-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/vehicle-speed-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/volume-flow-rate-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/wind-speed-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/yarn-count-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/youngs-modulus-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/add-days-to-date",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/add-months-to-date",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/add-weeks-to-date",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/add-years-to-date",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/age-calculator-tool",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/age-difference",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/age-in-days",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/age-in-days-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/age-in-hours",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/age-in-hours-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/age-in-months",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/age-in-seconds-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/average-time-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/bedtime-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/birthday-countdown-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/business-days-between",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/business-hours-calculator",
+      "destination": "/category/datetime",
       "statusCode": 301
     },
     {
@@ -71,7 +851,257 @@
       "statusCode": 301
     },
     {
+      "source": "/datetime/countdown-to-birthday",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/countdown-to-date",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/countdown-to-new-year",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/countdown-to-retirement",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/date-difference",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/date-to-unix-timestamp-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/day-length-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/day-of-week",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/day-of-year",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/day-of-year-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/days-to-months",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/days-to-weeks",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/days-to-years",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/dst-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/focus-time-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/holiday-countdown-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/hours-between-times",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/hours-to-days",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/leap-year-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/meeting-time-planner",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/military-time-converter",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/minutes-between-times",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/minutes-to-hours",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/months-between-dates",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/moon-phase-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/overtime-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/overtime-hours-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/pay-period-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/pomodoro-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/pregnancy-due-date-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/quarter-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/quarter-of-year",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
       "source": "/datetime/retirement-date-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/seconds-to-hours",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/seconds-to-minutes",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/sleep-duration-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/subtract-days-from-date",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/task-completion-time",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/time-addition-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/time-duration-hours-converter",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/time-percentage-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/time-remaining-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/travel-time-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/walking-time-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/week-number",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/weekend-days-between",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/weeks-between-dates",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/work-week-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/working-days-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/world-clock-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/years-between-dates",
       "destination": "/category/datetime",
       "statusCode": 301
     },
@@ -881,7 +1911,27 @@
       "statusCode": 301
     },
     {
+      "source": "/lifestyle/anniversary-countdown-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/appliance-energy-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/baking-conversion-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
       "source": "/lifestyle/bandwidth-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/battery-life-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
     },
@@ -891,12 +1941,172 @@
       "statusCode": 301
     },
     {
+      "source": "/lifestyle/book-reading-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/bulk-purchase-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/calendar-week-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/car-lease-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/carpool-savings-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/chinese-zodiac-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/coffee-ratio-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/commute-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
       "source": "/lifestyle/compatibility-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
     },
     {
+      "source": "/lifestyle/cost-of-living-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/cost-per-day-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/cost-per-use-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/coupon-savings-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/daily-expense-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/daily-life-percentage-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/daily-productivity-score-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/daily-step-goal-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/data-usage-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/dating-anniversary-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/days-since-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/days-until-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
       "source": "/lifestyle/dew-point-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/drink-quantity-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/entertainment-budget-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/ev-range-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/event-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/event-countdown-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/file-download-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/flight-duration-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/freelance-rate-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/fuel-cost-per-month-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/fuel-cost-per-trip-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/furniture-space-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/gas-consumption-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
     },
@@ -911,7 +2121,52 @@
       "statusCode": 301
     },
     {
+      "source": "/lifestyle/grocery-budget-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/habit-streak-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/happiness-score-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/heating-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
       "source": "/lifestyle/height-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/home-renovation-budget-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/hotel-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/internet-speed-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/life-expectancy-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/life-percentage-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
     },
@@ -921,12 +2176,312 @@
       "statusCode": 301
     },
     {
+      "source": "/lifestyle/love-compatibility-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/love-percentage-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/luggage-weight-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/meal-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/meal-prep-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/meditation-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/meeting-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/meeting-time-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/meeting-time-planner-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/minutes-between-times-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
       "source": "/lifestyle/molarity-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
     },
     {
+      "source": "/lifestyle/monthly-expense-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/months-between-dates-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/movie-marathon-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/music-playlist-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/party-budget-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/party-food-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/personal-milestone-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/personal-savings-goal-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/pet-care-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/pet-food-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/pet-water-intake-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/pizza-party-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/pomodoro-session-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/price-comparison-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/price-per-unit-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/quarter-of-year-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/rain-amount-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/recipe-ingredient-scaler",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/relationship-duration-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/road-trip-fuel-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/room-area-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/sale-price-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/screen-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/serving-size-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/shopping-budget-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/sleep-schedule-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/solar-savings-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/storage-usage-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/stress-score-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/subscription-cost-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/task-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/taxi-fare-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/time-between-two-times-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/time-until-birthday-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/time-zone-difference-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/trip-budget-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/trip-cost-per-person-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/trip-distance-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/tv-series-watch-time-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/uv-index-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/vacation-budget-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
       "source": "/lifestyle/voltage-drop-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/walking-distance-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/wall-paint-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/water-usage-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/wedding-guest-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/weekend-days-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/weeks-between-dates-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/world-time-difference-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/years-between-dates-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/zodiac-sign-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
     },
@@ -1511,11 +3066,6 @@
       "statusCode": 301
     },
     {
-      "source": "/other/age-in-days-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
       "source": "/other/aquarium-volume-calculator",
       "destination": "/category/other",
       "statusCode": 301
@@ -1531,12 +3081,7 @@
       "statusCode": 301
     },
     {
-      "source": "/other/battery-life-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/binary-converter",
+      "source": "/other/calorie-per-serving-calculator",
       "destination": "/category/other",
       "statusCode": 301
     },
@@ -1547,11 +3092,6 @@
     },
     {
       "source": "/other/candle-wax-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/car-lease-calculator",
       "destination": "/category/other",
       "statusCode": 301
     },
@@ -1581,6 +3121,11 @@
       "statusCode": 301
     },
     {
+      "source": "/other/engine-horsepower-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
       "source": "/other/event-budget-calculator",
       "destination": "/category/other",
       "statusCode": 301
@@ -1606,22 +3151,12 @@
       "statusCode": 301
     },
     {
-      "source": "/other/internet-speed-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
       "source": "/other/knitting-gauge-calculator",
       "destination": "/category/other",
       "statusCode": 301
     },
     {
       "source": "/other/lawn-fertilizer-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/luggage-weight-calculator",
       "destination": "/category/other",
       "statusCode": 301
     },
@@ -1637,16 +3172,6 @@
     },
     {
       "source": "/other/paper-size-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/party-food-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/pet-food-calculator",
       "destination": "/category/other",
       "statusCode": 301
     },
@@ -1716,7 +3241,447 @@
       "statusCode": 301
     },
     {
+      "source": "/science/absolute-magnitude-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/acid-base-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/air-quality-index-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/angular-momentum-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/apparent-magnitude-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/archimedes-principle-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/astronomical-unit-converter",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/atmospheric-pressure-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/average-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/avogadro-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/bacterial-growth-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/base-pair-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/bernoulli-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/bernoulli-equation-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/biodiversity-index-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/black-hole-radius-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/boyles-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/buffer-solution-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/buoyancy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/buoyant-force-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/capacitance-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/carnot-efficiency-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/cell-doubling-time-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/centripetal-acceleration-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/centripetal-force-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/charles-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/chemical-equilibrium-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/combined-gas-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/cosmic-distance-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/coulombs-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/critical-angle-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/decay-constant-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/diffraction-grating-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/diffusion-rate-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/dilution-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/displacement-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/distance-time-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/dna-molecular-weight-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/doppler-effect-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/drag-force-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/earth-pressure-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/earthquake-magnitude-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/ecological-footprint-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/elastic-potential-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/electrochemistry-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/empirical-formula-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/energy-consumption-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/enthalpy-change-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/entropy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/entropy-change-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/environmental-impact-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/enzyme-kinetics-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/equilibrium-constant-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/equivalent-weight-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/escape-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/final-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/fluid-pressure-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/focal-length-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/free-fall-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
       "source": "/science/frequency-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/fuel-emission-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/gas-density-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/genetic-probability-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/genome-size-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/gibbs-free-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/gravitational-force-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/gravity-acceleration-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/greenhouse-gas-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/hardy-weinberg-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/heat-capacity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/heat-conduction-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/heat-engine-efficiency-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/heat-transfer-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/hookes-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/hubble-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/hydroelectric-power-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/hydrostatic-pressure-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/impulse-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/inductance-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/laminar-flow-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/latent-heat-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/lens-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/lens-formula-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/lift-force-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/light-intensity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/light-travel-time-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/light-year-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/limiting-reagent-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/magnification-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
@@ -1726,7 +3691,147 @@
       "statusCode": 301
     },
     {
+      "source": "/science/mass-defect-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/mass-percent-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/mechanical-advantage-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/michaelis-menten-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/mineral-hardness-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/mirror-equation-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/mole-fraction-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/molecular-formula-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
       "source": "/science/molecular-weight-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/momentum-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/newtons-second-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/normality-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/nuclear-binding-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/nuclear-reaction-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/optical-power-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/orbital-period-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/orbital-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/osmolarity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/osmotic-pressure-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/partial-pressure-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/pendulum-period-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/percent-yield-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/pipe-flow-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/planet-density-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/planetary-gravity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/plate-tectonic-speed-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/poh-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/population-growth-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/power-physics-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
@@ -1736,7 +3841,202 @@
       "statusCode": 301
     },
     {
+      "source": "/science/projectile-motion-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/protein-concentration-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/radiation-dose-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/radioactive-decay-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/reaction-enthalpy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/reaction-rate-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/recycling-rate-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/redshift-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/refraction-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/refractive-index-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/reynolds-number-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/richter-scale-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/rna-molecular-weight-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/rock-density-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/rotational-kinetic-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/rotational-speed-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/schwarzschild-radius-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/sediment-transport-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/seismic-wave-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/simple-machine-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/slope-stability-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/snell-law-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/solar-panel-output-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/solar-radiation-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/solution-concentration-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/sound-intensity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/specific-heat-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/spring-constant-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/stellar-luminosity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/stoichiometry-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/thermal-efficiency-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/thermal-expansion-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
       "source": "/science/torque-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/torque-physics-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/turbulent-flow-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/volcanic-eruption-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/waste-generation-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/water-footprint-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/wave-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/wave-speed-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
@@ -1747,6 +4047,16 @@
     },
     {
       "source": "/science/weight-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/wind-energy-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/work-calculator",
       "destination": "/category/science",
       "statusCode": 301
     }
