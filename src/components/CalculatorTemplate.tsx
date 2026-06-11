@@ -395,22 +395,24 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                 <span className="text-primary">≡</span> Related Calculators
               </h3>
               <ul className="space-y-1">
-                {config.relatedCalcs.map((calc) => {
-                  const Icon = getCategoryIcon(calc.icon);
-                  return (
-                    <li key={calc.slug}>
-                      <Link
-                        to={`/${calc.category}/${calc.slug}`}
-                        className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-secondary transition-colors text-sm"
-                      >
-                        <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center shrink-0">
-                          <Icon className="w-4 h-4 text-primary" />
-                        </div>
-                        {calc.name}
-                      </Link>
-                    </li>
-                  );
-                })}
+                {config.relatedCalcs
+                  .filter((calc) => !DELETED_SLUGS.has(calc.slug))
+                  .map((calc) => {
+                    const Icon = getCategoryIcon(calc.icon);
+                    return (
+                      <li key={calc.slug}>
+                        <Link
+                          to={`/${calc.category}/${calc.slug}`}
+                          className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-secondary transition-colors text-sm"
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center shrink-0">
+                            <Icon className="w-4 h-4 text-primary" />
+                          </div>
+                          {calc.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
 
