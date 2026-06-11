@@ -61,91 +61,6 @@
       "statusCode": 301
     },
     {
-      "source": "/conversions/acceleration-converter-eng",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/angular-acceleration-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/angular-velocity-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/astronomical-distance-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/capacitance-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/heat-transfer-coefficient-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/inductance-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/light-year-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/mass-moment-of-inertia-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/moment-of-inertia-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/orbital-speed-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/parsec-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/power-converter-eng",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/specific-heat-capacity-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/thermal-expansion-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/torque-converter-eng",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/yarn-count-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
       "source": "/cooking/calorie-per-serving-calculator",
       "destination": "/category/other",
       "statusCode": 301
@@ -1801,67 +1716,7 @@
       "statusCode": 301
     },
     {
-      "source": "/science/atmospheric-pressure-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/capacitance-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/dilution-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/doppler-effect-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/earthquake-magnitude-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/electrochemistry-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/escape-velocity-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
       "source": "/science/frequency-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/gravitational-force-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/heat-transfer-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/inductance-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/lens-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/light-year-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
@@ -1876,42 +1731,7 @@
       "statusCode": 301
     },
     {
-      "source": "/science/nuclear-binding-energy-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/orbital-velocity-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
       "source": "/science/pressure-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/radioactive-decay-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/reynolds-number-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/specific-heat-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/stoichiometry-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/thermal-expansion-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
