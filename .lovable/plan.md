@@ -1,78 +1,56 @@
-# Science Calculator Template — Plan
+# Aggressive Pruning Plan — Keep Only Everyday-Use Calculators
 
-Big scope, so I want to confirm the approach before writing code. Goal: ship a reusable engine, then apply it to **Velocity, Acceleration, Kinetic Energy, Voltage, Density** first.
+Current state: 775 calculators across 11 categories. Target: **~180 high-value calculators** people actually search for and use repeatedly.
 
-## 1. New reusable engine
+## Philosophy
 
-Create `src/components/science/ScienceCalculator.tsx` + a config type `ScienceCalculatorConfig` in `src/data/science/types.ts`.
+Keep a calculator only if it answers **yes** to at least one:
+- Does a normal person use this monthly (money, health, dates, cooking, home)?
+- Is it a top-10 Google search in its niche (BMI, mortgage, percentage, age, tip)?
+- Does it solve a real-life decision (rent vs buy, loan payoff, calories)?
 
-A config declares:
-- meta: `slug`, `title`, `shortDescription`, `category` (e.g. `Physics`), `breadcrumbs`, `formulaPreview` (LaTeX-ish string), `keywords`
-- `variables`: `[{ key, label, symbol, units: [{label, toBase}], defaultUnit, placeholder, smartHint }]`
-- `solveFor`: array of variable keys the user can solve for
-- `solve(values, target)` → `{ value, unit, steps: Step[] }` — pure function returning numeric answer + structured step-by-step
-- `chart`: `{ type: "line" | "scatter", xVar, yVar, title }` (optional)
-- `explanation`: `{ formula, variableDefs, unitsTable, description, applications[] }`
-- `examples`: 3 worked examples `{ scenario, inputs, walkthrough }`
-- `faqs`: 8–12 `{ q, a }`
-- `related`: array of `{ slug, label }`
-- `seoContent`: long-form MDX/markdown string (800–1500 words)
+Delete if it's:
+- A textbook formula (chi-square, Reynolds number, stoichiometry)
+- A duplicate with trivial variation (5 different "loan" calculators)
+- A hyper-niche hobby tool (yarn gauge, candle wick, aquarium volume)
+- An obscure unit converter (parsec, slug, hogshead)
 
-The engine renders all 15 sections from one config — hero, input card with **Solve For** dropdown that swaps inputs dynamically, results panel with copy/share/PDF, step-by-step, dynamic chart (Recharts), formula block, examples, FAQ accordion, related calculators, and SEO content.
+## Target Counts (775 → ~180)
 
-## 2. Shared UI bits
+| Category | Now | Target | Strategy |
+|---|---|---|---|
+| Finance | 152 | **40** | Keep mortgage, loan, auto, salary, tax, tip, ROI, retirement, savings, credit card, compound interest, investment, debt payoff, refinance, paycheck, sales tax, discount, currency. Cut duplicates and exotic loan variants. |
+| Health | 98 | **25** | Keep BMI, BMR, body fat, calorie, macro, water intake, pregnancy due date, ovulation, ideal weight, heart rate, blood pressure, A1C, TDEE, pace, one-rep max. Cut clinical-only tools. |
+| Math | 156 | **30** | Keep percentage, fraction, scientific, GPA, average, ratio, exponent, square root, log, standard deviation, probability, area, volume, slope, quadratic. Cut distributions, niche sequences, hyper-specific geometry. |
+| Conversions | 142 | **20** | Keep length, weight, temperature, volume, area, speed, time, energy, power, pressure, data storage, fuel economy, currency, shoe size, clothing size. Cut engineering converters. |
+| Science | 18 | **8** | Keep velocity, acceleration, density, force, Ohm's law, kinetic energy, voltage, pH. Cut everything else. |
+| Date & Time | 28 | **12** | Keep age, date difference, days between, business days, countdown, time zone, time card, week number, days until, hours, add/subtract date, time duration. |
+| Lifestyle | 50 | **15** | Keep sleep, tip, gas/fuel cost, travel time, pet age, calorie burn, BAC, water intake, alarm, nap. Cut horoscopes, compatibility, niche hobby. |
+| Other | 84 | **25** | Keep concrete, paint, flooring, mulch, gravel, tile, square footage, electricity cost, fuel cost, MPG, password strength, aspect ratio, DPI, discount, markup, margin, profit, VAT, break-even, recipe scaler, baking ratio. |
+| Unknown/misc | 47 | **5** | Audit and reassign or delete. |
 
-- `<SolveForSelector>` — dropdown that filters which variables show
-- `<UnitInput>` — large numeric input + unit dropdown, mobile-first, `inputMode="decimal"`, validation
-- `<ResultCard>` — main answer, formula used, copy / share-link / download-PDF buttons (PDF via `jspdf` if not already installed)
-- `<StepByStep>` — numbered, monospace math lines
-- `<DynamicChart>` — Recharts line/scatter that re-renders on input change, lazy-loaded via `React.lazy`
-- `<FormulaBlock>`, `<WorkedExamples>`, `<FAQAccordion>`, `<RelatedCalculators>`, `<SeoLongform>`
+**Total target: ~180** (76% reduction from 775).
 
-## 3. SEO
+## Execution
 
-`<SEO>` (existing) gets `jsonLd` per page including Calculator + Article + FAQPage + BreadcrumbList + LearningResource schemas. Unique title/description/H1/canonical from config. Add the 5 new URLs to the sitemap generator.
+1. Generate a complete kill list as `docs/calculator-kill-list-v2.md` for your review (DELETE / KEEP per calculator, with reason).
+2. After approval, in a single pass:
+   - Add all deleted slugs to `src/data/deleted-slugs.ts` (auto-redirects to category page)
+   - Add 301 redirects in `vercel.json` for SEO preservation
+   - Regenerate `public/sitemap.xml`
+   - Update homepage popular/featured lists if any deleted calc appears there
 
-## 4. The 5 calculators
+## SEO Safety
 
-Author one config file each under `src/data/science/`:
-`velocity.ts`, `acceleration.ts`, `kinetic-energy.ts`, `voltage.ts`, `density.ts`.
+- Every deleted URL → 301 redirect to its category page (already implemented pattern)
+- No 404s, no broken internal links
+- Sitemap shrinks from 1,061 → ~200 URLs (Google focuses crawl budget on quality pages)
+- Topical authority strengthens (180 strong pages > 775 thin pages)
 
-Formulas:
-- Velocity `v = d / t` — solve for v, d, t
-- Acceleration `a = (v_f − v_i) / t` — solve for a, v_f, v_i, t
-- Kinetic Energy `KE = ½ m v²` — solve for KE, m, v
-- Voltage (Ohm's law) `V = I × R` — solve for V, I, R
-- Density `ρ = m / V` — solve for ρ, m, V
+## Two Options
 
-## 5. Routing
+**Option A — Review first (safer):** I generate the kill list as a markdown file. You skim/edit it. Then I execute.
 
-Route `/science/:slug` already hits `GenericCalculatorPage`. I'll add a thin check: if a slug exists in the new science-configs registry, render `<ScienceCalculator>` instead of the legacy `CalculatorTemplate`. This leaves the other ~1000 calculators untouched.
+**Option B — Trust me, execute now (faster):** I apply my best judgment in one pass using the counts above. You can tell me afterward "restore X, also delete Y" and I adjust.
 
-## 6. Performance / a11y
-
-- Chart in `React.lazy` + `Suspense` (skeleton)
-- Recharts already in deps
-- `inputMode="decimal"`, labels tied via `htmlFor`, error text via `aria-describedby`
-- No layout-heavy animations on scroll
-
-## 7. Out of scope for this first pass (confirm if you want them now)
-
-- Migrating the other ~50 science calculators — engine will be ready; I'll do them in a follow-up batch
-- A site-wide PDF brand template — I'll use a clean default
-- Server-rendered HTML for indexability — site is SPA; current SEO setup (Helmet + sitemap + JSON-LD) is what Google uses today. True static HTML would need SSR/prerender, which is a separate architectural change
-
-## Files I'll create/edit
-
-Create:
-- `src/data/science/types.ts`
-- `src/data/science/velocity.ts`, `acceleration.ts`, `kinetic-energy.ts`, `voltage.ts`, `density.ts`
-- `src/data/science/index.ts` (registry)
-- `src/components/science/ScienceCalculator.tsx`
-- `src/components/science/{SolveForSelector,UnitInput,ResultCard,StepByStep,DynamicChart,FormulaBlock,WorkedExamples,FAQAccordion,RelatedCalculators,SeoLongform}.tsx`
-
-Edit:
-- `src/pages/GenericCalculatorPage.tsx` (route to new engine when slug is in registry)
-- `scripts/gen-sitemap.ts` (pick up new configs automatically if registry is exported)
-
-Approve and I'll build it. If you want me to also migrate the other science calculators in the same pass, say so and I'll extend scope.
+Which option do you want?
