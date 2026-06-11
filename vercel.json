@@ -56,22 +56,1797 @@
   ],
   "redirects": [
     {
-      "source": "/science/specific-heat-calculator",
-      "destination": "/category/science",
+      "source": "/automotive/engine-horsepower-calculator",
+      "destination": "/category/other",
       "statusCode": 301
     },
     {
-      "source": "/science/thermal-expansion-calculator",
-      "destination": "/category/science",
+      "source": "/conversions/acceleration-converter-eng",
+      "destination": "/category/conversions",
       "statusCode": 301
     },
     {
-      "source": "/science/heat-transfer-calculator",
+      "source": "/conversions/angular-acceleration-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/angular-velocity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/astronomical-distance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/capacitance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/heat-transfer-coefficient-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/inductance-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/light-year-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/mass-moment-of-inertia-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/moment-of-inertia-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/orbital-speed-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/parsec-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/power-converter-eng",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/specific-heat-capacity-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/thermal-expansion-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/torque-converter-eng",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/conversions/yarn-count-converter",
+      "destination": "/category/conversions",
+      "statusCode": 301
+    },
+    {
+      "source": "/cooking/calorie-per-serving-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/chronological-age-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/datetime/retirement-date-calculator",
+      "destination": "/category/datetime",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/after-tax-return-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/annuity-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/annuity-payout-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/auto-lease-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/average-return-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/balloon-loan-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/bitcoin-halving-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/biweekly-mortgage-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/boat-loan-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/bond-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/budget-percentage-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/business-loan-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/business-valuation-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/cap-rate-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/capital-gains-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/capital-gains-tax-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/cash-on-cash-return-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/cd-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/cogs-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/college-cost-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/contribution-margin-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/cost-per-unit-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/credit-card-interest-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/crypto-mining-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/crypto-profit-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/dcf-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/depreciation-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/dividend-growth-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/dividend-yield-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/dollar-cost-averaging-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/drip-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/ebitda-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/estate-tax-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/etf-expense-ratio-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/expense-ratio-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/extra-payment-mortgage-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/fha-loan-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/financial-goal-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/financial-independence-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/fire-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/four-percent-rule-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/future-value-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/gross-profit-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/house-flip-profit-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/inflation-adjusted-return-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/interest-only-loan-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/inventory-turnover-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/irr-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/lease-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/lifestyle-inflation-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/loan-against-property-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/loan-balance-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/loan-comparison-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/loan-eligibility-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/loan-prepayment-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/marriage-tax-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/millionaire-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/mirr-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/mortgage-required-income-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/mortgage-tax-savings-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/mutual-fund-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/net-income-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/net-profit-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/nft-profit-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/npv-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/operating-margin-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/passive-income-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/payback-period-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/payroll-tax-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/pension-growth-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/portfolio-allocation-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/portfolio-return-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/present-value-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/property-appreciation-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/real-estate-roi-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/rent-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/rental-cash-flow-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/rental-yield-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/retirement-contribution-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/retirement-income-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/retirement-savings-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/retirement-withdrawal-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/risk-vs-return-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/rmd-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/roa-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/roe-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/rule-of-72-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/salary-comparison-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/self-employment-tax-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/social-security-break-even-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/staking-reward-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/stock-average-price-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/stock-profit-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/time-value-of-money-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/va-mortgage-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/wealth-growth-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/finance/working-capital-calculator",
+      "destination": "/category/finance",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/anorexic-bmi-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/baby-growth-percentile-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/blood-pressure-map-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/body-adiposity-index-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/body-density-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/body-recomposition-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/body-roundness-index-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/body-surface-area-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/body-type-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/carbohydrate-intake-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/cardiac-output-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/child-growth-percentile-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/cholesterol-intake-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/circadian-rhythm-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/cycling-power-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/daily-activity-level-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/daily-calorie-surplus-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/daily-nutrient-requirement-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/dehydration-risk-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/diabetes-risk-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/fat-free-mass-index-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/fat-intake-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/fat-mass-index-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/fiber-intake-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/food-energy-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/gfr-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/glycemic-index-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/glycemic-load-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/heart-disease-risk-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/heart-rate-recovery-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/hydration-level-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/implantation-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/kidney-function-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/lean-mass-index-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/liver-function-score-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/meal-calorie-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/metabolic-age-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/mineral-intake-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/muscle-gain-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/overweight-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/pregnancy-bmi-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/pregnancy-trimester-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/pregnancy-week-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/pregnancy-weight-gain-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/relative-fat-mass-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/running-distance-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/running-speed-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/skinfold-body-fat-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/sodium-intake-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/step-count-to-calories-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/steps-to-calories-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/strength-level-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/stress-level-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/stroke-risk-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/sugar-intake-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/swimming-pace-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/training-zone-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/vitamin-intake-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/weight-change-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/weight-maintenance-calories-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/weight-watcher-points-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/workout-calorie-burn-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/health/workout-intensity-calculator",
+      "destination": "/category/health",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/age-in-months-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/bandwidth-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/bmi-for-kids-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/compatibility-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/dew-point-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/gdp-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/golf-handicap-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/height-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/love-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/molarity-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/voltage-drop-calculator",
+      "destination": "/category/lifestyle",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/absolute-value-equation-solver",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/angle-conversion-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/arc-length-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/assignment-time-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/attendance-percentage-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/base-16-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/base-2-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/base-8-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/binary-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/binomial-distribution-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/chi-square-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/chord-length-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/class-average-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/coefficient-of-variation-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/completing-the-square-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/cone-volume-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/confidence-interval-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/coprime-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/correlation-coefficient-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/cosecant-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/cotangent-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/course-load-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/course-percentage-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/credit-hour-gpa-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/critical-points-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/cross-product-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/degrees-to-radians-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/derivative-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/determinant-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/directional-derivative-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/dot-product-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/eigenvalue-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/eigenvector-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/ellipse-area-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/ellipse-perimeter-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/equation-simplifier",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/euler-totient-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/exam-preparation-time-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/exam-score-needed-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/factoring-polynomials-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/frustum-volume-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/function-composition-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/gcd-multiple-numbers-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/geometric-distribution-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/gradient-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/hex-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/homework-time-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/implicit-differentiation-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/inequality-solver",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/inflection-point-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/integral-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/inverse-function-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/kite-area-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/kurtosis-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/law-of-cosines-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/law-of-sines-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/lcm-multiple-numbers-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/learning-pace-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/limit-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/linear-equation-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/linear-equation-solver",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/linear-regression-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/maclaurin-series-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/matrix-addition-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/matrix-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/matrix-determinant-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/matrix-inverse-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/matrix-multiplication-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/matrix-rank-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/matrix-subtraction-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/matrix-trace-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/modular-arithmetic-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/normal-distribution-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/number-base-converter",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/number-sequence-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/p-value-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/parabola-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/partial-derivative-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/partial-fraction-decomposition-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/percentile-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/permutation-combination-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/poisson-distribution-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/polygon-area-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/polynomial-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/polynomial-long-division-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/polynomial-roots-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/prime-number-generator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/prism-volume-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/quartile-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/radians-to-degrees-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/rational-expression-simplifier",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/regression-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/regular-polygon-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/required-final-grade-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/rhombus-area-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/sample-size-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/secant-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/second-derivative-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/sector-area-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/skewness-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/study-efficiency-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/study-schedule-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/study-time-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/synthetic-division-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/system-of-equations-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/tangent-line-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/taylor-series-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/test-score-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/torus-volume-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/trapezoid-area-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/trigonometric-equation-solver",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/trigonometric-identities-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/trigonometric-simplifier",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/unit-circle-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/vector-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/math/vector-magnitude-calculator",
+      "destination": "/category/math",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/age-in-days-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/aquarium-volume-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/audio-file-size-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/baby-due-date-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/battery-life-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/binary-converter",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/candle-making-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/candle-wax-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/car-lease-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/child-height-predictor",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/curtain-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/data-transfer-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/deck-stain-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/diaper-cost-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/event-budget-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/event-seating-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/fabric-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/grade-average-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/image-file-size-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/internet-speed-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/knitting-gauge-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/lawn-fertilizer-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/luggage-weight-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/oil-change-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/paint-color-mixer",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/paper-size-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/party-food-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/pet-food-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/photography-exposure-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/protein-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/rainfall-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/raised-bed-soil-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/scholarship-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/seed-spacing-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/shoe-size-converter-intl",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/storage-converter-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/swimming-calories-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/tip-split-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/uv-index-exposure-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/video-file-size-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/yarn-calculator",
+      "destination": "/category/other",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/atmospheric-pressure-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
     {
       "source": "/science/capacitance-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/dilution-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/doppler-effect-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/earthquake-magnitude-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/electrochemistry-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/escape-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/frequency-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/gravitational-force-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/heat-transfer-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
@@ -86,47 +1861,17 @@
       "statusCode": 301
     },
     {
-      "source": "/science/doppler-effect-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/orbital-velocity-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/escape-velocity-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/gravitational-force-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
       "source": "/science/light-year-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
     {
-      "source": "/science/dilution-calculator",
+      "source": "/science/mass-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
     {
-      "source": "/science/stoichiometry-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/electrochemistry-calculator",
-      "destination": "/category/science",
-      "statusCode": 301
-    },
-    {
-      "source": "/science/radioactive-decay-calculator",
+      "source": "/science/molecular-weight-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
@@ -136,17 +1881,42 @@
       "statusCode": 301
     },
     {
+      "source": "/science/orbital-velocity-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/pressure-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/radioactive-decay-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
       "source": "/science/reynolds-number-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
     {
-      "source": "/science/earthquake-magnitude-calculator",
+      "source": "/science/specific-heat-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
     {
-      "source": "/science/atmospheric-pressure-calculator",
+      "source": "/science/stoichiometry-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/thermal-expansion-calculator",
+      "destination": "/category/science",
+      "statusCode": 301
+    },
+    {
+      "source": "/science/torque-calculator",
       "destination": "/category/science",
       "statusCode": 301
     },
@@ -156,138 +1926,8 @@
       "statusCode": 301
     },
     {
-      "source": "/conversions/torque-converter-eng",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/power-converter-eng",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/acceleration-converter-eng",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/angular-velocity-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/angular-acceleration-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/moment-of-inertia-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/mass-moment-of-inertia-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/capacitance-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/inductance-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/thermal-expansion-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/specific-heat-capacity-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/heat-transfer-coefficient-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/astronomical-distance-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/light-year-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/parsec-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/orbital-speed-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/conversions/yarn-count-converter",
-      "destination": "/category/conversions",
-      "statusCode": 301
-    },
-    {
-      "source": "/math/chi-square-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
-      "source": "/math/binomial-distribution-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
-      "source": "/math/poisson-distribution-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
-      "source": "/math/geometric-distribution-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/yarn-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/aquarium-volume-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/candle-making-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/other/knitting-gauge-calculator",
-      "destination": "/category/other",
-      "statusCode": 301
-    },
-    {
-      "source": "/lifestyle/love-calculator",
-      "destination": "/category/lifestyle",
-      "statusCode": 301
-    },
-    {
-      "source": "/lifestyle/compatibility-calculator",
-      "destination": "/category/lifestyle",
+      "source": "/science/weight-calculator",
+      "destination": "/category/science",
       "statusCode": 301
     }
   ]
