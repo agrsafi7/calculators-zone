@@ -1,0 +1,1333 @@
+{
+  "finance": [
+    {
+      "slug": "after-tax-return-calculator",
+      "name": "After Tax Return Calculator"
+    },
+    {
+      "slug": "annuity-calculator",
+      "name": "Annuity Calculator"
+    },
+    {
+      "slug": "annuity-payout-calculator",
+      "name": "Annuity Payout Calculator"
+    },
+    {
+      "slug": "auto-lease-calculator",
+      "name": "Auto Lease Calculator"
+    },
+    {
+      "slug": "average-return-calculator",
+      "name": "Average Return Calculator"
+    },
+    {
+      "slug": "balloon-loan-calculator",
+      "name": "Balloon Loan Calculator"
+    },
+    {
+      "slug": "bitcoin-halving-calculator",
+      "name": "Bitcoin Halving Calculator"
+    },
+    {
+      "slug": "biweekly-mortgage-calculator",
+      "name": "Biweekly Mortgage Calculator"
+    },
+    {
+      "slug": "boat-loan-calculator",
+      "name": "Boat Loan Calculator"
+    },
+    {
+      "slug": "bond-calculator",
+      "name": "Bond Calculator"
+    },
+    {
+      "slug": "budget-percentage-calculator",
+      "name": "Budget Percentage Calculator"
+    },
+    {
+      "slug": "business-loan-calculator",
+      "name": "Business Loan Calculator"
+    },
+    {
+      "slug": "business-valuation-calculator",
+      "name": "Business Valuation Calculator"
+    },
+    {
+      "slug": "cap-rate-calculator",
+      "name": "Cap Rate Calculator"
+    },
+    {
+      "slug": "capital-gains-calculator",
+      "name": "Capital Gains Calculator"
+    },
+    {
+      "slug": "capital-gains-tax-calculator",
+      "name": "Capital Gains Tax Calculator"
+    },
+    {
+      "slug": "cash-on-cash-return-calculator",
+      "name": "Cash on Cash Return Calculator"
+    },
+    {
+      "slug": "cd-calculator",
+      "name": "CD Calculator"
+    },
+    {
+      "slug": "cogs-calculator",
+      "name": "Cost of Goods Sold Calculator"
+    },
+    {
+      "slug": "college-cost-calculator",
+      "name": "College Cost Calculator"
+    },
+    {
+      "slug": "contribution-margin-calculator",
+      "name": "Contribution Margin Calculator"
+    },
+    {
+      "slug": "cost-per-unit-calculator",
+      "name": "Cost per Unit Calculator"
+    },
+    {
+      "slug": "credit-card-interest-calculator",
+      "name": "Credit Card Interest Calculator"
+    },
+    {
+      "slug": "crypto-mining-calculator",
+      "name": "Crypto Mining Calculator"
+    },
+    {
+      "slug": "crypto-profit-calculator",
+      "name": "Crypto Profit Calculator"
+    },
+    {
+      "slug": "dcf-calculator",
+      "name": "Discounted Cash Flow (DCF) Calculator"
+    },
+    {
+      "slug": "depreciation-calculator",
+      "name": "Depreciation Calculator"
+    },
+    {
+      "slug": "dividend-growth-calculator",
+      "name": "Dividend Growth Calculator"
+    },
+    {
+      "slug": "dividend-yield-calculator",
+      "name": "Dividend Yield Calculator"
+    },
+    {
+      "slug": "dollar-cost-averaging-calculator",
+      "name": "Dollar Cost Averaging Calculator"
+    },
+    {
+      "slug": "drip-calculator",
+      "name": "Dividend Reinvestment Calculator (DRIP)"
+    },
+    {
+      "slug": "ebitda-calculator",
+      "name": "EBITDA Calculator"
+    },
+    {
+      "slug": "estate-tax-calculator",
+      "name": "Estate Tax Calculator"
+    },
+    {
+      "slug": "etf-expense-ratio-calculator",
+      "name": "ETF Expense Ratio Calculator"
+    },
+    {
+      "slug": "expense-ratio-calculator",
+      "name": "Expense Ratio Calculator"
+    },
+    {
+      "slug": "extra-payment-mortgage-calculator",
+      "name": "Extra Payment Mortgage Calculator"
+    },
+    {
+      "slug": "fha-loan-calculator",
+      "name": "FHA Loan Calculator"
+    },
+    {
+      "slug": "financial-goal-calculator",
+      "name": "Financial Goal Calculator"
+    },
+    {
+      "slug": "financial-independence-calculator",
+      "name": "Financial Independence Calculator"
+    },
+    {
+      "slug": "fire-calculator",
+      "name": "Early Retirement (FIRE) Calculator"
+    },
+    {
+      "slug": "four-percent-rule-calculator",
+      "name": "4% Rule Retirement Calculator"
+    },
+    {
+      "slug": "future-value-calculator",
+      "name": "Future Value Calculator"
+    },
+    {
+      "slug": "gross-profit-calculator",
+      "name": "Gross Profit Calculator"
+    },
+    {
+      "slug": "house-flip-profit-calculator",
+      "name": "House Flip Profit Calculator"
+    },
+    {
+      "slug": "inflation-adjusted-return-calculator",
+      "name": "Inflation Adjusted Return Calculator"
+    },
+    {
+      "slug": "interest-only-loan-calculator",
+      "name": "Interest Only Loan Calculator"
+    },
+    {
+      "slug": "inventory-turnover-calculator",
+      "name": "Inventory Turnover Calculator"
+    },
+    {
+      "slug": "irr-calculator",
+      "name": "IRR Calculator"
+    },
+    {
+      "slug": "lease-calculator",
+      "name": "Lease Calculator"
+    },
+    {
+      "slug": "lifestyle-inflation-calculator",
+      "name": "Lifestyle Inflation Calculator"
+    },
+    {
+      "slug": "loan-against-property-calculator",
+      "name": "Loan Against Property Calculator"
+    },
+    {
+      "slug": "loan-balance-calculator",
+      "name": "Loan Balance Calculator"
+    },
+    {
+      "slug": "loan-comparison-calculator",
+      "name": "Loan Comparison Calculator"
+    },
+    {
+      "slug": "loan-eligibility-calculator",
+      "name": "Loan Eligibility Calculator"
+    },
+    {
+      "slug": "loan-prepayment-calculator",
+      "name": "Loan Prepayment Calculator"
+    },
+    {
+      "slug": "marriage-tax-calculator",
+      "name": "Marriage Tax Calculator"
+    },
+    {
+      "slug": "millionaire-calculator",
+      "name": "Millionaire Calculator"
+    },
+    {
+      "slug": "mirr-calculator",
+      "name": "Modified Internal Rate of Return (MIRR) Calculator"
+    },
+    {
+      "slug": "mortgage-required-income-calculator",
+      "name": "Mortgage Required Income Calculator"
+    },
+    {
+      "slug": "mortgage-tax-savings-calculator",
+      "name": "Mortgage Tax Savings Calculator"
+    },
+    {
+      "slug": "mutual-fund-calculator",
+      "name": "Mutual Fund Calculator"
+    },
+    {
+      "slug": "net-income-calculator",
+      "name": "Net Income Calculator"
+    },
+    {
+      "slug": "net-profit-calculator",
+      "name": "Net Profit Calculator"
+    },
+    {
+      "slug": "nft-profit-calculator",
+      "name": "NFT Profit Calculator"
+    },
+    {
+      "slug": "npv-calculator",
+      "name": "Net Present Value (NPV) Calculator"
+    },
+    {
+      "slug": "operating-margin-calculator",
+      "name": "Operating Margin Calculator"
+    },
+    {
+      "slug": "passive-income-calculator",
+      "name": "Passive Income Calculator"
+    },
+    {
+      "slug": "payback-period-calculator",
+      "name": "Payback Period Calculator"
+    },
+    {
+      "slug": "payroll-tax-calculator",
+      "name": "Payroll Tax Calculator"
+    },
+    {
+      "slug": "pension-growth-calculator",
+      "name": "Pension Growth Calculator"
+    },
+    {
+      "slug": "portfolio-allocation-calculator",
+      "name": "Portfolio Allocation Calculator"
+    },
+    {
+      "slug": "portfolio-return-calculator",
+      "name": "Portfolio Return Calculator"
+    },
+    {
+      "slug": "present-value-calculator",
+      "name": "Present Value Calculator"
+    },
+    {
+      "slug": "property-appreciation-calculator",
+      "name": "Property Appreciation Calculator"
+    },
+    {
+      "slug": "real-estate-roi-calculator",
+      "name": "Real Estate ROI Calculator"
+    },
+    {
+      "slug": "rent-calculator",
+      "name": "Rent Calculator"
+    },
+    {
+      "slug": "rental-cash-flow-calculator",
+      "name": "Rental Cash Flow Calculator"
+    },
+    {
+      "slug": "rental-yield-calculator",
+      "name": "Rental Yield Calculator"
+    },
+    {
+      "slug": "retirement-contribution-calculator",
+      "name": "Retirement Contribution Calculator"
+    },
+    {
+      "slug": "retirement-income-calculator",
+      "name": "Retirement Income Calculator"
+    },
+    {
+      "slug": "retirement-savings-calculator",
+      "name": "Retirement Savings Calculator"
+    },
+    {
+      "slug": "retirement-withdrawal-calculator",
+      "name": "Retirement Withdrawal Calculator"
+    },
+    {
+      "slug": "risk-vs-return-calculator",
+      "name": "Risk vs Return Calculator"
+    },
+    {
+      "slug": "rmd-calculator",
+      "name": "RMD Calculator"
+    },
+    {
+      "slug": "roa-calculator",
+      "name": "Return on Assets (ROA) Calculator"
+    },
+    {
+      "slug": "roe-calculator",
+      "name": "Return on Equity (ROE) Calculator"
+    },
+    {
+      "slug": "rule-of-72-calculator",
+      "name": "Rule of 72 Calculator"
+    },
+    {
+      "slug": "salary-comparison-calculator",
+      "name": "Salary Comparison Calculator"
+    },
+    {
+      "slug": "self-employment-tax-calculator",
+      "name": "Self Employment Tax Calculator"
+    },
+    {
+      "slug": "social-security-break-even-calculator",
+      "name": "Social Security Break-Even Calculator"
+    },
+    {
+      "slug": "staking-reward-calculator",
+      "name": "Staking Reward Calculator"
+    },
+    {
+      "slug": "stock-average-price-calculator",
+      "name": "Stock Average Price Calculator"
+    },
+    {
+      "slug": "stock-profit-calculator",
+      "name": "Stock Profit Calculator"
+    },
+    {
+      "slug": "time-value-of-money-calculator",
+      "name": "Time Value of Money Calculator"
+    },
+    {
+      "slug": "va-mortgage-calculator",
+      "name": "VA Mortgage Calculator"
+    },
+    {
+      "slug": "wealth-growth-calculator",
+      "name": "Wealth Growth Calculator"
+    },
+    {
+      "slug": "working-capital-calculator",
+      "name": "Working Capital Calculator"
+    }
+  ],
+  "health": [
+    {
+      "slug": "anorexic-bmi-calculator",
+      "name": "Anorexic BMI Calculator"
+    },
+    {
+      "slug": "baby-growth-percentile-calculator",
+      "name": "Baby Growth Percentile Calculator"
+    },
+    {
+      "slug": "blood-pressure-map-calculator",
+      "name": "Blood Pressure Mean Arterial Pressure Calculator"
+    },
+    {
+      "slug": "body-adiposity-index-calculator",
+      "name": "Body Adiposity Index Calculator"
+    },
+    {
+      "slug": "body-density-calculator",
+      "name": "Body Density Calculator"
+    },
+    {
+      "slug": "body-recomposition-calculator",
+      "name": "Body Recomposition Calculator"
+    },
+    {
+      "slug": "body-roundness-index-calculator",
+      "name": "Body Roundness Index Calculator"
+    },
+    {
+      "slug": "body-surface-area-calculator",
+      "name": "Body Surface Area Calculator"
+    },
+    {
+      "slug": "body-type-calculator",
+      "name": "Body Type Calculator"
+    },
+    {
+      "slug": "carbohydrate-intake-calculator",
+      "name": "Carbohydrate Intake Calculator"
+    },
+    {
+      "slug": "cardiac-output-calculator",
+      "name": "Cardiac Output Calculator"
+    },
+    {
+      "slug": "child-growth-percentile-calculator",
+      "name": "Child Growth Percentile Calculator"
+    },
+    {
+      "slug": "cholesterol-intake-calculator",
+      "name": "Cholesterol Intake Calculator"
+    },
+    {
+      "slug": "circadian-rhythm-calculator",
+      "name": "Circadian Rhythm Calculator"
+    },
+    {
+      "slug": "cycling-power-calculator",
+      "name": "Cycling Power Calculator"
+    },
+    {
+      "slug": "daily-activity-level-calculator",
+      "name": "Daily Activity Level Calculator"
+    },
+    {
+      "slug": "daily-calorie-surplus-calculator",
+      "name": "Daily Calorie Surplus Calculator"
+    },
+    {
+      "slug": "daily-nutrient-requirement-calculator",
+      "name": "Daily Nutrient Requirement Calculator"
+    },
+    {
+      "slug": "dehydration-risk-calculator",
+      "name": "Dehydration Risk Calculator"
+    },
+    {
+      "slug": "diabetes-risk-calculator",
+      "name": "Diabetes Risk Calculator"
+    },
+    {
+      "slug": "fat-free-mass-index-calculator",
+      "name": "Fat-Free Mass Index Calculator"
+    },
+    {
+      "slug": "fat-intake-calculator",
+      "name": "Fat Intake Calculator"
+    },
+    {
+      "slug": "fat-mass-index-calculator",
+      "name": "Fat Mass Index Calculator"
+    },
+    {
+      "slug": "fiber-intake-calculator",
+      "name": "Fiber Intake Calculator"
+    },
+    {
+      "slug": "food-energy-calculator",
+      "name": "Food Energy Calculator"
+    },
+    {
+      "slug": "gfr-calculator",
+      "name": "GFR Calculator"
+    },
+    {
+      "slug": "glycemic-index-calculator",
+      "name": "Glycemic Index Calculator"
+    },
+    {
+      "slug": "glycemic-load-calculator",
+      "name": "Glycemic Load Calculator"
+    },
+    {
+      "slug": "heart-disease-risk-calculator",
+      "name": "Heart Disease Risk Calculator"
+    },
+    {
+      "slug": "heart-rate-recovery-calculator",
+      "name": "Heart Rate Recovery Calculator"
+    },
+    {
+      "slug": "hydration-level-calculator",
+      "name": "Hydration Level Calculator"
+    },
+    {
+      "slug": "implantation-calculator",
+      "name": "Implantation Calculator"
+    },
+    {
+      "slug": "kidney-function-calculator",
+      "name": "Kidney Function Calculator"
+    },
+    {
+      "slug": "lean-mass-index-calculator",
+      "name": "Lean Mass Index Calculator"
+    },
+    {
+      "slug": "liver-function-score-calculator",
+      "name": "Liver Function Score Calculator"
+    },
+    {
+      "slug": "meal-calorie-calculator",
+      "name": "Meal Calorie Calculator"
+    },
+    {
+      "slug": "metabolic-age-calculator",
+      "name": "Metabolic Age Calculator"
+    },
+    {
+      "slug": "mineral-intake-calculator",
+      "name": "Mineral Intake Calculator"
+    },
+    {
+      "slug": "muscle-gain-calculator",
+      "name": "Muscle Gain Calculator"
+    },
+    {
+      "slug": "overweight-calculator",
+      "name": "Overweight Calculator"
+    },
+    {
+      "slug": "pregnancy-bmi-calculator",
+      "name": "Pregnancy BMI Calculator"
+    },
+    {
+      "slug": "pregnancy-trimester-calculator",
+      "name": "Pregnancy Trimester Calculator"
+    },
+    {
+      "slug": "pregnancy-week-calculator",
+      "name": "Pregnancy Week Calculator"
+    },
+    {
+      "slug": "pregnancy-weight-gain-calculator",
+      "name": "Pregnancy Weight Gain Calculator"
+    },
+    {
+      "slug": "relative-fat-mass-calculator",
+      "name": "Relative Fat Mass Calculator"
+    },
+    {
+      "slug": "running-distance-calculator",
+      "name": "Running Distance Calculator"
+    },
+    {
+      "slug": "running-speed-calculator",
+      "name": "Running Speed Calculator"
+    },
+    {
+      "slug": "skinfold-body-fat-calculator",
+      "name": "Skinfold Body Fat Calculator"
+    },
+    {
+      "slug": "sodium-intake-calculator",
+      "name": "Sodium Intake Calculator"
+    },
+    {
+      "slug": "step-count-to-calories-calculator",
+      "name": "Step Count to Calories Calculator"
+    },
+    {
+      "slug": "steps-to-calories-calculator",
+      "name": "Steps to Calories Calculator"
+    },
+    {
+      "slug": "strength-level-calculator",
+      "name": "Strength Level Calculator"
+    },
+    {
+      "slug": "stress-level-calculator",
+      "name": "Stress Level Calculator"
+    },
+    {
+      "slug": "stroke-risk-calculator",
+      "name": "Stroke Risk Calculator"
+    },
+    {
+      "slug": "sugar-intake-calculator",
+      "name": "Sugar Intake Calculator"
+    },
+    {
+      "slug": "swimming-pace-calculator",
+      "name": "Swimming Pace Calculator"
+    },
+    {
+      "slug": "training-zone-calculator",
+      "name": "Training Zone Calculator"
+    },
+    {
+      "slug": "vitamin-intake-calculator",
+      "name": "Vitamin Intake Calculator"
+    },
+    {
+      "slug": "weight-change-calculator",
+      "name": "Weight Change Calculator"
+    },
+    {
+      "slug": "weight-maintenance-calories-calculator",
+      "name": "Weight Maintenance Calories Calculator"
+    },
+    {
+      "slug": "weight-watcher-points-calculator",
+      "name": "Weight Watcher Points Calculator"
+    },
+    {
+      "slug": "workout-calorie-burn-calculator",
+      "name": "Workout Calorie Burn Calculator"
+    },
+    {
+      "slug": "workout-intensity-calculator",
+      "name": "Workout Intensity Calculator"
+    }
+  ],
+  "math": [
+    {
+      "slug": "absolute-value-equation-solver",
+      "name": "Absolute Value Equation Solver"
+    },
+    {
+      "slug": "angle-conversion-calculator",
+      "name": "Angle Conversion Calculator"
+    },
+    {
+      "slug": "arc-length-calculator",
+      "name": "Arc Length Calculator"
+    },
+    {
+      "slug": "assignment-time-calculator",
+      "name": "Assignment Time Calculator"
+    },
+    {
+      "slug": "attendance-percentage-calculator",
+      "name": "Attendance Percentage Calculator"
+    },
+    {
+      "slug": "base-16-calculator",
+      "name": "Base 16 Calculator"
+    },
+    {
+      "slug": "base-2-calculator",
+      "name": "Base 2 Calculator"
+    },
+    {
+      "slug": "base-8-calculator",
+      "name": "Base 8 Calculator"
+    },
+    {
+      "slug": "binary-calculator",
+      "name": "Binary Calculator"
+    },
+    {
+      "slug": "chord-length-calculator",
+      "name": "Chord Length Calculator"
+    },
+    {
+      "slug": "class-average-calculator",
+      "name": "Class Average Calculator"
+    },
+    {
+      "slug": "coefficient-of-variation-calculator",
+      "name": "Coefficient of Variation Calculator"
+    },
+    {
+      "slug": "completing-the-square-calculator",
+      "name": "Completing the Square Calculator"
+    },
+    {
+      "slug": "cone-volume-calculator",
+      "name": "Cone Volume Calculator"
+    },
+    {
+      "slug": "confidence-interval-calculator",
+      "name": "Confidence Interval Calculator"
+    },
+    {
+      "slug": "coprime-calculator",
+      "name": "Coprime Calculator"
+    },
+    {
+      "slug": "correlation-coefficient-calculator",
+      "name": "Correlation Coefficient Calculator"
+    },
+    {
+      "slug": "cosecant-calculator",
+      "name": "Cosecant Calculator"
+    },
+    {
+      "slug": "cotangent-calculator",
+      "name": "Cotangent Calculator"
+    },
+    {
+      "slug": "course-load-calculator",
+      "name": "Course Load Calculator"
+    },
+    {
+      "slug": "course-percentage-calculator",
+      "name": "Course Percentage Calculator"
+    },
+    {
+      "slug": "credit-hour-gpa-calculator",
+      "name": "Credit Hour GPA Calculator"
+    },
+    {
+      "slug": "critical-points-calculator",
+      "name": "Critical Points Calculator"
+    },
+    {
+      "slug": "cross-product-calculator",
+      "name": "Cross Product Calculator"
+    },
+    {
+      "slug": "degrees-to-radians-calculator",
+      "name": "Degrees to Radians Calculator"
+    },
+    {
+      "slug": "derivative-calculator",
+      "name": "Derivative Calculator"
+    },
+    {
+      "slug": "determinant-calculator",
+      "name": "Determinant Calculator"
+    },
+    {
+      "slug": "directional-derivative-calculator",
+      "name": "Directional Derivative Calculator"
+    },
+    {
+      "slug": "dot-product-calculator",
+      "name": "Dot Product Calculator"
+    },
+    {
+      "slug": "eigenvalue-calculator",
+      "name": "Eigenvalue Calculator"
+    },
+    {
+      "slug": "eigenvector-calculator",
+      "name": "Eigenvector Calculator"
+    },
+    {
+      "slug": "ellipse-area-calculator",
+      "name": "Ellipse Area Calculator"
+    },
+    {
+      "slug": "ellipse-perimeter-calculator",
+      "name": "Ellipse Perimeter Calculator"
+    },
+    {
+      "slug": "equation-simplifier",
+      "name": "Equation Simplifier"
+    },
+    {
+      "slug": "euler-totient-calculator",
+      "name": "Euler Totient Function Calculator"
+    },
+    {
+      "slug": "exam-preparation-time-calculator",
+      "name": "Exam Preparation Time Calculator"
+    },
+    {
+      "slug": "exam-score-needed-calculator",
+      "name": "Exam Score Needed Calculator"
+    },
+    {
+      "slug": "factoring-polynomials-calculator",
+      "name": "Factoring Polynomials Calculator"
+    },
+    {
+      "slug": "frustum-volume-calculator",
+      "name": "Frustum Volume Calculator"
+    },
+    {
+      "slug": "function-composition-calculator",
+      "name": "Function Composition Calculator"
+    },
+    {
+      "slug": "gcd-multiple-numbers-calculator",
+      "name": "GCD of Multiple Numbers Calculator"
+    },
+    {
+      "slug": "gradient-calculator",
+      "name": "Gradient Calculator"
+    },
+    {
+      "slug": "hex-calculator",
+      "name": "Hex Calculator"
+    },
+    {
+      "slug": "homework-time-calculator",
+      "name": "Homework Time Calculator"
+    },
+    {
+      "slug": "implicit-differentiation-calculator",
+      "name": "Implicit Differentiation Calculator"
+    },
+    {
+      "slug": "inequality-solver",
+      "name": "Inequality Solver"
+    },
+    {
+      "slug": "inflection-point-calculator",
+      "name": "Inflection Point Calculator"
+    },
+    {
+      "slug": "integral-calculator",
+      "name": "Integral Calculator"
+    },
+    {
+      "slug": "inverse-function-calculator",
+      "name": "Inverse Function Calculator"
+    },
+    {
+      "slug": "kite-area-calculator",
+      "name": "Kite Area Calculator"
+    },
+    {
+      "slug": "kurtosis-calculator",
+      "name": "Kurtosis Calculator"
+    },
+    {
+      "slug": "law-of-cosines-calculator",
+      "name": "Law of Cosines Calculator"
+    },
+    {
+      "slug": "law-of-sines-calculator",
+      "name": "Law of Sines Calculator"
+    },
+    {
+      "slug": "lcm-multiple-numbers-calculator",
+      "name": "LCM of Multiple Numbers Calculator"
+    },
+    {
+      "slug": "learning-pace-calculator",
+      "name": "Learning Pace Calculator"
+    },
+    {
+      "slug": "limit-calculator",
+      "name": "Limit Calculator"
+    },
+    {
+      "slug": "linear-equation-calculator",
+      "name": "Linear Equation Calculator"
+    },
+    {
+      "slug": "linear-equation-solver",
+      "name": "Linear Equation Solver"
+    },
+    {
+      "slug": "linear-regression-calculator",
+      "name": "Linear Regression Calculator"
+    },
+    {
+      "slug": "maclaurin-series-calculator",
+      "name": "Maclaurin Series Calculator"
+    },
+    {
+      "slug": "matrix-addition-calculator",
+      "name": "Matrix Addition Calculator"
+    },
+    {
+      "slug": "matrix-calculator",
+      "name": "Matrix Calculator"
+    },
+    {
+      "slug": "matrix-determinant-calculator",
+      "name": "Matrix Determinant Calculator"
+    },
+    {
+      "slug": "matrix-inverse-calculator",
+      "name": "Matrix Inverse Calculator"
+    },
+    {
+      "slug": "matrix-multiplication-calculator",
+      "name": "Matrix Multiplication Calculator"
+    },
+    {
+      "slug": "matrix-rank-calculator",
+      "name": "Matrix Rank Calculator"
+    },
+    {
+      "slug": "matrix-subtraction-calculator",
+      "name": "Matrix Subtraction Calculator"
+    },
+    {
+      "slug": "matrix-trace-calculator",
+      "name": "Matrix Trace Calculator"
+    },
+    {
+      "slug": "modular-arithmetic-calculator",
+      "name": "Modular Arithmetic Calculator"
+    },
+    {
+      "slug": "normal-distribution-calculator",
+      "name": "Normal Distribution Calculator"
+    },
+    {
+      "slug": "number-base-converter",
+      "name": "Number Base Converter"
+    },
+    {
+      "slug": "number-sequence-calculator",
+      "name": "Number Sequence Calculator"
+    },
+    {
+      "slug": "p-value-calculator",
+      "name": "P-Value Calculator"
+    },
+    {
+      "slug": "parabola-calculator",
+      "name": "Parabola Calculator"
+    },
+    {
+      "slug": "partial-derivative-calculator",
+      "name": "Partial Derivative Calculator"
+    },
+    {
+      "slug": "partial-fraction-decomposition-calculator",
+      "name": "Partial Fraction Decomposition Calculator"
+    },
+    {
+      "slug": "percentile-calculator",
+      "name": "Percentile Calculator"
+    },
+    {
+      "slug": "permutation-combination-calculator",
+      "name": "Permutation & Combination Calculator"
+    },
+    {
+      "slug": "polygon-area-calculator",
+      "name": "Polygon Area Calculator"
+    },
+    {
+      "slug": "polynomial-calculator",
+      "name": "Polynomial Calculator"
+    },
+    {
+      "slug": "polynomial-long-division-calculator",
+      "name": "Polynomial Long Division Calculator"
+    },
+    {
+      "slug": "polynomial-roots-calculator",
+      "name": "Polynomial Roots Calculator"
+    },
+    {
+      "slug": "prime-number-generator",
+      "name": "Prime Number Generator"
+    },
+    {
+      "slug": "prism-volume-calculator",
+      "name": "Prism Volume Calculator"
+    },
+    {
+      "slug": "quartile-calculator",
+      "name": "Quartile Calculator"
+    },
+    {
+      "slug": "radians-to-degrees-calculator",
+      "name": "Radians to Degrees Calculator"
+    },
+    {
+      "slug": "rational-expression-simplifier",
+      "name": "Rational Expression Simplifier"
+    },
+    {
+      "slug": "regression-calculator",
+      "name": "Regression Calculator"
+    },
+    {
+      "slug": "regular-polygon-calculator",
+      "name": "Regular Polygon Calculator"
+    },
+    {
+      "slug": "required-final-grade-calculator",
+      "name": "Required Final Grade Calculator"
+    },
+    {
+      "slug": "rhombus-area-calculator",
+      "name": "Rhombus Area Calculator"
+    },
+    {
+      "slug": "sample-size-calculator",
+      "name": "Sample Size Calculator"
+    },
+    {
+      "slug": "secant-calculator",
+      "name": "Secant Calculator"
+    },
+    {
+      "slug": "second-derivative-calculator",
+      "name": "Second Derivative Calculator"
+    },
+    {
+      "slug": "sector-area-calculator",
+      "name": "Sector Area Calculator"
+    },
+    {
+      "slug": "skewness-calculator",
+      "name": "Skewness Calculator"
+    },
+    {
+      "slug": "study-efficiency-calculator",
+      "name": "Study Efficiency Calculator"
+    },
+    {
+      "slug": "study-schedule-calculator",
+      "name": "Study Schedule Calculator"
+    },
+    {
+      "slug": "study-time-calculator",
+      "name": "Study Time Calculator"
+    },
+    {
+      "slug": "synthetic-division-calculator",
+      "name": "Synthetic Division Calculator"
+    },
+    {
+      "slug": "system-of-equations-calculator",
+      "name": "System of Equations Calculator"
+    },
+    {
+      "slug": "tangent-line-calculator",
+      "name": "Tangent Line Calculator"
+    },
+    {
+      "slug": "taylor-series-calculator",
+      "name": "Taylor Series Calculator"
+    },
+    {
+      "slug": "test-score-calculator",
+      "name": "Test Score Calculator"
+    },
+    {
+      "slug": "torus-volume-calculator",
+      "name": "Torus Volume Calculator"
+    },
+    {
+      "slug": "trapezoid-area-calculator",
+      "name": "Trapezoid Area Calculator"
+    },
+    {
+      "slug": "trigonometric-equation-solver",
+      "name": "Trigonometric Equation Solver"
+    },
+    {
+      "slug": "trigonometric-identities-calculator",
+      "name": "Trigonometric Identities Calculator"
+    },
+    {
+      "slug": "trigonometric-simplifier",
+      "name": "Trigonometric Simplifier"
+    },
+    {
+      "slug": "unit-circle-calculator",
+      "name": "Unit Circle Calculator"
+    },
+    {
+      "slug": "vector-calculator",
+      "name": "Vector Calculator"
+    },
+    {
+      "slug": "vector-magnitude-calculator",
+      "name": "Vector Magnitude Calculator"
+    }
+  ],
+  "conversions": [],
+  "science": [
+    {
+      "slug": "frequency-calculator",
+      "name": "Frequency Calculator"
+    },
+    {
+      "slug": "mass-calculator",
+      "name": "Mass Calculator"
+    },
+    {
+      "slug": "molecular-weight-calculator",
+      "name": "Molecular Weight Calculator"
+    },
+    {
+      "slug": "pressure-calculator",
+      "name": "Pressure Calculator"
+    },
+    {
+      "slug": "torque-calculator",
+      "name": "Torque Calculator"
+    },
+    {
+      "slug": "weight-calculator",
+      "name": "Weight Calculator"
+    }
+  ],
+  "datetime": [
+    {
+      "slug": "chronological-age-calculator",
+      "name": "Chronological Age Calculator"
+    },
+    {
+      "slug": "retirement-date-calculator",
+      "name": "Retirement Date Calculator"
+    }
+  ],
+  "lifestyle": [
+    {
+      "slug": "age-in-months-calculator",
+      "name": "Age in Months Calculator"
+    },
+    {
+      "slug": "bandwidth-calculator",
+      "name": "Bandwidth Calculator"
+    },
+    {
+      "slug": "bmi-for-kids-calculator",
+      "name": "BMI for Kids Calculator"
+    },
+    {
+      "slug": "dew-point-calculator",
+      "name": "Dew Point Calculator"
+    },
+    {
+      "slug": "gdp-calculator",
+      "name": "GDP Calculator"
+    },
+    {
+      "slug": "golf-handicap-calculator",
+      "name": "Golf Handicap Calculator"
+    },
+    {
+      "slug": "height-calculator",
+      "name": "Height Calculator"
+    },
+    {
+      "slug": "molarity-calculator",
+      "name": "Molarity Calculator"
+    },
+    {
+      "slug": "voltage-drop-calculator",
+      "name": "Voltage Drop Calculator"
+    }
+  ],
+  "other": [
+    {
+      "slug": "age-in-days-calculator",
+      "name": "Age in Days Calculator"
+    },
+    {
+      "slug": "audio-file-size-calculator",
+      "name": "Audio File Size Calculator"
+    },
+    {
+      "slug": "baby-due-date-calculator",
+      "name": "Baby Due Date Calculator"
+    },
+    {
+      "slug": "battery-life-calculator",
+      "name": "Battery Life Calculator"
+    },
+    {
+      "slug": "binary-converter",
+      "name": "Binary Converter"
+    },
+    {
+      "slug": "candle-wax-calculator",
+      "name": "Candle Wax Calculator"
+    },
+    {
+      "slug": "car-lease-calculator",
+      "name": "Car Lease Calculator"
+    },
+    {
+      "slug": "child-height-predictor",
+      "name": "Child Height Predictor"
+    },
+    {
+      "slug": "curtain-calculator",
+      "name": "Curtain Calculator"
+    },
+    {
+      "slug": "data-transfer-calculator",
+      "name": "Data Transfer Calculator"
+    },
+    {
+      "slug": "deck-stain-calculator",
+      "name": "Deck Stain Calculator"
+    },
+    {
+      "slug": "diaper-cost-calculator",
+      "name": "Diaper Cost Calculator"
+    },
+    {
+      "slug": "event-budget-calculator",
+      "name": "Event Budget Calculator"
+    },
+    {
+      "slug": "event-seating-calculator",
+      "name": "Event Seating Calculator"
+    },
+    {
+      "slug": "fabric-calculator",
+      "name": "Fabric Calculator"
+    },
+    {
+      "slug": "grade-average-calculator",
+      "name": "Grade Average Calculator"
+    },
+    {
+      "slug": "image-file-size-calculator",
+      "name": "Image File Size Calculator"
+    },
+    {
+      "slug": "internet-speed-calculator",
+      "name": "Download Time Calculator"
+    },
+    {
+      "slug": "lawn-fertilizer-calculator",
+      "name": "Lawn Fertilizer Calculator"
+    },
+    {
+      "slug": "luggage-weight-calculator",
+      "name": "Luggage Weight Calculator"
+    },
+    {
+      "slug": "oil-change-calculator",
+      "name": "Oil Change Calculator"
+    },
+    {
+      "slug": "paint-color-mixer",
+      "name": "Color Mixer Calculator"
+    },
+    {
+      "slug": "paper-size-calculator",
+      "name": "Paper Size Calculator"
+    },
+    {
+      "slug": "party-food-calculator",
+      "name": "Party Food Calculator"
+    },
+    {
+      "slug": "pet-food-calculator",
+      "name": "Pet Food Calculator"
+    },
+    {
+      "slug": "photography-exposure-calculator",
+      "name": "Photography Exposure Calculator"
+    },
+    {
+      "slug": "protein-calculator",
+      "name": "Protein Intake Calculator"
+    },
+    {
+      "slug": "rainfall-calculator",
+      "name": "Rainfall Calculator"
+    },
+    {
+      "slug": "raised-bed-soil-calculator",
+      "name": "Raised Bed Soil Calculator"
+    },
+    {
+      "slug": "scholarship-calculator",
+      "name": "Scholarship Calculator"
+    },
+    {
+      "slug": "seed-spacing-calculator",
+      "name": "Seed Spacing Calculator"
+    },
+    {
+      "slug": "shoe-size-converter-intl",
+      "name": "Shoe Size Converter"
+    },
+    {
+      "slug": "storage-converter-calculator",
+      "name": "Storage Unit Converter"
+    },
+    {
+      "slug": "swimming-calories-calculator",
+      "name": "Swimming Calories Calculator"
+    },
+    {
+      "slug": "tip-split-calculator",
+      "name": "Tip & Bill Split Calculator"
+    },
+    {
+      "slug": "uv-index-exposure-calculator",
+      "name": "UV Exposure Calculator"
+    },
+    {
+      "slug": "video-file-size-calculator",
+      "name": "Video File Size Calculator"
+    }
+  ],
+  "automotive": [
+    {
+      "slug": "engine-horsepower-calculator",
+      "name": "Engine Horsepower Calculator"
+    }
+  ],
+  "cooking": [
+    {
+      "slug": "calorie-per-serving-calculator",
+      "name": "Calorie Per Serving Calculator"
+    }
+  ]
+}
