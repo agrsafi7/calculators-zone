@@ -1,52 +1,46 @@
-// Apply the v2 kill list: regenerate deleted-slugs.ts and vercel.json redirects.
+// Apply v2 KEEP allowlist: anything not explicitly kept gets pruned + redirected.
 import fs from "fs";
 import path from "path";
 
-const killList = JSON.parse(fs.readFileSync("docs/calculator-kill-list-v2.json", "utf8")) as Record<string, { slug: string; name: string }[]>;
+const md = fs.readFileSync("docs/calculator-kill-list-v2.md", "utf8");
+const keepSet = new Set<string>();
+for (const m of md.matchAll(/✅\s+`([^`]+)`/g)) keepSet.add(m[1]);
+console.log("KEEP allowlist size:", keepSet.size);
 
-// Build slug -> categorySlug map by scanning src/data/*.ts
+// Always-keep slugs (essential routes & popular)
+for (const s of ["mortgage-calculator","bmi-calculator","percentage-calculator","age-calculator","salary-calculator","length-converter"]) keepSet.add(s);
+
+// Build slug -> categorySlug from data files
 const dataDir = "src/data";
 const slugCat = new Map<string, string>();
+const slugName = new Map<string, string>();
 for (const f of fs.readdirSync(dataDir)) {
   if (!f.endsWith(".ts")) continue;
   const txt = fs.readFileSync(path.join(dataDir, f), "utf8");
-  const re = /slug:\s*"([^"]+)"[^}]*categorySlug:\s*"([^"]+)"/g;
-  let m;
-  while ((m = re.exec(txt))) {
+  for (const m of txt.matchAll(/slug:\s*"([^"]+)"[^}]*?name:\s*"([^"]+)"[^}]*?categorySlug:\s*"([^"]+)"/g)) {
+    if (!slugCat.has(m[1])) { slugCat.set(m[1], m[3]); slugName.set(m[1], m[2]); }
+  }
+  for (const m of txt.matchAll(/slug:\s*"([^"]+)"[^}]*?categorySlug:\s*"([^"]+)"/g)) {
     if (!slugCat.has(m[1])) slugCat.set(m[1], m[2]);
   }
 }
+console.log("Total slugs found:", slugCat.size);
 
 const validCategories = new Set(["finance","health","math","conversions","science","datetime","lifestyle","other"]);
 
-// Preserve existing deletions from previous deleted-slugs.ts
-const existing: Record<string, string> = {};
-const cur = fs.readFileSync("src/data/deleted-slugs.ts", "utf8");
-const reCur = /"([^"]+)":\s*"([^"]+)"/g;
-let cm;
-while ((cm = reCur.exec(cur))) existing[cm[1]] = cm[2];
-
-const redirects: Record<string, string> = { ...existing };
-const missing: string[] = [];
-for (const [bucket, items] of Object.entries(killList)) {
-  for (const { slug } of items) {
-    let cat = slugCat.get(slug);
-    if (!cat) { missing.push(slug); continue; }
-    if (!validCategories.has(cat)) cat = "other"; // automotive/cooking → other
-    redirects[slug] = cat;
-  }
+const redirects: Record<string, string> = {};
+for (const [slug, origCat] of slugCat.entries()) {
+  if (keepSet.has(slug)) continue;
+  let target = origCat;
+  if (!validCategories.has(target)) target = "other";
+  redirects[slug] = target;
 }
+console.log("Will delete:", Object.keys(redirects).length, "Will keep:", slugCat.size - Object.keys(redirects).length);
 
-console.log("Total redirects:", Object.keys(redirects).length, "Missing slugs:", missing.length);
-if (missing.length) console.log("Missing examples:", missing.slice(0,10));
-
-// Group by category for nicer file
+// Write deleted-slugs.ts
 const byCat: Record<string, string[]> = {};
-for (const [slug, cat] of Object.entries(redirects)) {
-  (byCat[cat] ||= []).push(slug);
-}
-for (const cat of Object.keys(byCat)) byCat[cat].sort();
-
+for (const [slug, cat] of Object.entries(redirects)) (byCat[cat] ||= []).push(slug);
+for (const k of Object.keys(byCat)) byCat[k].sort();
 let body = `// Calculators removed during pruning passes.
 // These slugs are filtered from listings/search/sitemap and 301-redirect
 // to their category page (see vercel.json + GenericCalculatorPage).
@@ -59,8 +53,7 @@ for (const cat of Object.keys(byCat).sort()) {
 body += `};\n\nexport const DELETED_SLUGS: Set<string> = new Set(Object.keys(DELETED_REDIRECTS));\n`;
 fs.writeFileSync("src/data/deleted-slugs.ts", body);
 
-// Generate vercel.json redirects
-// Need original categorySlug (URL path) — use slugCat (or existing fallback "<cat>")
+// Write vercel.json
 const vercel = JSON.parse(fs.readFileSync("vercel.json", "utf8"));
 const vRedirects: any[] = [];
 const seen = new Set<string>();
@@ -76,6 +69,13 @@ vercel.redirects = vRedirects;
 fs.writeFileSync("vercel.json", JSON.stringify(vercel, null, 2) + "\n");
 console.log("Wrote", vRedirects.length, "vercel redirects");
 
-// Conflict check: ensure no source path overlaps another
+// Conflict / loop check
 const dup = vRedirects.map(r=>r.source).filter((s,i,a)=>a.indexOf(s)!==i);
-if (dup.length) { console.error("DUPLICATES:", dup); process.exit(1); }
+if (dup.length) { console.error("DUPLICATE SOURCES:", dup); process.exit(1); }
+const destSet = new Set(vRedirects.map(r=>r.destination));
+for (const r of vRedirects) if (destSet.has(r.source)) { console.error("LOOP:", r); process.exit(1); }
+console.log("No conflicts, no loops ✓");
+
+// Preview table
+const preview = vRedirects.slice(0, 20).map(r=>`  ${r.source}  →  ${r.destination}`).join("\n");
+console.log("\nPreview (first 20):\n" + preview);
