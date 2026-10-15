@@ -19,39 +19,44 @@ const evalSafe = (exp: string): number => {
 
 type KeyDef = { key: string; label: ReactNode; kind: "fn" | "num" | "op" | "clear" };
 
-const KEYS: KeyDef[] = [
+// Scientific function keys — grouped together, separate from the numpad
+const SCI_FN_KEYS: KeyDef[] = [
   { key: "sin", label: "sin", kind: "fn" },
   { key: "cos", label: "cos", kind: "fn" },
   { key: "tan", label: "tan", kind: "fn" },
   { key: "pi", label: "π", kind: "fn" },
   { key: "e", label: "e", kind: "fn" },
-  { key: "7", label: "7", kind: "num" },
-  { key: "8", label: "8", kind: "num" },
-  { key: "9", label: "9", kind: "num" },
-  { key: "/", label: "÷", kind: "op" },
   { key: "asin", label: <span>sin<sup>−1</sup></span>, kind: "fn" },
   { key: "acos", label: <span>cos<sup>−1</sup></span>, kind: "fn" },
   { key: "atan", label: <span>tan<sup>−1</sup></span>, kind: "fn" },
   { key: "pow", label: <span>x<sup>y</sup></span>, kind: "fn" },
   { key: "sq", label: <span>x<sup>2</sup></span>, kind: "fn" },
-  { key: "4", label: "4", kind: "num" },
-  { key: "5", label: "5", kind: "num" },
-  { key: "6", label: "6", kind: "num" },
-  { key: "*", label: "×", kind: "op" },
   { key: "ln", label: "ln", kind: "fn" },
   { key: "log", label: "log", kind: "fn" },
   { key: "sqrt", label: "√x", kind: "fn" },
   { key: "(", label: "(", kind: "fn" },
   { key: ")", label: ")", kind: "fn" },
-  { key: "1", label: "1", kind: "num" },
-  { key: "2", label: "2", kind: "num" },
-  { key: "3", label: "3", kind: "num" },
-  { key: "-", label: "−", kind: "op" },
   { key: "recip", label: "1/x", kind: "fn" },
   { key: "fact", label: "n!", kind: "fn" },
   { key: "mod", label: "%", kind: "fn" },
   { key: "sign", label: "±", kind: "fn" },
   { key: "clear", label: "AC", kind: "clear" },
+];
+
+// Scientific numpad — numbers always in one sequence
+const SCI_NUM_KEYS: KeyDef[] = [
+  { key: "7", label: "7", kind: "num" },
+  { key: "8", label: "8", kind: "num" },
+  { key: "9", label: "9", kind: "num" },
+  { key: "/", label: "÷", kind: "op" },
+  { key: "4", label: "4", kind: "num" },
+  { key: "5", label: "5", kind: "num" },
+  { key: "6", label: "6", kind: "num" },
+  { key: "*", label: "×", kind: "op" },
+  { key: "1", label: "1", kind: "num" },
+  { key: "2", label: "2", kind: "num" },
+  { key: "3", label: "3", kind: "num" },
+  { key: "-", label: "−", kind: "op" },
   { key: "0", label: "0", kind: "num" },
   { key: ".", label: ".", kind: "num" },
   { key: "del", label: <Delete size={18} />, kind: "fn" },
@@ -94,7 +99,7 @@ const keyClass = (kind: KeyDef["kind"]) => {
 };
 
 const ScientificEngine = () => {
-  const [mode, setMode] = useState<"basic" | "scientific">("scientific");
+  const [mode, setMode] = useState<"basic" | "scientific">("basic");
   const [expression, setExpression] = useState("");
   const [history, setHistory] = useState("");
   const [isResultShown, setIsResultShown] = useState(false);
@@ -189,7 +194,17 @@ const ScientificEngine = () => {
     setIsResultShown(resultShown);
   };
 
-  const activeKeys = mode === "basic" ? BASIC_KEYS : KEYS;
+  const renderKey = (k: KeyDef, spanZero = false) => (
+    <button
+      key={k.key}
+      type="button"
+      onClick={() => press(k.key)}
+      className={`${keyClass(k.kind)} py-2 rounded transition-colors ${spanZero && k.key === "0" ? "col-span-2" : ""}`}
+      aria-label={k.key}
+    >
+      {k.label}
+    </button>
+  );
 
   return (
     <div className="bg-surface-lowest rounded-xl p-4 sm:p-6 shadow-sm flex flex-col justify-between">
@@ -249,19 +264,20 @@ const ScientificEngine = () => {
         </div>
       </div>
 
-      <div className={`grid gap-1.5 sm:gap-2 select-none ${mode === "basic" ? "grid-cols-4" : "grid-cols-5 sm:grid-cols-9"}`}>
-        {activeKeys.map((k) => (
-          <button
-            key={k.key}
-            type="button"
-            onClick={() => press(k.key)}
-            className={`${keyClass(k.kind)} py-2 rounded transition-colors ${mode === "basic" && k.key === "0" ? "col-span-2" : ""}`}
-            aria-label={k.key}
-          >
-            {k.label}
-          </button>
-        ))}
-      </div>
+      {mode === "basic" ? (
+        <div className="grid grid-cols-4 gap-1.5 sm:gap-2 select-none">
+          {BASIC_KEYS.map((k) => renderKey(k, true))}
+        </div>
+      ) : (
+        <div className="flex flex-col sm:flex-row gap-1.5 sm:gap-2 select-none">
+          <div className="grid grid-cols-5 gap-1.5 sm:gap-2 flex-1">
+            {SCI_FN_KEYS.map((k) => renderKey(k))}
+          </div>
+          <div className="grid grid-cols-4 gap-1.5 sm:gap-2 sm:w-[38%]">
+            {SCI_NUM_KEYS.map((k) => renderKey(k))}
+          </div>
+        </div>
+      )}
 
       <div className="mt-2 pt-1 flex justify-end">
         <button
