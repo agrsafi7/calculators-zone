@@ -42,7 +42,7 @@ const App = () => (
         <ScrollToTop />
         <div className="flex flex-col min-h-screen app-container">
           <Header />
-          <main className="flex-1">
+          <main className="flex-1 pt-16">
             <Suspense fallback={<PageLoadingSkeleton />}>
               <PageTransition>
                 <Routes>
