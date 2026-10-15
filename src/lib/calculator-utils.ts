@@ -21,6 +21,7 @@ import { otherCalculatorsExtended } from "@/data/other-calculators-extended";
 import { otherCalculatorsExtra } from "@/data/other-calculators-extra";
 import { otherCalculatorsBatch2 } from "@/data/other-calculators-batch2";
 import { otherCalculatorsBatch3 } from "@/data/other-calculators-batch3";
+import { expansionCalculators } from "@/data/expansion-calculators";
 
 const STORAGE_KEY = "calculators_recent";
 const MAX_RECENT = 5;
@@ -90,6 +91,7 @@ export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = [
   ...configToInfo(otherCalculatorsExtra),
   ...configToInfo(otherCalculatorsBatch2),
   ...configToInfo(otherCalculatorsBatch3),
+  ...configToInfo(expansionCalculators),
 ];
 
 // Assign subcategories to existing other calculators that don't have them

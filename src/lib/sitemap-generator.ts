@@ -8,6 +8,9 @@ export const generateSitemapXml = (): string => {
 
   const staticPages = [
     { loc: "/", priority: "1.0", changefreq: "daily" },
+    { loc: "/categories", priority: "0.9", changefreq: "weekly" },
+    { loc: "/popular", priority: "0.8", changefreq: "weekly" },
+    { loc: "/about", priority: "0.6", changefreq: "monthly" },
     { loc: "/privacy-policy", priority: "0.3", changefreq: "yearly" },
     { loc: "/terms-of-service", priority: "0.3", changefreq: "yearly" },
     { loc: "/disclaimer", priority: "0.3", changefreq: "yearly" },

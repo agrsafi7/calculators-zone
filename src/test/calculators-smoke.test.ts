@@ -18,6 +18,7 @@ import { scienceCalculatorsExtra } from "@/data/science-calculators-extra";
 import { lifestyleCalculators } from "@/data/lifestyle-calculators";
 import { lifestyleCalculatorsExtended } from "@/data/lifestyle-calculators-extended";
 import { lifestyleCalculatorsExtra } from "@/data/lifestyle-calculators-extra";
+import { expansionCalculators } from "@/data/expansion-calculators";
 
 const allConfigs: CalculatorConfig[] = [
   ...financeCalculators,
@@ -37,6 +38,7 @@ const allConfigs: CalculatorConfig[] = [
   ...lifestyleCalculators,
   ...lifestyleCalculatorsExtended,
   ...lifestyleCalculatorsExtra,
+  ...expansionCalculators,
 ];
 
 const getDefaults = (config: CalculatorConfig) =>

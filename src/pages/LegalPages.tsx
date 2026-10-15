@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import SEO from "@/components/SEO";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
-const LegalPage = ({ title, children }: { title: string; children: React.ReactNode }) => (
+const LegalPage = ({
+  title,
+  description,
+  canonical,
+  children,
+}: {
+  title: string;
+  description: string;
+  canonical: string;
+  children: React.ReactNode;
+}) => (
   <div className="animate-stagger-1">
-    <Breadcrumbs items={[
-      { label: "Home", href: "/" },
-      { label: title },
-    ]} />
+    <SEO title={title} description={description} canonical={canonical} />
+    <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: title }]} />
     <div className="container mx-auto px-4 pb-12 max-w-3xl">
       <h1 className="text-2xl md:text-3xl font-black mb-6">{title}</h1>
       <div className="prose prose-sm max-w-none text-muted-foreground space-y-4 text-sm leading-relaxed">
@@ -20,39 +29,116 @@ const LegalPage = ({ title, children }: { title: string; children: React.ReactNo
 );
 
 export const PrivacyPolicy = () => (
-  <LegalPage title="Privacy Policy">
-    <p><strong className="text-foreground">Last updated:</strong> March 9, 2026</p>
-    <p>TheCalculator.us ("we", "us", or "our") operates the TheCalculator.us website. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.</p>
+  <LegalPage
+    title="Privacy Policy"
+    description="Privacy Policy for TheCalculator.us — what data we collect, how cookies and advertising (including Google AdSense) work, and your opt-out choices."
+    canonical="/privacy-policy"
+  >
+    <p><strong className="text-foreground">Last updated:</strong> October 15, 2026</p>
+    <p>
+      TheCalculator.us ("we", "us", or "our") operates the thecalculator.us website (the
+      "Service"). This Privacy Policy explains what information we collect, how we use it,
+      and the choices you have — including how advertising cookies work on our site.
+    </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Information We Collect</h2>
-    <p>We collect several types of information for various purposes to provide and improve our Service to you:</p>
+    <p>We collect a limited amount of information to operate and improve the Service:</p>
     <ul className="list-disc pl-5 space-y-1">
-      <li><strong className="text-foreground">Usage Data:</strong> We may collect information on how the Service is accessed and used, including your browser type, pages visited, time spent, and other diagnostic data.</li>
-      <li><strong className="text-foreground">Cookies:</strong> We use cookies and similar tracking technologies to track activity on our Service and hold certain information.</li>
+      <li><strong className="text-foreground">Usage Data:</strong> pages visited, time spent, browser type, device type, and approximate location (country/city level) collected via analytics tools. This data is aggregated and does not identify you personally.</li>
+      <li><strong className="text-foreground">Contact information you provide:</strong> if you email us or use the contact form, we receive your name, email address, and message content so we can respond.</li>
+      <li><strong className="text-foreground">Calculator inputs:</strong> numbers you enter into calculators are processed locally in your browser and are never sent to our servers.</li>
     </ul>
 
-    <h2 className="text-lg font-bold text-foreground mt-6">Use of Data</h2>
-    <p>TheCalculator.us uses the collected data for various purposes:</p>
-    <ul className="list-disc pl-5 space-y-1">
-      <li>To provide and maintain the Service</li>
-      <li>To notify you about changes to our Service</li>
-      <li>To provide customer care and support</li>
-      <li>To provide analysis or valuable information to improve the Service</li>
-      <li>To monitor the usage of the Service</li>
-      <li>To detect, prevent and address technical issues</li>
-    </ul>
+    <h2 className="text-lg font-bold text-foreground mt-6">Cookies and Similar Technologies</h2>
+    <p>
+      We use cookies and similar technologies for the following purposes: keeping the site
+      functional (e.g., remembering your cookie-consent choice and recently used
+      calculators), understanding aggregate usage through analytics, and serving
+      advertising as described below. You can control cookies through your browser settings;
+      blocking cookies may affect some site features.
+    </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Advertising</h2>
-    <p>We may use third-party advertising companies, including Google AdSense, to serve ads when you visit our website. These companies may use cookies to serve ads based on your prior visits to our website or other websites.</p>
+    <p>
+      We use third-party advertising companies to serve ads when you visit our website,
+      including <strong className="text-foreground">Google AdSense</strong>. These companies
+      may use cookies — including Google's advertising cookies such as the{" "}
+      <strong className="text-foreground">DoubleClick DART cookie</strong> — to serve ads
+      based on your prior visits to our website and other websites on the internet.
+    </p>
+    <p>
+      Google's use of advertising cookies enables it and its partners to serve ads based on
+      your visit to our site and/or other sites. You may opt out of personalized
+      advertising by visiting{" "}
+      <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+        Google Ads Settings
+      </a>
+      . You can also opt out of third-party vendors' use of cookies for personalized
+      advertising by visiting{" "}
+      <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+        aboutads.info/choices
+      </a>{" "}
+      or, if you are in the EU/UK,{" "}
+      <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
+        youronlinechoices.eu
+      </a>
+      .
+    </p>
+
+    <h2 className="text-lg font-bold text-foreground mt-6">How We Use Information</h2>
+    <ul className="list-disc pl-5 space-y-1">
+      <li>To provide, maintain, and improve the Service</li>
+      <li>To respond to your messages and support requests</li>
+      <li>To monitor usage, detect technical issues, and prevent abuse</li>
+      <li>To serve and measure advertising that keeps the Service free</li>
+    </ul>
+    <p>We do not sell your personal information to anyone.</p>
+
+    <h2 className="text-lg font-bold text-foreground mt-6">Data Retention</h2>
+    <p>
+      Contact messages are retained only as long as needed to handle your request.
+      Aggregated analytics data is retained per our analytics provider's settings
+      (typically up to 26 months). Advertising cookies follow the retention periods set by
+      the respective advertising vendors.
+    </p>
+
+    <h2 className="text-lg font-bold text-foreground mt-6">Children's Privacy</h2>
+    <p>
+      Our Service is not directed at children under 13, and we do not knowingly collect
+      personal information from children under 13. If you believe a child has provided us
+      with personal information, please contact us and we will delete it.
+    </p>
+
+    <h2 className="text-lg font-bold text-foreground mt-6">Your Rights</h2>
+    <p>
+      Depending on your location (including the EU/UK under GDPR and California under
+      CCPA), you may have the right to access, correct, or delete personal information we
+      hold about you, and to object to certain processing. To exercise these rights,{" "}
+      <Link to="/contact" className="text-primary hover:underline font-medium">contact us</Link>.
+    </p>
+
+    <h2 className="text-lg font-bold text-foreground mt-6">Changes to This Policy</h2>
+    <p>
+      We may update this Privacy Policy from time to time. Changes take effect when posted
+      on this page, with the "Last updated" date revised accordingly.
+    </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, please <Link to="/contact" className="text-primary hover:underline font-medium">contact us</Link>.</p>
+    <p>
+      Questions about this Privacy Policy? Email us at{" "}
+      <strong className="text-foreground">support@thecalculator.us</strong> or use our{" "}
+      <Link to="/contact" className="text-primary hover:underline font-medium">contact form</Link>.
+    </p>
   </LegalPage>
 );
 
 export const TermsOfService = () => (
-  <LegalPage title="Terms of Service">
-    <p><strong className="text-foreground">Last updated:</strong> March 9, 2026</p>
+  <LegalPage
+    title="Terms of Service"
+    description="Terms of Service for TheCalculator.us — the rules for using our free online calculators."
+    canonical="/terms-of-service"
+  >
+    <p><strong className="text-foreground">Last updated:</strong> October 15, 2026</p>
     <p>Please read these Terms of Service ("Terms") carefully before using TheCalculator.us.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Acceptance of Terms</h2>
@@ -60,6 +146,9 @@ export const TermsOfService = () => (
 
     <h2 className="text-lg font-bold text-foreground mt-6">Use of the Service</h2>
     <p>TheCalculator.us provides online calculators for informational and educational purposes only. The results provided by our calculators should not be considered as professional financial, medical, or legal advice.</p>
+
+    <h2 className="text-lg font-bold text-foreground mt-6">Acceptable Use</h2>
+    <p>You agree not to misuse the Service — including attempting to disrupt it, scrape it aggressively, or use it for unlawful purposes.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Accuracy Disclaimer</h2>
     <p>While we strive to provide accurate calculations, we make no warranties or representations about the accuracy, reliability, or completeness of any information on this site. Users should verify results independently before making important decisions.</p>
@@ -76,8 +165,12 @@ export const TermsOfService = () => (
 );
 
 export const Disclaimer = () => (
-  <LegalPage title="Disclaimer">
-    <p><strong className="text-foreground">Last updated:</strong> March 9, 2026</p>
+  <LegalPage
+    title="Disclaimer"
+    description="Disclaimer for TheCalculator.us — the limitations of our calculators for financial, health, and general decisions."
+    canonical="/disclaimer"
+  >
+    <p><strong className="text-foreground">Last updated:</strong> October 15, 2026</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">General Disclaimer</h2>
     <p>The information provided by TheCalculator.us is for general informational and educational purposes only. All information on the site is provided in good faith; however, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, or completeness of any information on the site.</p>
@@ -127,7 +220,11 @@ export const ContactPage = () => {
   };
 
   return (
-    <LegalPage title="Contact Us">
+    <LegalPage
+      title="Contact Us"
+      description="Contact TheCalculator.us — questions, feedback, error reports, and partnership inquiries."
+      canonical="/contact"
+    >
       <p>We'd love to hear from you! Whether you have a question about our calculators, feedback, or partnership inquiries, feel free to reach out.</p>
 
       <h2 className="text-lg font-bold text-foreground mt-6">Get in Touch</h2>
