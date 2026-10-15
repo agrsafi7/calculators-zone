@@ -342,3 +342,15 @@ export const expansionCalculators: CalculatorConfig[] = [
     ],
   },
 ];
+
+// Per-category slices for on-demand loading (keeps the main JS bundle small).
+// GenericCalculatorPage dynamically imports only the slice it needs.
+export const expansionFinanceCalculators = expansionCalculators.filter(
+  (c) => c.categorySlug === "finance"
+);
+export const expansionHealthCalculators = expansionCalculators.filter(
+  (c) => c.categorySlug === "health"
+);
+export const expansionMathCalculators = expansionCalculators.filter(
+  (c) => c.categorySlug === "math"
+);
