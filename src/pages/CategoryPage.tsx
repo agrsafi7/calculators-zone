@@ -1,18 +1,26 @@
 import { useState, useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowUpRight, Search, X, LayoutGrid, List } from "lucide-react";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import { categories, getCategoryIcon } from "@/data/calculators";
+import { categories } from "@/data/calculators";
 import { uniqueCalculators } from "@/lib/calculator-utils";
 import { categorySEOData, getMetaKeywords } from "@/lib/seo-keywords";
-import AdPlaceholder from "@/components/AdPlaceholder";
-import RecentlyUsed from "@/components/RecentlyUsed";
 import SEO from "@/components/SEO";
 
+const CATEGORY_IMAGES: Record<string, string> = {
+  finance: "https://lh3.googleusercontent.com/aida-public/AB6AXuCiVEwE0z5UThuB6Kp4dzOehehPrRbBJZKOZivzMq8Q7rFZ9I2qGb-4z-QjSK9N3l2PSEZiGZ7TsdzIDuUIma-jCF9pljhBUcV-utx1sEF5eD4W4eaOI5o4_wizxtNvTLXJNdyotT0xgVfTiDuDQYbrqaD1GxNnBQKBSz1b--HgHoUlsOBvh1ODKUHOkuqhcGxm4WIdfswbIW_2ixcY2mzPKAJ00CVM_N2PtXdzhVl_i67Yx_RwFfmo=w200",
+  health: "https://lh3.googleusercontent.com/aida-public/AB6AXuDGK_sBsDvtmwKepjEMXeYySXCsEmu9r0FN6nZWO00vGYRjemPdALqLRIiqsTTFGb3o0IZNCwMS3ieIts4OTgMk7VF9WhBc1MpqQGON4jQbWeIGZnCl8-QO8h3nXx5CmEElIsIKuq59cyUmlm1sL4ua_E50BbrxHhud6jmuZ3FIyN2kgn_otkIFpDKiRW-OACpvwoYRzwM0z6ilvBE7ff4Zmotrz78OIzTRUXCkaEwBRx7CJLhUiswR=w200",
+  math: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBng2iry8yhYtaA0BhItFPEIG97gbyp--Zh5rfqhGrPBIxNnHVh-p_twmW6HjxLpw_wBszeacQZ1VrYRSkxrSGNOq2PQbMsOpYBdWlLz3ulCdRAxqsDzAj9cfVYfTmKyXwDLk4sfhN-86UqpwfI8rJpZjPmO8k4KjzUYvNyEmz4vWQJ6nKskGnoL61kkPDRc6Zc7I0kpXewYSnDkmrYlg5Uw6lzoYewo26UyzndmomTv8hQh8PsG2E=w200",
+  other: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1cPfaMmkKFwMWFwpCgKuWEAyKkTH_84snAQOQ_ayRYd4NrxBUgBiF-Lti9my-q9ey9XC9_kyvUv342LU5Wf2dLX6BcJbe0_kYBJ5phe9y_Kp7ziLOyZ5hWqkZB56LcV3uHYljb9Cd_HV77INijaTLcNfUfVy73vq63km0G7XDt-ZuH9VoqbfygBCucW_UytgX1xwjkVxzacyelklwzzB_rk1f2tj1epsxNBdAtCu8TZ37ky1gBajd=w200",
+};
+
+const CATEGORY_ICONS: Record<string, string> = {
+  conversions: "swap_horiz",
+  datetime: "schedule",
+  science: "science",
+  lifestyle: "home",
+};
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [filter, setFilter] = useState("");
-  const [viewMode, setViewMode] = useState<"grid" | "list">("list");
   const category = categories.find((c) => c.slug === slug);
   const allCalcs = uniqueCalculators.filter((c) => c.categorySlug === slug);
   const seoData = slug ? categorySEOData[slug] : undefined;
@@ -26,85 +34,31 @@ const CategoryPage = () => {
   }, [allCalcs, filter]);
 
   const grouped = useMemo(() => {
-    const groups: Record<string, typeof calculators> = {};
+    const groups = new Map<string, typeof calculators>();
     const ungrouped: typeof calculators = [];
     calculators.forEach((c) => {
       const sub = (c as any).subcategory;
       if (sub) {
-        if (!groups[sub]) groups[sub] = [];
-        groups[sub].push(c);
+        if (!groups.has(sub)) groups.set(sub, []);
+        groups.get(sub)!.push(c);
       } else {
         ungrouped.push(c);
       }
     });
-    return { groups, ungrouped };
+    return { groups: [...groups.entries()], ungrouped };
   }, [calculators]);
-
-  const hasSubcategories = Object.keys(grouped.groups).length > 0;
 
   if (!category) {
     return (
-      <div className="container mx-auto px-4 py-16 text-center">
-        <h1 className="text-2xl font-bold mb-2">Category not found</h1>
-        <Link to="/" className="text-primary hover:underline text-sm">Back to Home</Link>
+      <div className="max-w-[1200px] mx-auto px-4 py-16 text-center">
+        <h1 className="font-display text-[24px] font-semibold mb-2">Category not found</h1>
+        <Link to="/" className="text-link hover:underline text-[13px]">Back to Home</Link>
       </div>
     );
   }
 
-  const CatIcon = getCategoryIcon(category.icon);
-
-  const renderCalcGrid = (calcs: typeof calculators) => (
-    viewMode === "grid" ? (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {calcs.map((calc, i) => {
-          const Icon = getCategoryIcon(calc.icon);
-          return (
-            <Link
-              key={calc.slug}
-              to={`/${calc.categorySlug}/${calc.slug}`}
-              className="group bg-card rounded-xl border border-border p-5 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5 hover:border-primary/20 hover:-translate-y-1 animate-fade-in"
-              style={{ animationDelay: `${Math.min(i * 30, 300)}ms`, animationFillMode: "both" }}
-            >
-              <div className="flex items-start justify-between mb-3">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/15 to-primary/5 flex items-center justify-center group-hover:from-primary/25 group-hover:to-primary/10 transition-all duration-300 group-hover:scale-110">
-                  <Icon className="w-5 h-5 text-primary transition-transform duration-300 group-hover:rotate-6" />
-                </div>
-                <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300" />
-              </div>
-              <h3 className="font-semibold text-sm mb-1 group-hover:text-primary transition-colors">{calc.name}</h3>
-              <p className="text-xs text-muted-foreground line-clamp-2">{calc.description}</p>
-            </Link>
-          );
-        })}
-      </div>
-    ) : (
-      <div className="space-y-2.5">
-        {calcs.map((calc, i) => {
-          const Icon = getCategoryIcon(calc.icon);
-          return (
-            <Link
-              key={calc.slug}
-              to={`/${calc.categorySlug}/${calc.slug}`}
-              className="group flex items-center gap-4 bg-card rounded-xl border border-border px-4 sm:px-5 py-4 transition-all duration-200 hover:shadow-sm hover:border-primary/40 hover:-translate-y-0.5 animate-fade-in"
-              style={{ animationDelay: `${Math.min(i * 15, 200)}ms`, animationFillMode: "both" }}
-            >
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/15 transition-colors">
-                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-bold text-base sm:text-lg text-foreground truncate group-hover:text-primary transition-colors">{calc.name}</h3>
-                <p className="text-xs text-muted-foreground truncate hidden sm:block">{calc.description}</p>
-              </div>
-              <ArrowUpRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-            </Link>
-          );
-        })}
-      </div>
-    )
-  );
-
   return (
-    <div>
+    <div className="w-full bg-background min-h-[calc(100vh-144px)]">
       <SEO
         title={`${category.name} Calculators — Free Online Tools`}
         description={seoData?.contentIntro?.slice(0, 155) || category.description}
@@ -112,224 +66,153 @@ const CategoryPage = () => {
         keywords={slug ? getMetaKeywords(slug) : undefined}
         breadcrumbs={[{ name: "Home", url: "/" }, { name: category.name, url: `/category/${category.slug}` }]}
       />
-      <Breadcrumbs items={[
-        { label: "Home", href: "/" },
-        { label: category.name },
-      ]} />
 
-      <div className="container mx-auto px-4 pb-12">
-        <div className="flex gap-8">
-          {/* Main */}
-          <div className="flex-1 min-w-0">
-            {/* Category header */}
-            <div className="flex items-center gap-4 mb-6">
-              <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center"
-                style={{ backgroundColor: `${category.color}15`, color: category.color }}
-              >
-                <CatIcon className="w-6 h-6" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-black">{category.name} Calculators</h1>
-                <p className="text-muted-foreground text-sm">{category.description} — {allCalcs.length} calculators</p>
-              </div>
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 py-5">
+        <div className="flex flex-col w-full">
+          {/* Breadcrumbs & header */}
+          <div className="flex flex-col mb-4">
+            <div className="flex items-center gap-1.5 text-[11px] text-ink-soft">
+              <Link className="hover:text-primary transition-colors" to="/">Home</Link>
+              <span className="opacity-50">/</span>
+              <span className="text-ink font-medium">{category.name}</span>
             </div>
-
-            {/* SEO intro content */}
-            {seoData && (
-              <div className="mb-6 text-sm text-muted-foreground leading-relaxed space-y-3">
-                <p>{seoData.contentIntro}</p>
-                {seoData.topCalcLinks.length > 0 && (
-                  <p>
-                    <strong className="text-foreground">Popular tools:</strong>{" "}
-                    {seoData.topCalcLinks.map((link, i) => (
-                      <span key={link.calcSlug}>
-                        <Link to={`/${link.slug}/${link.calcSlug}`} className="text-primary hover:underline font-medium">
-                          {link.name}
-                        </Link>
-                        {i < seoData.topCalcLinks.length - 1 ? ", " : "."}
-                      </span>
-                    ))}
-                  </p>
-                )}
-              </div>
-            )}
-
-            {/* Search / filter + view toggle */}
-            <div className="flex gap-2 mb-6">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  value={filter}
-                  onChange={(e) => setFilter(e.target.value)}
-                  placeholder={`Filter ${allCalcs.length} calculators…`}
-                  className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-border bg-card text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-shadow"
+            <div className="flex items-center gap-4 mt-2">
+              {CATEGORY_IMAGES[category.slug] ? (
+                <img
+                  className="w-14 h-14 rounded-full object-cover shrink-0 shadow-sm"
+                  src={CATEGORY_IMAGES[category.slug]}
+                  alt={`${category.name} calculators`}
                 />
-                {filter && (
-                  <button
-                    onClick={() => setFilter("")}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                )}
-              </div>
-              <div className="flex rounded-xl border border-border overflow-hidden shrink-0">
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`p-2.5 transition-colors ${viewMode === "grid" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:bg-secondary"}`}
-                >
-                  <LayoutGrid className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setViewMode("list")}
-                  className={`p-2.5 transition-colors ${viewMode === "list" ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground hover:bg-secondary"}`}
-                >
-                  <List className="w-4 h-4" />
-                </button>
+              ) : (
+                <span className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-sm">
+                  <span className="material-symbols-outlined text-white text-[28px]">{CATEGORY_ICONS[category.slug]}</span>
+                </span>
+              )}
+              <div className="flex flex-wrap items-baseline justify-between gap-2 flex-1">
+                <h1 className="font-display text-[24px] font-semibold text-ink tracking-tight">
+                  {category.name} Calculators
+                </h1>
+                <span className="text-[12px] text-ink-soft">{allCalcs.length} free tools</span>
               </div>
             </div>
+            <p className="text-[14px] text-ink-soft mt-2">{category.description}</p>
+          </div>
 
-            <AdPlaceholder size="leaderboard" />
-
-            {/* Subcategory sections */}
-            {hasSubcategories ? (
-              <div className="mt-8 space-y-10">
-                {grouped.ungrouped.length > 0 && (
-                  <div>
-                    <h2 className="text-lg font-bold mb-4">General</h2>
-                    {renderCalcGrid(grouped.ungrouped)}
-                  </div>
-                )}
-                {Object.entries(grouped.groups).map(([subcategory, calcs]) => (
-                  <div key={subcategory}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <h2 className="text-lg font-bold">{subcategory}</h2>
-                    </div>
-                    {renderCalcGrid(calcs)}
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="mt-8">
-                {renderCalcGrid(calculators)}
-              </div>
-            )}
-
-            {calculators.length === 0 && (
-              <div className="text-center py-12 text-muted-foreground">
-                <p className="text-sm">{filter ? "No calculators match your search." : "Calculators coming soon for this category."}</p>
-              </div>
-            )}
-
-            {/* Cross-category links for SEO */}
-            {seoData && seoData.relatedCategories.length > 0 && (
-              <section className="mt-10 border-t border-border pt-8">
-                <h2 className="text-xl font-bold mb-4">Explore Related Categories</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                  {seoData.relatedCategories.map((rc) => {
-                    const relCat = categories.find((c) => c.slug === rc.slug);
-                    const RcIcon = getCategoryIcon(relCat?.icon || "calculator");
-                    return (
-                      <Link
-                        key={rc.slug}
-                        to={`/category/${rc.slug}`}
-                        className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border hover:border-primary/30 hover:shadow-sm transition-all group"
-                      >
-                        <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center shrink-0">
-                          <RcIcon className="w-5 h-5 text-primary" />
-                        </div>
-                        <div>
-                          <p className="font-semibold text-sm group-hover:text-primary transition-colors">{rc.name} Calculators</p>
-                          <p className="text-xs text-muted-foreground">{relCat?.description}</p>
-                        </div>
+          {/* SEO intro */}
+          {seoData && (
+            <div className="mb-5 text-[12px] text-ink-soft leading-relaxed space-y-2">
+              <p>{seoData.contentIntro}</p>
+              {seoData.topCalcLinks.length > 0 && (
+                <p>
+                  <strong className="text-ink">Popular tools:</strong>{" "}
+                  {seoData.topCalcLinks.map((link, i) => (
+                    <span key={link.calcSlug}>
+                      <Link to={`/${link.slug}/${link.calcSlug}`} className="text-link hover:underline font-medium">
+                        {link.name}
                       </Link>
-                    );
-                  })}
-                </div>
+                      {i < seoData.topCalcLinks.length - 1 ? ", " : "."}
+                    </span>
+                  ))}
+                </p>
+              )}
+            </div>
+          )}
 
-                {/* Popular cross-site links */}
-                <h3 className="font-bold text-sm mb-3">Most Popular Calculators</h3>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { name: "Mortgage Calculator", path: "/finance/mortgage-calculator" },
-                    { name: "BMI Calculator", path: "/health/bmi-calculator" },
-                    { name: "Percentage Calculator", path: "/math/percentage-calculator" },
-                    { name: "Age Calculator", path: "/datetime/age-calculator" },
-                    { name: "Length Converter", path: "/conversions/length-converter" },
-                    { name: "Calorie Calculator", path: "/health/calorie-calculator" },
-                    { name: "GPA Calculator", path: "/math/gpa-calculator" },
-                    { name: "Tip Calculator", path: "/lifestyle/tip-calculator" },
-                  ].map((link) => (
+          {/* Filter */}
+          <div className="relative max-w-md mb-6">
+            <span className="material-symbols-outlined absolute left-3 top-2.5 text-ink-soft text-[18px]">search</span>
+            <input
+              type="text"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              placeholder={`Filter ${allCalcs.length} calculators…`}
+              className="w-full pl-9 pr-9 py-2 rounded-lg bg-surface-low text-[13px] text-ink placeholder:text-ink-soft focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+            {filter && (
+              <button
+                onClick={() => setFilter("")}
+                className="absolute right-3 top-2.5 text-ink-soft hover:text-ink"
+                aria-label="Clear filter"
+              >
+                <span className="material-symbols-outlined text-[18px]">close</span>
+              </button>
+            )}
+          </div>
+
+          {/* Calculator link groups */}
+          <div className="bg-surface-lowest rounded-xl p-6 shadow-sm mb-6">
+            {grouped.ungrouped.length > 0 && (
+              <div className="mb-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6">
+                  {grouped.ungrouped.map((calc) => (
                     <Link
-                      key={link.path}
-                      to={link.path}
-                      className="px-3 py-1.5 bg-secondary text-sm font-medium rounded-lg hover:bg-primary/10 hover:text-primary transition-colors"
+                      key={calc.slug}
+                      to={`/${calc.categorySlug}/${calc.slug}`}
+                      className="text-[13px] text-link hover:text-link-dark hover:underline block py-1"
                     >
-                      {link.name}
+                      {calc.name}
                     </Link>
                   ))}
                 </div>
-              </section>
-            )}
-
-            {/* SEO bottom content */}
-            <section className="mt-8 border-t border-border pt-6">
-              <h2 className="text-lg font-bold mb-3">About {category.name} Calculators</h2>
-              <div className="text-sm text-muted-foreground space-y-3 leading-relaxed">
-                <p>
-                  TheCalculator.us's <strong>{category.name.toLowerCase()} calculators</strong> are designed for users in the United States, 
-                  United Kingdom, Canada, and Australia. All tools are free, require no registration, and work on any device — 
-                  desktop, tablet, or mobile.
-                </p>
-                <p>
-                  Each calculator uses established formulas and provides instant results directly in your browser. 
-                  Whether you're a student, professional, or simply curious, our {allCalcs.length} {category.name.toLowerCase()} tools 
-                  are here to help. <Link to="/categories" className="text-primary hover:underline font-medium">Browse all calculator categories</Link>
-                </p>
               </div>
-            </section>
-
-            <div className="mt-8">
-              <AdPlaceholder size="leaderboard" />
-            </div>
+            )}
+            {grouped.groups.map(([sub, calcs]) => (
+              <div key={sub} className="mb-6 last:mb-0">
+                <h2 className="font-display text-[15px] font-semibold text-ink mb-2">{sub}</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6">
+                  {calcs.map((calc) => (
+                    <Link
+                      key={calc.slug}
+                      to={`/${calc.categorySlug}/${calc.slug}`}
+                      className="text-[13px] text-link hover:text-link-dark hover:underline block py-1"
+                    >
+                      {calc.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
+            {calculators.length === 0 && (
+              <p className="text-[13px] text-ink-soft text-center py-8">
+                {filter ? "No calculators match your search." : "Calculators coming soon for this category."}
+              </p>
+            )}
           </div>
 
-          {/* Sidebar */}
-          <aside className="hidden lg:block w-[300px] shrink-0 space-y-6">
-            <AdPlaceholder size="rectangle" />
-
-            {/* Other categories */}
-            <div className="bg-card rounded-xl border border-border p-5">
-              <h3 className="font-bold text-sm mb-4">Other Categories</h3>
-              <ul className="space-y-1">
-                {categories
-                  .filter((c) => c.slug !== slug)
-                  .map((c) => {
-                    const OtherIcon = getCategoryIcon(c.icon);
-                    return (
-                      <li key={c.slug}>
-                        <Link
-                          to={`/category/${c.slug}`}
-                          className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-secondary transition-colors text-sm"
-                        >
-                          <div
-                            className="w-8 h-8 rounded-lg flex items-center justify-center"
-                            style={{ backgroundColor: `${c.color}15`, color: c.color }}
-                          >
-                            <OtherIcon className="w-4 h-4" />
-                          </div>
-                          {c.name}
-                        </Link>
-                      </li>
-                    );
-                  })}
-              </ul>
+          {/* Related categories */}
+          {seoData && seoData.relatedCategories.length > 0 && (
+            <div className="mt-2 pt-6 border-t border-surface-container">
+              <h2 className="font-display text-[18px] font-semibold text-ink mb-3">Explore Related Categories</h2>
+              <div className="flex flex-wrap gap-1.5">
+                {seoData.relatedCategories.map((rc) => (
+                  <Link
+                    key={rc.slug}
+                    to={`/category/${rc.slug}`}
+                    className="text-[12px] text-link hover:text-link-dark bg-surface-lowest px-2.5 py-1.5 rounded hover:shadow-sm transition-all"
+                  >
+                    {rc.name} Calculators
+                  </Link>
+                ))}
+              </div>
             </div>
+          )}
 
-            <RecentlyUsed />
-          </aside>
+          {/* SEO bottom content */}
+          <section className="mt-6 border-t border-surface-container pt-6">
+            <h2 className="font-display text-[18px] font-semibold text-ink mb-3">About {category.name} Calculators</h2>
+            <div className="text-[12px] text-ink-soft space-y-3 leading-relaxed">
+              <p>
+                TheCalculator.us's <strong>{category.name.toLowerCase()} calculators</strong> are designed for users in the United States,
+                United Kingdom, Canada, and Australia. All tools are free, require no registration, and work on any device —
+                desktop, tablet, or mobile.
+              </p>
+              <p>
+                Each calculator uses established formulas and provides instant results directly in your browser.
+                Whether you're a student, professional, or simply curious, our {allCalcs.length} {category.name.toLowerCase()} tools
+                are here to help. <Link to="/categories" className="text-link hover:underline font-medium">Browse all calculator categories</Link>
+              </p>
+            </div>
+          </section>
         </div>
       </div>
     </div>
