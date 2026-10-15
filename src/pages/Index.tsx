@@ -133,12 +133,9 @@ const Index = () => {
                       </span>
                     )}
                     <div>
-                      <span className="text-[11px] text-primary uppercase font-bold tracking-wider">
-                        Category {String(i + 1).padStart(2, "0")}
-                      </span>
                       <h3 className="font-display text-[18px] font-semibold text-ink">
                         <Link to={`/category/${cat.slug}`} className="hover:text-primary transition-colors">
-                          {cat.name}
+                          {cat.name}{cat.name.endsWith("Calculators") ? "" : " Calculators"}
                         </Link>
                       </h3>
                     </div>
