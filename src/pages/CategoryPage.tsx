@@ -19,6 +19,8 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   science: FlaskConical,
   lifestyle: Home,
 };
+const catTitle = (name: string) => (name.endsWith("Calculators") ? name : `${name} Calculators`);
+
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const [filter, setFilter] = useState("");
@@ -61,7 +63,7 @@ const CategoryPage = () => {
   return (
     <div className="w-full bg-background min-h-[calc(100vh-144px)]">
       <SEO
-        title={`${category.name} Calculators — Free Online Tools`}
+        title={`${catTitle(category.name)} — Free Online Tools`}
         description={seoData?.contentIntro?.slice(0, 155) || category.description}
         canonical={`/category/${category.slug}`}
         keywords={slug ? getMetaKeywords(slug) : undefined}
@@ -91,7 +93,7 @@ const CategoryPage = () => {
               )}
               <div className="flex flex-wrap items-baseline justify-between gap-2 flex-1">
                 <h1 className="font-display text-[24px] font-semibold text-ink tracking-tight">
-                  {category.name} Calculators
+                  {catTitle(category.name)}
                 </h1>
                 <span className="text-[12px] text-ink-soft">{allCalcs.length} free tools</span>
               </div>
@@ -191,7 +193,7 @@ const CategoryPage = () => {
                     to={`/category/${rc.slug}`}
                     className="text-[12px] text-link hover:text-link-dark bg-surface-lowest px-2.5 py-1.5 rounded hover:shadow-sm transition-all"
                   >
-                    {rc.name} Calculators
+                    {catTitle(rc.name)}
                   </Link>
                 ))}
               </div>
@@ -200,7 +202,7 @@ const CategoryPage = () => {
 
           {/* SEO bottom content */}
           <section className="mt-6 border-t border-surface-container pt-6">
-            <h2 className="font-display text-[18px] font-semibold text-ink mb-3">About {category.name} Calculators</h2>
+            <h2 className="font-display text-[18px] font-semibold text-ink mb-3">About {catTitle(category.name)}</h2>
             <div className="text-[12px] text-ink-soft space-y-3 leading-relaxed">
               <p>
                 TheCalculator.us's <strong>{category.name.toLowerCase()} calculators</strong> are designed for users in the United States,
