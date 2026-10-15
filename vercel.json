@@ -1111,21 +1111,6 @@
       "statusCode": 301
     },
     {
-      "source": "/finance/annuity-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
-      "source": "/finance/annuity-payout-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
-      "source": "/finance/auto-lease-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
       "source": "/finance/average-return-calculator",
       "destination": "/category/finance",
       "statusCode": 301
@@ -1151,17 +1136,7 @@
       "statusCode": 301
     },
     {
-      "source": "/finance/bond-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
       "source": "/finance/budget-percentage-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
-      "source": "/finance/business-loan-calculator",
       "destination": "/category/finance",
       "statusCode": 301
     },
@@ -1191,17 +1166,7 @@
       "statusCode": 301
     },
     {
-      "source": "/finance/cd-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
       "source": "/finance/cogs-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
-      "source": "/finance/college-cost-calculator",
       "destination": "/category/finance",
       "statusCode": 301
     },
@@ -1311,11 +1276,6 @@
       "statusCode": 301
     },
     {
-      "source": "/finance/future-value-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
       "source": "/finance/gross-profit-calculator",
       "destination": "/category/finance",
       "statusCode": 301
@@ -1337,16 +1297,6 @@
     },
     {
       "source": "/finance/inventory-turnover-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
-      "source": "/finance/irr-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
-      "source": "/finance/lease-calculator",
       "destination": "/category/finance",
       "statusCode": 301
     },
@@ -1406,11 +1356,6 @@
       "statusCode": 301
     },
     {
-      "source": "/finance/mutual-fund-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
       "source": "/finance/net-income-calculator",
       "destination": "/category/finance",
       "statusCode": 301
@@ -1466,22 +1411,12 @@
       "statusCode": 301
     },
     {
-      "source": "/finance/present-value-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
       "source": "/finance/property-appreciation-calculator",
       "destination": "/category/finance",
       "statusCode": 301
     },
     {
       "source": "/finance/real-estate-roi-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
-      "source": "/finance/rent-calculator",
       "destination": "/category/finance",
       "statusCode": 301
     },
@@ -1517,11 +1452,6 @@
     },
     {
       "source": "/finance/risk-vs-return-calculator",
-      "destination": "/category/finance",
-      "statusCode": 301
-    },
-    {
-      "source": "/finance/rmd-calculator",
       "destination": "/category/finance",
       "statusCode": 301
     },
@@ -1626,16 +1556,6 @@
       "statusCode": 301
     },
     {
-      "source": "/health/body-surface-area-calculator",
-      "destination": "/category/health",
-      "statusCode": 301
-    },
-    {
-      "source": "/health/body-type-calculator",
-      "destination": "/category/health",
-      "statusCode": 301
-    },
-    {
       "source": "/health/carbohydrate-intake-calculator",
       "destination": "/category/health",
       "statusCode": 301
@@ -1696,11 +1616,6 @@
       "statusCode": 301
     },
     {
-      "source": "/health/fat-intake-calculator",
-      "destination": "/category/health",
-      "statusCode": 301
-    },
-    {
       "source": "/health/fat-mass-index-calculator",
       "destination": "/category/health",
       "statusCode": 301
@@ -1712,11 +1627,6 @@
     },
     {
       "source": "/health/food-energy-calculator",
-      "destination": "/category/health",
-      "statusCode": 301
-    },
-    {
-      "source": "/health/gfr-calculator",
       "destination": "/category/health",
       "statusCode": 301
     },
@@ -1782,11 +1692,6 @@
     },
     {
       "source": "/health/muscle-gain-calculator",
-      "destination": "/category/health",
-      "statusCode": 301
-    },
-    {
-      "source": "/health/overweight-calculator",
       "destination": "/category/health",
       "statusCode": 301
     },
@@ -1926,11 +1831,6 @@
       "statusCode": 301
     },
     {
-      "source": "/lifestyle/bandwidth-calculator",
-      "destination": "/category/lifestyle",
-      "statusCode": 301
-    },
-    {
       "source": "/lifestyle/battery-life-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
@@ -2046,11 +1946,6 @@
       "statusCode": 301
     },
     {
-      "source": "/lifestyle/dew-point-calculator",
-      "destination": "/category/lifestyle",
-      "statusCode": 301
-    },
-    {
       "source": "/lifestyle/drink-quantity-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
@@ -2111,16 +2006,6 @@
       "statusCode": 301
     },
     {
-      "source": "/lifestyle/gdp-calculator",
-      "destination": "/category/lifestyle",
-      "statusCode": 301
-    },
-    {
-      "source": "/lifestyle/golf-handicap-calculator",
-      "destination": "/category/lifestyle",
-      "statusCode": 301
-    },
-    {
       "source": "/lifestyle/grocery-budget-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
@@ -2137,11 +2022,6 @@
     },
     {
       "source": "/lifestyle/heating-cost-calculator",
-      "destination": "/category/lifestyle",
-      "statusCode": 301
-    },
-    {
-      "source": "/lifestyle/height-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
     },
@@ -2167,11 +2047,6 @@
     },
     {
       "source": "/lifestyle/life-percentage-calculator",
-      "destination": "/category/lifestyle",
-      "statusCode": 301
-    },
-    {
-      "source": "/lifestyle/love-calculator",
       "destination": "/category/lifestyle",
       "statusCode": 301
     },
@@ -2526,11 +2401,6 @@
       "statusCode": 301
     },
     {
-      "source": "/math/binary-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
       "source": "/math/binomial-distribution-calculator",
       "destination": "/category/math",
       "statusCode": 301
@@ -2562,11 +2432,6 @@
     },
     {
       "source": "/math/cone-volume-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
-      "source": "/math/confidence-interval-calculator",
       "destination": "/category/math",
       "statusCode": 301
     },
@@ -2711,11 +2576,6 @@
       "statusCode": 301
     },
     {
-      "source": "/math/hex-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
       "source": "/math/homework-time-calculator",
       "destination": "/category/math",
       "statusCode": 301
@@ -2806,11 +2666,6 @@
       "statusCode": 301
     },
     {
-      "source": "/math/matrix-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
       "source": "/math/matrix-determinant-calculator",
       "destination": "/category/math",
       "statusCode": 301
@@ -2852,16 +2707,6 @@
     },
     {
       "source": "/math/number-base-converter",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
-      "source": "/math/number-sequence-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
-      "source": "/math/p-value-calculator",
       "destination": "/category/math",
       "statusCode": 301
     },
@@ -2957,11 +2802,6 @@
     },
     {
       "source": "/math/rhombus-area-calculator",
-      "destination": "/category/math",
-      "statusCode": 301
-    },
-    {
-      "source": "/math/sample-size-calculator",
       "destination": "/category/math",
       "statusCode": 301
     },
