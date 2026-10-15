@@ -25,8 +25,6 @@ export default defineConfig(({ mode }) => ({
           "vendor-router": ["react-router-dom"],
           // UI components chunk
           "vendor-ui": ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-select", "@radix-ui/react-tabs", "@radix-ui/react-accordion"],
-          // Charts separate — only loaded when needed
-          "vendor-charts": ["recharts"],
           // Query client
           "vendor-query": ["@tanstack/react-query"],
         },

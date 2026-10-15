@@ -13,7 +13,12 @@ import ScrollToTop from "@/components/ScrollToTop";
 import PageLoadingSkeleton from "@/components/PageLoadingSkeleton";
 import PageTransition from "@/components/PageTransition";
 import Index from "./pages/Index";
-import { PrivacyPolicy, TermsOfService, Disclaimer, ContactPage } from "./pages/LegalPages";
+// Legal pages load on demand — ContactPage pulls in the supabase client,
+// which has no business in the homepage bundle.
+const PrivacyPolicy = lazy(() => import("./pages/LegalPages").then((m) => ({ default: m.PrivacyPolicy })));
+const TermsOfService = lazy(() => import("./pages/LegalPages").then((m) => ({ default: m.TermsOfService })));
+const Disclaimer = lazy(() => import("./pages/LegalPages").then((m) => ({ default: m.Disclaimer })));
+const ContactPage = lazy(() => import("./pages/LegalPages").then((m) => ({ default: m.ContactPage })));
 
 const MortgageCalculator = lazy(() => import("./pages/MortgageCalculator"));
 const BmiCalculator = lazy(() => import("./pages/BmiCalculator"));
