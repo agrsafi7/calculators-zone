@@ -58,6 +58,28 @@ const KEYS: KeyDef[] = [
   { key: "+", label: "+", kind: "op" },
 ];
 
+const BASIC_KEYS: KeyDef[] = [
+  { key: "clear", label: "AC", kind: "clear" },
+  { key: "sign", label: "±", kind: "fn" },
+  { key: "mod", label: "%", kind: "fn" },
+  { key: "/", label: "÷", kind: "op" },
+  { key: "7", label: "7", kind: "num" },
+  { key: "8", label: "8", kind: "num" },
+  { key: "9", label: "9", kind: "num" },
+  { key: "*", label: "×", kind: "op" },
+  { key: "4", label: "4", kind: "num" },
+  { key: "5", label: "5", kind: "num" },
+  { key: "6", label: "6", kind: "num" },
+  { key: "-", label: "−", kind: "op" },
+  { key: "1", label: "1", kind: "num" },
+  { key: "2", label: "2", kind: "num" },
+  { key: "3", label: "3", kind: "num" },
+  { key: "+", label: "+", kind: "op" },
+  { key: "0", label: "0", kind: "num" },
+  { key: ".", label: ".", kind: "num" },
+  { key: "del", label: <Delete size={18} />, kind: "fn" },
+];
+
 const keyClass = (kind: KeyDef["kind"]) => {
   switch (kind) {
     case "num":
@@ -72,6 +94,7 @@ const keyClass = (kind: KeyDef["kind"]) => {
 };
 
 const ScientificEngine = () => {
+  const [mode, setMode] = useState<"basic" | "scientific">("scientific");
   const [expression, setExpression] = useState("");
   const [history, setHistory] = useState("");
   const [isResultShown, setIsResultShown] = useState(false);
@@ -166,15 +189,39 @@ const ScientificEngine = () => {
     setIsResultShown(resultShown);
   };
 
+  const activeKeys = mode === "basic" ? BASIC_KEYS : KEYS;
+
   return (
     <div className="bg-surface-lowest rounded-xl p-4 sm:p-6 shadow-sm flex flex-col justify-between">
-      <div className="flex items-center justify-between pb-1 mb-3">
+      <div className="flex items-center justify-between pb-1 mb-3 flex-wrap gap-2">
         <div className="flex items-center gap-1.5">
           <Calculator size={20} className="text-primary" />
-          <span className="font-display text-[15px] font-semibold text-ink">Scientific Engine</span>
-          <span className="bg-surface-container text-ink-soft text-[11px] px-1.5 py-0.5 rounded ml-1">v4.2 High Precision</span>
+          <span className="font-display text-[15px] font-semibold text-ink">
+            {mode === "basic" ? "Basic Calculator" : "Scientific Engine"}
+          </span>
+          {mode === "scientific" && (
+            <span className="bg-surface-container text-ink-soft text-[11px] px-1.5 py-0.5 rounded ml-1">v4.2 High Precision</span>
+          )}
         </div>
-        <div className="flex items-center gap-2 bg-surface-low px-2 py-1 rounded">
+        <div className="flex items-center gap-2">
+          <div className="flex bg-surface-low rounded-lg p-0.5" role="tablist" aria-label="Calculator mode">
+            {(["basic", "scientific"] as const).map((m) => (
+              <button
+                key={m}
+                type="button"
+                role="tab"
+                aria-selected={mode === m}
+                onClick={() => setMode(m)}
+                className={`px-3 py-1 rounded-md text-[12px] font-semibold transition-colors ${
+                  mode === m ? "bg-primary text-white shadow-sm" : "text-ink-soft hover:text-ink"
+                }`}
+              >
+                {m === "basic" ? "Basic" : "Scientific"}
+              </button>
+            ))}
+          </div>
+          {mode === "scientific" && (
+            <div className="flex items-center gap-2 bg-surface-low px-2 py-1 rounded">
           <label className="flex items-center gap-1 cursor-pointer">
             <input
               type="radio" name="angle_unit" value="deg" checked={!useRad}
@@ -190,6 +237,8 @@ const ScientificEngine = () => {
             />
             <span className="text-[11px] text-ink-soft">Rad</span>
           </label>
+            </div>
+          )}
         </div>
       </div>
 
@@ -200,13 +249,13 @@ const ScientificEngine = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 sm:grid-cols-9 gap-1.5 sm:gap-2 select-none">
-        {KEYS.map((k) => (
+      <div className={`grid gap-1.5 sm:gap-2 select-none ${mode === "basic" ? "grid-cols-4" : "grid-cols-5 sm:grid-cols-9"}`}>
+        {activeKeys.map((k) => (
           <button
             key={k.key}
             type="button"
             onClick={() => press(k.key)}
-            className={`${keyClass(k.kind)} py-2 rounded transition-colors`}
+            className={`${keyClass(k.kind)} py-2 rounded transition-colors ${mode === "basic" && k.key === "0" ? "col-span-2" : ""}`}
             aria-label={k.key}
           >
             {k.label}
