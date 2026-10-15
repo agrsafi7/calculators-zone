@@ -15,6 +15,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+        numeric: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -50,6 +52,20 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "surface-lowest": "hsl(var(--surface-lowest))",
+        "surface-low": "hsl(var(--surface-low))",
+        "surface-container": "hsl(var(--surface-container))",
+        "surface-high": "hsl(var(--surface-high))",
+        "surface-highest": "hsl(var(--surface-highest))",
+        link: {
+          DEFAULT: "hsl(var(--link))",
+          dark: "hsl(var(--link-dark))",
+        },
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          soft: "hsl(var(--ink-soft))",
+        },
+        tealbright: "hsl(var(--accent))",
         navy: "hsl(var(--navy))",
         "navy-light": "hsl(var(--navy-light))",
         "blue-50": "hsl(var(--blue-50))",

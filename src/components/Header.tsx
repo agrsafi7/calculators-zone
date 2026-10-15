@@ -1,169 +1,139 @@
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Moon, Sun, Search, ChevronDown, Calculator } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { categories } from "@/data/calculators";
-import { useDarkMode } from "@/hooks/use-dark-mode";
-import SearchBar from "@/components/SearchBar";
-import CalculatorMegaMenu from "@/components/CalculatorMegaMenu";
+import { searchCalculators } from "@/lib/calculator-utils";
 
-const SITE_URL = "/";
-
+// Site header per the approved design: fixed top bar with logo, category
+// pills, search, and account icon.
 const Header = () => {
-  const { isDark, toggle: toggleDark } = useDarkMode();
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [calcMenuOpen, setCalcMenuOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const searchRef = useRef<HTMLDivElement>(null);
-  const calcMenuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Close menu on route change
   useEffect(() => {
     setMobileOpen(false);
-    setSearchOpen(false);
-    setCalcMenuOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = 'hidden';
+  const submitSearch = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    const q = query.trim();
+    if (!q) return;
+    const hits = searchCalculators(q);
+    if (hits.length > 0) {
+      navigate(`/${hits[0].categorySlug}/${hits[0].slug}`);
     } else {
-      document.body.style.overflow = '';
+      navigate(`/category/all`);
     }
-    return () => { document.body.style.overflow = ''; };
-  }, [mobileOpen]);
-
-  // Close search on click outside
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
-        setSearchOpen(false);
-      }
-    };
-    if (searchOpen) document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [searchOpen]);
-
-  // Close calc menu on click outside (desktop)
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (calcMenuRef.current && !calcMenuRef.current.contains(e.target as Node)) {
-        setCalcMenuOpen(false);
-      }
-    };
-    if (calcMenuOpen) document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [calcMenuOpen]);
+    setQuery("");
+  };
 
   return (
-    <header className="sticky top-0 z-50 bg-card border-b border-border">
-      <div className="container mx-auto px-4 h-14 flex items-center justify-between gap-4">
-        <Link to={SITE_URL} className="flex items-center gap-2 shrink-0" aria-label="Go to homepage">
-          <div className="w-7 h-7 bg-foreground rounded-md flex items-center justify-center">
-            <div className="w-3.5 h-3.5 grid grid-cols-2 gap-0.5">
-              <div className="bg-primary-foreground rounded-[1px]" />
-              <div className="bg-primary-foreground rounded-[1px]" />
-              <div className="bg-primary-foreground rounded-[1px]" />
-              <div className="bg-primary-foreground rounded-[1px]" />
-            </div>
-          </div>
-          <span className="text-lg font-bold text-foreground">TheCalculator.us</span>
-        </Link>
-
-        {/* Desktop: expandable search */}
-        <div className="hidden md:flex items-center flex-1 max-w-md justify-end" ref={searchRef}>
-          {searchOpen ? (
-            <div className="w-full animate-in fade-in slide-in-from-right-4 duration-200">
-              <SearchBar placeholder="Search tools..." />
-            </div>
-          ) : (
-            <button
-              onClick={() => setSearchOpen(true)}
-              className="w-9 h-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-              aria-label="Open search"
-            >
-              <Search className="w-4.5 h-4.5" />
-            </button>
-          )}
+    <header className="fixed top-0 w-full z-50 bg-surface-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+      <div className="h-16 max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 flex items-center justify-between gap-3">
+        <div className="flex items-center gap-5 shrink-0">
+          <Link to="/" className="flex items-center gap-1.5" aria-label="TheCalculator.us home">
+            <span className="material-symbols-outlined text-primary text-[24px]">calculate</span>
+            <span className="font-display text-[18px] font-semibold tracking-tight text-ink">
+              TheCalculator<span className="text-primary">.us</span>
+            </span>
+          </Link>
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Categories">
+            {categories.map((c) => (
+              <NavLink
+                key={c.slug}
+                to={`/category/${c.slug}`}
+                className={({ isActive }) =>
+                  `px-3 py-1.5 rounded text-[13px] font-medium transition-colors ${
+                    isActive
+                      ? "bg-tealbright text-white"
+                      : "text-ink-soft hover:bg-surface-container hover:text-ink"
+                  }`
+                }
+              >
+                {c.name}
+              </NavLink>
+            ))}
+          </nav>
         </div>
 
-        {/* Desktop: Calculators dropdown */}
-        <div className="hidden md:block relative shrink-0" ref={calcMenuRef}>
-          <button
-            onClick={() => setCalcMenuOpen((v) => !v)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg transition-colors ${
-              calcMenuOpen
-                ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-            }`}
+        <div className="flex items-center gap-3 flex-1 max-w-md justify-end">
+          <form
+            onSubmit={submitSearch}
+            className="hidden sm:flex w-full items-center rounded-lg bg-surface-low focus-within:bg-surface-lowest focus-within:ring-2 focus-within:ring-primary"
+            role="search"
           >
-            <Calculator className="w-4 h-4" />
-            Calculators
-            <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${calcMenuOpen ? "rotate-180" : ""}`} />
-          </button>
-
-          {calcMenuOpen && (
-            <div className="absolute right-0 top-full mt-2 w-[480px] max-h-[70vh] overflow-y-auto bg-card border border-border rounded-xl shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-              <CalculatorMegaMenu onClose={() => setCalcMenuOpen(false)} />
+            <div className="pl-3 flex items-center justify-center">
+              <span className="material-symbols-outlined text-ink-soft text-[18px]">search</span>
             </div>
-          )}
+            <input
+              className="w-full bg-transparent px-2 py-1.5 text-[12px] text-ink placeholder:text-ink-soft focus:outline-none"
+              placeholder="Search calculator (e.g., mortgage, bmi)..."
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label="Search calculators"
+            />
+            <button
+              className="bg-primary text-white text-[13px] font-medium px-3 py-1.5 rounded-r-lg hover:bg-tealbright transition-colors shrink-0"
+              type="submit"
+            >
+              Search
+            </button>
+          </form>
+          <Link
+            to="/about"
+            className="w-8 h-8 rounded-full bg-primary hidden sm:flex items-center justify-center shrink-0"
+            aria-label="About"
+          >
+            <span className="material-symbols-outlined text-white text-[18px]">person</span>
+          </Link>
+          <button
+            className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-low"
+            onClick={() => setMobileOpen((v) => !v)}
+            aria-label="Menu"
+          >
+            <span className="material-symbols-outlined text-ink text-[24px]">
+              {mobileOpen ? "close" : "menu"}
+            </span>
+          </button>
         </div>
-
-
-        <button
-          onClick={toggleDark}
-          className="hidden md:flex w-9 h-9 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors shrink-0"
-          aria-label="Toggle dark mode"
-        >
-          {isDark ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
-        </button>
-
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-        >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
       </div>
 
-      {/* Mobile menu with backdrop */}
       {mobileOpen && (
-        <>
-          <div
-            className="md:hidden fixed inset-0 top-14 z-40 bg-black/40"
-            onClick={() => setMobileOpen(false)}
-            onTouchStart={() => setMobileOpen(false)}
-          />
-          <div
-            ref={menuRef}
-            className="md:hidden fixed top-14 left-0 right-0 z-50 bg-card overflow-y-auto border-t border-border shadow-xl max-h-[calc(100vh-3.5rem)]"
-          >
-            <div className="px-4 py-4 space-y-3">
-              <SearchBar placeholder="Search tools..." onAfterSelect={() => setMobileOpen(false)} />
-
-              {/* Calculators mega menu in mobile */}
-              <div className="pt-2">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 px-1">Calculators</p>
-                <CalculatorMegaMenu onClose={() => setMobileOpen(false)} />
-              </div>
-
-
-              <div className="flex items-center justify-between pt-3 border-t border-border mt-2">
-                <span className="text-sm font-medium text-muted-foreground">Dark Mode</span>
-                <button
-                  onClick={toggleDark}
-                  className="w-9 h-9 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
-                  aria-label="Toggle dark mode"
-                >
-                  {isDark ? <Sun className="w-4.5 h-4.5" /> : <Moon className="w-4.5 h-4.5" />}
-                </button>
-              </div>
+        <div className="lg:hidden bg-surface-lowest border-t border-surface-container px-4 py-3">
+          <form onSubmit={submitSearch} className="flex items-center rounded-lg bg-surface-low mb-3" role="search">
+            <div className="pl-3 flex items-center justify-center">
+              <span className="material-symbols-outlined text-ink-soft text-[18px]">search</span>
             </div>
-          </div>
-        </>
+            <input
+              className="w-full bg-transparent px-2 py-2 text-[13px] text-ink placeholder:text-ink-soft focus:outline-none"
+              placeholder="Search calculator..."
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label="Search calculators"
+            />
+            <button className="bg-primary text-white text-[13px] font-medium px-3 py-2 rounded-r-lg shrink-0" type="submit">
+              Search
+            </button>
+          </form>
+          <nav className="grid grid-cols-2 gap-1" aria-label="Categories">
+            {categories.map((c) => (
+              <NavLink
+                key={c.slug}
+                to={`/category/${c.slug}`}
+                className={({ isActive }) =>
+                  `px-3 py-2 rounded-lg text-[13px] font-medium ${
+                    isActive ? "bg-tealbright text-white" : "text-ink-soft hover:bg-surface-low"
+                  }`
+                }
+              >
+                {c.name}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
       )}
     </header>
   );
