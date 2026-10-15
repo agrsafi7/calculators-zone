@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
+import { Calculator, ChevronRight, LayoutGrid } from "lucide-react";
 
 const RELATED = [
   { name: "Calorie Calculator", slug: "calorie-calculator" },
@@ -200,7 +201,7 @@ const BmiCalculator = () => {
                   <div className="flex items-center gap-3 pt-1">
                     <button type="submit"
                       className="flex-1 bg-primary text-white font-display text-[15px] font-semibold py-1.5 px-6 rounded-lg hover:bg-tealbright transition-all flex items-center justify-center gap-1.5 shadow-sm">
-                      <span className="material-symbols-outlined text-[18px]">calculate</span>
+                      <Calculator size={18} />
                       Calculate
                     </button>
                     <button type="button" onClick={handleReset}
@@ -260,7 +261,7 @@ const BmiCalculator = () => {
 
               <div className="bg-surface-lowest rounded-xl p-4 shadow-sm">
                 <div className="font-display text-[15px] font-semibold text-ink mb-1 flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-primary text-[18px]">grid_view</span>
+                  <LayoutGrid size={18} className="text-primary" />
                   Related Health Tools
                 </div>
                 <ul className="flex flex-col text-[12px]">
@@ -268,7 +269,7 @@ const BmiCalculator = () => {
                     <li key={r.slug}>
                       <Link to={`/health/${r.slug}`} className="text-link hover:text-link-dark hover:underline flex items-center justify-between py-1">
                         <span>{r.name}</span>
-                        <span className="material-symbols-outlined text-[16px] opacity-40">chevron_right</span>
+                        <ChevronRight size={16} className="opacity-40" />
                       </Link>
                     </li>
                   ))}

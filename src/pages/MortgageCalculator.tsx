@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
+import { Calculator, ChevronRight, Info, Landmark, LayoutGrid, Table, X } from "lucide-react";
 
 const RELATED = [
   { name: "Mortgage Refinance Calculator", slug: "refinance-calculator" },
@@ -169,7 +170,7 @@ const MortgageCalculator = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                     <label className="text-[13px] font-medium text-ink flex items-center gap-1.5" htmlFor="mc-price">
                       Home Price
-                      <span className="material-symbols-outlined text-ink-soft opacity-50 text-[16px]" title="Purchase price of the home">info</span>
+                      <Info size={16} className="text-ink-soft opacity-50" />
                     </label>
                     <div className={wrap}>
                       <span className={affix}>$</span>
@@ -181,7 +182,7 @@ const MortgageCalculator = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                     <label className="text-[13px] font-medium text-ink flex items-center gap-1.5" htmlFor="mc-down">
                       Down Payment
-                      <span className="material-symbols-outlined text-ink-soft opacity-50 text-[16px]" title="Cash contributed toward the purchase">info</span>
+                      <Info size={16} className="text-ink-soft opacity-50" />
                     </label>
                     <div className="flex items-center gap-2 w-full sm:w-64">
                       <div className={`${wrap} flex-1`}>
@@ -216,7 +217,7 @@ const MortgageCalculator = () => {
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                     <label className="text-[13px] font-medium text-ink flex items-center gap-1.5" htmlFor="mc-rate">
                       Interest Rate (APR)
-                      <span className="material-symbols-outlined text-ink-soft opacity-50 text-[16px]" title="Annual fixed percentage rate">info</span>
+                      <Info size={16} className="text-ink-soft opacity-50" />
                     </label>
                     <div className={wrap}>
                       <input id="mc-rate" type="number" min={0.1} max={25} step={0.05} value={interestRate}
@@ -260,7 +261,7 @@ const MortgageCalculator = () => {
                   <div className="flex items-center gap-3 pt-1">
                     <button type="submit"
                       className="flex-1 bg-primary text-white font-display text-[15px] font-semibold py-1.5 px-6 rounded-lg hover:bg-tealbright transition-all flex items-center justify-center gap-1.5 shadow-sm">
-                      <span className="material-symbols-outlined text-[18px]">calculate</span>
+                      <Calculator size={18} />
                       Calculate
                     </button>
                     <button type="button" onClick={reset}
@@ -274,7 +275,7 @@ const MortgageCalculator = () => {
               <div className="bg-surface-low rounded-xl p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-surface-lowest flex items-center justify-center text-primary shrink-0">
-                    <span className="material-symbols-outlined text-[20px]">account_balance</span>
+                    <Landmark size={20} />
                   </div>
                   <div>
                     <div className="font-display text-[15px] font-semibold text-ink">Conforming Loan Limit</div>
@@ -328,14 +329,14 @@ const MortgageCalculator = () => {
                   type="button" onClick={() => setShowAmort((v) => !v)}
                   className="w-full bg-surface-container hover:bg-surface-high text-ink text-[13px] font-medium py-1.5 rounded-lg transition-colors flex items-center justify-center gap-1.5"
                 >
-                  <span className="material-symbols-outlined text-[18px]">table_chart</span>
+                  <Table size={18} />
                   <span>{showAmort ? "Hide Amortization Schedule" : "View Amortization Schedule"}</span>
                 </button>
               </div>
 
               <div className="bg-surface-lowest rounded-xl p-4 shadow-sm">
                 <div className="font-display text-[15px] font-semibold text-ink mb-1 flex items-center gap-1.5">
-                  <span className="material-symbols-outlined text-primary text-[18px]">grid_view</span>
+                  <LayoutGrid size={18} className="text-primary" />
                   Related Financial Tools
                 </div>
                 <ul className="flex flex-col text-[12px]">
@@ -343,7 +344,7 @@ const MortgageCalculator = () => {
                     <li key={r.slug}>
                       <Link to={`/finance/${r.slug}`} className="text-link hover:text-link-dark hover:underline flex items-center justify-between py-1">
                         <span>{r.name}</span>
-                        <span className="material-symbols-outlined text-[16px] opacity-40">chevron_right</span>
+                        <ChevronRight size={16} className="opacity-40" />
                       </Link>
                     </li>
                   ))}
@@ -360,7 +361,7 @@ const MortgageCalculator = () => {
                   <p className="text-[12px] text-ink-soft">Shows the shift from interest-heavy payments to principal balance reduction.</p>
                 </div>
                 <button type="button" className="text-ink-soft hover:text-ink" onClick={() => setShowAmort(false)} aria-label="Close">
-                  <span className="material-symbols-outlined">close</span>
+                  <X size={20} />
                 </button>
               </div>
               <div className="overflow-x-auto">

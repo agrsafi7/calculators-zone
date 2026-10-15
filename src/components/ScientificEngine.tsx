@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
+import { Calculator, Delete, Equal } from "lucide-react";
 
 // Scientific Engine — the working scientific calculator from the approved
 // homepage design. Logic ported 1:1 from the design's reference script.
@@ -53,7 +54,7 @@ const KEYS: KeyDef[] = [
   { key: "clear", label: "AC", kind: "clear" },
   { key: "0", label: "0", kind: "num" },
   { key: ".", label: ".", kind: "num" },
-  { key: "del", label: <span className="material-symbols-outlined text-[18px]">backspace</span>, kind: "fn" },
+  { key: "del", label: <Delete size={18} />, kind: "fn" },
   { key: "+", label: "+", kind: "op" },
 ];
 
@@ -169,7 +170,7 @@ const ScientificEngine = () => {
     <div className="bg-surface-lowest rounded-xl p-4 sm:p-6 shadow-sm flex flex-col justify-between">
       <div className="flex items-center justify-between pb-1 mb-3">
         <div className="flex items-center gap-1.5">
-          <span className="material-symbols-outlined text-primary text-[20px]">calculate</span>
+          <Calculator size={20} className="text-primary" />
           <span className="font-display text-[15px] font-semibold text-ink">Scientific Engine</span>
           <span className="bg-surface-container text-ink-soft text-[11px] px-1.5 py-0.5 rounded ml-1">v4.2 High Precision</span>
         </div>
@@ -220,7 +221,7 @@ const ScientificEngine = () => {
           className="w-full sm:w-1/3 bg-primary hover:bg-tealbright text-white font-display text-[18px] font-semibold py-2 rounded flex items-center justify-center gap-1.5 transition-colors"
         >
           <span>Calculate Result</span>
-          <span className="material-symbols-outlined text-[20px]">equal</span>
+          <Equal size={20} />
         </button>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { categories } from "@/data/calculators";
 import { uniqueCalculators } from "@/lib/calculator-utils";
 import { categorySEOData, getMetaKeywords } from "@/lib/seo-keywords";
 import SEO from "@/components/SEO";
+import { ArrowLeftRight, Clock, FlaskConical, Home, LucideIcon, Search, X } from "lucide-react";
 
 const CATEGORY_IMAGES: Record<string, string> = {
   finance: "https://lh3.googleusercontent.com/aida-public/AB6AXuCiVEwE0z5UThuB6Kp4dzOehehPrRbBJZKOZivzMq8Q7rFZ9I2qGb-4z-QjSK9N3l2PSEZiGZ7TsdzIDuUIma-jCF9pljhBUcV-utx1sEF5eD4W4eaOI5o4_wizxtNvTLXJNdyotT0xgVfTiDuDQYbrqaD1GxNnBQKBSz1b--HgHoUlsOBvh1ODKUHOkuqhcGxm4WIdfswbIW_2ixcY2mzPKAJ00CVM_N2PtXdzhVl_i67Yx_RwFfmo=w200",
@@ -12,11 +13,11 @@ const CATEGORY_IMAGES: Record<string, string> = {
   other: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1cPfaMmkKFwMWFwpCgKuWEAyKkTH_84snAQOQ_ayRYd4NrxBUgBiF-Lti9my-q9ey9XC9_kyvUv342LU5Wf2dLX6BcJbe0_kYBJ5phe9y_Kp7ziLOyZ5hWqkZB56LcV3uHYljb9Cd_HV77INijaTLcNfUfVy73vq63km0G7XDt-ZuH9VoqbfygBCucW_UytgX1xwjkVxzacyelklwzzB_rk1f2tj1epsxNBdAtCu8TZ37ky1gBajd=w200",
 };
 
-const CATEGORY_ICONS: Record<string, string> = {
-  conversions: "swap_horiz",
-  datetime: "schedule",
-  science: "science",
-  lifestyle: "home",
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
+  conversions: ArrowLeftRight,
+  datetime: Clock,
+  science: FlaskConical,
+  lifestyle: Home,
 };
 const CategoryPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -85,7 +86,7 @@ const CategoryPage = () => {
                 />
               ) : (
                 <span className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-sm">
-                  <span className="material-symbols-outlined text-white text-[28px]">{CATEGORY_ICONS[category.slug]}</span>
+                  {(() => { const DynIcon = CATEGORY_ICONS[category.slug]; return <DynIcon size={28} className="text-white" />; })()}
                 </span>
               )}
               <div className="flex flex-wrap items-baseline justify-between gap-2 flex-1">
@@ -120,7 +121,7 @@ const CategoryPage = () => {
 
           {/* Filter */}
           <div className="relative max-w-md mb-6">
-            <span className="material-symbols-outlined absolute left-3 top-2.5 text-ink-soft text-[18px]">search</span>
+            <Search size={18} className="absolute left-3 top-2.5 text-ink-soft" />
             <input
               type="text"
               value={filter}
@@ -134,7 +135,7 @@ const CategoryPage = () => {
                 className="absolute right-3 top-2.5 text-ink-soft hover:text-ink"
                 aria-label="Clear filter"
               >
-                <span className="material-symbols-outlined text-[18px]">close</span>
+                <X size={18} />
               </button>
             )}
           </div>

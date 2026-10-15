@@ -4,6 +4,7 @@ import { categories } from "@/data/calculators";
 import { uniqueCalculators, searchCalculators } from "@/lib/calculator-utils";
 import SEO from "@/components/SEO";
 import ScientificEngine from "@/components/ScientificEngine";
+import { ArrowLeftRight, ArrowRight, BadgeCheck, Clock, FlaskConical, Home, LucideIcon, Play, Search, TrendingUp } from "lucide-react";
 
 const totalCalcs = uniqueCalculators.length;
 
@@ -14,11 +15,11 @@ const CATEGORY_IMAGES: Record<string, string> = {
   other: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1cPfaMmkKFwMWFwpCgKuWEAyKkTH_84snAQOQ_ayRYd4NrxBUgBiF-Lti9my-q9ey9XC9_kyvUv342LU5Wf2dLX6BcJbe0_kYBJ5phe9y_Kp7ziLOyZ5hWqkZB56LcV3uHYljb9Cd_HV77INijaTLcNfUfVy73vq63km0G7XDt-ZuH9VoqbfygBCucW_UytgX1xwjkVxzacyelklwzzB_rk1f2tj1epsxNBdAtCu8TZ37ky1gBajd=w200",
 };
 
-const CATEGORY_ICONS: Record<string, string> = {
-  conversions: "swap_horiz",
-  datetime: "schedule",
-  science: "science",
-  lifestyle: "home",
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
+  conversions: ArrowLeftRight,
+  datetime: Clock,
+  science: FlaskConical,
+  lifestyle: Home,
 };
 const POPULAR_TODAY = [
   { name: "Mortgage", to: "/finance/mortgage-calculator" },
@@ -66,7 +67,7 @@ const Index = () => {
                 </p>
                 <form className="flex flex-col gap-2 mb-4" onSubmit={submitQuickSearch}>
                   <div className="relative w-full">
-                    <span className="material-symbols-outlined absolute left-3 top-2.5 text-ink-soft text-[18px]">search</span>
+                    <Search size={18} className="absolute left-3 top-2.5 text-ink-soft" />
                     <input
                       className="w-full bg-surface-low focus:bg-surface-lowest text-ink pl-9 pr-3 py-2 rounded-lg text-[12px] focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-ink-soft"
                       placeholder={`Search ${totalCalcs}+ utilities...`}
@@ -81,12 +82,12 @@ const Index = () => {
                     type="submit"
                   >
                     <span>Find Calculator</span>
-                    <span className="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    <ArrowRight size={16} />
                   </button>
                 </form>
                 <div className="bg-surface-low rounded-lg p-4">
                   <div className="flex items-center gap-1.5 text-[11px] text-ink-soft uppercase tracking-wider mb-2 font-medium">
-                    <span className="material-symbols-outlined text-primary text-[14px]">trending_up</span>
+                    <TrendingUp size={14} className="text-primary" />
                     <span>Most Popular Today</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
@@ -107,7 +108,7 @@ const Index = () => {
                   <span className="font-display text-[15px] font-semibold">Universal Accuracy</span>
                   <span className="text-[12px] opacity-90">Validated against IEEE 754 precision norms</span>
                 </div>
-                <span className="material-symbols-outlined text-[32px] opacity-80">verified</span>
+                <BadgeCheck size={32} className="opacity-80" />
               </div>
             </div>
           </section>
@@ -128,7 +129,7 @@ const Index = () => {
                       />
                     ) : (
                       <span className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-sm">
-                        <span className="material-symbols-outlined text-white text-[28px]">{CATEGORY_ICONS[cat.slug]}</span>
+                        {(() => { const DynIcon = CATEGORY_ICONS[cat.slug]; return <DynIcon size={28} className="text-white" />; })()}
                       </span>
                     )}
                     <div>
@@ -171,7 +172,7 @@ const Index = () => {
               className="inline-flex items-center gap-2 bg-primary text-white hover:bg-tealbright px-8 py-3 rounded-lg font-display text-[15px] font-semibold shadow-md transition-all"
             >
               <span>All Calculators Directory</span>
-              <span className="material-symbols-outlined text-[20px] bg-[#9cf2e8] text-[#00201d] rounded-full p-0.5">play_arrow</span>
+              <Play size={20} className="bg-[#9cf2e8] text-[#00201d] rounded-full p-0.5" />
             </Link>
           </div>
 

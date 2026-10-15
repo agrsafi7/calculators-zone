@@ -2,6 +2,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { categories } from "@/data/calculators";
 import { searchCalculators } from "@/lib/calculator-utils";
+import { Calculator, Menu, Search, User, X } from "lucide-react";
 
 // Site header per the approved design: fixed top bar with logo, category
 // pills, search, and account icon.
@@ -33,7 +34,7 @@ const Header = () => {
       <div className="h-16 max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 flex items-center justify-between gap-3">
         <div className="flex items-center gap-5 shrink-0">
           <Link to="/" className="flex items-center gap-1.5" aria-label="TheCalculator.us home">
-            <span className="material-symbols-outlined text-primary text-[24px]">calculate</span>
+            <Calculator size={24} className="text-primary" />
             <span className="font-display text-[18px] font-semibold tracking-tight text-ink">
               TheCalculator<span className="text-primary">.us</span>
             </span>
@@ -64,7 +65,7 @@ const Header = () => {
             role="search"
           >
             <div className="pl-3 flex items-center justify-center">
-              <span className="material-symbols-outlined text-ink-soft text-[18px]">search</span>
+              <Search size={18} className="text-ink-soft" />
             </div>
             <input
               className="w-full bg-transparent px-2 py-1.5 text-[12px] text-ink placeholder:text-ink-soft focus:outline-none"
@@ -86,16 +87,18 @@ const Header = () => {
             className="w-8 h-8 rounded-full bg-primary hidden sm:flex items-center justify-center shrink-0"
             aria-label="About"
           >
-            <span className="material-symbols-outlined text-white text-[18px]">person</span>
+            <User size={18} className="text-white" />
           </Link>
           <button
             className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-low"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Menu"
           >
-            <span className="material-symbols-outlined text-ink text-[24px]">
-              {mobileOpen ? "close" : "menu"}
-            </span>
+            {mobileOpen ? (
+              <X size={24} className="text-ink" />
+            ) : (
+              <Menu size={24} className="text-ink" />
+            )}
           </button>
         </div>
       </div>
@@ -104,7 +107,7 @@ const Header = () => {
         <div className="lg:hidden bg-surface-lowest border-t border-surface-container px-4 py-3">
           <form onSubmit={submitSearch} className="flex items-center rounded-lg bg-surface-low mb-3" role="search">
             <div className="pl-3 flex items-center justify-center">
-              <span className="material-symbols-outlined text-ink-soft text-[18px]">search</span>
+              <Search size={18} className="text-ink-soft" />
             </div>
             <input
               className="w-full bg-transparent px-2 py-2 text-[13px] text-ink placeholder:text-ink-soft focus:outline-none"
