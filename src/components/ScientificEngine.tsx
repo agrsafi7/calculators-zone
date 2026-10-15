@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
-import { Calculator, Delete, Equal } from "lucide-react";
+import { Calculator, Delete, Equal, History, Trash2 } from "lucide-react";
 
 // Scientific Engine — the working scientific calculator from the approved
 // homepage design. Logic ported 1:1 from the design's reference script.
@@ -104,13 +104,40 @@ const ScientificEngine = () => {
   const [history, setHistory] = useState("");
   const [isResultShown, setIsResultShown] = useState(false);
   const [useRad, setUseRad] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+  const [historyList, setHistoryList] = useState<{ expr: string; result: string }[]>(() => {
+    try {
+      return JSON.parse(localStorage.getItem("calc-history") || "[]");
+    } catch {
+      return [];
+    }
+  });
+
+  const pushHistory = (expr: string, result: string) => {
+    setHistoryList((prev) => {
+      const next = [{ expr, result }, ...prev].slice(0, 20);
+      try {
+        localStorage.setItem("calc-history", JSON.stringify(next));
+      } catch { /* ignore */ }
+      return next;
+    });
+  };
+
+  const clearHistory = () => {
+    setHistoryList([]);
+    try {
+      localStorage.removeItem("calc-history");
+    } catch { /* ignore */ }
+  };
 
   const angleMult = () => (useRad ? 1 : Math.PI / 180);
 
-  const applyUnary = (fn: (x: number) => number) => {
+  const applyUnary = (fn: (x: number) => number, label?: string) => {
     try {
       const val = evalSafe(expression || "0");
-      setExpression(Number(fn(val).toFixed(8)).toString());
+      const res = Number(fn(val).toFixed(8)).toString();
+      if (label) pushHistory(`${label}(${expression || "0"})`, res);
+      setExpression(res);
       setIsResultShown(true);
     } catch {
       setExpression("Error");
@@ -141,7 +168,9 @@ const ScientificEngine = () => {
           const sanitized = expr.replace(/×/g, "*").replace(/÷/g, "/");
           const result = evalSafe(sanitized);
           if (typeof result === "number" && !isNaN(result)) {
-            expr = Number(result.toFixed(8)).toString();
+            const resStr = Number(result.toFixed(8)).toString();
+            pushHistory(expr, resStr);
+            expr = resStr;
             resultShown = true;
           } else {
             expr = "Error";
@@ -157,7 +186,9 @@ const ScientificEngine = () => {
         const fn = key === "sin" ? Math.sin : key === "cos" ? Math.cos : Math.tan;
         try {
           const val = evalSafe(expr || "0");
-          expr = Number(fn(val * angleMult()).toFixed(8)).toString();
+          const resStr = Number(fn(val * angleMult()).toFixed(8)).toString();
+          pushHistory(`${key}(${(expr || "0")})`, resStr);
+          expr = resStr;
           resultShown = true;
         } catch { expr = "Error"; }
         break;
@@ -168,17 +199,19 @@ const ScientificEngine = () => {
           const val = evalSafe(expr || "0");
           const resRad = fn(val);
           const res = useRad ? resRad : (resRad * 180) / Math.PI;
-          expr = Number(res.toFixed(8)).toString();
+          const resStr = Number(res.toFixed(8)).toString();
+          pushHistory(`${key}(${(expr || "0")})`, resStr);
+          expr = resStr;
           resultShown = true;
         } catch { expr = "Error"; }
         break;
       }
-      case "ln": applyUnary(Math.log); return;
-      case "log": applyUnary(Math.log10); return;
-      case "sqrt": applyUnary(Math.sqrt); return;
-      case "sq": applyUnary((x) => x * x); return;
-      case "recip": applyUnary((x) => 1 / x); return;
-      case "fact": applyUnary(factorial); return;
+      case "ln": applyUnary(Math.log, "ln"); return;
+      case "log": applyUnary(Math.log10, "log"); return;
+      case "sqrt": applyUnary(Math.sqrt, "√"); return;
+      case "sq": applyUnary((x) => x * x, "sqr"); return;
+      case "recip": applyUnary((x) => 1 / x, "1/"); return;
+      case "fact": applyUnary(factorial, "fact"); return;
       case "pi": expr += Math.PI.toFixed(6); break;
       case "e": expr += Math.E.toFixed(6); break;
       case "sign":
@@ -199,7 +232,7 @@ const ScientificEngine = () => {
       key={k.key}
       type="button"
       onClick={() => press(k.key)}
-      className={`${keyClass(k.kind)} py-2 rounded transition-colors ${spanZero && k.key === "0" ? "col-span-2" : ""}`}
+      className={`${keyClass(k.kind)} py-2 rounded transition-colors flex items-center justify-center ${spanZero && k.key === "0" ? "col-span-2" : ""}`}
       aria-label={k.key}
     >
       {k.label}
@@ -214,9 +247,6 @@ const ScientificEngine = () => {
           <span className="font-display text-[15px] font-semibold text-ink">
             {mode === "basic" ? "Basic Calculator" : "Scientific Engine"}
           </span>
-          {mode === "scientific" && (
-            <span className="bg-surface-container text-ink-soft text-[11px] px-1.5 py-0.5 rounded ml-1">v4.2 High Precision</span>
-          )}
         </div>
         <div className="flex items-center gap-2">
           <div className="flex bg-surface-low rounded-lg p-0.5" role="tablist" aria-label="Calculator mode">
@@ -235,6 +265,15 @@ const ScientificEngine = () => {
               </button>
             ))}
           </div>
+          <button
+            type="button"
+            onClick={() => setShowHistory((v) => !v)}
+            aria-label="Calculation history"
+            title="History"
+            className={`p-1.5 rounded-lg transition-colors ${showHistory ? "bg-primary text-white" : "bg-surface-low text-ink-soft hover:text-ink"}`}
+          >
+            <History size={16} />
+          </button>
           {mode === "scientific" && (
             <div className="flex items-center gap-2 bg-surface-low px-2 py-1 rounded">
           <label className="flex items-center gap-1 cursor-pointer">
@@ -263,6 +302,41 @@ const ScientificEngine = () => {
           {expression || "0"}
         </div>
       </div>
+
+      {showHistory && (
+        <div className="bg-surface-low rounded-lg p-3 mb-3 max-h-40 overflow-y-auto">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[12px] font-semibold text-ink">History</span>
+            {historyList.length > 0 && (
+              <button
+                type="button"
+                onClick={clearHistory}
+                className="flex items-center gap-1 text-[11px] text-ink-soft hover:text-destructive transition-colors"
+              >
+                <Trash2 size={12} /> Clear
+              </button>
+            )}
+          </div>
+          {historyList.length === 0 ? (
+            <p className="text-[12px] text-ink-soft text-center py-2">No calculations yet</p>
+          ) : (
+            <ul className="space-y-1">
+              {historyList.map((h, i) => (
+                <li key={i}>
+                  <button
+                    type="button"
+                    onClick={() => { setExpression(h.result); setIsResultShown(true); setShowHistory(false); }}
+                    className="w-full text-right font-numeric text-[13px] px-2 py-1 rounded hover:bg-surface-container transition-colors"
+                  >
+                    <span className="text-ink-soft">{h.expr} = </span>
+                    <span className="text-ink font-semibold">{h.result}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
 
       {mode === "basic" ? (
         <div className="grid grid-cols-4 gap-1.5 sm:gap-2 select-none">
