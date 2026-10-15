@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { RotateCcw } from "lucide-react";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
+import GuideSections from "@/components/GuideSections";
 import SEO from "@/components/SEO";
 import { addRecentCalculator } from "@/lib/calculator-utils";
 import { getCategoryIcon } from "@/data/calculators";
@@ -273,6 +274,8 @@ const MortgageCalculator = () => {
                 </div>
               </div>
             </section>
+
+            <GuideSections slug="mortgage-calculator" />
 
             <section className="mb-6">
               <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>

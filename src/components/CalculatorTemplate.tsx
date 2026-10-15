@@ -4,6 +4,7 @@ import { RotateCcw } from "lucide-react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
+import GuideSections from "@/components/GuideSections";
 import SEO from "@/components/SEO";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { DELETED_SLUGS } from "@/data/deleted-slugs";
@@ -315,6 +316,9 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
             </section>
 
             {config.longExplanation === "scientific-notation" && <ScientificNotationExplanation />}
+
+            {/* In-depth guide (only for calculators that have one) */}
+            <GuideSections slug={config.slug} />
 
             {/* Internal links - Explore More section */}
             <section className="mb-8">

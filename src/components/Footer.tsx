@@ -7,7 +7,7 @@ const mainLinks = [
   { label: "Home", href: "https://thecalculator.us" },
   { label: "All Calculators", href: "/categories" },
   { label: "Popular Tools", href: "/popular" },
-  { label: "About Us", href: "/disclaimer" },
+  { label: "About Us", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 

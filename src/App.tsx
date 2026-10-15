@@ -8,6 +8,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
+import CookieConsent from "@/components/CookieConsent";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageLoadingSkeleton from "@/components/PageLoadingSkeleton";
 import PageTransition from "@/components/PageTransition";
@@ -22,6 +23,7 @@ const CategoryPage = lazy(() => import("./pages/CategoryPage"));
 const AllCategoriesPage = lazy(() => import("./pages/AllCategoriesPage"));
 const PopularToolsPage = lazy(() => import("./pages/PopularToolsPage"));
 const SitemapPage = lazy(() => import("./pages/SitemapPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -52,6 +54,7 @@ const App = () => (
                   <Route path="/terms-of-service" element={<TermsOfService />} />
                   <Route path="/disclaimer" element={<Disclaimer />} />
                   <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/about" element={<AboutPage />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </PageTransition>
@@ -59,6 +62,7 @@ const App = () => (
           </main>
           <Footer />
           <BackToTop />
+          <CookieConsent />
         </div>
       </BrowserRouter>
       <SpeedInsights />

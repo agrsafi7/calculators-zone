@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import AdPlaceholder from "@/components/AdPlaceholder";
 import RecentlyUsed from "@/components/RecentlyUsed";
+import GuideSections from "@/components/GuideSections";
 import SEO from "@/components/SEO";
 import { addRecentCalculator } from "@/lib/calculator-utils";
 import { getCategoryIcon } from "@/data/calculators";
@@ -148,6 +149,8 @@ const PercentageCalculator = () => {
                 </div>
               </div>
             </section>
+
+            <GuideSections slug="percentage-calculator" />
 
             <section className="mb-8">
               <h2 className="text-xl font-bold mb-4">Frequently Asked Questions</h2>
