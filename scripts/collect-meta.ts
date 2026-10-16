@@ -159,7 +159,7 @@ for (const p of blogPosts) {
       "@type": "Article",
       headline: p.title,
       description: p.description,
-      datePublished: p.date,
+      datePublished: p.publishDate,
       author: { "@type": "Organization", name: "TheCalculator.us" },
       publisher: { "@type": "Organization", name: "TheCalculator.us" },
       mainEntityOfPage: `https://thecalculator.us/blog/${p.slug}`,

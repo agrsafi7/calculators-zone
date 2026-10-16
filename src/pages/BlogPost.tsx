@@ -3,18 +3,22 @@ import { ArrowLeft, ArrowRight, Calculator, CalendarDays, Clock3 } from "lucide-
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BlogBody from "@/components/BlogBody";
-import { blogPosts } from "@/data/blog-posts";
+import { getPublishedPosts } from "@/data/blog-posts";
 
 const formatDate = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const idx = blogPosts.findIndex((p) => p.slug === slug);
-  if (idx === -1) return <Navigate to="/blog" replace />;
-  const post = blogPosts[idx];
-  const prev = blogPosts[idx - 1];
-  const next = blogPosts[idx + 1];
+  const published = getPublishedPosts();
+  const idx = published.findIndex((p) => p.slug === slug);
+  if (idx === -1) {
+    // Unknown slug, or a scheduled post whose publish date hasn't arrived
+    return <Navigate to="/blog" replace />;
+  }
+  const post = published[idx];
+  const prev = published[idx - 1];
+  const next = published[idx + 1];
 
   const articleLd = {
     "@context": "https://schema.org",

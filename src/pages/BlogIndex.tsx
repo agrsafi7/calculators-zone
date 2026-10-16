@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CalendarDays, Clock3, BookOpen } from "lucide-react";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { blogPosts } from "@/data/blog-posts";
+import { getPublishedPosts } from "@/data/blog-posts";
 
 const formatDate = (iso: string) =>
   new Date(iso + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
@@ -29,7 +29,7 @@ const BlogIndex = () => {
         </p>
 
         <div className="grid gap-5 md:grid-cols-2">
-          {blogPosts.map((p) => (
+          {getPublishedPosts().map((p) => (
             <Link
               key={p.slug}
               to={`/blog/${p.slug}`}
