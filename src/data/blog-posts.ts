@@ -18,7 +18,8 @@ export interface BlogPost {
   slug: string;
   title: string;
   description: string; // meta description
-  date: string; // ISO date published
+  date: string; // ISO date published (kept for schema compat)
+  publishDate: string; // ISO date the post becomes visible on /blog
   category: string;
   readMinutes: number;
   related: BlogRelatedTool[];
@@ -32,6 +33,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "A complete roman numerals chart from 1 to 1000, the seven symbols, the subtraction rules, and worked examples for converting numbers to roman numerals and back.",
     date: "2026-10-17",
+    publishDate: "2026-10-17",
     category: "Math",
     readMinutes: 8,
     related: [{ name: "Roman Numeral Converter", path: "/lifestyle/roman-numeral-converter" }],
@@ -104,6 +106,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "A plain-English statistics guide: what mean, median, mode, range, variance, and standard deviation tell you about your data, with worked examples and when to use each.",
     date: "2026-10-17",
+    publishDate: "2026-10-17",
     category: "Math",
     readMinutes: 10,
     related: [
@@ -184,6 +187,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What is the greatest common factor? Learn three ways to find the GCF — listing factors, prime factorization, and the Euclidean algorithm — with worked examples.",
     date: "2026-10-17",
+    publishDate: "2026-10-17",
     category: "Math",
     readMinutes: 8,
     related: [{ name: "GCF Calculator", path: "/math/gcf-calculator" }],
@@ -249,6 +253,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "How to calculate weight loss percentage, the calorie math behind a pound of fat, and what a healthy rate of weight loss actually looks like — with worked examples.",
     date: "2026-10-17",
+    publishDate: "2026-10-17",
     category: "Health",
     readMinutes: 9,
     related: [
@@ -321,6 +326,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "What is lean body mass, how to calculate it with the Boer formula for men and women, and how LBM differs from fat-free mass — with worked metric and imperial examples.",
     date: "2026-10-17",
+    publishDate: "2026-10-17",
     category: "Health",
     readMinutes: 8,
     related: [{ name: "Lean Body Mass Calculator", path: "/health/lean-body-mass-calculator" }],
@@ -377,6 +383,7 @@ export const blogPosts: BlogPost[] = [
     description:
       "How to convert Celsius to Fahrenheit and back with the exact formulas, quick mental-math tricks, and the key reference temperatures worth memorizing.",
     date: "2026-10-17",
+    publishDate: "2026-10-17",
     category: "Conversions",
     readMinutes: 6,
     related: [
@@ -430,4 +437,662 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "days-between-dates-explained",
+    title: "How Many Days Between Two Dates? Date Difference, Explained",
+    description:
+      "How to calculate the number of days between two dates by hand, why leap years and month lengths make it tricky, and common uses from age to project planning.",
+    date: "2026-10-19",
+    publishDate: "2026-10-19",
+    category: "Date & Time",
+    readMinutes: 7,
+    related: [{ name: "Date Calculator", path: "/datetime/date-calculator" }],
+    sections: [
+      {
+        heading: "Why counting days between dates is harder than it looks",
+        body: [
+          "Ask 'how many days between March 3 and November 18?' and your brain stalls — months have different lengths, February changes every four years, and year boundaries complicate everything. This is exactly why a date calculator exists: it handles the calendar's irregularities instantly.",
+          "But understanding the manual method helps you sanity-check results and handle the edge cases (like whether to count the start day) that trip people up.",
+        ],
+      },
+      {
+        heading: "The manual method: count month by month",
+        body: [
+          "To find the days between two dates by hand, walk through the months:",
+          "- Step 1: days remaining in the start month (month length minus start day).",
+          "- Step 2: full months in between — add each month's length.",
+          "- Step 3: days elapsed in the end month.",
+          "**Example: March 3 → November 18, 2026.** March has 31 days: 31 − 3 = 28 remaining. Full months April–October: 30 + 31 + 30 + 31 + 31 + 30 + 31 = 214. November: 18. Total: 28 + 214 + 18 = **260 days**.",
+        ],
+      },
+      {
+        heading: "Leap years: the February trap",
+        body: [
+          "A year is a leap year if it's divisible by 4 — **except** century years, which must be divisible by 400. So 2024 was a leap year, 2000 was, but **1900 was not** and 2100 won't be.",
+          "This matters whenever your range crosses February 29. Days between Jan 15, 2024 and Jan 15, 2025 = **366** (includes Feb 29, 2024). Days between Jan 15, 2025 and Jan 15, 2026 = **365**. Forgetting the leap day is the #1 manual counting error.",
+        ],
+      },
+      {
+        heading: "Do you count the start day? (inclusive vs exclusive)",
+        body: [
+          "There are two conventions and they differ by exactly one day. **Exclusive** (the standard): days *between* the dates, not counting the start — March 3 → March 4 is 1 day. **Inclusive**: counting both endpoints — March 3 → March 4 is 2 days.",
+          "Most calculators use exclusive. But contracts, warranties, and 'day 1 of your trial' often mean inclusive. When a date range matters legally or financially, **confirm which convention applies** — a one-day difference has decided court cases.",
+        ],
+      },
+      {
+        heading: "Everyday uses for date differences",
+        body: [
+          "- **Pregnancy & age:** gestational age is counted in days/weeks from the last menstrual period.",
+          "- **Project planning:** 'we have 47 working days until launch' — subtract weekends and holidays from the raw count.",
+          "- **Finance:** loan interest accrues daily; a 3-day difference in payoff dates changes the interest owed.",
+          "- **Travel:** visa '90 days in any 180-day period' rules (Schengen) require exact day counts.",
+          "- **Habits:** streak counters and 'days since' trackers run on this exact math.",
+        ],
+      },
+      {
+        heading: "Quick reference: month lengths",
+        body: [
+          "| Month | Days | Month | Days |",
+          "|---|---|---|---|",
+          "| January | 31 | July | 31 |",
+          "| February | 28 (29 leap) | August | 31 |",
+          "| March | 31 | September | 30 |",
+          "| April | 30 | October | 31 |",
+          "| May | 31 | November | 30 |",
+          "| June | 30 | December | 31 |",
+          "Memory trick: the **knuckle method** — make a fist; knuckle months have 31 days, valleys have 30 (except February).",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "time-duration-hours-between-times-guide",
+    title: "Time Duration Guide: Hours Between Times, Overnight Shifts & Time Math",
+    description:
+      "How to calculate the hours and minutes between two times by hand, handle overnight spans past midnight, and convert between time formats without errors.",
+    date: "2026-10-21",
+    publishDate: "2026-10-21",
+    category: "Date & Time",
+    readMinutes: 7,
+    related: [{ name: "Time Calculator", path: "/datetime/time-calculator" }],
+    sections: [
+      {
+        heading: "The core trick: convert everything to minutes",
+        body: [
+          "Time math is hard because hours and minutes use base 60, not base 100. The universal trick: **convert both times to total minutes since midnight**, subtract, then convert back.",
+          "**Example: 9:15 AM → 2:45 PM.** 9:15 AM = 9 × 60 + 15 = 555 minutes. 2:45 PM = 14 × 60 + 45 = 885 minutes. Difference: 885 − 555 = 330 minutes = **5 hours 30 minutes**.",
+        ],
+      },
+      {
+        heading: "Crossing midnight: overnight durations",
+        body: [
+          "When the end time is *earlier* than the start time, you've crossed midnight — add 24 hours (1,440 minutes) to the end time first.",
+          "**Example: night shift 10:00 PM → 6:30 AM.** Start: 22 × 60 = 1,320. End: 6 × 60 + 30 = 390; since 390 < 1,320, add 1,440 → 1,830. Difference: 1,830 − 1,320 = 510 minutes = **8 hours 30 minutes**.",
+          "This is the step people forget most. Any time calculator handles it automatically, but knowing the rule lets you verify shift pay by hand.",
+        ],
+      },
+      {
+        heading: "AM/PM vs 24-hour time",
+        body: [
+          "The 24-hour clock eliminates the AM/PM ambiguity that causes most time-math errors: 2:45 PM = **14:45**, 12:00 AM (midnight) = **00:00**, 12:00 PM (noon) = **12:00**.",
+          "Conversion rules: for PM times (except 12 PM), **add 12** to the hour. 12 AM → 0, 12 PM stays 12. Hospitals, airlines, and militaries use 24-hour time precisely because 'meet at 8' should never need a follow-up question.",
+        ],
+      },
+      {
+        heading: "Adding and subtracting durations",
+        body: [
+          "To add durations, add minutes and hours separately, then carry: **2h 45m + 1h 30m** = 3h 75m = **4h 15m** (75 minutes = 1h 15m).",
+          "To subtract, borrow like regular subtraction: **5h 10m − 2h 45m** → borrow 1 hour: 4h 70m − 2h 45m = **2h 25m**.",
+          "**Worked timesheet example:** Mon 8:30–17:00 (8.5h), Tue 8:45–17:15 (8.5h), Wed 9:00–18:00 with 1h lunch (8h), Thu 8:30–16:30 (8h), Fri 8:30–15:00 (6.5h). Total: **39.5 hours**.",
+        ],
+      },
+      {
+        heading: "Decimal hours vs hours:minutes",
+        body: [
+          "Payroll often uses decimal hours: **7h 30m = 7.5 hours**, **8h 45m = 8.75 hours**. Convert minutes to decimal by dividing by 60: 15m = 0.25, 30m = 0.5, 45m = 0.75.",
+          "At **$22/hour**, 7.5 hours = **$165.00**. Mixing up 7:30 (7.5h) with 7.30 hours (7h 18m) is a classic payroll error — always convert explicitly.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "how-to-calculate-sales-tax",
+    title: "How to Calculate Sales Tax: The Formula, Examples & State Differences",
+    description:
+      "How to calculate sales tax on any purchase, work backwards from a tax-inclusive price, and why US sales tax rates vary so much by state and city.",
+    date: "2026-10-23",
+    publishDate: "2026-10-23",
+    category: "Finance",
+    readMinutes: 7,
+    related: [{ name: "Tax Calculator", path: "/finance/tax-calculator" }],
+    sections: [
+      {
+        heading: "The sales tax formula",
+        body: [
+          "**Tax = price × tax rate** (as a decimal), and **total = price + tax**.",
+          "**Example:** a **$1,200** laptop in a city with **8.875%** sales tax. Tax = 1,200 × 0.08875 = **$106.50**. Total at checkout: **$1,306.50**.",
+          "For quick mental math, round the rate: at ~9%, just compute 10% ($120) and shave a bit off (~$106). Close enough to avoid checkout sticker shock.",
+        ],
+      },
+      {
+        heading: "Working backwards: finding the pre-tax price",
+        body: [
+          "See a tax-inclusive price and want the original? **Pre-tax price = total ÷ (1 + tax rate)**.",
+          "**Example:** you paid **$54.37** total with 8% tax. Pre-tax = 54.37 ÷ 1.08 = **$50.34**. The tax was $4.03.",
+          "This is useful for expense reports (many companies reimburse pre-tax amounts) and for checking whether a 'tax-free weekend' deal actually saved you money.",
+        ],
+      },
+      {
+        heading: "Why US sales tax is so complicated",
+        body: [
+          "The US has no national sales tax — instead, **45 states** plus thousands of counties and cities each set their own rates, which **stack**. A purchase in Chicago can face Illinois state tax (6.25%) + Cook County (1.75%) + Chicago city (1.25%) + transit authority taxes = **over 10%** combined.",
+          "Five states have **no statewide sales tax at all**: Alaska, Delaware, Montana, New Hampshire, and Oregon (though Alaska allows local taxes). Meanwhile, groceries, clothing, and medicine are taxed, exempt, or reduced depending on the state — the same $100 grocery run is taxed in some states and not others.",
+        ],
+      },
+      {
+        heading: "Sales tax vs VAT: the key difference",
+        body: [
+          "Most of the world uses **VAT (Value Added Tax)** instead: typically **15–25%**, but it's **built into the displayed price** — the tag says €120 and you pay €120. US sales tax is added at checkout, which is why Americans do this math constantly and Europeans rarely think about it.",
+          "If you're a traveler: the US price tag is *never* the final price. Mentally add ~7–10% everywhere except the five no-tax states.",
+        ],
+      },
+      {
+        heading: "Common sales tax mistakes",
+        body: [
+          "- **Tipping on the taxed total:** etiquette says tip on the pre-tax subtotal, not the after-tax total.",
+          "- **Forgetting local add-ons:** the state rate on a tourism site isn't the whole story — cities and counties pile on.",
+          "- **Online purchases:** most states now require online retailers to collect sales tax based on *your* delivery address, not the seller's location.",
+          "- **Tax holidays:** states run tax-free weekends (usually August, for school supplies/clothing) — real savings if you time big purchases.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "compound-interest-wealth-math",
+    title: "Compound Interest: The Math Behind Wealth (With Real Numbers)",
+    description:
+      "How compound interest really works, the Rule of 72, and worked examples showing why starting early beats investing more later.",
+    date: "2026-10-26",
+    publishDate: "2026-10-26",
+    category: "Finance",
+    readMinutes: 9,
+    related: [{ name: "Investment Calculator", path: "/finance/investment-calculator" }],
+    sections: [
+      {
+        heading: "What compound interest actually is",
+        body: [
+          "Simple interest pays you on your original deposit only. **Compound interest pays you on your deposit *plus* all previously earned interest** — your money earns money, which earns more money. The formula: **A = P(1 + r)ⁿ**, where P is principal, r the rate per period, n the number of periods.",
+          "**Example:** $10,000 at 8% annual, compounded yearly, for 30 years: 10,000 × (1.08)³⁰ = 10,000 × 10.0627 = **$100,627**. The interest ($90,627) dwarfs the original deposit — that's compounding.",
+        ],
+      },
+      {
+        heading: "The Rule of 72: doubling time in your head",
+        body: [
+          "**Years to double ≈ 72 ÷ interest rate.** At 8%, money doubles every 9 years (72 ÷ 8). At 6%, every 12 years. At 12%, every 6.",
+          "This one rule answers most real questions: 'How long until my $50k is $100k at 7%?' → 72 ÷ 7 ≈ **10.3 years**. It's accurate within a few percent for rates between 4% and 15%.",
+        ],
+      },
+      {
+        heading: "Why starting early beats investing more",
+        body: [
+          "Compare: **Asha** invests $5,000/year from age 25 to 35 (10 years, $50,000 total), then stops. **Ben** invests $5,000/year from 35 to 65 (30 years, $150,000 total). Both earn 8%.",
+          "At 65: Asha's early money compounded for decades → **$787,000**. Ben's larger total contributions → **$611,000**. Asha invested **one-third** the money and ended with **$176,000 more** — because her dollars had 10 extra years to compound.",
+          "The math is brutal and clear: **time in the market beats timing the market**, and it beats contributing more later.",
+        ],
+      },
+      {
+        heading: "Compounding frequency: daily vs monthly vs yearly",
+        body: [
+          "More frequent compounding grows money slightly faster: $10,000 at 8% for 10 years → yearly: **$21,589**; monthly: **$22,196**; daily: **$22,253**. The jump from yearly to monthly matters ($607); monthly to daily barely does ($57).",
+          "What matters far more than frequency: the **rate** and the **time**. Don't chase daily-compounding accounts; chase an extra 1% of return or an extra 5 years.",
+        ],
+      },
+      {
+        heading: "The dark side: compound interest on debt",
+        body: [
+          "Compounding works against you on debt. A **$5,000** credit card balance at **24% APR** with minimum payments (~$125/month) takes **over 7 years** to clear and costs **~$5,700 in interest** — more than the original balance.",
+          "Rule of thumb: **any guaranteed return beats investing math when it's debt payoff**. Paying off 24% debt is a risk-free 24% return — no investment reliably offers that.",
+        ],
+      },
+      {
+        heading: "Putting it to work: a realistic plan",
+        body: [
+          "**Example:** invest **$500/month** at 7% average return for 30 years. Future value = 500 × [((1 + 0.07/12)³⁶⁰ − 1) ÷ (0.07/12)] ≈ **$609,000**, of which you contributed $180,000 — compounding created the other **$429,000**.",
+          "Three levers, in order of power: **1. Start now** (time is the biggest factor). **2. Automate contributions** (consistency beats amount-timing). **3. Keep fees low** (a 1% fee over 30 years eats roughly a quarter of your gains).",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "how-to-calculate-your-grade-weighted-average",
+    title: "How to Calculate Your Grade: Weighted Averages, Explained",
+    description:
+      "How weighted grades actually work, how to calculate what you need on the final exam, and why a 0 hurts more than you think.",
+    date: "2026-10-28",
+    publishDate: "2026-10-28",
+    category: "Education",
+    readMinutes: 7,
+    related: [{ name: "Grade Calculator", path: "/math/grade-calculator" }],
+    sections: [
+      {
+        heading: "How weighted grades work",
+        body: [
+          "Most courses don't average your scores equally — each category has a **weight**. The formula: **grade = Σ(score × weight) ÷ Σ(weights)**.",
+          "**Example:** homework 20% (avg 92), quizzes 30% (avg 85), final exam 50% (score 78). Grade = (92 × 0.20) + (85 × 0.30) + (78 × 0.50) = 18.4 + 25.5 + 39 = **82.9 → B**.",
+          "Notice: the final exam (50% weight) pulled the grade down far more than the strong homework could lift it. **Weight is leverage** — a category worth half your grade deserves half your study time.",
+        ],
+      },
+      {
+        heading: "What do I need on the final? (worked examples)",
+        body: [
+          "Rearrange the formula: **needed = (target − current weighted) ÷ final weight**.",
+          "**Example:** you want an A (90%). Current: homework 20% at 88 (contributes 17.6), midterm 30% at 84 (contributes 25.2). So far: 42.8 of 50 possible. Final is worth 50%. Needed: (90 − 42.8) ÷ 0.50 = **94.4%** on the final.",
+          "If the needed score exceeds 100%, the target is mathematically impossible — time to negotiate extra credit or recalibrate expectations early, not after the exam.",
+        ],
+      },
+      {
+        heading: "Why a zero hurts more than you think",
+        body: [
+          "A **0 on a 20%-weight assignment** with otherwise 90s: (90 × 0.80) + (0 × 0.20) = **72** — one missed assignment drops you two letter grades. This is why teachers beg students to turn in *something*: even a 50% on that assignment gives (90 × 0.80) + (50 × 0.20) = **82**.",
+          "The math also shows why **dropping the lowest score** policies are so valuable — they delete your worst data point entirely.",
+        ],
+      },
+      {
+        heading: "GPA: the average of averages",
+        body: [
+          "Convert each course grade to points (A = 4.0, B = 3.0, C = 2.0, D = 1.0, F = 0), multiply by credit hours, sum, and divide by total credits: **GPA = Σ(grade points × credits) ÷ Σ(credits)**.",
+          "**Example:** A in 3-credit chemistry (12 pts), B in 4-credit calculus (12 pts), A in 3-credit history (12 pts): 36 ÷ 10 = **3.6 GPA**. A 4-credit B drags exactly as much as a 4-credit A lifts — credits are weights, just like assignment categories.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "inflation-explained-what-money-will-be-worth",
+    title: "Inflation Explained: What Your Money Will Actually Be Worth",
+    description:
+      "What inflation really measures, how to calculate future purchasing power, and why 'safe' cash quietly loses value every year.",
+    date: "2026-10-30",
+    publishDate: "2026-10-30",
+    category: "Finance",
+    readMinutes: 8,
+    related: [{ name: "Inflation Calculator", path: "/finance/inflation-calculator" }],
+    sections: [
+      {
+        heading: "What inflation actually measures",
+        body: [
+          "Inflation is the **rate at which prices rise** — equivalently, the rate at which each dollar **loses purchasing power**. It's measured by tracking a basket of goods (the Consumer Price Index): if the basket cost $100 last year and $103 this year, inflation was **3%**.",
+          "At 3% annual inflation, something costing $100 today costs **$134** in 10 years (100 × 1.03¹⁰) and **$181** in 20 years. Your money doesn't sit still — it melts.",
+        ],
+      },
+      {
+        heading: "The purchasing power formula (worked example)",
+        body: [
+          "**Future value = present value × (1 + inflation)ⁿ**. Or in reverse: **what $100,000 buys in 20 years at 3% inflation = 100,000 ÷ (1.03)²⁰ = $55,368**.",
+          "Read that again: twenty years of 3% inflation nearly **halves** your money's buying power. This is the single most important number in retirement planning — a $1M nest egg in 2046 buys what ~$550k buys today.",
+        ],
+      },
+      {
+        heading: "Why cash in a savings account still loses",
+        body: [
+          "If your savings earn **4%** while inflation runs **3%**, your **real return is ~1%** (4 − 3). The precise formula: real = (1 + nominal) ÷ (1 + inflation) − 1 = 1.04 ÷ 1.03 − 1 = **0.97%**.",
+          "When savings rates (say 0.5%) sit *below* inflation (3%), you're **guaranteed to lose ~2.5% of purchasing power yearly**. Cash feels safe because the number never drops — but what the number *buys* drops every single year. Safety of principal ≠ safety of purchasing power.",
+        ],
+      },
+      {
+        heading: "A brief history of US inflation",
+        body: [
+          "| Era | What happened |",
+          "|---|---|",
+          "| 1970s | Oil shocks drove inflation above **13%**; mortgages hit 18% |",
+          "| 1990s–2019 | The 'Great Moderation': mostly **2–3%**, the Fed's target zone |",
+          "| 2021–2022 | Post-pandemic spike to **9.1%** (June 2022), a 40-year high |",
+          "| Long-run average | Roughly **3%** per year over the last century |",
+          "The 2% target isn't arbitrary: mild inflation encourages spending over hoarding, while staying low enough not to distort decisions. Deflation (falling prices) sounds nice but historically triggers recessions — which is why central banks fear it more.",
+        ],
+      },
+      {
+        heading: "How to protect yourself",
+        body: [
+          "- **Invest in productive assets:** stocks, real estate, and businesses tend to rise *with* inflation over long periods.",
+          "- **I Bonds / TIPS:** US government bonds whose payouts adjust with CPI — direct inflation insurance.",
+          "- **Negotiate raises against inflation:** a 2% raise in a 4% inflation year is a **pay cut**. Know your real number.",
+          "- **Fixed-rate debt gets cheaper:** inflation erodes what you owe — a 30-year mortgage at 6% during 3% inflation costs ~3% in real terms.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "how-to-calculate-percentage-complete-guide",
+    title: "How to Calculate Percentage: The Complete Guide (With Shortcuts)",
+    description:
+      "Every percentage calculation you'll ever need: percent of a number, percent change, reverse percentages, and the mental-math tricks that make them instant.",
+    date: "2026-11-02",
+    publishDate: "2026-11-02",
+    category: "Math",
+    readMinutes: 8,
+    related: [{ name: "Percentage Calculator", path: "/math/percentage-calculator" }],
+    sections: [
+      {
+        heading: "The three percentage questions",
+        body: [
+          "Every percentage problem is one of three types:",
+          "**1. What is X% of Y?** → (X ÷ 100) × Y. What is 20% of 85? 0.20 × 85 = **17**.",
+          "**2. X is what percent of Y?** → (X ÷ Y) × 100. 17 is what percent of 85? (17 ÷ 85) × 100 = **20%**.",
+          "**3. What number is X, which is Y% of it?** → X ÷ (Y ÷ 100). 17 is 20% of what number? 17 ÷ 0.20 = **85**.",
+          "Master these three templates and no percentage problem can surprise you.",
+        ],
+      },
+      {
+        heading: "Percent change: increase and decrease",
+        body: [
+          "**Percent change = (new − old) ÷ old × 100**.",
+          "**Increase:** price $40 → $50. (50 − 40) ÷ 40 × 100 = **25% increase**.",
+          "**Decrease:** price $50 → $40. (40 − 50) ÷ 50 × 100 = **−20%** — a 20% decrease.",
+          "Note the asymmetry: +25% then −25% does NOT return to start. $40 + 25% = $50; $50 − 25% = **$37.50**. Percentages compound against different bases — the classic retail 'discount then tax' trap.",
+        ],
+      },
+      {
+        heading: "Reverse percentages: finding the original",
+        body: [
+          "After a 20% discount you paid $80 — what was the original price? **Original = paid ÷ (1 − discount)** = 80 ÷ 0.80 = **$100**.",
+          "After adding 15% tip the bill was $92 — pre-tip amount? 92 ÷ 1.15 = **$80**.",
+          "The pattern: divide by (1 ± rate). Discount → divide by (1 − rate); markup/tax/tip → divide by (1 + rate).",
+        ],
+      },
+      {
+        heading: "Mental-math shortcuts",
+        body: [
+          "- **10%:** move the decimal one place. 10% of 85 = 8.5.",
+          "- **1%:** move it two places. 1% of 85 = 0.85.",
+          "- **Build anything from 10% and 1%:** 15% = 10% + half of 10% (8.5 + 4.25 = 12.75). 23% = 2×10% + 3×1% (17 + 2.55 = 19.55).",
+          "- **Flip it:** 18% of 50 = 50% of 18 = **9**. (X% of Y = Y% of X — always true, often easier.)",
+          "- **25% = quarter, 50% = half, 75% = three-quarters, 33% ≈ third.** Use fractions when they're cleaner.",
+        ],
+      },
+      {
+        heading: "Percentage points vs percent: don't mix them up",
+        body: [
+          "If an interest rate rises from **4% to 6%**, that's a **2 percentage point** increase — but a **50%** relative increase ((6−4) ÷ 4). Politicians and advertisers exploit this confusion constantly: 'grew 200%' sounds enormous, but from a base of 1% it's just 3%.",
+          "Always ask: percent **of what**? The base determines everything.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "mortgage-amortization-explained-where-payment-goes",
+    title: "Mortgage Amortization Explained: Where Every Dollar of Your Payment Goes",
+    description:
+      "How mortgage amortization really works, why early payments are mostly interest, and how extra payments save shocking amounts — with a full worked example.",
+    date: "2026-11-04",
+    publishDate: "2026-11-04",
+    category: "Finance",
+    readMinutes: 9,
+    related: [{ name: "Mortgage Calculator", path: "/finance/mortgage-calculator" }],
+    sections: [
+      {
+        heading: "What amortization means",
+        body: [
+          "A fixed-rate mortgage is an **amortizing loan**: you pay the same amount every month, but the *split* between interest and principal shifts continuously. Early on, you're mostly paying the bank for the privilege of borrowing; near the end, you're mostly paying yourself (building equity).",
+          "The monthly payment formula: **M = P × r(1+r)ⁿ ÷ ((1+r)ⁿ − 1)**, where P = loan amount, r = monthly rate, n = number of payments.",
+        ],
+      },
+      {
+        heading: "Worked example: $400,000 at 6.5% for 30 years",
+        body: [
+          "Monthly rate: 0.065 ÷ 12 = 0.005417. Payments: 360. Monthly payment = **$2,528.27**.",
+          "**Payment #1:** interest = 400,000 × 0.005417 = **$2,166.67**; principal = only **$361.60**. Your balance drops to $399,638.40.",
+          "**Payment #180 (year 15):** balance ≈ $283,000; interest ≈ $1,533; principal ≈ $995 — finally more principal than interest.",
+          "**Payment #360:** interest ≈ **$13.63**; principal ≈ **$2,514.64**. Total interest paid over 30 years: **$510,177** — more than the loan itself.",
+        ],
+      },
+      {
+        heading: "The extra-payment superpower",
+        body: [
+          "Because early payments are interest-heavy, **extra principal paid early destroys future interest**. Add just **$200/month** extra to the example above: the loan ends in **~24 years instead of 30**, and total interest falls to **~$381,000** — a saving of roughly **$129,000** for $200/month.",
+          "One extra payment per year (divide one monthly payment by 12 and add it monthly) cuts a 30-year loan to about **25 years**. Biweekly payments (26 half-payments = 13 full payments/year) do the same automatically.",
+        ],
+      },
+      {
+        heading: "15-year vs 30-year: the real comparison",
+        body: [
+          "Same $400,000 at 6.5%: **30-year** → $2,528/month, $510,177 total interest. **15-year** → $3,484/month, **$227,197** total interest.",
+          "The 15-year costs **$956/month more** but saves **~$283,000** in interest and builds equity dramatically faster — after 5 years you owe ~$343k on the 15-year vs ~$372k on the 30-year. The tradeoff is purely cash flow: the higher payment leaves less room for emergencies and investing.",
+        ],
+      },
+      {
+        heading: "What ' PITI' means (your true monthly cost)",
+        body: [
+          "The mortgage payment is only **P&I** (principal & interest). Your real housing cost is **PITI**: + **Property Tax** (often 1–2% of home value/year) + **Insurance** (~$100–200/month) + sometimes **PMI** (if down payment < 20%) and **HOA**.",
+          "On a $500,000 home: P&I $2,528 + tax ~$520 + insurance ~$150 = **~$3,200/month** true cost. Budget on PITI, not P&I — lenders qualify you on PITI for exactly this reason.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "bmi-explained-what-number-means",
+    title: "BMI Explained: What the Number Means (and What It Doesn't)",
+    description:
+      "How BMI is calculated, what the categories mean, and the important limitations athletes, older adults, and muscular builds should know.",
+    date: "2026-11-06",
+    publishDate: "2026-11-06",
+    category: "Health",
+    readMinutes: 8,
+    related: [{ name: "BMI Calculator", path: "/health/bmi-calculator" }],
+    sections: [
+      {
+        heading: "How BMI is calculated",
+        body: [
+          "**BMI = weight (kg) ÷ height (m)²**. In imperial: **BMI = 703 × weight (lbs) ÷ height (in)²**.",
+          "**Example:** 180 lbs at 5'10\" (70 in). BMI = 703 × 180 ÷ 70² = 126,540 ÷ 4,900 = **25.8** — just into 'overweight'.",
+          "**Metric example:** 82 kg at 1.78 m. BMI = 82 ÷ (1.78 × 1.78) = 82 ÷ 3.1684 = **25.9**. Same person, same answer — the formulas are equivalent.",
+        ],
+      },
+      {
+        heading: "The categories and what they signal",
+        body: [
+          "| BMI | Category |",
+          "|---|---|",
+          "| Below 18.5 | Underweight |",
+          "| 18.5 – 24.9 | Healthy weight |",
+          "| 25 – 29.9 | Overweight |",
+          "| 30 and above | Obesity |",
+          "These cutoffs come from population studies linking BMI ranges to disease risk. At a population level, the correlation is strong: higher BMI ranges associate with higher rates of diabetes, heart disease, and joint problems. **Population-level** is the key phrase — see the next section.",
+        ],
+      },
+      {
+        heading: "What BMI gets wrong (the limitations)",
+        body: [
+          "BMI can't tell muscle from fat. A **5'10\", 210-lb linebacker** (BMI 30.1, 'obese') may carry 12% body fat; a **5'10\", 170-lb sedentary adult** (BMI 23.8, 'healthy') may carry 30% body fat with low muscle — the latter is often the unhealthier of the two ('skinny fat').",
+          "Other blind spots: **older adults** (muscle loss masks fat gain), **very tall/short people** (the square law distorts), **pregnancy**, and **different ethnicities** (some Asian health authorities use lower cutoffs, e.g., 23/27.5, because risk rises earlier).",
+          "Better companions to BMI: **waist circumference** (men > 40 in / women > 35 in signals risk regardless of BMI), **waist-to-height ratio** (keep under 0.5), and **body fat percentage** if you can measure it.",
+        ],
+      },
+      {
+        heading: "Why doctors still use it",
+        body: [
+          "Because it's **free, instant, and directionally right for most people**. It takes 10 seconds and no equipment, and for the average non-athletic adult it correlates well with body fat. Think of BMI as a **smoke detector, not a diagnosis**: a high reading means 'look closer' (check waist, blood pressure, blood sugar), not 'you are unhealthy'.",
+        ],
+      },
+      {
+        heading: "Moving your BMI: the math",
+        body: [
+          "To go from BMI 25.8 to 24.0 at 5'10\": target weight = 24 × 70² ÷ 703 = 24 × 4,900 ÷ 703 = **167.3 lbs** — about **13 lbs** to lose from 180.",
+          "A sustainable deficit of 500 cal/day ≈ 1 lb/week → ~**3 months**. But remember the better targets: waist under half your height, strength trending up, and habits you can keep — the BMI number is just the scoreboard.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "how-age-is-calculated-birthdays-leap-years",
+    title: "How Age Is Actually Calculated: Birthdays, Leap Years & Exact Age",
+    description:
+      "How exact age in years, months, and days is computed, why leap-day babies are special, and the off-by-one errors everyone makes.",
+    date: "2026-11-09",
+    publishDate: "2026-11-09",
+    category: "Date & Time",
+    readMinutes: 6,
+    related: [{ name: "Age Calculator", path: "/datetime/age-calculator" }],
+    sections: [
+      {
+        heading: "The definition of age (it's not what you think)",
+        body: [
+          "Your age in completed years = **current date minus birth date, counting only fully completed years**. Born **June 15, 1990**, today **October 17, 2026**: 2026 − 1990 = 36, but your birthday hasn't... wait, it has (June < October) → **36 years old**.",
+          "If today were **March 1, 2026** instead: 2026 − 1990 = 36, but June 15 hasn't occurred yet this year → subtract one → **35**. The rule: **subtract a year if this year's birthday hasn't happened yet**.",
+        ],
+      },
+      {
+        heading: "Exact age: years, months, days",
+        body: [
+          "For the full breakdown, work largest unit to smallest with borrowing:",
+          "**Example: born March 10, 2000; today October 17, 2026.** Years: 2026 − 2000 = 26, birthday passed (March < October) → **26 years**. Months: October − March = **7 months**. Days: 17 − 10 = **7 days**. Exact age: **26 years, 7 months, 7 days**.",
+          "When the day borrows (e.g., born March 25, today October 17): months drop by one (6), days = 17 + 30 (days in September) − 25 = **22** → 26 years, 6 months, 22 days. The borrow uses the *previous* month's length — the fiddly part calculators handle for you.",
+        ],
+      },
+      {
+        heading: "Leap-day babies (February 29)",
+        body: [
+          "Born **Feb 29, 2000**: in non-leap years, when do you turn a year older — Feb 28 or Mar 1? Legally it varies by jurisdiction (most US states: **March 1**; UK: **Feb 28** in common law tradition... actually it's genuinely disputed). Practically, almost everyone celebrates on **Feb 28 or Mar 1** in off years.",
+          "Fun math: by their 24th birthday (2024), a leap-day baby has only had **6 actual Feb-29 birthdays** — the joke 'I'm 6 years old!' is arithmetically defensible.",
+        ],
+      },
+      {
+        heading: "Age in other units",
+        body: [
+          "A 30-year-old has lived roughly: **30 years** = 360 months = ~1,560 weeks = **~10,950 days** (including ~7–8 leap days) = ~262,800 hours = **~15.8 million minutes**.",
+          "These conversions matter for: insurance underwriting (age in days for infants), legal thresholds (18 years to the day), and retirement eligibility (often 'age 65' means the exact birthday, not the calendar year).",
+        ],
+      },
+      {
+        heading: "Common off-by-one errors",
+        body: [
+          "- **'Turning 30 in 2026' ≠ 30 all year:** you're 29 until the birthday itself.",
+          "- **East Asian age reckoning:** traditionally you're 1 at birth and gain a year each Lunar New Year — a newborn in December could be '2' within weeks. (South Korea standardized to international age in 2023.)",
+          "- **'In your 30th year'** means age 29 — ordinal years count the year you're completing, not completed.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "how-loan-interest-really-works",
+    title: "How Loan Interest Really Works: APR, Amortization & the True Cost",
+    description:
+      "APR vs interest rate, how amortization front-loads interest, and worked examples showing what a loan truly costs you.",
+    date: "2026-11-11",
+    publishDate: "2026-11-11",
+    category: "Finance",
+    readMinutes: 8,
+    related: [{ name: "Loan Calculator", path: "/finance/loan-calculator" }],
+    sections: [
+      {
+        heading: "Interest rate vs APR: the difference that costs you",
+        body: [
+          "The **interest rate** is what the lender charges on the balance. The **APR** (Annual Percentage Rate) folds in **fees and points**, spread over the loan term — it's the true yearly cost.",
+          "**Example:** a $300,000 mortgage at 6.5% with $6,000 in fees. The rate is 6.5%, but the APR is ~**6.65%** — the fees' cost annualized. When comparing loans, **compare APRs, not rates**: a 6.4% rate with heavy fees can cost more than a 6.6% rate with none.",
+        ],
+      },
+      {
+        heading: "How amortization front-loads interest",
+        body: [
+          "Every payment = interest on the *current* balance + the rest to principal. Since the balance is biggest at the start, **early payments are mostly interest**.",
+          "**Example: $25,000 car loan, 7% APR, 5 years (60 payments).** Monthly payment = **$495.03**. Payment #1: interest = 25,000 × (0.07/12) = **$145.83**; principal = $349.20. Payment #60: interest = **$2.87**; principal = $492.16. Total interest: **$4,701.80** — nearly 19% on top of the car's price.",
+        ],
+      },
+      {
+        heading: "Shorter term vs lower rate: which saves more?",
+        body: [
+          "Same $25,000 car loan: **7% for 5 years** → $495/mo, $4,702 total interest. **7% for 3 years** → $772/mo, **$2,786** total interest (saves $1,916). **5% for 5 years** → $472/mo, **$3,307** total interest (saves $1,395).",
+          "Shortening the term usually beats lowering the rate by a point or two — less time for interest to compound. The constraint is always monthly cash flow: never stretch the term just to afford the payment; that's how a $25,000 car costs $32,000.",
+        ],
+      },
+      {
+        heading: "The Rule of 78s and prepayment penalties (watch out)",
+        body: [
+          "Some lenders (mostly subprime/auto) use the **Rule of 78s**, which front-loads interest even more aggressively than standard amortization — paying early saves you less. Others charge **prepayment penalties** (often 1–2% of balance) for escaping early.",
+          "Before signing: ask two questions — **'Is interest calculated with standard amortization?'** and **'Is there a prepayment penalty?'** Get both answers in writing. A loan you can't exit cheaply isn't a loan, it's a lease on your future income.",
+        ],
+      },
+      {
+        heading: "Total cost: the only number that matters",
+        body: [
+          "Monthly payment is a cash-flow number; **total of payments** is the cost number. Always compute: monthly × months.",
+          "$495 × 60 = **$29,700** for that $25,000 car. $2,528 × 360 = **$910,188** for a $400,000 mortgage. Seeing the total reframes every borrowing decision — and makes the case for bigger down payments and shorter terms better than any lecture.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "how-much-to-tip-guide-every-situation",
+    title: "How Much to Tip in Every Situation: The Complete Guide",
+    description:
+      "Exact tipping percentages for restaurants, bars, delivery, travel, and services — US norms plus how tipping works around the world.",
+    date: "2026-11-13",
+    publishDate: "2026-11-13",
+    category: "Lifestyle",
+    readMinutes: 8,
+    related: [{ name: "Tip Calculator", path: "/finance/tip-calculator" }],
+    sections: [
+      {
+        heading: "The quick-reference chart",
+        body: [
+          "| Situation | Standard tip |",
+          "|---|---|",
+          "| Sit-down restaurant (US) | **18–20%** (15% minimum) |",
+          "| Bar (per drink) | **$1–2** |",
+          "| Food delivery | **10–15%** (min $3–5) |",
+          "| Takeout / counter pickup | **5–10%** (optional) |",
+          "| Rideshare (Uber/Lyft) | **15–20%** |",
+          "| Haircut / salon | **15–20%** |",
+          "| Hotel housekeeping | **$3–5 per night** |",
+          "| Valet | **$2–5** on return |",
+          "| Coffee shop tip jar | **$1** or spare change (optional) |",
+          "Tip on the **pre-tax** subtotal — tax isn't service.",
+        ],
+      },
+      {
+        heading: "Why America tips so much (the economics)",
+        body: [
+          "US tipping isn't just custom — it's **wage structure**. The federal tipped minimum wage is **$2.13/hour** (unchanged since 1991); tips are legally expected to bring workers to the regular minimum, and in practice they're most of a server's income. That's why 18–20% became the default: you're not adding a bonus, you're paying the wage.",
+          "Seven states (CA, OR, WA, NV, MN, MT, AK) require the **full** minimum wage before tips — tipping there is genuinely extra, though 18–20% remains the norm.",
+        ],
+      },
+      {
+        heading: "Tipping around the world",
+        body: [
+          "- **Japan & South Korea:** tipping can **offend** — excellent service is the standard, included in the price. Don't tip.",
+          "- **Most of Europe:** service is often included ('service compris'); rounding up or 5–10% for great service suffices.",
+          "- **UK:** 10–12.5% at restaurants if service isn't included; pubs — no tip expected (offering the bartender a drink is the tradition).",
+          "- **Middle East:** 10–15% is common in tourist areas; check if a service charge is already added.",
+          "- **Australia/NZ:** tipping is rare and entirely optional — workers earn full wages.",
+          "Rule for travelers: **when in doubt, ask a local** — and never tip where it's insulting.",
+        ],
+      },
+      {
+        heading: "The math: tipping without a calculator",
+        body: [
+          "**20%:** move the decimal (10%), double it. $64 bill → $6.40 → **$12.80**.",
+          "**15%:** 10% + half of 10%. $64 → $6.40 + $3.20 = **$9.60**.",
+          "**18%:** 20% minus a little. $64 → $12.80 − ~$1.30 = **~$11.50**.",
+          "**Splitting:** total with tip ÷ people. $143.20 among 4 = **$35.80 each**. Round up to whole dollars when the change is silly — nobody misses 20 cents.",
+        ],
+      },
+      {
+        heading: "Tipping debates worth knowing",
+        body: [
+          "**Tip fatigue** is real: tablets prompting 25–30% at self-serve counters have pushed back — you're allowed to hit 'custom' or $0 where no service occurred. **Tipflation** (suggested percentages creeping from 15% → 20% → 25%) is driven by point-of-sale software defaults, not consensus.",
+          "The honest framework: tip for **personal service rendered** (someone served, carried, cleaned, or drove for you), proportional to effort. A percentage of the bill is just a convenient proxy for that — when the proxy feels wrong (a $200 bottle of wine vs a $40 one, same pouring effort), tipping a flat generous amount is perfectly defensible.",
+        ],
+      },
+    ],
+  },
 ];
+
+// Publishing schedule: a post becomes visible on /blog (and its article
+// page) once its publishDate arrives. Because the check runs client-side,
+// scheduled posts go live automatically — no rebuild or deploy needed.
+export const isPublished = (publishDate: string): boolean =>
+  publishDate <= new Date().toISOString().slice(0, 10);
+
+export const getPublishedPosts = (): BlogPost[] =>
+  blogPosts
+    .filter((p) => isPublished(p.publishDate))
+    .sort((a, b) => (a.publishDate < b.publishDate ? 1 : -1));
