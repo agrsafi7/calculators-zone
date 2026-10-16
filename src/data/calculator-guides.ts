@@ -978,4 +978,40 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
+  "shoe-size-converter": [
+    {
+      heading: "How this shoe size calculator works",
+      paragraphs: [
+        "Select the sizing system you already know — US men's, US women's, UK, EU, or Mondo/JP centimeters — enter your size, and this shoe size calculator converts it to every other system instantly, plus your estimated foot length.",
+        "Unlike rough formula-based converters, it uses a **standard conversion chart** (the same scale major athletic brands publish), so a US men's 9 correctly gives **UK 8.5, EU 42.5, and 27 cm Mondo** — not a rounded guess.",
+      ],
+    },
+    {
+      heading: "The sizing systems, explained",
+      paragraphs: [
+        "**US men's** is the baseline here: each full size is 1/3 inch (8.47 mm) of foot length. **US women's** runs 1.5 sizes larger than men's for the same foot — a women's 8 fits the same foot as a men's 6.5. **UK sizes** are 0.5 below US men's (US 9 = UK 8.5). **EU sizes** are based on the Paris point (2/3 cm per size) and aren't perfectly linear against US sizes, which is why a chart beats a formula. **Mondo/JP** is simply your foot length in centimeters — the most honest system there is.",
+        "Worked example: you wear **EU 44**. The calculator finds the nearest chart entry → US men's **10** → UK **9.5**, US women's **11.5**, Mondo **28 cm**, foot length **28.0 cm (11.02 in)**.",
+      ],
+    },
+    {
+      heading: "How to measure your foot (the right way)",
+      paragraphs: [
+        "For the best result, skip the size you 'usually wear' and measure: **1.** Place a blank paper on a hard floor. **2.** Stand on it with your full weight (feet spread slightly under load). **3.** Mark the back of the heel and the tip of your longest toe. **4.** Measure between the marks in centimeters — that's your Mondo size. **5.** Measure in the **evening**: feet swell up to half a size during the day, and shoes bought to a morning measurement feel tight by dinner.",
+        "Add **0.5–1 cm** of wiggle room beyond your raw measurement for comfort — toes should never touch the front of the shoe. If your two feet differ (most people's do), fit to the larger foot.",
+      ],
+    },
+    {
+      heading: "Why the same size fits differently everywhere",
+      paragraphs: [
+        "Three reasons conversions are approximate: **brand lasts differ** — each manufacturer sculpts its own foot mold, so a Nike 9 and an Allen Edmonds 9 are different shapes; **width matters** — the calculator covers length, but D/Medium vs W/Wide (or E in UK) changes fit dramatically; and **EU rounding varies** — some brands label US 9 as EU 42, others 42.5.",
+        "Practical rule: when buying online, **check that brand's own size chart** against your Mondo cm measurement, read reviews for 'runs small/large' notes, and when between sizes, **size up** — a slightly long shoe with an insole beats a short one that crushes your toes.",
+      ],
+    },
+    {
+      heading: "Kids' sizes and international shopping tips",
+      paragraphs: [
+        "Kids' sizing restarts the scale: a US kids' 4 is roughly a women's 5.5, and kids' sizes run 1–7 before 'youth' overlaps adult smalls. When ordering from **UK shops**, remember UK = US men's − 0.5 (not − 1, a common mistake). From **EU shops**, use your Mondo cm against their chart rather than converting through US sizes — fewer rounding steps, fewer surprises. From **Japanese/Korean shops**, just use your centimeter measurement directly.",
+      ],
+    },
+  ],
 };
