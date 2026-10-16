@@ -851,30 +851,56 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     faqs: [{ question: "How accurate is this?", answer: "Mid-parental height predicts within ±5cm for ~50% of children. Genetics, nutrition, and health also play roles." }],
     relatedCalcs: lifeRelated("height-calculator"),
   },
-  // Shoe Size Conversion
+  // Shoe Size Calculator (multi-directional converter)
   {
-    slug: "shoe-size-converter", name: "Shoe Size Converter", category: "Lifestyle", categorySlug: "lifestyle",
-    description: "Convert shoe sizes between US, UK, EU, and centimeter measurements.",
-    metaDescription: "Free shoe size converter. Convert between US, UK, EU shoe sizes and foot length in cm.",
+    slug: "shoe-size-converter", name: "Shoe Size Calculator", category: "Lifestyle", categorySlug: "lifestyle",
+    description: "Convert shoe sizes between US men's, US women's, UK, EU, and Mondo/JP centimeter measurements.",
+    metaDescription: "Free shoe size calculator. Convert between US, UK, EU, and Japanese (Mondo) shoe sizes, and estimate your foot length.",
     icon: "smile",
     inputs: [
-      { id: "size", label: "US Size", type: "number", defaultValue: 10, step: 0.5, min: 1 },
-      { id: "gender", label: "Gender", type: "select", defaultValue: 0, options: [{ value: 0, label: "Men" }, { value: 1, label: "Women" }] },
+      { id: "system", label: "Your size is in", type: "select", defaultValue: 0, options: [{ value: 0, label: "US Men's" }, { value: 1, label: "US Women's" }, { value: 2, label: "UK" }, { value: 3, label: "EU" }, { value: 4, label: "Mondo / JP (cm)" }] },
+      { id: "size", label: "Size", type: "number", defaultValue: 9, step: 0.5, min: 1, max: 60 },
     ],
     calculate: (v) => {
-      const cm = v.gender === 0 ? (v.size + 18) * 0.847 + 7.62 : (v.size + 17) * 0.847 + 7.62;
-      const uk = v.gender === 0 ? v.size - 0.5 : v.size - 2;
-      const eu = v.gender === 0 ? v.size + 33 : v.size + 31;
+      // Lookup table keyed by US men's size (0.5 steps): [uk, eu, mondoCm]
+      const table: [number, number, number][] = [
+        [5.5, 38.5, 24], [6, 39, 24.5], [6.5, 39.5, 25], [7, 40, 25.5],
+        [7.5, 41, 26], [8, 41.5, 26.5], [8.5, 42.5, 27], [9, 43, 27.5],
+        [9.5, 44, 28], [10, 44.5, 28.5], [10.5, 45, 29], [11, 45.5, 29.5],
+        [11.5, 46, 30], [12.5, 47.5, 31], [13.5, 48.5, 32],
+      ];
+      const usSizes = [6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13, 14];
+      let usM: number;
+      if (v.system === 0) usM = v.size;
+      else if (v.system === 1) usM = v.size - 1.5;
+      else if (v.system === 2) usM = v.size + 0.5;
+      else if (v.system === 4) usM = v.size - 18;
+      else {
+        let best = 0, bestDiff = Infinity;
+        table.forEach((row, i) => { const d = Math.abs(row[1] - v.size); if (d < bestDiff) { bestDiff = d; best = i; } });
+        usM = usSizes[best];
+      }
+      usM = Math.min(14, Math.max(6, Math.round(usM * 2) / 2));
+      const idx = usSizes.indexOf(usM);
+      const [uk, eu, mondo] = table[idx];
+      const usW = usM + 1.5;
+      const footIn = mondo / 2.54;
       return [
-        { label: "US Size", value: `${v.size}`, highlight: true },
-        { label: "UK Size", value: `${uk}` },
-        { label: "EU Size", value: `${eu}` },
-        { label: "Foot Length", value: `${cm.toFixed(1)} cm` },
+        { label: "US Men's", value: `${usM}`, highlight: true },
+        { label: "US Women's", value: `${usW}` },
+        { label: "UK", value: `${uk}` },
+        { label: "EU", value: `${eu}` },
+        { label: "Mondo / JP", value: `${mondo} cm` },
+        { label: "Foot Length", value: `${mondo.toFixed(1)} cm (${footIn.toFixed(2)} in)` },
       ];
     },
-    formula: { expression: "Approximate conversions between sizing systems", variables: ["US Men = UK + 0.5", "US Women = EU − 31"] },
-    howToUse: "Enter your US shoe size and gender to see equivalent sizes in other systems.",
-    faqs: [{ question: "Do shoe sizes vary by brand?", answer: "Yes, shoe sizes can vary significantly between brands. Always try shoes on or check brand-specific size charts." }],
+    formula: { expression: "US Men's → UK = US − 0.5; US Women's = US Men's + 1.5; Mondo (cm) = foot length", variables: ["EU sizes from standard conversion chart", "1 inch = 2.54 cm"] },
+    howToUse: "Select the sizing system you know, enter your size, and get instant conversions to US men's, US women's, UK, EU, and Mondo/JP — plus your estimated foot length. For the most accurate fit, measure your foot in the evening (feet swell during the day) and compare against the Mondo cm value.",
+    faqs: [
+      { question: "How do I measure my foot for shoe size?", answer: "Stand on a piece of paper, mark the heel and longest toe, and measure the distance in cm. That number is your Mondo size — the most reliable system because it's an actual measurement." },
+      { question: "Why do sizes differ between brands?", answer: "Each brand uses its own 'last' (foot-shaped mold), and EU/UK conversions are rounded differently. Always check the brand's own chart; when between sizes, size up." },
+      { question: "What is Mondo/JP sizing?", answer: "Mondopoint, used in Japan and Korea, is simply your foot length in centimeters. A 27 cm foot = size 27 — no conversion needed." },
+    ],
     relatedCalcs: lifeRelated("shoe-size-converter"),
   },
   // Golf Handicap Calculator
