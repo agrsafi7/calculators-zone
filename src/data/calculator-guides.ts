@@ -199,6 +199,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "Customs vary, but common US guidance: **15–20%** at sit-down restaurants (20% for great service), **10–15%** for food delivery, **$1–2 per drink** at bars, **10%** for takeout, and **15–20%** for rideshares and haircuts. In much of Europe and Asia, service is often included or tipping is modest — check local norms when travelling.",
         "One rule of thumb: tip on the **pre-tax** amount. Tax isn't service, and most etiquette guides agree the percentage applies to the subtotal.",
+        "If you're visiting America, note that US tipping culture is among the most tip-heavy in the world: **tipped workers in many states earn a lower cash minimum wage** (the federal tipped minimum is $2.13/hour), so tips genuinely are a large part of servers' income. That's why 18–20% has become the default expectation at American restaurants, and why this tip calculator defaults to those percentages.",
       ],
     },
   ],
@@ -631,6 +632,349 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "**Cash loses quietly.** Money in a 0.5% savings account during 3% inflation shrinks 2.5% in real terms yearly — 'safe' isn't safe. **Assets reprice**: stocks, real estate, and inflation-linked bonds (TIPS, linkers) historically outrun inflation over long horizons.",
         "**Debt gets cheaper in real terms** — a fixed-rate mortgage's payment stays flat while wages and prices rise, which is why inflation quietly benefits borrowers. And when negotiating salary, anchor to real terms: a 2% raise during 3% inflation is a 1% cut.",
+      ],
+    },
+  ],
+
+  "roman-numeral-converter": [
+    {
+      heading: "How this roman numeral converter works",
+      paragraphs: [
+        "Type any number from 1 to 3,999 and this roman numeral converter translates it instantly — or paste a roman numeral like **MCMXCIV** to get 1994 back. The system uses just seven letters: **I (1), V (5), X (10), L (50), C (100), D (500), M (1000)**.",
+        "Whether you searched for a roman numerals converter, a roman numbers converter, or a roman letters converter, they all mean the same thing: turning modern digits into the ancient Roman system and back.",
+      ],
+    },
+    {
+      heading: "The two rules that do all the work",
+      paragraphs: [
+        "**Add when a smaller-or-equal symbol follows a bigger one:** VI = 5 + 1 = 6; LXX = 50 + 10 + 10 = 70. **Subtract when a smaller symbol comes first:** IV = 5 − 1 = 4; IX = 9; XL = 40; XC = 90; CD = 400; CM = 900. Subtraction only works for I before V/X, X before L/C, and C before D/M — so 49 is **XLIX**, never IL.",
+        "A symbol repeats at most three times: III = 3 but 4 = IV, XXX = 30 but 40 = XL.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "**2024 → MMXXIV.** 2000 = MM, 20 = XX, 4 = IV. Combined: **MMXXIV**.",
+        "**MCMXCIV → 1994.** Read left to right: M = 1000, CM = 900, XC = 90, IV = 4. Total: **1994**.",
+        "**949 → CMXLIX.** 900 = CM, 40 = XL, 9 = IX. Combined: **CMXLIX** — three subtraction pairs in one number, a great test of the rules.",
+      ],
+    },
+    {
+      heading: "Where roman numerals still appear",
+      paragraphs: [
+        "You'll meet roman numerals on **clock faces** (which traditionally use IIII for 4), **movie copyright years**, **Super Bowl numbers**, **book chapters**, and **monarch names** like Elizabeth II. Our full blog guide includes a complete 1–100 chart and the step-by-step conversion method.",
+      ],
+    },
+  ],
+
+  "statistics-calculator": [
+    {
+      heading: "What this statistics calculator computes",
+      paragraphs: [
+        "Paste any list of numbers and this statistics calculator returns the full descriptive summary: **count, sum, mean, median, mode, range, variance, and standard deviation** — everything you need for homework, lab reports, or a quick data check.",
+        "Looking for a stats calculator that just does the basics? The mean, median and mode are the three 'centers' of your data; the range and standard deviation describe how spread out it is. Together they tell you what a raw list of numbers actually looks like.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take the data set **5, 8, 12, 15, 20**: count = 5, sum = 60, **mean = 60 ÷ 5 = 12**. Sorted, the middle value is 12, so **median = 12**. No value repeats, so there is **no mode**. **Range = 20 − 5 = 15**.",
+        "For spread: deviations from the mean are −7, −4, 0, 3, 8. Squaring: 49, 16, 0, 9, 64. Sum = 138. Population variance = 138 ÷ 5 = **27.6**, so standard deviation = √27.6 ≈ **5.25**. The calculator shows both the population and sample versions — use the sample one when your data is a subset of something bigger (like 50 surveyed voters).",
+      ],
+    },
+    {
+      heading: "Mean vs median: which to trust",
+      paragraphs: [
+        "The mean uses every value, so **one outlier drags it**: the mean of 2, 4, 6, 8, 100 is 24, which describes none of the typical values. The median (6 here) ignores outliers entirely. That's why **house prices and salaries are reported as medians** — a few mansions or billionaires would warp the average.",
+        "Rule of thumb: no outliers → mean; outliers present → median; most common category → mode (the only one that works for non-numbers, like best-selling shirt size).",
+      ],
+    },
+  ],
+
+  "gcf-calculator": [
+    {
+      heading: "What the GCF is and why it matters",
+      paragraphs: [
+        "The **greatest common factor (GCF)** — also called the greatest common divisor — is the largest number that divides two numbers evenly. This GCF calculator finds it instantly for any pair you enter.",
+        "You need the greatest common factor whenever things must split evenly: **simplifying fractions** (24/36 reduces by GCF 12 to 2/3), cutting the largest equal pieces from two lengths, or packing two quantities into identical groups.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "**GCF of 36 and 60:** factors of 36 are 1, 2, 3, 4, 6, 9, 12, 18, 36; factors of 60 are 1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60. The largest shared factor is **12**.",
+        "**GCF of 1071 and 462 (Euclidean algorithm):** 1071 ÷ 462 = 2 remainder 147; 462 ÷ 147 = 3 remainder 21; 147 ÷ 21 = 7 remainder 0. The last divisor is the GCF: **21**. The calculator uses this method, which is why it handles huge numbers without breaking a sweat.",
+      ],
+    },
+    {
+      heading: "GCF vs LCM",
+      paragraphs: [
+        "Don't confuse the two: the **GCF is the largest number dividing both** (it shrinks), while the **LCM is the smallest number both divide into** (it grows). For 12 and 18: GCF = 6, LCM = 36. Handy check: GCF × LCM always equals the product of the two numbers — 6 × 36 = 216 = 12 × 18.",
+      ],
+    },
+  ],
+
+  "weight-loss-percentage-calculator": [
+    {
+      heading: "How to calculate weight loss percentage",
+      paragraphs: [
+        "Enter your starting and current weight and this calculator shows your weight loss percentage: **(start − current) ÷ start × 100**. Percentages are fairer than pounds — 10 lbs lost means something different at 150 lbs than at 300 lbs.",
+        "**Example:** starting at 220 lbs, now at 198 lbs. Lost: 22 lbs. Percentage: 22 ÷ 220 × 100 = **10%**. Doctors consider 10% a clinically meaningful threshold, linked to real improvements in blood pressure, blood sugar, and joint load.",
+      ],
+    },
+    {
+      heading: "The calorie math behind the percentage",
+      paragraphs: [
+        "A pound of body fat stores roughly **3,500 calories**. A daily deficit of 500 calories (eat 300 less + burn 200 more) × 7 days ≈ **1 lb per week** — the classic, still-reliable planning rule.",
+        "A safe sustained rate is **0.5–1% of body weight per week** (1–2 lbs/week for a 200-lb person). Faster usually means water and muscle, not fat; slower is still real progress — 0.5 lb/week is 26 lbs in a year. Judge trends over 4-week averages, since daily weight swings of 1–3 lbs from water are completely normal.",
+      ],
+    },
+    {
+      heading: "Beyond the scale",
+      paragraphs: [
+        "Track **waist measurement at the navel** alongside your percentage — a shrinking waist with stable weight means fat loss plus muscle gain. Monthly progress photos, belt notches, and training performance that holds or improves while losing all confirm you're losing the right kind of weight.",
+      ],
+    },
+  ],
+
+  "lean-body-mass-calculator": [
+    {
+      heading: "How to calculate lean body mass",
+      paragraphs: [
+        "Enter your height, weight, and gender and this calculator estimates your **lean body mass (LBM)** — everything in your body except fat: muscle, bone, organs, and water — using the widely used **Boer formula**.",
+        "Men: **LBM = 0.407 × weight(kg) + 0.267 × height(cm) − 19.2**. Women: **LBM = 0.252 × weight(kg) + 0.473 × height(cm) − 48.3**.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A man weighing **90 kg** at **183 cm** (6'0\"): LBM = 0.407 × 90 + 0.267 × 183 − 19.2 = 36.63 + 48.86 − 19.2 = **66.3 kg** (146 lbs). On a 200-lb frame, that implies roughly 27% body fat.",
+        "A woman weighing **65 kg** at **165 cm**: LBM = 0.252 × 65 + 0.473 × 165 − 48.3 = 16.38 + 78.05 − 48.3 = **46.1 kg** (101.6 lbs).",
+      ],
+    },
+    {
+      heading: "How to use your LBM number",
+      paragraphs: [
+        "**Protein target:** 1.6–2.2 g per kg of LBM daily when building muscle, 1.2–1.6 g/kg in a deficit. The 66.3 kg man above needs roughly **106–146 g/day**. **Calorie baseline:** muscle drives resting metabolism far more than fat — two people at the same weight but different LBM can differ by 200+ calories/day in maintenance needs.",
+        "Note the Boer formula is an estimate validated on typical adult builds; it loses accuracy for very muscular athletes or the very tall/short. For tracking your own trend over time, it's consistent and free — which is what matters most.",
+      ],
+    },
+  ],
+
+  "celsius-to-fahrenheit-converter": [
+    {
+      heading: "The conversion formulas",
+      paragraphs: [
+        "This celsius to fahrenheit calculator applies the exact formulas instantly — no rounding shortcuts:",
+        "**°F = (°C × 9/5) + 32** and the reverse **°C = (°F − 32) × 5/9**.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "**25°C → °F:** (25 × 9/5) + 32 = 45 + 32 = **77°F** — a warm day. **−40°C → °F:** (−40 × 9/5) + 32 = −72 + 32 = **−40°F** — the one temperature where both scales agree, a handy check your math is right.",
+        "**98.6°F → °C:** (98.6 − 32) × 5/9 = 66.6 × 5/9 = **37°C** — normal body temperature. **350°F → °C:** (350 − 32) × 5/9 = 318 × 5/9 = **176.7°C** — round to **180°C** for oven settings.",
+      ],
+    },
+    {
+      heading: "Quick mental-math trick",
+      paragraphs: [
+        "For everyday estimates: **double the Celsius and add 30**. 20°C → ~70°F (actual 68°F) — close enough to decide on a jacket. Going back: subtract 30 from Fahrenheit and halve it. 86°F → ~28°C (actual 30°C).",
+        "Anchor temperatures worth memorizing: water freezes at **0°C / 32°F**, room temperature is **20°C / 68°F**, body temperature is **37°C / 98.6°F**, and water boils at **100°C / 212°F**.",
+      ],
+    },
+  ],
+  "mpg-calculator": [
+    {
+      heading: "How to calculate MPG",
+      paragraphs: [
+        "This MPG calculator uses the only formula that matters: **MPG = miles driven ÷ gallons used**. Fill the tank, reset the trip odometer, drive normally, refill, and divide.",
+        "**Example:** you drive **320 miles** and the refill takes **12.5 gallons**. 320 ÷ 12.5 = **25.6 MPG**. Track this over several tanks — a single fill-up is noisy because pumps click off at different points.",
+      ],
+    },
+    {
+      heading: "What affects your MPG most",
+      paragraphs: [
+        "Speed is the biggest lever: most cars peak around **45–55 mph**, and fuel economy drops roughly 15% going from 55 to 75 mph. Under-inflated tires cost 1–3%, aggressive acceleration and braking cost up to 30% in city driving, and a roof box can cost 10–25% at highway speeds.",
+        "Use your numbers to price decisions: at **$3.50/gallon**, improving from 20 to 25 MPG over 12,000 miles/year saves (12,000/20 − 12,000/25) × 3.50 = (600 − 480) × 3.50 = **$420/year**.",
+      ],
+    },
+  ],
+
+  "gas-mileage-calculator": [
+    {
+      heading: "From MPG to dollars: your cost per mile",
+      paragraphs: [
+        "Knowing your gas mileage is only half the story — this calculator turns it into money: **cost per mile = fuel price ÷ MPG**, and **trip fuel cost = distance ÷ MPG × fuel price**.",
+        "**Example:** gas at **$3.50/gallon** and a car doing **28 MPG**. Cost per mile = 3.50 ÷ 28 = **$0.125** — twelve and a half cents per mile. A 400-mile drive costs 400 × 0.125 = **$50** in fuel.",
+      ],
+    },
+    {
+      heading: "Comparing cars by fuel cost",
+      paragraphs: [
+        "Sticker MPG differences look small until you annualize them. Over **15,000 miles/year** at $3.50/gallon: a 25 MPG car burns $2,100 of fuel; a 35 MPG car burns $1,500. That's **$600/year** — $3,000 over five years, often more than the price gap between trims.",
+        "Track your real-world MPG here rather than trusting the window sticker: short trips, winter fuel blends, and city traffic routinely cut EPA figures by 10–20%.",
+      ],
+    },
+  ],
+
+  "road-trip-calculator": [
+    {
+      heading: "Planning a road trip: the travel distance math",
+      paragraphs: [
+        "A road trip calculator answers three questions: **how far** (travel distance), **how much fuel**, and **how much it costs**. Enter your route distance, your car's MPG, and the fuel price:",
+        "**Fuel needed = distance ÷ MPG**; **fuel cost = fuel needed × price per gallon**.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **450-mile** trip in a car doing **25 MPG** with gas at **$3.40/gallon**: fuel needed = 450 ÷ 25 = **18 gallons**; fuel cost = 18 × 3.40 = **$61.20**.",
+        "For the full trip budget, add the extras people forget: **tolls** (check your route), **food** (~$15–25/person/day on the road), **lodging** if overnight, and a **10% buffer** for detours and price differences between states — gas can vary $1+/gallon across state lines.",
+      ],
+    },
+    {
+      heading: "Cutting the fuel bill",
+      paragraphs: [
+        "The cheapest lever is **speed**: dropping from 75 to 65 mph typically saves 10–15% on highway fuel. Next is **route choice**: 20 extra miles to avoid mountain passes or stop-and-go traffic usually pays for itself. And check tire pressure before you leave — it's free MPG.",
+      ],
+    },
+  ],
+
+  "fuel-cost-calculator": [
+    {
+      heading: "How to calculate fuel cost and mileage cost",
+      paragraphs: [
+        "This fuel cost calculator answers the 'what will it cost me to drive there?' question in one step. The core formula: **trip cost = (distance ÷ fuel efficiency) × fuel price**.",
+        "**Mileage cost** — the cost per mile of driving — is the same math rearranged: **fuel price ÷ MPG**. At $3.60/gallon and 30 MPG, every mile costs you exactly **$0.12**.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "**Daily commute:** 24 miles round-trip, 5 days/week, 28 MPG, $3.50/gal. Weekly fuel = (120 ÷ 28) × 3.50 = **$15.00**. Monthly ≈ **$65**. Yearly ≈ **$780** — worth knowing before you sign a lease farther from work.",
+        "**Delivery driving:** if you earn per delivery, subtract your mileage cost first. At $0.12/mile, a 10-mile round trip costs $1.20 in fuel alone — before wear, insurance, and depreciation (the IRS standard mileage rate, which bundles all of that, is far higher).",
+      ],
+    },
+  ],
+
+  "trip-cost-calculator": [
+    {
+      heading: "Building a complete trip budget",
+      paragraphs: [
+        "Fuel is only one line of a trip budget. This trip cost calculator totals the full picture: **fuel + tolls + lodging + food + activities**, then splits it per person.",
+        "**Example — 600-mile weekend for two:** fuel (600 ÷ 28 MPG × $3.50) = $75; tolls = $18; one hotel night = $140; food = $120; total = **$353**, or **$176.50 per person**.",
+      ],
+    },
+    {
+      heading: "What people forget to budget",
+      paragraphs: [
+        "The five most-forgotten trip costs: **parking** ($20–50/day in cities), **tolls** (check the route in advance), **travel-day food** (airport and highway prices), **pet care or house-sitting**, and a **10–15% contingency**. Add them and your 'cheap weekend' usually lands within 10% of the real number instead of 40% under it.",
+        "Splitting costs? Decide the split rule before the trip — even miles, even people, or per-car — and log shared spending in one place. Most trip arguments are about money nobody tracked.",
+      ],
+    },
+  ],
+
+  "deck-calculator": [
+    {
+      heading: "How to estimate deck boards (deck board calculator)",
+      paragraphs: [
+        "This deck calculator estimates materials for your project, including the number of deck boards. The board math: **boards needed = deck width (inches) ÷ (board width + gap)**.",
+        "**Example:** a deck **12 ft wide** (144 inches) using standard 5.5-inch decking with 1/4-inch gaps: 144 ÷ (5.5 + 0.25) = 144 ÷ 5.75 = **25.04 → 26 boards** of your deck's length. Add **10% waste** for cuts and mistakes: 26 × 1.1 = **28.6 → 29 boards**.",
+      ],
+    },
+    {
+      heading: "Framing and fasteners to remember",
+      paragraphs: [
+        "Boards are the visible part, but budget the hidden structure too: **joists** typically spaced 16 inches on center (12 inches for diagonal decking patterns), **beams and posts** per your local span tables, and roughly **350 screws per 100 sq ft** of decking. A 192 sq ft deck (16×12 ft) needs on the order of **650–700 screws**.",
+        "Always check local building codes before you build — most areas require permits for decks above a certain height, plus specific footing depths and railing rules. The material estimate here gets you to the lumber yard; the permit office gets you a legal deck.",
+      ],
+    },
+  ],
+
+  "mixed-fraction-calculator": [
+    {
+      heading: "What is a mixed number?",
+      paragraphs: [
+        "A **mixed number** (or mixed fraction) combines a whole number with a fraction: **2½** means 2 + 1/2. This mixed number calculator adds, subtracts, multiplies, and divides them without the manual conversion.",
+        "Carpenters, cooks, and students meet mixed numbers constantly: 2½ cups of flour, 3¾ inches of lumber, 1⅓ hours of homework.",
+      ],
+    },
+    {
+      heading: "How the math works (and worked examples)",
+      paragraphs: [
+        "The trick is converting to **improper fractions** first: multiply the whole number by the denominator, add the numerator. 2½ = (2×2 + 1)/2 = **5/2**.",
+        "**Addition:** 2½ + 1¾ = 5/2 + 7/4 = 10/4 + 7/4 = 17/4 = **4¼**. **Multiplication:** 2½ × 1⅓ = 5/2 × 4/3 = 20/6 = 10/3 = **3⅓**. Division flips the second fraction: 2½ ÷ 1¼ = 5/2 ÷ 5/4 = 5/2 × 4/5 = 20/10 = **2**.",
+        "Always **simplify** at the end: 20/6 reduces to 10/3 (divide by 2), then convert back by dividing — 10 ÷ 3 = 3 remainder 1 → **3⅓**.",
+      ],
+    },
+  ],
+
+  "btu-calculator": [
+    {
+      heading: "What is a BTU and how much heat do you need?",
+      paragraphs: [
+        "A **British Thermal Unit (BTU)** is the heat needed to raise one pound of water by 1°F. This heat calculator estimates the heating (or cooling) capacity your space needs, in BTU per hour.",
+        "The quick rule of thumb for residential HVAC sizing: **≈ 20 BTU per square foot** for heating in a moderate climate. A **1,500 sq ft** home needs roughly 1,500 × 20 = **30,000 BTU/h** — about 2.5 tons of cooling (12,000 BTU = 1 ton).",
+      ],
+    },
+    {
+      heading: "Adjusting for your situation",
+      paragraphs: [
+        "The 20 BTU/sq ft baseline assumes 8-ft ceilings and average insulation. Adjust up for: **hot climates or poor insulation** (+10–20%), **ceilings over 8 ft** (scale by ceiling height ÷ 8), **large south/west windows** (+10%), and **kitchens** (+4,000 BTU). Adjust down for new, well-insulated construction (−10–20%).",
+        "**Example:** a 1,200 sq ft older home with 9-ft ceilings in a hot climate: 1,200 × 20 = 24,000; × 1.15 (climate) = 27,600; × 1.125 (ceilings) = **≈ 31,000 BTU/h**. Professionals use a Manual J load calculation for the final number — this estimate gets you in the right equipment class so quotes make sense.",
+      ],
+    },
+    {
+      heading: "Don't oversize",
+      paragraphs: [
+        "Bigger is not better with HVAC: an oversized unit **short-cycles** — blasting on and off — which wastes energy, wears parts, and (for AC) fails to dehumidify, leaving the house cold but clammy. Slightly undersized with good insulation beats oversized every time.",
+      ],
+    },
+  ],
+
+  "scientific-notation-calculator": [
+    {
+      heading: "What scientific notation is",
+      paragraphs: [
+        "Scientific notation writes very large or small numbers compactly: **a × 10ⁿ**, where a (the coefficient) is between 1 and 10, and n counts how many places the decimal moved. This calculator converts both directions instantly.",
+        "**7,800,000 → 7.8 × 10⁶** (decimal moved 6 places left). **0.00045 → 4.5 × 10⁻⁴** (decimal moved 4 places right, hence the negative exponent).",
+      ],
+    },
+    {
+      heading: "Working with scientific notation by hand",
+      paragraphs: [
+        "**Multiplication:** multiply the coefficients, add the exponents: (3 × 10⁴) × (2 × 10³) = 6 × 10⁷. **Division:** divide coefficients, subtract exponents: (8 × 10⁶) ÷ (2 × 10²) = 4 × 10⁴.",
+        "**Addition/subtraction** requires matching exponents first: 3 × 10⁴ + 2 × 10³ = 3 × 10⁴ + 0.2 × 10⁴ = **3.2 × 10⁴**. This is the step students miss most — you can't just add the coefficients when the powers of ten differ.",
+      ],
+    },
+    {
+      heading: "Where you'll use it",
+      paragraphs: [
+        "Astronomy (a light-year ≈ 9.46 × 10¹⁵ meters), chemistry (Avogadro's number 6.022 × 10²³), computing (a terabyte = 10¹² bytes), and finance (national debts in the 10¹²s). Any time a number has more digits than you can comfortably read, scientific notation is the right tool.",
+      ],
+    },
+  ],
+
+  "miles-to-kilometers-converter": [
+    {
+      heading: "The conversion",
+      paragraphs: [
+        "One mile is exactly **1.60934 kilometers**. This converter applies it both ways: **km = miles × 1.60934**; **miles = km ÷ 1.60934**.",
+        "**100 miles →** 100 × 1.60934 = **160.934 km**. **Marathon 26.2 miles →** 26.2 × 1.60934 = **42.16 km**. **5K run →** 5 ÷ 1.60934 = **3.107 miles**.",
+      ],
+    },
+    {
+      heading: "Quick mental conversions",
+      paragraphs: [
+        "For everyday estimates, the **3-2-1 rule**: 3 miles ≈ 5 km, or multiply miles by **1.6**. 60 mph ≈ 96 km/h — which is why 100 km/h speed limits feel familiar to Americans as 'about 60'.",
+        "Common anchors: 1 mile ≈ 1.6 km, 10 miles ≈ 16 km, 62 miles ≈ 100 km (an ultra-marathon '100K' is 62.1 miles), and 1 km ≈ 0.62 miles.",
+      ],
+    },
+    {
+      heading: "Why the US still uses miles",
+      paragraphs: [
+        "The US customary system inherited the mile from Britain (standardized at **5,280 feet** in 1593), and the country's road network, speed limits, and car culture were all built around it before metrication efforts stalled in the 1970s. Science, the military, and medicine in the US use metric — the highway signs just never changed.",
       ],
     },
   ],
