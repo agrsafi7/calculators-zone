@@ -76,6 +76,11 @@ const buildHtml = (entry) => {
     const tag = `<script type="application/ld+json">${JSON.stringify(faqLd).replace(/</g, "\\u003c")}</script>`;
     html = html.replace("</head>", `  ${tag}\n</head>`);
   }
+  // Article structured data for blog posts (content visible to crawlers without JS)
+  if (entry.articleLd) {
+    const tag = `<script type="application/ld+json">${JSON.stringify(entry.articleLd).replace(/</g, "\\u003c")}</script>`;
+    html = html.replace("</head>", `  ${tag}\n</head>`);
+  }
   return html;
 };
 

@@ -29,6 +29,8 @@ const AllCategoriesPage = lazy(() => import("./pages/AllCategoriesPage"));
 const PopularToolsPage = lazy(() => import("./pages/PopularToolsPage"));
 const SitemapPage = lazy(() => import("./pages/SitemapPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
+const BlogIndex = lazy(() => import("./pages/BlogIndex"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -60,6 +62,8 @@ const App = () => (
                   <Route path="/disclaimer" element={<Disclaimer />} />
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/about" element={<AboutPage />} />
+                  <Route path="/blog" element={<BlogIndex />} />
+                  <Route path="/blog/:slug" element={<BlogPost />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </PageTransition>

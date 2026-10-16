@@ -29,12 +29,14 @@ import { otherCalculatorsExtra } from "../src/data/other-calculators-extra";
 import { otherCalculatorsBatch2 } from "../src/data/other-calculators-batch2";
 import { otherCalculatorsBatch3 } from "../src/data/other-calculators-batch3";
 import { expansionCalculators } from "../src/data/expansion-calculators";
+import { blogPosts } from "../src/data/blog-posts";
 
 interface Entry {
   path: string;
   title: string;
   description: string;
   faqs?: { question: string; answer: string }[];
+  articleLd?: Record<string, unknown>;
 }
 
 const allConfigs = [
@@ -129,5 +131,41 @@ const statics: Entry[] = [
   { path: "/contact", title: "Contact Us | TheCalculator.us", description: "Contact TheCalculator.us — questions, feedback, error reports, and partnership inquiries." },
 ];
 entries.push(...statics);
+
+// Blog index + posts
+entries.push({
+  path: "/blog",
+  title: "Blog — Guides & Explainers | TheCalculator.us",
+  description:
+    "In-depth guides and plain-English explainers from TheCalculator.us: roman numerals, statistics, weight-loss math, unit conversions, and more.",
+});
+for (const p of blogPosts) {
+  const plain = (s: string) =>
+    s
+      .replace(/\*\*(.+?)\*\*/g, "$1")
+      .replace(/^\|/, "")
+      .replace(/\|$/, "")
+      .trim();
+  const articleBody = p.sections
+    .map((s) => `${s.heading}. ${s.body.map(plain).join(" ")}`)
+    .join("\n\n")
+    .slice(0, 8000);
+  entries.push({
+    path: `/blog/${p.slug}`,
+    title: `${p.title} | TheCalculator.us`,
+    description: p.description,
+    articleLd: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: p.title,
+      description: p.description,
+      datePublished: p.date,
+      author: { "@type": "Organization", name: "TheCalculator.us" },
+      publisher: { "@type": "Organization", name: "TheCalculator.us" },
+      mainEntityOfPage: `https://thecalculator.us/blog/${p.slug}`,
+      articleBody,
+    },
+  });
+}
 
 console.log(JSON.stringify(entries));
