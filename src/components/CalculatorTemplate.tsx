@@ -28,6 +28,7 @@ export interface ResultItem {
   label: string;
   value: string;
   highlight?: boolean;
+  sanitized?: boolean; // set when a non-finite value was replaced with an em dash
 }
 
 export interface CalculatorConfig {
@@ -85,14 +86,33 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
 
   const results = useMemo(() => {
     try {
-      return config.calculate(values);
+      const raw = config.calculate(values);
+      // Sanitize: never display NaN/Infinity/undefined to users. Degenerate
+      // inputs (e.g. 0-year loan) show an em dash plus a guidance notice.
+      return raw.map((r) => {
+        const v = String(r?.value ?? "");
+        if (/NaN|Infinity|undefined/.test(v)) {
+          return { ...r, value: "—", sanitized: true };
+        }
+        return r;
+      });
     } catch {
       return [{ label: "Error", value: "Check inputs", highlight: false }];
     }
   }, [values, config]);
 
+  const hasSanitized = results.some((r) => r.sanitized);
+
   const handleChange = (id: string, val: number) => {
-    setValues((prev) => ({ ...prev, [id]: val }));
+    // Clamp to the input's declared range so degenerate values (negative
+    // loan terms, etc.) can't be entered in the first place.
+    const inp = config.inputs.find((i) => i.id === id);
+    let clamped = val;
+    if (Number.isFinite(val) && inp) {
+      if (inp.min !== undefined && clamped < inp.min) clamped = inp.min;
+      if (inp.max !== undefined && clamped > inp.max) clamped = inp.max;
+    }
+    setValues((prev) => ({ ...prev, [id]: clamped }));
   };
 
   const handleReset = () => setValues(getDefaults());
@@ -239,6 +259,11 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                       </div>
                     ))}
                   </div>
+                )}
+                {hasSanitized && (
+                  <p className="text-[12px] text-ink-soft bg-surface-low rounded-lg px-3 py-2">
+                    Some inputs need attention — values must be within their allowed ranges for a valid result.
+                  </p>
                 )}
               </div>
 
