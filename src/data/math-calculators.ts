@@ -1485,9 +1485,10 @@ const _mathCalculators: CalculatorConfig[] = [
       { id: "places", label: "Decimal Places", type: "number", defaultValue: 2, min: 0, max: 10 },
     ],
     calculate: (v) => {
-      const rounded = parseFloat(v.value.toFixed(v.places));
-      const floor = Math.floor(v.value * Math.pow(10, v.places)) / Math.pow(10, v.places);
-      const ceil = Math.ceil(v.value * Math.pow(10, v.places)) / Math.pow(10, v.places);
+      const places = Math.min(10, Math.max(0, Math.floor(v.places || 0)));
+      const rounded = parseFloat(v.value.toFixed(places));
+      const floor = Math.floor(v.value * Math.pow(10, places)) / Math.pow(10, places);
+      const ceil = Math.ceil(v.value * Math.pow(10, places)) / Math.pow(10, places);
       return [
         { label: "Rounded", value: `${rounded}`, highlight: true },
         { label: "Floor (round down)", value: `${floor}` },
