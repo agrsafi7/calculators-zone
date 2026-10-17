@@ -167,4 +167,29 @@ for (const entry of entries) {
   writeFileSync(join(dir, "index.html"), html);
   written++;
 }
-console.log(`[prerender] wrote ${written} HTML files`);
+// 4. Inline critical CSS so first paint doesn't wait for the full stylesheet
+// (the key mobile/Slow-4G bottleneck). The remaining CSS loads async.
+console.log("[prerender] inlining critical CSS…");
+const { default: Critters } = await import("critters");
+const critters = new Critters({
+  path: dist,
+  preload: "media",
+  inlineFonts: false,
+  pruneSource: false,
+});
+let crittersDone = 0;
+for (const entry of entries) {
+  const file =
+    entry.path === "/"
+      ? templatePath
+      : join(dist, entry.path, "index.html");
+  try {
+    const html = readFileSync(file, "utf-8");
+    const processed = await critters.process(html);
+    writeFileSync(file, processed);
+    crittersDone++;
+  } catch (err) {
+    console.warn(`[prerender] critters failed for ${entry.path}: ${err.message}`);
+  }
+}
+console.log(`[prerender] critical CSS inlined in ${crittersDone} files`);
