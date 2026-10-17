@@ -113,6 +113,8 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
       {canonical && <link rel="canonical" href={`${baseUrl}${canonical}`} />}
+      <link rel="ai-catalog" href={`${baseUrl}/.well-known/ai-catalog.json`} />
+      <link rel="describedby" href={`${baseUrl}/llms.txt`} />
       {canonical && <link rel="alternate" href={`${baseUrl}${canonical}`} hrefLang="en" />}
       {canonical && <link rel="alternate" href={`${baseUrl}${canonical}`} hrefLang="x-default" />}
       {canonical && <meta property="og:url" content={`${baseUrl}${canonical}`} />}

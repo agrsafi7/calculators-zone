@@ -1,0 +1,40 @@
+# TheCalculator.us
+
+> TheCalculator.us offers 332 free online calculators for finance, health, math, science, unit conversions, date & time, and everyday life — plus plain-English guides and explainers on the blog. All tools run instantly in the browser; no sign-up required.
+
+Use this file to find the right calculator or article for a task. Each section below lists key pages as Markdown links with a short description. For the full machine-readable index of every page, see the sitemap.
+
+## Popular calculators
+
+- [Mortgage Calculator](https://thecalculator.us/finance/mortgage-calculator): Estimate monthly mortgage payments, total interest, and amortization for home loans.
+- [BMI Calculator](https://thecalculator.us/health/bmi-calculator): Calculate Body Mass Index with metric or imperial units.
+- [Percentage Calculator](https://thecalculator.us/math/percentage-calculator): Percentages, percent of a number, and percent change.
+- [Age Calculator](https://thecalculator.us/datetime/age-calculator): Exact age in years, months, and days between dates.
+- [Loan Calculator](https://thecalculator.us/finance/loan-calculator): Monthly payments and total interest for any loan.
+- [Tip Calculator](https://thecalculator.us/finance/tip-calculator): Tip amounts, bill totals, and splitting the bill.
+- [Scientific Calculator](https://thecalculator.us/math/scientific-calculator): Advanced math functions in the browser.
+- [Compound Interest Calculator](https://thecalculator.us/finance/compound-interest-calculator): Growth of savings and investments over time.
+
+## Categories
+
+- [Finance Calculators](https://thecalculator.us/category/finance): Mortgage, loans, investments, taxes, retirement, and amortization tools.
+- [Health & Fitness Calculators](https://thecalculator.us/category/health): BMI, calories, body fat, BMR, heart rate, and nutrition tools.
+- [Math Calculators](https://thecalculator.us/category/math): Fractions, algebra, geometry, statistics, and number tools.
+- [Unit Converters](https://thecalculator.us/category/conversions): Length, weight, temperature, and 100+ unit conversions.
+- [Science Calculators](https://thecalculator.us/category/science): Physics, chemistry, and thermodynamics tools.
+- [Date & Time Calculators](https://thecalculator.us/category/datetime): Age, date differences, time zones, and countdowns.
+- [Lifestyle Calculators](https://thecalculator.us/category/lifestyle): Cooking, construction, automotive, and daily-life tools.
+- [All Categories](https://thecalculator.us/categories): Browse every calculator category.
+
+## Blog guides
+
+- [Blog](https://thecalculator.us/blog): Plain-English guides behind the numbers — roman numerals, statistics, weight-loss math, conversions, and more.
+- [Roman Numerals Chart & Conversion Guide](https://thecalculator.us/blog/roman-numerals-chart-conversion-guide): Read and write roman numerals with worked examples.
+- [Statistics Basics Explained](https://thecalculator.us/blog/statistics-mean-median-mode-standard-deviation-explained): Mean, median, mode, and standard deviation in plain English.
+- [Compound Interest: The Math Behind Wealth](https://thecalculator.us/blog/compound-interest-wealth-math): How compounding builds wealth, with real numbers.
+
+## Site information
+
+- [About](https://thecalculator.us/about): Who we are and how the calculators are built and tested.
+- [Sitemap](https://thecalculator.us/sitemap.xml): Machine-readable list of all pages.
+- [AI Catalog](https://thecalculator.us/.well-known/ai-catalog.json): Machine-readable catalog of agentic resources (ARD specification).
