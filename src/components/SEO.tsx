@@ -99,6 +99,13 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
 
   const isHomepage = canonical === "/";
 
+  // Canonical may be passed as a path ("/about") or a full URL — never double the base.
+  const canonicalUrl = canonical
+    ? canonical.startsWith("http")
+      ? canonical
+      : `${baseUrl}${canonical}`
+    : undefined;
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
@@ -112,12 +119,10 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
-      {canonical && <link rel="canonical" href={`${baseUrl}${canonical}`} />}
-      <link rel="ai-catalog" href={`${baseUrl}/.well-known/ai-catalog.json`} />
-      <link rel="describedby" href={`${baseUrl}/llms.txt`} />
-      {canonical && <link rel="alternate" href={`${baseUrl}${canonical}`} hrefLang="en" />}
-      {canonical && <link rel="alternate" href={`${baseUrl}${canonical}`} hrefLang="x-default" />}
-      {canonical && <meta property="og:url" content={`${baseUrl}${canonical}`} />}
+      {canonical && <link rel="canonical" href={canonicalUrl} />}
+      {canonical && <link rel="alternate" href={canonicalUrl} hrefLang="en" />}
+      {canonical && <link rel="alternate" href={canonicalUrl} hrefLang="x-default" />}
+      {canonical && <meta property="og:url" content={canonicalUrl} />}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />

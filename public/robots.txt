@@ -3,6 +3,3 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://thecalculator.us/sitemap.xml
-
-# ARD (Agentic Resource Discovery) catalog for AI agents
-Agentmap: https://thecalculator.us/.well-known/ai-catalog.json
