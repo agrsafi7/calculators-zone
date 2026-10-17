@@ -28,7 +28,54 @@ const out = execSync(
 const entries = JSON.parse(out);
 console.log(`[prerender] ${entries.length} routes`);
 
-// 2. Read the built index.html template
+// 1b. Bundle the server entry and load the SSR render function
+console.log("[prerender] bundling server entry…");
+execSync(
+  `"${join(root, "node_modules", ".bin", "esbuild")}" "${join(root, "src", "entry-server.tsx")}" --bundle --platform=node --format=cjs --jsx=automatic --alias:@=${join(root, "src")} --define:import.meta.env.VITE_SUPABASE_URL='"https://localhost"' --define:import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY='"ssr-dummy-key"' --outfile=/tmp/entry-server.cjs --log-level=error`,
+  { encoding: "utf-8", maxBuffer: 64 * 1024 * 1024 }
+);
+// Minimal browser shims so modules that touch localStorage at import time
+// (e.g. the supabase client) don't crash the Node render.
+if (typeof globalThis.localStorage === "undefined") {
+  globalThis.localStorage = {
+    getItem: () => null,
+    setItem: () => {},
+    removeItem: () => {},
+    clear: () => {},
+  };
+}
+const { render: renderRoute } = await import("/tmp/entry-server.cjs");
+
+// 1c. Read the Vite manifest to map pages -> output chunks (for per-route
+// modulepreload hints, so the client's lazy page chunk is already cached
+// when React hydrates and the Suspense boundary resolves)
+let manifest = {};
+try {
+  manifest = JSON.parse(readFileSync(join(dist, ".vite", "manifest.json"), "utf-8"));
+} catch {
+  console.warn("[prerender] no vite manifest found — skipping per-route preloads");
+}
+const pageForPath = (p) => {
+  if (p === "/") return null; // Index is directly imported in the main bundle
+  if (p === "/finance/mortgage-calculator") return "src/pages/MortgageCalculator.tsx";
+  if (p === "/health/bmi-calculator") return "src/pages/BmiCalculator.tsx";
+  if (p === "/math/percentage-calculator") return "src/pages/PercentageCalculator.tsx";
+  if (p === "/categories") return "src/pages/AllCategoriesPage.tsx";
+  if (p === "/popular") return "src/pages/PopularToolsPage.tsx";
+  if (p === "/sitemap") return "src/pages/SitemapPage.tsx";
+  if (p === "/blog") return "src/pages/BlogIndex.tsx";
+  if (p === "/about") return "src/pages/AboutPage.tsx";
+  if (p.startsWith("/category/")) return "src/pages/CategoryPage.tsx";
+  if (p.startsWith("/blog/")) return "src/pages/BlogPost.tsx";
+  if (["/privacy-policy", "/terms-of-service", "/disclaimer", "/contact"].includes(p))
+    return "src/pages/LegalPages.tsx";
+  if (/^\/[^/]+\/[^/]+$/.test(p)) return "src/pages/GenericCalculatorPage.tsx";
+  return null;
+};
+const chunkForPage = (page) => {
+  const entry = page && manifest[page];
+  return entry ? `/${entry.file}` : null;
+};
 const templatePath = join(dist, "index.html");
 if (!existsSync(templatePath)) {
   console.error("[prerender] dist/index.html not found — run vite build first");
@@ -80,6 +127,28 @@ const buildHtml = (entry) => {
   if (entry.articleLd) {
     const tag = `<script type="application/ld+json">${JSON.stringify(entry.articleLd).replace(/</g, "\\u003c")}</script>`;
     html = html.replace("</head>", `  ${tag}\n</head>`);
+  }
+  // Per-route modulepreload: the client's lazy page chunk resolves from cache
+  // during hydration instead of flashing the loading skeleton.
+  const chunk = chunkForPage(pageForPath(entry.path));
+  if (chunk) {
+    const preload = `<link rel="modulepreload" crossorigin href="${chunk}" />`;
+    html = html.replace("</head>", `  ${preload}\n</head>`);
+  }
+  // Server-rendered content: real HTML in #root so first paint doesn't wait
+  // for the JS bundle. React hydrates this markup on load.
+  try {
+    const ssr = renderRoute(entry.path);
+    if (ssr && ssr.includes("<")) {
+      // Replace the loading placeholder inside #root with the real content.
+      // The placeholder ends at the </div> just before <noscript>.
+      html = html.replace(
+        /<div id="root">[\s\S]*?<\/div>\s*<noscript>/,
+        `<div id="root">${ssr}</div>\n    <noscript>`
+      );
+    }
+  } catch (err) {
+    console.warn(`[prerender] SSR failed for ${entry.path}: ${err.message} — shipping empty shell`);
   }
   return html;
 };

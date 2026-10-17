@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { Calculator, Delete, Equal, History, Trash2 } from "lucide-react";
 
@@ -105,13 +105,17 @@ const ScientificEngine = () => {
   const [isResultShown, setIsResultShown] = useState(false);
   const [useRad, setUseRad] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
-  const [historyList, setHistoryList] = useState<{ expr: string; result: string }[]>(() => {
+  const [historyList, setHistoryList] = useState<{ expr: string; result: string }[]>([]);
+  // Load stored history after mount so the server render and the first client
+  // render match (avoids hydration mismatches).
+  useEffect(() => {
     try {
-      return JSON.parse(localStorage.getItem("calc-history") || "[]");
+      const stored = JSON.parse(localStorage.getItem("calc-history") || "[]");
+      if (Array.isArray(stored) && stored.length > 0) setHistoryList(stored.slice(0, 20));
     } catch {
-      return [];
+      // ignore
     }
-  });
+  }, []);
 
   const pushHistory = (expr: string, result: string) => {
     setHistoryList((prev) => {

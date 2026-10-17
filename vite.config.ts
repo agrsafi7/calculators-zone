@@ -32,6 +32,9 @@ export default defineConfig(({ mode }) => ({
     },
     // ✅ Minify for production
     minify: "esbuild",
+    // ✅ Emit a manifest so the prerender script can map pages to their chunks
+    // (used for per-route modulepreload hints)
+    manifest: true,
     // ✅ Remove console.log in production
     target: "esnext",
   },
