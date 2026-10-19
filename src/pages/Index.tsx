@@ -4,6 +4,7 @@ import { categories } from "@/data/calculators";
 import { uniqueCalculators, searchCalculators } from "@/lib/calculator-utils";
 import SEO from "@/components/SEO";
 import ScientificEngine from "@/components/ScientificEngine";
+import { useSearchAutocomplete, SearchSuggestions } from "@/components/SearchAutocomplete";
 import { ArrowLeftRight, ArrowRight, BadgeCheck, Clock, FlaskConical, Home, LucideIcon, Play, Search, TrendingUp } from "lucide-react";
 
 const totalCalcs = uniqueCalculators.length;
@@ -34,15 +35,18 @@ const topForCategory = (slug: string, n: number) =>
 
 const Index = () => {
   const navigate = useNavigate();
-  const [quickQuery, setQuickQuery] = useState("");
+  const heroSearch = useSearchAutocomplete((calc) =>
+    navigate(`/${calc.categorySlug}/${calc.slug}`)
+  );
 
   const submitQuickSearch = (e?: React.FormEvent) => {
     e?.preventDefault();
-    const q = quickQuery.trim();
+    const q = heroSearch.query.trim();
     if (!q) return;
     const hits = searchCalculators(q);
     if (hits.length > 0) navigate(`/${hits[0].categorySlug}/${hits[0].slug}`);
-    setQuickQuery("");
+    heroSearch.setQuery("");
+    heroSearch.setOpen(false);
   };
 
   return (
@@ -66,16 +70,28 @@ const Index = () => {
                   Instant, precise mathematical engines for finance, everyday health, academics, and practical engineering.
                 </p>
                 <form className="flex flex-col gap-2 mb-4" onSubmit={submitQuickSearch}>
-                  <div className="relative w-full">
+                  <div className="relative w-full" ref={heroSearch.ref}>
                     <Search size={18} className="absolute left-3 top-2.5 text-ink-soft" />
                     <input
                       className="w-full bg-surface-low focus:bg-surface-lowest text-ink pl-9 pr-3 py-2 rounded-lg text-[12px] focus:outline-none focus:ring-2 focus:ring-primary placeholder:text-ink-soft"
                       placeholder={`Search ${totalCalcs}+ utilities...`}
                       type="text"
-                      value={quickQuery}
-                      onChange={(e) => setQuickQuery(e.target.value)}
+                      value={heroSearch.query}
+                      onChange={(e) => heroSearch.setQuery(e.target.value)}
+                      onKeyDown={heroSearch.handleKeyDown}
+                      onFocus={() => heroSearch.query.trim() && heroSearch.setOpen(true)}
                       aria-label="Search calculators"
+                      autoComplete="off"
                     />
+                    {heroSearch.open && heroSearch.suggestions.length > 0 && (
+                      <SearchSuggestions
+                        suggestions={heroSearch.suggestions}
+                        activeIndex={heroSearch.activeIndex}
+                        onSelect={heroSearch.pick}
+                        onHover={heroSearch.setActiveIndex}
+                        idPrefix="hero"
+                      />
+                    )}
                   </div>
                   <button
                     className="bg-link text-white hover:opacity-90 text-[13px] font-medium py-2 px-4 rounded-lg flex items-center justify-center gap-1 transition-opacity"
