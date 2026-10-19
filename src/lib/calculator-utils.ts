@@ -118,10 +118,22 @@ export const uniqueCalculators = allCalculators.filter((c) => {
 
 export const searchCalculators = (query: string): CalculatorInfo[] => {
   if (!query.trim()) return [];
-  const q = query.toLowerCase();
-  return uniqueCalculators
-    .filter((c) => c.name.toLowerCase().includes(q) || c.category.toLowerCase().includes(q) || c.description.toLowerCase().includes(q))
-    .slice(0, 8);
+  const q = query.toLowerCase().trim();
+  const scored: { c: CalculatorInfo; score: number }[] = [];
+  for (const c of uniqueCalculators) {
+    const name = c.name.toLowerCase();
+    const cat = c.category.toLowerCase();
+    const desc = c.description.toLowerCase();
+    let score = -1;
+    if (name === q) score = 100;
+    else if (name.startsWith(q)) score = 80;
+    else if (name.includes(` ${q}`) || name.includes(q)) score = 60;
+    else if (cat.includes(q)) score = 40;
+    else if (desc.includes(q)) score = 20;
+    if (score > 0) scored.push({ c, score });
+  }
+  scored.sort((a, b) => b.score - a.score || a.c.name.length - b.c.name.length || a.c.name.localeCompare(b.c.name));
+  return scored.slice(0, 8).map((s) => s.c);
 };
 
 // Helper to get calculator count per category
