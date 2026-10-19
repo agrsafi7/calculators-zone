@@ -4,6 +4,7 @@ const dtSubcategoryMap: Record<string, string> = {
   "age-calculator": "Age Calculators",
   "chronological-age-calculator": "Age Calculators",
   "date-difference-calculator": "Date Calculators",
+  "date-calculator": "Date Calculators",
   "days-between-dates-calculator": "Date Calculators",
   "add-subtract-days-calculator": "Date Calculators",
   "due-date-calculator": "Date Calculators",
@@ -302,6 +303,68 @@ const _datetimeCalculators: CalculatorConfig[] = [
     howToUse: "Enter a date to find its ISO week number, day of year, and more.",
     faqs: [{ question: "What is ISO week numbering?", answer: "ISO 8601 defines week 1 as the week containing the first Thursday of January. Weeks start on Monday." }],
     relatedCalcs: dtRelated("week-number-calculator"),
+  },
+  {
+    slug: "date-calculator", name: "Date Calculator", category: "Date & Time", categorySlug: "datetime",
+    description: "Calculate the days between two dates, or add/subtract days from any date.",
+    metaDescription: "Free date calculator. Find days between two dates or add/subtract days from a date.",
+    icon: "calendar",
+    inputs: [
+      { id: "mode", label: "Mode", type: "select", defaultValue: 0, options: [
+        { value: 0, label: "Days between two dates" },
+        { value: 1, label: "Add / subtract days" },
+      ]},
+      { id: "sy", label: "Start Year", type: "number", defaultValue: 2026, min: 1900, max: 2100 },
+      { id: "sm", label: "Start Month", type: "select", defaultValue: 1, options: [
+        { value: 1, label: "January" }, { value: 2, label: "February" }, { value: 3, label: "March" },
+        { value: 4, label: "April" }, { value: 5, label: "May" }, { value: 6, label: "June" },
+        { value: 7, label: "July" }, { value: 8, label: "August" }, { value: 9, label: "September" },
+        { value: 10, label: "October" }, { value: 11, label: "November" }, { value: 12, label: "December" },
+      ]},
+      { id: "sd", label: "Start Day", type: "number", defaultValue: 19, min: 1, max: 31 },
+      { id: "ey", label: "End Year", type: "number", defaultValue: 2026, min: 1900, max: 2100 },
+      { id: "em", label: "End Month", type: "select", defaultValue: 12, options: [
+        { value: 1, label: "January" }, { value: 2, label: "February" }, { value: 3, label: "March" },
+        { value: 4, label: "April" }, { value: 5, label: "May" }, { value: 6, label: "June" },
+        { value: 7, label: "July" }, { value: 8, label: "August" }, { value: 9, label: "September" },
+        { value: 10, label: "October" }, { value: 11, label: "November" }, { value: 12, label: "December" },
+      ]},
+      { id: "ed", label: "End Day", type: "number", defaultValue: 31, min: 1, max: 31 },
+      { id: "op", label: "Operation", type: "select", defaultValue: 0, options: [
+        { value: 0, label: "Add days" },
+        { value: 1, label: "Subtract days" },
+      ]},
+      { id: "n", label: "Number of days", type: "number", defaultValue: 30, min: 0, max: 36500 },
+    ],
+    calculate: (v) => {
+      const d1 = new Date(v.sy, v.sm - 1, v.sd);
+      if (v.mode === 0) {
+        const d2 = new Date(v.ey, v.em - 1, v.ed);
+        const days = Math.round((d2.getTime() - d1.getTime()) / 86400000);
+        const a = Math.abs(days);
+        return [
+          { label: "Days Between", value: `${a}`, highlight: true },
+          { label: "Weeks", value: `${(a / 7).toFixed(1)}` },
+          { label: "Months (avg)", value: `${(a / 30.44).toFixed(1)}` },
+          { label: "Years (avg)", value: `${(a / 365.25).toFixed(2)}` },
+        ];
+      }
+      const result = new Date(d1);
+      result.setDate(result.getDate() + (v.op === 1 ? -Math.abs(v.n) : Math.abs(v.n)));
+      const fmt = result.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+      const doy = Math.floor((result.getTime() - new Date(result.getFullYear(), 0, 0).getTime()) / 86400000);
+      return [
+        { label: "Result Date", value: fmt, highlight: true },
+        { label: "Day of Year", value: `${doy}` },
+      ];
+    },
+    formula: { expression: "Days = (Date₂ − Date₁) ÷ 86,400,000", variables: ["Difference in milliseconds ÷ ms per day"] },
+    howToUse: "Pick a mode: count the days between two dates, or add/subtract days from a start date.",
+    faqs: [
+      { question: "Does it count the end date?", answer: "No — it counts the days between the two dates, not including the end date." },
+      { question: "Does it handle leap years?", answer: "Yes. The calculation uses real calendar dates, so leap years like 2024 and 2028 are counted correctly." },
+    ],
+    relatedCalcs: dtRelated("date-calculator"),
   },
   {
     slug: "add-subtract-days-calculator", name: "Add/Subtract Days Calculator", category: "Date & Time", categorySlug: "datetime",
