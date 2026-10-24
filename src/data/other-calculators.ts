@@ -4,7 +4,7 @@ const fmt = (n: number) => new Intl.NumberFormat("en-US", { style: "currency", c
 const fmt0 = (n: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
 
 const otherRelated = (exclude: string) => [
-  { name: "Electricity Cost", slug: "electricity-cost-calculator", icon: "layers", category: "other" },
+  { name: "Electricity Cost", slug: "electricity-calculator", icon: "layers", category: "lifestyle" },
   { name: "Fuel Cost", slug: "fuel-cost-calculator", icon: "layers", category: "other" },
   { name: "Discount Calculator", slug: "discount-calculator", icon: "layers", category: "other" },
   { name: "Markup Calculator", slug: "markup-calculator", icon: "layers", category: "other" },
@@ -477,37 +477,6 @@ export const otherCalculators: CalculatorConfig[] = [
   },
   // === NEW CALCULATORS ===
   {
-    slug: "electricity-cost-calculator",
-    name: "Electricity Cost Calculator",
-    category: "Other Calculators",
-    categorySlug: "other",
-    description: "Calculate electricity costs for appliances based on wattage and usage hours.",
-    metaDescription: "Free electricity cost calculator. Estimate power bills by appliance wattage and usage.",
-    icon: "layers",
-    inputs: [
-      { id: "watts", label: "Wattage (W)", type: "number", defaultValue: 1000 },
-      { id: "hours", label: "Hours Per Day", type: "number", defaultValue: 8, step: 0.5 },
-      { id: "rate", label: "Cost per kWh ($)", type: "number", defaultValue: 0.12, prefix: "$", step: 0.01 },
-      { id: "days", label: "Days", type: "number", defaultValue: 30 },
-    ],
-    calculate: (v) => {
-      const kwhPerDay = (v.watts * v.hours) / 1000;
-      const totalKwh = kwhPerDay * v.days;
-      const totalCost = totalKwh * v.rate;
-      const monthlyCost = kwhPerDay * 30 * v.rate;
-      return [
-        { label: "Total Cost", value: fmt(totalCost), highlight: true },
-        { label: "Daily kWh", value: kwhPerDay.toFixed(2) + " kWh" },
-        { label: "Total kWh", value: totalKwh.toFixed(1) + " kWh" },
-        { label: "Monthly Estimate", value: fmt(monthlyCost) },
-      ];
-    },
-    formula: { expression: "Cost = (Watts × Hours × Days ÷ 1000) × Rate", variables: ["Watts = Appliance wattage", "Rate = Cost per kWh"] },
-    howToUse: "Enter the appliance wattage, daily usage hours, electricity rate, and number of days.",
-    faqs: [{ question: "What's the average electricity rate?", answer: "US average is about $0.12-0.16 per kWh, varying by state." }],
-    relatedCalcs: otherRelated("electricity-cost-calculator"),
-  },
-  {
     slug: "discount-calculator",
     name: "Discount Calculator",
     category: "Other Calculators",
@@ -567,11 +536,11 @@ export const otherCalculators: CalculatorConfig[] = [
   },
   {
     slug: "margin-calculator",
-    name: "Profit Margin Calculator",
+    name: "Net Profit Margin Calculator",
     category: "Other Calculators",
     categorySlug: "other",
-    description: "Calculate profit margin, gross profit, and net margin from revenue and costs.",
-    metaDescription: "Free profit margin calculator. Compute gross and net profit margins.",
+    description: "Calculate gross profit, net profit, gross margin and net margin from revenue, cost of goods and operating expenses.",
+    metaDescription: "Free net profit margin calculator. Enter revenue, cost of goods and operating expenses to get gross and net margins.",
     icon: "layers",
     inputs: [
       { id: "revenue", label: "Revenue", type: "number", defaultValue: 10000, prefix: "$" },
