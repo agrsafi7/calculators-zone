@@ -72,18 +72,65 @@ for (const c of allConfigs) {
 }
 
 // Custom pages override the data-file meta (their components pass their own SEO props)
-const customOverrides: Record<string, { title: string; description: string }> = {
+// These three are custom pages, not template configs, so they have no data-file
+// faqs — without the faqs below, the prerender step emits no FAQPage JSON-LD
+// for them even though the pages themselves render the same FAQs visibly.
+// The faqs here are copied verbatim from each page's FAQS array so the
+// structured data always matches the visible content.
+const customOverrides: Record<string, { title: string; description: string; faqs?: { question: string; answer: string }[] }> = {
   "mortgage-calculator": {
     title: "Mortgage Calculator",
     description: "Free mortgage calculator. Estimate monthly payments, total interest, and amortization for home loans.",
+    faqs: [
+      {
+        question: "What is included in PITI?",
+        answer: "PITI stands for Principal, Interest, Taxes, and Insurance. Most lenders bundle local property taxes and hazard insurance into your monthly escrow payment.",
+      },
+      {
+        question: "How can I avoid paying PMI?",
+        answer: "Private Mortgage Insurance (PMI) is typically required on conventional mortgages when the down payment is less than 20% of the purchase price.",
+      },
+      {
+        question: "Is a 15-year or 30-year loan better?",
+        answer: "A 30-year loan keeps mandatory monthly payments lower, providing flexibility. A 15-year loan dramatically cuts total interest paid over the life of the loan.",
+      },
+    ],
   },
   "bmi-calculator": {
     title: "BMI Calculator",
     description: "Free BMI calculator. Calculate your Body Mass Index with imperial or metric units. Understand healthy weight ranges.",
+    faqs: [
+      {
+        question: "How is BMI calculated?",
+        answer: "BMI is calculated by dividing your weight in kilograms by the square of your height in meters. In imperial units: (weight in pounds ÷ height in inches²) × 703.",
+      },
+      {
+        question: "What is a healthy BMI range?",
+        answer: "A BMI between 18.5 and 24.9 is considered normal weight for most adults.",
+      },
+      {
+        question: "Is BMI accurate for everyone?",
+        answer: "BMI doesn't account for muscle mass, bone density, or body composition, so very muscular people may read as overweight. It remains a useful screening tool for most adults.",
+      },
+    ],
   },
   "percentage-calculator": {
     title: "Percentage Calculator",
     description: "Free percentage calculator. Calculate percentages, percentage of a number, and percentage change. Quick and accurate.",
+    faqs: [
+      {
+        question: "How do I calculate what percent one number is of another?",
+        answer: "Divide the part by the whole and multiply by 100. For example, 25 is (25 ÷ 200) × 100 = 12.5% of 200.",
+      },
+      {
+        question: "How do I find X percent of a number?",
+        answer: "Convert the percent to a decimal and multiply. For example, 25% of 200 = 0.25 × 200 = 50.",
+      },
+      {
+        question: "How do I calculate percentage change?",
+        answer: "Subtract the old value from the new value, divide by the old value, and multiply by 100. A positive result is an increase; negative is a decrease.",
+      },
+    ],
   },
 };
 
@@ -98,7 +145,7 @@ for (const u of uniqueCalculators) {
     path,
     title: `${override?.title ?? cfg?.name ?? u.name} | TheCalculator.us`,
     description: override?.description ?? cfg?.metaDescription ?? u.description,
-    faqs: cfg?.faqs?.slice(0, 6),
+    faqs: (override?.faqs ?? cfg?.faqs)?.slice(0, 6),
   });
 }
 
