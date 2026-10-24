@@ -56,7 +56,6 @@ const otherSubcategoryMap: Record<string, string> = {
   "cooking-time-calculator": "Cooking & Kitchen",
   "calorie-per-serving-calculator": "Cooking & Kitchen",
   "unit-conversion-cooking": "Cooking & Kitchen",
-  "electricity-cost-calculator": "Electricity & Energy",
   "discount-calculator": "Business & Commerce",
   "markup-calculator": "Business & Commerce",
   "margin-calculator": "Business & Commerce",

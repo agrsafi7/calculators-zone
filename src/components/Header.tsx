@@ -33,7 +33,10 @@ const Header = () => {
       if (hits.length > 0) {
         navigate(`/${hits[0].categorySlug}/${hits[0].slug}`);
       } else {
-        navigate(`/category/all`);
+        // SEO audit F9: never navigate to a category slug that does not
+        // exist ("/category/all" rendered "Category not found"). The
+        // categories page is a real page and handles any query.
+        navigate(`/categories`);
       }
       s.setQuery("");
     };

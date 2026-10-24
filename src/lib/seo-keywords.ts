@@ -239,7 +239,7 @@ export const categorySEOData: Record<string, CategorySEO> = {
       { name: "Sleep Calculator", slug: "lifestyle", calcSlug: "sleep-calculator", anchor: "Find the best time to sleep and wake up" },
       { name: "Fuel Cost Calculator", slug: "lifestyle", calcSlug: "fuel-cost-calculator", anchor: "Estimate gas costs for your trip" },
       { name: "Pet Age Calculator", slug: "lifestyle", calcSlug: "pet-age-calculator", anchor: "Convert pet years to human years" },
-      { name: "Electricity Cost Calculator", slug: "lifestyle", calcSlug: "electricity-cost-calculator", anchor: "Calculate your monthly electricity bill" },
+      { name: "Electricity Cost Calculator", slug: "lifestyle", calcSlug: "electricity-calculator", anchor: "Calculate your monthly electricity bill" },
     ],
   },
 };

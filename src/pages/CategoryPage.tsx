@@ -54,6 +54,13 @@ const CategoryPage = () => {
   if (!category) {
     return (
       <div className="max-w-[1200px] mx-auto px-4 py-16 text-center">
+        {/* SEO audit F4 fallback: unknown category slugs are noindexed.
+            The edge middleware returns a real HTTP 404 for these paths. */}
+        <SEO
+          title="Category Not Found"
+          description="This calculator category does not exist on TheCalculator.us. Browse all calculator categories to find the tool you need."
+          noindex
+        />
         <h1 className="font-display text-[24px] font-semibold mb-2">Category not found</h1>
         <Link to="/" className="text-link hover:underline text-[13px]">Back to Home</Link>
       </div>
