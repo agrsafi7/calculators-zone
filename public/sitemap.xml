@@ -1735,12 +1735,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thecalculator.us/other/electricity-cost-calculator</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://thecalculator.us/other/margin-calculator</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -2154,58 +2148,5 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://thecalculator.us/blog/compound-interest-wealth-math</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/blog/how-to-calculate-your-grade-weighted-average</loc>
-    <lastmod>2026-10-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/blog/inflation-explained-what-money-will-be-worth</loc>
-    <lastmod>2026-10-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/blog/how-to-calculate-percentage-complete-guide</loc>
-    <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/blog/mortgage-amortization-explained-where-payment-goes</loc>
-    <lastmod>2026-11-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/blog/bmi-explained-what-number-means</loc>
-    <lastmod>2026-11-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/blog/how-age-is-calculated-birthdays-leap-years</loc>
-    <lastmod>2026-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/blog/how-loan-interest-really-works</loc>
-    <lastmod>2026-11-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/blog/how-much-to-tip-guide-every-situation</loc>
-    <lastmod>2026-11-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  <!-- NOTE (SEO audit F3): the 9 drip blog posts above are intentionally absent until their publishDates arrive; re-add each post's <url> block at the next deploy after its publish date. -->
 </urlset>
