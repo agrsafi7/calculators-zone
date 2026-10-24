@@ -29,7 +29,7 @@ import { otherCalculatorsExtra } from "../src/data/other-calculators-extra";
 import { otherCalculatorsBatch2 } from "../src/data/other-calculators-batch2";
 import { otherCalculatorsBatch3 } from "../src/data/other-calculators-batch3";
 import { expansionCalculators } from "../src/data/expansion-calculators";
-import { blogPosts } from "../src/data/blog-posts";
+import { blogPosts, isPublished } from "../src/data/blog-posts";
 
 interface Entry {
   path: string;
@@ -186,7 +186,14 @@ entries.push({
   description:
     "In-depth guides and plain-English explainers from TheCalculator.us: roman numerals, statistics, weight-loss math, unit conversions, and more.",
 });
+// Build-time publish gating (SEO audit F3): posts whose publishDate is in
+// the future get NO prerendered page and NO Article JSON-LD, so crawlers
+// cannot index or extract them early. They still go live automatically on
+// their date via the client-side isPublished check + /blog links — no
+// rebuild needed. Their sitemap entries must be re-added (public/sitemap.xml)
+// at the next deploy after each publish date.
 for (const p of blogPosts) {
+  if (!isPublished(p.publishDate)) continue;
   const plain = (s: string) =>
     s
       .replace(/\*\*(.+?)\*\*/g, "$1")

@@ -65,7 +65,7 @@ const Index = () => {
             </div>
             <div className="lg:col-span-4 flex flex-col gap-4">
               <div className="bg-surface-lowest rounded-xl p-6 shadow-sm">
-                <h2 className="font-display text-[18px] font-semibold text-ink mb-1">Free Online Calculators</h2>
+                <h1 className="font-display text-[18px] font-semibold text-ink mb-1">Free Online Calculators</h1>
                 <p className="text-[12px] text-ink-soft mb-4">
                   Instant, precise mathematical engines for finance, everyday health, academics, and practical engineering.
                 </p>

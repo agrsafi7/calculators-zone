@@ -10,6 +10,7 @@ interface SEOProps {
   jsonLd?: Record<string, unknown>;
   breadcrumbs?: { name: string; url: string }[];
   faqs?: { question: string; answer: string }[];
+  noindex?: boolean;
 }
 
 // OG images per category
@@ -27,7 +28,7 @@ export const getCategoryOgImage = (categorySlug: string): string => {
   return categoryOgImages[categorySlug] || "/og/og-default.jpg";
 };
 
-const SEO = ({ title, description, canonical, type = "website", keywords, ogImage, jsonLd, breadcrumbs, faqs }: SEOProps) => {
+const SEO = ({ title, description, canonical, type = "website", keywords, ogImage, jsonLd, breadcrumbs, faqs, noindex }: SEOProps) => {
   const siteName = "TheCalculator.us";
   const fullTitle = `${title} | ${siteName}`;
   const baseUrl = "https://thecalculator.us";
@@ -127,7 +128,7 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={`${baseUrl}${finalOgImage}`} />
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"} />
       <meta name="content-language" content="en" />
       <html lang="en" />
       {jsonLd && (

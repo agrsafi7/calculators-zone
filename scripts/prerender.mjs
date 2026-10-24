@@ -97,6 +97,16 @@ const buildHtml = (entry) => {
     /<link rel="canonical" href=".*?"\s*\/?>/,
     `<link rel="canonical" href="${canonical}" />`
   );
+  // hreflang alternates must point at this page, not the homepage template
+  // default (the template hardcodes https://thecalculator.us/ for both).
+  html = html.replace(
+    /<link rel="alternate" href=".*?" hreflang="en"\s*\/?>/,
+    `<link rel="alternate" href="${canonical}" hreflang="en" />`
+  );
+  html = html.replace(
+    /<link rel="alternate" href=".*?" hreflang="x-default"\s*\/?>/,
+    `<link rel="alternate" href="${canonical}" hreflang="x-default" />`
+  );
   html = html.replace(
     /<meta property="og:title" content=".*?"\s*\/?>/,
     `<meta property="og:title" content="${title}" />`
