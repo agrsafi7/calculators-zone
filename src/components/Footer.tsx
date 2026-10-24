@@ -12,7 +12,6 @@ const Footer = () => {
         <nav className="flex flex-wrap items-center gap-6" aria-label="Footer">
           <Link className="hover:text-primary transition-colors" to="/about">About</Link>
           <Link className="hover:text-primary transition-colors" to="/blog">Blog</Link>
-          <Link className="hover:text-primary transition-colors" to="/sitemap">Sitemap</Link>
           <Link className="hover:text-primary transition-colors" to="/privacy-policy">Privacy Policy</Link>
           <Link className="hover:text-primary transition-colors" to="/terms-of-service">Terms</Link>
         </nav>
