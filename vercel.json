@@ -56,6 +56,11 @@
   ],
   "redirects": [
     {
+      "source": "/other/electricity-cost-calculator",
+      "destination": "/lifestyle/electricity-calculator",
+      "permanent": true
+    },
+    {
       "source": "/conversions/acceleration-converter-eng",
       "destination": "/category/conversions",
       "statusCode": 301
