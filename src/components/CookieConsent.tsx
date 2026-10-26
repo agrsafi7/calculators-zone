@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { loadAnalytics } from "@/lib/analytics";
 
 const CONSENT_KEY = "tc-cookie-consent";
 
@@ -8,7 +9,11 @@ const CookieConsent = () => {
 
   useEffect(() => {
     try {
-      if (!localStorage.getItem(CONSENT_KEY)) {
+      const stored = localStorage.getItem(CONSENT_KEY);
+      if (stored === "accepted") {
+        // Returning visitor who already accepted: analytics may start.
+        loadAnalytics();
+      } else if (!stored) {
         // Small delay so it doesn't flash on first paint
         const t = setTimeout(() => setVisible(true), 1200);
         return () => clearTimeout(t);
@@ -24,6 +29,8 @@ const CookieConsent = () => {
     } catch {
       // ignore storage failures
     }
+    // Analytics loads only on Accept; Decline means no tracking request.
+    if (value === "accepted") loadAnalytics();
     setVisible(false);
   };
 
@@ -38,7 +45,8 @@ const CookieConsent = () => {
     >
       <p className="text-sm font-semibold mb-1">We use cookies 🍪</p>
       <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-        We use cookies to keep the site working and remember your preferences. See our{" "}
+        We use cookies to keep the site working and remember your preferences. If you
+        accept, we also use Google Analytics to measure aggregate usage. See our{" "}
         <Link to="/privacy-policy" className="text-primary hover:underline font-medium">
           Privacy Policy
         </Link>{" "}

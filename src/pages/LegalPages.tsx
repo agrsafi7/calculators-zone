@@ -39,25 +39,26 @@ export const PrivacyPolicy = () => (
       TheCalculator.us ("we", "us", or "our") operates the thecalculator.us website (the
       "Service"). This Privacy Policy explains what information we collect, how we use it,
       and the choices you have. No third-party advertising currently runs on this site,
-      and no advertising cookies are currently set.
+      and no advertising cookies are currently set. We use Google Analytics to understand
+      aggregate usage, but only for visitors who accept cookies.
     </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Information We Collect</h2>
     <p>We collect a limited amount of information to operate and improve the Service:</p>
     <ul className="list-disc pl-5 space-y-1">
-      <li><strong className="text-foreground">Usage Data:</strong> we do not currently run any analytics service, so no usage analytics (pages visited, time spent, browser or device details) is collected. If an analytics service is added in the future, this policy will be updated before it goes live.</li>
+      <li><strong className="text-foreground">Usage Data:</strong> pages visited, time spent, browser type, device type, and approximate location (country/city level) collected via Google Analytics, and only for visitors who accept cookies. This data is aggregated and does not identify you personally.</li>
       <li><strong className="text-foreground">Contact information you provide:</strong> if you email us or use the contact form, we receive your name, email address, and message content so we can respond.</li>
       <li><strong className="text-foreground">Calculator inputs:</strong> numbers you enter into calculators are processed locally in your browser and are never sent to our servers.</li>
     </ul>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Cookies and Similar Technologies</h2>
     <p>
-      We use cookies and similar technologies only to keep the site functional (e.g.,
-      remembering your cookie-consent choice and recently used calculators). No
-      advertising cookies are currently set, and no analytics cookies are currently used.
-      If advertising or analytics is enabled in the future, this section will be updated
-      before it goes live. You can control cookies through your browser settings;
-      blocking cookies may affect some site features.
+      We use cookies and similar technologies to keep the site functional (e.g.,
+      remembering your cookie-consent choice and recently used calculators) and, if you
+      accept cookies, to measure aggregate usage with Google Analytics. No advertising
+      cookies are currently set. If advertising is enabled in the future, this section
+      will be updated before it goes live. You can control cookies through your browser
+      settings; blocking cookies may affect some site features.
     </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Advertising</h2>
@@ -92,6 +93,7 @@ export const PrivacyPolicy = () => (
       <li>To provide, maintain, and improve the Service</li>
       <li>To respond to your messages and support requests</li>
       <li>To monitor usage, detect technical issues, and prevent abuse</li>
+      <li>To understand aggregate usage through Google Analytics (only for visitors who accept cookies)</li>
       <li>To serve and measure advertising that keeps the Service free, if advertising is enabled in the future</li>
     </ul>
     <p>We do not sell your personal information to anyone.</p>
@@ -99,9 +101,10 @@ export const PrivacyPolicy = () => (
     <h2 className="text-lg font-bold text-foreground mt-6">Data Retention</h2>
     <p>
       Contact messages are retained only as long as needed to handle your request.
-      No analytics data is currently collected, and no advertising cookies are currently
-      set. If analytics or advertising is enabled in the future, their retention periods
-      will be described here before they go live.
+      Analytics data collected by Google Analytics is retained according to Google
+      Analytics' retention settings. No advertising cookies are currently set. If
+      advertising is enabled in the future, its retention periods will be described here
+      before they go live.
     </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Children's Privacy</h2>
