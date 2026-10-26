@@ -172,7 +172,7 @@ const statics: Entry[] = [
   { path: "/categories", title: "All Calculator Categories | TheCalculator.us", description: "Browse all calculator categories: finance, health, math, conversions, science, lifestyle, date & time, and more." },
   { path: "/popular", title: "Popular Calculators | TheCalculator.us", description: "The most popular free online calculators: mortgage, BMI, percentage, age, loan, and more." },
   { path: "/about", title: "About Us | TheCalculator.us", description: "About TheCalculator.us — who we are, how our free calculators are built and tested, and our commitment to accuracy and privacy." },
-  { path: "/privacy-policy", title: "Privacy Policy | TheCalculator.us", description: "Privacy Policy for TheCalculator.us — what data we collect, how cookies and advertising work, and your opt-out choices." },
+  { path: "/privacy-policy", title: "Privacy Policy | TheCalculator.us", description: "Privacy Policy for TheCalculator.us — what data we collect, how cookies work, and your choices." },
   { path: "/terms-of-service", title: "Terms of Service | TheCalculator.us", description: "Terms of Service for TheCalculator.us — the rules for using our free online calculators." },
   { path: "/disclaimer", title: "Disclaimer | TheCalculator.us", description: "Disclaimer for TheCalculator.us — the limitations of our calculators for financial, health, and general decisions." },
   { path: "/contact", title: "Contact Us | TheCalculator.us", description: "Contact TheCalculator.us — questions, feedback, error reports, and partnership inquiries." },

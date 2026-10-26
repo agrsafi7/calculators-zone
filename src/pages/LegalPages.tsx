@@ -31,50 +31,52 @@ const LegalPage = ({
 export const PrivacyPolicy = () => (
   <LegalPage
     title="Privacy Policy"
-    description="Privacy Policy for TheCalculator.us — what data we collect, how cookies and advertising (including Google AdSense) work, and your opt-out choices."
+    description="Privacy Policy for TheCalculator.us — what data we collect, how cookies work, and your choices."
     canonical="/privacy-policy"
   >
-    <p><strong className="text-foreground">Last updated:</strong> October 15, 2026</p>
+    <p><strong className="text-foreground">Last updated:</strong> October 26, 2026</p>
     <p>
       TheCalculator.us ("we", "us", or "our") operates the thecalculator.us website (the
       "Service"). This Privacy Policy explains what information we collect, how we use it,
-      and the choices you have — including how advertising cookies work on our site.
+      and the choices you have. No third-party advertising currently runs on this site,
+      and no advertising cookies are currently set.
     </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Information We Collect</h2>
     <p>We collect a limited amount of information to operate and improve the Service:</p>
     <ul className="list-disc pl-5 space-y-1">
-      <li><strong className="text-foreground">Usage Data:</strong> pages visited, time spent, browser type, device type, and approximate location (country/city level) collected via analytics tools. This data is aggregated and does not identify you personally.</li>
+      <li><strong className="text-foreground">Usage Data:</strong> we do not currently run any analytics service, so no usage analytics (pages visited, time spent, browser or device details) is collected. If an analytics service is added in the future, this policy will be updated before it goes live.</li>
       <li><strong className="text-foreground">Contact information you provide:</strong> if you email us or use the contact form, we receive your name, email address, and message content so we can respond.</li>
       <li><strong className="text-foreground">Calculator inputs:</strong> numbers you enter into calculators are processed locally in your browser and are never sent to our servers.</li>
     </ul>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Cookies and Similar Technologies</h2>
     <p>
-      We use cookies and similar technologies for the following purposes: keeping the site
-      functional (e.g., remembering your cookie-consent choice and recently used
-      calculators), understanding aggregate usage through analytics, and serving
-      advertising as described below. You can control cookies through your browser settings;
+      We use cookies and similar technologies only to keep the site functional (e.g.,
+      remembering your cookie-consent choice and recently used calculators). No
+      advertising cookies are currently set, and no analytics cookies are currently used.
+      If advertising or analytics is enabled in the future, this section will be updated
+      before it goes live. You can control cookies through your browser settings;
       blocking cookies may affect some site features.
     </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Advertising</h2>
     <p>
-      We use third-party advertising companies to serve ads when you visit our website,
-      including <strong className="text-foreground">Google AdSense</strong>. These companies
-      may use cookies — including Google's advertising cookies such as the{" "}
-      <strong className="text-foreground">DoubleClick DART cookie</strong> — to serve ads
-      based on your prior visits to our website and other websites on the internet.
+      No third-party advertising currently runs on TheCalculator.us, and no advertising
+      cookies are currently set — including Google's advertising cookies such as the{" "}
+      <strong className="text-foreground">DoubleClick DART cookie</strong>. The information
+      below describes what will apply if advertising is enabled in the future.
     </p>
     <p>
-      Google's use of advertising cookies enables it and its partners to serve ads based on
-      your visit to our site and/or other sites. You may opt out of personalized
+      If advertising is enabled in the future (for example, Google AdSense), the
+      advertising companies may use cookies to serve ads based on your prior visits to our
+      website and other websites. You will then be able to opt out of personalized
       advertising by visiting{" "}
       <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
         Google Ads Settings
       </a>
-      . You can also opt out of third-party vendors' use of cookies for personalized
-      advertising by visiting{" "}
+      . You will also be able to opt out of third-party vendors' use of cookies for
+      personalized advertising by visiting{" "}
       <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
         aboutads.info/choices
       </a>{" "}
@@ -90,16 +92,16 @@ export const PrivacyPolicy = () => (
       <li>To provide, maintain, and improve the Service</li>
       <li>To respond to your messages and support requests</li>
       <li>To monitor usage, detect technical issues, and prevent abuse</li>
-      <li>To serve and measure advertising that keeps the Service free</li>
+      <li>To serve and measure advertising that keeps the Service free, if advertising is enabled in the future</li>
     </ul>
     <p>We do not sell your personal information to anyone.</p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Data Retention</h2>
     <p>
       Contact messages are retained only as long as needed to handle your request.
-      Aggregated analytics data is retained per our analytics provider's settings
-      (typically up to 26 months). Advertising cookies follow the retention periods set by
-      the respective advertising vendors.
+      No analytics data is currently collected, and no advertising cookies are currently
+      set. If analytics or advertising is enabled in the future, their retention periods
+      will be described here before they go live.
     </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Children's Privacy</h2>

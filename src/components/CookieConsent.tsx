@@ -38,12 +38,11 @@ const CookieConsent = () => {
     >
       <p className="text-sm font-semibold mb-1">We use cookies 🍪</p>
       <p className="text-xs text-muted-foreground leading-relaxed mb-4">
-        We and our advertising partners (including Google) use cookies to keep the site working,
-        remember your preferences, and show relevant ads. See our{" "}
+        We use cookies to keep the site working and remember your preferences. See our{" "}
         <Link to="/privacy-policy" className="text-primary hover:underline font-medium">
           Privacy Policy
         </Link>{" "}
-        for details and opt-out options.
+        for details.
       </p>
       <div className="flex gap-2">
         <button
