@@ -1,3 +1,2 @@
 # ads.txt for thecalculator.us
-# Add your Google AdSense publisher ID below after approval, e.g.:
-# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+google.com, pub-1557796717236108, DIRECT, f08c47fec0942fa0

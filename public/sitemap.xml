@@ -2148,5 +2148,17 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://thecalculator.us/blog/compound-interest-wealth-math</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thecalculator.us/blog/how-to-calculate-your-grade-weighted-average</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <!-- NOTE (SEO audit F3): the 9 drip blog posts above are intentionally absent until their publishDates arrive; re-add each post's <url> block at the next deploy after its publish date. -->
 </urlset>
