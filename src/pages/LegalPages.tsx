@@ -34,12 +34,13 @@ export const PrivacyPolicy = () => (
     description="Privacy Policy for TheCalculator.us — what data we collect, how cookies work, and your choices."
     canonical="/privacy-policy"
   >
-    <p><strong className="text-foreground">Last updated:</strong> October 26, 2026</p>
+    <p><strong className="text-foreground">Last updated:</strong> October 29, 2026</p>
     <p>
       TheCalculator.us ("we", "us", or "our") operates the thecalculator.us website (the
       "Service"). This Privacy Policy explains what information we collect, how we use it,
-      and the choices you have. No third-party advertising currently runs on this site,
-      and no advertising cookies are currently set. We use Google Analytics to understand
+      and the choices you have. We have applied to Google AdSense and placed its
+      verification code on the site; no ads are displayed yet while the application is
+      under review. We use Google Analytics to understand
       aggregate usage, but only for visitors who accept cookies.
     </p>
 
@@ -55,21 +56,23 @@ export const PrivacyPolicy = () => (
     <p>
       We use cookies and similar technologies to keep the site functional (e.g.,
       remembering your cookie-consent choice and recently used calculators) and, if you
-      accept cookies, to measure aggregate usage with Google Analytics. No advertising
-      cookies are currently set. If advertising is enabled in the future, this section
-      will be updated before it goes live. You can control cookies through your browser
+      accept cookies, to measure aggregate usage with Google Analytics. No ads are
+      currently displayed. If advertising is approved and begins, this section will be
+      updated to describe the advertising cookies used. You can control cookies through
+      your browser
       settings; blocking cookies may affect some site features.
     </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Advertising</h2>
     <p>
-      No third-party advertising currently runs on TheCalculator.us, and no advertising
-      cookies are currently set — including Google's advertising cookies such as the{" "}
-      <strong className="text-foreground">DoubleClick DART cookie</strong>. The information
-      below describes what will apply if advertising is enabled in the future.
+      No ads are currently displayed on TheCalculator.us while our Google AdSense
+      application is under review. The information below describes what will apply if
+      advertising is approved and begins — including Google's advertising cookies such
+      as the{" "}
+      <strong className="text-foreground">DoubleClick DART cookie</strong>.
     </p>
     <p>
-      If advertising is enabled in the future (for example, Google AdSense), the
+      If advertising is approved and begins (for example, Google AdSense), the
       advertising companies may use cookies to serve ads based on your prior visits to our
       website and other websites. You will then be able to opt out of personalized
       advertising by visiting{" "}
@@ -94,7 +97,7 @@ export const PrivacyPolicy = () => (
       <li>To respond to your messages and support requests</li>
       <li>To monitor usage, detect technical issues, and prevent abuse</li>
       <li>To understand aggregate usage through Google Analytics (only for visitors who accept cookies)</li>
-      <li>To serve and measure advertising that keeps the Service free, if advertising is enabled in the future</li>
+      <li>To serve and measure advertising that keeps the Service free, if advertising is approved and begins</li>
     </ul>
     <p>We do not sell your personal information to anyone.</p>
 
@@ -102,9 +105,8 @@ export const PrivacyPolicy = () => (
     <p>
       Contact messages are retained only as long as needed to handle your request.
       Analytics data collected by Google Analytics is retained according to Google
-      Analytics' retention settings. No advertising cookies are currently set. If
-      advertising is enabled in the future, its retention periods will be described here
-      before they go live.
+      Analytics' retention settings. No ads are currently displayed. If advertising
+      begins, its retention periods will be described here.
     </p>
 
     <h2 className="text-lg font-bold text-foreground mt-6">Children's Privacy</h2>
