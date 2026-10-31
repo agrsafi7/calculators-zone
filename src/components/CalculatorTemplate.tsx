@@ -49,6 +49,19 @@ export interface CalculatorConfig {
   relatedCalcs: { name: string; slug: string; icon: string; category: string }[];
 }
 
+// Category framing for the "About" block at the foot of every template
+// page (SEO audit F13) — describes what each collection actually covers.
+const CATEGORY_BLURBS: Record<string, string> = {
+  finance: "loans, mortgages, interest, taxes, and everyday money decisions",
+  health: "body measurements, fitness, nutrition, and wellness tracking",
+  math: "algebra, percentages, grades, statistics, and everyday arithmetic",
+  conversions: "length, weight, temperature, volume, and other unit conversions",
+  science: "physics, chemistry, and engineering calculations",
+  datetime: "dates, times, durations, and age calculations",
+  lifestyle: "home projects, travel, cooking, and everyday planning",
+  other: "specialized tools that do not fit a single topic",
+};
+
 // Group same-category calculators by subcategory for the directory grid.
 const getDirectoryGroups = (categorySlug: string, currentSlug: string) => {
   const calcs = uniqueCalculators.filter(
@@ -102,6 +115,12 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
   }, [values, config]);
 
   const hasSanitized = results.some((r) => r.sanitized);
+
+  // About-block text: guarantee the config description reads as a complete
+  // sentence before the category framing follows it.
+  const descText = config.description.trim().endsWith(".")
+    ? config.description.trim()
+    : `${config.description.trim()}.`;
 
   const handleChange = (id: string, val: number) => {
     // Clamp to the input's declared range so degenerate values (negative
@@ -356,18 +375,19 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
             </div>
           )}
 
-          {/* SEO content block */}
+          {/* SEO content block — page-specific description + category framing.
+              No audience/trust claims: none are evidenced (SEO audit F13). */}
           <section className="mt-8 border-t border-surface-container pt-6">
             <h2 className="font-display text-[18px] font-semibold text-ink mb-3">About the {config.name}</h2>
             <div className="text-[12px] text-ink-soft space-y-3 leading-relaxed">
               <p>
-                The <strong>{config.name}</strong> is a free online tool that helps you {config.metaDescription.toLowerCase()}.
-                This calculator is part of our <Link to={`/category/${config.categorySlug}`} className="text-link hover:underline font-medium">{config.category} calculators</Link> collection,
-                trusted by users in the United States, United Kingdom, Canada, and Australia.
+                The <strong>{config.name}</strong> is a free online calculator from TheCalculator.us. {descText}{" "}
+                It is part of our <Link to={`/category/${config.categorySlug}`} className="text-link hover:underline font-medium">{config.category} calculators</Link> collection,
+                which covers {CATEGORY_BLURBS[config.categorySlug] ?? "a wide range of everyday calculations"}.
               </p>
               <p>
-                Whether you're a student, professional, or just need a quick answer, our {config.name.toLowerCase()} provides instant,
-                accurate results with no sign-up required. All calculations run directly in your browser for maximum speed and privacy.
+                Enter your values above and the result updates instantly — no sign-up is required, and every calculation
+                runs directly in your browser, so the numbers you enter stay on your device.
               </p>
             </div>
           </section>
