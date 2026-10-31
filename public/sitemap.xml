@@ -2160,5 +2160,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <!-- NOTE (SEO audit F3): the 9 drip blog posts above are intentionally absent until their publishDates arrive; re-add each post's <url> block at the next deploy after its publish date. -->
+  <url>
+    <loc>https://thecalculator.us/blog/inflation-explained-what-money-will-be-worth</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- NOTE (SEO audit F3): the remaining drip blog posts are intentionally absent until their publishDates arrive; re-add each post's <url> block at the next deploy after its publish date. -->
 </urlset>

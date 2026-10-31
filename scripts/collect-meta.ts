@@ -168,6 +168,31 @@ const statics: Entry[] = [
     title: "Free Online Calculators | TheCalculator.us",
     description:
       "Free online calculators for finance, health, math, science, unit conversions, and everyday life. Fast, accurate, and mobile-friendly — no sign-up required.",
+    // Homepage FAQPage JSON-LD — copied verbatim from HOME_FAQS in
+    // src/pages/Index.tsx so the structured data matches the visible FAQ
+    // section on the homepage. Keep both in sync.
+    faqs: [
+      {
+        question: "Are the calculators on TheCalculator.us free to use?",
+        answer:
+          "Yes. Every calculator on TheCalculator.us is free to use, with no sign-up, no account, and no limit on how many calculations you run.",
+      },
+      {
+        question: "How accurate are the calculators?",
+        answer:
+          "Each calculator is coded individually and put through numerical verification against industry-standard benchmarks. Results are still estimates — for major financial, tax, or health decisions, confirm the numbers with a qualified professional.",
+      },
+      {
+        question: "Do I need to create an account or share personal information?",
+        answer:
+          "No. The calculators run in your browser and work without an account. The basic calculator's history is stored only on your own device, and you can clear it at any time.",
+      },
+      {
+        question: "Which calculators are the most popular?",
+        answer:
+          "The most used tools are the Mortgage Calculator, BMI Calculator, Percentage Calculator, Loan Calculator, and Age Calculator. You can browse the full directory by category — finance, health & fitness, math & education, unit conversions, science, date & time, lifestyle, and more.",
+      },
+    ],
   },
   { path: "/categories", title: "All Calculator Categories | TheCalculator.us", description: "Browse all calculator categories: finance, health, math, conversions, science, lifestyle, date & time, and more." },
   { path: "/popular", title: "Popular Calculators | TheCalculator.us", description: "The most popular free online calculators: mortgage, BMI, percentage, age, loan, and more." },

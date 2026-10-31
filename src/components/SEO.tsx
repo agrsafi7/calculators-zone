@@ -61,17 +61,11 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
       }
     : null;
 
-  const faqSchema = faqs?.length
-    ? {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: faqs.map((f) => ({
-          "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
-        })),
-      }
-    : null;
+  // FAQPage JSON-LD is owned by the static prerender layer
+  // (scripts/collect-meta.ts + scripts/prerender.mjs), which emits exactly
+  // one FAQPage block per page in the served HTML. Emitting it here as well
+  // duplicated the schema after hydration (SEO audit F7), so the `faqs`
+  // prop is intentionally no longer rendered from this component.
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -83,19 +77,15 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
     description: "Free online calculators for finance, health, math, science, conversions, and daily life.",
   };
 
+  // No SearchAction/potentialAction: the site has no ?q= search-results
+  // view for the urlTemplate to point at (SEO audit F8), and Google retired
+  // the sitelinks search box in Nov 2024. Do not re-add without a real
+  // search results page.
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: siteName,
     url: baseUrl,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${baseUrl}/?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
   };
 
   const isHomepage = canonical === "/";
@@ -136,9 +126,6 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
       )}
       {breadcrumbSchema && (
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
-      )}
-      {faqSchema && (
-        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       )}
       {isHomepage && (
         <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>

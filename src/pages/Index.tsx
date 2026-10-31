@@ -22,6 +22,32 @@ const CATEGORY_ICONS: Record<string, LucideIcon> = {
   science: FlaskConical,
   lifestyle: Home,
 };
+// Homepage FAQs — visible text below; the identical Q&As are emitted as
+// static FAQPage JSON-LD by scripts/collect-meta.ts (prerender), so the
+// structured data always matches what visitors see. Keep both in sync.
+const HOME_FAQS = [
+  {
+    question: "Are the calculators on TheCalculator.us free to use?",
+    answer:
+      "Yes. Every calculator on TheCalculator.us is free to use, with no sign-up, no account, and no limit on how many calculations you run.",
+  },
+  {
+    question: "How accurate are the calculators?",
+    answer:
+      "Each calculator is coded individually and put through numerical verification against industry-standard benchmarks. Results are still estimates — for major financial, tax, or health decisions, confirm the numbers with a qualified professional.",
+  },
+  {
+    question: "Do I need to create an account or share personal information?",
+    answer:
+      "No. The calculators run in your browser and work without an account. The basic calculator's history is stored only on your own device, and you can clear it at any time.",
+  },
+  {
+    question: "Which calculators are the most popular?",
+    answer:
+      "The most used tools are the Mortgage Calculator, BMI Calculator, Percentage Calculator, Loan Calculator, and Age Calculator. You can browse the full directory by category — finance, health & fitness, math & education, unit conversions, science, date & time, lifestyle, and more.",
+  },
+];
+
 const POPULAR_TODAY = [
   { name: "Mortgage", to: "/finance/mortgage-calculator" },
   { name: "BMI Body Mass", to: "/health/bmi-calculator" },
@@ -142,6 +168,8 @@ const Index = () => {
                         src={CATEGORY_IMAGES[cat.slug]}
                         alt={`${cat.name} calculators`}
                         loading="lazy"
+                        width={56}
+                        height={56}
                       />
                     ) : (
                       <span className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-sm">
@@ -149,11 +177,11 @@ const Index = () => {
                       </span>
                     )}
                     <div>
-                      <h3 className="font-display text-[18px] font-semibold text-ink">
+                      <h2 className="font-display text-[18px] font-semibold text-ink">
                         <Link to={`/category/${cat.slug}`} className="hover:text-primary transition-colors">
                           {cat.name}{cat.name.endsWith("Calculators") ? "" : " Calculators"}
                         </Link>
-                      </h3>
+                      </h2>
                     </div>
                   </div>
                   <ul className="flex flex-col gap-1.5 flex-1">
@@ -191,6 +219,7 @@ const Index = () => {
 
           {/* About */}
           <section className="bg-surface-low rounded-xl p-6 text-ink-soft max-w-4xl mx-auto mb-6">
+            <h2 className="font-display text-[18px] font-semibold text-ink mb-3">About TheCalculator.us</h2>
             <div className="space-y-3">
               <p className="text-[14px] leading-relaxed">
                 TheCalculator.us's sole focus is to provide fast, comprehensive, convenient, free online calculators in a plethora of areas.
@@ -205,6 +234,19 @@ const Index = () => {
                 usage, some are tailored for specific countries; for example, the <em>Income Tax Calculator</em> is calibrated specifically for
                 United States federal and state tax codes.
               </p>
+            </div>
+          </section>
+
+          {/* FAQ */}
+          <section className="bg-surface-lowest rounded-xl p-6 shadow-sm max-w-4xl mx-auto mb-6 w-full">
+            <h2 className="font-display text-[18px] font-semibold text-ink mb-4">Frequently Asked Questions</h2>
+            <div className="space-y-5">
+              {HOME_FAQS.map((f) => (
+                <div key={f.question}>
+                  <h3 className="font-display text-[15px] font-semibold text-ink mb-1">{f.question}</h3>
+                  <p className="text-[14px] leading-relaxed text-ink-soft">{f.answer}</p>
+                </div>
+              ))}
             </div>
           </section>
         </div>
