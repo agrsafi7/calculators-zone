@@ -67,7 +67,8 @@ const SitemapPage = () => {
             <section key={cat.slug} className="mb-10">
               <h2 className="text-xl font-bold mb-3">
                 <Link to={`/category/${cat.slug}`} className="hover:text-primary transition-colors">
-                  {cat.name} Calculators
+                  {cat.name}
+                  {cat.name.endsWith("Calculators") ? "" : " Calculators"}
                 </Link>{" "}
                 <span className="text-sm font-normal text-muted-foreground">({calcs.length})</span>
               </h2>
