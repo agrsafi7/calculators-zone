@@ -687,7 +687,7 @@ export const otherCalculators: CalculatorConfig[] = [
     category: "Other Calculators",
     categorySlug: "other",
     description: "Estimate how long it takes to read text based on word count and reading speed.",
-    metaDescription: "Free reading time calculator. Estimate reading time for articles, books, and documents.",
+    metaDescription: "Free reading time calculator. Enter a word count and reading speed in words per minute to estimate how long a text takes to read and how many pages it is.",
     icon: "layers",
     inputs: [
       { id: "wordCount", label: "Word Count", type: "number", defaultValue: 2500 },

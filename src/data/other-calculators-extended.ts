@@ -41,7 +41,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
   {
     slug: "paint-calculator", name: "Paint Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Calculate how much paint you need for walls based on room dimensions.",
-    metaDescription: "Free paint calculator. Estimate gallons of paint needed for your room.",
+    metaDescription: "Free paint calculator. Enter room length, width, and wall height to estimate how many gallons of paint you need, including extra coats.",
     icon: "layers",
     inputs: [
       { id: "length", label: "Room Length (ft)", type: "number", defaultValue: 15 },
@@ -98,7 +98,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
   {
     slug: "flooring-calculator", name: "Flooring Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Calculate flooring materials needed and estimated cost.",
-    metaDescription: "Free flooring calculator. Estimate materials and cost for your floor project.",
+    metaDescription: "Free flooring calculator. Enter room dimensions, material price, and a waste allowance to estimate flooring needed and total project cost.",
     icon: "layers",
     inputs: [
       { id: "length", label: "Room Length (ft)", type: "number", defaultValue: 15 },
@@ -208,7 +208,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
   {
     slug: "fence-calculator", name: "Fence Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Calculate materials needed for fencing — posts, rails, and pickets.",
-    metaDescription: "Free fence calculator. Estimate posts, rails, and pickets for your fence.",
+    metaDescription: "Free fence calculator. Enter fence length, height, and post spacing to estimate the posts, rails, and pickets your fence will need.",
     icon: "layers",
     inputs: [
       { id: "totalLength", label: "Total Length (ft)", type: "number", defaultValue: 100 },
@@ -455,7 +455,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
   {
     slug: "carbon-footprint-calculator", name: "Carbon Footprint Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Estimate your monthly carbon footprint from driving, electricity, and flights.",
-    metaDescription: "Free carbon footprint calculator. Estimate your CO2 emissions.",
+    metaDescription: "Free carbon footprint calculator. Estimate your annual CO2 emissions from driving, home electricity use, and flights, broken down by source.",
     icon: "layers",
     inputs: [
       { id: "carMiles", label: "Monthly Car Miles", type: "number", defaultValue: 1000 },

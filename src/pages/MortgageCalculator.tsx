@@ -287,7 +287,7 @@ const MortgageCalculator = () => {
             </div>
 
             <div className="lg:col-span-5 flex flex-col gap-4">
-              <div className="bg-surface-lowest rounded-xl p-6 shadow-sm flex flex-col gap-4">
+              <div className="bg-surface-lowest rounded-xl p-6 shadow-sm flex flex-col gap-4" aria-live="polite">
                 <div className="flex items-center justify-between border-b border-surface-container pb-2">
                   <span className="text-[13px] font-medium uppercase tracking-wider text-ink-soft">Estimated Payment</span>
                   <span className="text-[11px] text-primary px-1.5 py-0.5 rounded bg-surface-low font-medium">Monthly PITI</span>

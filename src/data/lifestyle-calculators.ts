@@ -360,7 +360,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
   {
     slug: "cooking-measurement-converter", name: "Cooking Measurement Converter", category: "Lifestyle", categorySlug: "lifestyle",
     description: "Convert between common cooking measurements: cups, tablespoons, teaspoons, ml, and ounces.",
-    metaDescription: "Free cooking measurement converter. Convert cups, tbsp, tsp, ml, and oz.",
+    metaDescription: "Free cooking measurement converter. Convert between teaspoons, tablespoons, cups, milliliters, and fluid ounces for US and metric recipes.",
     icon: "smile",
     inputs: [
       { id: "value", label: "Value", type: "number", defaultValue: 1, step: 0.25 },

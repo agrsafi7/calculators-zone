@@ -444,7 +444,7 @@ export const scienceCalculatorsExtra: CalculatorConfig[] = [
   // ═══════════════════════════════════════════
   // ENVIRONMENTAL SCIENCE
   // ═══════════════════════════════════════════
-  mk("carbon-footprint-calculator", "Carbon Footprint Calculator", "Estimate your annual carbon footprint.", "Free carbon footprint calculator.", "Environmental Science",
+  mk("carbon-footprint-calculator", "Carbon Footprint Calculator", "Estimate your annual carbon footprint.", "Free carbon footprint calculator. Estimate your annual CO2 emissions in tonnes from electricity, heating gas, and driving, broken down by source.", "Environmental Science",
     [{ id: "electricity", label: "Monthly Electricity (kWh)", type: "number", defaultValue: 400, step: 10 }, { id: "gas", label: "Monthly Gas (therms)", type: "number", defaultValue: 30, step: 1 }, { id: "driving", label: "Annual Driving (km)", type: "number", defaultValue: 18000, step: 1000 }],
     (v) => { const elec = v.electricity * 12 * 0.42; const gas = v.gas * 12 * 5.3; const drive = v.driving * 0.21; const total = (elec + gas + drive) / 1000; return [{ label: "Annual CO₂", value: `${total.toFixed(1)} tonnes`, highlight: true }, { label: "Electricity", value: `${(elec / 1000).toFixed(1)} t` }, { label: "Heating", value: `${(gas / 1000).toFixed(1)} t` }, { label: "Driving", value: `${(drive / 1000).toFixed(1)} t` }]; },
     { expression: "Sum of energy, heating, and transport emissions", variables: ["Global average: ~4.7 tonnes/person"] }

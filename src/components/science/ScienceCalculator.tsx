@@ -203,10 +203,11 @@ const ScienceCalculator = ({ config }: Props) => {
             {/* Inputs */}
             <div className="p-6 md:p-8 border-b lg:border-b-0 lg:border-r border-border space-y-5">
               <div>
-                <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wide block mb-2">
+                <label htmlFor="solve-for-select" className="text-xs font-semibold text-muted-foreground uppercase tracking-wide block mb-2">
                   Solve For
                 </label>
                 <select
+                  id="solve-for-select"
                   value={target}
                   onChange={(e) => setTarget(e.target.value)}
                   className="w-full px-3 py-3 rounded-lg border border-border bg-background text-base font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
@@ -262,7 +263,7 @@ const ScienceCalculator = ({ config }: Props) => {
             </div>
 
             {/* Results */}
-            <div className="p-6 md:p-8 bg-[hsl(220,20%,98%)] dark:bg-card/50">
+            <div className="p-6 md:p-8 bg-[hsl(220,20%,98%)] dark:bg-card/50" aria-live="polite">
               <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">
                 {targetVar.label} ({targetVar.symbol})
               </div>

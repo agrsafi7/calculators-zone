@@ -455,7 +455,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
   {
     slug: "variance-calculator", name: "Variance Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Calculate variance and standard deviation of a data set.",
-    metaDescription: "Free variance calculator. Compute variance and standard deviation.",
+    metaDescription: "Free variance calculator. Enter a set of numbers to compute population and sample variance, standard deviation, and the mean.",
     icon: "layers",
     inputs: [
       { id: "v1", label: "Value 1", type: "number", defaultValue: 10 },
@@ -539,7 +539,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
   {
     slug: "wedding-budget-calculator", name: "Wedding Budget Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Plan your wedding budget with cost breakdowns by category.",
-    metaDescription: "Free wedding budget calculator. Plan your wedding costs by category.",
+    metaDescription: "Free wedding budget calculator. Enter your total budget and guest count to split costs by category: venue, catering, photography, flowers, and decor.",
     icon: "layers",
     inputs: [
       { id: "totalBudget", label: "Total Budget ($)", type: "number", defaultValue: 30000, prefix: "$" },
@@ -719,7 +719,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
   {
     slug: "deck-calculator", name: "Deck Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Calculate decking boards, screws, and posts needed for a deck project.",
-    metaDescription: "Free deck calculator. Estimate materials for building a deck.",
+    metaDescription: "Free deck calculator. Enter deck length and width to estimate the decking boards, joists, and screws needed to build your deck.",
     icon: "layers",
     inputs: [
       { id: "length", label: "Deck Length (ft)", type: "number", defaultValue: 16 },
@@ -775,7 +775,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
   {
     slug: "screen-resolution-calculator", name: "Screen Resolution Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Calculate PPI (pixels per inch), total pixels, and aspect ratio for any display.",
-    metaDescription: "Free screen resolution calculator. Find PPI and aspect ratio for displays.",
+    metaDescription: "Free screen resolution calculator. Enter pixel dimensions and screen size to find pixel density (PPI), total pixels, and aspect ratio.",
     icon: "layers",
     inputs: [
       { id: "hPixels", label: "Horizontal Pixels", type: "number", defaultValue: 2560 },

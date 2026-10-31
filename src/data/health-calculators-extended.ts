@@ -1113,7 +1113,7 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
   {
     slug: "resting-heart-rate-calculator", name: "Resting Heart Rate Calculator", category: "Health", categorySlug: "health", subcategory: "Heart & Cardiovascular",
     description: "Assess your cardiovascular fitness from resting heart rate.",
-    metaDescription: "Free resting heart rate assessment calculator.",
+    metaDescription: "Free resting heart rate calculator. Enter your age, gender, and resting heart rate (bpm) to assess your cardiovascular fitness against normal ranges.",
     icon: "heart",
     inputs: [
       { id: "age", label: "Age", type: "number", defaultValue: 30 },

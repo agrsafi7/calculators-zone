@@ -142,7 +142,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "hourly-rate-calculator", name: "Hourly Rate Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Business & Freelance",
     description: "Calculate your ideal freelance hourly rate.",
-    metaDescription: "Free hourly rate calculator for freelancers.",
+    metaDescription: "Free hourly rate calculator for freelancers. Enter your target salary, business expenses, and billable hours to find the hourly rate you need to charge.",
     icon: "layers",
     inputs: [
       { id: "salary", label: "Desired Annual Salary ($)", type: "number", defaultValue: 80000, prefix: "$" },
@@ -291,7 +291,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "car-insurance-calculator", name: "Car Insurance Estimator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Automotive",
     description: "Estimate annual car insurance costs.",
-    metaDescription: "Free car insurance cost estimator.",
+    metaDescription: "Free car insurance cost estimator. Enter your car's value, driver age, and deductible to estimate your annual and monthly insurance premiums.",
     icon: "layers",
     inputs: [
       { id: "carValue", label: "Car Value ($)", type: "number", defaultValue: 25000, prefix: "$" },
@@ -317,7 +317,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "home-affordability-calculator", name: "Home Affordability Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Real Estate",
     description: "Determine how much home you can afford.",
-    metaDescription: "Free home affordability calculator.",
+    metaDescription: "Free home affordability calculator. Enter income, monthly debts, down payment, and interest rate to estimate the maximum home price you can afford.",
     icon: "layers",
     inputs: [
       { id: "income", label: "Annual Gross Income ($)", type: "number", defaultValue: 85000, prefix: "$" },
@@ -368,7 +368,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "closing-cost-calculator", name: "Closing Cost Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Real Estate",
     description: "Estimate closing costs when buying a home.",
-    metaDescription: "Free closing cost calculator.",
+    metaDescription: "Free closing cost calculator. Enter the home price and loan amount to estimate total closing costs, including origination fees and title insurance.",
     icon: "layers",
     inputs: [
       { id: "homePrice", label: "Home Price ($)", type: "number", defaultValue: 350000, prefix: "$" },
@@ -416,7 +416,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "caffeine-calculator", name: "Caffeine Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Food & Nutrition",
     description: "Track your daily caffeine intake.",
-    metaDescription: "Free caffeine intake calculator.",
+    metaDescription: "Free caffeine intake calculator. Total the caffeine in your daily coffee, tea, soda, and energy drinks and compare it with the recommended safe limit.",
     icon: "layers",
     inputs: [
       { id: "coffee", label: "Cups of Coffee", type: "number", defaultValue: 2 },
@@ -626,7 +626,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "percentage-change-calculator", name: "Percentage Change Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Math & Numbers",
     description: "Calculate percentage change between two values.",
-    metaDescription: "Free percentage change calculator.",
+    metaDescription: "Free percentage change calculator. Enter old and new values to find the percentage increase or decrease between them, plus the absolute change.",
     icon: "layers",
     inputs: [
       { id: "oldVal", label: "Old Value", type: "number", defaultValue: 50 },
@@ -670,7 +670,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "running-pace-calculator", name: "Running Pace Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Fitness & Exercise",
     description: "Calculate running pace, speed, and finish times.",
-    metaDescription: "Free running pace calculator.",
+    metaDescription: "Free running pace calculator. Enter distance and time to find your pace per mile and kilometer, your speed, and predicted race finish times.",
     icon: "layers",
     inputs: [
       { id: "distance", label: "Distance (miles)", type: "number", defaultValue: 5, step: 0.1 },
@@ -745,7 +745,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "led-savings-calculator", name: "LED Savings Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Electricity & Home",
     description: "Calculate savings switching to LED bulbs.",
-    metaDescription: "Free LED savings calculator.",
+    metaDescription: "Free LED savings calculator. Compare bulb count, wattage, and hours of use to see how much you save each year by switching to LED bulbs.",
     icon: "layers",
     inputs: [
       { id: "bulbs", label: "Number of Bulbs", type: "number", defaultValue: 20 },
@@ -770,7 +770,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "hvac-sizing-calculator", name: "HVAC Sizing Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Electricity & Home",
     description: "Estimate HVAC tonnage needed for your home.",
-    metaDescription: "Free HVAC sizing calculator.",
+    metaDescription: "Free HVAC sizing calculator. Enter your home's square footage and climate zone to estimate the AC tonnage and BTU capacity your home needs.",
     icon: "layers",
     inputs: [
       { id: "sqft", label: "Square Footage", type: "number", defaultValue: 2000 },
@@ -792,7 +792,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "ceiling-fan-size-calculator", name: "Ceiling Fan Size Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Electricity & Home",
     description: "Find the ideal ceiling fan size for your room.",
-    metaDescription: "Free ceiling fan size calculator.",
+    metaDescription: "Free ceiling fan size calculator. Enter your room's length and width to find the right ceiling fan blade size for the space, in inches.",
     icon: "layers",
     inputs: [
       { id: "length", label: "Room Length (ft)", type: "number", defaultValue: 14 },
@@ -950,7 +950,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "screen-size-calculator", name: "Screen Size Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Technology",
     description: "Calculate screen dimensions from diagonal and aspect ratio.",
-    metaDescription: "Free screen size calculator.",
+    metaDescription: "Free screen size calculator. Enter the diagonal size and aspect ratio to calculate a screen's exact width, height, and viewing area.",
     icon: "layers",
     inputs: [
       { id: "diagonal", label: "Diagonal (inches)", type: "number", defaultValue: 27, step: 0.1 },
@@ -1046,7 +1046,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "fence-calculator", name: "Fence Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Construction & Home",
     description: "Calculate materials for a fence project.",
-    metaDescription: "Free fence calculator.",
+    metaDescription: "Free fence calculator. Enter fence length, height, and post spacing to estimate the posts, rails, and pickets your fence will need.",
     icon: "layers",
     inputs: [
       { id: "length", label: "Fence Length (ft)", type: "number", defaultValue: 100 },

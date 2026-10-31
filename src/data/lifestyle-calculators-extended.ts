@@ -16,22 +16,22 @@ const makeLife = (slug: string, name: string, desc: string, meta: string, subcat
 
 export const lifestyleCalculatorsExtended: CalculatorConfig[] = [
   // Home & Construction
-  makeLife("paint-calculator", "Paint Calculator", "Calculate how much paint you need for walls based on room dimensions.", "Free paint calculator for rooms.", "Home & Construction",
+  makeLife("paint-calculator", "Paint Calculator", "Calculate how much paint you need for walls based on room dimensions.", "Free paint calculator. Enter room length, width, and wall height to estimate how many gallons of paint you need, including extra coats.", "Home & Construction",
     [{ id: "length", label: "Room Length (ft)", type: "number", defaultValue: 15, step: 0.5 }, { id: "width", label: "Room Width (ft)", type: "number", defaultValue: 12, step: 0.5 }, { id: "height", label: "Wall Height (ft)", type: "number", defaultValue: 8, step: 0.5 }, { id: "coats", label: "Number of Coats", type: "number", defaultValue: 2, min: 1 }],
     (v) => { const wallArea = 2 * (v.length + v.width) * v.height; const doorWindow = wallArea * 0.15; const paintableArea = (wallArea - doorWindow) * v.coats; const gallons = paintableArea / 350; return [{ label: "Gallons Needed", value: `${Math.ceil(gallons)}`, highlight: true }, { label: "Wall Area", value: `${wallArea.toFixed(0)} sq ft` }, { label: "Paintable Area", value: `${paintableArea.toFixed(0)} sq ft` }]; },
     { expression: "Gallons = Paintable Area / 350 sq ft per gallon", variables: ["Deduct 15% for doors/windows"] }
   ),
-  makeLife("flooring-calculator", "Flooring Calculator", "Calculate flooring material needed for a room with waste factor.", "Free flooring calculator.", "Home & Construction",
+  makeLife("flooring-calculator", "Flooring Calculator", "Calculate flooring material needed for a room with waste factor.", "Free flooring calculator. Enter room length and width plus a waste allowance to estimate the square footage and number of boxes you need.", "Home & Construction",
     [{ id: "length", label: "Room Length (ft)", type: "number", defaultValue: 15, step: 0.5 }, { id: "width", label: "Room Width (ft)", type: "number", defaultValue: 12, step: 0.5 }, { id: "waste", label: "Waste (%)", type: "number", defaultValue: 10, min: 0 }],
     (v) => { const area = v.length * v.width; const withWaste = area * (1 + v.waste / 100); const boxes = Math.ceil(withWaste / 20); return [{ label: "Flooring Needed", value: `${withWaste.toFixed(0)} sq ft`, highlight: true }, { label: "Room Area", value: `${area.toFixed(0)} sq ft` }, { label: "Boxes (20 sq ft/box)", value: `${boxes}` }]; },
     { expression: "Total = Area × (1 + Waste%)", variables: ["Add 10% for straight, 15% for diagonal"] }
   ),
-  makeLife("fence-calculator", "Fence Calculator", "Calculate fence materials needed: posts, rails, and pickets.", "Free fence calculator.", "Home & Construction",
+  makeLife("fence-calculator", "Fence Calculator", "Calculate fence materials needed: posts, rails, and pickets.", "Free fence calculator. Enter fence length, height, and post spacing to estimate the posts, rails, and pickets your fence will need.", "Home & Construction",
     [{ id: "length", label: "Fence Length (ft)", type: "number", defaultValue: 100, step: 1 }, { id: "height", label: "Fence Height (ft)", type: "number", defaultValue: 6, step: 0.5 }, { id: "postSpacing", label: "Post Spacing (ft)", type: "number", defaultValue: 8, step: 1 }],
     (v) => { const posts = Math.ceil(v.length / v.postSpacing) + 1; const rails = Math.ceil(v.length / 8) * 3; const pickets = Math.ceil(v.length / 0.5); return [{ label: "Posts Needed", value: `${posts}`, highlight: true }, { label: "Rails (8ft)", value: `${rails}` }, { label: "Pickets", value: `${pickets}` }, { label: "Post Depth", value: `${Math.ceil(v.height / 3)} ft` }]; },
     { expression: "Posts = Length/Spacing + 1", variables: ["Post depth = 1/3 of height"] }
   ),
-  makeLife("deck-calculator", "Deck Calculator", "Calculate decking boards, joists, and screws for a deck.", "Free deck calculator.", "Home & Construction",
+  makeLife("deck-calculator", "Deck Calculator", "Calculate decking boards, joists, and screws for a deck.", "Free deck calculator. Enter deck length and width to estimate the decking boards, joists, and screws needed to build your deck.", "Home & Construction",
     [{ id: "length", label: "Deck Length (ft)", type: "number", defaultValue: 16, step: 1 }, { id: "width", label: "Deck Width (ft)", type: "number", defaultValue: 12, step: 1 }],
     (v) => { const area = v.length * v.width; const boards = Math.ceil(area / 4); const joists = Math.ceil(v.length / 1.33) + 1; const screws = Math.ceil(area * 8); return [{ label: "Area", value: `${area} sq ft`, highlight: true }, { label: "Deck Boards (6\"×8')", value: `${boards}` }, { label: "Joists (16\" OC)", value: `${joists}` }, { label: "Screws", value: `~${screws}` }]; },
     { expression: "Boards = Area / board coverage; Joists at 16\" OC", variables: ["Add 10% for waste"] }
@@ -59,12 +59,12 @@ export const lifestyleCalculatorsExtended: CalculatorConfig[] = [
     { expression: "1 stick = 113.4g = ½ cup = 8 tbsp", variables: ["US butter stick standard"] }
   ),
   // Sports & Fitness
-  makeLife("running-pace-calculator", "Running Pace Calculator", "Calculate running pace, speed, and finish time from distance and time.", "Free running pace calculator.", "Sports & Fitness",
+  makeLife("running-pace-calculator", "Running Pace Calculator", "Calculate running pace, speed, and finish time from distance and time.", "Free running pace calculator. Enter distance and time to find your pace per mile and kilometer, your speed, and predicted race finish times.", "Sports & Fitness",
     [{ id: "distance", label: "Distance (miles)", type: "number", defaultValue: 3.1, step: 0.1 }, { id: "minutes", label: "Time (minutes)", type: "number", defaultValue: 25, step: 0.5 }],
     (v) => { if (v.distance === 0) return [{ label: "Error", value: "Distance cannot be zero" }]; const pace = v.minutes / v.distance; const speed = v.distance / (v.minutes / 60); const paceMin = Math.floor(pace); const paceSec = Math.round((pace - paceMin) * 60); return [{ label: "Pace", value: `${paceMin}:${String(paceSec).padStart(2, "0")} /mi`, highlight: true }, { label: "Speed", value: `${speed.toFixed(1)} mph` }, { label: "5K Time", value: `${Math.floor(pace * 3.107)}:${String(Math.round(((pace * 3.107) % 1) * 60)).padStart(2, "0")}` }]; },
     { expression: "Pace = Time / Distance", variables: ["Speed = Distance / (Time/60)"] }
   ),
-  makeLife("cycling-speed-calculator", "Cycling Speed Calculator", "Calculate cycling speed from distance and time.", "Free cycling speed calculator.", "Sports & Fitness",
+  makeLife("cycling-speed-calculator", "Cycling Speed Calculator", "Calculate cycling speed from distance and time.", "Free cycling speed calculator. Enter ride distance and time to compute your average speed in mph and km/h, plus an estimated calorie burn.", "Sports & Fitness",
     [{ id: "distance", label: "Distance (miles)", type: "number", defaultValue: 20, step: 0.1 }, { id: "hours", label: "Hours", type: "number", defaultValue: 1, min: 0 }, { id: "minutes", label: "Minutes", type: "number", defaultValue: 0, min: 0, max: 59 }],
     (v) => { const totalH = v.hours + v.minutes / 60; if (totalH === 0) return [{ label: "Error", value: "Time cannot be zero" }]; const speed = v.distance / totalH; return [{ label: "Average Speed", value: `${speed.toFixed(1)} mph`, highlight: true }, { label: "km/h", value: `${(speed * 1.609).toFixed(1)}` }, { label: "Pace", value: `${(60 / speed).toFixed(1)} min/mile` }]; },
     { expression: "Speed = Distance / Time", variables: ["Casual: 10-14 mph", "Racing: 25+ mph"] }
@@ -86,7 +86,7 @@ export const lifestyleCalculatorsExtended: CalculatorConfig[] = [
     { expression: "Gallons = Rainfall × Area × 0.623", variables: ["1 inch of rain on 1000 sq ft ≈ 623 gallons"] }
   ),
   // Tech & Digital
-  makeLife("screen-resolution-calculator", "Screen Resolution Calculator", "Calculate pixels per inch (PPI) from screen size and resolution.", "Free screen PPI calculator.", "Tech & Digital",
+  makeLife("screen-resolution-calculator", "Screen Resolution Calculator", "Calculate pixels per inch (PPI) from screen size and resolution.", "Free screen resolution calculator. Enter pixel dimensions and screen size to find pixel density (PPI), total pixels, and aspect ratio.", "Tech & Digital",
     [{ id: "widthPx", label: "Width (pixels)", type: "number", defaultValue: 2560, step: 1 }, { id: "heightPx", label: "Height (pixels)", type: "number", defaultValue: 1440, step: 1 }, { id: "diagonal", label: "Screen Size (inches)", type: "number", defaultValue: 27, step: 0.1 }],
     (v) => { if (v.diagonal === 0) return [{ label: "Error", value: "Size cannot be zero" }]; const diagPx = Math.sqrt(v.widthPx ** 2 + v.heightPx ** 2); const ppi = diagPx / v.diagonal; const megapixels = (v.widthPx * v.heightPx) / 1e6; return [{ label: "PPI", value: `${ppi.toFixed(1)}`, highlight: true }, { label: "Megapixels", value: `${megapixels.toFixed(2)} MP` }, { label: "Aspect Ratio", value: `${v.widthPx / (function gcd(a: number, b: number): number { return b ? gcd(b, a % b) : a; })(v.widthPx, v.heightPx)}:${v.heightPx / (function gcd(a: number, b: number): number { return b ? gcd(b, a % b) : a; })(v.widthPx, v.heightPx)}` }]; },
     { expression: "PPI = √(W² + H²) / diagonal", variables: ["Higher PPI = sharper display", "Retina ≈ 220+ PPI"] }

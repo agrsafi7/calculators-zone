@@ -814,7 +814,7 @@ export const conversionCalculatorsExtended: CalculatorConfig[] = [
     { expression: "Common oven temperature reference", variables: ["Most baking: 350°F / 180°C"] }
   ),
 
-  mc("cooking-measurement-converter", "Cooking Measurement Converter", "Convert between tsp, tbsp, cups, mL, and fluid oz.", "Free cooking measurement converter.", "Cooking & Food",
+  mc("cooking-measurement-converter", "Cooking Measurement Converter", "Convert between tsp, tbsp, cups, mL, and fluid oz.", "Free cooking measurement converter. Convert between teaspoons, tablespoons, cups, milliliters, and fluid ounces for US and metric recipes.", "Cooking & Food",
     [{ id: "value", label: "Value", type: "number", defaultValue: 1, step: 0.25 }, { id: "from", label: "From", type: "select", defaultValue: 2, options: [{ value: 0, label: "Teaspoons" }, { value: 1, label: "Tablespoons" }, { value: 2, label: "Cups" }, { value: 3, label: "mL" }, { value: 4, label: "Fluid oz" }] }],
     (v) => { const toMl = [4.929, 14.787, 236.588, 1, 29.5735]; const ml = v.value * toMl[v.from]; return [{ label: "mL", value: ml.toFixed(2), highlight: true }, { label: "Teaspoons", value: (ml / 4.929).toFixed(2) }, { label: "Tablespoons", value: (ml / 14.787).toFixed(2) }, { label: "Cups", value: (ml / 236.588).toFixed(3) }, { label: "Fluid oz", value: (ml / 29.5735).toFixed(2) }]; },
     { expression: "1 cup = 16 tbsp = 48 tsp", variables: ["1 tbsp = ~15 mL"] }

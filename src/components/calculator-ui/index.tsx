@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useId } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, ChevronDown, Calendar as CalendarIcon } from "lucide-react";
 import {
@@ -108,7 +108,7 @@ export function InputPanel({ children }: { children: ReactNode }) {
 /** Right results panel inside CalculatorLayout */
 export function ResultsPanel({ children }: { children: ReactNode }) {
   return (
-    <section className="p-6 md:p-8 bg-[hsl(220,20%,98%)] dark:bg-card/50 space-y-5">
+    <section className="p-6 md:p-8 bg-[hsl(220,20%,98%)] dark:bg-card/50 space-y-5" aria-live="polite">
       {children}
     </section>
   );
@@ -139,9 +139,10 @@ export function InputField({
   className = "",
   placeholder,
 }: InputFieldProps) {
+  const id = useId();
   return (
     <div className={className}>
-      <label className="text-xs font-medium text-muted-foreground block mb-1.5">
+      <label htmlFor={id} className="text-xs font-medium text-muted-foreground block mb-1.5">
         {label}
       </label>
       <div className="relative">
@@ -151,6 +152,7 @@ export function InputField({
           </span>
         )}
         <input
+          id={id}
           type={type}
           value={value}
           step={step}
@@ -188,13 +190,15 @@ export function DropdownSelect<T extends string | number>({
   onChange,
   options,
 }: DropdownSelectProps<T>) {
+  const id = useId();
   return (
     <div>
-      <label className="text-xs font-medium text-muted-foreground block mb-1.5">
+      <label htmlFor={id} className="text-xs font-medium text-muted-foreground block mb-1.5">
         {label}
       </label>
       <div className="relative">
         <select
+          id={id}
           value={value as string | number}
           onChange={(e) => {
             const v = e.target.value;
@@ -234,14 +238,16 @@ export function SliderInput({
   step = 1,
   suffix,
 }: SliderInputProps) {
+  const id = useId();
   return (
     <div>
-      <label className="text-xs font-medium text-muted-foreground block mb-1.5">
+      <label htmlFor={id} className="text-xs font-medium text-muted-foreground block mb-1.5">
         {label}
       </label>
       <div className="flex items-center gap-3">
         <input
           type="range"
+          aria-label={label}
           min={min}
           max={max}
           step={step}
@@ -251,6 +257,7 @@ export function SliderInput({
         />
         <div className="relative w-24">
           <input
+            id={id}
             type="number"
             value={value}
             min={min}
@@ -277,13 +284,15 @@ interface DateInputProps {
 }
 
 export function DateInput({ label, value, onChange }: DateInputProps) {
+  const id = useId();
   return (
     <div>
-      <label className="text-xs font-medium text-muted-foreground block mb-1.5">
+      <label htmlFor={id} className="text-xs font-medium text-muted-foreground block mb-1.5">
         {label}
       </label>
       <div className="relative">
         <input
+          id={id}
           type="date"
           value={value}
           onChange={(e) => onChange(e.target.value)}

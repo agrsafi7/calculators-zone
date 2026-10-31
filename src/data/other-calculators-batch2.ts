@@ -160,7 +160,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "carbon-footprint-calculator", name: "Carbon Footprint Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Weather & Environment",
     description: "Estimate your annual carbon footprint from driving, electricity, and flights.",
-    metaDescription: "Free carbon footprint calculator. Estimate CO2 emissions.",
+    metaDescription: "Free carbon footprint calculator. Estimate your annual CO2 emissions from driving, home electricity use, and flights, broken down by source.",
     icon: "layers",
     inputs: [
       { id: "milesDriven", label: "Miles Driven/Year", type: "number", defaultValue: 12000 },
@@ -393,7 +393,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "electricity-bill-calculator", name: "Electricity Bill Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Electricity & Energy",
     description: "Estimate monthly electricity bill from appliance usage.",
-    metaDescription: "Free electricity bill estimator. Calculate monthly power costs.",
+    metaDescription: "Free electricity bill calculator. Estimate your monthly electricity cost from your usage in kilowatt-hours and the rate you pay per kWh.",
     icon: "layers",
     inputs: [
       { id: "kwh", label: "Monthly Usage (kWh)", type: "number", defaultValue: 900 },
@@ -635,7 +635,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "fence-calculator", name: "Fence Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Construction & Home",
     description: "Calculate materials needed for fencing — posts, rails, and pickets.",
-    metaDescription: "Free fence calculator. Estimate fence materials and cost.",
+    metaDescription: "Free fence calculator. Enter fence length, height, and post spacing to estimate the posts, rails, and pickets your fence will need.",
     icon: "layers",
     inputs: [
       { id: "length", label: "Fence Length (ft)", type: "number", defaultValue: 100 },
@@ -664,7 +664,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "deck-calculator", name: "Deck Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Construction & Home",
     description: "Calculate decking boards, joists, and screws needed for a deck.",
-    metaDescription: "Free deck calculator. Estimate decking materials needed.",
+    metaDescription: "Free deck calculator. Enter deck length and width to estimate the decking boards, joists, and screws needed to build your deck.",
     icon: "layers",
     inputs: [
       { id: "length", label: "Deck Length (ft)", type: "number", defaultValue: 16 },
@@ -915,7 +915,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "wedding-budget-calculator", name: "Wedding Budget Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Events & Planning",
     description: "Plan your wedding budget with cost breakdowns by category.",
-    metaDescription: "Free wedding budget calculator. Plan wedding costs by category.",
+    metaDescription: "Free wedding budget calculator. Enter your total budget and guest count to split costs by category: venue, catering, photography, flowers, and decor.",
     icon: "layers",
     inputs: [
       { id: "totalBudget", label: "Total Budget", type: "number", defaultValue: 30000, prefix: "$" },
@@ -1244,7 +1244,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "screen-resolution-calculator", name: "Screen Resolution Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Technology & Computing",
     description: "Calculate pixel density (PPI) from screen size and resolution.",
-    metaDescription: "Free PPI calculator. Calculate pixel density from screen specs.",
+    metaDescription: "Free screen resolution calculator. Enter pixel dimensions and screen size to find pixel density (PPI), total pixels, and aspect ratio.",
     icon: "layers",
     inputs: [
       { id: "width", label: "Horizontal Pixels", type: "number", defaultValue: 2560 },
@@ -1399,7 +1399,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "running-pace-calculator", name: "Running Pace Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Sports & Fitness",
     description: "Calculate running pace, speed, and predicted race finish times.",
-    metaDescription: "Free running pace calculator. Find your pace and race predictions.",
+    metaDescription: "Free running pace calculator. Enter distance and time to find your pace per mile and kilometer, your speed, and predicted race finish times.",
     icon: "layers",
     inputs: [
       { id: "distance", label: "Distance (miles)", type: "number", defaultValue: 3.1, step: 0.1 },
@@ -1430,7 +1430,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "cycling-speed-calculator", name: "Cycling Speed Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Sports & Fitness",
     description: "Calculate cycling speed, distance, or time from known values.",
-    metaDescription: "Free cycling speed calculator. Compute ride stats.",
+    metaDescription: "Free cycling speed calculator. Enter ride distance and time to compute your average speed in mph and km/h, plus an estimated calorie burn.",
     icon: "layers",
     inputs: [
       { id: "distance", label: "Distance (miles)", type: "number", defaultValue: 20 },

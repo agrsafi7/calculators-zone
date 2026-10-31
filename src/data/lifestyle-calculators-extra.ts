@@ -166,7 +166,7 @@ export const lifestyleCalculatorsExtra: CalculatorConfig[] = [
     (v) => { const nextHundred = Math.ceil(v.daysTogether / 100) * 100; const nextYear = Math.ceil(v.daysTogether / 365.25) * 365.25; return [{ label: "Days Together", value: `${v.daysTogether}`, highlight: true }, { label: "Next 100-day Mark", value: `Day ${nextHundred} (in ${nextHundred - v.daysTogether} days)` }, { label: "Next Anniversary", value: `In ${Math.round(nextYear - v.daysTogether)} days` }]; },
     { expression: "Track milestones: 100, 200, 365, 500, 1000 days", variables: ["Celebrate every milestone!"] }
   ),
-  mk("wedding-budget-calculator", "Wedding Budget Calculator", "Estimate wedding costs by category.", "Free wedding budget calculator.", "Relationships",
+  mk("wedding-budget-calculator", "Wedding Budget Calculator", "Estimate wedding costs by category.", "Free wedding budget calculator. Enter your total budget and guest count to split costs by category: venue, catering, photography, flowers, and decor.", "Relationships",
     [{ id: "budget", label: "Total Budget ($)", type: "number", defaultValue: 30000, step: 1000 }, { id: "guests", label: "Number of Guests", type: "number", defaultValue: 100, min: 1 }],
     (v) => { const venue = v.budget * 0.40; const catering = v.budget * 0.25; const photo = v.budget * 0.10; const attire = v.budget * 0.08; const perGuest = v.budget / v.guests; return [{ label: "Venue & Decor", value: `$${venue.toLocaleString()}`, highlight: true }, { label: "Catering", value: `$${catering.toLocaleString()}` }, { label: "Photography", value: `$${photo.toLocaleString()}` }, { label: "Attire", value: `$${attire.toLocaleString()}` }, { label: "Cost per Guest", value: `$${perGuest.toFixed(0)}` }]; },
     { expression: "Venue 40%, Catering 25%, Photo 10%, Attire 8%", variables: ["Remaining 17% for other items"] }
@@ -205,7 +205,7 @@ export const lifestyleCalculatorsExtra: CalculatorConfig[] = [
     (v) => { const base = v.sqft * v.costPerSqft; const cont = base * (v.contingency / 100); const total = base + cont; return [{ label: "Total Budget", value: `$${total.toLocaleString()}`, highlight: true }, { label: "Base Cost", value: `$${base.toLocaleString()}` }, { label: "Contingency", value: `$${cont.toLocaleString()}` }]; },
     { expression: "Total = Area × Cost/sqft × (1 + Contingency%)", variables: ["Add 10-20% contingency"] }
   ),
-  mk("electricity-bill-calculator", "Electricity Bill Calculator", "Estimate monthly electricity bill from usage.", "Free electricity bill calculator.", "Home & Household",
+  mk("electricity-bill-calculator", "Electricity Bill Calculator", "Estimate monthly electricity bill from usage.", "Free electricity bill calculator. Enter usage in kWh, your rate per kWh, and fixed charges to estimate monthly, daily, and annual power costs.", "Home & Household",
     [{ id: "kwh", label: "Monthly kWh", type: "number", defaultValue: 900, step: 10 }, { id: "rate", label: "Rate ($/kWh)", type: "number", defaultValue: 0.12, step: 0.01 }, { id: "fixed", label: "Fixed Charges ($)", type: "number", defaultValue: 15, step: 1 }],
     (v) => { const usage = v.kwh * v.rate; const total = usage + v.fixed; return [{ label: "Monthly Bill", value: `$${total.toFixed(2)}`, highlight: true }, { label: "Usage Charge", value: `$${usage.toFixed(2)}` }, { label: "Daily Cost", value: `$${(total / 30).toFixed(2)}` }, { label: "Annual Estimate", value: `$${(total * 12).toLocaleString()}` }]; },
     { expression: "Bill = kWh × Rate + Fixed", variables: ["Average US home: 900 kWh/month"] }

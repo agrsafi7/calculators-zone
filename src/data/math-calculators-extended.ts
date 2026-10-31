@@ -1213,7 +1213,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
   // ===== STATISTICS =====
   {
     slug: "variance-calculator", name: "Variance Calculator", category: "Math", categorySlug: "math", subcategory: "Statistics",
-    description: "Calculate population and sample variance of a data set.", metaDescription: "Free variance calculator.", icon: "hash",
+    description: "Calculate population and sample variance of a data set.", metaDescription: "Free variance calculator. Enter a set of numbers to compute population variance, sample variance, and the mean of the data set.", icon: "hash",
     inputs: [
       { id: "v1", label: "Value 1", type: "number", defaultValue: 4 },
       { id: "v2", label: "Value 2", type: "number", defaultValue: 8 },
@@ -1618,7 +1618,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
   },
   {
     slug: "modulus-calculator", name: "Modulus Calculator", category: "Math", categorySlug: "math", subcategory: "Number Theory",
-    description: "Find the remainder when dividing a by b.", metaDescription: "Free modulus/remainder calculator.", icon: "hash",
+    description: "Find the remainder when dividing a by b.", metaDescription: "Free modulus calculator. Find the remainder and quotient when one number is divided by another, with a quick verification of the result.", icon: "hash",
     inputs: [
       { id: "a", label: "Dividend", type: "number", defaultValue: 29 },
       { id: "b", label: "Divisor", type: "number", defaultValue: 7 },
@@ -2043,7 +2043,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
   // ===== EDUCATION (GRADE CALCULATORS) =====
   {
     slug: "semester-grade-calculator", name: "Semester Grade Calculator", category: "Math", categorySlug: "math", subcategory: "Grade Calculators",
-    description: "Calculate your semester grade from assignment and exam scores.", metaDescription: "Free semester grade calculator.", icon: "hash",
+    description: "Calculate your semester grade from assignment and exam scores.", metaDescription: "Free semester grade calculator. Combine assignment, midterm, and final exam scores with their weights to get your semester percentage and letter grade.", icon: "hash",
     inputs: [
       { id: "assignments", label: "Assignments Score (%)", type: "number", defaultValue: 85 },
       { id: "aw", label: "Assignments Weight (%)", type: "number", defaultValue: 30 },
@@ -2066,7 +2066,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
   },
   {
     slug: "weighted-grade-calculator", name: "Weighted Grade Calculator", category: "Math", categorySlug: "math", subcategory: "Grade Calculators",
-    description: "Calculate a weighted average grade from multiple components.", metaDescription: "Free weighted grade calculator.", icon: "hash",
+    description: "Calculate a weighted average grade from multiple components.", metaDescription: "Free weighted grade calculator. Enter grades and their percentage weights to compute your weighted average and overall course grade.", icon: "hash",
     inputs: [
       { id: "g1", label: "Grade 1 (%)", type: "number", defaultValue: 90 }, { id: "w1", label: "Weight 1", type: "number", defaultValue: 20 },
       { id: "g2", label: "Grade 2 (%)", type: "number", defaultValue: 85 }, { id: "w2", label: "Weight 2", type: "number", defaultValue: 30 },
@@ -2207,7 +2207,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
   },
   {
     slug: "cgpa-calculator", name: "CGPA Calculator", category: "Math", categorySlug: "math", subcategory: "Grade Calculators",
-    description: "Calculate Cumulative Grade Point Average across semesters.", metaDescription: "Free CGPA calculator.", icon: "hash",
+    description: "Calculate Cumulative Grade Point Average across semesters.", metaDescription: "Free CGPA calculator. Enter each semester's GPA and credit hours to calculate your cumulative grade point average and total credits.", icon: "hash",
     inputs: [
       { id: "gpa1", label: "Sem 1 GPA", type: "number", defaultValue: 3.5, step: 0.1, max: 4 },
       { id: "cr1", label: "Sem 1 Credits", type: "number", defaultValue: 15 },
@@ -2300,7 +2300,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
   },
   {
     slug: "reading-time-calculator", name: "Reading Time Calculator", category: "Math", categorySlug: "math", subcategory: "Study & Academic Tools",
-    description: "Estimate how long it takes to read a text based on word count.", metaDescription: "Free reading time estimator.", icon: "hash",
+    description: "Estimate how long it takes to read a text based on word count.", metaDescription: "Free reading time calculator. Enter a word count and reading speed in words per minute to estimate how long a text takes to read and how many pages it is.", icon: "hash",
     inputs: [
       { id: "words", label: "Word Count", type: "number", defaultValue: 5000 },
       { id: "speed", label: "Reading Speed (words/min)", type: "number", defaultValue: 250 },
