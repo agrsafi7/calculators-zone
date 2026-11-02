@@ -1014,4 +1014,47 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
+  "moving-cost-calculator": [
+    {
+      heading: "What a move actually costs",
+      paragraphs: [
+        "Every professional moving quote is built from the same three parts: **labor** (the crew loading, carrying, and unloading), **transport** (the truck and the miles it drives), and **packing** (optional — the crew boxing up your belongings for you). This calculator estimates all three and adds them together, so you can see exactly where the money goes.",
+        "The single biggest distinction is **local versus long-distance**. Moves under **100 miles** are treated as local: crews charge by the room with a flat transport fee, which keeps short moves relatively cheap. Cross the 100-mile line and the move is priced as long-distance — labor costs more per room, and transport scales with every mile driven, which is why a cross-country move costs several times a same-city one.",
+        "The second big lever is **how much stuff you have**, measured here in rooms. Rooms drive all three cost lines at once, so the number of rooms in your current home matters more to the final price than almost anything else you can control.",
+      ],
+    },
+    {
+      heading: "How this calculator estimates your move",
+      paragraphs: [
+        "**Labor:** rooms × **$400** for a local move, or rooms × **$600** for a long-distance move. More rooms mean more furniture, more boxes, and more crew hours.",
+        "**Transport:** a flat **$500** for local moves. For long-distance moves it is **distance × $0.50 × (rooms × 1.5)** — the per-mile cost rises with the size of the load, because a fuller truck burns more fuel and needs a bigger vehicle.",
+        "**Packing:** optional professional packing at **$300 per room**. Set packing to No and this line drops to zero — you supply the boxes and do the work yourself.",
+        "Add the three lines and you get the estimated total. It is a planning estimate, not a quote: real movers also weigh the truck, count stairs, and charge for extras (see below), so use the figure to budget and to compare the quotes you collect.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "**Long-distance, 3 rooms (the page default):** moving **500 miles** with professional packing. Labor = 3 × $600 = **$1,800**. Transport = 500 × $0.50 × 4.5 = **$1,125**. Packing = 3 × $300 = **$900**. Total: **$3,825** — the same figure the calculator shows above. Pack the boxes yourself and the total falls to **$2,925**.",
+        "**Local, 2 rooms:** moving **30 miles** across town and packing yourself. Labor = 2 × $400 = **$800**, transport is the flat **$500**, packing $0 — total **$1,300**. Add professional packing (2 × $300) and it becomes **$1,900**.",
+        "**Cross-country, 4 rooms:** moving **1,200 miles** with professional packing. Labor = 4 × $600 = **$2,400**. Transport = 1,200 × $0.50 × 6 = **$3,600**. Packing = 4 × $300 = **$1,200**. Total: **$7,200**. Notice how transport overtakes labor once the distance gets long — on long moves, miles cost more than muscle.",
+      ],
+    },
+    {
+      heading: "Ways to bring the cost down",
+      paragraphs: [
+        "**Declutter before you count rooms.** Since rooms drive labor, transport, and packing at the same time, selling, donating, or dumping one room's worth of furniture before the move cuts all three lines at once. This is the highest-value thing you can do.",
+        "**Pack yourself.** Professional packing costs $300 per room on this calculator — $900 on a typical 3-room home. Boxes, tape, and a weekend of work usually cost far less. A middle option many movers offer is packing only the fragile rooms (kitchen and glassware) professionally.",
+        "**Be flexible on dates.** Movers are busiest at weekends and at the start and end of the month, when leases turn over. A mid-week, mid-month move is easier to book and often cheaper to quote — ask for both dates when you request prices.",
+        "**Get at least three quotes.** Estimates for the same move vary widely between companies. Compare each quote against the breakdown above: if one quote's transport line is double another's for the same distance, ask why before you sign.",
+      ],
+    },
+    {
+      heading: "What this estimate does not include",
+      paragraphs: [
+        "Real moving bills can add line items this calculator leaves out: **stairs or elevator fees**, long carries from door to truck, **storage** if the new home is not ready, **valuation coverage** (the mover's liability protection for damaged items), tolls and parking permits, and disassembly of specialty items like pianos, pool tables, or gym equipment. Budget a cushion on top of your estimate for these.",
+        "One protection worth knowing about: for **interstate moves in the US**, movers are required to give you a written estimate and the federal 'Your Rights and Responsibilities When You Move' booklet, and reputable movers will visit or video-survey your home before quoting. A company that quotes a full-house move from a two-minute phone call, sight unseen, is one to be careful with.",
+      ],
+    },
+  ],
 };

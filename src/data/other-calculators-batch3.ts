@@ -343,7 +343,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     slug: "moving-cost-calculator", name: "Moving Cost Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Real Estate",
     description: "Estimate moving costs based on distance and home size.",
-    metaDescription: "Free moving cost calculator.",
+    metaDescription: "Free moving cost calculator. Enter distance, number of rooms, and packing service to estimate your total moving cost with a full cost breakdown.",
     icon: "layers",
     inputs: [
       { id: "distance", label: "Distance (miles)", type: "number", defaultValue: 500 },
@@ -362,7 +362,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Packing Cost", value: v.packing ? fmt0(packing) : "DIY" },
       ];
     },
-    formula: defFormula, howToUse: "Enter distance, rooms, and packing preference.", faqs: defFaqs("Moving Cost Calculator"), relatedCalcs: b3Rel("moving-cost-calculator"),
+    formula: defFormula, howToUse: "Enter distance, rooms, and packing preference.", faqs: [
+      { question: "How much does it cost to move a 3-bedroom home 500 miles?", answer: "With professional packing, this calculator estimates $3,825: $1,800 labor (3 rooms at the $600 long-distance rate), $1,125 transport, and $900 packing (3 rooms × $300). Packing yourself drops the total to $2,925." },
+      { question: "How much does a local move cost?", answer: "Local moves (under 100 miles) are charged at $400 per room for labor plus a flat $500 for transport. A 2-room local move you pack yourself comes to $1,300; adding professional packing at $300 per room brings it to $1,900." },
+      { question: "How is the moving cost calculated?", answer: "The estimate adds three parts: labor (rooms × $400 local or × $600 long-distance), transport (a flat $500 locally, or distance × $0.50 × rooms × 1.5 long-distance), and optional professional packing at $300 per room." },
+    ], relatedCalcs: b3Rel("moving-cost-calculator"),
   },
   {
     slug: "closing-cost-calculator", name: "Closing Cost Calculator", category: "Other Calculators", categorySlug: "other",
