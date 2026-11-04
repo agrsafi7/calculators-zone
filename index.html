@@ -66,30 +66,39 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Non-blocking font CSS: paints with fallback fonts first, swaps when ready -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      media="print"
-      onload="this.media='all'"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      />
-    </noscript>
-
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557796717236108"
-         crossorigin="anonymous"></script>
+        <!-- Self-hosted fonts (2026-11-04 perf fix): @font-face for Inter / Geist / JetBrains Mono
+         served from /fonts — no third-party font origins in the critical path. -->
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/geist-700-latin.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/inter-400-latin.woff2" />
+    <!-- Google AdSense — lazy-loaded (2026-11-04 perf fix): the identical adsbygoogle.js
+         (same client, same attributes) is injected on first interaction, on load+idle,
+         or after a 4s fallback — whichever comes first — instead of competing with the
+         page's own content during initial load. ads.txt is unchanged. -->
+    <script>
+      (function () {
+        var loaded = false;
+        function loadAds() {
+          if (loaded) return; loaded = true;
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557796717236108";
+          s.crossOrigin = "anonymous";
+          document.head.appendChild(s);
+          ["pointerdown","keydown","scroll","touchstart"].forEach(function (e) {
+            window.removeEventListener(e, loadAds, { passive: true });
+          });
+        }
+        ["pointerdown","keydown","scroll","touchstart"].forEach(function (e) {
+          window.addEventListener(e, loadAds, { passive: true });
+        });
+        window.addEventListener("load", function () {
+          if ("requestIdleCallback" in window) requestIdleCallback(loadAds, { timeout: 3000 });
+          else setTimeout(loadAds, 1500);
+        });
+        setTimeout(loadAds, 4000);
+      })();
+    </script>
+  
   </head>
   <body>
     <div id="root">

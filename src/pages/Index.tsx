@@ -10,10 +10,10 @@ import { ArrowLeftRight, ArrowRight, BadgeCheck, Clock, FlaskConical, Home, Luci
 const totalCalcs = uniqueCalculators.length;
 
 const CATEGORY_IMAGES: Record<string, string> = {
-  finance: "https://lh3.googleusercontent.com/aida-public/AB6AXuCiVEwE0z5UThuB6Kp4dzOehehPrRbBJZKOZivzMq8Q7rFZ9I2qGb-4z-QjSK9N3l2PSEZiGZ7TsdzIDuUIma-jCF9pljhBUcV-utx1sEF5eD4W4eaOI5o4_wizxtNvTLXJNdyotT0xgVfTiDuDQYbrqaD1GxNnBQKBSz1b--HgHoUlsOBvh1ODKUHOkuqhcGxm4WIdfswbIW_2ixcY2mzPKAJ00CVM_N2PtXdzhVl_i67Yx_RwFfmo=w200",
-  health: "https://lh3.googleusercontent.com/aida-public/AB6AXuDGK_sBsDvtmwKepjEMXeYySXCsEmu9r0FN6nZWO00vGYRjemPdALqLRIiqsTTFGb3o0IZNCwMS3ieIts4OTgMk7VF9WhBc1MpqQGON4jQbWeIGZnCl8-QO8h3nXx5CmEElIsIKuq59cyUmlm1sL4ua_E50BbrxHhud6jmuZ3FIyN2kgn_otkIFpDKiRW-OACpvwoYRzwM0z6ilvBE7ff4Zmotrz78OIzTRUXCkaEwBRx7CJLhUiswR=w200",
-  math: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBng2iry8yhYtaA0BhItFPEIG97gbyp--Zh5rfqhGrPBIxNnHVh-p_twmW6HjxLpw_wBszeacQZ1VrYRSkxrSGNOq2PQbMsOpYBdWlLz3ulCdRAxqsDzAj9cfVYfTmKyXwDLk4sfhN-86UqpwfI8rJpZjPmO8k4KjzUYvNyEmz4vWQJ6nKskGnoL61kkPDRc6Zc7I0kpXewYSnDkmrYlg5Uw6lzoYewo26UyzndmomTv8hQh8PsG2E=w200",
-  other: "https://lh3.googleusercontent.com/aida-public/AB6AXuD1cPfaMmkKFwMWFwpCgKuWEAyKkTH_84snAQOQ_ayRYd4NrxBUgBiF-Lti9my-q9ey9XC9_kyvUv342LU5Wf2dLX6BcJbe0_kYBJ5phe9y_Kp7ziLOyZ5hWqkZB56LcV3uHYljb9Cd_HV77INijaTLcNfUfVy73vq63km0G7XDt-ZuH9VoqbfygBCucW_UytgX1xwjkVxzacyelklwzzB_rk1f2tj1epsxNBdAtCu8TZ37ky1gBajd=w200",
+  finance: "/images/categories/finance.webp",
+  health: "/images/categories/health.webp",
+  math: "/images/categories/math.webp",
+  other: "/images/categories/other.webp",
 };
 
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
