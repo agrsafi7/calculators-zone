@@ -184,7 +184,7 @@ const { default: Critters } = await import("critters");
 const critters = new Critters({
   path: dist,
   preload: "media",
-  inlineFonts: false,
+  inlineFonts: true,
   pruneSource: false,
 });
 let crittersDone = 0;
