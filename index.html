@@ -71,8 +71,8 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/geist-latin.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/inter-latin.woff2" />
     <!-- Google AdSense — lazy-loaded (2026-11-04 perf fix): the identical adsbygoogle.js
-         (same client, same attributes) is injected on first interaction, on load+idle,
-         or after a 4s fallback — whichever comes first — instead of competing with the
+         (same client, same attributes) is injected on first interaction
+         or after a 10s fallback — whichever comes first — instead of competing with the
          page's own content during initial load. ads.txt is unchanged. -->
     <script>
       (function () {
@@ -91,11 +91,7 @@
         ["pointerdown","keydown","scroll","touchstart"].forEach(function (e) {
           window.addEventListener(e, loadAds, { passive: true });
         });
-        window.addEventListener("load", function () {
-          if ("requestIdleCallback" in window) requestIdleCallback(loadAds, { timeout: 3000 });
-          else setTimeout(loadAds, 1500);
-        });
-        setTimeout(loadAds, 4000);
+        setTimeout(loadAds, 10000);
       })();
     </script>
   
@@ -149,5 +145,55 @@
       </main>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Cookie consent banner — STATIC since 2026-11-04 (perf fix v3). Previously a
+         React component that rendered only after hydration + a 1.2s delay, which made
+         its paragraph the page's LCP element at 3.4-6.4s. As static HTML it paints
+         with the page itself. The inline script replicates the old component exactly:
+         same localStorage key (tc-cookie-consent), same GA4 loader on Accept
+         (G-VHM46KC74B), banner removed pre-paint for returning visitors. -->
+    <div id="tc-cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" class="fixed bottom-4 left-4 right-4 sm:right-auto sm:max-w-md z-50 bg-card border border-border rounded-xl shadow-lg p-5">
+      <p class="text-sm font-semibold mb-1">We use cookies 🍪</p>
+      <p class="text-xs text-muted-foreground leading-relaxed mb-4">
+        We use cookies to keep the site working and remember your preferences. If you
+        accept, we also use Google Analytics to measure aggregate usage. See our
+        <a href="/privacy-policy" class="text-primary hover:underline font-medium">Privacy Policy</a>
+        for details.
+      </p>
+      <div class="flex gap-2">
+        <button id="tc-consent-accept" class="flex-1 py-2 bg-primary text-primary-foreground text-sm font-medium rounded-lg hover:opacity-90 transition-opacity">Accept</button>
+        <button id="tc-consent-decline" class="flex-1 py-2 border border-border text-sm font-medium rounded-lg hover:bg-secondary transition-colors">Decline</button>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var KEY = "tc-cookie-consent";
+        function loadGA() {
+          if (window.__tcGaLoaded) return;
+          window.__tcGaLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { window.dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag("js", new Date());
+          gtag("config", "G-VHM46KC74B");
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.googletagmanager.com/gtag/js?id=G-VHM46KC74B";
+          document.head.appendChild(s);
+        }
+        var banner = document.getElementById("tc-cookie-banner");
+        if (!banner) return;
+        var stored = null;
+        try { stored = localStorage.getItem(KEY); } catch (e) {}
+        if (stored === "accepted") { banner.remove(); loadGA(); return; }
+        if (stored === "declined") { banner.remove(); return; }
+        function choose(v) {
+          try { localStorage.setItem(KEY, v); } catch (e) {}
+          if (v === "accepted") loadGA();
+          banner.remove();
+        }
+        document.getElementById("tc-consent-accept").addEventListener("click", function () { choose("accepted"); });
+        document.getElementById("tc-consent-decline").addEventListener("click", function () { choose("declined"); });
+      })();
+    </script>
   </body>
 </html>

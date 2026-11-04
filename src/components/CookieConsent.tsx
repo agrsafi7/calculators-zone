@@ -1,3 +1,9 @@
+// NOTE (2026-11-04, perf fix v3): this component is NO LONGER MOUNTED. The cookie
+// banner now ships as static HTML in index.html (with a vanilla-JS consent script
+// replicating this component's behavior) because the post-hydration render made
+// the banner text the page's LCP element. This file is retained so Tailwind keeps
+// generating the banner's utility classes and as the behavior reference. Do not
+// re-mount without checking the LCP impact.
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { loadAnalytics } from "@/lib/analytics";

@@ -9,7 +9,6 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
-import CookieConsent from "@/components/CookieConsent";
 import ScrollToTop from "@/components/ScrollToTop";
 import PageLoadingSkeleton from "@/components/PageLoadingSkeleton";
 import PageTransition from "@/components/PageTransition";
@@ -54,7 +53,6 @@ export const AppShell = ({ children }: { children: ReactNode }) => (
         </main>
         <Footer />
         <BackToTop />
-        <CookieConsent />
       </div>
       <SpeedInsights />
     </TooltipProvider>
