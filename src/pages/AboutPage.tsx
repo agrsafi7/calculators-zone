@@ -24,6 +24,18 @@ const AboutPage = () => (
           that come up in daily life — without sign-ups, paywalls, or downloads.
         </p>
 
+        <h2 className="text-lg font-bold text-foreground mt-6">Who runs TheCalculator.us</h2>
+        <p>
+          TheCalculator.us is independently owned and operated by{" "}
+          <strong className="text-foreground">Yousuf Safi</strong>, the site's publisher.
+          The calculators, the in-depth guides, and the articles on our blog are all produced
+          and reviewed under his direction and published under the TheCalculator.us name —
+          there is no outside content farm or syndicated filler behind them. When a reader
+          reports an error through our contact page, the correction is checked against the
+          published formula the tool uses and the fix is verified against known reference
+          values before it goes live.
+        </p>
+
         <h2 className="text-lg font-bold text-foreground mt-6">How our calculators are built</h2>
         <p>
           Each calculator is developed individually and implements well-established, published

@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Calculator, CalendarDays, Clock3 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calculator, CalendarDays, Clock3, User } from "lucide-react";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import BlogBody from "@/components/BlogBody";
@@ -44,6 +44,9 @@ const BlogPost = () => {
         <span className="text-xs font-semibold text-primary uppercase tracking-wide">{post.category}</span>
         <h1 className="text-3xl md:text-4xl font-bold text-ink mt-2 mb-3 leading-tight">{post.title}</h1>
         <div className="flex items-center gap-4 text-sm text-ink-soft mb-8">
+          <span className="inline-flex items-center gap-1.5">
+            <User className="w-4 h-4" /> By TheCalculator.us
+          </span>
           <span className="inline-flex items-center gap-1.5">
             <CalendarDays className="w-4 h-4" /> {formatDate(post.date)}
           </span>
