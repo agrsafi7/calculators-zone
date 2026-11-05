@@ -71,30 +71,10 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/geist-latin.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/inter-latin.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/jetbrains-mono-latin.woff2" />
-    <!-- Google AdSense — lazy-loaded (2026-11-04 perf fix): the identical adsbygoogle.js
-         (same client, same attributes) is injected on first interaction
-         or after a 10s fallback — whichever comes first — instead of competing with the
-         page's own content during initial load. ads.txt is unchanged. -->
-    <script>
-      (function () {
-        var loaded = false;
-        function loadAds() {
-          if (loaded) return; loaded = true;
-          var s = document.createElement("script");
-          s.async = true;
-          s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557796717236108";
-          s.crossOrigin = "anonymous";
-          document.head.appendChild(s);
-          ["pointerdown","keydown","scroll","touchstart"].forEach(function (e) {
-            window.removeEventListener(e, loadAds, { passive: true });
-          });
-        }
-        ["pointerdown","keydown","scroll","touchstart"].forEach(function (e) {
-          window.addEventListener(e, loadAds, { passive: true });
-        });
-        setTimeout(loadAds, 10000);
-      })();
-    </script>
+    <!-- Google AdSense — static snippet (restored 2026-11-05, AdSense audit Deploy 1):
+         the Nov 4 interaction/10s lazy-load injection is reverted so the code is
+         present in the served HTML exactly as when the site was verified. -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557796717236108" crossorigin="anonymous"></script>
   
   </head>
   <body>

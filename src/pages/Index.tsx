@@ -130,7 +130,7 @@ const Index = () => {
                 <div className="bg-surface-low rounded-lg p-4">
                   <div className="flex items-center gap-1.5 text-[11px] text-ink-soft uppercase tracking-wider mb-2 font-medium">
                     <TrendingUp size={14} className="text-primary" />
-                    <span>Most Popular Today</span>
+                    <span>Popular Calculators</span>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {POPULAR_TODAY.map((p) => (
@@ -148,7 +148,7 @@ const Index = () => {
               <div className="bg-primary text-white rounded-xl p-4 shadow-sm flex items-center justify-between">
                 <div className="flex flex-col">
                   <span className="font-display text-[15px] font-semibold">Universal Accuracy</span>
-                  <span className="text-[12px] opacity-90">Validated against IEEE 754 precision norms</span>
+                  <span className="text-[12px] opacity-90">Tested against known reference values</span>
                 </div>
                 <BadgeCheck size={32} className="opacity-80" />
               </div>

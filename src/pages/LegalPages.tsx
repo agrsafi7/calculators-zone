@@ -34,13 +34,13 @@ export const PrivacyPolicy = () => (
     description="Privacy Policy for TheCalculator.us — what data we collect, how cookies work, and your choices."
     canonical="/privacy-policy"
   >
-    <p><strong className="text-foreground">Last updated:</strong> October 29, 2026</p>
+    <p><strong className="text-foreground">Last updated:</strong> November 5, 2026</p>
     <p>
       TheCalculator.us ("we", "us", or "our") operates the thecalculator.us website (the
       "Service"). This Privacy Policy explains what information we collect, how we use it,
-      and the choices you have. We have applied to Google AdSense and placed its
-      verification code on the site; no ads are displayed yet while the application is
-      under review. We use Google Analytics to understand
+      and the choices you have. We applied to Google AdSense and placed its
+      verification code on the site; that application was not approved, and no ads
+      are displayed on the site. We use Google Analytics to understand
       aggregate usage, but only for visitors who accept cookies.
     </p>
 
@@ -65,8 +65,8 @@ export const PrivacyPolicy = () => (
 
     <h2 className="text-lg font-bold text-foreground mt-6">Advertising</h2>
     <p>
-      No ads are currently displayed on TheCalculator.us while our Google AdSense
-      application is under review. The information below describes what will apply if
+      No ads are currently displayed on TheCalculator.us. We applied to Google
+      AdSense and the application was not approved. The information below describes what will apply if
       advertising is approved and begins — including Google's advertising cookies such
       as the{" "}
       <strong className="text-foreground">DoubleClick DART cookie</strong>.

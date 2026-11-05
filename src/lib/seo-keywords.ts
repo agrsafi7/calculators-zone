@@ -33,7 +33,7 @@ export const categorySEOData: Record<string, CategorySEO> = {
       "Canadian tax calculator 2025", "US salary after tax calculator",
       "UK stamp duty calculator", "Australian superannuation calculator",
     ],
-    contentIntro: `Our finance calculators help you make smarter money decisions. Whether you're calculating mortgage payments for a new home in the US, UK, Canada, or Australia, estimating your take-home salary after taxes, or planning retirement savings, our tools provide instant and accurate results. Millions of users trust our financial calculators for budgeting, investing, and debt management.`,
+    contentIntro: `Our finance calculators help you make smarter money decisions. Whether you're calculating mortgage payments for a new home in the US, UK, Canada, or Australia, estimating your take-home salary after taxes, or planning retirement savings, our tools provide instant and accurate results. Each tool shows the formula it uses, so you can see exactly how your result is calculated.`,
     relatedCategories: [
       { name: "Math & Education", slug: "math" },
       { name: "Lifestyle", slug: "lifestyle" },
