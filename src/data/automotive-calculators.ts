@@ -8,7 +8,7 @@ const fmt0 = (n: number) =>
 const autoRelated = (exclude: string) => [
   { name: "Fuel Cost Calculator", slug: "fuel-cost-calculator", icon: "car", category: "automotive" },
   { name: "Car Depreciation", slug: "car-depreciation-calculator", icon: "car", category: "automotive" },
-  { name: "MPG Calculator", slug: "mpg-calculator", icon: "car", category: "automotive" },
+  { name: "Gas Mileage Calculator", slug: "gas-mileage-calculator", icon: "car", category: "lifestyle" },
   { name: "Tire Size Calculator", slug: "tire-size-calculator", icon: "car", category: "automotive" },
 ].filter((c) => c.slug !== exclude);
 
@@ -75,36 +75,6 @@ export const automotiveCalculators: CalculatorConfig[] = [
       { question: "When does a car lose the most value?", answer: "A new car loses the most value in the first year (20-30%), and then about 15% per year after that. After 5 years, most cars have lost about 60% of their original value." },
     ],
     relatedCalcs: autoRelated("car-depreciation-calculator"),
-  },
-  {
-    slug: "mpg-calculator",
-    name: "MPG Calculator",
-    category: "Automotive",
-    categorySlug: "automotive",
-    description: "Calculate your vehicle's miles per gallon fuel efficiency based on miles driven and fuel used.",
-    metaDescription: "Free MPG calculator. Calculate your vehicle's fuel efficiency by entering miles driven and gallons of gas used.",
-    icon: "car",
-    inputs: [
-      { id: "miles", label: "Miles Driven", type: "number", defaultValue: 350 },
-      { id: "gallons", label: "Gallons Used", type: "number", defaultValue: 12, step: 0.1 },
-    ],
-    calculate: (v) => {
-      const mpg = v.miles / v.gallons;
-      const kpl = mpg * 0.425144;
-      const l100km = 235.215 / mpg;
-      return [
-        { label: "Fuel Efficiency", value: mpg.toFixed(1) + " MPG", highlight: true },
-        { label: "Km per Liter", value: kpl.toFixed(1) + " km/L" },
-        { label: "Liters per 100km", value: l100km.toFixed(1) + " L/100km" },
-      ];
-    },
-    formula: { expression: "MPG = Miles Driven ÷ Gallons Used", variables: ["Miles = Total miles driven between fill-ups", "Gallons = Total gallons of fuel consumed"] },
-    howToUse: "Fill your tank, reset your trip odometer, drive normally, then fill up again. Enter the miles driven and gallons used.",
-    faqs: [
-      { question: "What's a good MPG for a car?", answer: "For a passenger car, 30+ MPG is considered good. SUVs average 20-25 MPG. Hybrids can achieve 40-60+ MPG. Electric vehicles don't use MPG but have MPGe ratings." },
-      { question: "How can I improve my MPG?", answer: "Maintain proper tire pressure, avoid aggressive driving, remove excess weight, use cruise control on highways, keep up with regular maintenance, and avoid excessive idling." },
-    ],
-    relatedCalcs: autoRelated("mpg-calculator"),
   },
   {
     slug: "tire-size-calculator",

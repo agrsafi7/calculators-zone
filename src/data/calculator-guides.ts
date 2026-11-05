@@ -784,23 +784,6 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
-  "mpg-calculator": [
-    {
-      heading: "How to calculate MPG",
-      paragraphs: [
-        "This MPG calculator uses the only formula that matters: **MPG = miles driven ÷ gallons used**. Fill the tank, reset the trip odometer, drive normally, refill, and divide.",
-        "**Example:** you drive **320 miles** and the refill takes **12.5 gallons**. 320 ÷ 12.5 = **25.6 MPG**. Track this over several tanks — a single fill-up is noisy because pumps click off at different points.",
-      ],
-    },
-    {
-      heading: "What affects your MPG most",
-      paragraphs: [
-        "Speed is the biggest lever: most cars peak around **45–55 mph**, and fuel economy drops roughly 15% going from 55 to 75 mph. Under-inflated tires cost 1–3%, aggressive acceleration and braking cost up to 30% in city driving, and a roof box can cost 10–25% at highway speeds.",
-        "Use your numbers to price decisions: at **$3.50/gallon**, improving from 20 to 25 MPG over 12,000 miles/year saves (12,000/20 − 12,000/25) × 3.50 = (600 − 480) × 3.50 = **$420/year**.",
-      ],
-    },
-  ],
-
   "gas-mileage-calculator": [
     {
       heading: "From MPG to dollars: your cost per mile",
@@ -1054,6 +1037,373 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "Real moving bills can add line items this calculator leaves out: **stairs or elevator fees**, long carries from door to truck, **storage** if the new home is not ready, **valuation coverage** (the mover's liability protection for damaged items), tolls and parking permits, and disassembly of specialty items like pianos, pool tables, or gym equipment. Budget a cushion on top of your estimate for these.",
         "One protection worth knowing about: for **interstate moves in the US**, movers are required to give you a written estimate and the federal 'Your Rights and Responsibilities When You Move' booklet, and reputable movers will visit or video-survey your home before quoting. A company that quotes a full-house move from a two-minute phone call, sight unseen, is one to be careful with.",
+      ],
+    },
+  ],
+  "simple-interest-calculator": [
+    {
+      heading: "How simple interest works",
+      paragraphs: [
+        "Simple interest is calculated only on the original amount you put in or borrow: **Interest = Principal x Rate x Time (I = P x R x T)**. Unlike compound interest, the interest you earn never starts earning interest of its own, so growth is a straight line — the same dollar amount every year. You will meet simple interest in short-term personal loans, some car loans, certain bonds and CDs, and late-payment charges.",
+        "Because time sits in the formula as a simple multiplier, doubling the term exactly doubles the interest. That makes simple interest easy to sanity-check in your head before you ever open a calculator.",
+      ],
+    },
+    {
+      heading: "Worked example: $5,000 at 5% for 3 years",
+      paragraphs: [
+        "Using this page's starting values — **principal $5,000, rate 5%, time 3 years** — the interest is 5,000 x 0.05 x 3 = **$750.00**. The total value at the end is $5,000 + $750 = **$5,750.00**, and spread evenly that is **$20.83 of interest per month** ($250 per year, every year).",
+        "For periods shorter than a year, enter time as a fraction: 6 months is 0.5 years, so the same deposit would earn 5,000 x 0.05 x 0.5 = $125.00.",
+      ],
+    },
+    {
+      heading: "Simple vs compound interest",
+      paragraphs: [
+        "Run the same numbers through the Compound Interest Calculator and the difference shows up fast: $5,000 at 5% compounded yearly for 3 years grows to $5,788.13 — **$788.13 of interest instead of $750**. The gap looks small over 3 years but widens every year, because compound interest pays interest on interest.",
+        "Rule of thumb: if a product quotes simple interest on a **loan**, that is usually good for you. If it quotes simple interest on your **savings**, a compounding product will almost always beat it over time.",
+      ],
+    },
+  ],
+  "savings-calculator": [
+    {
+      heading: "How the savings projection is calculated",
+      paragraphs: [
+        "This calculator compounds your money **monthly** and adds a deposit every month. The future value combines two engines: your starting balance growing at the monthly rate, and each monthly deposit growing for the months it has left in the account — **FV = P(1+r)^n + D x [(1+r)^n - 1] / r**, where r is the annual rate divided by 12 and n is the number of months.",
+        "That second engine is why regular deposits beat occasional lump sums for most people: a deposit made in month 1 compounds 119 more times than the same deposit made in month 120.",
+      ],
+    },
+    {
+      heading: "Worked example: $5,000 plus $300 a month for 10 years",
+      paragraphs: [
+        "With this page's starting values — **$5,000 initial savings, $300 monthly deposit, 4.5% interest, 10 years** — you put in $5,000 + (300 x 120) = **$41,000** of your own money. Interest adds **$12,194**, for a future balance of **$53,194**.",
+        "Notice the split: deposits did most of the work (77% of the final balance). Early in any savings plan, your contributions matter far more than the rate — which is good news, because the deposit is the part you control.",
+      ],
+    },
+    {
+      heading: "Making the projection realistic",
+      paragraphs: [
+        "The projection assumes a steady rate and no withdrawals, taxes, or fees. High-yield savings accounts currently sit near the 4.5% used above, but rates move — re-run the numbers when your account's rate changes.",
+        "Sensitivity check: adding **$100 a month** to the example above (deposit $400 instead of $300) lifts the 10-year balance by about **$15,120** — $12,000 of extra deposits plus roughly $3,120 of extra interest. When in doubt, raise the deposit before chasing a higher rate.",
+      ],
+    },
+  ],
+  "house-affordability-calculator": [
+    {
+      heading: "The 28/36 rule behind this calculator",
+      paragraphs: [
+        "Lenders judge affordability with two ratios. The **front-end ratio** caps your housing payment at 28% of gross monthly income. The **back-end ratio** caps housing plus all other monthly debts at 36%. This calculator works out both caps, subtracts your existing debts from the 36% cap, and uses whichever result is **lower** as your maximum monthly payment.",
+        "It then converts that payment into a loan amount with the standard amortization formula and adds your down payment to give a maximum home price.",
+      ],
+    },
+    {
+      heading: "Worked example: $85,000 income, $500 of monthly debts",
+      paragraphs: [
+        "Using this page's starting values — **$85,000 income, $500/month existing debts, $50,000 down payment, 6.5% rate, 30-year term**: monthly income is $7,083.33. The 28% cap allows **$1,983.33/month**; the 36% cap allows $2,550 minus $500 of debts = $2,050. The 28% rule is the binding one.",
+        "A $1,983.33 payment at 6.5% over 30 years supports a loan of **$313,785**. Add the $50,000 down payment and the maximum home price is **$363,785**, with a back-end debt-to-income ratio of 35.06% at that payment.",
+      ],
+    },
+    {
+      heading: "What this estimate leaves out",
+      paragraphs: [
+        "The maximum payment here is **principal and interest only**. Real ownership adds property tax, homeowner's insurance, HOA dues, and — with less than 20% down — usually private mortgage insurance (PMI). Budgeting those on top typically brings the comfortable price well below the calculator's ceiling.",
+        "Lenders also vary: some approve back-end ratios of 43–50% for borrowers with strong credit and reserves, and every 0.5% move in the interest rate changes the affordable loan by tens of thousands of dollars. Treat the result as a planning ceiling, not a target.",
+      ],
+    },
+  ],
+  "tdee-calculator": [
+    {
+      heading: "How TDEE is calculated",
+      paragraphs: [
+        "TDEE (Total Daily Energy Expenditure) starts from your **BMR** — the calories your body burns at complete rest — estimated here with the **Mifflin-St Jeor equation**: BMR = 10 x weight(kg) + 6.25 x height(cm) - 5 x age, plus 5 for men or minus 161 for women. That BMR is then multiplied by an activity factor: 1.2 (sedentary), 1.375 (light), 1.55 (moderate), 1.725 (heavy), or 1.9 (athlete).",
+        "The multiplier covers your job, daily movement, exercise, and digestion — everything your body spends energy on across a normal day.",
+      ],
+    },
+    {
+      heading: "Worked example: a moderately active 28-year-old",
+      paragraphs: [
+        "Using this page's starting values — **male, 28 years, 75 kg, 175 cm, moderate activity (x1.55)**: BMR = (10 x 75) + (6.25 x 175) - (5 x 28) + 5 = 750 + 1,093.75 - 140 + 5 = **1,709 cal/day**. Multiply by 1.55 and TDEE is **2,649 cal/day**, or **18,540 cal per week**.",
+        "Eating at 2,649 a day should hold this person at roughly 75 kg. Eating below it creates a deficit; above it, a surplus.",
+      ],
+    },
+    {
+      heading: "Using TDEE for weight goals",
+      paragraphs: [
+        "A common starting point is a **deficit of about 500 cal/day** below TDEE for steady weight loss (roughly 0.5 kg, or about 1 lb, per week) or a surplus of 250–500 cal/day for gradual muscle gain. Avoid dropping below your BMR for extended periods without medical guidance.",
+        "TDEE is an estimate, not a measurement — real values vary by around 10% between individuals. Track your weight and intake for 2–3 weeks and adjust the number by 100–200 cal based on what actually happens. One common mistake: TDEE already includes exercise, so do not add workout calories on top.",
+      ],
+    },
+  ],
+  "ideal-weight-calculator": [
+    {
+      heading: "Four classic formulas, one useful range",
+      paragraphs: [
+        "This calculator runs your height through the four best-known ideal-weight formulas — **Devine (1974), Robinson (1983), Miller (1983), and Hamwi (1964)**. Each starts from a base weight at 5 ft (60 inches) and adds a fixed amount per inch above that: Devine adds 2.3 kg per inch for men, Robinson 1.9 kg, Miller 1.41 kg, and Hamwi 2.7 kg (with lower bases and increments for women).",
+        "The formulas were originally developed for clinical work such as drug dosing, which is why they still anchor many medical references today.",
+      ],
+    },
+    {
+      heading: "Worked example: a man who is 175 cm tall",
+      paragraphs: [
+        "Using this page's starting values — **male, 175 cm**: 175 cm is 68.9 inches, so 8.9 inches over the 5 ft base. The formulas give **Devine 70.5 kg, Robinson 68.9 kg, Miller 68.7 kg, and Hamwi 72.0 kg**, for an average of **70.0 kg**.",
+        "That 3.3 kg spread between the lowest and highest formula is the real lesson: even the classic references disagree, so treat ideal weight as a **range around 69–72 kg** for this height, not a single magic number.",
+      ],
+    },
+    {
+      heading: "How to use the result sensibly",
+      paragraphs: [
+        "Height-only formulas cannot see your frame size, muscle mass, or body composition — a rugby player and a distance runner of the same height will land in different healthy places. Cross-check with the **BMI Calculator**: for 175 cm, the healthy BMI band (18.5–24.9) spans roughly 56.7–76.3 kg, a wider and more forgiving window than any single formula.",
+        "Use ideal weight as orientation for a conversation with your doctor or dietitian, not as a target to chase at all costs.",
+      ],
+    },
+  ],
+  "water-intake-calculator": [
+    {
+      heading: "How your daily water target is built",
+      paragraphs: [
+        "This calculator starts with a widely used baseline of **35 ml of water per kilogram of body weight**, then adds **350 ml for every 30 minutes of exercise**, plus a climate adjustment: **+500 ml for hot or humid conditions** and +250 ml for cold conditions, since both increase water loss in ways people underestimate.",
+        "The result is shown in millilitres, litres, US cups, and ounces so it works with whatever bottle or tracker you actually use.",
+      ],
+    },
+    {
+      heading: "Worked example: 70 kg with 30 minutes of exercise",
+      paragraphs: [
+        "Using this page's starting values — **70 kg body weight, 30 minutes of exercise, temperate climate**: baseline is 70 x 35 = 2,450 ml, exercise adds 350 ml, and the climate adds nothing, for a total of **2,800 ml per day — 2.8 litres, about 11 cups, or 95 oz**.",
+        "On a hot day the same person would be shown 3,300 ml instead — the extra 500 ml is roughly one standard water bottle.",
+      ],
+    },
+    {
+      heading: "Thirst, food, and when to ignore the target",
+      paragraphs: [
+        "A portion of your daily water normally arrives via food and other drinks, so the calculator's figure is a guide for total intake rather than a strict glasses-of-water quota. Pale-straw urine through the day is a practical sign you are in the right zone.",
+        "Spread intake across the day instead of drinking large amounts at once, and follow medical advice over any calculator if you have kidney, heart, or fluid-restriction conditions.",
+      ],
+    },
+  ],
+  "standard-deviation-calculator": [
+    {
+      heading: "What standard deviation measures",
+      paragraphs: [
+        "Standard deviation (SD) tells you how spread out a set of numbers is around its mean. A small SD means values cluster tightly; a large SD means they scatter widely. The calculation: find the **mean**, subtract it from every value and square the result, average those squares to get the **variance**, then take the square root.",
+        "This calculator uses the **population** formula (dividing by N), which is the right choice when your values are the complete set you care about — all exam scores in a class, every day of a month — rather than a sample of something bigger.",
+      ],
+    },
+    {
+      heading: "Worked example: 10, 12, 23, 23, 16",
+      paragraphs: [
+        "Using this page's starting values: the mean is (10 + 12 + 23 + 23 + 16) / 5 = **16.8000**. The squared differences from the mean — 46.24, 23.04, 38.44, 38.44, 0.64 — add up to 146.8, so the variance is 146.8 / 5 = **29.3600** and the standard deviation is the square root of that: **5.4185**.",
+        "In plain terms, a typical value in this set sits about 5.4 points away from the mean of 16.8. The two 23s do most of the pulling — remove them and the spread collapses.",
+      ],
+    },
+    {
+      heading: "Population vs sample, and the 68% rule",
+      paragraphs: [
+        "If your numbers are a **sample** meant to represent a larger group, statisticians divide by N - 1 instead (the sample standard deviation). For the example above that gives the square root of (146.8 / 4) = **6.06** — noticeably larger, because it corrects for the sample underestimating the true spread.",
+        "For roughly bell-shaped data, about **68% of values fall within 1 SD of the mean** and about 95% within 2 SD — a quick way to judge whether a new value is ordinary or an outlier.",
+      ],
+    },
+  ],
+  "probability-calculator": [
+    {
+      heading: "Combining two independent events",
+      paragraphs: [
+        "This calculator answers three questions about two events, A and B. **Both happen (AND):** multiply — P(A and B) = P(A) x P(B). **Either happens (OR):** add, then subtract the overlap so it is not counted twice — P(A or B) = P(A) + P(B) - P(A and B). **A does not happen:** P(not A) = 1 - P(A).",
+        "These rules assume the events are **independent** — one outcome does not change the other's odds, like two separate coin flips or two dice rolled together.",
+      ],
+    },
+    {
+      heading: "Worked example: P(A) = 0.5 and P(B) = 0.3",
+      paragraphs: [
+        "Using this page's starting values: **P(both) = 0.5 x 0.3 = 15.00%**. **P(either) = 0.5 + 0.3 - 0.15 = 65.00%**. **P(not A) = 50.00%**.",
+        "In concrete terms, imagine A = flipping heads (0.5) and B = rolling a 1 or 2 on a die (2/6 = 0.333). Heads-and-a-low-roll would be 0.5 x 0.333 = 16.7% — the multiplication rule working exactly as above.",
+      ],
+    },
+    {
+      heading: "When the simple rules break",
+      paragraphs: [
+        "If the events influence each other, the multiplication rule needs adjusting: drawing a second card **without replacing** the first changes the deck, so the second probability must use the new totals. And if the events are **mutually exclusive** (they cannot both happen, like rolling a 2 versus rolling a 5), then P(A or B) is simply P(A) + P(B), because the overlap is zero.",
+        "Enter probabilities as decimals between 0 and 1 (50% = 0.5). A result can never exceed 100% — if it does, the events are probably not independent.",
+      ],
+    },
+  ],
+  "date-difference-calculator": [
+    {
+      heading: "How the difference between two dates is counted",
+      paragraphs: [
+        "The calculator converts both dates to timestamps and takes the **absolute difference**, so the order you enter them in never matters. It reports the gap in **days**, then re-expresses it as weeks plus leftover days, approximate months (using the average month length of 30.44 days), and hours.",
+        "Following the standard convention, it counts the days **between** the dates — the end date itself is not double-counted. Jan 1 to Jan 2 is 1 day, not 2.",
+      ],
+    },
+    {
+      heading: "Worked example: Jan 1, 2024 to Jan 1, 2025",
+      paragraphs: [
+        "Using this page's starting dates: the gap is **366 days** — not 365 — because 2024 is a **leap year** and Feb 29 falls inside the span. That is **52 weeks and 2 days**, about **12 months**, or **8,784 hours**.",
+        "Run the same one-year span from Jan 1, 2025 to Jan 1, 2026 and you get 365 days (8,760 hours). Leap years are the most common reason a familiar date range surprises people.",
+      ],
+    },
+    {
+      heading: "Everyday uses and the off-by-one trap",
+      paragraphs: [
+        "Date differences drive project timelines, countdowns, rental and loan periods, age in days, and deadlines like '90 days from signing'. The classic trap is **inclusive counting**: if a contract gives you 30 days starting Monday, whether day 30 is a Wednesday or Thursday depends on whether the start day counts — this calculator counts elapsed days, which matches most legal and banking conventions.",
+        "For working-day counts (excluding weekends), use the Business Days Calculator instead.",
+      ],
+    },
+  ],
+  "sleep-calculator": [
+    {
+      heading: "Why bedtime math runs in 90-minute cycles",
+      paragraphs: [
+        "Sleep runs in cycles of light sleep, deep sleep, and REM (dream) sleep, each lasting **about 90 minutes**. Waking in the middle of deep sleep is what produces that groggy, heavy feeling; waking near the end of a cycle feels noticeably lighter even on the same total sleep.",
+        "This calculator works backwards from your wake-up time, subtracting whole cycles **and** the time you typically need to fall asleep, to offer bedtimes that land on cycle boundaries: 6, 5, or 4 cycles.",
+      ],
+    },
+    {
+      heading: "Worked example: waking at 7:00 AM",
+      paragraphs: [
+        "Using this page's starting values — **wake at 7:00, 15 minutes to fall asleep**: for **6 cycles (9.0 h)** of sleep, be in bed by **21:45**. For **5 cycles (7.5 h)**, bedtime is **23:15**. For **4 cycles (6.0 h)**, it is **00:45**.",
+        "The 5- and 6-cycle options bracket the 7–9 hours most adults need. The 4-cycle option is a floor for a short night, not a routine to aim for.",
+      ],
+    },
+    {
+      heading: "Using the results well",
+      paragraphs: [
+        "Consistency beats perfection: a regular wake time anchors your cycle timing better than chasing one ideal bedtime. If you regularly need far more than 20–30 minutes to fall asleep, earlier screens-off time and a cooler, darker room usually help more than moving the bedtime.",
+        "Cycle length is an average — individuals vary roughly between 80 and 120 minutes — so treat the suggested times as a starting window and adjust by 10–15 minutes based on how you actually wake up.",
+      ],
+    },
+  ],
+  "love-calculator": [
+    {
+      heading: "How this score is generated — honestly",
+      paragraphs: [
+        "No mystery and no psychology: this is a **just-for-fun game**. The score is produced by a fixed arithmetic recipe using only the **number of letters in each name**. The same two name lengths always produce the same score, whoever the names belong to — that is the tell that it is a novelty, not a measurement of anyone's relationship.",
+        "It cannot see how two people treat each other, communicate, or show up on a bad day — the things that actually decide compatibility.",
+      ],
+    },
+    {
+      heading: "Worked example: Alex and Jordan",
+      paragraphs: [
+        "Try **Alex (4 letters)** and **Jordan (6 letters)**: the recipe returns **84%** — the 'Amazing chemistry!' band. The page's starting values, two names of 5 and 7 letters, return **16%**. Same effort, wildly different verdicts — because the verdict is about spelling length, not about the people.",
+        "Swap in different names with the **same letter counts** and you will get identical scores, every time. That is by design.",
+      ],
+    },
+    {
+      heading: "What actually predicts a good match",
+      paragraphs: [
+        "Decades of relationship research point to unglamorous factors: how a couple handles conflict, whether both feel heard, shared values and goals, and plain kindness under stress. None of them fit in a name — and, as this page's own FAQ puts it, a low score means nothing and a high score guarantees nothing.",
+        "Enjoy the number as an icebreaker, and judge the real thing by real life.",
+      ],
+    },
+  ],
+  "ohms-law-calculator": [
+    {
+      heading: "Ohm's law and the power rule",
+      paragraphs: [
+        "Ohm's law links the three core quantities of a simple circuit: **V = I x R** — voltage (volts) equals current (amps) times resistance (ohms). Add the power rule **P = V x I** and you can derive the fourth quantity, power in watts. This calculator takes voltage and resistance and returns **current, power, and current in milliamps**.",
+        "The triangle mnemonic helps: cover the value you want, and the remaining two show you the operation — cover I and you see V over R; cover R and you see V over I.",
+      ],
+    },
+    {
+      heading: "Worked example: 12 volts across 4 ohms",
+      paragraphs: [
+        "Using this page's starting values — **voltage 12 V, resistance 4 ohms**: current = 12 / 4 = **3.0000 A** (that is **3,000.00 mA**), and power = 12 x 3 = **36.00 W**.",
+        "That is a typical 12 V automotive-style circuit. It also tells you the fuse story: a circuit drawing 3 A needs a fuse rated comfortably above 3 A — and wiring and components rated for at least 36 W of heat.",
+      ],
+    },
+    {
+      heading: "Why the power number deserves respect",
+      paragraphs: [
+        "Power is the heat your components must shed. Doubling the voltage on a fixed resistance **doubles the current and quadruples the power**: at 24 V across the same 4 ohms, current is 6 A and power jumps to 144 W. A common quarter-watt resistor in a 36 W role does not get warm — it fails.",
+        "Resistance can never be zero in this calculation: a zero-resistance path is a short circuit, where current is limited only by the power source itself.",
+      ],
+    },
+  ],
+  "force-calculator": [
+    {
+      heading: "Newton's second law: F = m x a",
+      paragraphs: [
+        "Force is what it takes to change an object's motion, and Newton's second law sizes it exactly: **Force (N) = mass (kg) x acceleration (m/s squared)**. One newton is the force needed to accelerate a 1 kg mass by 1 m/s every second. This calculator also shows the object's **weight** — the gravitational force on it at Earth's surface gravity — for comparison.",
+        "Keep the vocabulary straight: mass (kg) is how much matter an object has and never changes; weight (N) is a force and depends on gravity.",
+      ],
+    },
+    {
+      heading: "Worked example: a 10 kg mass at 9.81 m/s squared",
+      paragraphs: [
+        "Using this page's starting values — **mass 10 kg, acceleration 9.81 m/s squared**: F = 10 x 9.81 = **98.10 N**. Because the acceleration entered is exactly Earth's g, the force equals the mass's weight: also **98.10 N**.",
+        "For a feel of the unit: a 1 kg bag of sugar weighs about **9.81 N** on Earth — call it roughly 10 N. Our 10 kg mass presses down with the force of ten such bags.",
+      ],
+    },
+    {
+      heading: "Same mass, different worlds",
+      paragraphs: [
+        "Take the 10 kg mass to the Moon (g = 1.62 m/s squared) and its weight drops to **16.2 N**, while its mass stays exactly 10 kg — which is why astronauts can bounce in heavy suits there but would still struggle to stop a rolling 10 kg equipment case: stopping it takes the same force, because inertia depends on mass, not weight.",
+        "Net force is what matters: if forces balance (pushes cancel out), acceleration is zero no matter how large the individual forces are.",
+      ],
+    },
+  ],
+  "pet-age-calculator": [
+    {
+      heading: "Why the 'multiply by 7' rule fails pets",
+      paragraphs: [
+        "Pets mature far faster than humans in their first two years, then settle into a steadier pace. This calculator's model: **year 1 counts as about 15 human years, year 2 brings the total to 24**, and each year after that adds a rate that depends on what you have — **4 per year for small dogs, 5 for medium dogs, 6 for large dogs, and 4 for cats**.",
+        "That is why a single combined page like this one asks for pet type first: the same birthday means very different life stages for a Chihuahua and a Great Dane.",
+      ],
+    },
+    {
+      heading: "Worked example: three different 5-year-olds",
+      paragraphs: [
+        "Using this page's starting age of **5 years**: a **small dog** converts to 24 + (3 x 4) = **36 human years** (Adult). A **medium dog** converts to 24 + (3 x 5) = **39**. A **cat** converts to 24 + (3 x 4) = **36 human years**.",
+        "The size gap widens with age: by 12 years, a small dog is at 64 human-equivalent years while a large dog is at 84 — a two-decade difference from the same birth date.",
+      ],
+    },
+    {
+      heading: "Getting a more specific answer",
+      paragraphs: [
+        "For dogs, the **Dog Age Calculator** goes deeper, with four size classes including giant breeds and full life-stage detail. For cats, the **Cat Age Calculator** adds cat-specific stages from Kitten to Geriatric. Use this page for a quick combined estimate, and the species pages when the details matter — senior care, diet changes, and vet schedules are all timed by life stage, not birthdays.",
+      ],
+    },
+  ],
+  "dog-age-calculator": [
+    {
+      heading: "The dog-age model this calculator uses",
+      paragraphs: [
+        "A dog's first year is worth about **15 human years** and the second adds **9 more (24 total)** — dogs are effectively young adults by age two. After that, each year adds an amount set by **size class: 4 for small dogs, 5 for medium, 6 for large, and 7 for giant breeds**. Size, not just age, is the driver: big dogs simply age faster.",
+        "The old 'one dog year equals seven human years' rule survives because it is easy, not because it is right — it badly underestimates young dogs and overestimates old small ones.",
+      ],
+    },
+    {
+      heading: "Worked example: a 6-year-old medium dog",
+      paragraphs: [
+        "Using this page's starting values — **medium size (20–50 lbs), age 6**: 24 + (4 x 5) = **44 human years**, squarely Adult. The same 6-year-old as a **small dog** would be 24 + (4 x 4) = **40**, and as a **giant breed** 24 + (4 x 7) = **52**.",
+        "Project to age 12 and the spread becomes dramatic: small 64, medium 74, large 84, giant **94 human-equivalent years**.",
+      ],
+    },
+    {
+      heading: "Planning care around life stage",
+      paragraphs: [
+        "Life stage, not the calendar, should time senior diets, joint care, and twice-yearly vet checks. On this calculator's stages, a giant breed crosses into Senior at roughly **age 6–7** (55+ human-equivalent years), while a small breed typically does not reach that stage until **around age 10**.",
+        "That matches real lifespans: small breeds commonly live 12–16 years, giant breeds often just 7–10. Knowing which curve your dog is on is the difference between catching age-related problems early and being surprised by them.",
+      ],
+    },
+  ],
+  "cat-age-calculator": [
+    {
+      heading: "How cat years convert to human years",
+      paragraphs: [
+        "Cats sprint through their early life: **the first year equals about 15 human years, the second brings the total to 24**, and from then on each cat year adds a steady **4 human years**. Unlike dogs, there is no size multiplier — a Maine Coon and a Siamese follow the same curve.",
+        "This page also maps the result to a life stage, from **Kitten** through Young Adult and Prime to **Senior** and **Geriatric**, which is how vets actually frame care decisions.",
+      ],
+    },
+    {
+      heading: "Worked example: a 5-year-old cat",
+      paragraphs: [
+        "Using this page's starting age of **5 years**: 24 + (3 x 4) = **36 human years** — a cat in its **Prime**. Extend the same math and a **10-year-old cat** is 24 + (8 x 4) = **56 human years**, just into Senior, while a **15-year-old** reaches 24 + (13 x 4) = **76 human years**, Geriatric.",
+        "That middle stretch is long: cats spend roughly ages 3–9 in their prime, which is why a healthy adult cat can seem unchanged for years and then age quickly at the end.",
+      ],
+    },
+    {
+      heading: "Lifespan and vet timing",
+      paragraphs: [
+        "Indoor cats commonly live **12–18 years** (into their 80s and 90s in human terms); outdoor cats average far less, mainly due to accidents and disease rather than faster aging — the conversion curve is the same either way.",
+        "Because the Senior stage starts around age 10, many vets suggest **twice-yearly check-ups from then on**, when kidney, thyroid, and dental issues typically emerge. Catching them at 56 human-equivalent years is a lot easier than at 76.",
       ],
     },
   ],

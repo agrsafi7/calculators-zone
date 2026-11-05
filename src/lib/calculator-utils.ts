@@ -43,7 +43,6 @@ export const allCalculators: (CalculatorInfo & { subcategory?: string })[] = cal
 const otherSubcategoryMap: Record<string, string> = {
   "fuel-cost-calculator": "Automotive",
   "car-depreciation-calculator": "Automotive",
-  "mpg-calculator": "Automotive",
   "tire-size-calculator": "Automotive",
   "engine-horsepower-calculator": "Automotive",
   "property-tax-calculator": "Real Estate",

@@ -308,7 +308,9 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "σ = √(Σ(xᵢ − μ)² / N)", variables: ["μ = Mean", "N = Count", "Population SD"] },
     howToUse: "Enter up to 5 values. The calculator computes mean, variance, and standard deviation.",
-    faqs: [{ question: "Population vs Sample SD?", answer: "This calculator uses population SD (÷N). For sample SD, divide by N−1. Sample SD is used when your data is a subset of a larger population." }],
+    faqs: [{ question: "Population vs Sample SD?", answer: "This calculator uses population SD (÷N). For sample SD, divide by N−1. Sample SD is used when your data is a subset of a larger population." },
+      { question: "What does a standard deviation of 0 mean?", answer: "All values in the set are identical, so there is no spread at all. Any variation between values produces an SD greater than 0." },
+      { question: "How many numbers can I enter?", answer: "Up to 5 values, matching the five input fields. For the sample above (10, 12, 23, 23, 16), the mean is 16.8 and the standard deviation is 5.4185." }],
     relatedCalcs: mathRelated("standard-deviation-calculator"),
   },
   // 9. Mean Median Mode
@@ -374,7 +376,9 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "P(A∩B) = P(A)×P(B); P(A∪B) = P(A)+P(B)−P(A∩B)", variables: ["Assumes independent events"] },
     howToUse: "Enter the probability of events A and B (between 0 and 1) to compute combined probabilities.",
-    faqs: [{ question: "What does independent mean?", answer: "Independent events don't affect each other. The outcome of A doesn't change the probability of B." }],
+    faqs: [{ question: "What does independent mean?", answer: "Independent events don't affect each other. The outcome of A doesn't change the probability of B." },
+      { question: "Can a probability be more than 100%?", answer: "No. Probabilities run from 0 (impossible) to 1 (certain), shown here as 0-100%. If a combined result exceeds 100%, the events are probably not independent or have been double-counted." },
+      { question: "What if the two events can never happen together?", answer: "Then they are mutually exclusive and P(A or B) is simply P(A) + P(B) — the overlap term is zero. For example, rolling a 2 or a 5 on one die is 1/6 + 1/6 = 33.33%." }],
     relatedCalcs: mathRelated("probability-calculator"),
   },
   // 11. Permutation and Combination

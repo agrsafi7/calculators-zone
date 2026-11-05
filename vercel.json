@@ -89,6 +89,26 @@
       "permanent": true
     },
     {
+      "source": "/finance/refinance-calculator",
+      "destination": "/finance/mortgage-refinance-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/other/mpg-calculator",
+      "destination": "/lifestyle/gas-mileage-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/automotive/mpg-calculator",
+      "destination": "/lifestyle/gas-mileage-calculator",
+      "permanent": true
+    },
+    {
+      "source": "/conversions/mass-converter",
+      "destination": "/conversions/weight-converter",
+      "permanent": true
+    },
+    {
       "source": "/conversions/acceleration-converter-eng",
       "destination": "/category/conversions",
       "statusCode": 301

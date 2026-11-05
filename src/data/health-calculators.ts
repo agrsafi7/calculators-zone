@@ -208,6 +208,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Select your gender and enter your height. The calculator shows ideal weight from four different medical formulas.",
     faqs: [
       { question: "Which ideal weight formula is most accurate?", answer: "No single formula is universally best. The Devine formula is most commonly used in clinical settings, but averaging multiple formulas provides a better range." },
+      { question: "Why do the four formulas give different answers?", answer: "They were developed in different decades from different populations, and each adds a different amount per inch over 5 feet (from 1.41 kg for Miller to 2.7 kg for Hamwi). Treat the spread between them as a realistic range rather than an error." },
+      { question: "Is ideal weight the same as the healthy BMI range?", answer: "No. The formulas give a point estimate near the middle of the healthy band. For a height of 175 cm, the healthy BMI range (18.5-24.9) spans about 56.7-76.3 kg — much wider than any single formula's answer." },
     ],
     relatedCalcs: healthRelated("ideal-weight-calculator"),
   },
@@ -348,6 +350,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your weight, daily exercise duration, and climate type to get your recommended daily water intake.",
     faqs: [
       { question: "Is 8 glasses a day enough?", answer: "The '8 glasses' rule is a rough guideline. Actual needs vary based on body size, activity, climate, and health conditions. This calculator provides a more personalized estimate." },
+      { question: "Do tea, coffee, and food count toward my water intake?", answer: "Yes. Most beverages are mostly water, and food typically supplies a meaningful share of daily fluid. This calculator's target is total daily water, not just plain glasses of water." },
+      { question: "Can you drink too much water?", answer: "It is uncommon, but drinking far more than your kidneys can process over a short period can dilute blood sodium (hyponatremia). Spread your intake across the day and drink to thirst around the calculator's target rather than forcing large volumes at once." },
     ],
     relatedCalcs: healthRelated("water-intake-calculator"),
   },
@@ -416,6 +420,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your details and activity level. TDEE shows your total daily calorie burn including exercise.",
     faqs: [
       { question: "What is the difference between BMR and TDEE?", answer: "BMR is calories burned at complete rest. TDEE adds calories from daily activities, exercise, and digestion (thermic effect of food)." },
+      { question: "How accurate is this TDEE estimate?", answer: "It is an estimate based on the Mifflin-St Jeor equation. Real energy expenditure varies by roughly 10% between individuals, so track your weight and intake for 2-3 weeks and adjust by 100-200 calories based on the trend." },
+      { question: "Should I add exercise calories on top of TDEE?", answer: "No. Your chosen activity level already includes exercise. Adding workout calories again would double-count them — a common reason weight-loss stalls." },
     ],
     relatedCalcs: healthRelated("tdee-calculator"),
   },

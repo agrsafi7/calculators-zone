@@ -51,7 +51,9 @@ const _scienceCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "F = m × a", variables: ["F = Force (Newtons)", "m = mass (kg)", "a = acceleration (m/s²)"] },
     howToUse: "Enter mass and acceleration to calculate force in Newtons.",
-    faqs: [{ question: "What is a Newton?", answer: "1 N is the force needed to accelerate 1 kg at 1 m/s². It's named after Sir Isaac Newton." }],
+    faqs: [{ question: "What is a Newton?", answer: "1 N is the force needed to accelerate 1 kg at 1 m/s². It's named after Sir Isaac Newton." },
+      { question: "Is force the same as weight?", answer: "Weight is one specific force — gravity pulling on a mass (W = m x g). A 10 kg mass weighs 98.10 N on Earth but only about 16.2 N on the Moon, while its mass never changes." },
+      { question: "What units does this calculator use?", answer: "Kilograms for mass and metres per second squared for acceleration, giving force in newtons. The default acceleration, 9.81 m/s², is Earth's surface gravity." }],
     relatedCalcs: sciRelated("force-calculator"),
   },
   {
@@ -168,7 +170,9 @@ const _scienceCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "V = I × R; P = V × I", variables: ["V = Voltage", "I = Current", "R = Resistance", "P = Power"] },
     howToUse: "Enter voltage and resistance to calculate current and power.",
-    faqs: [{ question: "What is Ohm's law?", answer: "Ohm's law states that current through a conductor is directly proportional to voltage and inversely proportional to resistance." }],
+    faqs: [{ question: "What is Ohm's law?", answer: "Ohm's law states that current through a conductor is directly proportional to voltage and inversely proportional to resistance." },
+      { question: "What if I know current and resistance instead of voltage?", answer: "Rearrange the same law: V = I x R. This calculator starts from voltage and resistance, but any two of V, I, and R determine the third — and P = V x I then gives power." },
+      { question: "Why can't resistance be zero?", answer: "Current equals voltage divided by resistance, and division by zero is undefined. Physically, a zero-resistance path is a short circuit, where current rises until a fuse, breaker, or the power source itself gives out." }],
     relatedCalcs: sciRelated("ohms-law-calculator"),
   },
   {

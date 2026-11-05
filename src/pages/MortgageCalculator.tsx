@@ -5,7 +5,7 @@ import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { Calculator, ChevronRight, Info, Landmark, LayoutGrid, Table, X } from "lucide-react";
 
 const RELATED = [
-  { name: "Mortgage Refinance Calculator", slug: "refinance-calculator" },
+  { name: "Mortgage Refinance Calculator", slug: "mortgage-refinance-calculator" },
   { name: "Amortization Schedule Calculator", slug: "amortization-calculator" },
   { name: "Auto Loan Payment Calculator", slug: "auto-loan-calculator" },
   { name: "Rent vs Buy Calculator", slug: "rent-vs-buy-calculator" },

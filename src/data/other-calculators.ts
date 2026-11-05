@@ -74,33 +74,6 @@ export const otherCalculators: CalculatorConfig[] = [
     relatedCalcs: otherRelated("car-depreciation-calculator"),
   },
   {
-    slug: "mpg-calculator",
-    name: "MPG Calculator",
-    category: "Other Calculators",
-    categorySlug: "other",
-    description: "Calculate your vehicle's miles per gallon fuel efficiency.",
-    metaDescription: "Free MPG calculator. Calculate fuel efficiency by entering miles driven and gallons used.",
-    icon: "layers",
-    inputs: [
-      { id: "miles", label: "Miles Driven", type: "number", defaultValue: 350 },
-      { id: "gallons", label: "Gallons Used", type: "number", defaultValue: 12, step: 0.1 },
-    ],
-    calculate: (v) => {
-      const mpg = v.miles / v.gallons;
-      const kpl = mpg * 0.425144;
-      const l100km = 235.215 / mpg;
-      return [
-        { label: "Fuel Efficiency", value: mpg.toFixed(1) + " MPG", highlight: true },
-        { label: "Km per Liter", value: kpl.toFixed(1) + " km/L" },
-        { label: "Liters per 100km", value: l100km.toFixed(1) + " L/100km" },
-      ];
-    },
-    formula: { expression: "MPG = Miles ÷ Gallons", variables: ["Miles = Total miles driven", "Gallons = Total gallons consumed"] },
-    howToUse: "Enter miles driven and gallons used between fill-ups.",
-    faqs: [{ question: "What's a good MPG?", answer: "30+ MPG is good for passenger cars. Hybrids can achieve 40-60+ MPG." }],
-    relatedCalcs: otherRelated("mpg-calculator"),
-  },
-  {
     slug: "tire-size-calculator",
     name: "Tire Size Calculator",
     category: "Other Calculators",

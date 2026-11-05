@@ -151,44 +151,6 @@ const _financeCalculators: CalculatorConfig[] = [
     ],
     relatedCalcs: financeRelated("student-loan-calculator"),
   },
-  // 5. Refinance Calculator
-  {
-    slug: "refinance-calculator",
-    name: "Refinance Calculator",
-    category: "Finance",
-    categorySlug: "finance",
-    description: "Compare your current loan to a refinanced loan. See how much you could save monthly and over the life of your loan by refinancing.",
-    metaDescription: "Free refinance calculator. Compare current vs. new loan terms to see monthly savings and total interest reduction from refinancing.",
-    icon: "dollar",
-    inputs: [
-      { id: "balance", label: "Current Loan Balance", type: "number", defaultValue: 250000, prefix: "$" },
-      { id: "currentRate", label: "Current Interest Rate (%)", type: "number", defaultValue: 7, suffix: "%", step: 0.1 },
-      { id: "currentTerm", label: "Remaining Term (months)", type: "number", defaultValue: 300 },
-      { id: "newRate", label: "New Interest Rate (%)", type: "number", defaultValue: 5.5, suffix: "%", step: 0.1 },
-      { id: "newTerm", label: "New Loan Term (months)", type: "number", defaultValue: 360 },
-      { id: "closingCosts", label: "Closing Costs", type: "number", defaultValue: 5000, prefix: "$" },
-    ],
-    calculate: (v) => {
-      const cur = loanCalc(v.balance, v.currentRate, v.currentTerm);
-      const nw = loanCalc(v.balance, v.newRate, v.newTerm);
-      const monthlySavings = cur.monthly - nw.monthly;
-      const breakEven = monthlySavings > 0 ? Math.ceil(v.closingCosts / monthlySavings) : 0;
-      return [
-        { label: "New Monthly Payment", value: fmt(nw.monthly), highlight: true },
-        { label: "Current Monthly Payment", value: fmt(cur.monthly) },
-        { label: "Monthly Savings", value: fmt(monthlySavings) },
-        { label: "Break-Even Point", value: `${breakEven} months` },
-        { label: "Lifetime Savings", value: fmt0(cur.totalPayment - nw.totalPayment - v.closingCosts) },
-      ];
-    },
-    formula: { expression: "Savings = Current Total − New Total − Closing Costs", variables: ["Current/New payments calculated via standard amortization"] },
-    howToUse: "Enter your current loan balance, rate, and remaining term. Then enter the new rate, term, and closing costs. The calculator shows your monthly savings and break-even point.",
-    faqs: [
-      { question: "When does refinancing make sense?", answer: "Refinancing typically makes sense when you can reduce your rate by at least 0.5-1%, plan to stay in the home past the break-even point, and closing costs are reasonable." },
-      { question: "What is the break-even point?", answer: "The break-even point is when your cumulative monthly savings exceed the closing costs. After this point, refinancing saves you money." },
-    ],
-    relatedCalcs: financeRelated("refinance-calculator"),
-  },
   // 6. Mortgage Refinance Calculator
   {
     slug: "mortgage-refinance-calculator",
@@ -437,6 +399,7 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "When is simple interest used?", answer: "Simple interest is commonly used for short-term loans, car loans, and some savings instruments. It's also used for calculating interest on bonds." },
       { question: "What's the difference between simple and compound interest?", answer: "Simple interest is calculated only on the principal. Compound interest is calculated on the principal plus accumulated interest, leading to faster growth." },
+      { question: "How do I calculate simple interest for part of a year?", answer: "Enter time as a fraction of a year: 6 months is 0.5 and 3 months is 0.25. For example, $5,000 at 5% for 6 months earns 5,000 x 0.05 x 0.5 = $125.00." },
     ],
     relatedCalcs: financeRelated("simple-interest-calculator"),
   },
@@ -541,6 +504,7 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Where should I save my money?", answer: "High-yield savings accounts (HYSAs) currently offer 4-5% APY. CDs offer slightly higher rates for locked periods. Compare rates regularly to maximize earnings." },
       { question: "How much should I save each month?", answer: "A common rule is the 50/30/20 budget: 50% needs, 30% wants, 20% savings and debt repayment. Adjust based on your income and goals." },
+      { question: "Does this calculator compound interest monthly?", answer: "Yes. The projection compounds monthly at your annual rate divided by 12, and credits your deposit every month — the same way most savings accounts and money market accounts actually pay interest." },
     ],
     relatedCalcs: financeRelated("savings-calculator"),
   },
@@ -1791,7 +1755,9 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Max Payment = min(28% of income, 36% of income − debts)", variables: ["Max Loan derived from payment using amortization formula"] },
     howToUse: "Enter your income, existing debts, down payment, and expected mortgage rate. See the maximum home price you can afford.",
-    faqs: [{ question: "What is the 28/36 rule?", answer: "Housing costs should be ≤28% of gross income, and total debt ≤36%. Some lenders allow up to 43%." }],
+    faqs: [{ question: "What is the 28/36 rule?", answer: "Housing costs should be ≤28% of gross income, and total debt ≤36%. Some lenders allow up to 43%." },
+      { question: "Does the maximum payment include taxes and insurance?", answer: "No. The result is principal and interest only. Property taxes, homeowner's insurance, HOA dues, and PMI (usually required with less than 20% down) come on top, so a comfortably affordable price is usually lower than the maximum shown." },
+      { question: "How much house can I afford on $85,000 a year?", answer: "With $500/month of other debts, $50,000 down, a 6.5% rate and a 30-year term, the 28/36 rule gives a maximum payment of $1,983.33 — a loan of about $313,785 and a maximum home price of about $363,785, before taxes and insurance." }],
     relatedCalcs: financeRelated("house-affordability-calculator"),
   },
   // 49. Down Payment Calculator
@@ -2599,7 +2565,6 @@ const financeSubcategoryMap: Record<string, string> = {
   "auto-loan-calculator": "Loan Calculators",
   "personal-loan-calculator": "Loan Calculators",
   "student-loan-calculator": "Loan Calculators",
-  "refinance-calculator": "Loan Calculators",
   "mortgage-refinance-calculator": "Loan Calculators",
   "amortization-calculator": "Loan Calculators",
   "mortgage-amortization-schedule-calculator": "Loan Calculators",

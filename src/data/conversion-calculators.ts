@@ -3,7 +3,6 @@ import { CalculatorConfig } from "@/components/CalculatorTemplate";
 const convSubcategoryMap: Record<string, string> = {
   "length-converter": "Length & Distance",
   "weight-converter": "Mass & Weight",
-  "mass-converter": "Mass & Weight",
   "temperature-converter": "Temperature",
   "area-converter": "Area",
   "volume-converter": "Volume",
@@ -60,15 +59,15 @@ const _conversionCalculators: CalculatorConfig[] = [
   },
   {
     slug: "weight-converter", name: "Weight Converter", category: "Units", categorySlug: "conversions",
-    description: "Convert between kilograms, pounds, ounces, grams, and stones.",
-    metaDescription: "Free weight converter. Convert kg, lbs, oz, grams, stones instantly.",
+    description: "Convert between kilograms, pounds, ounces, grams, milligrams, metric tons, and stones — weight and mass units in one converter.",
+    metaDescription: "Free weight and mass converter. Convert kg, lbs, oz, grams, milligrams, metric tons, and stones instantly.",
     icon: "convert",
     inputs: [
       { id: "value", label: "Value", type: "number", defaultValue: 70, step: 0.01 },
-      { id: "from", label: "From", type: "select", defaultValue: 0, options: [{ value: 0, label: "Kilograms" }, { value: 1, label: "Pounds" }, { value: 2, label: "Ounces" }, { value: 3, label: "Grams" }, { value: 4, label: "Stones" }] },
+      { id: "from", label: "From", type: "select", defaultValue: 0, options: [{ value: 0, label: "Kilograms" }, { value: 1, label: "Pounds" }, { value: 2, label: "Ounces" }, { value: 3, label: "Grams" }, { value: 4, label: "Stones" }, { value: 5, label: "Milligrams" }, { value: 6, label: "Metric Tons" }] },
     ],
     calculate: (v) => {
-      const toKg = [1, 0.453592, 0.0283495, 0.001, 6.35029];
+      const toKg = [1, 0.453592, 0.0283495, 0.001, 6.35029, 0.000001, 1000];
       const kg = v.value * toKg[v.from];
       return [
         { label: "Kilograms", value: kg.toFixed(4), highlight: true },
@@ -76,37 +75,16 @@ const _conversionCalculators: CalculatorConfig[] = [
         { label: "Ounces", value: (kg / 0.0283495).toFixed(4) },
         { label: "Grams", value: (kg * 1000).toFixed(2) },
         { label: "Stones", value: (kg / 6.35029).toFixed(4) },
+        { label: "Milligrams", value: (kg * 1000000).toFixed(2) },
+        { label: "Metric Tons", value: (kg / 1000).toFixed(6) },
       ];
     },
     formula: { expression: "Convert to base (kg), then to target", variables: ["1 lb = 0.4536 kg", "1 stone = 6.35 kg"] },
     howToUse: "Enter a weight and source unit to see all conversions.",
-    faqs: [{ question: "How many pounds in a kilogram?", answer: "1 kg = 2.20462 lbs." }],
+    faqs: [{ question: "How many pounds in a kilogram?", answer: "1 kg = 2.20462 lbs." },
+      { question: "Mass vs weight?", answer: "Mass is constant everywhere; weight depends on gravity. On Earth's surface they're used interchangeably." },
+      { question: "How many kilograms are in a metric ton?", answer: "1 metric ton = 1,000 kg = 1,000,000 grams. A small car weighs roughly 1 to 1.5 metric tons." }],
     relatedCalcs: convRelated("weight-converter"),
-  },
-  {
-    slug: "mass-converter", name: "Mass Converter", category: "Units", categorySlug: "conversions",
-    description: "Convert between mass units including milligrams, grams, kilograms, metric tons, and more.",
-    metaDescription: "Free mass converter. Convert mg, g, kg, metric tons, and more.",
-    icon: "convert",
-    inputs: [
-      { id: "value", label: "Value", type: "number", defaultValue: 1000, step: 0.01 },
-      { id: "from", label: "From", type: "select", defaultValue: 2, options: [{ value: 0, label: "Milligrams" }, { value: 1, label: "Grams" }, { value: 2, label: "Kilograms" }, { value: 3, label: "Metric Tons" }, { value: 4, label: "Pounds" }] },
-    ],
-    calculate: (v) => {
-      const toG = [0.001, 1, 1000, 1000000, 453.592];
-      const g = v.value * toG[v.from];
-      return [
-        { label: "Milligrams", value: (g * 1000).toFixed(2), highlight: true },
-        { label: "Grams", value: g.toFixed(4) },
-        { label: "Kilograms", value: (g / 1000).toFixed(6) },
-        { label: "Metric Tons", value: (g / 1000000).toFixed(8) },
-        { label: "Pounds", value: (g / 453.592).toFixed(6) },
-      ];
-    },
-    formula: { expression: "Convert to grams, then to target unit", variables: ["1 kg = 1000 g", "1 metric ton = 1,000,000 g"] },
-    howToUse: "Enter a mass value and unit to convert to all other units.",
-    faqs: [{ question: "Mass vs weight?", answer: "Mass is constant everywhere; weight depends on gravity. On Earth's surface they're used interchangeably." }],
-    relatedCalcs: convRelated("mass-converter"),
   },
   {
     slug: "temperature-converter", name: "Temperature Converter", category: "Units", categorySlug: "conversions",

@@ -157,12 +157,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thecalculator.us/finance/refinance-calculator</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://thecalculator.us/finance/mortgage-refinance-calculator</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -1135,12 +1129,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://thecalculator.us/conversions/mass-converter</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://thecalculator.us/conversions/temperature-converter</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
@@ -1694,12 +1682,6 @@
   </url>
   <url>
     <loc>https://thecalculator.us/other/car-depreciation-calculator</loc>
-    <lastmod>2026-10-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://thecalculator.us/other/mpg-calculator</loc>
     <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

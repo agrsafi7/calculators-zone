@@ -91,7 +91,9 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Difference = |Date2 − Date1|", variables: ["Absolute difference in milliseconds, converted"] },
     howToUse: "Enter two dates to find the exact difference between them.",
-    faqs: [{ question: "Does it include the end date?", answer: "No, it counts the days between the two dates, not including the end date." }],
+    faqs: [{ question: "Does it include the end date?", answer: "No, it counts the days between the two dates, not including the end date." },
+      { question: "Why does a one-year span sometimes show 366 days?", answer: "Leap years. If February 29 falls inside your date range, the span gains a day — January 1, 2024 to January 1, 2025 is 366 days, while the same span in 2025-2026 is 365." },
+      { question: "Does the order of the dates matter?", answer: "No. The calculator uses the absolute difference, so entering the later date first gives the same result." }],
     relatedCalcs: dtRelated("date-difference-calculator"),
   },
   {
