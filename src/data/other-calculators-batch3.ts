@@ -390,7 +390,13 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "% of Home Price", value: `${num((total / v.homePrice) * 100)}%` },
       ];
     },
-    formula: defFormula, howToUse: "Enter home price and loan amount.", faqs: defFaqs("Closing Cost Calculator"), relatedCalcs: b3Rel("closing-cost-calculator"),
+    formula: { expression: "Total = Origination (1% of loan) + Title (0.5% of price) + Escrow deposit (1% of price) + $1,050 fixed fees", variables: ["Worked default: $2,800 + $1,750 + $3,500 + $1,050 = $9,100 on a $350,000 home"] },
+    howToUse: "Enter home price and loan amount.",
+    faqs: [
+      { question: "How much are closing costs on a $350,000 home?", answer: "With a $280,000 loan, this calculator estimates $9,100 — 2.6% of the home price. Across the US, closing costs typically run 2% to 5% of the price, so roughly $7,000 to $17,500 on a $350,000 home." },
+      { question: "What is included in closing costs?", answer: "This estimate builds in loan origination (1% of the loan), title insurance (0.5% of the price), an escrow deposit (1% of the price), and $1,050 of fixed lender and third-party fees — the category that covers items like the appraisal, credit report, and recording charges." },
+      { question: "Who pays closing costs, and can they be reduced?", answer: "The buyer usually pays most closing costs, although sellers sometimes offer concessions toward them. You can reduce yours by comparing Loan Estimates from several lenders, asking about lender credits, and questioning optional or duplicate fees before you commit." },
+    ], relatedCalcs: b3Rel("closing-cost-calculator"),
   },
 
   // ═══ FOOD & NUTRITION ═══
@@ -790,7 +796,13 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "BTU/sq ft", value: `${btuPer}` },
       ];
     },
-    formula: defFormula, howToUse: "Enter square footage and climate zone.", faqs: defFaqs("HVAC Sizing Calculator"), relatedCalcs: b3Rel("hvac-sizing-calculator"),
+    formula: { expression: "BTU = Square footage × BTU per sq ft (30 cold / 25 moderate / 22 hot); Tons = BTU ÷ 12,000, rounded up to the nearest 0.5", variables: ["1 ton of cooling = 12,000 BTU per hour"] },
+    howToUse: "Enter square footage and climate zone.",
+    faqs: [
+      { question: "What size HVAC system do I need for a 2,000 sq ft home?", answer: "On this calculator's moderate-climate setting, a 2,000 sq ft home needs 50,000 BTU, which rounds up to a 4.5-ton system. The same home estimates at 4 tons on the hot setting and 5 tons on the cold setting, which weights the heating load more heavily." },
+      { question: "How many BTU is one ton?", answer: "One ton equals 12,000 BTU per hour. A 3-ton system delivers about 36,000 BTU per hour, and a 5-ton system about 60,000 BTU per hour." },
+      { question: "Is a bigger HVAC system better?", answer: "No. An oversized system short-cycles — switching on and off frequently — which wastes energy, wears parts faster, and removes humidity poorly. An undersized system runs nonstop on the most extreme days. Pros confirm the final size with a Manual J load calculation before installing." },
+    ], relatedCalcs: b3Rel("hvac-sizing-calculator"),
   },
   {
     slug: "ceiling-fan-size-calculator", name: "Ceiling Fan Size Calculator", category: "Other Calculators", categorySlug: "other",
@@ -1068,5 +1080,87 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       ];
     },
     formula: defFormula, howToUse: "Enter fence length, height, and post spacing.", faqs: defFaqs("Fence Calculator"), relatedCalcs: b3Rel("fence-calculator"),
+  },
+
+  // ═══ HEALTH & SAFETY — habit cost calculators (added 2026-11-07 from GSC query demand) ═══
+  {
+    slug: "quit-smoking-calculator", name: "Quit Smoking Savings Calculator", category: "Other Calculators", categorySlug: "other",
+    subcategory: "Health & Safety",
+    description: "Calculate how much money you save by quitting smoking, plus the cigarettes and packs you have not smoked since your quit day.",
+    metaDescription: "Free quit smoking savings calculator. Enter cigarettes per day and pack price to see money saved per day, month and year, cigarettes not smoked, packs not bought, and your 10-year total.",
+    icon: "layers",
+    inputs: [
+      { id: "cigsPerDay", label: "Cigarettes Smoked Per Day", type: "number", defaultValue: 20 },
+      { id: "perPack", label: "Cigarettes Per Pack", type: "number", defaultValue: 20 },
+      { id: "packPrice", label: "Price Per Pack ($)", type: "number", defaultValue: 8, prefix: "$", step: 0.01 },
+      { id: "daysQuit", label: "Days Since You Quit", type: "number", defaultValue: 30 },
+    ],
+    calculate: (v) => {
+      const perDay = v.cigsPerDay * (v.packPrice / v.perPack);
+      const yearly = perDay * 365;
+      return [
+        { label: "Money Saved So Far", value: fmt(perDay * v.daysQuit), highlight: true },
+        { label: "Cigarettes Not Smoked", value: num(v.cigsPerDay * v.daysQuit) },
+        { label: "Packs Not Bought", value: num((v.cigsPerDay * v.daysQuit) / v.perPack) },
+        { label: "You Save Per Day", value: fmt(perDay) },
+        { label: "You Save Per Week", value: fmt(perDay * 7) },
+        { label: "You Save Per Month", value: fmt((perDay * 365) / 12) },
+        { label: "You Save Per Year", value: fmt(yearly) },
+        { label: "Saved in 10 Years", value: fmt(yearly * 10) },
+      ];
+    },
+    formula: { expression: "Daily cost = Cigarettes per day × (Pack price ÷ Cigarettes per pack)", variables: ["Money saved = Daily cost × Days quit", "Yearly saving = Daily cost × 365"] },
+    howToUse: "Enter how many cigarettes you smoked per day, the price you paid per pack, and how many days ago you quit.",
+    faqs: [
+      { question: "How much does a pack-a-day habit cost per year?", answer: "At $8 a pack, smoking 20 cigarettes a day costs $8 a day — $2,920 a year and $29,200 over 10 years. That full amount becomes your saving when you quit." },
+      { question: "How much do I save in the first month after quitting?", answer: "A pack-a-day smoker paying $8 a pack saves $240 in the first 30 days — 600 cigarettes not smoked and 30 packs not bought. A half-pack-a-day habit saves about $120 in the same month." },
+      { question: "How many cigarettes are in a pack?", answer: "A standard US pack contains 20 cigarettes. Some brands sell packs of 25 — set the cigarettes-per-pack field to match what you used to buy." },
+      { question: "What could the money be worth if I invested it instead?", answer: "Saving $2,920 a year and investing it at a 5% average annual return would grow to about $36,727 after 10 years — roughly $7,500 more than the $29,200 you simply did not spend. That invested figure is an illustration, not a guarantee." },
+    ],
+    relatedCalcs: [
+      { name: "Cost of Alcohol Calculator", slug: "cost-of-alcohol-calculator", icon: "layers", category: "other" },
+      { name: "Blood Alcohol Calculator", slug: "blood-alcohol-calculator", icon: "layers", category: "other" },
+      { name: "Savings Calculator", slug: "savings-calculator", icon: "dollar", category: "finance" },
+      { name: "Caffeine Calculator", slug: "caffeine-calculator", icon: "layers", category: "other" },
+    ],
+  },
+  {
+    slug: "cost-of-alcohol-calculator", name: "Cost of Alcohol Calculator", category: "Other Calculators", categorySlug: "other",
+    subcategory: "Health & Safety",
+    description: "Calculate how much you spend on alcohol per week, month, and year, and what the same money could grow to if it was invested instead.",
+    metaDescription: "Free cost of alcohol calculator. Enter drinks per week and cost per drink to see your weekly, monthly and yearly alcohol spend, drinks per year, and the multi-year total.",
+    icon: "layers",
+    inputs: [
+      { id: "drinksPerWeek", label: "Drinks Per Week", type: "number", defaultValue: 10 },
+      { id: "costPerDrink", label: "Average Cost Per Drink ($)", type: "number", defaultValue: 6, prefix: "$", step: 0.01 },
+      { id: "years", label: "Years at This Rate", type: "number", defaultValue: 10 },
+    ],
+    calculate: (v) => {
+      const weekly = v.drinksPerWeek * v.costPerDrink;
+      const yearly = weekly * 52;
+      const invested = v.years > 0 ? yearly * ((Math.pow(1.05, v.years) - 1) / 0.05) : 0;
+      return [
+        { label: `Cost Over ${v.years} Years`, value: fmt0(yearly * v.years), highlight: true },
+        { label: "Weekly Spend", value: fmt(weekly) },
+        { label: "Monthly Spend", value: fmt((weekly * 52) / 12) },
+        { label: "Yearly Spend", value: fmt0(yearly) },
+        { label: "Drinks Per Year", value: num(v.drinksPerWeek * 52) },
+        { label: "If Invested at 5%/yr Instead", value: fmt0(invested) },
+      ];
+    },
+    formula: { expression: "Yearly spend = Drinks per week × Cost per drink × 52", variables: ["Monthly spend = Yearly spend ÷ 12", "Invested comparison assumes a 5% average annual return, saved yearly"] },
+    howToUse: "Enter how many drinks you have in a typical week, what one drink usually costs you, and a number of years to total up.",
+    faqs: [
+      { question: "How much does one drink a day cost per year?", answer: "One $6 drink a day is 7 drinks a week: $42 a week, or $2,184 a year. At a $10 bar price, the same one-a-day habit costs $3,640 a year." },
+      { question: "How much do I spend on alcohol per month?", answer: "Multiply your weekly spend by 52, then divide by 12. Ten drinks a week at $6 each is $60 a week, which works out to $260 a month and $3,120 a year." },
+      { question: "How many drinks is that per year?", answer: "Drinks per week multiplied by 52. Ten drinks a week is 520 drinks a year; two drinks a day (14 a week) is 728 a year." },
+      { question: "What if I invested the money instead of drinking it?", answer: "At a 5% average annual return, saving $3,120 a year instead grows to about $39,243 in 10 years — roughly $8,000 more than the $31,200 spent. An illustration of the trade-off, not a guarantee of returns." },
+    ],
+    relatedCalcs: [
+      { name: "Quit Smoking Savings Calculator", slug: "quit-smoking-calculator", icon: "layers", category: "other" },
+      { name: "Blood Alcohol Calculator", slug: "blood-alcohol-calculator", icon: "layers", category: "other" },
+      { name: "Savings Calculator", slug: "savings-calculator", icon: "dollar", category: "finance" },
+      { name: "Caffeine Calculator", slug: "caffeine-calculator", icon: "layers", category: "other" },
+    ],
   },
 ];

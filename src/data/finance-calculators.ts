@@ -505,6 +505,7 @@ const _financeCalculators: CalculatorConfig[] = [
       { question: "Where should I save my money?", answer: "High-yield savings accounts (HYSAs) currently offer 4-5% APY. CDs offer slightly higher rates for locked periods. Compare rates regularly to maximize earnings." },
       { question: "How much should I save each month?", answer: "A common rule is the 50/30/20 budget: 50% needs, 30% wants, 20% savings and debt repayment. Adjust based on your income and goals." },
       { question: "Does this calculator compound interest monthly?", answer: "Yes. The projection compounds monthly at your annual rate divided by 12, and credits your deposit every month — the same way most savings accounts and money market accounts actually pay interest." },
+      { question: "How much will I save in a year?", answer: "With this page's starting values — $5,000 already saved, $300 a month, 4.5% interest — you would have $8,905 after one year: $8,600 of your own deposits plus $305 of interest. Enter your own numbers to see your first-year figure." },
     ],
     relatedCalcs: financeRelated("savings-calculator"),
   },

@@ -1063,6 +1063,140 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
+  "quit-smoking-calculator": [
+    {
+      heading: "How this calculator works",
+      paragraphs: [
+        "Everything starts with the **cost of one cigarette**: the price of a pack divided by the cigarettes in it — usually 20. At $8 a pack, that is $0.40 per cigarette. Multiply by how many you smoked a day and you have your daily habit cost; multiply that by the days since you quit and you have the money already saved.",
+        "The calculator keeps it to two honest counts — **money and cigarettes**. No health promises and no guesswork: just what the habit cost, and what quitting has returned so far.",
+      ],
+    },
+    {
+      heading: "Worked example: a pack a day at $8 a pack",
+      paragraphs: [
+        "With this page's starting values — **20 cigarettes a day, $8 a pack, 30 days quit** — your old habit cost **$8 a day**. One month after quitting you have saved **$240**, avoided **600 cigarettes**, and not bought **30 packs**.",
+        "Leave the habit behind for a full year and the same numbers become **$56 a week, about $243 a month, $2,920 a year** — and **$29,200 over 10 years**. That is the quiet arithmetic that makes the first hard month worth pushing through: the saving never stops growing.",
+      ],
+    },
+    {
+      heading: "What different habits cost",
+      paragraphs: [
+        "A **half-pack-a-day** habit (10 cigarettes) at $8 a pack costs $4 a day — **$1,460 a year**. A **two-pack-a-day** habit (40 cigarettes) costs $16 a day — **$5,840 a year**, more than many car loans.",
+        "Pack prices vary a lot by state and brand, so enter the price you actually paid. A useful rule from the formula: **every $1 on the pack price changes a pack-a-day habit by $365 a year** — which is why the same habit costs far more in a high-tax state.",
+      ],
+    },
+    {
+      heading: "Making the saved money visible",
+      paragraphs: [
+        "Money not spent has a way of disappearing into everyday spending. Two habits stop that: move the old daily amount into a savings account on a schedule, and watch this page's yearly figure grow. Our Savings Calculator shows what those deposits become.",
+        "As an illustration of the stakes: saving **$2,920 a year** and investing it at a **5% average annual return** would grow to about **$36,727 in 10 years** — roughly $7,500 more than the $29,200 simply not spent. Returns are never guaranteed, but the direction is the point: quitting pays you twice.",
+      ],
+    },
+  ],
+
+  "cost-of-alcohol-calculator": [
+    {
+      heading: "How this calculator works",
+      paragraphs: [
+        "Your **weekly spend** is drinks per week multiplied by what one drink actually costs you. Multiply by 52 for the **yearly spend**, divide the yearly figure by 12 for a true monthly average, and extend it across the years you choose for the long-term total.",
+        "The calculator also counts **drinks per year** and shows an **invested comparison** — what the same yearly amount would grow to at a 5% average annual return — because the real cost of a habit is both the money spent and the growth it never gets.",
+      ],
+    },
+    {
+      heading: "Worked example: 10 drinks a week at $6 a drink",
+      paragraphs: [
+        "With this page's starting values — **10 drinks a week at $6 each** — you spend **$60 a week, $260 a month, and $3,120 a year**, across **520 drinks a year**.",
+        "Keep that pace for the default 10 years and the total is **$31,200**. Invested at 5% instead, the same stream of money would reach about **$39,243**. Neither figure judges the habit — they simply price it, which most people have never actually done.",
+      ],
+    },
+    {
+      heading: "What common drinking patterns cost",
+      paragraphs: [
+        "A light social pattern — **4 drinks a week at $6** — costs **$1,248 a year**. **One drink a day** costs **$2,184 a year** at $6 a drink, and $3,640 at a $10 bar price. **Two drinks a day** (14 a week) reaches **$4,368 a year**. A heavier pattern of **25 drinks a week at $7** costs **$9,100 a year**.",
+        "The single biggest lever is the **cost per drink**: the same drinks poured at home might cost $2 each, while a bar charges $10 or more. Enter what you really pay — most people should count a mix of home and out prices.",
+      ],
+    },
+    {
+      heading: "Cutting the number, not just counting it",
+      paragraphs: [
+        "Every figure on this page scales in direct proportion to the drinks: **halve the drinks per week and you halve the weekly, yearly, and 10-year cost**. At the worked example's pace, a single alcohol-free month returns **$260**.",
+        "If the totals surprise you, try the companion tools: the Quit Smoking Savings Calculator prices a cigarette habit the same way, and the Savings Calculator shows what redirecting even part of the yearly figure would build over time.",
+      ],
+    },
+  ],
+
+  "hvac-sizing-calculator": [
+    {
+      heading: "How HVAC sizing works",
+      paragraphs: [
+        "Sizing starts with **BTU** — the heating or cooling capacity a home needs. This calculator multiplies your square footage by a **BTU-per-square-foot rate for your climate: 30 in cold climates, 25 in moderate ones, and 22 in hot ones** — the cold setting weights the heating load most heavily, because a system in a cold climate works hardest in winter.",
+        "Capacity is then expressed in **tons: 1 ton = 12,000 BTU per hour**. Because residential systems are sold in half-ton steps, the result is **rounded up to the nearest 0.5 ton** — the size you would actually buy.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "A **2,000 sq ft home in a moderate climate**: 2,000 × 25 = **50,000 BTU**, which is 4.17 tons, rounded up to a **4.5-ton system** — the default result on this page.",
+        "The same method at other sizes: a **1,500 sq ft home on the hot setting** needs 1,500 × 22 = **33,000 BTU → 3 tons**. A **2,500 sq ft home on the cold setting** needs 2,500 × 30 = **75,000 BTU → 6.5 tons**. Notice how much the climate setting moves the answer — square footage alone never tells the whole story.",
+      ],
+    },
+    {
+      heading: "Why the right size matters",
+      paragraphs: [
+        "An **oversized** system short-cycles — switching on and off in quick bursts. That wastes energy, wears components faster, raises the purchase price, and removes humidity poorly, leaving rooms feeling clammy in summer. An **undersized** system runs almost nonstop on the hottest and coldest days and may never reach the set temperature.",
+        "A square-footage rule like this one is the right first estimate for budgeting and comparing quotes. Before installing, a contractor should confirm the size with a **Manual J load calculation**, which also accounts for insulation, ceiling height, window area, and sun exposure — the factors a quick calculator cannot see.",
+      ],
+    },
+  ],
+
+  "closing-cost-calculator": [
+    {
+      heading: "What closing costs are made of",
+      paragraphs: [
+        "Closing costs are the lender and third-party fees due when a home purchase is finalized, paid on top of your down payment. This calculator builds its estimate from four parts: **loan origination at 1% of the loan amount**, **title insurance at 0.5% of the home price**, an **escrow deposit at 1% of the home price**, and **$1,050 of fixed fees** for items like the appraisal, credit report, and recording charges.",
+        "Added together, typical totals land between **2% and 5% of the home price** — the range lenders themselves quote. Your lender's official Loan Estimate, issued within three business days of applying, replaces any calculator's figures with real ones.",
+      ],
+    },
+    {
+      heading: "Worked example: a $350,000 home with a $280,000 loan",
+      paragraphs: [
+        "Using this page's starting values: origination is 1% of $280,000 = **$2,800**; title insurance is 0.5% of $350,000 = **$1,750**; the escrow deposit is 1% of the price = **$3,500**; plus the $1,050 of fixed fees. **Total closing costs: $9,100 — 2.6% of the home price.**",
+        "That makes the full **cash to close $79,100**: the $70,000 down payment (price minus loan) plus the $9,100 of closing costs. It is the cash-to-close figure, not the down payment alone, that decides whether a buyer is truly ready — and it is the number most first-time buyers underestimate.",
+      ],
+    },
+    {
+      heading: "Ways buyers lower closing costs",
+      paragraphs: [
+        "The biggest lever is the lender itself: **origination charges vary widely**, so compare Loan Estimates from at least two or three lenders before committing. Ask each one which fees are negotiable or optional, and question anything that appears twice under different names.",
+        "Two structural options also exist. **Lender credits** cover some costs in exchange for a slightly higher interest rate — worth modeling if cash is tight. And in many markets the seller can contribute **concessions** toward the buyer's closing costs as part of the negotiated deal. Neither is free money, but both change how much cash you need on the day.",
+      ],
+    },
+  ],
+
+  "insulation-calculator": [
+    {
+      heading: "How this calculator works",
+      paragraphs: [
+        "Material is estimated from coverage. **Blown-in insulation** is counted in bags at roughly **40 sq ft of coverage per bag** at R-38 depth, and **batts** in standard packages covering about **48 sq ft each**. The calculator also gives the total **volume — area × thickness ÷ 12** — which is what you need when ordering loose-fill by the cubic foot.",
+        "One honest warning built into the math: **coverage per bag falls as the target R-value rises**, because a higher R-value means a thicker layer over the same area. Always read the coverage chart printed on the product you buy — it lists the exact sq ft per bag at each R-value.",
+      ],
+    },
+    {
+      heading: "Worked example: a 1,000 sq ft attic at R-38",
+      paragraphs: [
+        "With this page's starting values — **1,000 sq ft, target R-38, 12 inches thick** — you need **25 bags of blown-in insulation** (1,000 ÷ 40), or about **21 batt packages** (1,000 ÷ 48), totaling **1,000 cubic feet** of material.",
+        "Scale it by area: a 1,500 sq ft attic at the same target needs roughly 38 bags, and a 500 sq ft space about 13. Buying a little extra — around 10% — for cuts, gaps, and settling is standard practice and far cheaper than a second trip mid-project.",
+      ],
+    },
+    {
+      heading: "Choosing a target R-value",
+      paragraphs: [
+        "R-value measures resistance to heat flow — **higher is better insulated**. The ranges worth aiming for: **attics R-38 to R-60, walls R-13 to R-21**, with colder climates toward the top of each range. The attic is usually the highest-value target: it is the largest heat-loss surface in most homes and the easiest to add material to.",
+        "Thickness alone does not fix an R-value — each material delivers a different R per inch (fiberglass, cellulose, and foam all differ), so match the installed depth to the product's stated R-value rather than to a generic inches figure. If your home has both heating and cooling seasons, our HVAC Sizing Calculator shows how the building's load changes with climate once the envelope is improved.",
+      ],
+    },
+  ],
+
   "savings-calculator": [
     {
       heading: "How the savings projection is calculated",
@@ -1083,6 +1217,20 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "The projection assumes a steady rate and no withdrawals, taxes, or fees. High-yield savings accounts currently sit near the 4.5% used above, but rates move — re-run the numbers when your account's rate changes.",
         "Sensitivity check: adding **$100 a month** to the example above (deposit $400 instead of $300) lifts the 10-year balance by about **$15,120** — $12,000 of extra deposits plus roughly $3,120 of extra interest. When in doubt, raise the deposit before chasing a higher rate.",
+      ],
+    },
+    {
+      heading: "Your first year, in numbers",
+      paragraphs: [
+        "Run the same starting values for just **one year** and the balance is **$8,905**: your $5,000 start plus $3,600 of deposits is **$8,600 of your own money**, and interest adds **$305**.",
+        "Every savings plan looks slow in year one — that $305 is only 3.4% of the balance. Compounding is back-loaded by design: in the 10-year example above, interest contributes **$12,194**, because each year's interest itself starts earning interest. The first year is the price of admission; the later years are the payoff.",
+      ],
+    },
+    {
+      heading: "The rate matters more than it looks",
+      paragraphs: [
+        "Hold the plan fixed — $5,000 start, $300 a month, 10 years — and change only the rate. At **0.5%**, roughly what a basic bank savings account pays, the balance reaches **$42,164**. At **4.5%**, the high-yield rate used on this page, it reaches **$53,194**.",
+        "That is an **$11,030 difference from the rate alone**, with identical deposits. Moving idle cash from a basic account to a high-yield one is the single easiest improvement most savers can make — no extra saving required.",
       ],
     },
   ],

@@ -693,7 +693,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     slug: "insulation-calculator", name: "Insulation Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Construction & Home",
     description: "Calculate insulation needed based on area and desired R-value.",
-    metaDescription: "Free insulation calculator. Estimate insulation materials needed.",
+    metaDescription: "Free insulation calculator. Enter the area, target R-value, and thickness to estimate blown-in bags, batt packages, and cubic feet of insulation your project needs.",
     icon: "layers",
     inputs: [
       { id: "area", label: "Area (sq ft)", type: "number", defaultValue: 1000 },
@@ -711,9 +711,13 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
         { label: "Target R-Value", value: "R-" + v.rValue },
       ];
     },
-    formula: { expression: "Coverage varies by insulation type and R-value", variables: ["Higher R-value = better insulation"] },
+    formula: { expression: "Bags (blown-in) = Area ÷ 40 sq ft; Batts = Area ÷ 48 sq ft; Volume = Area × (Thickness ÷ 12)", variables: ["Coverage per bag or package varies by material and target R-value — check the product coverage chart"] },
     howToUse: "Enter area to insulate, target R-value, and insulation thickness.",
-    faqs: [{ question: "What R-value do I need?", answer: "Attic: R-38 to R-60. Walls: R-13 to R-21. Varies by climate zone." }],
+    faqs: [
+      { question: "What R-value do I need?", answer: "Attic: R-38 to R-60. Walls: R-13 to R-21. Varies by climate zone." },
+      { question: "How many bags of insulation do I need for 1,000 sq ft?", answer: "For blown-in insulation at R-38 coverage, about 25 bags for 1,000 sq ft (roughly 40 sq ft per bag), or about 21 standard batt packages. Always check the coverage chart on the product you buy — coverage per bag falls as the target R-value rises." },
+      { question: "How thick should attic insulation be?", answer: "It depends on the material's R-value per inch and your target. This calculator's defaults use 12 inches for an R-38 attic. Fiberglass, cellulose, and foam each deliver a different R-value per inch, so match the thickness to the product's stated R-value." },
+    ],
     relatedCalcs: batch2Rel("insulation-calculator"),
   },
 
