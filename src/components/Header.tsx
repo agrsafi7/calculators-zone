@@ -2,19 +2,19 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { categories, type CalculatorInfo } from "@/data/calculators";
 import { searchCalculators } from "@/lib/calculator-utils";
-import { Calculator, ChevronDown, Menu, Search, User, X } from "lucide-react";
+import { Calculator, ChevronDown, Menu, Search, X } from "lucide-react";
 import { useSearchAutocomplete, SearchSuggestions } from "./SearchAutocomplete";
 
-// Site header per the approved design: fixed top bar with logo, category
-// pills, search, and account icon.
+// Site header: fixed top bar — logo LEFT, search CENTER, menu RIGHT
+// (layout per Abu, 2026-11-15). No account/about icon in the header.
 //
 // Header layout (fixed 2026-11-15): the 1200px container cannot fit all
 // 8 category links + logo + a usable search box at any desktop width —
 // the row overflowed, crushing the search and clipping the Search button
 // off the right edge. So only the first 4 categories show inline and the
-// rest live in a "More" dropdown. The search box now EXPANDS on click:
-// it rests compact and grows wide while typing (the nav hides while it
-// is open), then collapses back on Escape / outside click / submit.
+// rest live in a "More" dropdown. The search box EXPANDS on click: it
+// rests compact and grows wide while typing (the menu hides while it is
+// open), then collapses back on Escape / outside click / submit.
 const VISIBLE_CATEGORIES = categories.slice(0, 4);
 const MORE_CATEGORIES = categories.slice(4);
 
@@ -110,75 +110,20 @@ const Header = () => {
   return (
     <header className="fixed top-0 w-full z-50 bg-surface-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
       <div className="h-16 max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-5 shrink-0 min-w-0">
-          <Link to="/" className="flex items-center gap-1.5 shrink-0" aria-label="TheCalculator.us home">
-            <Calculator size={24} className="text-primary" />
-            <span className="font-display text-[18px] font-semibold tracking-tight text-ink whitespace-nowrap">
-              TheCalculator<span className="text-primary">.us</span>
-            </span>
-          </Link>
-          <nav
-            className={`${searchOpen ? "hidden" : "hidden lg:flex"} items-center gap-1 shrink-0`}
-            aria-label="Categories"
-          >
-            {VISIBLE_CATEGORIES.map((c) => (
-              <NavLink
-                key={c.slug}
-                to={`/category/${c.slug}`}
-                className={({ isActive }) =>
-                  `px-3 py-1.5 rounded text-[13px] font-medium transition-colors whitespace-nowrap ${
-                    isActive
-                      ? "bg-tealbright text-white"
-                      : "text-ink-soft hover:bg-surface-container hover:text-ink"
-                  }`
-                }
-              >
-                {c.name}
-              </NavLink>
-            ))}
-            <div ref={moreRef} className="relative">
-              <button
-                type="button"
-                onClick={() => setMoreOpen((v) => !v)}
-                aria-haspopup="true"
-                aria-expanded={moreOpen}
-                className={`px-3 py-1.5 rounded text-[13px] font-medium transition-colors flex items-center gap-1 whitespace-nowrap ${
-                  moreActive
-                    ? "bg-tealbright text-white"
-                    : "text-ink-soft hover:bg-surface-container hover:text-ink"
-                }`}
-              >
-                More
-                <ChevronDown
-                  size={14}
-                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-              {moreOpen && (
-                <div className="absolute left-0 top-full mt-2 w-56 rounded-xl bg-surface-lowest shadow-lg border border-surface-container py-1 z-50">
-                  {MORE_CATEGORIES.map((c) => (
-                    <NavLink
-                      key={c.slug}
-                      to={`/category/${c.slug}`}
-                      onClick={() => setMoreOpen(false)}
-                      className={({ isActive }) =>
-                        `block px-4 py-2 text-[13px] font-medium transition-colors ${
-                          isActive
-                            ? "bg-tealbright text-white"
-                            : "text-ink-soft hover:bg-surface-container hover:text-ink"
-                        }`
-                      }
-                    >
-                      {c.name}
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
-          </nav>
-        </div>
+        {/* LEFT: logo */}
+        <Link
+          to="/"
+          className="flex items-center gap-1.5 shrink-0"
+          aria-label="TheCalculator.us home"
+        >
+          <Calculator size={24} className="text-primary" />
+          <span className="font-display text-[18px] font-semibold tracking-tight text-ink whitespace-nowrap">
+            TheCalculator<span className="text-primary">.us</span>
+          </span>
+        </Link>
 
-        <div className="flex items-center gap-3 flex-1 min-w-0 justify-end">
+        {/* CENTER: search (expands on click) */}
+        <div className="flex-1 flex justify-center min-w-0">
           <div
             ref={desktopSearch.ref}
             className={`relative hidden sm:flex transition-all duration-300 ${
@@ -225,13 +170,69 @@ const Header = () => {
               />
             )}
           </div>
-          <Link
-            to="/about"
-            className="w-8 h-8 rounded-full bg-primary hidden sm:flex items-center justify-center shrink-0"
-            aria-label="About"
+        </div>
+
+        {/* RIGHT: menu */}
+        <div className="flex items-center gap-1 shrink-0">
+          <nav
+            className={`${searchOpen ? "hidden" : "hidden lg:flex"} items-center gap-1 shrink-0`}
+            aria-label="Categories"
           >
-            <User size={18} className="text-white" />
-          </Link>
+            {VISIBLE_CATEGORIES.map((c) => (
+              <NavLink
+                key={c.slug}
+                to={`/category/${c.slug}`}
+                className={({ isActive }) =>
+                  `px-3 py-1.5 rounded text-[13px] font-medium transition-colors whitespace-nowrap ${
+                    isActive
+                      ? "bg-tealbright text-white"
+                      : "text-ink-soft hover:bg-surface-container hover:text-ink"
+                  }`
+                }
+              >
+                {c.name}
+              </NavLink>
+            ))}
+            <div ref={moreRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setMoreOpen((v) => !v)}
+                aria-haspopup="true"
+                aria-expanded={moreOpen}
+                className={`px-3 py-1.5 rounded text-[13px] font-medium transition-colors flex items-center gap-1 whitespace-nowrap ${
+                  moreActive
+                    ? "bg-tealbright text-white"
+                    : "text-ink-soft hover:bg-surface-container hover:text-ink"
+                }`}
+              >
+                More
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {moreOpen && (
+                <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-surface-lowest shadow-lg border border-surface-container py-1 z-50">
+                  {MORE_CATEGORIES.map((c) => (
+                    <NavLink
+                      key={c.slug}
+                      to={`/category/${c.slug}`}
+                      onClick={() => setMoreOpen(false)}
+                      className={({ isActive }) =>
+                        `block px-4 py-2 text-[13px] font-medium transition-colors ${
+                          isActive
+                            ? "bg-tealbright text-white"
+                            : "text-ink-soft hover:bg-surface-container hover:text-ink"
+                        }`
+                      }
+                    >
+                      {c.name}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
+          </nav>
           <button
             className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-low shrink-0"
             onClick={() => setMobileOpen((v) => !v)}
