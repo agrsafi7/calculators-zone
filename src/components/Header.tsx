@@ -5,8 +5,10 @@ import { searchCalculators } from "@/lib/calculator-utils";
 import { Calculator, ChevronDown, Menu, Search, X } from "lucide-react";
 import { useSearchAutocomplete, SearchSuggestions } from "./SearchAutocomplete";
 
-// Site header: fixed top bar — logo LEFT, search CENTER, menu RIGHT
-// (layout per Abu, 2026-11-15). No account/about icon in the header.
+// Site header: fixed top bar — EVERYTHING LEFT-ALIGNED in one row:
+// logo, then menu, then search, starting from the left (layout per Abu,
+// 2026-11-15 — nothing is pinned to the right edge). No account/about
+// icon in the header.
 //
 // Header layout (fixed 2026-11-15): the 1200px container cannot fit all
 // 8 category links + logo + a usable search box at any desktop width —
@@ -109,8 +111,9 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full z-50 bg-surface-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-      <div className="h-16 max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 flex items-center justify-between gap-3">
-        {/* LEFT: logo */}
+      {/* Left-aligned row: logo -> menu -> search -> hamburger. Nothing
+          is pushed to the right edge. */}
+      <div className="h-16 max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 flex items-center gap-4">
         <Link
           to="/"
           className="flex items-center gap-1.5 shrink-0"
@@ -122,129 +125,124 @@ const Header = () => {
           </span>
         </Link>
 
-        {/* CENTER: search (expands on click) */}
-        <div className="flex-1 flex justify-center min-w-0">
-          <div
-            ref={desktopSearch.ref}
-            className={`relative hidden sm:flex transition-all duration-300 ${
-              searchOpen ? "w-[min(430px,calc(100vw-150px))]" : "w-44 lg:w-52"
-            }`}
-          >
-            <form
-              onSubmit={submitSearch(desktopSearch)}
-              className="flex w-full items-center rounded-lg bg-surface-low focus-within:bg-surface-lowest focus-within:ring-2 focus-within:ring-primary"
-              role="search"
-            >
-              <div className="pl-3 flex items-center justify-center shrink-0">
-                <Search size={18} className="text-ink-soft" />
-              </div>
-              <input
-                ref={desktopInputRef}
-                className="w-full min-w-0 bg-transparent px-2 py-1.5 text-[12px] text-ink placeholder:text-ink-soft focus:outline-none"
-                placeholder={searchOpen ? "Search calculator (e.g., mortgage, bmi)..." : "Search..."}
-                type="search"
-                value={desktopSearch.query}
-                onChange={(e) => desktopSearch.setQuery(e.target.value)}
-                onKeyDown={handleDesktopKeyDown}
-                onFocus={() => {
-                  setSearchOpen(true);
-                  desktopSearch.query.trim() && desktopSearch.setOpen(true);
-                }}
-                aria-label="Search calculators"
-                autoComplete="off"
-              />
-              <button
-                className="bg-primary text-white text-[13px] font-medium px-3 py-1.5 rounded-r-lg hover:bg-tealbright transition-colors shrink-0"
-                type="submit"
-              >
-                Search
-              </button>
-            </form>
-            {desktopSearch.open && desktopSearch.suggestions.length > 0 && (
-              <SearchSuggestions
-                suggestions={desktopSearch.suggestions}
-                activeIndex={desktopSearch.activeIndex}
-                onSelect={desktopSearch.pick}
-                onHover={desktopSearch.setActiveIndex}
-                idPrefix="d"
-              />
-            )}
-          </div>
-        </div>
-
-        {/* RIGHT: menu */}
-        <div className="flex items-center gap-1 shrink-0">
-          <nav
-            className={`${searchOpen ? "hidden" : "hidden lg:flex"} items-center gap-1 shrink-0`}
-            aria-label="Categories"
-          >
-            {VISIBLE_CATEGORIES.map((c) => (
-              <NavLink
-                key={c.slug}
-                to={`/category/${c.slug}`}
-                className={({ isActive }) =>
-                  `px-3 py-1.5 rounded text-[13px] font-medium transition-colors whitespace-nowrap ${
-                    isActive
-                      ? "bg-tealbright text-white"
-                      : "text-ink-soft hover:bg-surface-container hover:text-ink"
-                  }`
-                }
-              >
-                {c.name}
-              </NavLink>
-            ))}
-            <div ref={moreRef} className="relative">
-              <button
-                type="button"
-                onClick={() => setMoreOpen((v) => !v)}
-                aria-haspopup="true"
-                aria-expanded={moreOpen}
-                className={`px-3 py-1.5 rounded text-[13px] font-medium transition-colors flex items-center gap-1 whitespace-nowrap ${
-                  moreActive
+        <nav
+          className={`${searchOpen ? "hidden" : "hidden lg:flex"} items-center gap-1 shrink-0`}
+          aria-label="Categories"
+        >
+          {VISIBLE_CATEGORIES.map((c) => (
+            <NavLink
+              key={c.slug}
+              to={`/category/${c.slug}`}
+              className={({ isActive }) =>
+                `px-3 py-1.5 rounded text-[13px] font-medium transition-colors whitespace-nowrap ${
+                  isActive
                     ? "bg-tealbright text-white"
                     : "text-ink-soft hover:bg-surface-container hover:text-ink"
-                }`}
-              >
-                More
-                <ChevronDown
-                  size={14}
-                  className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
-                />
-              </button>
-              {moreOpen && (
-                <div className="absolute right-0 top-full mt-2 w-56 rounded-xl bg-surface-lowest shadow-lg border border-surface-container py-1 z-50">
-                  {MORE_CATEGORIES.map((c) => (
-                    <NavLink
-                      key={c.slug}
-                      to={`/category/${c.slug}`}
-                      onClick={() => setMoreOpen(false)}
-                      className={({ isActive }) =>
-                        `block px-4 py-2 text-[13px] font-medium transition-colors ${
-                          isActive
-                            ? "bg-tealbright text-white"
-                            : "text-ink-soft hover:bg-surface-container hover:text-ink"
-                        }`
-                      }
-                    >
-                      {c.name}
-                    </NavLink>
-                  ))}
-                </div>
-              )}
-            </div>
-          </nav>
-          <button
-            className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-low shrink-0"
-            onClick={() => setMobileOpen((v) => !v)}
-            aria-label="Menu"
-          >
-            {mobileOpen ? (
-              <X size={24} className="text-ink" />
-            ) : (
-              <Menu size={24} className="text-ink" />
+                }`
+              }
+            >
+              {c.name}
+            </NavLink>
+          ))}
+          <div ref={moreRef} className="relative">
+            <button
+              type="button"
+              onClick={() => setMoreOpen((v) => !v)}
+              aria-haspopup="true"
+              aria-expanded={moreOpen}
+              className={`px-3 py-1.5 rounded text-[13px] font-medium transition-colors flex items-center gap-1 whitespace-nowrap ${
+                moreActive
+                  ? "bg-tealbright text-white"
+                  : "text-ink-soft hover:bg-surface-container hover:text-ink"
+              }`}
+            >
+              More
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${moreOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {moreOpen && (
+              <div className="absolute left-0 top-full mt-2 w-56 rounded-xl bg-surface-lowest shadow-lg border border-surface-container py-1 z-50">
+                {MORE_CATEGORIES.map((c) => (
+                  <NavLink
+                    key={c.slug}
+                    to={`/category/${c.slug}`}
+                    onClick={() => setMoreOpen(false)}
+                    className={({ isActive }) =>
+                      `block px-4 py-2 text-[13px] font-medium transition-colors ${
+                        isActive
+                          ? "bg-tealbright text-white"
+                          : "text-ink-soft hover:bg-surface-container hover:text-ink"
+                      }`
+                    }
+                  >
+                    {c.name}
+                  </NavLink>
+                ))}
+              </div>
             )}
-          </button>
+          </div>
+        </nav>
+
+        <div
+          ref={desktopSearch.ref}
+          className={`relative hidden sm:flex transition-all duration-300 shrink-0 ${
+            searchOpen ? "w-[min(430px,calc(100vw-150px))]" : "w-44 lg:w-52"
+          }`}
+        >
+          <form
+            onSubmit={submitSearch(desktopSearch)}
+            className="flex w-full items-center rounded-lg bg-surface-low focus-within:bg-surface-lowest focus-within:ring-2 focus-within:ring-primary"
+            role="search"
+          >
+            <div className="pl-3 flex items-center justify-center shrink-0">
+              <Search size={18} className="text-ink-soft" />
+            </div>
+            <input
+              ref={desktopInputRef}
+              className="w-full min-w-0 bg-transparent px-2 py-1.5 text-[12px] text-ink placeholder:text-ink-soft focus:outline-none"
+              placeholder={searchOpen ? "Search calculator (e.g., mortgage, bmi)..." : "Search..."}
+              type="search"
+              value={desktopSearch.query}
+              onChange={(e) => desktopSearch.setQuery(e.target.value)}
+              onKeyDown={handleDesktopKeyDown}
+              onFocus={() => {
+                setSearchOpen(true);
+                desktopSearch.query.trim() && desktopSearch.setOpen(true);
+              }}
+              aria-label="Search calculators"
+              autoComplete="off"
+            />
+            <button
+              className="bg-primary text-white text-[13px] font-medium px-3 py-1.5 rounded-r-lg hover:bg-tealbright transition-colors shrink-0"
+              type="submit"
+            >
+              Search
+            </button>
+          </form>
+          {desktopSearch.open && desktopSearch.suggestions.length > 0 && (
+            <SearchSuggestions
+              suggestions={desktopSearch.suggestions}
+              activeIndex={desktopSearch.activeIndex}
+              onSelect={desktopSearch.pick}
+              onHover={desktopSearch.setActiveIndex}
+              idPrefix="d"
+            />
+          )}
         </div>
+
+        <button
+          className="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-low shrink-0"
+          onClick={() => setMobileOpen((v) => !v)}
+          aria-label="Menu"
+        >
+          {mobileOpen ? (
+            <X size={24} className="text-ink" />
+          ) : (
+            <Menu size={24} className="text-ink" />
+          )}
+        </button>
       </div>
 
       {mobileOpen && (
