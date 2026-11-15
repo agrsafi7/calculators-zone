@@ -5,9 +5,10 @@ import { searchCalculators } from "@/lib/calculator-utils";
 import { Calculator, ChevronDown, Menu, Search, X } from "lucide-react";
 import { useSearchAutocomplete, SearchSuggestions } from "./SearchAutocomplete";
 
-// Site header: fixed top bar — EVERYTHING LEFT-ALIGNED in one row:
-// logo, then menu, then search, starting from the left (layout per Abu,
-// 2026-11-15 — nothing is pinned to the right edge). No account/about
+// Site header: fixed top bar spanning the full content width — logo and
+// menu on the LEFT, search box on the RIGHT, so the header's left edge
+// aligns with the page content's left edge and its right edge aligns with
+// the content's right edge (layout per Abu, 2026-11-15). No account/about
 // icon in the header.
 //
 // Header layout (fixed 2026-11-15): the 1200px container cannot fit all
@@ -116,21 +117,23 @@ const Header = () => {
   // "menu forced to the right" bug (2026-11-15).
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-surface-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
-      {/* Left-aligned row: logo -> menu -> search -> hamburger. Nothing
-          is pushed to the right edge. */}
-      <div className="h-16 max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 flex items-center gap-4">
-        <Link
-          to="/"
-          className="flex items-center gap-1.5 shrink-0"
-          aria-label="TheCalculator.us home"
-        >
-          <Calculator size={24} className="text-primary" />
-          <span className="font-display text-[18px] font-semibold tracking-tight text-ink whitespace-nowrap">
-            TheCalculator<span className="text-primary">.us</span>
-          </span>
-        </Link>
+      {/* Full-width row: logo + menu on the left, search (+ hamburger on
+          small screens) on the right. Both ends align with the page
+          content's left and right edges. */}
+      <div className="h-16 max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4 shrink-0 min-w-0">
+          <Link
+            to="/"
+            className="flex items-center gap-1.5 shrink-0"
+            aria-label="TheCalculator.us home"
+          >
+            <Calculator size={24} className="text-primary" />
+            <span className="font-display text-[18px] font-semibold tracking-tight text-ink whitespace-nowrap">
+              TheCalculator<span className="text-primary">.us</span>
+            </span>
+          </Link>
 
-        <nav
+          <nav
           className={`${searchOpen ? "hidden" : "hidden lg:flex"} items-center gap-1 shrink-0`}
           aria-label="Categories"
         >
@@ -188,14 +191,16 @@ const Header = () => {
               </div>
             )}
           </div>
-        </nav>
+          </nav>
+        </div>
 
-        <div
-          ref={desktopSearch.ref}
-          className={`relative hidden sm:flex transition-all duration-300 shrink-0 ${
-            searchOpen ? "w-[min(430px,calc(100vw-150px))]" : "w-44 lg:w-52"
-          }`}
-        >
+        <div className="flex items-center gap-3 shrink-0">
+          <div
+            ref={desktopSearch.ref}
+            className={`relative hidden sm:flex transition-all duration-300 shrink-0 ${
+              searchOpen ? "w-[min(430px,calc(100vw-150px))]" : "w-44 xl:w-52"
+            }`}
+          >
           <form
             onSubmit={submitSearch(desktopSearch)}
             className="flex w-full items-center rounded-lg bg-surface-low focus-within:bg-surface-lowest focus-within:ring-2 focus-within:ring-primary"
@@ -248,6 +253,7 @@ const Header = () => {
             <Menu size={24} className="text-ink" />
           )}
         </button>
+        </div>
       </div>
 
       {mobileOpen && (
