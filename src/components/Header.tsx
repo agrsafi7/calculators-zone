@@ -152,10 +152,21 @@ const Header = () => {
               {c.name}
             </NavLink>
           ))}
-          <div ref={moreRef} className="relative">
+          {/* Hover opens the dropdown (Abu, 2026-11-15); click also opens
+              it for touch/keyboard users. It closes when the mouse leaves,
+              on Escape, on outside click, or when a link is picked. */}
+          <div
+            ref={moreRef}
+            className="relative"
+            onMouseEnter={() => setMoreOpen(true)}
+            onMouseLeave={() => setMoreOpen(false)}
+          >
             <button
               type="button"
-              onClick={() => setMoreOpen((v) => !v)}
+              onClick={() => setMoreOpen(true)}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") setMoreOpen(false);
+              }}
               aria-haspopup="true"
               aria-expanded={moreOpen}
               className={`px-3 py-1.5 rounded text-[13px] font-medium transition-colors flex items-center gap-1 whitespace-nowrap ${
@@ -171,7 +182,7 @@ const Header = () => {
               />
             </button>
             {moreOpen && (
-              <div className="absolute left-0 top-full mt-2 w-56 rounded-xl bg-surface-lowest shadow-lg border border-surface-container py-1 z-50">
+              <div className="absolute left-0 top-full w-56 rounded-xl bg-surface-lowest shadow-lg border border-surface-container py-1 z-50">
                 {MORE_CATEGORIES.map((c) => (
                   <NavLink
                     key={c.slug}
