@@ -110,7 +110,12 @@ const Header = () => {
   );
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    {/* inset-x-0 is REQUIRED, not cosmetic: the header lives inside the
+        centered 1440px .app-container. Without left-0, a fixed header
+        falls back to its static position (the container's left edge),
+        which shifts the whole header right by (viewport-1440)/2 on wide
+        screens — the "menu forced to the right" bug (2026-11-15). */}
+    <header className="fixed inset-x-0 top-0 z-50 bg-surface-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
       {/* Left-aligned row: logo -> menu -> search -> hamburger. Nothing
           is pushed to the right edge. */}
       <div className="h-16 max-w-[1200px] mx-auto px-4 md:px-6 lg:px-10 flex items-center gap-4">
