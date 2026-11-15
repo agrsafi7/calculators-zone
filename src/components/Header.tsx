@@ -109,12 +109,12 @@ const Header = () => {
     location.pathname.startsWith(`/category/${c.slug}`),
   );
 
+  // inset-x-0 is REQUIRED, not cosmetic: the header lives inside the
+  // centered 1440px .app-container. Without left-0, a fixed header falls
+  // back to its static position (the container's left edge), which shifts
+  // the whole header right by (viewport-1440)/2 on wide screens — the
+  // "menu forced to the right" bug (2026-11-15).
   return (
-    {/* inset-x-0 is REQUIRED, not cosmetic: the header lives inside the
-        centered 1440px .app-container. Without left-0, a fixed header
-        falls back to its static position (the container's left edge),
-        which shifts the whole header right by (viewport-1440)/2 on wide
-        screens — the "menu forced to the right" bug (2026-11-15). */}
     <header className="fixed inset-x-0 top-0 z-50 bg-surface-lowest/95 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
       {/* Left-aligned row: logo -> menu -> search -> hamburger. Nothing
           is pushed to the right edge. */}
