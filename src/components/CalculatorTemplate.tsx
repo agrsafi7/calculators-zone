@@ -149,7 +149,44 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
     () => getDirectoryGroups(config.categorySlug, config.slug),
     [config.categorySlug, config.slug]
   );
-  const related = config.relatedCalcs.filter((c) => !DELETED_SLUGS.has(c.slug)).slice(0, 5);
+  // Related links: the config's curated list first, resolved through the
+  // manifest so each URL uses the calculator's CANONICAL category — some
+  // relatedCalcs entries carry stale categories from before migrations
+  // (e.g. /lifestyle/age-calculator, which 404s; /other/fuel-cost- and
+  // discount-calculator, which are non-canonical duplicates). Entries with
+  // no live manifest page are dropped, never linked. Topped up to 5 with
+  // same-category calculators (same subcategory first, rotated by a hash
+  // of this page's slug so the extras differ from page to page).
+  const related = useMemo(() => {
+    const seen = new Set<string>([config.slug]);
+    const out: { name: string; slug: string; categorySlug: string }[] = [];
+    for (const c of config.relatedCalcs ?? []) {
+      if (DELETED_SLUGS.has(c.slug) || seen.has(c.slug)) continue;
+      const live = uniqueCalculators.find((u) => u.slug === c.slug);
+      if (!live) continue;
+      seen.add(c.slug);
+      out.push({ name: c.name, slug: c.slug, categorySlug: live.categorySlug });
+    }
+    if (out.length < 5) {
+      const pool = uniqueCalculators.filter(
+        (u) => u.categorySlug === config.categorySlug && !seen.has(u.slug)
+      );
+      const sameSub = pool.filter(
+        (u) => config.subcategory !== undefined && u.subcategory === config.subcategory
+      );
+      const rest = pool.filter((u) => !sameSub.includes(u));
+      const ordered = [...sameSub, ...rest];
+      let hash = 0;
+      for (let i = 0; i < config.slug.length; i++) hash = (hash * 31 + config.slug.charCodeAt(i)) >>> 0;
+      const start = ordered.length > 0 ? hash % ordered.length : 0;
+      for (let k = 0; k < ordered.length && out.length < 5; k++) {
+        const u = ordered[(start + k) % ordered.length];
+        seen.add(u.slug);
+        out.push({ name: u.name, slug: u.slug, categorySlug: u.categorySlug });
+      }
+    }
+    return out;
+  }, [config]);
 
   return (
     <div className="w-full bg-background min-h-[calc(100vh-144px)]">
@@ -296,7 +333,7 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                     {related.map((calc) => (
                       <li key={calc.slug}>
                         <Link
-                          to={`/${calc.category}/${calc.slug}`}
+                          to={`/${calc.categorySlug}/${calc.slug}`}
                           className="text-link hover:text-link-dark hover:underline flex items-center justify-between py-1"
                         >
                           <span>{calc.name}</span>

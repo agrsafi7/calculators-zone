@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
+import GuideSections from "@/components/GuideSections";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { Calculator, ChevronRight, LayoutGrid } from "lucide-react";
 
@@ -8,6 +9,8 @@ const RELATED = [
   { name: "GPA Calculator", slug: "gpa-calculator" },
   { name: "Percent Off Calculator", slug: "percent-off-calculator" },
   { name: "Tip Calculator", slug: "tip-calculator" },
+  { name: "Fraction Calculator", slug: "fraction-calculator" },
+  { name: "Average Calculator", slug: "average-calculator" },
 ];
 
 const FAQS = [
@@ -203,14 +206,22 @@ const PercentageCalculator = () => {
                   Related Math Tools
                 </div>
                 <ul className="flex flex-col text-[12px]">
-                  {RELATED.map((r) => (
-                    <li key={r.slug}>
-                      <Link to={`/math/${r.slug}`} className="text-link hover:text-link-dark hover:underline flex items-center justify-between py-1">
-                        <span>{r.name}</span>
-                        <ChevronRight size={16} className="opacity-40" />
-                      </Link>
-                    </li>
-                  ))}
+                  {/* Slugs resolve through the manifest so each link uses
+                      the calculator's canonical category — two entries
+                      here (Tip, Percent Off) are finance, not math, and
+                      the old hardcoded /math/ prefix 404d. */}
+                  {RELATED.map((r) => {
+                    const live = uniqueCalculators.find((u) => u.slug === r.slug);
+                    if (!live) return null;
+                    return (
+                      <li key={r.slug}>
+                        <Link to={`/${live.categorySlug}/${r.slug}`} className="text-link hover:text-link-dark hover:underline flex items-center justify-between py-1">
+                          <span>{r.name}</span>
+                          <ChevronRight size={16} className="opacity-40" />
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
@@ -246,6 +257,9 @@ const PercentageCalculator = () => {
               </div>
             </div>
           </div>
+
+          {/* In-depth guide (same position as in CalculatorTemplate) */}
+          <GuideSections slug="percentage-calculator" />
 
           <div className="mt-8 pt-6 border-t border-surface-container">
             <h3 className="font-display text-[18px] font-semibold text-ink mb-4">More Math Tools on TheCalculator.us</h3>

@@ -11,6 +11,7 @@ import {
   Check,
 } from "lucide-react";
 import SEO from "@/components/SEO";
+import { uniqueCalculators } from "@/lib/calculator-utils";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -129,6 +130,23 @@ const ScienceCalculator = ({ config }: Props) => {
   }, [target, values, units, config.title]);
 
   const onPrint = useCallback(() => window.print(), []);
+
+  // Related links: the config's curated pills first, topped up to 4 with
+  // other live science calculators (same pattern as CalculatorTemplate).
+  const relatedLinks = useMemo(() => {
+    const out = [...config.related];
+    if (out.length < 4) {
+      const have = new Set(out.map((r) => r.href));
+      for (const u of uniqueCalculators) {
+        if (out.length >= 4) break;
+        const href = `/${u.categorySlug}/${u.slug}`;
+        if (u.categorySlug !== config.categorySlug || u.slug === config.slug || have.has(href)) continue;
+        have.add(href);
+        out.push({ label: u.name, href });
+      }
+    }
+    return out;
+  }, [config]);
 
   // ---- SEO JSON-LD ----
   const breadcrumbs = [
@@ -502,7 +520,7 @@ const ScienceCalculator = ({ config }: Props) => {
             Related calculators
           </h2>
           <div className="flex flex-wrap gap-2">
-            {config.related.map((r) => (
+            {relatedLinks.map((r) => (
               <Link
                 key={r.label + r.href}
                 to={r.href}

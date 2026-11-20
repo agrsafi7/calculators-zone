@@ -1,6 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
+import GuideSections from "@/components/GuideSections";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { Calculator, ChevronRight, Info, Landmark, LayoutGrid, Table, X } from "lucide-react";
 
@@ -419,6 +420,9 @@ const MortgageCalculator = () => {
               </div>
             </div>
           </div>
+
+          {/* In-depth guide (same position as in CalculatorTemplate) */}
+          <GuideSections slug="mortgage-calculator" />
 
           <div className="mt-8 pt-6 border-t border-surface-container">
             <h3 className="font-display text-[18px] font-semibold text-ink mb-4">More Financial Tools on TheCalculator.us</h3>
