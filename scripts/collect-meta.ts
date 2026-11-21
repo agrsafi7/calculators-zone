@@ -29,6 +29,7 @@ import { otherCalculatorsExtra } from "../src/data/other-calculators-extra";
 import { otherCalculatorsBatch2 } from "../src/data/other-calculators-batch2";
 import { otherCalculatorsBatch3 } from "../src/data/other-calculators-batch3";
 import { expansionCalculators } from "../src/data/expansion-calculators";
+import { scienceTemplateBySlug } from "../src/data/science";
 import { blogPosts, isPublished } from "../src/data/blog-posts";
 
 interface Entry {
@@ -36,6 +37,7 @@ interface Entry {
   title: string;
   description: string;
   faqs?: { question: string; answer: string }[];
+  breadcrumbs?: { name: string; url: string }[];
   articleLd?: Record<string, unknown>;
 }
 
@@ -69,6 +71,21 @@ const allConfigs = [
 const configBySlug = new Map<string, (typeof allConfigs)[number]>();
 for (const c of allConfigs) {
   if (!configBySlug.has(c.slug)) configBySlug.set(c.slug, c);
+}
+
+// Path-keyed config lookup (LAST occurrence wins), mirroring
+// src/entry-server.tsx's configByPath — the SSR render that produces the
+// visible breadcrumb trail in the served HTML. Slug-only lookup would pick
+// the wrong category's config for the 67 slugs defined under multiple
+// categories (e.g. inflation-calculator in finance AND other), and the
+// first/last distinction matters: /other/road-trip-calculator visibly
+// renders "Road Trip Cost Calculator" (last config wins in SSR) while its
+// <title> comes from the first config ("Road Trip Calculator"). The
+// BreadcrumbList must match the VISIBLE trail, so it resolves by path,
+// last-wins — exactly what the SSR page renders.
+const configByPath = new Map<string, (typeof allConfigs)[number]>();
+for (const c of allConfigs) {
+  configByPath.set(`${c.categorySlug}/${c.slug}`, c);
 }
 
 // Custom pages override the data-file meta (their components pass their own SEO props)
@@ -140,16 +157,42 @@ const entries: Entry[] = [];
 for (const u of uniqueCalculators) {
   const path = `/${u.categorySlug}/${u.slug}`;
   const cfg = configBySlug.get(u.slug);
+  const pathCfg = configByPath.get(`${u.categorySlug}/${u.slug}`);
   const override = customOverrides[u.slug];
+  // Breadcrumbs mirror the VISIBLE trail exactly: CalculatorTemplate
+  // renders Home / config.category / config.name, the three custom pages
+  // hardcode Home / Health|Finance|Math / Name (matched here via the
+  // manifest's u.category + override title), and the five science-template
+  // pages render a 4-level trail with their subCategory
+  // (src/components/science/ScienceCalculator.tsx). The category label
+  // comes from the path-resolved config, so subcategory-labelled configs
+  // (e.g. "Geometry") match what the page visibly shows.
+  const sci = u.categorySlug === "science" ? scienceTemplateBySlug[u.slug] : undefined;
+  const calcName = override?.title ?? pathCfg?.name ?? u.name;
+  const catName = pathCfg?.category ?? u.category;
+  const breadcrumbs: { name: string; url: string }[] = sci
+    ? [
+        { name: "Home", url: "/" },
+        { name: "Science", url: "/category/science" },
+        { name: sci.subCategory, url: "/category/science" },
+        { name: sci.title, url: path },
+      ]
+    : [
+        { name: "Home", url: "/" },
+        { name: catName, url: `/category/${u.categorySlug}` },
+        { name: calcName, url: path },
+      ];
   entries.push({
     path,
     title: `${override?.title ?? cfg?.name ?? u.name} | TheCalculator.us`,
     description: override?.description ?? cfg?.metaDescription ?? u.description,
     faqs: (override?.faqs ?? cfg?.faqs)?.slice(0, 6),
+    breadcrumbs,
   });
 }
 
-// Category pages
+// Category pages — visible trail is Home / {category name}
+// (src/pages/CategoryPage.tsx passes the same pair to SEO).
 for (const cat of categories) {
   const seo = categorySEOData[cat.slug];
   entries.push({
@@ -158,6 +201,10 @@ for (const cat of categories) {
     description: seo?.contentIntro
       ? seo.contentIntro.split(". ")[0] + "."
       : `Free ${cat.name.toLowerCase()} calculators. ${cat.description}`,
+    breadcrumbs: [
+      { name: "Home", url: "/" },
+      { name: cat.name, url: `/category/${cat.slug}` },
+    ],
   });
 }
 
@@ -194,13 +241,18 @@ const statics: Entry[] = [
       },
     ],
   },
+  // No breadcrumbs for /categories, /popular, or /blog: their visible
+  // trail is a single label ("All Categories", "Popular Tools", "Blog"),
+  // and a one-item BreadcrumbList carries no navigation value.
   { path: "/categories", title: "All Calculator Categories | TheCalculator.us", description: "Browse all calculator categories: finance, health, math, conversions, science, lifestyle, date & time, and more." },
   { path: "/popular", title: "Popular Calculators | TheCalculator.us", description: "The most popular free online calculators: mortgage, BMI, percentage, age, loan, and more." },
-  { path: "/about", title: "About Us | TheCalculator.us", description: "About TheCalculator.us — who we are, how our free calculators are built and tested, and our commitment to accuracy and privacy." },
-  { path: "/privacy-policy", title: "Privacy Policy | TheCalculator.us", description: "Privacy Policy for TheCalculator.us — what data we collect, how cookies work, and your choices." },
-  { path: "/terms-of-service", title: "Terms of Service | TheCalculator.us", description: "Terms of Service for TheCalculator.us — the rules for using our free online calculators." },
-  { path: "/disclaimer", title: "Disclaimer | TheCalculator.us", description: "Disclaimer for TheCalculator.us — the limitations of our calculators for financial, health, and general decisions." },
-  { path: "/contact", title: "Contact Us | TheCalculator.us", description: "Contact TheCalculator.us — questions, feedback, error reports, and partnership inquiries." },
+  // Visible trail on each of these is Home / {title}
+  // (AboutPage.tsx, LegalPages.tsx).
+  { path: "/about", title: "About Us | TheCalculator.us", description: "About TheCalculator.us — who we are, how our free calculators are built and tested, and our commitment to accuracy and privacy.", breadcrumbs: [{ name: "Home", url: "/" }, { name: "About Us", url: "/about" }] },
+  { path: "/privacy-policy", title: "Privacy Policy | TheCalculator.us", description: "Privacy Policy for TheCalculator.us — what data we collect, how cookies work, and your choices.", breadcrumbs: [{ name: "Home", url: "/" }, { name: "Privacy Policy", url: "/privacy-policy" }] },
+  { path: "/terms-of-service", title: "Terms of Service | TheCalculator.us", description: "Terms of Service for TheCalculator.us — the rules for using our free online calculators.", breadcrumbs: [{ name: "Home", url: "/" }, { name: "Terms of Service", url: "/terms-of-service" }] },
+  { path: "/disclaimer", title: "Disclaimer | TheCalculator.us", description: "Disclaimer for TheCalculator.us — the limitations of our calculators for financial, health, and general decisions.", breadcrumbs: [{ name: "Home", url: "/" }, { name: "Disclaimer", url: "/disclaimer" }] },
+  { path: "/contact", title: "Contact Us | TheCalculator.us", description: "Contact TheCalculator.us — questions, feedback, error reports, and partnership inquiries.", breadcrumbs: [{ name: "Home", url: "/" }, { name: "Contact Us", url: "/contact" }] },
 ];
 entries.push(...statics);
 
@@ -233,6 +285,12 @@ for (const p of blogPosts) {
     path: `/blog/${p.slug}`,
     title: `${p.title} | TheCalculator.us`,
     description: p.description,
+    // Visible trail on a post is Blog / {title} (BlogPost.tsx) — no Home
+    // crumb — so the schema matches the visible trail exactly.
+    breadcrumbs: [
+      { name: "Blog", url: "/blog" },
+      { name: p.title, url: `/blog/${p.slug}` },
+    ],
     articleLd: {
       "@context": "https://schema.org",
       "@type": "Article",

@@ -133,6 +133,26 @@ const buildHtml = (entry) => {
     const tag = `<script type="application/ld+json">${JSON.stringify(faqLd).replace(/</g, "\\u003c")}</script>`;
     html = html.replace("</head>", `  ${tag}\n</head>`);
   }
+  // Breadcrumb structured data — owned by this prerender layer, like
+  // FAQPage above (SEO audit F7 pattern): Helmet <script> children do not
+  // survive prerender serialization, so emitting BreadcrumbList from
+  // SEO.tsx left the schema out of the served HTML entirely. The trail
+  // here is built in collect-meta.ts to match each page's visible
+  // breadcrumb trail exactly.
+  if (entry.breadcrumbs && entry.breadcrumbs.length > 0) {
+    const breadcrumbLd = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: entry.breadcrumbs.map((b, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: b.name,
+        item: `${BASE}${b.url}`,
+      })),
+    };
+    const tag = `<script type="application/ld+json">${JSON.stringify(breadcrumbLd).replace(/</g, "\\u003c")}</script>`;
+    html = html.replace("</head>", `  ${tag}\n</head>`);
+  }
   // Article structured data for blog posts (content visible to crawlers without JS)
   if (entry.articleLd) {
     const tag = `<script type="application/ld+json">${JSON.stringify(entry.articleLd).replace(/</g, "\\u003c")}</script>`;

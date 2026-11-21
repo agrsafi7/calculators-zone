@@ -48,18 +48,14 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
     }
   }
 
-  const breadcrumbSchema = breadcrumbs?.length
-    ? {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: breadcrumbs.map((b, i) => ({
-          "@type": "ListItem",
-          position: i + 1,
-          name: b.name,
-          item: `${baseUrl}${b.url}`,
-        })),
-      }
-    : null;
+  // BreadcrumbList JSON-LD is owned by the static prerender layer
+  // (scripts/collect-meta.ts + scripts/prerender.mjs), which emits exactly
+  // one BreadcrumbList block per page in the served HTML. Emitting it here
+  // as well left the schema out of the served HTML entirely (Helmet
+  // <script> children don't survive prerender serialization) and would
+  // duplicate it after hydration (SEO audit F7 pattern), so the
+  // `breadcrumbs` prop is intentionally no longer rendered from this
+  // component.
 
   // FAQPage JSON-LD is owned by the static prerender layer
   // (scripts/collect-meta.ts + scripts/prerender.mjs), which emits exactly
@@ -123,9 +119,6 @@ const SEO = ({ title, description, canonical, type = "website", keywords, ogImag
       <html lang="en" />
       {jsonLd && (
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      )}
-      {breadcrumbSchema && (
-        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       )}
       {isHomepage && (
         <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
