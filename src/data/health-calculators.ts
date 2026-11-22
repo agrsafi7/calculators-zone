@@ -386,6 +386,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your daily calorie target and select a macro goal. The calculator distributes calories across protein, carbs, and fat.",
     faqs: [
       { question: "What macro ratio is best for weight loss?", answer: "A higher protein intake (30-40% of calories) tends to support weight loss by increasing satiety and preserving muscle mass. The best ratio depends on your individual preferences and activity." },
+      { question: "How many calories are in each macro?", answer: "Protein and carbohydrate each provide 4 calories per gram, and fat provides 9 calories per gram. That is why fat contributes more calories for the same weight of food, and why this calculator divides fat calories by 9 but protein and carb calories by 4." },
+      { question: "Do I need to hit my macros exactly every day?", answer: "No. Landing within about 10 grams of each target is close enough for most people. Weekly consistency matters more than daily precision, and protein is the macro most worth tracking closely." },
     ],
     relatedCalcs: healthRelated("macro-calculator"),
   },
@@ -521,6 +523,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your distance and total time. The calculator computes your pace per km/mile and speed.",
     faqs: [
       { question: "What is a good running pace?", answer: "Beginners often run 6:00-7:00/km. Intermediate runners: 5:00-6:00/km. Competitive runners: under 4:30/km." },
+      { question: "How do I calculate my finish time from my pace?", answer: "Multiply your pace per kilometre by the race distance. At 5:00/km, a 10K takes 50 minutes (5 × 10) and a marathon (42.195 km) takes about 3 hours 31 minutes (42.195 × 5 = 211 minutes)." },
+      { question: "What is the difference between pace and speed?", answer: "Pace is time per unit of distance (minutes per km), while speed is distance per unit of time (km/h). They are inverses: a 5:00/km pace equals 12 km/h, and a 6:00/km pace equals 10 km/h." },
     ],
     relatedCalcs: healthRelated("pace-calculator"),
   },
@@ -618,6 +622,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your weight and activity level to get your recommended daily protein intake.",
     faqs: [
       { question: "Can I eat too much protein?", answer: "For most healthy adults, up to 2.2g/kg is safe. Very high intakes (>3g/kg) may stress kidneys in people with pre-existing kidney conditions." },
+      { question: "How much protein do I need per day?", answer: "The standard reference intake for sedentary adults is 0.8g per kg of body weight (about 56g for a 70kg person). Active people generally need 1.2-1.6g/kg, and athletes 1.6-2.2g/kg. This calculator applies those factors to your weight and activity level." },
+      { question: "Is it better to spread protein across meals?", answer: "Yes — spreading protein roughly evenly across meals (about 20-40g per meal for most adults) supports muscle maintenance better than eating most of it in one meal. This calculator shows per-meal targets for 3 and 5 meals." },
     ],
     relatedCalcs: healthRelated("protein-intake-calculator"),
   },
@@ -833,7 +839,11 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Calories = MET × Weight(kg) × 3.5 / 200 × Minutes", variables: ["MET = Metabolic Equivalent of Task"] },
     howToUse: "Select an activity, enter your weight and duration to estimate calories burned.",
-    faqs: [{ question: "What are METs?", answer: "Metabolic Equivalents measure exercise intensity. 1 MET = resting. Walking = 3-4 METs. Running = 7-12 METs." }],
+    faqs: [
+      { question: "What are METs?", answer: "Metabolic Equivalents measure exercise intensity. 1 MET = resting. Walking = 3-4 METs. Running = 7-12 METs." },
+      { question: "Why does weight affect calories burned?", answer: "Moving a heavier body takes more energy, so the formula multiplies by your weight in kg. A 90kg person burns about 29% more calories than a 70kg person doing the same activity for the same time (90 ÷ 70 = 1.29)." },
+      { question: "How accurate is this estimate?", answer: "It is an estimate based on average MET values from exercise research. Individual burn varies by roughly 10-20% with fitness level, body composition, and technique, so use it to compare activities and plan weekly totals rather than as an exact figure." },
+    ],
     relatedCalcs: healthRelated("calories-burned-calculator"),
   },
   // 25. Pregnancy Weight Gain Calculator

@@ -448,7 +448,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "x = (−b ± √(b²−4ac)) / 2a", variables: ["a, b, c are coefficients", "Δ = b²−4ac (discriminant)"] },
     howToUse: "Enter the coefficients a, b, and c of your quadratic equation ax² + bx + c = 0.",
-    faqs: [{ question: "What if the discriminant is negative?", answer: "When b²−4ac < 0, the equation has two complex conjugate roots." }],
+    faqs: [
+      { question: "What if the discriminant is negative?", answer: "When b²−4ac < 0, the equation has two complex conjugate roots." },
+      { question: "How do I know how many solutions a quadratic has?", answer: "Check the discriminant Δ = b² − 4ac. If Δ > 0 there are two distinct real roots, if Δ = 0 there is one repeated root, and if Δ < 0 there are two complex roots and the parabola never crosses the x-axis." },
+      { question: "What is the vertex of a parabola?", answer: "The vertex is the parabola's turning point, at x = −b / 2a — exactly halfway between the two roots. For x² − 5x + 6 = 0, the vertex is at x = 2.5, midway between the roots 2 and 3." },
+    ],
     relatedCalcs: mathRelated("quadratic-equation-calculator"),
   },
   // 13. Linear Equation
@@ -615,7 +619,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "√x = x^(1/2)", variables: ["x must be ≥ 0 for real results"] },
     howToUse: "Enter a number to find its square root.",
-    faqs: [{ question: "What is a perfect square?", answer: "A number whose square root is a whole integer, e.g., 4, 9, 16, 25, 36..." }],
+    faqs: [
+      { question: "What is a perfect square?", answer: "A number whose square root is a whole integer, e.g., 4, 9, 16, 25, 36..." },
+      { question: "Can you take the square root of a negative number?", answer: "Not as a real number — no real number squared gives a negative result. In complex numbers, √(−9) = 3i. This calculator returns an error for negative inputs." },
+      { question: "What is the square root of 2?", answer: "√2 ≈ 1.414214. It is irrational, meaning its decimal expansion never ends or repeats, and it cannot be written exactly as a fraction." },
+    ],
     relatedCalcs: mathRelated("square-root-calculator"),
   },
   // 19. Cube Root
@@ -668,7 +676,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "LCM(a,b) = |a×b| / GCD(a,b)", variables: ["GCD = Greatest Common Divisor"] },
     howToUse: "Enter two numbers to find their LCM and GCD.",
-    faqs: [{ question: "What is LCM used for?", answer: "LCM is used to find common denominators for fractions, schedule timing problems, and determine repeating patterns." }],
+    faqs: [
+      { question: "What is LCM used for?", answer: "LCM is used to find common denominators for fractions, schedule timing problems, and determine repeating patterns." },
+      { question: "What is the difference between LCM and GCD?", answer: "The LCM is the smallest number both numbers divide into; the GCD is the largest number that divides both. For 12 and 18, the LCM is 36 and the GCD is 6 — and they are linked by LCM × GCD = 12 × 18 = 216." },
+      { question: "How do you find the LCM of two numbers by hand?", answer: "List multiples of each number until you find one in common, or use prime factorisation: 12 = 2² × 3 and 18 = 2 × 3², so take the highest power of each prime: 2² × 3² = 4 × 9 = 36." },
+    ],
     relatedCalcs: mathRelated("lcm-calculator"),
   },
   // 21. GCF
@@ -893,7 +905,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "d = √((x₂−x₁)² + (y₂−y₁)²)", variables: ["Euclidean distance in 2D"] },
     howToUse: "Enter two coordinate pairs to calculate the straight-line distance between them.",
-    faqs: [{ question: "Does this work in 3D?", answer: "This calculator is for 2D. For 3D, add (z₂−z₁)² under the square root." }],
+    faqs: [
+      { question: "Does this work in 3D?", answer: "This calculator is for 2D. For 3D, add (z₂−z₁)² under the square root." },
+      { question: "Does the order of the points matter?", answer: "No. Because the differences are squared, (x₂−x₁)² equals (x₁−x₂)², so the distance from A to B is the same as from B to A." },
+      { question: "What is the distance formula used for?", answer: "It measures straight-line distance between two points on a map or graph, and the same Euclidean distance is used in computer graphics, GPS navigation, and data science to measure how similar two data points are." },
+    ],
     relatedCalcs: mathRelated("distance-formula-calculator"),
   },
   // 28. Midpoint
@@ -957,7 +973,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Circle: πr²; Rectangle: l×w; Triangle: ½bh; Trapezoid: ½(a+b)h", variables: ["r=radius", "l=length, w=width", "b=base, h=height"] },
     howToUse: "Select a shape and enter dimensions. Unused dimensions are ignored.",
-    faqs: [{ question: "What units is area in?", answer: "Area is in square units of whatever unit you use for dimensions (e.g., cm → cm²)." }],
+    faqs: [
+      { question: "What units is area in?", answer: "Area is in square units of whatever unit you use for dimensions (e.g., cm → cm²)." },
+      { question: "Why does doubling the radius quadruple a circle's area?", answer: "Area depends on the square of the radius (πr²). Doubling r multiplies r² by 4, so a circle with radius 20 has four times the area of one with radius 10 — 1,256.64 versus 314.16." },
+      { question: "How do I find the area of an irregular shape?", answer: "Split it into rectangles, triangles, and other shapes you know, calculate each area, and add them together. For a shape with a curved edge, approximate it with several smaller shapes — the more pieces, the closer the estimate." },
+    ],
     relatedCalcs: mathRelated("area-calculator"),
   },
   // 30. Volume Calculator
@@ -990,7 +1010,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Sphere: 4/3πr³; Cylinder: πr²h; Cone: 1/3πr²h; Cube: s³", variables: ["r=radius, h=height, s=side"] },
     howToUse: "Select a 3D shape, enter radius/side and height (if applicable).",
-    faqs: [{ question: "What units?", answer: "Volume is in cubic units (e.g., cm³). Surface area is in square units (cm²)." }],
+    faqs: [
+      { question: "What units?", answer: "Volume is in cubic units (e.g., cm³). Surface area is in square units (cm²)." },
+      { question: "How many litres is a cubic metre?", answer: "1 cubic metre equals 1,000 litres, and 1 litre equals 1,000 cubic centimetres. So a box measuring 10 cm × 10 cm × 10 cm holds exactly 1 litre." },
+      { question: "Why is a cone one third of a cylinder?", answer: "A cone and a cylinder with the same radius and height have volumes of ⅓πr²h and πr²h, so the cone holds exactly one third as much. For radius 5 and height 10, that is 261.80 versus 785.40." },
+    ],
     relatedCalcs: mathRelated("volume-calculator"),
   },
   // 31. Binary Calculator
@@ -1169,7 +1193,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "c = √(a² + b²)", variables: ["a and b are the two legs", "c is the hypotenuse"] },
     howToUse: "Enter the two legs of a right triangle to find the hypotenuse.",
-    faqs: [{ question: "What are Pythagorean triples?", answer: "Integer solutions like 3-4-5, 5-12-13, 8-15-17. They form right triangles with whole-number sides." }],
+    faqs: [
+      { question: "What are Pythagorean triples?", answer: "Integer solutions like 3-4-5, 5-12-13, 8-15-17. They form right triangles with whole-number sides." },
+      { question: "How do I find a leg if I know the hypotenuse?", answer: "Rearrange the theorem: b = √(c² − a²). For a hypotenuse of 5 and a leg of 3, the other leg is √(25 − 9) = √16 = 4." },
+      { question: "Does the Pythagorean theorem work for all triangles?", answer: "No — only right triangles (those with a 90° angle). For other triangles, use the law of cosines: c² = a² + b² − 2ab cos C, which reduces to the Pythagorean theorem when C is 90°." },
+    ],
     relatedCalcs: mathRelated("pythagorean-theorem-calculator"),
   },
   // 38. Scientific Notation Calculator
@@ -1337,7 +1365,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Heron's: Area = √(s(s-a)(s-b)(s-c)) where s = (a+b+c)/2", variables: ["Angles via law of cosines"] },
     howToUse: "Enter three side lengths. The calculator finds area and angles using Heron's formula and law of cosines.",
-    faqs: [{ question: "When is a triangle valid?", answer: "Each side must be less than the sum of the other two (triangle inequality)." }],
+    faqs: [
+      { question: "When is a triangle valid?", answer: "Each side must be less than the sum of the other two (triangle inequality)." },
+      { question: "What is Heron's formula?", answer: "Heron's formula finds a triangle's area from its three sides: first s = (a + b + c) / 2, then area = √(s(s−a)(s−b)(s−c)). For sides 5, 7, 10: s = 11 and area = √(11 × 6 × 4 × 1) = √264 ≈ 16.25." },
+      { question: "Do the angles of a triangle always add up to 180°?", answer: "Yes, in flat (Euclidean) geometry the three interior angles always sum to 180°. This calculator uses that rule to find the third angle from the other two, and it is a quick check on any triangle calculation." },
+    ],
     relatedCalcs: mathRelated("triangle-calculator"),
   },
   // 42. Surface Area Calculator

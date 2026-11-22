@@ -520,7 +520,9 @@ const _scienceCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "P = V × I; R = V / I", variables: ["P = Power (Watts)", "V = Voltage", "I = Current"] },
     howToUse: "Enter voltage and current to calculate power and resistance.",
-    faqs: [{ question: "What is a watt?", answer: "A watt measures the rate of energy transfer. 1 watt = 1 joule per second = 1 volt × 1 amp." }],
+    faqs: [{ question: "What is a watt?", answer: "A watt measures the rate of energy transfer. 1 watt = 1 joule per second = 1 volt × 1 amp." },
+      { question: "How do I calculate watts from volts and amps?", answer: "Multiply voltage by current: watts = volts × amps. A circuit at 120 volts carrying 10 amps delivers 120 × 10 = 1,200 watts." },
+      { question: "What is the difference between watts and kilowatt-hours?", answer: "Watts measure power (a rate); kilowatt-hours measure energy used over time. A 1,200-watt appliance running for 1 hour uses 1.2 kWh; running for 5 hours it uses 6 kWh." }],
     relatedCalcs: sciRelated("electricity-power-calculator"),
   },
   // Weight Calculator

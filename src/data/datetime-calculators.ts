@@ -121,7 +121,9 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Days = (Date2 − Date1) / 86400000", variables: ["Difference in milliseconds ÷ ms per day"] },
     howToUse: "Enter two dates to find the number of days between them.",
-    faqs: [{ question: "Is this the same as date difference?", answer: "Yes, this is a simplified version focused on day count." }],
+    faqs: [{ question: "Is this the same as date difference?", answer: "Yes, this is a simplified version focused on day count." },
+      { question: "Does the count include both the start and end dates?", answer: "No. The result is the difference between the dates: 1 January to 2 January is 1 day. If you need an inclusive count that includes both endpoints, add 1 to the result." },
+      { question: "How are leap years handled?", answer: "The calculator uses real calendar dates, so 29 February is counted automatically. From 1 January 2024 to 1 January 2025 is 366 days because 2024 was a leap year." }],
     relatedCalcs: dtRelated("days-between-dates-calculator"),
   },
   {
@@ -148,7 +150,9 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Duration = End Time − Start Time", variables: ["Wraps around midnight if needed"] },
     howToUse: "Enter start and end times in 24-hour format to calculate the duration.",
-    faqs: [{ question: "What about overnight?", answer: "If end is before start, it assumes overnight and adds 24 hours." }],
+    faqs: [{ question: "What about overnight?", answer: "If end is before start, it assumes overnight and adds 24 hours." },
+      { question: "How do I convert the result to decimal hours?", answer: "Divide total minutes by 60. A duration of 510 minutes is 510 ÷ 60 = 8.50 decimal hours — not 8.30, which is a common payroll mistake." },
+      { question: "What if my time span is longer than 24 hours?", answer: "This calculator assumes at most one midnight crossing. For multi-day spans, use the days between dates calculator instead." }],
     relatedCalcs: dtRelated("time-duration-calculator"),
   },
   {
@@ -213,7 +217,9 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Total = Hours/Day × Days/Week × Weeks", variables: ["Pay = Total Hours × Rate"] },
     howToUse: "Enter your daily hours, workdays per week, number of weeks, and hourly rate.",
-    faqs: [{ question: "Does this include overtime?", answer: "No. For overtime, use a separate overtime calculator." }],
+    faqs: [{ question: "Does this include overtime?", answer: "No. For overtime, use a separate overtime calculator." },
+      { question: "Are unpaid breaks deducted?", answer: "No. Enter your net hours worked, after unpaid breaks — a 9-hour shift with a 1-hour unpaid lunch should be entered as 8 hours per day." },
+      { question: "Is the pay figure gross or net?", answer: "Gross. It is total hours × hourly rate, before tax and other deductions." }],
     relatedCalcs: dtRelated("work-hours-calculator"),
   },
   {
@@ -242,7 +248,9 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "New Time = Original ± (To Offset − From Offset)", variables: ["UTC-based conversion"] },
     howToUse: "Enter the time, source UTC offset, and target UTC offset.",
-    faqs: [{ question: "What about DST?", answer: "This uses fixed UTC offsets. Check whether your region observes DST and adjust accordingly." }],
+    faqs: [{ question: "What about DST?", answer: "This uses fixed UTC offsets. Check whether your region observes DST and adjust accordingly." },
+      { question: "How do I find a city's UTC offset?", answer: "Check a world clock or time-zone reference for the specific date you need, since offsets change when daylight saving time starts or ends. Then enter those offsets here." },
+      { question: "Why did my converted time land on a different day?", answer: "When the offset difference pushes the time past midnight or before 00:00, the date shifts. The converter shows 'Next day' or 'Previous day' so you can see the change." }],
     relatedCalcs: dtRelated("time-zone-converter"),
   },
   {

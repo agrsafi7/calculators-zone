@@ -207,7 +207,9 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to seconds, then to target", variables: ["1 min = 60s", "1 hr = 3600s", "1 day = 86400s"] },
     howToUse: "Enter a time value and unit to see all conversions.",
-    faqs: [{ question: "How many seconds in a year?", answer: "Approximately 31,536,000 seconds (365 days)." }],
+    faqs: [{ question: "How many seconds in a year?", answer: "Approximately 31,536,000 seconds (365 days)." },
+      { question: "How many seconds are in a week?", answer: "604,800 seconds — 7 days × 86,400 seconds per day." },
+      { question: "Why aren't months and years in the converter?", answer: "Their lengths vary: months are 28 to 31 days and years are 365 or 366 days, so there is no single exact conversion. The converter covers seconds through weeks, where every step is exact." }],
     relatedCalcs: convRelated("time-converter"),
   },
   {

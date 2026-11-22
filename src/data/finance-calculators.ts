@@ -148,6 +148,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Should I refinance my student loans?", answer: "Refinancing can lower your interest rate and monthly payment, but you may lose federal loan benefits like income-driven repayment and loan forgiveness. Consider carefully." },
       { question: "What is income-driven repayment?", answer: "Income-driven plans cap your monthly payment at a percentage of your discretionary income (typically 10-20%). After 20-25 years of payments, the remaining balance may be forgiven." },
+      { question: "What is the monthly payment on a $35,000 student loan?", answer: "At 5.5% interest over the standard 10-year term, the payment is $379.84 a month, with $10,581.04 in total interest and $45,581.04 repaid overall." },
+      { question: "How much does a longer repayment term cost?", answer: "Stretching a $35,000 loan at 5.5% from 10 years to 20 years drops the payment from $379.84 to $240.76 a month — but total interest rises from $10,581.04 to $22,782.53, an extra $12,201.50. A longer term buys a lower payment at a steep price." },
     ],
     relatedCalcs: financeRelated("student-loan-calculator"),
   },
@@ -470,6 +472,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is a good ROI?", answer: "A 'good' ROI depends on the investment type. Stock market averages 7-10% annually. Real estate might target 8-12%. High-risk investments should offer higher potential returns." },
       { question: "Why use annualized ROI?", answer: "Annualized ROI normalizes returns across different time periods, making it easier to compare investments with different durations." },
+      { question: "How is ROI different from annualized return?", answer: "ROI is the total gain over the whole period; annualized return is the equivalent per-year rate with compounding. Investing $10,000 and getting back $15,000 is a 50% ROI — but over 3 years that is 14.47% a year, while over 5 years it is only 8.45% a year." },
+      { question: "Can ROI be negative?", answer: "Yes. If you get back less than you invested, ROI is negative. Investing $10,000 and selling for $8,000 gives an ROI of -20%. A negative ROI means the investment lost money." },
     ],
     relatedCalcs: financeRelated("roi-calculator"),
   },
@@ -722,6 +726,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Is future value guaranteed?", answer: "No. Future value calculations assume a constant rate of return, which isn't realistic for most investments. Actual returns will vary year to year." },
       { question: "How does inflation affect future value?", answer: "Inflation erodes purchasing power. To find the 'real' future value, subtract the inflation rate from your nominal return rate." },
+      { question: "How much will $50,000 grow to in 15 years at 7%?", answer: "$50,000 × (1.07)^15 = $137,951.58 — a gain of $87,951.58, or 2.76× your starting amount. Left for 30 years at the same rate, it would grow to $380,612.75." },
+      { question: "Does this calculator include regular contributions?", answer: "No. This calculator projects a single lump sum with annual compounding and no further deposits. If you plan to add money every month, use the savings calculator instead — regular contributions change the result considerably." },
     ],
     relatedCalcs: financeRelated("future-value-calculator"),
   },
@@ -792,6 +798,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Why is APR different from interest rate?", answer: "APR includes the interest rate plus fees, origination charges, and other costs, giving you a more complete picture of borrowing costs." },
       { question: "Should I always choose the lowest APR?", answer: "Generally yes, but consider loan terms too. A lower APR over a longer term might cost more in total interest than a slightly higher APR over a shorter term." },
+      { question: "How does this calculator estimate APR?", answer: "It adds your total interest and fees, then divides by the loan amount and the number of years. For example, a $20,000 loan at 5% for 60 months with $500 in fees has $2,645.48 in interest, so the true cost of borrowing is $3,145.48 and the simplified APR estimate is 3.15%." },
+      { question: "Why is the estimated APR lower than my interest rate?", answer: "This calculator uses a simplified estimate that spreads the interest across the original loan amount for the whole term. On a real amortizing loan the balance shrinks each month, so the lender's official APR — calculated from the actual payment schedule — comes out higher. Use the estimate to compare loans side by side, and rely on the lender's disclosed APR as the authoritative figure." },
     ],
     relatedCalcs: financeRelated("apr-calculator"),
   },
@@ -826,6 +834,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Why does credit card interest feel so high?", answer: "Credit card APRs (15-25%+) are much higher than other loans because they're unsecured. Even small balances can generate significant interest if only minimum payments are made." },
       { question: "How can I pay off my card faster?", answer: "Pay more than the minimum, transfer balances to 0% APR cards, or use the avalanche method (pay highest APR debts first)." },
+      { question: "How long does it take to pay off $5,000 at 22% APR?", answer: "Paying $150 a month, it takes 52 months (4.3 years) and costs $2,800 in interest. Paying $200 a month cuts it to 34 months and $1,800 in interest — an extra $50 a month saves $1,000 and 18 months." },
+      { question: "What happens if my monthly payment is too low?", answer: "If your payment doesn't exceed the monthly interest charge, the balance never shrinks. On a $5,000 balance at 22% APR, the first month's interest alone is $91.67 — a payment below that leaves you in debt forever. The calculator shows an error when the payment is too low to ever pay the card off." },
     ],
     relatedCalcs: financeRelated("credit-card-payment-calculator"),
   },
@@ -898,6 +908,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Avalanche vs snowball method?", answer: "Avalanche: pay highest-rate debts first (saves more money). Snowball: pay smallest debts first (psychological wins). Both work — choose the one you'll stick with." },
       { question: "Should I save or pay off debt?", answer: "Generally pay off high-interest debt (above 7-8%) before investing. Keep an emergency fund of 3-6 months expenses while paying off debt." },
+      { question: "How much does an extra $100 a month save?", answer: "On $25,000 of debt at 15% with a $500 monthly payment, payoff takes 79 months and costs $14,500 in interest. Adding $100 a month clears it in 60 months with $11,000 in interest — saving 19 months and $3,500." },
+      { question: "What interest rate should I enter if I have several debts?", answer: "Use a weighted average: multiply each debt's balance by its rate, add them up, and divide by your total debt. The calculator uses one average rate, so the result is an estimate — debts with very different rates won't behave exactly like the average." },
     ],
     relatedCalcs: financeRelated("debt-payoff-calculator"),
   },
@@ -1006,6 +1018,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Does this include benefits?", answer: "No. Salaried positions often include benefits (health insurance, retirement, PTO) that can add 20-30% to the total compensation value." },
       { question: "How do I negotiate a raise?", answer: "Research market rates for your role, document your achievements, and present your case based on value delivered. A 3-5% annual raise is typical; 10-20% is common when switching jobs." },
+      { question: "How much is $25 an hour annually?", answer: "At 40 hours a week with 2 weeks off, $25 an hour is $25 × 40 × 50 = $50,000 a year. With no time off (2,080 hours), it is $52,000. Every $1 an hour is worth about $2,000 a year at full-time hours." },
+      { question: "Does this calculator include taxes?", answer: "No — the result is gross pay before federal and state income tax, Social Security, and Medicare. Take-home pay is typically 20-30% lower depending on your tax situation, so use the annual figure for comparing offers, not for budgeting your spending." },
     ],
     relatedCalcs: financeRelated("hourly-to-salary-calculator"),
   },
@@ -1448,6 +1462,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Is buying always better than renting?", answer: "Not always. Buying makes sense if you plan to stay 5+ years, home appreciation exceeds costs, and you can afford the down payment. Renting offers flexibility and lower upfront costs." },
       { question: "What costs does buying include beyond mortgage?", answer: "Property tax, insurance, maintenance (1-2% of home value/year), HOA fees, closing costs, and opportunity cost of the down payment." },
+      { question: "How long should I stay for buying to make sense?", answer: "The common rule of thumb is at least 5 years. With this page's defaults — a $400,000 home, $2,000 rent, 3% rent increases and 3% appreciation — 5-year totals are close ($121,357 in mortgage payments vs $127,419 in rent), while over 10 years the gap widens ($242,714 vs $275,133) and the home gains $137,567 in value. The right answer depends on your horizon and local prices." },
+      { question: "What isn't included in this comparison?", answer: "Property tax, homeowner's insurance, maintenance, HOA fees, closing costs, the opportunity cost of your down payment, and any mortgage-interest tax benefits. The calculator compares mortgage payments, rent, and home value only — add those extra costs to the buying side before deciding." },
     ],
     relatedCalcs: financeRelated("rent-vs-buy-calculator"),
   },

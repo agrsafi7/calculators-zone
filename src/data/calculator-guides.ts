@@ -1555,4 +1555,752 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
+
+  "hourly-to-salary-calculator": [
+    {
+      heading: "How hourly pay converts to an annual salary",
+      paragraphs: [
+        "The conversion is simple multiplication: **Annual salary = Hourly rate × Hours per week × Work weeks per year**. A standard full-time year is 2,080 hours (40 hours × 52 weeks), but most people take time off — this calculator subtracts your weeks of vacation and holidays first, so the figure reflects the hours you actually get paid for.",
+        "The result is **gross pay**: the amount before federal and state income tax, Social Security, and Medicare are withheld. Your take-home pay will be lower, typically by 20–30% depending on your tax situation. The calculator also breaks the annual figure into monthly, biweekly, and weekly pay so you can compare it directly with a salaried offer or your current budget.",
+        "Note that this tool does not add overtime pay — if you regularly work more than 40 hours a week at time-and-a-half, your real earnings will be higher. Use the overtime pay calculator alongside this one to capture that.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **$25 per hour, 40 hours a week, with 2 weeks off**. Work weeks = 52 − 2 = 50. Annual salary = $25 × 40 × 50 = **$50,000**. That breaks down to **$4,166.67 a month**, **$2,000 every two weeks**, and **$1,000 a week**.",
+        "Time off matters more than people expect: the same $25 an hour with no weeks off is $25 × 40 × 52 = **$52,000** — a $2,000 difference for two weeks. And every $1 an hour is worth about $2,000 a year at 40 hours a week: at $20 an hour you'd earn $40,000, so moving from $20 to $25 an hour is a **$10,000 annual raise**.",
+      ],
+    },
+    {
+      heading: "Comparing an hourly job with a salaried offer",
+      paragraphs: [
+        "Never compare the headline numbers alone. A $50,000 salary with health insurance, a 401(k) match, and paid time off is worth more than $25 an hour with no benefits — employer benefits commonly add 20–30% on top of base pay. Ask what the total compensation package is worth before deciding.",
+        "Also check whether the hourly role guarantees your hours. A $30-an-hour job at 30 hours a week ($45,000 a year with 2 weeks off) pays less than $25 an hour at a guaranteed 40 hours ($50,000). Hours and consistency are part of the wage.",
+        "Use this calculator to test the offer in front of you: plug in the rate, your realistic weekly hours, and your actual time off. The annual figure it gives you is the number to compare — apples to apples — against any salary.",
+      ],
+    },
+  ],
+
+  "cash-back-vs-low-interest-calculator": [
+    {
+      heading: "How the cash-back vs low-APR comparison works",
+      paragraphs: [
+        "Car dealers often offer a choice: take a **cash-back rebate** and finance at a normal rate, or give up the rebate and finance at a **promotional low APR**. You can't have both, so the only fair comparison is total cost — and that is exactly what this calculator does.",
+        "It builds two amortized loans with the standard payment formula, **M = P × r(1+r)ⁿ / ((1+r)ⁿ − 1)**. Offer A finances (Price − Rebate) at the higher rate; Offer B finances the full price at the low APR. Each monthly payment is multiplied by the term, and the cheaper total wins. Monthly payment alone can mislead you — the deal with the lower payment is not always the cheaper deal overall.",
+        "The winner depends on three things: the size of the rebate, the gap between the two rates, and — most importantly — the **loan term**. A rebate is a fixed saving, while a lower rate saves more the longer you borrow, so the same two offers can flip winners when the term changes.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$30,000 car** with a **$2,000 rebate at 7%** versus **2.9% APR with no rebate**, both over **60 months**. Offer A finances $28,000 at 7%: $554.43 a month, **$33,266 total**. Offer B finances $30,000 at 2.9%: $537.73 a month, **$32,264 total**. The low APR wins by **$1,002**.",
+        "Now shorten the term to **36 months** and the winner flips. Offer A: $864.56 a month, **$31,124 total**. Offer B: $871.11 a month, **$31,360 total**. The cash back wins by **$236**. Over a short loan the rebate matters more; over a long loan the rate matters more. That is why guessing is unreliable — run your exact numbers.",
+      ],
+    },
+    {
+      heading: "Tips for getting the genuinely cheaper deal",
+      paragraphs: [
+        "**Negotiate the price first.** The rebate comes from the manufacturer, so a lower negotiated price stacks on top of it. A $1,000 price cut saves you $1,000 under either offer — don't let the financing choice distract from the price.",
+        "**A 0% APR offer usually wins outright.** On the same $30,000 car over 60 months, 0% financing costs exactly $30,000 total — $3,266 less than the $2,000 rebate at 7%. The exception is a very large rebate on a short loan, which is worth checking with this calculator before you sign.",
+        "**Watch the term the dealer suggests.** Stretching a loan to 72 or 84 months lowers the monthly payment but grows the total interest — and it makes the low-APR offer look better than it is relative to the rebate. Compare both offers at the *same* term, and choose the shortest term whose payment you can comfortably afford.",
+      ],
+    },
+  ],
+
+  "roi-calculator": [
+    {
+      heading: "How ROI is calculated",
+      paragraphs: [
+        "Return on investment measures profit relative to cost: **ROI = [(Final value − Initial cost) ÷ Initial cost] × 100**. If you invest $10,000 and end up with $15,000, your gain is $5,000 and your ROI is 50%. Simple, but it has a blind spot — it says nothing about how long the money was tied up.",
+        "That is why this calculator also shows the **annualized return**, which spreads the gain evenly across each year using compounding: **Annualized = (Final ÷ Initial)^(1 ÷ years) − 1**. Two investments can have the same 50% ROI, but the one that delivered it in 3 years performed far better than the one that took 10. Annualized return is the number that lets you compare investments with different durations fairly.",
+        "ROI works for almost anything with a cost and a payoff: stocks, a rental property, a business, a marketing campaign, or a course that leads to a raise. Just be sure the 'amount returned' includes everything you got back — sale price plus any income along the way, such as dividends or rent.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Invest **$10,000** and sell three years later for **$15,000**. Net profit = $15,000 − $10,000 = **$5,000**, or about **$1,666.67 per year**. ROI = $5,000 ÷ $10,000 × 100 = **50%**.",
+        "The annualized return is (15,000 ÷ 10,000)^(1÷3) − 1 = **14.47% per year**. Now imagine the same $5,000 gain took five years instead: ROI is still 50%, but the annualized return falls to **8.45%**. Same profit, very different performance — which is exactly why the calculator shows both figures.",
+      ],
+    },
+    {
+      heading: "What ROI doesn't tell you",
+      paragraphs: [
+        "**Risk is invisible in ROI.** A 50% return from a volatile crypto trade and a 50% return from a diversified index fund look identical here, but one could just as easily have lost 50%. Always weigh the return against what you stood to lose.",
+        "**Taxes and fees are not included.** Capital gains tax, trading commissions, and fund expenses all reduce the return you actually keep. If you paid $500 in fees on that $10,000 investment, your real gain is $4,500, not $5,000 — an ROI of 45%, not 50%.",
+        "**Timing of cash flows is ignored.** ROI treats a lump sum invested on day one the same as money dripped in over years. For investments with ongoing deposits or withdrawals, an internal rate of return (IRR) calculation gives a truer picture. Use ROI as a quick comparison tool, not the final word.",
+      ],
+    },
+  ],
+
+  "credit-card-payment-calculator": [
+    {
+      heading: "How your payoff time is calculated",
+      paragraphs: [
+        "Credit card interest compounds monthly. Your monthly rate is the APR divided by 12 — so a 22% APR means **1.833% per month** on your balance. Each month, interest is charged on what you owe, your payment covers that interest first, and only the remainder reduces the balance.",
+        "The calculator solves for the number of months with the formula **n = −ln(1 − B×r÷P) ÷ ln(1 + r)**, where B is the balance, r is the monthly rate, and P is your monthly payment. One hard rule falls out of the math: **if your payment doesn't exceed the monthly interest charge, the balance never shrinks** — the card is never paid off, no matter how long you pay.",
+        "The figures assume you make the same payment every month and **add no new charges** to the card. In real life, new spending resets the clock, which is why the fastest payoff plans pair a fixed payment with a freeze on new card purchases.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$5,000 balance at 22% APR** with a **$150 monthly payment**. The first month's interest is $5,000 × 0.22 ÷ 12 = **$91.67** — so only **$58.33** of your $150 actually reduces the balance. The calculator shows **52 months (4.3 years)** to pay it off, with **$2,800 in interest** on top of the $5,000 borrowed: $7,800 total.",
+        "Raise the payment to **$200 a month** and the picture changes sharply: **34 months**, **$1,800 in interest**. That extra $50 a month saves **$1,000 in interest and 18 months** of payments. Go the other way — just $100 a month — and it takes **137 months (over 11 years)** and costs **$8,700 in interest**, more than the original balance.",
+      ],
+    },
+    {
+      heading: "How to pay off a card faster",
+      paragraphs: [
+        "**Pay more than the minimum.** Minimum payments are designed to stretch the debt out — often to 2–3% of the balance — which keeps you paying interest for years. Even $25 extra a month shortens the timeline noticeably, as the example above shows.",
+        "**Attack the highest APR first.** If you carry balances on several cards, pay minimums on all of them and throw every spare dollar at the highest-rate card (the avalanche method). It saves the most interest of any payoff order.",
+        "**Consider a 0% balance transfer** if your credit qualifies. Moving a balance to a 0% APR card for 12–18 months means every dollar of your payment attacks the principal — but watch the transfer fee (typically 3–5%) and have a plan to clear the balance before the promotional rate ends.",
+      ],
+    },
+  ],
+
+  "debt-payoff-calculator": [
+    {
+      heading: "How the payoff plan is calculated",
+      paragraphs: [
+        "This calculator treats your total debt as a single balance at one average interest rate, then solves for the payoff time with the formula **Months = −ln(1 − D×r÷P) ÷ ln(1 + r)**, where D is the total debt, r is the monthly rate (annual rate ÷ 12), and P is your monthly payment. It runs the calculation twice — once with your current payment and once with your extra payment added — so you can see exactly what the extra money buys you.",
+        "The key insight is that **interest is charged on the remaining balance**, so every extra dollar of principal you pay this month shrinks next month's interest charge. That is why extra payments punch above their weight: a $100 monthly top-up doesn't just save $100 a month off the debt, it also cuts the interest on every month that follows.",
+        "Because the tool uses one average rate, it is an estimate when your debts have very different rates — a 24% card and a 6% loan averaged to 15% won't behave exactly like the real mix. For a precise multi-debt plan, work out each debt's payoff separately, or use the average as a starting point and refine from there.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **$25,000 of debt at a 15% average rate** with a **$500 monthly payment**. In the first month, interest alone is $25,000 × 0.15 ÷ 12 = **$312.50** — nearly two-thirds of the payment. At $500 a month, payoff takes **79 months (6.6 years)**, with **$14,500 in interest**: $39,500 total.",
+        "Add an **extra $100 a month** ($600 total) and the loan clears in **60 months (5 years)** with **$11,000 in interest**. That $100 a month saves **19 months and $3,500 in interest**. The total extra cash you put in is $6,000 over five years, and it buys you $3,500 back in avoided interest plus a year and seven months of freedom.",
+      ],
+    },
+    {
+      heading: "Building a payoff plan that sticks",
+      paragraphs: [
+        "**Choose your method and commit to it.** The avalanche method (highest rate first) saves the most money; the snowball method (smallest balance first) gives quick wins that keep motivation up. The best method is the one you will actually follow for years — both beat drifting along on minimum payments.",
+        "**Keep a small emergency fund first.** A $1,000 starter cushion stops the next car repair or medical bill from going straight back onto a card and undoing months of progress. Once the high-interest debt is gone, build the fund up to 3–6 months of expenses.",
+        "**Automate the extra payment.** Set the higher payment to leave your account on payday, before you can spend it. And keep the rate in view: if any debt charges more than about 7–8%, paying it down usually beats investing the same money, because paying off a 15% debt is a guaranteed 15% return.",
+      ],
+    },
+  ],
+
+  "apr-calculator": [
+    {
+      heading: "APR vs interest rate — and how this calculator estimates it",
+      paragraphs: [
+        "The **interest rate** is the cost of borrowing the principal alone. The **APR (Annual Percentage Rate)** is meant to capture the *total* cost of borrowing, including fees such as origination charges, rolled into one annual figure. That is why two loans with the same interest rate can have different APRs — the one with bigger fees has the higher APR.",
+        "This calculator estimates APR with a simplified formula: **APR ≈ (Total interest + Fees) ÷ Principal ÷ Years × 100**. It first works out your monthly payment from the standard amortization formula, totals the interest over the full term, adds your fees, and spreads that total cost across the loan amount and the years. It is a useful way to compare loans side by side — but it is an estimate, not the lender's official figure.",
+        "One quirk to understand: because this simplified estimate spreads the interest across the *original* principal for the whole term — while on a real amortizing loan the balance shrinks each month — the estimate can come out **below the stated interest rate**. The APR on your loan disclosure, calculated by the lender from the actual payment schedule, will be higher. Use this tool to compare loans; rely on the lender's disclosed APR as the authoritative number.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Borrow **$20,000 at 5% for 60 months** with **$500 in fees**. The amortization formula gives a monthly payment of **$377.42**. Over five years you pay **$2,645.48 in interest**, so the true cost of borrowing is $2,645.48 + $500 = **$3,145.48**.",
+        "The calculator's simplified APR estimate is ($2,645.48 + $500) ÷ $20,000 ÷ 5 years × 100 = **3.15%**. Raise the fees to $1,500 and the estimate rises to **4.15%** — same loan, same rate, but the fees add a full percentage point to the effective cost. That is the comparison APR exists to reveal: fees are real money, and a 'low rate' with heavy fees can cost more than a slightly higher rate with none.",
+      ],
+    },
+    {
+      heading: "How to use APR when choosing a loan",
+      paragraphs: [
+        "**Compare APRs only across the same term.** A 30-year loan will almost always show a lower APR than a 15-year loan, yet cost far more in total interest. Match the term first, then compare the APR.",
+        "**Ask what the fees cover.** Origination fees, application fees, and closing costs all feed into APR, but some lenders quote a low APR while charging fees separately. Get the full fee schedule in writing before you decide.",
+        "**Remember APR assumes you keep the loan to term.** If you expect to refinance or repay early, a loan with low upfront fees and a slightly higher rate may beat a low-APR loan loaded with fees you pay on day one. Run both scenarios here with your real numbers before signing.",
+      ],
+    },
+  ],
+
+  "future-value-calculator": [
+    {
+      heading: "How future value works",
+      paragraphs: [
+        "Future value answers a simple question: what will a lump sum be worth later if it grows at a steady rate? The formula is **FV = PV × (1 + r)ⁿ**, where PV is the amount you have today, r is the annual return, and n is the number of years. The growth compounds — each year's gains earn gains of their own in the years after, which is why the curve bends upward over time.",
+        "This calculator compounds **annually** and assumes a single lump sum with no further deposits. That makes it ideal for questions like 'what will this $50,000 inheritance be worth in 15 years?' If you plan to add money every month, use the savings calculator instead — regular contributions change the picture considerably.",
+        "A quick mental check is the **Rule of 72**: divide 72 by your annual return to estimate how many years it takes your money to double. At 7%, that is 72 ÷ 7 ≈ **10.3 years**. Any result from this calculator should roughly agree with that rule — a useful sanity check.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Invest **$50,000 at 7% a year for 15 years**. FV = $50,000 × (1.07)^15 = **$137,951.58**. Your total growth is **$87,951.58** — the money has multiplied by **2.76×**, and the growth alone is now larger than the original investment.",
+        "Time is the most powerful input. Leave the same $50,000 invested for **30 years** at 7% and it becomes **$380,612.75** — the second 15 years add $242,661, nearly three times what the first 15 years added. That accelerating curve is compound growth, and it is why starting early usually beats saving more later.",
+      ],
+    },
+    {
+      heading: "Reality checks before you trust the number",
+      paragraphs: [
+        "**Returns are not constant.** The formula assumes the same return every year, but real investments fluctuate — a portfolio averaging 7% might gain 20% one year and lose 12% the next. The future value is a projection, not a promise.",
+        "**Inflation eats into the result.** At 3% annual inflation, the real return on a 7% investment is roughly 4%, and $50,000 would be worth about **$90,047 in today's purchasing power** after 15 years — still nearly double, but well below the $137,952 nominal figure. Always ask whether a projection is nominal or inflation-adjusted.",
+        "**Taxes take a share too.** Growth in a taxable account is taxed as it is realized, while a 401(k) or IRA shelters it until withdrawal (or, for a Roth, taxes it never). Where you invest matters almost as much as how much you invest.",
+      ],
+    },
+  ],
+
+  "student-loan-calculator": [
+    {
+      heading: "How student loan payments are calculated",
+      paragraphs: [
+        "Most student loans are amortizing loans with fixed monthly payments, calculated with the standard formula **M = P × r(1+r)ⁿ / ((1+r)ⁿ − 1)**, where P is the balance, r is the monthly interest rate (annual rate ÷ 12), and n is the number of payments. The federal standard repayment plan uses a 10-year term, which is this calculator's default.",
+        "As with any amortizing loan, your early payments are mostly interest: interest is charged on the remaining balance, so the principal shrinks slowly at first and faster later. That structure is what makes the **term** so powerful — stretching the loan lowers the monthly payment but greatly increases the total interest, because you pay interest on a large balance for many more years.",
+        "This calculator covers the standard fixed-payment case for federal and private loans alike. Income-driven repayment plans, which cap payments as a percentage of your income, work differently and are covered in the FAQs below.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Borrow **$35,000 at 5.5% over 10 years (120 payments)**. The monthly rate is 0.055 ÷ 12 = 0.004583, and the formula gives a monthly payment of **$379.84**. Over the life of the loan you pay **$10,581.04 in interest**, for a total repayment of **$45,581.04**.",
+        "Look at the first payment: interest = $35,000 × 0.004583 = **$160.42**, so only **$219.42** reduces the balance. Now stretch the same loan to **20 years**: the payment drops to **$240.76**, but total interest jumps to **$22,782.53** — an extra **$12,201.50** for the lower payment. The 10-year plan costs $139 more a month but saves over $12,000.",
+      ],
+    },
+    {
+      heading: "Ways to pay less over the life of the loan",
+      paragraphs: [
+        "**Pay a little extra each month.** Adding $100 to the $379.84 payment above — $479.84 a month — clears the loan in **89 months instead of 120** and cuts total interest to $7,700.56, saving **$2,880.48**. Ask your servicer to apply extra payments to principal, not to future payments.",
+        "**Refinancing can help — with a trade-off.** A lower rate from a private lender reduces your payment and total interest, but refinancing a federal loan means giving up income-driven repayment, deferment options, and loan forgiveness programs. Refinance only if you are confident you won't need those protections.",
+        "**Check forgiveness and repayment programs.** Public Service Loan Forgiveness (PSLF) forgives the remaining federal balance after 120 qualifying payments in public service, and income-driven plans forgive what remains after 20–25 years. If either applies to you, the cheapest strategy may be to pay the minimum and let forgiveness do the rest — the opposite of the usual advice.",
+      ],
+    },
+  ],
+
+  "rent-vs-buy-calculator": [
+    {
+      heading: "How the rent vs buy comparison works",
+      paragraphs: [
+        "This calculator runs two scenarios side by side over the same number of years. On the buying side it takes your home price and down payment, finances the rest with a **30-year mortgage**, and totals your mortgage payments over the period. On the renting side it totals your rent, growing it each year by the annual rent increase you enter. It also projects the home's future value using your appreciation rate: **Future value = Price × (1 + appreciation)^years**.",
+        "There is no universal winner — the answer depends on your inputs, and especially on **how long you stay**. Buying has large upfront costs (the down payment, plus closing costs) and builds equity slowly at first, while renting starts cheap but its cost rises every year. The longer the horizon, the more the balance usually tips toward buying — but only if home values actually rise.",
+        "Be aware of what this comparison does **not** include: property tax, homeowner's insurance, maintenance (often 1–2% of the home's value per year), HOA fees, closing costs, the opportunity cost of tying up your down payment, and any tax benefits of mortgage interest. Treat the result as a starting comparison, then adjust for those costs before deciding.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$400,000 home** with a **20% down payment ($80,000)**, a **$320,000 mortgage at 6.5%** for 30 years, and **rent of $2,000 a month** rising 3% a year, with home values also appreciating 3% a year. The monthly mortgage payment is **$2,022.62** — already slightly above the starting rent.",
+        "Over **10 years**, total mortgage payments come to **$242,714**, while total rent — rising to $2,610 a month by year 10 — comes to **$275,133**. The home would be worth **$537,567**, a gain of **$137,567**. On these numbers, buying looks better over a decade.",
+        "But shorten the horizon to **5 years** and the gap nearly vanishes: mortgage payments **$121,357** versus rent **$127,419**, with the home worth **$463,710**. Once you subtract closing costs and the cost of selling, five years may not be enough for buying to win. Same house, same rates — a different answer, decided by how long you stay.",
+      ],
+    },
+    {
+      heading: "How to decide for your situation",
+      paragraphs: [
+        "**Start with your time horizon.** The common rule of thumb is that buying makes sense if you will stay at least five years — and the example above shows why. If your job or life could move you in two or three years, renting's flexibility is usually worth more than the equity you'd build.",
+        "**Stress-test the assumptions.** The comparison swings on appreciation and rent growth, neither of which is guaranteed. Run the numbers again with 0% appreciation and flat rent: if buying still wins, it is a robust choice; if it only wins when prices rise 3% a year, you are betting on the market.",
+        "**Count the costs the tool leaves out.** Add property tax, insurance, and maintenance to the buying side, and remember the $80,000 down payment could otherwise be invested. If buying still comes out ahead after those adjustments — and you plan to stay — it is a strong case. If not, renting while investing the difference is a perfectly sound plan.",
+      ],
+    },
+  ],
+
+  "macro-calculator": [
+    {
+      heading: "How macros turn calories into grams",
+      paragraphs: [
+        "Every calorie you eat comes from one of three macronutrients — **protein, carbohydrate, or fat** — and each carries a fixed amount of energy: protein and carbs supply **4 calories per gram**, fat supplies **9 calories per gram**. A macro split is simply the share of your daily calories assigned to each, so once you know your calorie target and your split, the grams follow directly.",
+        "This calculator offers four splits. **Balanced (40/30/30)** means 40% of calories from carbs, 30% from protein, 30% from fat. **Low Carb (25/40/35)** shifts calories toward protein and fat. **High Protein (30/40/30)** keeps carbs moderate while raising protein. **Keto (5/30/65)** keeps carbs very low and makes fat the main fuel source. The formula for each is the same: **grams = (calories × share) ÷ calories per gram**.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **2,000 calories** on the **Balanced** split. Carbs: 2,000 × 40% ÷ 4 = **200g**. Protein: 2,000 × 30% ÷ 4 = **150g**. Fat: 2,000 × 30% ÷ 9 = **67g** (rounded from 66.7g). Check the total: 200 × 4 + 150 × 4 + 67 × 9 = 800 + 600 + 603 = **2,003 calories** — the extra 3 calories are just rounding on the fat grams.",
+        "Switch the same 2,000 calories to **Keto (5/30/65)** and the picture changes completely: carbs drop to **25g**, protein stays at **150g**, and fat rises to **144g** (2,000 × 65% ÷ 9 = 144.4g). Same calories, very different plate — which is why the split matters as much as the total.",
+      ],
+    },
+    {
+      heading: "Picking a split that actually sticks",
+      paragraphs: [
+        "The best split is the one you can follow for months, not the one that looks optimal on paper. Higher protein (30–40% of calories) generally helps with **satiety and muscle retention** during weight loss, which is why the Low Carb and High Protein options both set protein at 40%. Very low-carb approaches like Keto work for some people but make social eating and high-intensity training harder.",
+        "Two practical rules: **hit protein first** — it is the macro most people under-eat — and **don't chase exact grams daily**. Landing within about 10g of each target is close enough; weekly consistency beats daily precision. If you have a medical condition such as kidney disease or diabetes, check your targets with a clinician or dietitian before changing your diet.",
+      ],
+    },
+  ],
+
+  "protein-intake-calculator": [
+    {
+      heading: "Why protein is calculated per kilogram of body weight",
+      paragraphs: [
+        "Protein needs scale with body size, so recommendations are given as **grams per kilogram of body weight per day** rather than a single fixed number. The widely used reference intake for a sedentary adult is **0.8 g/kg/day** — the RDA set by the US National Academies — while active people and athletes generally need more to support training and recovery.",
+        "This calculator multiplies your weight by an **activity factor**: 0.8 g/kg for sedentary, 1.2 for lightly active, 1.6 for moderately active, 2.0 for very active or athletes, and 2.2 for bodybuilders. The formula is simply **protein (g) = weight (kg) × factor**. It also splits the total across 3 or 5 meals and converts it to calories (protein has 4 calories per gram).",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **70 kg** person who is moderately active: 70 × 1.6 = **112g of protein per day**. Spread over 3 meals, that is **37g per meal** (112 ÷ 3 = 37.3g); over 5 meals, **22g per meal** (112 ÷ 5 = 22.4g). In calories, 112g × 4 = **448 calories** from protein.",
+        "Compare the extremes: the same 70 kg person at the sedentary factor needs only 70 × 0.8 = **56g**, while an 80 kg athlete at 2.0 g/kg needs 80 × 2.0 = **160g** — nearly three times as much. Activity level changes the answer far more than small differences in body weight.",
+      ],
+    },
+    {
+      heading: "Hitting your number without overthinking it",
+      paragraphs: [
+        "Spreading protein **evenly across meals** works better than loading it all into dinner — each meal of roughly 20–40g gives your body a steady supply for muscle maintenance. Good everyday sources include eggs, chicken, fish, Greek yoghurt, lentils, and beans; a palm-sized portion of meat or fish is roughly 20–30g of protein.",
+        "For most healthy adults, intakes up to **2.2 g/kg** are considered safe, but more is not always better — protein beyond what your body can use is simply burned as energy. People with kidney conditions should get personalised advice before raising protein intake, since the standard ranges assume healthy kidney function.",
+      ],
+    },
+  ],
+
+  "calories-burned-calculator": [
+    {
+      heading: "How METs turn activity into calories",
+      paragraphs: [
+        "Exercise scientists measure activity intensity in **METs — Metabolic Equivalents of Task**. One MET is your resting energy use; an activity rated at 7 METs burns roughly seven times as much energy as sitting still. This calculator uses the standard formula **calories = MET × weight (kg) × 3.5 ÷ 200 × minutes**, which is why heavier people burn more calories doing the same activity for the same time.",
+        "The activity options on this page carry fixed MET values: **walking (moderate) 3.5**, **weight training 5**, **cycling (moderate) 6**, **running (jogging) 7**, **swimming 8**, and **running (fast) 10**, with **yoga at 4**. These are averages — your real intensity varies with speed, terrain, and effort — so treat the result as a solid estimate, not a laboratory measurement.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **70 kg** person **jogging for 30 minutes** (7 METs): 7 × 70 × 3.5 ÷ 200 × 30 = **257 calories**, or **514 calories per hour** at the same pace. Walk instead — 3.5 METs for a full hour — and you burn 3.5 × 70 × 3.5 ÷ 200 × 60 = **257 calories** too: half the intensity for twice the time gives the same total, which is the basic trade-off behind all calorie math.",
+        "Intensity changes the answer fast. The same 70 kg person running **fast (10 METs)** for 30 minutes burns 10 × 70 × 3.5 ÷ 200 × 30 = **368 calories** — about 43% more than jogging for the same half hour.",
+      ],
+    },
+    {
+      heading: "Using the number honestly",
+      paragraphs: [
+        "Two common mistakes inflate the figure. First, **double-counting**: if you already use a TDEE that includes an activity multiplier, adding workout calories on top counts the same movement twice. Second, **trusting the number to the calorie** — MET tables are averages across studies, and individual burn varies by roughly 10–20% with fitness, body composition, and technique.",
+        "The most useful way to use this calculator is **comparatively**: which activities give you the most burn for the time you actually have, and how your weekly total adds up. A 30-minute jog five days a week (about 1,285 calories) is a meaningful chunk of a weight-loss calorie deficit — but only if the rest of your day stays the same.",
+      ],
+    },
+  ],
+
+  "pace-calculator": [
+    {
+      heading: "Pace, speed, and finish time — three views of the same run",
+      paragraphs: [
+        "Runners talk in **pace** — the time per kilometre or per mile — rather than speed, because pace is what you feel and control on the road. The formula is simple: **pace = total time ÷ distance**. This calculator takes your distance in kilometres and your total time in hours, minutes, and seconds, then returns your pace per kilometre, your pace per mile (1 mile = 1.60934 km), and your average speed in km/h.",
+        "Pace and speed are inverses: a faster pace means a smaller number of minutes per kilometre. Dropping from 6:00/km to 5:00/km is a bigger speed jump than it looks — 10 km/h to 12 km/h — because each second per kilometre counts more as you get faster.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Run **5 km in 25 minutes** (1,500 seconds). Pace per km: 1,500 ÷ 5 = **300 seconds = 5:00/km**. Pace per mile: 300 × 1.60934 = 482.8 seconds = **8:02/mi**. Speed: 5 km ÷ (1,500 ÷ 3,600 h) = **12.0 km/h**.",
+        "Scale it up: a **10K in 55 minutes** (3,300 seconds) gives 3,300 ÷ 10 = **330 seconds = 5:30/km**, at a speed of **10.9 km/h**. And holding 5:00/km for a full marathon (42.195 km) would take 42.195 × 5 = 211 minutes — a finish time of about **3:31:00**.",
+      ],
+    },
+    {
+      heading: "What the numbers mean for your training",
+      paragraphs: [
+        "As a rough guide, beginners often run around **6:00–7:00/km**, intermediate runners **5:00–6:00/km**, and competitive runners **under 4:30/km** — but pace depends on terrain, weather, and distance, so compare like with like. A hilly 10K pace is not comparable to a flat 5K pace.",
+        "Use this calculator backwards too: enter your target finish time for a race distance to find the pace you must hold, then train at that pace in short intervals. Knowing that a sub-30-minute 5K needs 6:00/km turns a vague goal into a concrete number you can practise.",
+      ],
+    },
+  ],
+
+  "distance-formula-calculator": [
+    {
+      heading: "The distance formula is the Pythagorean theorem in disguise",
+      paragraphs: [
+        "The distance between two points (x₁, y₁) and (x₂, y₂) is the length of the straight line joining them — the hypotenuse of a right triangle whose legs are the horizontal and vertical gaps between the points. That is why the formula is **d = √((x₂−x₁)² + (y₂−y₁)²)**: it is the Pythagorean theorem applied to the differences Δx and Δy.",
+        "Because the differences are squared, the order of the points doesn't matter — (x₂−x₁)² equals (x₁−x₂)² — and the result is always a positive length in whatever units your coordinates use. This calculator also shows Δx and Δy separately, which is handy when you need the direction of travel as well as the distance.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Find the distance between **(1, 2)** and **(4, 6)**. Δx = 4 − 1 = **3**, Δy = 6 − 2 = **4**. Then d = √(3² + 4²) = √(9 + 16) = √25 = **5** — the classic 3-4-5 right triangle.",
+        "The same answer appears whenever the gaps are 3 and 4, whatever the starting point: from **(−1, 2)** to **(3, −1)**, Δx = 4 and Δy = −3, and d = √(16 + 9) = **5** again. The negative sign vanishes when squared, so distance only cares about how far apart the points are, not which direction.",
+      ],
+    },
+    {
+      heading: "Where the distance formula shows up",
+      paragraphs: [
+        "**Maps and navigation:** the straight-line ('as the crow flies') distance between two GPS coordinates starts with this formula, before roads and terrain are considered. **Computer graphics and games:** collision detection constantly checks distances between objects. **Data science:** the same Euclidean distance measures how similar two data points are in clustering and nearest-neighbour algorithms.",
+        "For three dimensions, just add the third gap: **d = √((x₂−x₁)² + (y₂−y₁)² + (z₂−z₁)²)**. And if you need the point halfway between two points rather than the distance, use the midpoint formula — ((x₁+x₂)/2, (y₁+y₂)/2) — which this site's midpoint calculator handles.",
+      ],
+    },
+  ],
+
+  "area-calculator": [
+    {
+      heading: "One idea, four shapes",
+      paragraphs: [
+        "Area measures how much surface a shape covers, in **square units** — square centimetres, square metres, square feet — matching whatever unit you measure the sides in. This calculator covers four shapes: **circle (πr²)**, **rectangle (length × width)**, **triangle (½ × base × height)**, and **trapezoid (½ × (a + b) × height**, where a and b are the two parallel sides).",
+        "Note what each formula needs. A circle needs only its **radius** — not the diameter (a common slip: doubling the radius quadruples the area, since r is squared). A triangle needs its **height measured perpendicular to the base**, not the length of a sloping side. A trapezoid needs both parallel sides and the height between them.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **circle with radius 10**: area = π × 10² = π × 100 = **314.16**, with a circumference (perimeter) of 2 × π × 10 = **62.83**. A **rectangle 10 × 5**: area = 10 × 5 = **50**, perimeter = 2 × (10 + 5) = **30**.",
+        "A **triangle with base 10 and height 5**: area = ½ × 10 × 5 = **25** — exactly half the rectangle with the same base and height, as it should be. A **trapezoid with parallel sides 10 and 7 and height 5**: area = ½ × (10 + 7) × 5 = ½ × 17 × 5 = **42.5**.",
+      ],
+    },
+    {
+      heading: "Area in real life — and the unit trap",
+      paragraphs: [
+        "Area is the number behind **flooring, paint, lawn seed, and fabric**: a room 5 m × 4 m needs 20 m² of flooring (plus ~10% extra for cuts and waste), and a paint tin covering 12 m² per litre needs about 2 litres for a 25 m² wall. Always add a waste margin — real rooms have corners, doors, and offcuts.",
+        "The classic mistake is **mixing units**: measuring one side in centimetres and the other in metres gives an area that is wrong by a factor of 100. Convert all dimensions to the same unit before calculating, and remember that area scales with the square of length — doubling every side of a shape makes its area **four times** larger, not twice.",
+      ],
+    },
+  ],
+
+  "volume-calculator": [
+    {
+      heading: "Volume is area with a third dimension",
+      paragraphs: [
+        "Volume measures the space inside a 3D shape, in **cubic units** — cm³, m³, litres (1 litre = 1,000 cm³). This calculator covers four shapes: **sphere (4/3πr³)**, **cylinder (πr²h)**, **cone (⅓πr²h)**, and **cube (s³)**. It also returns the surface area of each shape, which matters whenever you care about coating, heat loss, or material use rather than capacity.",
+        "Notice the relationships: a cone holds exactly **one third** of the cylinder with the same radius and height, and a sphere's volume grows with the **cube** of its radius — doubling the radius multiplies the volume by eight. These scaling rules are why small changes in size have surprisingly large effects on capacity.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **sphere with radius 5**: volume = 4/3 × π × 5³ = 4/3 × π × 125 = **523.60**, surface area = 4 × π × 25 = **314.16**. A **cylinder with radius 5 and height 10**: volume = π × 25 × 10 = **785.40**, surface area = 2 × π × 5 × (5 + 10) = **471.24**.",
+        "A **cone with the same radius 5 and height 10**: volume = ⅓ × π × 25 × 10 = **261.80** — exactly one third of the cylinder's 785.40, as the formulas promise. A **cube with side 5**: volume = 5³ = **125**, surface area = 6 × 25 = **150**.",
+      ],
+    },
+    {
+      heading: "Practical uses and the litre shortcut",
+      paragraphs: [
+        "Volume decides **tank sizes, shipping boxes, concrete pours, and cooking**: a cylindrical water tank with radius 3 m and height 7 m holds π × 9 × 7 ≈ 197.92 m³ — nearly 198,000 litres. For small containers, remember the handy conversion: **1,000 cm³ = 1 litre**, so a 10 cm × 10 cm × 10 cm box holds exactly 1 litre.",
+        "As with area, keep all dimensions in the **same unit** before calculating, and beware the cube trap: a box twice as long on every side holds **eight times** as much, not twice. That is why a slightly larger planter or storage bin often costs far less per litre than the small one.",
+      ],
+    },
+  ],
+
+  "pythagorean-theorem-calculator": [
+    {
+      heading: "The theorem that built geometry",
+      paragraphs: [
+        "For any **right triangle** — one with a 90° corner — the square of the hypotenuse (the side opposite the right angle) equals the sum of the squares of the other two sides: **a² + b² = c²**. This calculator takes the two legs a and b and returns the hypotenuse **c = √(a² + b²)**, along with a² + b², the triangle's area (½ab), and its perimeter.",
+        "The theorem works both ways. It finds a missing side, but it also **tests** whether a triangle is right-angled: if a² + b² equals c² for the longest side, the angle opposite is exactly 90°. Builders have used this check for thousands of years — the 3-4-5 triangle is the classic way to square a corner on a construction site.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Legs **a = 3, b = 4**: c = √(3² + 4²) = √(9 + 16) = √25 = **5**. The area is ½ × 3 × 4 = **6**, and the perimeter is 3 + 4 + 5 = **12**. The 3-4-5 triangle is the most famous **Pythagorean triple** — a set of whole numbers that satisfies the theorem exactly.",
+        "Another triple: legs **5 and 12** give c = √(25 + 144) = √169 = **13**, with area ½ × 5 × 12 = **30** and perimeter 5 + 12 + 13 = **30**. Other common triples include 8-15-17, 7-24-25, and 20-21-29; spotting one saves you a square root.",
+      ],
+    },
+    {
+      heading: "Finding a leg instead of the hypotenuse",
+      paragraphs: [
+        "This calculator solves for the hypotenuse, but the theorem rearranges easily. If you know the hypotenuse c and one leg a, the other leg is **b = √(c² − a²)**. For example, a ladder 5 m long leaning with its foot 3 m from a wall reaches √(25 − 9) = √16 = **4 m** up the wall.",
+        "Watch the two classic errors: applying the theorem to a triangle that **isn't right-angled** (the formula only holds at 90°), and forgetting the final square root — a² + b² gives c², not c. If your answer looks too large, you probably skipped the √ step.",
+      ],
+    },
+  ],
+
+  "quadratic-equation-calculator": [
+    {
+      heading: "The quadratic formula solves every quadratic",
+      paragraphs: [
+        "A quadratic equation has the form **ax² + bx + c = 0** (with a ≠ 0), and the quadratic formula always finds its roots: **x = (−b ± √(b² − 4ac)) / 2a**. The ± means there are generally two solutions — the two points where the parabola y = ax² + bx + c crosses the x-axis.",
+        "The key quantity is the **discriminant, Δ = b² − 4ac**. If Δ > 0, there are two distinct real roots. If Δ = 0, there is one repeated root (the parabola just touches the x-axis). If Δ < 0, there are no real roots — instead, two **complex conjugate** roots, which this calculator also returns. The vertex of the parabola sits at **x = −b / 2a**, exactly halfway between the two roots.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Solve **x² − 5x + 6 = 0** (a = 1, b = −5, c = 6). Discriminant: Δ = (−5)² − 4 × 1 × 6 = 25 − 24 = **1**. Roots: x = (5 ± √1) / 2, so x₁ = (5 + 1) / 2 = **3** and x₂ = (5 − 1) / 2 = **2**. Check: 3² − 15 + 6 = 0 ✓ and 2² − 10 + 6 = 0 ✓. The vertex is at x = 5 / 2 = **2.5**, midway between 2 and 3.",
+        "Now **x² + 2x + 5 = 0**: Δ = 4 − 20 = **−16**, so the roots are complex: x = (−2 ± √−16) / 2 = **−1 ± 2i**. The parabola never touches the x-axis — its lowest point is above it — which is exactly what a negative discriminant means.",
+      ],
+    },
+    {
+      heading: "When to factor, when to use the formula",
+      paragraphs: [
+        "If the quadratic **factors neatly** — x² − 5x + 6 = (x − 2)(x − 3) — factoring is faster and gives the roots by inspection. But most quadratics don't factor over whole numbers, and the formula works every time, including when the roots are fractions, irrational, or complex. **Completing the square** is the middle path: it reveals the vertex form and is how the formula itself is derived.",
+        "The most common mistake is a **sign error on −b**: when b is negative, −b is positive (as in the example above, where b = −5 gives −b = +5). Double-check the sign of each term before substituting, and verify your answers by plugging them back into the original equation.",
+      ],
+    },
+  ],
+
+  "square-root-calculator": [
+    {
+      heading: "What a square root actually is",
+      paragraphs: [
+        "The square root of a number x is the value that, multiplied by itself, gives x: **√x = x^(1/2)**. So √144 = 12 because 12 × 12 = 144. Every positive number has two square roots (a positive and a negative one), but the √ symbol conventionally means the **principal (positive)** root — the one this calculator returns.",
+        "A **perfect square** is a number whose square root is a whole integer: 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144… This calculator flags whether your number is one. Most numbers are not perfect squares, and their roots are **irrational** — decimals that never repeat or terminate, like √2 = 1.414214…",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "The default on this page: **√144 = 12** exactly — 144 is a perfect square (12² = 144). Now try **√50**: it is not a perfect square, and the calculator gives **7.071068** (to 6 decimal places). Check it: 7.071068² ≈ 50.000002 — the tiny error is just rounding at the 6th decimal.",
+        "A famous one: **√2 = 1.414214**. The ancient Greeks proved this number cannot be written as a fraction, making it the first known irrational number. And **√10 = 3.162278** — useful whenever you need a quick estimate, since √10 is close to π (3.141593) but not equal to it.",
+      ],
+    },
+    {
+      heading: "Square roots without a calculator",
+      paragraphs: [
+        "For estimates, **bracket** the number between perfect squares: √50 lies between √49 = 7 and √64 = 8, closer to 7 — so about 7.1, matching the true 7.071068. One refinement step: 7.1² = 50.41, slightly high, so the root is slightly below 7.1.",
+        "Square roots appear everywhere: the **Pythagorean theorem** (hypotenuse = √(a² + b²)), the **distance formula**, **standard deviation**, and **quadratic equations** all end with a square root. One rule to remember: there is no real square root of a negative number — √(−9) is not a real number (it is 3i in complex numbers), which is why this calculator returns an error for negative inputs.",
+      ],
+    },
+  ],
+
+  "triangle-calculator": [
+    {
+      heading: "Heron's formula: area from three sides alone",
+      paragraphs: [
+        "Most area formulas need a height, but **Heron's formula** finds a triangle's area from its three side lengths only: first compute the semi-perimeter **s = (a + b + c) / 2**, then **area = √(s(s−a)(s−b)(s−c))**. No angles, no heights — just the three sides. This calculator also returns the perimeter and all three angles, found with the **law of cosines**: cos A = (b² + c² − a²) / 2bc, and similarly for B and C.",
+        "Before any of that, the sides must form a real triangle. The **triangle inequality** requires each side to be shorter than the sum of the other two (a < b + c, and so on). If that fails — say sides 2, 3, and 10 — no triangle exists, and the calculator returns an error.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Sides **a = 5, b = 7, c = 10**. Semi-perimeter: s = (5 + 7 + 10) / 2 = **11**. Area = √(11 × 6 × 4 × 1) = √264 = **16.2481**. Perimeter = 5 + 7 + 10 = **22**.",
+        "The angles, via the law of cosines: angle A = **27.66°**, angle B = **40.54°**, and angle C = 180 − 27.66 − 40.54 = **111.80°**. Note that C is obtuse (over 90°) — the longest side, 10, faces the largest angle, as it always does. The three angles sum to 180°, a quick check that the answers are consistent.",
+      ],
+    },
+    {
+      heading: "Sanity checks for any triangle",
+      paragraphs: [
+        "Three quick tests catch most errors. **Angles sum to 180°** — always. **Largest side faces largest angle**, smallest side faces smallest angle. And the **area check**: for a right triangle, Heron's formula must agree with ½ × (product of the legs) — for sides 3, 4, 5, Heron gives √(6 × 3 × 2 × 1) = √36 = **6**, exactly matching ½ × 3 × 4 = 6.",
+        "If you know two sides and the included angle instead of three sides, use **area = ½ab sin C**. And if your triangle is right-angled and you only need a missing side, the Pythagorean theorem is quicker than Heron — use the right tool for the information you have.",
+      ],
+    },
+  ],
+
+  "lcm-calculator": [
+    {
+      heading: "What the LCM is and how this calculator finds it",
+      paragraphs: [
+        "The **Least Common Multiple (LCM)** of two numbers is the smallest positive number that both divide into evenly. The multiples of 12 are 12, 24, 36, 48…; the multiples of 18 are 18, 36, 54…; the first number on both lists is **36**, so LCM(12, 18) = 36.",
+        "Listing multiples works for small numbers, but this calculator uses the faster identity **LCM(a, b) = |a × b| / GCD(a, b)**, where GCD is the Greatest Common Divisor, found by the Euclidean algorithm (repeatedly replacing the pair with the remainder until it reaches zero). It returns the LCM, the GCD, and the product — the three quantities linked by that formula.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Find **LCM(12, 18)**. First the GCD: 18 ÷ 12 leaves remainder 6, then 12 ÷ 6 leaves 0, so **GCD = 6**. Then LCM = (12 × 18) ÷ 6 = 216 ÷ 6 = **36**. Check: 36 ÷ 12 = 3 and 36 ÷ 18 = 2, both whole — and no smaller number works.",
+        "Two more: **LCM(8, 12) = 24** (GCD 4, product 96, 96 ÷ 4 = 24) and **LCM(15, 20) = 60** (GCD 5, product 300, 300 ÷ 5 = 60). When two numbers share no common factor except 1 — like 7 and 9 — the LCM is just their product: **LCM(7, 9) = 63**.",
+      ],
+    },
+    {
+      heading: "Where LCM actually gets used",
+      paragraphs: [
+        "**Adding fractions:** to add 1/12 + 1/18 you need a common denominator, and the LCM (36) is the smallest one that works: 3/36 + 2/36 = 5/36. **Scheduling:** if one bus runs every 12 minutes and another every 18, they coincide every 36 minutes. **Repeating patterns:** gears, flashing lights, and orbital alignments all repeat on LCM cycles.",
+        "A useful relationship to remember: **LCM × GCD = a × b** always. For 12 and 18: 36 × 6 = 216 = 12 × 18 ✓. If your LCM and GCD don't satisfy this, one of them is wrong — a fast self-check for homework and exams.",
+      ],
+    },
+  ],
+
+  "electricity-power-calculator": [
+    {
+      heading: "How electrical power is calculated",
+      paragraphs: [
+        "Electrical power is the rate at which energy is used, and it comes from just two numbers: **P = V × I**, where P is power in watts, V is voltage in volts, and I is current in amps. One watt equals one joule of energy per second, so a 1,200-watt heater transfers 1,200 joules every second it runs.",
+        "The same two inputs also give you resistance through Ohm's law: **R = V ÷ I**. Resistance in ohms tells you how much a circuit resists the flow of current — a high-wattage appliance at a fixed voltage has low resistance, which is why it draws more current.",
+        "Power and energy are different things, and the distinction matters for your bill. **Power (watts)** is a rate; **energy (kilowatt-hours)** is power sustained over time: kWh = kW × hours. This calculator shows both, converting watts to kilowatts by dividing by 1,000 and reporting the energy used in one hour.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a circuit at **120 volts carrying 10 amps**. Power = 120 × 10 = **1,200 W**, or **1.200 kW**. Resistance = 120 ÷ 10 = **12.00 Ω**. Left running for one hour, the load consumes **1.200 kWh** of energy.",
+        "The formula works backwards too. A **60-watt bulb on 120 volts** draws 60 ÷ 120 = **0.5 amps**. And a 1,200-watt heater run for 5 hours uses 1.2 kW × 5 = **6 kWh** — at a rate of $0.15 per kWh, that is $0.90 of electricity.",
+      ],
+    },
+    {
+      heading: "Sizing loads to a circuit",
+      paragraphs: [
+        "Add up the watts on a circuit before plugging in another appliance. A standard **15-amp household circuit at 120 volts** can deliver at most 120 × 15 = **1,800 watts**. A 1,200-watt heater plus a 700-watt microwave on the same circuit is 1,900 watts — over the limit, and the breaker will trip.",
+        "For loads that run continuously (3 hours or more), a common rule of thumb is to stay at **80% of the circuit rating**: 1,800 × 0.80 = **1,440 watts** on a 15-amp circuit. Check the wattage label on every appliance, and when in doubt, spread heavy loads across circuits or ask an electrician.",
+      ],
+    },
+  ],
+
+  "time-duration-calculator": [
+    {
+      heading: "How a time duration is calculated",
+      paragraphs: [
+        "The calculator converts both times to **minutes since midnight**, then subtracts: duration = end time − start time. So 9:00 becomes 540 minutes and 17:30 becomes 1,050 minutes, and the difference is the duration in minutes.",
+        "If the end time is earlier than the start time, the calculator assumes the span crosses midnight and adds **1,440 minutes (24 hours)**. That is how a night shift from 22:15 to 6:45 is handled — the result is the overnight duration, not a negative number.",
+        "The result is shown three ways: hours and minutes, total minutes, and **decimal hours** (minutes ÷ 60). Decimal hours are what payroll systems and timesheets use, because 8 hours 30 minutes is 8.50 hours, not 8.30.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "From **9:00 to 17:30**: 17:30 is 1,050 minutes since midnight and 9:00 is 540 minutes, so the duration is 1,050 − 540 = **510 minutes**, or **8 hours 30 minutes**. In decimal hours that is 510 ÷ 60 = **8.50 hours**.",
+        "An overnight shift from **22:15 to 6:45** works the same way: 105 minutes remain until midnight, plus 405 minutes after midnight, for a total of **510 minutes (8 hours 30 minutes)**. The midnight wrap is automatic — you never have to split the shift yourself.",
+      ],
+    },
+    {
+      heading: "Using the result for pay and planning",
+      paragraphs: [
+        "Decimal hours make pay math simple: 8.50 hours at $25 per hour is 8.50 × 25 = **$212.50**. Never multiply the '8.30' style figure directly — 8.30 hours would underpay by 20 minutes.",
+        "Two limits to keep in mind. The calculator assumes **at most one midnight crossing**, so a span longer than 24 hours needs the days-between-dates calculator instead. And it measures clock time only — if you take an unpaid break, subtract it from the result (or use the work-hours calculator with net hours) before calculating pay.",
+      ],
+    },
+  ],
+
+  "days-between-dates-calculator": [
+    {
+      heading: "How the day count works",
+      paragraphs: [
+        "The calculator subtracts the two dates in milliseconds and divides by **86,400,000** — the number of milliseconds in a day (24 × 60 × 60 × 1,000). Because it uses real calendar dates, **leap years are handled automatically**: a span crossing February 29 simply counts one extra day.",
+        "The result is the **absolute difference**, so the order of the dates doesn't matter — the tool also tells you the direction (forward or backward). Weeks are whole weeks only: days ÷ 7, rounded down, so 366 days is 52 weeks, not 52.3.",
+        "One detail that trips people up: this is a **difference, not an inclusive count**. From 1 January to 2 January is 1 day, because the calculator counts the gap between the dates. If you need to count both endpoints (for example, a 1 January to 3 January trip is 3 days inclusive), add 1 to the result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "From **1 January 2025 to 31 December 2025** is **364 days** — exactly **52 weeks**. That is the full calendar year minus one day, since the count runs from the first day to the last rather than including both.",
+        "Cross a leap year and the extra day appears automatically: from **1 January 2024 to 1 January 2025** is **366 days**, because 2024 included 29 February. That is 52 whole weeks with 2 days left over.",
+      ],
+    },
+    {
+      heading: "Where the day count matters",
+      paragraphs: [
+        "Day counts show up in **countdowns** (days until a trip or deadline), **project timelines** (how many working days a phase really has), **contract notice periods**, and **age in days**. For any of these, the exact calendar count beats estimating 'about three months' — months are 28 to 31 days, so estimates drift fast.",
+        "For planning, pair the day count with the week count: a 90-day project is 12 full weeks plus 6 days, which is easier to schedule around than 'about 3 months'. And remember the inclusive-count rule above — a deadline '30 days from 1 March' and a booking '1 March to 31 March inclusive' are different spans.",
+      ],
+    },
+  ],
+
+  "work-hours-calculator": [
+    {
+      heading: "How total hours and pay are calculated",
+      paragraphs: [
+        "The math is three multiplications. **Weekly hours = hours per day × days per week**, **total hours = weekly hours × number of weeks**, and **total pay = total hours × hourly rate**. The calculator also shows weekly pay, which is weekly hours × rate.",
+        "Two things this calculator does **not** do. It does not deduct breaks — enter your **net hours worked**, after unpaid breaks (a 9-hour shift with a 1-hour unpaid lunch is 8 hours). And it does not calculate overtime: every hour is paid at the same rate, so overtime weeks need a separate overtime calculator.",
+        "The pay figure is **gross pay**: total hours × rate, before tax, social security, or any other deductions. It is the number your employer starts from, not the number that lands in your bank account.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A standard full-time pattern — **8 hours a day, 5 days a week, for 4 weeks** — is 8 × 5 = **40 hours per week** and 40 × 4 = **160 total hours**. At $25 per hour, total pay is 160 × 25 = **$4,000**, or **$1,000 per week**.",
+        "A part-time pattern works the same way: **6 hours a day, 3 days a week, for 4 weeks** is 6 × 3 × 4 = **72 hours**. At $18 per hour that is 72 × 18 = **$1,296** for the period.",
+      ],
+    },
+    {
+      heading: "Getting an accurate number",
+      paragraphs: [
+        "The most common mistake is entering **shift length instead of worked hours**. If your shift is 9 hours with a 1-hour unpaid lunch, enter 8 — otherwise a 4-week month overstates your hours by 20 and your pay by $500 at $25 per hour.",
+        "For a quick annual estimate, use 52 weeks: 40 hours × $30 × 52 = **$62,400 gross per year**. That ignores unpaid time off, so treat it as a ceiling. And if your hours vary week to week, run the calculator per week with that week's actual hours rather than averaging — averages hide overtime weeks.",
+      ],
+    },
+  ],
+
+  "time-zone-converter": [
+    {
+      heading: "How time zone conversion works",
+      paragraphs: [
+        "Every time zone is defined by its **offset from UTC** (Coordinated Universal Time): UTC−5 means 5 hours behind UTC, UTC+1 means 1 hour ahead. To convert, the calculator finds the difference — **to offset − from offset** — and adds it to the time.",
+        "If the result passes midnight, the date shifts. A converted time of 25:00 becomes **01:00 the next day**; a result of −2:00 becomes **22:00 the previous day**. The calculator reports the day change alongside the converted time so a meeting never lands on the wrong date.",
+        "One important caveat: this converter uses the **fixed offsets you enter**. Many regions shift their offset by an hour for daylight saving time, so the offset that is correct in January may be wrong in July. Always check the offset that applies on your specific date — a world clock or time-zone reference will show it — then enter those numbers here.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Convert **12:00 at UTC−5 to UTC+1**. The difference is 1 − (−5) = **+6 hours**, so the converted time is 12:00 + 6 = **18:00 the same day**.",
+        "Crossing midnight: **22:00 at UTC−5 to UTC+9** has a difference of 9 − (−5) = **+14 hours**, giving 22:00 + 14 = 36:00, which wraps to **12:00 the next day**. Going the other way, **20:00 at UTC+1 to UTC−8** is a difference of −9 hours, giving **11:00 the same day**.",
+      ],
+    },
+    {
+      heading: "Scheduling across time zones",
+      paragraphs: [
+        "Not every zone is a whole number of hours from UTC: some use **half-hour offsets** (such as UTC+5:30) and a few use 45 minutes. Enter these as decimals — 5.5 for UTC+5:30 — and the arithmetic works the same way.",
+        "For meetings, convert in **both directions** and confirm the time in each person's local time and date: '18:00 your time, 12:00 my time, same day' prevents the classic mistake of one side showing up a day early or late. The maximum offset difference in the world is 26 hours, so a conversion can shift the date by a full day in either direction.",
+      ],
+    },
+  ],
+
+  "time-converter": [
+    {
+      heading: "One base unit: the second",
+      paragraphs: [
+        "Every conversion on this page goes through **seconds**. The fixed relationships are: 1 minute = 60 seconds, 1 hour = 3,600 seconds, 1 day = 86,400 seconds, and 1 week = 604,800 seconds. The calculator converts your value to seconds first, then divides into each target unit.",
+        "The converter covers **seconds, minutes, hours, days, and weeks** — the units with exact, unchanging lengths. Months and years are deliberately not included: a month is 28 to 31 days and a year is 365 or 366 days, so there is no single exact conversion for them.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "**3,600 seconds** = 3,600 ÷ 60 = **60 minutes** = **1 hour** = 3,600 ÷ 86,400 = **0.0417 days** = 3,600 ÷ 604,800 = **0.0060 weeks**. One hour is a small fraction of a day or week, which is why the decimal results look tiny.",
+        "**2 weeks** the other way: 2 × 604,800 = **1,209,600 seconds** = **20,160 minutes** = **336 hours** = **14 days**. Working in seconds first keeps every step exact — no rounding creeps in until the final display.",
+      ],
+    },
+    {
+      heading: "Where time conversions come up",
+      paragraphs: [
+        "**Meetings and media:** a 90-minute meeting is 90 × 60 = **5,400 seconds**, and video runtimes in seconds become readable once converted to minutes. **Work:** a 40-hour week is 40 × 3,600 = **144,000 seconds**. **Tech:** server uptime, video encoding, and API timeouts are usually quoted in seconds and need converting to hours or days to make sense.",
+        "For rough mental math, remember **3,600 seconds per hour** and **86,400 per day**. A year of 365 days is 365 × 86,400 = **31,536,000 seconds** — the figure behind the 'seconds in a year' question, and a useful anchor for any long conversion.",
+      ],
+    },
+  ],
+
+  "stair-calculator": [
+    {
+      heading: "How stair math works",
+      paragraphs: [
+        "A staircase starts from the **total rise** — the vertical height from one finished floor to the next — and a desired riser height. The number of risers is total rise ÷ desired riser, **rounded to the nearest whole number**, because you can't build a fraction of a step.",
+        "The **actual riser height** is then total rise ÷ number of risers, so every step is exactly equal. Equal risers matter: uneven steps are a tripping hazard, and building codes limit how much risers may vary. The **tread depth** is estimated as 25 inches minus the actual riser height, the **stair angle** comes from the riser-to-tread ratio, and the **total run** is the number of stairs × tread depth — the horizontal floor space the staircase needs.",
+        "This calculator gives you the geometry. It does not replace a building code check: riser and tread limits vary by jurisdiction, so confirm the rules where you are building before cutting anything.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **total rise of 108 inches (9 feet)** with a desired riser of **7.5 inches**. 108 ÷ 7.5 = 14.4, which rounds to **14 risers**. The actual riser height is 108 ÷ 14 = **7.71 inches** — slightly taller than desired, but equal on every step.",
+        "The suggested tread is 25 − 7.71 = **17.29 inches**, the stair angle is **24.1°**, and the total run is 14 × 17.29 = **242 inches (20 feet 2 inches)** of horizontal floor space. That run is the number to check against your available floor plan — a staircase needs length as well as height.",
+      ],
+    },
+    {
+      heading: "Building to code and comfort",
+      paragraphs: [
+        "As a common US rule of thumb, the International Residential Code (IRC) limits risers to **7.75 inches maximum** with a minimum tread of **10 inches** and a maximum variation of 3/8 inch between risers — but local codes can differ, so check the rules in your area before building. The 7.71-inch riser in the example above sits just inside that 7.75-inch guideline.",
+        "A second rule of thumb for comfort is that **one riser plus one tread should total about 17–18 inches**. Note that this calculator's tread estimate (25 minus the riser) is generous — real staircases usually use 10–11 inch treads — so treat the suggested tread as a starting point and confirm it against your local code and the space you have.",
+        "Measure the total rise carefully, from **finished floor to finished floor** (including flooring thickness), and allow for headroom above the stairs and a landing at the top and bottom. A small measuring error at the start becomes an uneven step at the end.",
+      ],
+    },
+  ],
+
+  "square-footage-calculator": [
+    {
+      heading: "How square footage is calculated",
+      paragraphs: [
+        "For a rectangular room, area is simply **length × width**, with both measurements in feet. A room 15 feet long and 12 feet wide is 15 × 12 = 180 square feet — the area of the floor, not the perimeter.",
+        "The calculator also converts the result. Square metres use **1 sq ft = 0.0929 m²**, and acres use **1 acre = 43,560 sq ft**. These conversions are handy for land, listings, and materials sold in metric units.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A room **15 feet by 12 feet** is **180 square feet**. In metric that is 180 × 0.0929 = **16.72 m²**, and in acres it is 180 ÷ 43,560 = **0.004132 acres** — a reminder of how small a room is next to an acre.",
+        "A larger space, **20 feet by 25 feet**, is **500 square feet** or 46.45 m². If you are buying flooring for the 180 sq ft room, add 10% for cuts and waste: 180 × 1.10 = **198 sq ft** to order.",
+      ],
+    },
+    {
+      heading: "Measuring real rooms",
+      paragraphs: [
+        "**Irregular rooms:** split the floor into rectangles, measure each one, and add the areas together. An L-shaped room is two rectangles; a room with a bay window is the main rectangle plus the bay.",
+        "**Measure the longest points** of each rectangle, wall to wall, and measure closets and nooks separately rather than guessing. For flooring or paint, measure each room individually — adding room areas is more accurate than measuring the whole house outline, which includes wall thicknesses and unusable space.",
+        "For land, remember the acre: a **quarter acre is 43,560 ÷ 4 = 10,890 sq ft**, roughly a 100 × 109 foot lot. That conversion is the one most often needed when comparing property listings.",
+      ],
+    },
+  ],
+
+  "number-to-words-converter": [
+    {
+      heading: "How numbers become words",
+      paragraphs: [
+        "The converter breaks a number into **place values** — hundreds, thousands, millions, billions — and names each group. The numbers 1 to 19 have their own names (Eleven, Twelve, Thirteen), the tens have theirs (Twenty, Thirty, Forty), and everything else is built by combining them: 42 is 'Forty Two', 100 is 'One Hundred'.",
+        "The output follows the **American style**: words are capitalised, tens and ones are separated by a space rather than a hyphen ('Forty Two', not 'Forty-Two'), and there is no 'and' between hundreds and the rest ('One Hundred One', not 'One Hundred and One').",
+        "Three behaviours to know: the converter uses the **whole-number part only** — decimals are dropped, so 1234.56 becomes 'One Thousand Two Hundred Thirty Four'. Negative numbers get a **'Negative'** prefix. And it supports numbers up to the billions (999,999,999,999).",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "**1,234** breaks into 1 thousand + 2 hundred + 30 + 4, giving **'One Thousand Two Hundred Thirty Four'** (4 digits). **45,678** becomes **'Forty Five Thousand Six Hundred Seventy Eight'** — the thousands group is named first, then the remainder.",
+        "Larger numbers follow the same pattern: **2,500,000** is **'Two Million Five Hundred Thousand'**, and **0** is simply **'Zero'**. Each group of three digits gets its own scale word, which is why the pattern stays readable even at a billion.",
+      ],
+    },
+    {
+      heading: "Writing numbers in words",
+      paragraphs: [
+        "Numbers in words are standard on **checks, contracts, and legal documents**, where words are harder to alter than digits — changing 'One Thousand' to 'Nine Thousand' is far more obvious than changing a 1 to a 9. That is also why checks spell out the dollars and write the cents as a fraction (for example, 'and 50/100').",
+        "Because this converter drops decimals, handle cents separately: convert the dollar amount here, then append the cents in the format your document needs. And if you are writing for a British audience, note the style difference — British English usually inserts 'and' ('One Hundred and One'), while this converter uses the American form without it.",
+      ],
+    },
+  ],
 };

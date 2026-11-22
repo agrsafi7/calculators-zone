@@ -470,7 +470,9 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Recursive decomposition into place values", variables: ["Supports up to billions"] },
     howToUse: "Enter any number to see its English word representation.",
-    faqs: [{ question: "What is the largest number supported?", answer: "Up to billions (999,999,999,999). Larger numbers would need additional place value names." }],
+    faqs: [{ question: "What is the largest number supported?", answer: "Up to billions (999,999,999,999). Larger numbers would need additional place value names." },
+      { question: "Does it handle decimals?", answer: "No. The converter uses the whole-number part only and drops any decimal fraction, so write cents or fractions separately." },
+      { question: "Why is there no 'and' in the result?", answer: "The converter uses the American style: 'One Hundred One'. British English usually inserts 'and' ('One Hundred and One')." }],
     relatedCalcs: lifeRelated("number-to-words-converter"),
   },
   // Dice Roller
@@ -685,7 +687,9 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Area = Length × Width", variables: ["1 sq ft = 0.0929 m²"] },
     howToUse: "Enter length and width in feet to calculate square footage.",
-    faqs: [{ question: "How do I measure an irregular room?", answer: "Break it into rectangles, calculate each area, then add them together." }],
+    faqs: [{ question: "How do I measure an irregular room?", answer: "Break it into rectangles, calculate each area, then add them together." },
+      { question: "How many square feet are in an acre?", answer: "43,560 square feet. A quarter acre is 10,890 square feet." },
+      { question: "How much extra flooring should I buy?", answer: "A common rule of thumb is 10% extra for cuts and waste. For a 180 sq ft room, order about 198 sq ft of flooring." }],
     relatedCalcs: lifeRelated("square-footage-calculator"),
   },
   // Tip Calculator (already exists in finance, add lifestyle version)
@@ -1134,7 +1138,9 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Stairs = Total Rise / Riser Height (rounded)", variables: ["Code: Risers 7-7.75\", Treads 10-11\"", "Riser + Tread ≈ 17-18\""] },
     howToUse: "Enter the total height to climb and desired riser height.",
-    faqs: [{ question: "What is building code for stairs?", answer: "IRC code: max riser 7.75\", min tread 10\", max variation between risers 3/8\". Always check local codes." }],
+    faqs: [{ question: "What is building code for stairs?", answer: "IRC code: max riser 7.75\", min tread 10\", max variation between risers 3/8\". Always check local codes." },
+      { question: "Why does the calculator round the number of stairs?", answer: "The number of risers must be a whole number. Rounding and then re-dividing the total rise gives equal riser heights on every step, which is safer and what building codes expect." },
+      { question: "What is the 17-18 inch rule?", answer: "A common comfort rule of thumb: one riser plus one tread should total about 17-18 inches. It is a guideline, not a law — always check your local building code for the actual requirements." }],
     relatedCalcs: lifeRelated("stair-calculator"),
   },
   // GDP Calculator

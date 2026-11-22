@@ -168,8 +168,10 @@ export const expansionCalculators: CalculatorConfig[] = [
     formula: { expression: "Compare total cost = monthly payment × term, for each offer", variables: ["Offer A: (Price − Rebate) at the higher rate", "Offer B: Full price at the low APR"] },
     howToUse: "Enter the vehicle price, the cash-back rebate amount, the interest rate you'd pay if you take the rebate, the promotional low APR, and the loan term. The calculator totals both deals so you can see — in dollars, not guesses — which offer is genuinely cheaper.",
     faqs: [
-      { question: "Is 0% APR always the best deal?", answer: "Not always. On a $30,000 car, a $2,000 rebate at 7% can beat 2.9% with no rebate over longer terms — it depends on the numbers, which is exactly what this comparison reveals." },
+      { question: "Is 0% APR always the best deal?", answer: "Usually, but not always. On a $30,000 car over 60 months, 0% APR costs exactly $30,000 total — $3,266 less than taking a $2,000 rebate at 7% ($33,266 total). Only a very large rebate on a short loan can beat 0%, so run your numbers before deciding." },
       { question: "Can I negotiate and still get the rebate?", answer: "Yes — negotiate the vehicle price first, then apply the rebate or low-APR offer. The rebate comes from the manufacturer, so a lower negotiated price stacks with it." },
+      { question: "Which wins — cash back or low APR?", answer: "It depends on the term. On a $30,000 car, a $2,000 rebate at 7% beats 2.9% with no rebate over 36 months ($31,124 vs $31,360 total — a $236 saving). But over 60 months the low APR wins ($32,264 vs $33,266 — a $1,002 saving). Shorter terms favor the rebate; longer terms favor the lower rate." },
+      { question: "Does the rebate reduce the loan or the price?", answer: "It reduces the amount you finance. On a $30,000 car with a $2,000 rebate, you borrow $28,000 instead of $30,000 — so you pay interest on $2,000 less for the whole loan, which is part of why the rebate can win on shorter terms." },
     ],
     relatedCalcs: [
       { name: "Auto Loan Calculator", slug: "auto-loan-calculator", icon: "dollar", category: "finance" },
