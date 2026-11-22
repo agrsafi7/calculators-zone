@@ -162,7 +162,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "Rate = (Salary + Expenses) / (Work Weeks × Hours)", variables: ["All monetary values in USD"] },
-    howToUse: "Enter desired salary, expenses, billable hours, and vacation weeks.", faqs: defFaqs("Hourly Rate Calculator"), relatedCalcs: b3Rel("hourly-rate-calculator"),
+    howToUse: "Enter desired salary, expenses, billable hours, and vacation weeks.", faqs: [
+      { question: "How does the Hourly Rate Calculator work?", answer: "Enter the required values and the calculator will compute the results instantly." },
+      { question: "How is the hourly rate calculated?", answer: "Rate = (desired salary + annual expenses) ÷ ((52 − vacation weeks) × billable hours per week). A $60,000 salary plus $10,000 expenses over 48 weeks at 30 billable hours a week gives $48.61 an hour." },
+      { question: "Does the rate include taxes?", answer: "No. It covers only your salary and expenses. As a freelancer you must also fund income tax, retirement savings, and health cover, so treat the result as a floor and add a margin for those costs." },
+    ], relatedCalcs: b3Rel("hourly-rate-calculator"),
   },
   {
     slug: "break-even-calculator", name: "Break-Even Calculator", category: "Other Calculators", categorySlug: "other",
@@ -210,7 +214,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Total Due", value: fmt(after + tax), highlight: true },
       ];
     },
-    formula: defFormula, howToUse: "Enter subtotal, discount %, and tax rate.", faqs: defFaqs("Invoice Calculator"), relatedCalcs: b3Rel("invoice-calculator"),
+    formula: defFormula, howToUse: "Enter subtotal, discount %, and tax rate.", faqs: [
+      { question: "How does the Invoice Calculator work?", answer: "Enter the required values and the calculator will compute the results instantly." },
+      { question: "Is tax calculated before or after the discount?", answer: "After the discount. On a $500 subtotal with 10% off and 8% tax, the discount is $50, tax is 8% of the remaining $450 ($36), and the total due is $486." },
+      { question: "Can I add several line items?", answer: "No. The calculator takes a single subtotal, so add all line items together first and enter the combined amount." },
+    ], relatedCalcs: b3Rel("invoice-calculator"),
   },
   {
     slug: "profit-margin-calculator", name: "Profit Margin Calculator", category: "Other Calculators", categorySlug: "other",
@@ -309,7 +317,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Daily Cost", value: fmt(annual / 365) },
       ];
     },
-    formula: defFormula, howToUse: "Enter car value, driver age, and deductible.", faqs: defFaqs("Car Insurance Estimator"), relatedCalcs: b3Rel("car-insurance-calculator"),
+    formula: defFormula, howToUse: "Enter car value, driver age, and deductible.", faqs: [
+      { question: "How does the Car Insurance Estimator work?", answer: "Enter the required values and the calculator will compute the results instantly." },
+      { question: "How is the estimate calculated?", answer: "The base premium is 4% of the car's value per year, multiplied by 1.5 for drivers under 25 or 1.2 for drivers over 65, then reduced for a higher deductible. A $20,000 car, a 30-year-old driver, and a $500 deductible give $776 a year." },
+      { question: "Is this a real insurance quote?", answer: "No. It is a rough estimate from three inputs only. Real premiums also depend on where you live, your driving record, how far you drive, and the coverage you choose — get quotes from several insurers for a real price." },
+    ], relatedCalcs: b3Rel("car-insurance-calculator"),
   },
 
   // ═══ REAL ESTATE ═══
@@ -447,7 +459,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "% of Limit", value: `${num((total / 400) * 100)}%` },
       ];
     },
-    formula: defFormula, howToUse: "Enter number of each beverage consumed.", faqs: defFaqs("Caffeine Calculator"), relatedCalcs: b3Rel("caffeine-calculator"),
+    formula: defFormula, howToUse: "Enter number of each beverage consumed.", faqs: [
+      { question: "How does the Caffeine Calculator work?", answer: "Enter the required values and the calculator will compute the results instantly." },
+      { question: "How much caffeine is in each drink?", answer: "The calculator uses fixed averages: coffee 95 mg per cup, tea 47 mg per cup, soda 40 mg per can, and energy drinks 160 mg per can. Real drinks vary by brand, size, and brew strength." },
+      { question: "What is the safe daily limit?", answer: "400 mg for most healthy adults. Two cups of coffee, one tea, and one energy drink total 397 mg — 99.25% of the limit — while three coffees plus an energy drink reach 445 mg, over the limit." },
+    ], relatedCalcs: b3Rel("caffeine-calculator"),
   },
   {
     slug: "protein-calculator", name: "Protein Intake Calculator", category: "Other Calculators", categorySlug: "other",
@@ -782,7 +798,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Energy Reduction", value: `${num(((v.oldWatts - v.newWatts) / v.oldWatts) * 100)}%` },
       ];
     },
-    formula: defFormula, howToUse: "Enter bulb count, wattages, hours, and electricity rate.", faqs: defFaqs("LED Savings Calculator"), relatedCalcs: b3Rel("led-savings-calculator"),
+    formula: defFormula, howToUse: "Enter bulb count, wattages, hours, and electricity rate.", faqs: [
+      { question: "How does the LED Savings Calculator work?", answer: "Enter the required values and the calculator will compute the results instantly." },
+      { question: "How much can I save switching 10 bulbs to LED?", answer: "Replacing 60W bulbs with 9W LEDs, used 5 hours a day at $0.15 per kWh: the old bulbs cost $164.25 a year, the LEDs $24.64 — a saving of $139.61 a year, an 85% energy reduction." },
+      { question: "Does the saving include the cost of the bulbs?", answer: "No. It compares running costs only. To work out the payback time, divide what the bulbs cost by the annual saving — with cheap bulbs and heavy use, payback is often a matter of months." },
+    ], relatedCalcs: b3Rel("led-savings-calculator"),
   },
   {
     slug: "hvac-sizing-calculator", name: "HVAC Sizing Calculator", category: "Other Calculators", categorySlug: "other",
@@ -830,7 +850,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Room Area", value: `${num(area)} sq ft` },
       ];
     },
-    formula: defFormula, howToUse: "Enter room length and width.", faqs: defFaqs("Ceiling Fan Size Calculator"), relatedCalcs: b3Rel("ceiling-fan-size-calculator"),
+    formula: defFormula, howToUse: "Enter room length and width.", faqs: [
+      { question: "How does the Ceiling Fan Size Calculator work?", answer: "Enter the required values and the calculator will compute the results instantly." },
+      { question: "What size fan for a 12×15 ft room?", answer: "The room is 180 sq ft, which falls in the 144–225 band, so the recommended fan size is 44–50 inches." },
+      { question: "What if my room is between two sizes?", answer: "The size bands overlap at the boundaries, so either neighbouring size works. The larger fan moves more air; the smaller one is quieter and less visually dominant." },
+    ], relatedCalcs: b3Rel("ceiling-fan-size-calculator"),
   },
 
   // ═══ TRAVEL PLANNING ═══
@@ -992,7 +1016,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Ratio", value: `${v.ratioW}:${v.ratioH}` },
       ];
     },
-    formula: defFormula, howToUse: "Enter diagonal size and aspect ratio.", faqs: defFaqs("Screen Size Calculator"), relatedCalcs: b3Rel("screen-size-calculator"),
+    formula: defFormula, howToUse: "Enter diagonal size and aspect ratio.", faqs: [
+      { question: "How does the Screen Size Calculator work?", answer: "Enter the required values and the calculator will compute the results instantly." },
+      { question: "What are the dimensions of a 27-inch 16:9 screen?", answer: "23.53 inches wide and 13.24 inches tall, with a viewing area of 311.5 square inches." },
+      { question: "Do two screens with the same diagonal have the same area?", answer: "No. A 27-inch 21:9 ultrawide screen is 24.82 x 10.64 inches with 263.9 square inches of area — about 47.6 square inches less than a 27-inch 16:9 screen." },
+    ], relatedCalcs: b3Rel("screen-size-calculator"),
   },
   {
     slug: "internet-speed-calculator", name: "Download Time Calculator", category: "Other Calculators", categorySlug: "other",

@@ -175,7 +175,7 @@ const _scienceCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "PE = m × g × h", variables: ["m = mass", "g = gravity (9.81)", "h = height"] },
     howToUse: "Enter mass, height, and gravitational acceleration.",
-    faqs: [{ question: "What happens to PE when an object falls?", answer: "PE converts to kinetic energy. At the bottom, all PE becomes KE (ignoring friction)." }],
+    faqs: [{ question: "What happens to PE when an object falls?", answer: "PE converts to kinetic energy. At the bottom, all PE becomes KE (ignoring friction)." }, { question: "How much potential energy does a 10 kg object have at 5 m?", answer: "490.50 joules, or 0.4905 kJ. PE = m × g × h = 10 × 9.81 × 5. On the Moon (g = 1.62 m/s²) the same object at the same height has only 81 J." }, { question: "Does potential energy depend on the path taken?", answer: "No. Only the change in height matters — lifting an object from the first floor to the second adds the same energy as lifting it from the ground to the first floor, because the height gained is the same." }],
     relatedCalcs: sciRelated("potential-energy-calculator"),
   },
   {

@@ -312,7 +312,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Total = Flights + (Hotel × Nights) + (Food + Activities) × Days", variables: ["Days = Nights + 1"] },
     howToUse: "Enter costs for flights, hotel, food, and activities to estimate your trip budget.",
-    faqs: [{ question: "Should I add a buffer?", answer: "Yes! Add 10-20% for unexpected expenses, tips, souvenirs, and transportation." }],
+    faqs: [{ question: "Should I add a buffer?", answer: "Yes! Add 10-20% for unexpected expenses, tips, souvenirs, and transportation." }, { question: "How many days does the calculator charge food and activities for?", answer: "Nights plus one — a 5-night trip counts 6 days of food and activities, since you eat on both travel days. Hotel is charged per night." }, { question: "Does the total include a buffer for unexpected costs?", answer: "No. The total is the sum of the costs you enter. Add 10–20% yourself for tips, transport, souvenirs, and surprises." }],
     relatedCalcs: lifeRelated("travel-budget-calculator"),
   },
   {
@@ -413,7 +413,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Scaled = Original × (Desired Servings / Original Servings)", variables: ["Simple proportion scaling"] },
     howToUse: "Enter original and desired servings, plus ingredient amounts. The calculator scales everything proportionally.",
-    faqs: [{ question: "Do cooking times change?", answer: "Not proportionally. Larger batches may need slightly longer cooking, especially for baking." }],
+    faqs: [{ question: "Do cooking times change?", answer: "Not proportionally. Larger batches may need slightly longer cooking, especially for baking." }, { question: "Can I scale a recipe down as well as up?", answer: "Yes. Scaling 4 servings down to 2 gives a factor of 0.50×, so 2 cups become 1 cup. The calculator works in either direction." }, { question: "Does the converter change units, like cups to grams?", answer: "No. It scales two ingredient amounts at a time and keeps the same units — it does not convert cups to grams or similar. Convert units separately before or after scaling." }],
     relatedCalcs: lifeRelated("recipe-converter"),
   },
   {
@@ -439,7 +439,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Math.random() × (max − min + 1) + min", variables: ["Uniform distribution", "Click Calculate to regenerate"] },
     howToUse: "Set a minimum and maximum range, then click Calculate to generate random numbers.",
-    faqs: [{ question: "Is this truly random?", answer: "It uses JavaScript's Math.random() which is pseudo-random — good enough for most uses but not cryptographic applications." }],
+    faqs: [{ question: "Is this truly random?", answer: "It uses JavaScript's Math.random() which is pseudo-random — good enough for most uses but not cryptographic applications." }, { question: "How many numbers does it generate?", answer: "Three: one main random number plus two bonus numbers, all drawn independently from the same range. Click Calculate again for a fresh set." }, { question: "Can the minimum be higher than the maximum?", answer: "No — enter the smaller number as the minimum. If the minimum is above the maximum, the results will be wrong, because the calculator does not swap them for you." }],
     relatedCalcs: lifeRelated("random-number-generator"),
   },
   {
@@ -498,7 +498,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Each die: random(1 to sides)", variables: ["Click Calculate to re-roll"] },
     howToUse: "Select number of dice and sides per die, then click Calculate to roll.",
-    faqs: [{ question: "Is this truly random?", answer: "Uses Math.random() — pseudo-random and good for games, but not cryptographic." }],
+    faqs: [{ question: "Is this truly random?", answer: "Uses Math.random() — pseudo-random and good for games, but not cryptographic." }, { question: "What dice can I roll?", answer: "Between 1 and 20 dice, each with 2 to 100 sides — including standard d4, d6, d8, d10, d12, and d20." }, { question: "What is the average roll of two six-sided dice?", answer: "3.5 per die, so 7 for two dice. Seven is also the most likely total, with 6 of the 36 possible combinations." }],
     relatedCalcs: lifeRelated("dice-roller"),
   },
   // Electricity Cost Calculator
@@ -524,7 +524,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Cost = (Watts × Hours / 1000) × Rate", variables: ["kWh = kilowatt-hours"] },
     howToUse: "Enter the appliance wattage, daily usage hours, and your electricity rate.",
-    faqs: [{ question: "How do I find wattage?", answer: "Check the label on your appliance or its manual. Common: LED bulb 10W, laptop 50W, AC unit 1000-3500W." }],
+    faqs: [{ question: "How do I find wattage?", answer: "Check the label on your appliance or its manual. Common: LED bulb 10W, laptop 50W, AC unit 1000-3500W." }, { question: "Why does the monthly cost times 12 not equal the annual cost?", answer: "The monthly figure assumes a 30-day month and the annual figure assumes 365 days, so they differ slightly. With the default values, the monthly cost is $2.88 and the annual cost is $35.04 — twelve months of $2.88 is $34.56." }, { question: "What is a kilowatt-hour (kWh)?", answer: "The energy used by a 1,000-watt appliance running for one hour. A 100-watt bulb running for 10 hours uses 1 kWh." }],
     relatedCalcs: lifeRelated("electricity-calculator"),
   },
   // Concrete Calculator
@@ -608,7 +608,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "WC = 35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16", variables: ["T = temperature (°F)", "V = wind speed (mph)", "NWS formula"] },
     howToUse: "Enter air temperature and wind speed. Valid when temp ≤ 50°F and wind ≥ 3 mph.",
-    faqs: [{ question: "What is wind chill?", answer: "It measures the cooling effect of wind on exposed skin. Faster winds make it feel colder than the actual temperature." }],
+    faqs: [{ question: "What is wind chill?", answer: "It measures the cooling effect of wind on exposed skin. Faster winds make it feel colder than the actual temperature." }, { question: "When is wind chill dangerous?", answer: "The calculator flags frostbite in 30 minutes when the wind chill falls below 0°F, and in 15 minutes below −18°F. At 0°F with a 20 mph wind, the wind chill is −22°F." }, { question: "Does wind chill affect objects like cars?", answer: "No — wind chill describes how fast exposed skin loses heat. Wind makes objects cool to the air temperature faster, but it cannot make them colder than the air itself." }],
     relatedCalcs: lifeRelated("wind-chill-calculator"),
   },
   // Dew Point Calculator
@@ -639,7 +639,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Td = 237.7 × α / (17.27 − α)", variables: ["α = 17.27×T/(237.7+T) + ln(RH/100)", "Magnus formula"] },
     howToUse: "Enter air temperature and relative humidity to calculate the dew point.",
-    faqs: [{ question: "What does dew point mean?", answer: "The temperature at which air becomes saturated and moisture condenses. Higher dew point = more humidity and discomfort." }],
+    faqs: [{ question: "What does dew point mean?", answer: "The temperature at which air becomes saturated and moisture condenses. Higher dew point = more humidity and discomfort." }, { question: "What dew point feels comfortable?", answer: "Below 10°C feels dry, 10–16°C is comfortable, 16–20°C feels somewhat humid, 20–24°C very humid, and above 24°C extremely humid." }, { question: "What is the difference between dew point and humidity?", answer: "Relative humidity is a percentage that changes with temperature; dew point is an actual temperature that reflects the absolute amount of moisture in the air. That is why dew point is the better number for judging how humid it feels." }],
     relatedCalcs: lifeRelated("dew-point-calculator"),
   },
   // Roman Numeral Converter
@@ -751,7 +751,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Hours = (End − Start − Break) / 60", variables: ["Pay = Hours × Rate"] },
     howToUse: "Enter clock-in time, clock-out time, break duration, and hourly rate.",
-    faqs: [{ question: "Does this handle overnight shifts?", answer: "Yes, if end time is before start time, it assumes the shift crosses midnight." }],
+    faqs: [{ question: "Does this handle overnight shifts?", answer: "Yes, if end time is before start time, it assumes the shift crosses midnight." }, { question: "How is the weekly pay calculated?", answer: "It multiplies the daily pay by 5, assuming five identical days. If your days vary, run each day separately and add them up." }, { question: "What if my break is longer than my shift?", answer: "The result will be wrong: the calculator adds 24 hours whenever the total goes negative, so an over-long break can show as a very long shift. Keep the break shorter than the shift length." }],
     relatedCalcs: lifeRelated("time-card-calculator"),
   },
   // Horsepower Calculator
@@ -775,7 +775,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "HP = Torque × RPM / 5252", variables: ["1 HP ≈ 0.7457 kW", "5252 = 33000/(2π)"] },
     howToUse: "Enter torque and RPM to calculate horsepower.",
-    faqs: [{ question: "HP vs torque?", answer: "Torque is rotational force. HP is the rate of doing work (torque × speed). High torque = acceleration. High HP = top speed." }],
+    faqs: [{ question: "HP vs torque?", answer: "Torque is rotational force. HP is the rate of doing work (torque × speed). High torque = acceleration. High HP = top speed." }, { question: "What is the 5252 in the horsepower formula?", answer: "It comes from the definition of horsepower: 33,000 foot-pounds per minute divided by 2π. At exactly 5,252 RPM, an engine's horsepower and torque numbers are equal." }, { question: "How many kilowatts is one horsepower?", answer: "One mechanical horsepower is about 0.7457 kW. The calculator also shows metric horsepower (PS), where 1 HP is about 1.01387 PS." }],
     relatedCalcs: lifeRelated("horsepower-calculator"),
   },
   // Password Generator
@@ -811,7 +811,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Random selection from character pool", variables: ["Entropy = log₂(pool size) × length"] },
     howToUse: "Set length and character options, then click Calculate to generate a new password.",
-    faqs: [{ question: "How long should my password be?", answer: "At least 12-16 characters. Longer is better. Use a password manager to store unique passwords for each account." }],
+    faqs: [{ question: "How long should my password be?", answer: "At least 12-16 characters. Longer is better. Use a password manager to store unique passwords for each account." }, { question: "Is this generator safe to use for real passwords?", answer: "The passwords are random enough for everyday use, but they are generated with JavaScript's Math.random(), which is pseudo-random rather than cryptographically secure. For the highest-security accounts, use a password manager's built-in generator." }, { question: "What does the entropy number mean?", answer: "Entropy measures how hard a password is to guess, in bits. A 16-character password using all character types has about 103 bits of entropy and rates 'Very Strong'; a 12-character lowercase-only password has about 56 bits and rates 'Moderate'." }],
     relatedCalcs: lifeRelated("password-generator"),
   },
   // Molarity Calculator
@@ -951,7 +951,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Differential = (Score − Course Rating) × 113 / Slope", variables: ["Handicap ≈ Best Differential × 0.96"] },
     howToUse: "Enter recent scores, course rating, and slope rating to estimate your handicap.",
-    faqs: [{ question: "What is slope rating?", answer: "Slope (55-155) measures course difficulty for bogey golfers relative to scratch golfers. Standard is 113." }],
+    faqs: [{ question: "What is slope rating?", answer: "Slope (55-155) measures course difficulty for bogey golfers relative to scratch golfers. Standard is 113." }, { question: "Is this an official handicap index?", answer: "No. It estimates an index from three scores using your best score differential × 0.96. An official WHS Handicap Index uses your best 8 differentials from your last 20 rounds, so use this as a guide, not a tournament handicap." }, { question: "What is a good golf handicap?", answer: "Lower is better: a handicap of 0 means you typically shoot par, and a higher number means more strokes above par. The example scores on this page give an index of 15.4, or about 15 strokes over par on a standard course." }],
     relatedCalcs: lifeRelated("golf-handicap-calculator"),
   },
   // Tire Size Calculator
@@ -979,7 +979,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Diameter = (2 × Width × Aspect% / 25.4) + Rim", variables: ["225/55R17 = 225mm wide, 55% aspect, 17\" rim"] },
     howToUse: "Enter tire width (mm), aspect ratio, and rim diameter from your tire size (e.g., 225/55R17).",
-    faqs: [{ question: "What does the R mean?", answer: "R stands for Radial construction, the most common tire type. The number after R is the rim diameter in inches." }],
+    faqs: [{ question: "What does the R mean?", answer: "R stands for Radial construction, the most common tire type. The number after R is the rim diameter in inches." }, { question: "What does 225/55R17 mean?", answer: "225 mm wide, a sidewall height that is 55% of the width, radial construction, and a 17-inch rim. The calculator works out a 26.7-inch overall diameter for that size." }, { question: "Will a different tire size change my speedometer reading?", answer: "Yes. A larger overall diameter means fewer revolutions per mile, so the speedometer reads low; a smaller diameter reads high. The calculator shows revolutions per mile so you can compare sizes." }],
     relatedCalcs: lifeRelated("tire-size-calculator"),
   },
   // Tile Calculator
@@ -1008,7 +1008,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Tiles = (Room Area / Tile Area) × (1 + Waste%)", variables: ["Add 10% for straight cuts, 15% for diagonal"] },
     howToUse: "Enter room dimensions, tile size, and waste percentage.",
-    faqs: [{ question: "How much waste should I plan?", answer: "10% for straight layouts, 15% for diagonal, 20% for complex patterns or many cuts." }],
+    faqs: [{ question: "How much waste should I plan?", answer: "10% for straight layouts, 15% for diagonal, 20% for complex patterns or many cuts." }, { question: "How many tiles come in a box?", answer: "The calculator assumes 12 tiles per box. Box quantities vary by product, so check the label and divide your total tiles by the actual count if it differs." }, { question: "Does the calculator work for rectangular tiles?", answer: "It assumes square tiles — one size entered in inches. For a rectangular tile, use the square root of its area in square inches as the tile size: a 6×24-inch tile covers 144 square inches, so enter 12." }],
     relatedCalcs: lifeRelated("tile-calculator"),
   },
   // Gravel Calculator
@@ -1034,7 +1034,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Volume = L × W × D/12 (cubic feet) ÷ 27 = cubic yards", variables: ["1 cubic yard of gravel ≈ 1.4 tons"] },
     howToUse: "Enter the length, width, and depth of the area you need to cover.",
-    faqs: [{ question: "How deep should gravel be?", answer: "Driveways: 3-4 inches. Walkways: 2-3 inches. Drainage: 6-12 inches. Decorative: 2 inches." }],
+    faqs: [{ question: "How deep should gravel be?", answer: "Driveways: 3-4 inches. Walkways: 2-3 inches. Drainage: 6-12 inches. Decorative: 2 inches." }, { question: "How many tons are in a cubic yard of gravel?", answer: "The calculator uses 1.4 tons per cubic yard, which is a typical average. Dense stone weighs more and light stone less, so confirm with your supplier if you are ordering by weight." }, { question: "Should I order extra gravel?", answer: "Yes, order 5–10% extra for settling, spillage, and uneven ground. The calculator gives the exact volume for your measurements, so add the buffer yourself." }],
     relatedCalcs: lifeRelated("gravel-calculator"),
   },
   // Heat Index Calculator
@@ -1062,7 +1062,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Rothfusz regression equation (NWS)", variables: ["Valid for temp ≥ 80°F and humidity ≥ 40%"] },
     howToUse: "Enter air temperature (°F) and relative humidity (%). Works best above 80°F.",
-    faqs: [{ question: "What is heat index?", answer: "The 'feels like' temperature accounting for humidity. High humidity reduces sweat evaporation, making it feel hotter." }],
+    faqs: [{ question: "What is heat index?", answer: "The 'feels like' temperature accounting for humidity. High humidity reduces sweat evaporation, making it feel hotter." }, { question: "When is the heat index dangerous?", answer: "The calculator rates 90–104°F as Extreme Caution, 105–129°F as Danger, and 130°F and above as Extreme Danger. Above 105°F, heat illness is likely with prolonged exposure." }, { question: "Why does humidity make heat feel worse?", answer: "Because sweat evaporates more slowly in humid air, so your body cools itself less effectively. At 95°F and 55% humidity, the heat index is 109°F — 14 degrees hotter than the air temperature." }],
     relatedCalcs: lifeRelated("heat-index-calculator"),
   },
   // Roofing Calculator
@@ -1092,7 +1092,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Area = Length × Width × √(1 + (pitch/12)²)", variables: ["1 square = 100 sq ft", "3 bundles per square"] },
     howToUse: "Enter building dimensions and roof pitch. The calculator accounts for pitch slope and waste.",
-    faqs: [{ question: "What is roof pitch?", answer: "Pitch is the rise in inches for every 12 inches of horizontal run. A 6/12 pitch rises 6 inches per foot." }],
+    faqs: [{ question: "What is roof pitch?", answer: "Pitch is the rise in inches for every 12 inches of horizontal run. A 6/12 pitch rises 6 inches per foot." }, { question: "How many bundles are in a roofing square?", answer: "The calculator assumes 3 bundles per square, which is standard for 3-tab shingles. Architectural shingles often need 4 bundles per square, so check your product before ordering." }, { question: "Does the calculator include roof overhang?", answer: "No. It uses the building's length and width, so measure to the outer edge of the roof — including the overhang — or add a little extra waste to cover it." }],
     relatedCalcs: lifeRelated("roofing-calculator"),
   },
   // Mulch Calculator
@@ -1118,7 +1118,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Volume = L × W × (Depth/12) cubic feet ÷ 27 = cubic yards", variables: ["Standard bag = 2 cubic feet"] },
     howToUse: "Enter the area dimensions and desired mulch depth.",
-    faqs: [{ question: "How deep should mulch be?", answer: "2-4 inches is ideal. Too thin won't suppress weeds, too thick can suffocate roots and trap moisture." }],
+    faqs: [{ question: "How deep should mulch be?", answer: "2-4 inches is ideal. Too thin won't suppress weeds, too thick can suffocate roots and trap moisture." }, { question: "How many bags of mulch are in a cubic yard?", answer: "A cubic yard is 27 cubic feet, and the calculator assumes standard 2-cubic-foot bags, so one cubic yard is about 13.5 bags — 14 bags rounded up." }, { question: "How often should I replace mulch?", answer: "Most gardeners top it up once a year, adding 1–2 inches each spring as the old mulch breaks down." }],
     relatedCalcs: lifeRelated("mulch-calculator"),
   },
   // Stair Calculator
@@ -1175,7 +1175,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "GDP = C + I + G + (X − M)", variables: ["C = Consumption", "I = Investment", "G = Government", "X−M = Net Exports"] },
     howToUse: "Enter the four GDP components (in billions) to calculate total GDP.",
-    faqs: [{ question: "What is GDP?", answer: "Gross Domestic Product measures the total value of goods and services produced in a country in a given period." }],
+    faqs: [{ question: "What is GDP?", answer: "Gross Domestic Product measures the total value of goods and services produced in a country in a given period." }, { question: "What are the four parts of GDP?", answer: "Consumption (C), investment (I), government spending (G), and net exports (X − M). The calculator adds them: GDP = C + I + G + (X − M)." }, { question: "Can net exports be negative?", answer: "Yes. When a country imports more than it exports, net exports are negative and subtract from GDP. With the default values, exports of $2,500B and imports of $3,100B give net exports of −$600B." }],
     relatedCalcs: lifeRelated("gdp-calculator"),
   },
   // Day of the Week Calculator
@@ -1201,7 +1201,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "JavaScript Date object calculation", variables: ["Handles all dates including historical"] },
     howToUse: "Enter any date to find out what day of the week it falls on.",
-    faqs: [{ question: "What day was I born?", answer: "Enter your birth date to find out!" }],
+    faqs: [{ question: "What day was I born?", answer: "Enter your birth date to find out!" }, { question: "How does the calculator handle leap years?", answer: "It applies the Gregorian rule: a year is a leap year if it is divisible by 4, except century years, which must be divisible by 400. So 2000 was a leap year but 1900 was not." }, { question: "Can I use it for dates far in the past or future?", answer: "Yes, for any year you enter. Note that very old dates use the modern Gregorian calendar rules, so dates before 1582 may not match the Julian calendar actually in use at the time." }],
     relatedCalcs: lifeRelated("day-of-week-calculator"),
   },
   // Voltage Drop Calculator
@@ -1256,7 +1256,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Series: R = R1 + R2 + R3; Parallel: 1/R = 1/R1 + 1/R2 + 1/R3", variables: ["Series increases total resistance", "Parallel decreases total resistance"] },
     howToUse: "Enter resistance values for up to 3 resistors to see series and parallel totals.",
-    faqs: [{ question: "When to use series vs parallel?", answer: "Series increases resistance (voltage dividers). Parallel decreases resistance (current sharing). Use both in complex circuits." }],
+    faqs: [{ question: "When to use series vs parallel?", answer: "Series increases resistance (voltage dividers). Parallel decreases resistance (current sharing). Use both in complex circuits." }, { question: "Why is the parallel total smaller than the smallest resistor?", answer: "Because each added resistor gives current another path, so total resistance drops. Three resistors of 100, 220, and 330 ohms in parallel give 56.89 ohms — less than the 100-ohm resistor alone." }, { question: "Can I calculate with only two resistors?", answer: "Yes — the results include separate rows for R1 and R2 alone. With the default values, R1 and R2 give 320.0 ohms in series and 68.75 ohms in parallel." }],
     relatedCalcs: lifeRelated("resistor-calculator"),
   },
   // Bandwidth Calculator
@@ -1316,7 +1316,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Total IPs = 2^(32 − prefix); Usable = Total − 2", variables: ["/24 = 256 IPs, 254 hosts", "/16 = 65536 IPs"] },
     howToUse: "Enter the CIDR prefix length (e.g., 24 for /24) to calculate subnet details.",
-    faqs: [{ question: "Why minus 2 for usable hosts?", answer: "The first IP is the network address and the last is the broadcast address — neither can be assigned to hosts." }],
+    faqs: [{ question: "Why minus 2 for usable hosts?", answer: "The first IP is the network address and the last is the broadcast address — neither can be assigned to hosts." }, { question: "What is the subnet mask for a /24 network?", answer: "255.255.255.0, with 256 total addresses and 254 usable hosts. A /26 is 255.255.255.192 with 64 addresses and 62 usable hosts." }, { question: "Does this calculator show the network address for my IP?", answer: "No. It works from the prefix length alone, so it gives the mask, total addresses, usable hosts, and wildcard mask — but not the network or broadcast address for a specific IP address." }],
     relatedCalcs: lifeRelated("ip-subnet-calculator"),
   },
 ];

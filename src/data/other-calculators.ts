@@ -70,6 +70,8 @@ export const otherCalculators: CalculatorConfig[] = [
     howToUse: "Enter the car's purchase price, years owned, and annual depreciation rate.",
     faqs: [
       { question: "What is the average car depreciation rate?", answer: "Most cars depreciate 15-20% per year on average." },
+      { question: "How is the current value calculated?", answer: "With compound depreciation: value = price × (1 − rate)^years. A $30,000 car at 15% a year is worth $30,000 × 0.85^5 = $13,311 after 5 years, a total loss of $16,689." },
+      { question: "When does a car lose the most value?", answer: "In the first year — at 15% a year, a $30,000 car drops $4,500 in year one, more than the $3,338 average annual loss over five years. The calculator applies one steady rate, so it smooths out that front-loaded drop." },
     ],
     relatedCalcs: otherRelated("car-depreciation-calculator"),
   },
@@ -283,7 +285,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Duty = Price × Rate − Discount", variables: ["Price = Purchase price", "Rate = Stamp duty rate"] },
     howToUse: "Enter property price, stamp duty rate, and any first-time buyer discount.",
-    faqs: [{ question: "What is stamp duty?", answer: "A tax paid when purchasing property, varying by jurisdiction." }],
+    faqs: [{ question: "What is stamp duty?", answer: "A tax paid when purchasing property, varying by jurisdiction." }, { question: "Does this calculator use my country's stamp duty bands?", answer: "No. It applies a single flat rate that you enter, and does not apply any jurisdiction's bands, thresholds, or exemptions. Enter the rate from your tax authority's current schedule." }, { question: "How does the first-time buyer discount work?", answer: "It is a percentage off the duty itself. On a $400,000 purchase at 2.5%, the duty is $10,000; a 50% discount cuts it to $5,000." }],
     relatedCalcs: otherRelated("stamp-duty-calculator"),
   },
   // === Migrated from Cooking ===
@@ -313,7 +315,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Scaled = Original × (Desired ÷ Original Servings)", variables: ["Original = Original ingredient amount", "Desired = Target servings"] },
     howToUse: "Enter original servings, desired servings, and up to 3 ingredient amounts.",
-    faqs: [{ question: "Do all ingredients scale linearly?", answer: "Most do, but seasonings and leavening agents may need adjusting." }],
+    faqs: [{ question: "Do all ingredients scale linearly?", answer: "Most do, but seasonings and leavening agents may need adjusting." }, { question: "How many ingredients can I scale at once?", answer: "Three. The calculator also shows the scale factor, so you can apply it to the rest of the recipe by hand." }, { question: "Does cooking time scale with the recipe?", answer: "No. A doubled recipe bakes in a larger pan at the same temperature, usually with only a little extra time — check for doneness early rather than trusting the original timing." }],
     relatedCalcs: otherRelated("recipe-scaler-calculator"),
   },
   {
@@ -344,7 +346,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Ingredient = Flour × (Percentage ÷ 100)", variables: ["All percentages relative to flour weight"] },
     howToUse: "Enter flour weight and adjust baker's percentages for hydration, salt, and yeast.",
-    faqs: [{ question: "What hydration level should I use?", answer: "Sandwich bread: 60-65%. Artisan: 65-75%. Ciabatta: 75-85%." }],
+    faqs: [{ question: "What hydration level should I use?", answer: "Sandwich bread: 60-65%. Artisan: 65-75%. Ciabatta: 75-85%." }, { question: "What is baker's percentage?", answer: "Every ingredient is expressed as a percentage of the flour weight, with flour always at 100%. At 65% hydration, 500 g of flour needs 325 g of water — and doubling the flour doubles everything else while the ratios stay the same." }, { question: "How much dough does 500 g of flour make?", answer: "At 65% hydration, 2% salt, and 1% yeast: 500 g flour + 325 g water + 10 g salt + 5 g yeast = 840 g of dough, enough for one large loaf or two small ones." }],
     relatedCalcs: otherRelated("baking-ratio-calculator"),
   },
   {
@@ -374,7 +376,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Time = Weight × Minutes per Pound", variables: ["Weight in pounds", "Min/lb varies by meat type"] },
     howToUse: "Enter meat weight, minutes per pound, and oven temperature.",
-    faqs: [{ question: "Common min/lb values?", answer: "Turkey: 13-15 at 325°F. Beef roast: 20-25 at 350°F. Chicken: 20 at 350°F." }],
+    faqs: [{ question: "Common min/lb values?", answer: "Turkey: 13-15 at 325°F. Beef roast: 20-25 at 350°F. Chicken: 20 at 350°F." }, { question: "How long should meat rest after cooking?", answer: "At least 10 minutes, or about 3 minutes per pound — whichever is longer. A 12 lb turkey rests for 36 minutes. Resting lets juices redistribute, and the internal temperature keeps rising a few degrees while it rests." }, { question: "Does the oven temperature change the cooking time?", answer: "No. The time comes only from weight × minutes per pound; the temperature you enter is shown in °F and °C for reference. Always check doneness with a meat thermometer rather than trusting time alone." }],
     relatedCalcs: otherRelated("cooking-time-calculator"),
   },
   {
@@ -445,7 +447,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert via mL base unit", variables: ["1 Cup = 236.588 mL", "1 Tbsp = 14.787 mL", "1 Tsp = 4.929 mL"] },
     howToUse: "Select a unit, enter the amount, and see all conversions.",
-    faqs: [{ question: "How many tablespoons in a cup?", answer: "16 tablespoons = 1 US cup." }],
+    faqs: [{ question: "How many tablespoons in a cup?", answer: "16 tablespoons = 1 US cup." }, { question: "Are US and metric cups the same?", answer: "No. A US cup is 236.588 mL; a metric cup is 250 mL — about 6% more. This converter uses US cups." }, { question: "Can I convert cups to grams here?", answer: "No — this converter handles volume only. Cups-to-grams depends on the ingredient's density: a cup of flour weighs much less than a cup of honey." }],
     relatedCalcs: otherRelated("unit-conversion-cooking"),
   },
   // === NEW CALCULATORS ===
@@ -534,7 +536,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Margin = (Revenue - Costs) ÷ Revenue × 100", variables: ["Revenue = Total sales", "Costs = Cost of goods sold"] },
     howToUse: "Enter revenue, cost of goods, and operating expenses.",
-    faqs: [{ question: "What's a good profit margin?", answer: "Varies by industry. 10-20% net margin is generally healthy." }],
+    faqs: [{ question: "What's a good profit margin?", answer: "Varies by industry. 10-20% net margin is generally healthy." }, { question: "What is the difference between gross margin and net margin?", answer: "Gross margin is (revenue minus cost of goods) divided by revenue; net margin also subtracts operating expenses. On $10,000 of revenue with $6,000 in costs and $2,000 in expenses, gross margin is 40% and net margin is 20%." }, { question: "How is margin different from markup?", answer: "Margin is profit as a percentage of the selling price; markup is profit as a percentage of cost. A $60 item sold for $100 has a 40% margin but a 66.7% markup." }],
     relatedCalcs: otherRelated("margin-calculator"),
   },
   {
@@ -651,7 +653,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Profit = Selling Price - Cost Price", variables: ["Cost = Purchase/production price", "Selling = Sale price"] },
     howToUse: "Enter cost price, selling price, and number of units sold.",
-    faqs: [{ question: "Profit vs revenue?", answer: "Revenue is total sales. Profit is revenue minus all costs." }],
+    faqs: [{ question: "Profit vs revenue?", answer: "Revenue is total sales. Profit is revenue minus all costs." }, { question: "Is the Profit % a margin or a markup?", answer: "It is measured against cost: profit divided by cost times 100. A $75 item sold for $120 shows 60.0%; the margin on the selling price would be 37.5%." }, { question: "Does the calculator include other business costs?", answer: "No. It covers the cost of goods only — rent, shipping, platform fees, and taxes come out of the profit shown here." }],
     relatedCalcs: otherRelated("profit-calculator"),
   },
   {
@@ -711,7 +713,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "WPM = (Characters ÷ 5) ÷ Minutes", variables: ["5 characters = 1 word", "Net WPM subtracts errors"] },
     howToUse: "Enter characters typed, time in seconds, and number of errors.",
-    faqs: [{ question: "What's a good typing speed?", answer: "40 WPM is average. 60+ WPM is good. 80+ WPM is excellent." }],
+    faqs: [{ question: "What's a good typing speed?", answer: "40 WPM is average. 60+ WPM is good. 80+ WPM is excellent." }, { question: "What is the difference between net and gross WPM?", answer: "Gross WPM is your raw pace; net WPM subtracts one word per error. Typing 500 characters in 120 seconds with 5 errors gives 50 gross WPM but 48 net WPM." }, { question: "Why is a word defined as 5 characters?", answer: "It is a long-standing convention from typewriter speed tests, close to the average length of an English word plus a space. It lets speeds from different tests be compared fairly." }],
     relatedCalcs: otherRelated("typing-speed-calculator"),
   },
   {
@@ -750,7 +752,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Entropy = Length × log₂(Pool Size)", variables: ["Pool Size = Number of possible characters", "Higher entropy = stronger password"] },
     howToUse: "Enter password length and select character types used.",
-    faqs: [{ question: "How long should a password be?", answer: "At least 12 characters with mixed types for good security." }],
+    faqs: [{ question: "How long should a password be?", answer: "At least 12 characters with mixed types for good security." }, { question: "What does 'bits of entropy' mean?", answer: "Entropy measures how many guesses an attacker needs: a password with 78.8 bits of entropy has about 2 to the power of 78.8 possible combinations. Each extra bit doubles the guessing work." }, { question: "Is a long simple password better than a short complex one?", answer: "Usually yes. Length multiplies the combinations with every character: a 12-character password using all 95 characters would take about 1.7 million years to crack at 10 billion guesses per second, while an 8-character lowercase password falls in about 21 seconds." }],
     relatedCalcs: otherRelated("password-strength-calculator"),
   },
   {
@@ -782,7 +784,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Ratio = Width:Height (simplified by GCD)", variables: ["New Height = (New Width ÷ Width) × Height"] },
     howToUse: "Enter original dimensions and a new width to calculate the proportional height.",
-    faqs: [{ question: "Common aspect ratios?", answer: "16:9 (widescreen), 4:3 (standard), 1:1 (square), 21:9 (ultrawide)." }],
+    faqs: [{ question: "Common aspect ratios?", answer: "16:9 (widescreen), 4:3 (standard), 1:1 (square), 21:9 (ultrawide)." }, { question: "How do I resize an image without stretching it?", answer: "Scale the width and height by the same factor: new height = (new width ÷ old width) × old height. A 1920×1080 image resized to 1280 wide needs a height of 720 pixels to stay 16:9." }, { question: "What is the aspect ratio of 1920×1080?", answer: "16:9. Divide both numbers by their greatest common divisor, 120: 1920 ÷ 120 = 16 and 1080 ÷ 120 = 9. The image holds 2.07 megapixels." }],
     relatedCalcs: otherRelated("aspect-ratio-calculator"),
   },
   {
@@ -815,7 +817,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "DPI = Pixel Width ÷ Print Width", variables: ["300 DPI = excellent print quality", "150 DPI = acceptable for viewing distance"] },
     howToUse: "Enter image pixel dimensions and desired print width in inches.",
-    faqs: [{ question: "What DPI do I need?", answer: "300 DPI for high-quality prints. 150 DPI for posters. 72 DPI for screens." }],
+    faqs: [{ question: "What DPI do I need?", answer: "300 DPI for high-quality prints. 150 DPI for posters. 72 DPI for screens." }, { question: "How is DPI calculated?", answer: "DPI = pixel width ÷ print width in inches. A 3000-pixel-wide image printed 10 inches wide is 300 DPI; printed 20 inches wide, the same image drops to 150 DPI." }, { question: "Is higher DPI always better?", answer: "Above 300 DPI the gains are hard to see in print, and most printers cannot reproduce extra detail. Large posters viewed from a distance look fine at 150 DPI, while 72 DPI is only suitable for screens." }],
     relatedCalcs: otherRelated("dpi-calculator"),
   },
   {
@@ -846,7 +848,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Decimal = Σ(bit × 2^position)", variables: ["Each bit position has value 2^n", "Rightmost bit = position 0"] },
     howToUse: "Enter a binary number using only 0s and 1s.",
-    faqs: [{ question: "What is binary?", answer: "Binary is base-2 number system using only 0 and 1. Used by computers." }],
+    faqs: [{ question: "What is binary?", answer: "Binary is base-2 number system using only 0 and 1. Used by computers." }, { question: "How do I convert 1010 to decimal?", answer: "Add the place values where the bit is 1, reading from the right: 1×8 + 0×4 + 1×2 + 0×1 = 10. Each position doubles going left: 1, 2, 4, 8, 16, and so on." }, { question: "Why do I enter binary as a number?", answer: "The input is a numeric field, so type the binary digits directly — for example, 11010110 converts to 214. Leading zeros are dropped by the numeric input, but they never change the value." }],
     relatedCalcs: otherRelated("binary-to-decimal-calculator"),
   },
   {
@@ -874,7 +876,7 @@ export const otherCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Hex uses digits 0-9 and A-F (base 16)", variables: ["A=10, B=11, C=12, D=13, E=14, F=15"] },
     howToUse: "Enter a decimal number to see its hex, binary, and octal representations.",
-    faqs: [{ question: "Where is hex used?", answer: "Colors (#FF0000), memory addresses, MAC addresses, and programming." }],
+    faqs: [{ question: "Where is hex used?", answer: "Colors (#FF0000), memory addresses, MAC addresses, and programming." }, { question: "How do I convert FF from hex to decimal?", answer: "F stands for 15, so 0xFF = 15 × 16 + 15 = 255. Each hex digit is worth sixteen times the digit to its right, just as each decimal digit is worth ten times the one to its right." }, { question: "Why does the tool ask for a decimal number?", answer: "This tool converts from decimal to hexadecimal: enter a decimal number such as 255 and it shows the hex equivalent (0xFF) plus binary (11111111) and octal (0o377). It cannot accept hex letters like A–F because the input is a numeric field." }],
     relatedCalcs: otherRelated("hex-to-decimal-calculator"),
   },
   {

@@ -59,7 +59,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "Euclidean Algorithm: GCD(A, B) = GCD(B, A mod B)", variables: ["Repeats until remainder is 0"] },
     howToUse: "Enter two numbers to find their GCD.",
-    faqs: [{ question: "GCD vs GCF?", answer: "Same thing. GCD = Greatest Common Divisor. GCF = Greatest Common Factor." }],
+    faqs: [{ question: "GCD vs GCF?", answer: "Same thing. GCD = Greatest Common Divisor. GCF = Greatest Common Factor." }, { question: "What is the GCD of 48 and 36?", answer: "12. The tool also gives the LCM, 144, and the reduced pair: 48 ÷ 12 = 4 and 36 ÷ 12 = 3." }, { question: "How is the GCD used to simplify fractions?", answer: "Divide the top and bottom by the GCD: 48/36 simplifies to 4/3 by dividing both by 12. The same trick works for any fraction." }],
     relatedCalcs: otherRel3("gcd-calculator"),
   },
   {
@@ -110,7 +110,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "log_b(x) = ln(x) ÷ ln(b)", variables: ["ln = natural logarithm (base e)", "Change of base formula"] },
     howToUse: "Enter a number and the logarithm base.",
-    faqs: [{ question: "What bases are most common?", answer: "Base 10 (common log), base e (natural log), and base 2 (computer science)." }],
+    faqs: [{ question: "What bases are most common?", answer: "Base 10 (common log), base e (natural log), and base 2 (computer science)." }, { question: "What is log base 2 of 64?", answer: "6, because 2^6 = 64. The same number's other logarithms are ln(64) = 4.158883 and log10(64) = 1.806180." }, { question: "What inputs does the calculator accept?", answer: "The number must be positive and the base must be positive and not equal to 1. Entering zero, a negative number, or a base of 1 gives NaN or Infinity — the tool does not validate its inputs." }],
     relatedCalcs: otherRel3("logarithm-calculator"),
   },
   {
@@ -189,7 +189,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "A/B = C/D → D = (B × C) ÷ A", variables: ["Cross multiply to solve"] },
     howToUse: "Enter A, B, and C to find the missing D value.",
-    faqs: [{ question: "What is a proportion?", answer: "Two equal ratios. If A/B = C/D, then A×D = B×C (cross multiplication)." }],
+    faqs: [{ question: "What is a proportion?", answer: "Two equal ratios. If A/B = C/D, then A×D = B×C (cross multiplication)." }, { question: "What if A is zero?", answer: "The proportion cannot be solved: D = (B x C) / A divides by A, so entering 0 for A gives no meaningful result." }, { question: "How do I check my answer?", answer: "The two ratios should match: in 3/4 = 9/12, both sides equal 0.75. The calculator shows both ratios so you can verify at a glance." }],
     relatedCalcs: otherRel3("proportion-calculator"),
   },
   {
@@ -215,7 +215,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "A mod B = A - B × floor(A/B)", variables: ["mod = remainder after division"] },
     howToUse: "Enter dividend and divisor to find the remainder.",
-    faqs: [{ question: "Where is modulo used?", answer: "Clock arithmetic, cryptography, hash functions, even/odd checking, cycling through arrays." }],
+    faqs: [{ question: "Where is modulo used?", answer: "Clock arithmetic, cryptography, hash functions, even/odd checking, cycling through arrays." }, { question: "What is the difference between modulo and division?", answer: "Division tells you how many times one number fits into another; modulo tells you what is left over. 17 divided by 5 is 3 with a remainder of 2, so 17 mod 5 = 2." }, { question: "Why does the calculator show an error for a zero divisor?", answer: "Dividing by zero has no defined result, so the calculator shows 'Cannot divide by zero' instead of a number." }],
     relatedCalcs: otherRel3("modulo-calculator"),
   },
   {
@@ -241,7 +241,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "F(n) = F(n-1) + F(n-2)", variables: ["F(0) = 0, F(1) = 1", "Golden Ratio φ = (1+√5)/2 ≈ 1.618"] },
     howToUse: "Enter a position n (0-70) to find the Fibonacci number.",
-    faqs: [{ question: "Where are Fibonacci numbers found?", answer: "Nature (flower petals, pine cones), art, architecture, and financial trading." }],
+    faqs: [{ question: "Where are Fibonacci numbers found?", answer: "Nature (flower petals, pine cones), art, architecture, and financial trading." }, { question: "What is the 10th Fibonacci number?", answer: "F(10) = 55, counting from F(0) = 0 and F(1) = 1. The next number, F(11), is 89, and the ratio 55 ÷ 34 = 1.617647 is already close to the golden ratio, 1.61803399." }, { question: "What is the largest position the calculator accepts?", answer: "70. Larger values are clamped to 70, and F(70) = 190,392,490,709,135 — shown in exponential form as 1.9039e+14, since the tool switches to scientific notation above one trillion." }],
     relatedCalcs: otherRel3("fibonacci-calculator"),
   },
   {
@@ -278,7 +278,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "Check divisibility from 2 to √n", variables: ["If no divisors found, number is prime"] },
     howToUse: "Enter any positive number to check if it's prime.",
-    faqs: [{ question: "What is a prime number?", answer: "A number greater than 1 that is only divisible by 1 and itself. E.g., 2, 3, 5, 7, 11, 13..." }],
+    faqs: [{ question: "What is a prime number?", answer: "A number greater than 1 that is only divisible by 1 and itself. E.g., 2, 3, 5, 7, 11, 13..." }, { question: "Is 1 a prime number?", answer: "No. A prime must have exactly two divisors, 1 and itself; 1 has only one divisor. 2 is the smallest prime and the only even prime." }, { question: "Why does the checker only test up to the square root?", answer: "Factors come in pairs: if a number has a factor above its square root, it also has one below it. Testing up to the square root of n is enough to find every factor." }],
     relatedCalcs: otherRel3("prime-number-checker"),
   },
   {
@@ -305,7 +305,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "nPr = n! ÷ (n-r)!", variables: ["n = total items", "r = items chosen", "Order matters in permutations"] },
     howToUse: "Enter total items (n) and items chosen (r).",
-    faqs: [{ question: "Permutation vs combination?", answer: "Permutation: order matters (ABC ≠ CBA). Combination: order doesn't matter (ABC = CBA)." }],
+    faqs: [{ question: "Permutation vs combination?", answer: "Permutation: order matters (ABC ≠ CBA). Combination: order doesn't matter (ABC = CBA)." }, { question: "What is the largest n this calculator accepts?", answer: "20. Values above 20 are treated as 20, and r is capped at n, because factorials grow too large for exact display beyond that." }, { question: "How many ways can 10 runners finish in the top 3?", answer: "720: 10 x 9 x 8. Order matters, so it is a permutation — the same 3 runners in a different finishing order count as a different result." }],
     relatedCalcs: otherRel3("permutation-calculator"),
   },
   {
@@ -334,7 +334,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "nCr = n! ÷ (r! × (n-r)!)", variables: ["n = total items", "r = items chosen", "Order does NOT matter"] },
     howToUse: "Enter total items (n) and items chosen (r).",
-    faqs: [{ question: "Lottery example?", answer: "Picking 6 from 49: C(49,6) = 13,983,816 possible combinations." }],
+    faqs: [{ question: "Lottery example?", answer: "Picking 6 from 49: C(49,6) = 13,983,816 possible combinations." }, { question: "What is the difference between combinations and permutations?", answer: "In combinations, order does not matter; in permutations it does. Choosing 2 from 5 gives C(5,2) = 10 combinations, but 5 × 4 = 20 permutations, because each pair can be ordered two ways." }, { question: "What is the largest n the calculator accepts?", answer: "30. Larger values are clamped to 30, and r is capped at n. The lottery example in the first FAQ (C(49,6) = 13,983,816) is beyond the tool's limit, so it cannot be computed here directly." }],
     relatedCalcs: otherRel3("combination-calculator"),
   },
   {
@@ -419,7 +419,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "WA = Σ(Value × Weight) ÷ Σ(Weight)", variables: ["Each value multiplied by its weight", "Divided by total weight"] },
     howToUse: "Enter up to 3 values and their weights (percentages).",
-    faqs: [{ question: "When to use weighted average?", answer: "Course grades, investment portfolios, survey results where items have different importance." }],
+    faqs: [{ question: "When to use weighted average?", answer: "Course grades, investment portfolios, survey results where items have different importance." }, { question: "Do the weights have to add up to 100?", answer: "No. The calculator divides by the actual total weight, so any set of weights works — 30, 30, and 40 give the same result as 3, 3, and 4." }, { question: "When is the weighted average equal to the simple average?", answer: "When all the weights are equal. With weights 30, 30, and 40 on scores of 90, 85, and 78, the weighted average is 83.70 while the simple average is 84.33." }],
     relatedCalcs: otherRel3("weighted-average-calculator"),
   },
   {
@@ -449,7 +449,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "Sort values, pick middle one", variables: ["For even count: average of two middle values"] },
     howToUse: "Enter 5 values to find the median.",
-    faqs: [{ question: "Median vs mean?", answer: "Median is less affected by outliers. Use median for skewed data (e.g., income)." }],
+    faqs: [{ question: "Median vs mean?", answer: "Median is less affected by outliers. Use median for skewed data (e.g., income)." }, { question: "How many numbers can this calculator handle?", answer: "Exactly five. Enter them in any order; the calculator sorts them and picks the middle one as the median." }, { question: "What if my data has an even count?", answer: "With an even count the median is the average of the two middle values — for 7, 9, 12, 18 the median is (9 + 12) / 2 = 10.5. This calculator takes five values, so the middle value is always the median here." }],
     relatedCalcs: otherRel3("median-calculator"),
   },
   {
@@ -506,7 +506,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "Volume = L × W × (D÷12) ÷ 27", variables: ["D in inches converted to feet", "1 cubic yard ≈ 1.1 tons topsoil"] },
     howToUse: "Enter bed length, width in feet and desired soil depth in inches.",
-    faqs: [{ question: "How deep should topsoil be?", answer: "Vegetable gardens: 8-12 inches. Flower beds: 4-6 inches. Lawn: 2-4 inches." }],
+    faqs: [{ question: "How deep should topsoil be?", answer: "Vegetable gardens: 8-12 inches. Flower beds: 4-6 inches. Lawn: 2-4 inches." }, { question: "How many cubic feet are in a cubic yard?", answer: "27. A 12 x 4 ft bed filled 6 inches deep holds 24 cubic feet, or 0.89 cubic yards." }, { question: "How heavy is a cubic yard of topsoil?", answer: "About 1.1 tons, or roughly 2,200 pounds. The 0.89 cubic yards in the example weigh about 0.98 tons." }],
     relatedCalcs: otherRel3("soil-calculator"),
   },
   {
@@ -533,7 +533,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "Seed = (Area ÷ 1000) × Rate", variables: ["Rate varies by grass type", "Overseeding = 50% of new lawn rate"] },
     howToUse: "Enter lawn dimensions and seed rate (check bag for rate per 1000 sq ft).",
-    faqs: [{ question: "Common seed rates?", answer: "Kentucky Bluegrass: 2-3 lbs. Bermuda: 1-2 lbs. Fescue: 6-8 lbs per 1000 sq ft." }],
+    faqs: [{ question: "Common seed rates?", answer: "Kentucky Bluegrass: 2-3 lbs. Bermuda: 1-2 lbs. Fescue: 6-8 lbs per 1000 sq ft." }, { question: "How much seed for a 40×60 ft lawn?", answer: "The lawn is 2,400 sq ft, so at 6 lbs per 1,000 sq ft you need (2,400 ÷ 1,000) × 6 = 14.4 lbs — three 5 lb bags, since two bags would only give 10 lbs." }, { question: "How much seed do I need for overseeding?", answer: "Half the new-lawn rate. For the 40×60 ft lawn above, overseeding needs 7.2 lbs instead of 14.4 lbs." }],
     relatedCalcs: otherRel3("lawn-seed-calculator"),
   },
   {
@@ -769,7 +769,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "Product = N Needed ÷ (N% ÷ 100)", variables: ["N Needed = Area/1000 × Rate", "N% = first number on fertilizer bag"] },
     howToUse: "Enter lawn area, desired nitrogen rate, and fertilizer N percentage.",
-    faqs: [{ question: "What does 20-5-10 mean?", answer: "20% Nitrogen, 5% Phosphorus, 10% Potassium by weight." }],
+    faqs: [{ question: "What does 20-5-10 mean?", answer: "20% Nitrogen, 5% Phosphorus, 10% Potassium by weight." }, { question: "How much fertilizer do I need for 5,000 sq ft?", answer: "At 1 lb of nitrogen per 1,000 sq ft with a 20% nitrogen product: 5 lbs of nitrogen needed, so 5 ÷ 0.20 = 25 lbs of product — exactly one 25 lb bag." }, { question: "Does the calculator account for phosphorus and potassium?", answer: "No. It sizes the amount by nitrogen only, using the first number on the bag. A soil test is the only way to know whether your lawn also needs phosphorus or potassium." }],
     relatedCalcs: otherRel3("fertilizer-calculator"),
   },
   {
@@ -854,7 +854,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "Characters = Words × Avg Chars/Word", variables: ["Reading: ~250 WPM", "Speaking: ~150 WPM"] },
     howToUse: "Enter word count and average characters per word.",
-    faqs: [{ question: "Average blog post length?", answer: "1500-2500 words for SEO. Social posts: 40-80 words. Emails: 50-200 words." }],
+    faqs: [{ question: "Average blog post length?", answer: "1500-2500 words for SEO. Social posts: 40-80 words. Emails: 50-200 words." }, { question: "Does this calculator count words from pasted text?", answer: "No. There is no text box — you enter the word count yourself (from your document or editor) and the calculator estimates characters, sentences, paragraphs, and reading and speaking time from it." }, { question: "How is reading time estimated?", answer: "At 250 words per minute, and speaking time at 150 words per minute. A 1,500-word piece takes about 6.0 minutes to read and 10.0 minutes to speak aloud." }],
     relatedCalcs: otherRel3("word-count-calculator"),
   },
   {

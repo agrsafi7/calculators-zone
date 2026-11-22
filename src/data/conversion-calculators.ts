@@ -171,7 +171,7 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to liters, then to target", variables: ["1 gal = 3.785 L", "1 cup = 236.6 mL"] },
     howToUse: "Enter a volume and unit to see all conversions.",
-    faqs: [{ question: "US vs Imperial gallon?", answer: "US gallon = 3.785 L. Imperial gallon = 4.546 L. This calculator uses US gallons." }],
+    faqs: [{ question: "US vs Imperial gallon?", answer: "US gallon = 3.785 L. Imperial gallon = 4.546 L. This calculator uses US gallons." }, { question: "How many cups are in a US gallon?", answer: "16 cups. One US gallon is 3.78541 litres, which is 128 fluid ounces or 3,785.41 millilitres." }, { question: "How many litres is 2 cups?", answer: "0.47 litres (473.18 mL). Each US cup is 0.236588 litres, so 2 cups is 2 × 0.236588 = 0.4732 litres." }],
     relatedCalcs: convRelated("volume-converter"),
   },
   {
@@ -280,7 +280,7 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to pascals, then to target", variables: ["1 atm = 101325 Pa", "1 bar = 100000 Pa"] },
     howToUse: "Enter a pressure and unit to convert between pressure units.",
-    faqs: [{ question: "What is standard atmospheric pressure?", answer: "1 atm = 101,325 Pa = 14.696 PSI = 760 mmHg." }],
+    faqs: [{ question: "What is standard atmospheric pressure?", answer: "1 atm = 101,325 Pa = 14.696 PSI = 760 mmHg." }, { question: "What is 32 PSI in bar?", answer: "2.21 bar. 32 PSI is 32 × 6,894.76 = 220,632.32 Pa, which is 2.21 bar or 2.18 atmospheres." }, { question: "What is normal tyre pressure?", answer: "Most cars want roughly 30–35 PSI (about 2.1–2.4 bar). The recommended pressure is printed on the driver's door jamb — the number on the tyre itself is the maximum, not the target." }],
     relatedCalcs: convRelated("pressure-converter"),
   },
   {
@@ -333,7 +333,7 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "1 KB = 1024 B; 1 MB = 1024 KB; etc.", variables: ["Binary (base-2) conversions"] },
     howToUse: "Enter a data size and unit to convert between storage units.",
-    faqs: [{ question: "KB vs KiB?", answer: "KB traditionally = 1024 bytes (binary). Formally, KiB = 1024 bytes and KB = 1000 bytes (SI). This uses binary." }],
+    faqs: [{ question: "KB vs KiB?", answer: "KB traditionally = 1024 bytes (binary). Formally, KiB = 1024 bytes and KB = 1000 bytes (SI). This uses binary." }, { question: "Why does my 1 TB drive show only 931 GB?", answer: "The drive maker counts in decimal (1 TB = 1,000,000,000,000 bytes) but your computer counts in binary. 1,000,000,000,000 ÷ 1,073,741,824 = 931.32 GB — no space is missing, the two sides just use different units." }, { question: "How many MB are in 500 GB?", answer: "512,000 MB. Each step multiplies by 1,024, so 500 GB × 1,024 = 512,000 MB, and 2.5 GB is 2,560 MB or 2,684,354,560 bytes." }],
     relatedCalcs: convRelated("data-storage-converter"),
   },
   {
@@ -360,7 +360,7 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "MPG × 0.4251 = km/L; L/100km = 100/km/L", variables: ["US MPG used"] },
     howToUse: "Enter a fuel consumption value and unit to convert.",
-    faqs: [{ question: "Which is better, higher or lower?", answer: "Higher MPG or km/L = better efficiency. Lower L/100km = better efficiency." }],
+    faqs: [{ question: "Which is better, higher or lower?", answer: "Higher MPG or km/L = better efficiency. Lower L/100km = better efficiency." }, { question: "What is 30 MPG in L/100km?", answer: "7.84 L/100km. 30 MPG is 30 × 0.425144 = 12.75 km/L, and 100 ÷ 12.75 = 7.84 L/100km. A more efficient 50 MPG car is 4.70 L/100km." }, { question: "Does this calculator use US or imperial gallons?", answer: "US gallons. An imperial gallon is about 20% larger (4.546 L vs 3.785 L), so the same car shows a higher MPG figure in imperial gallons — 30 US MPG is about 36 imperial MPG." }],
     relatedCalcs: convRelated("fuel-consumption-converter"),
   },
   {
@@ -459,7 +459,7 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "lbs = kg × 2.20462", variables: ["1 kg = 2.20462 lbs"] },
     howToUse: "Enter a weight in kilograms to convert to pounds.",
-    faqs: [{ question: "How accurate is this?", answer: "Exact to the international definition: 1 lb = 0.45359237 kg." }],
+    faqs: [{ question: "How accurate is this?", answer: "Exact to the international definition: 1 lb = 0.45359237 kg." }, { question: "How many pounds is 75 kg?", answer: "165.35 lb, or 11 st 11.3 lb in stones and pounds. In ounces it is 2,645.54 oz." }, { question: "How many kg is a 50 lb luggage limit?", answer: "22.68 kg. Divide pounds by 2.20462 to get kilograms — 50 ÷ 2.20462 = 22.68 kg." }],
     relatedCalcs: convRelated("kilograms-to-pounds-converter"),
   },
   {
@@ -501,7 +501,7 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "US gal = L / 3.78541", variables: ["1 US gal = 3.78541 L"] },
     howToUse: "Enter liters to convert to gallons.",
-    faqs: [{ question: "US vs Imperial gallon?", answer: "US gallon = 3.785 L. Imperial gallon = 4.546 L." }],
+    faqs: [{ question: "US vs Imperial gallon?", answer: "US gallon = 3.785 L. Imperial gallon = 4.546 L." }, { question: "How many US gallons is a 50-litre tank?", answer: "13.21 US gallons (50 ÷ 3.78541). The same tank is 11.00 imperial gallons, which is why the same car is quoted with different tank sizes in the US and the UK." }, { question: "How many quarts are in 10 litres?", answer: "10.57 quarts. 10 litres is 2.6417 US gallons, and each gallon holds 4 quarts." }],
     relatedCalcs: convRelated("liters-to-gallons-converter"),
   },
   {
@@ -522,7 +522,7 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "cm = inches × 2.54", variables: ["1 inch = 2.54 cm exactly"] },
     howToUse: "Enter inches to convert to centimeters.",
-    faqs: [{ question: "Why exactly 2.54?", answer: "Since 1959, the international inch is defined as exactly 2.54 cm." }],
+    faqs: [{ question: "Why exactly 2.54?", answer: "Since 1959, the international inch is defined as exactly 2.54 cm." }, { question: "How many cm is 5 foot 10?", answer: "177.80 cm. 5 feet 10 inches is 70 inches, and 70 × 2.54 = 177.80 cm." }, { question: "How do I convert cm back to inches?", answer: "Divide by 2.54. A 100 cm desk is 100 ÷ 2.54 = 39.37 inches wide, and a 55-inch TV screen is 139.70 cm diagonally." }],
     relatedCalcs: convRelated("inches-to-centimeters-converter"),
   },
 ];

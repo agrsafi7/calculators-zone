@@ -1004,7 +1004,7 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "From LMP: Conception ≈ LMP + 14 days; From Due Date: Conception ≈ Due − 266 days", variables: ["Ovulation typically occurs ~14 days after LMP"] },
     howToUse: "Select whether you know your LMP or due date, then enter the date.",
-    faqs: [{ question: "How accurate is this?", answer: "This estimates based on a 28-day cycle with ovulation at day 14. Actual conception can vary by several days." }],
+    faqs: [{ question: "How accurate is this?", answer: "This estimates based on a 28-day cycle with ovulation at day 14. Actual conception can vary by several days." }, { question: "What is the fertile window shown?", answer: "The six days from five days before the estimated conception date through the conception date itself. Conception can follow intercourse in the days before ovulation, not only on the day of ovulation." }, { question: "Can I use this if my cycle is not 28 days?", answer: "The estimate assumes ovulation on day 14 of a 28-day cycle. With longer cycles ovulation usually comes later, and with shorter cycles earlier, so the date shifts the same way. A first-trimester ultrasound dates a pregnancy more reliably when cycles are irregular." }],
     relatedCalcs: healthRelated("conception-calculator"),
   },
   // 29. Healthy Weight Calculator
@@ -1129,7 +1129,7 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "BMI = Weight / Height²; Overweight = BMI 25-29.9", variables: ["Normal: 18.5-24.9", "Obese: 30+"] },
     howToUse: "Enter your weight and height to check your BMI classification and target weight.",
-    faqs: [{ question: "Is BMI always accurate?", answer: "BMI doesn't distinguish muscle from fat. Athletes may have high BMI but low body fat. Use alongside body fat measurements." }],
+    faqs: [{ question: "Is BMI always accurate?", answer: "BMI doesn't distinguish muscle from fat. Athletes may have high BMI but low body fat. Use alongside body fat measurements." }, { question: "What BMI counts as overweight?", answer: "A BMI of 25-29.9 is classed as overweight and 30 or above as obese. The healthy range is 18.5-24.9, and below 18.5 is underweight. This calculator also breaks obesity into Class I (30-34.9), Class II (35-39.9), and Class III (40+)." }, { question: "How much weight do I need to lose to reach a healthy BMI?", answer: "The calculator shows your maximum healthy weight — the weight that puts your BMI at 24.9 for your height — and the difference from your current weight. For example, at 175 cm the maximum healthy weight is 76.3 kg." }],
     relatedCalcs: healthRelated("overweight-calculator"),
   },
   // 33. Weight Watcher Points Calculator

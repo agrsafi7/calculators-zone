@@ -1367,7 +1367,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Refund = Withheld − Calculated Tax + Credits", variables: [] },
     howToUse: "Enter income, total tax withheld, deductions, and credits.",
-    faqs: [{ question: "Is a big refund good?", answer: "A large refund means you overpaid during the year. Consider adjusting W-4 to keep more in each paycheck." }],
+    faqs: [{ question: "Is a big refund good?", answer: "A large refund means you overpaid during the year. Consider adjusting W-4 to keep more in each paycheck." }, { question: "How is the tax in this calculator worked out?", answer: "Taxable income (gross income minus deductions) is run through the progressive federal brackets, then credits are subtracted. On $75,000 income with $14,600 of deductions, taxable income is $60,400 and the tax is $8,341 — 10% of $11,600, plus 12% of the next $35,550, plus 22% of the remaining $13,250." }, { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on the next dollar you earn — 22% in the example above. Your effective rate is total tax divided by total income — $8,341 ÷ $75,000 = 11.12%. Only the income above each bracket threshold is taxed at the higher rate." }, { question: "Does this calculator include state tax?", answer: "No. It estimates federal income tax only, using its built-in federal brackets. State income tax is separate and varies by state — some states have no income tax at all." }],
     relatedCalcs: financeRelated("tax-refund-calculator"),
   },
   {

@@ -1147,6 +1147,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Are bonuses taxed at a higher rate?", answer: "Bonuses are taxed as supplemental wages at a flat 22% federal rate (37% over $1M). They may appear taxed higher due to withholding, but your actual tax is determined when you file." },
       { question: "Can I reduce taxes on my bonus?", answer: "You can contribute more to your 401(k) in the bonus period, make charitable donations, or time the bonus to optimize your annual tax bracket." },
+      { question: "Why does my bonus look so heavily taxed?", answer: "Employers usually withhold federal tax on bonuses at the flat 22% supplemental rate instead of your regular payroll rate. On a $10,000 bonus that is $2,200 of federal withholding before state tax and FICA — but your actual tax is settled when you file, so you may get some back." },
+      { question: "Is the 22% federal rate the same for everyone?", answer: "The 22% flat supplemental rate applies to supplemental wages up to $1 million in a year; above $1 million the rate is 37%. State tax and FICA apply on top of the federal withholding." },
     ],
     relatedCalcs: financeRelated("bonus-calculator"),
   },
@@ -1408,6 +1410,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is VAT?", answer: "Value Added Tax is a consumption tax levied at each stage of production. Common in the UK (20%), EU (varies 17-27%), and many other countries. It's similar to sales tax but applied differently." },
       { question: "VAT vs sales tax?", answer: "VAT is collected incrementally at each production stage, while sales tax is collected only at the final sale. Both result in the consumer paying the full tax on the final price." },
+      { question: "How much VAT is in a $500 price that already includes 20% VAT?", answer: "$83.33, not $100. The net price is $500 ÷ 1.20 = $416.67, and the VAT is the $83.33 difference — the tax was charged on the net amount, so you divide by 1.20 rather than subtracting 20% of the gross price." },
+      { question: "When do I add VAT and when do I remove it?", answer: "Add VAT when quoting a price before tax, as businesses usually do for other businesses. Remove VAT when working backwards from a price a consumer already paid — for example, to find how much of a receipt was tax or to reclaim VAT on a business expense." },
     ],
     relatedCalcs: financeRelated("vat-calculator"),
   },
@@ -1441,6 +1445,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "How are property taxes calculated?", answer: "Your assessed value (usually a percentage of market value) is multiplied by the local millage/tax rate. Exemptions (homestead, senior, etc.) can reduce the assessed value." },
       { question: "Can I appeal my property tax?", answer: "Yes! If you believe your assessment is too high, you can file an appeal with your county assessor. Comparable sales data from your neighborhood is the strongest evidence." },
+      { question: "What is a millage rate?", answer: "The tax charged per $1,000 of assessed value. At a $15 millage rate, a home assessed at $320,000 pays $320,000 × 15/1000 = $4,800 a year in property tax." },
+      { question: "Why is my assessed value lower than my home's market value?", answer: "Counties tax a percentage of market value — the assessment ratio, 80% in this calculator's example — and many reassess only every few years, so the assessed value lags behind current market prices." },
     ],
     relatedCalcs: financeRelated("property-tax-calculator"),
   },
@@ -1949,7 +1955,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "FV = P(1+r)^n + PMT×[(1+r)^n−1]/r", variables: ["All growth and withdrawals are tax-free"] },
     howToUse: "Enter your current Roth IRA balance, annual contribution, expected return, and years to retirement.",
-    faqs: [{ question: "Who can contribute to a Roth IRA?", answer: "Single filers earning under $161,000 and married couples under $240,000 (2024). Contribution limit is $7,000/year ($8,000 if 50+)." }],
+    faqs: [{ question: "Who can contribute to a Roth IRA?", answer: "Single filers earning under $161,000 and married couples under $240,000 (2024). Contribution limit is $7,000/year ($8,000 if 50+)." }, { question: "How much will $7,000 a year grow to in 30 years?", answer: "Starting from $10,000 at a 7% average return, the balance reaches $792,814.72 — you contributed $220,000 and the other $572,814.72 is tax-free growth. Starting ten years later, the balance reaches only $344,261.27." }, { question: "Are Roth IRA withdrawals really tax-free?", answer: "Qualified withdrawals are completely tax-free: the account must be at least 5 years old and you must be 59½ or older (with some exceptions). Your contributions — but not the growth — can be withdrawn at any time without tax or penalty." }, { question: "What is the 4% rule figure on this page?", answer: "It is 4% of your projected final balance, shown as monthly retirement income. On a $792,814.72 balance, 4% a year is $31,712.59, or $2,642.72 a month of tax-free income." }],
     relatedCalcs: financeRelated("roth-ira-calculator"),
   },
   // 53. RMD Calculator
@@ -1975,7 +1981,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "RMD = Account Balance / Distribution Factor", variables: ["Factor from IRS Uniform Lifetime Table"] },
     howToUse: "Enter your retirement account balance and age. RMDs start at age 73 (under SECURE 2.0 Act).",
-    faqs: [{ question: "When must I take RMDs?", answer: "RMDs must begin by April 1 of the year after you turn 73. Failure to take RMDs results in a 25% penalty on the amount not withdrawn." }],
+    faqs: [{ question: "When must I take RMDs?", answer: "RMDs must begin by April 1 of the year after you turn 73. Failure to take RMDs results in a 25% penalty on the amount not withdrawn." }, { question: "How much is the RMD on $500,000 at age 73?", answer: "$18,867.92 a year, or $1,572.33 a month. The distribution factor at 73 is 26.5, so the RMD is $500,000 ÷ 26.5 — 3.77% of the balance. By age 80 the factor falls to 20.2 and the RMD on the same balance rises to $24,752.48." }, { question: "Do Roth IRAs have RMDs?", answer: "No. Roth IRAs have no required minimum distributions for the owner during their lifetime, which is one of their main advantages over traditional IRAs and 401(k)s. Inherited Roth IRAs follow different rules." }, { question: "Can I take my RMD from just one account?", answer: "For IRAs, yes — you can total the RMDs across all your IRAs and take the full amount from one of them. Each 401(k) is separate: its RMD must come out of that specific 401(k)." }],
     relatedCalcs: financeRelated("rmd-calculator"),
   },
   // 54. Depreciation Calculator
@@ -2065,7 +2071,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Compare current payments vs consolidation loan payment", variables: ["Standard amortization formula for new loan"] },
     howToUse: "Enter your total debts and average rate, then compare with a consolidation loan's rate and term.",
-    faqs: [{ question: "Is consolidation always better?", answer: "Not always. A longer term may reduce monthly payments but increase total interest. Also consider origination fees." }],
+    faqs: [{ question: "Is consolidation always better?", answer: "Not always. A longer term may reduce monthly payments but increase total interest. Also consider origination fees." }, { question: "How much can consolidation save?", answer: "It depends on the rate gap and the term. Consolidating $30,000 at 18% into a 48-month loan at 8% cuts the monthly payment from $800 to $732.39, saves $9,645.39 in total, and clears the debt 8 months sooner." }, { question: "Will consolidation hurt my credit score?", answer: "Applying causes a hard inquiry, which usually dips your score slightly for a short time. Paying off the cards lowers your credit utilization, which often improves your score over the following months." }, { question: "What if my payment does not cover the interest?", answer: "Then the debt never gets paid off — the balance grows even as you pay. On $30,000 at 18%, the monthly interest alone is $450, so any payment below that leaves you worse off each month. The calculator shows 'Never paid off' in that case." }],
     relatedCalcs: financeRelated("debt-consolidation-calculator"),
   },
   // 57. Pension Calculator
@@ -2135,7 +2141,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "NPV = Σ CF_t / (1+IRR)^t = 0, solve for IRR", variables: ["Newton's method iteration"] },
     howToUse: "Enter the initial investment and expected annual cash flows. The calculator finds the rate that makes NPV zero.",
-    faqs: [{ question: "What is a good IRR?", answer: "Generally, an IRR above your cost of capital is good. Many businesses target 15-25% for new projects." }],
+    faqs: [{ question: "What is a good IRR?", answer: "Generally, an IRR above your cost of capital is good. Many businesses target 15-25% for new projects." }, { question: "How is IRR different from ROI?", answer: "ROI is total profit divided by investment, ignoring timing — $17,000 profit on $50,000 is a 34% ROI. IRR is the annualized rate that makes the net present value zero (12.98% for the same cash flows), so it accounts for when the money arrives." }, { question: "What if the cash flows never repay the investment?", answer: "Then there is no positive IRR — the project loses money at any discount rate. IRR only exists when the discounted cash inflows eventually exceed the initial investment." }, { question: "Why does IRR assume reinvestment at the same rate?", answer: "The IRR calculation implicitly assumes interim cash flows are reinvested at the IRR itself, which can flatter projects with high early returns. For a more conservative view, compare the project with NPV at your actual cost of capital." }],
     relatedCalcs: financeRelated("irr-calculator"),
   },
   // 59. HELOC Calculator
@@ -2236,7 +2242,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Cap Rate = NOI / Purchase Price; CoC = Cash Flow / Down Payment", variables: ["NOI = Rent − Expenses (excl mortgage)"] },
     howToUse: "Enter purchase details, expected rent, and expenses. See your cash flow and investment returns.",
-    faqs: [{ question: "What is a good cap rate?", answer: "Cap rates of 5-10% are common. Higher cap rates = higher returns but often higher risk areas." }],
+    faqs: [{ question: "What is a good cap rate?", answer: "Cap rates of 5-10% are common. Higher cap rates = higher returns but often higher risk areas." }, { question: "What is cash-on-cash return?", answer: "Your annual cash flow divided by the cash you invested (the down payment). On a $300,000 property with $75,000 down and $103.07 monthly cash flow, the cash-on-cash return is $103.07 × 12 ÷ $75,000 = 1.65%." }, { question: "What is NOI?", answer: "Net operating income: annual rent minus operating expenses, excluding the mortgage. On $2,200 rent and $600 expenses, NOI is ($2,200 − $600) × 12 = $19,200 a year, and the cap rate is NOI divided by the purchase price." }, { question: "Does this calculator include vacancy or management fees?", answer: "No. It only uses the monthly expenses you enter, so add an allowance for vacancy and property management into the expenses field for a realistic figure — one month of vacancy a year wipes out most of this example's cash flow." }],
     relatedCalcs: financeRelated("rental-property-calculator"),
   },
   // 62. Payback Period Calculator
@@ -2351,7 +2357,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Max Rent = Monthly Income × Rent%", variables: ["30% rule is a common guideline"] },
     howToUse: "Enter your monthly income and desired rent percentage to find your maximum rent budget.",
-    faqs: [{ question: "Is 30% a hard rule?", answer: "No. It's a guideline. In high-cost cities, many spend 40-50%. The key is balancing rent with savings and other financial goals." }],
+    faqs: [{ question: "Is 30% a hard rule?", answer: "No. It's a guideline. In high-cost cities, many spend 40-50%. The key is balancing rent with savings and other financial goals." }, { question: "Should I use gross or take-home pay?", answer: "The 30% rule conventionally uses gross income, and this calculator applies the percentage to whatever income you enter. Entering take-home pay instead gives a stricter, more conservative budget." }, { question: "What does the 'After Utilities' figure mean?", answer: "Your maximum rent budget minus your estimated monthly utilities. On a $5,000 income at 30% with $150 of utilities, the budget is $1,500 but the rent you can actually afford is $1,350." }, { question: "How much rent can I afford on $5,000 a month?", answer: "At the 30% rule, $1,500 a month or $18,000 a year, leaving $3,500 a month for everything else. At 40% the budget rises to $2,000 — an extra $6,000 a year that is no longer available for savings." }],
     relatedCalcs: financeRelated("rent-calculator"),
   },
   // 66. College Cost Calculator
@@ -2551,7 +2557,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "PIA = 90%×first $1,174 + 32%×next $5,904 + 15%×remainder", variables: ["Reduced ~6.7%/yr before FRA", "Increased 8%/yr after FRA to age 70"] },
     howToUse: "Enter your average annual earnings, claiming age, and full retirement age.",
-    faqs: [{ question: "Should I claim early?", answer: "Claiming at 62 reduces benefits ~30%. Waiting to 70 increases ~24% above FRA. Consider health, savings, and other income." }],
+    faqs: [{ question: "Should I claim early?", answer: "Claiming at 62 reduces benefits ~30%. Waiting to 70 increases ~24% above FRA. Consider health, savings, and other income." }, { question: "What is the benefit on $65,000 average earnings at age 67?", answer: "A Primary Insurance Amount of $2,414.25 a month, or $28,971.04 a year. Claiming at 62 cuts it by 30% to $1,689.98, and waiting until 70 raises it by 24% to $2,993.67." }, { question: "How much more do I get by waiting until 70?", answer: "24% more than at full retirement age, and $1,303.69 a month more than claiming at 62 — for life. The trade-off is giving up eight years of payments to get the higher amount." }, { question: "Is this calculator's estimate the same as my SSA statement?", answer: "No. The Social Security Administration uses your highest 35 years of indexed earnings; this calculator uses the average annual earnings you enter. Check your official estimate at ssa.gov before making a claiming decision." }],
     relatedCalcs: financeRelated("social-security-calculator"),
   },
   // 72. Annuity Payout Calculator
@@ -2578,7 +2584,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "PMT = PV × r / (1 − (1+r)^−n)", variables: ["PV = annuity value", "r = monthly rate", "n = total payments"] },
     howToUse: "Enter the annuity value, interest rate, and desired payout period.",
-    faqs: [{ question: "What types of annuities exist?", answer: "Fixed (guaranteed rate), variable (market-linked), immediate (payouts start now), and deferred (payouts start later)." }],
+    faqs: [{ question: "What types of annuities exist?", answer: "Fixed (guaranteed rate), variable (market-linked), immediate (payouts start now), and deferred (payouts start later)." }, { question: "How is an annuity payout calculated?", answer: "With the amortization formula: monthly payout = value × monthly rate ÷ (1 − (1 + monthly rate)^−number of payments). A $500,000 annuity at 5% over 20 years pays $3,299.78 a month, or $39,597.34 a year." }, { question: "Does the payout stop when the term ends?", answer: "Yes — a fixed-term annuity pays for the period you choose and then stops. If you need income you cannot outlive, a lifetime annuity pays a smaller amount but keeps paying as long as you live." }, { question: "What happens to the remaining balance if I die during the payout period?", answer: "It depends on the contract. Many fixed-term annuities pay the remaining balance to a named beneficiary, while some lifetime annuities stop at death unless a guaranteed period was chosen. Check the death-benefit terms before buying." }],
     relatedCalcs: financeRelated("annuity-payout-calculator"),
   },
   // 73. Credit Cards Payoff Calculator

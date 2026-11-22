@@ -45,7 +45,9 @@ export const expansionCalculators: CalculatorConfig[] = [
     howToUse: "Enter the loan amount (present value), annual interest rate, and term in years. The calculator solves for the fixed periodic payment and shows exactly how much of your money goes to interest versus principal.",
     faqs: [
       { question: "What is the time value of money?", answer: "Money today is worth more than the same amount in the future because it can earn interest. TVM math — present value, future value, payments, rate, and periods — connects these concepts, and this calculator solves for the payment leg of that relationship." },
-      { question: "Does this work for savings goals too?", answer: "The same formula works in reverse: it tells you the fixed monthly deposit needed to reach a target. Enter your goal as the loan amount to see the required monthly saving." },
+      { question: "Does this work for savings goals too?", answer: "No. This calculator prices loans — the monthly payment on borrowed money. Saving toward a goal works the other way round: your deposits earn interest, so the monthly amount is much smaller. Use a compound interest calculator for savings goals." },
+      { question: "What is the monthly payment on a $200,000 loan at 6% for 30 years?", answer: "$1,199.10 a month. Over the full term you pay $431,676.38 in total — $231,676.38 of it interest, more than the amount borrowed." },
+      { question: "Is the payment for a loan the same as for a savings goal?", answer: "No. Saving $200,000 at 6% over 30 years takes about $199.10 a month, because your deposits earn interest — while paying off a $200,000 loan at the same rate takes $1,199.10 a month, because you pay interest instead. Use this calculator for loans and a compound interest calculator for savings goals." },
     ],
     relatedCalcs: [
       { name: "Loan Calculator", slug: "loan-calculator", icon: "dollar", category: "finance" },
@@ -84,6 +86,8 @@ export const expansionCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is a repayment mortgage?", answer: "The standard UK mortgage type: each monthly payment covers interest plus a slice of the capital, so the balance reaches zero at the end of the term — unlike interest-only mortgages, where you must repay the capital separately." },
       { question: "How does the deposit affect my mortgage?", answer: "A bigger deposit means a smaller loan and usually access to lower interest rates, since lenders price by loan-to-value (LTV). A 10% deposit means a 90% LTV mortgage." },
+      { question: "What is the monthly repayment on a £270,000 mortgage at 5% over 25 years?", answer: "£1,578.39 a month. Over 25 years you pay £203,517.93 in interest — about 75% of the amount borrowed. Raising the deposit to 20% cuts the payment to £1,403.02 and total interest to £180,904.83." },
+      { question: "What happens when my fixed rate ends?", answer: "The mortgage usually moves to the lender's standard variable rate, which is typically higher, unless you remortgage to a new deal. This calculator assumes one fixed rate for the whole term, so treat the total interest as a planning figure." },
     ],
     relatedCalcs: [
       { name: "Mortgage Calculator", slug: "mortgage-calculator", icon: "dollar", category: "finance" },
@@ -124,6 +128,8 @@ export const expansionCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Why is Canadian mortgage math different?", answer: "Canadian fixed-rate mortgages compound semi-annually, not monthly. A 5.5% Canadian rate equals a slightly lower effective monthly rate than a 5.5% US rate — the difference is small per month but real over 25 years." },
       { question: "What is the minimum down payment in Canada?", answer: "5% on the first $500,000 and 10% on the portion above, up to $1M. Down payments under 20% require CMHC mortgage insurance, which is added to the loan." },
+      { question: "How much does semi-annual compounding save?", answer: "On a $480,000 mortgage at 5.5% over 25 years, the Canadian payment is $2,929.88 a month versus $2,947.62 with monthly compounding — a saving of $17.74 a month, or $5,322.25 over the life of the loan." },
+      { question: "Does this calculator include CMHC insurance?", answer: "No. It shows principal and interest only. Down payments under 20% require CMHC mortgage insurance, which is added to the loan balance and increases the payment — a 20% down payment avoids it entirely." },
     ],
     relatedCalcs: [
       { name: "Mortgage Calculator", slug: "mortgage-calculator", icon: "dollar", category: "finance" },
@@ -258,6 +264,8 @@ export const expansionCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "How do I calculate 30% off $80 in my head?", answer: "Find 10% first ($8), then triple it ($24 off) — the sale price is $80 − $24 = $56. This calculator does the same thing instantly for any numbers." },
       { question: "Do stacked discounts add up?", answer: "No — '20% off then an extra 10% off' is not 30% off. The second discount applies to the already-reduced price: $100 → $80 → $72, which is 28% off total." },
+      { question: "What is 30% off $120?", answer: "The discount is $120 × 0.30 = $36, so the sale price is $84. Sales tax at the register applies to the $84, not the original $120." },
+      { question: "Is 50% off the same as buy one get one free?", answer: "On two identical items the total saving is the same, but only if you wanted two anyway. Buy one get one free forces you to take a second item; a 50% discount lets you buy just one at half price." },
     ],
     relatedCalcs: [
       { name: "Discount Calculator", slug: "discount-calculator", icon: "dollar", category: "finance" },
@@ -296,6 +304,7 @@ export const expansionCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Why does my calculated size differ from what I wear?", answer: "Most people wear the wrong size — studies suggest up to 80% do. Brands also vary ('vanity sizing'), so treat the calculated size as your starting point and try sister sizes (e.g., 34C ≈ 32D ≈ 36B) for the best fit." },
       { question: "Does this work for UK/EU sizes?", answer: "This calculator gives US sizing. UK cup letters match US up to DD; beyond that they diverge (UK: E, F, FF, G…), so check a conversion chart if you buy UK brands." },
+      { question: "How do I measure my underbust and bust?", answer: "With a soft tape measure: measure snugly around your ribcage directly under your bust for the underbust, then around the fullest part of your bust. Enter both in inches — the calculator rounds the underbust to the nearest even band size and works out the cup from the difference." },
     ],
     relatedCalcs: [
       { name: "Body Fat Calculator", slug: "body-fat-calculator", icon: "heart", category: "health" },

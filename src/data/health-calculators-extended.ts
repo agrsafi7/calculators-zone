@@ -35,7 +35,7 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "WHtR = Waist / Height", variables: ["<0.5 = healthy", ">0.58 = high risk"] },
     howToUse: "Enter your waist circumference and height in centimeters.",
-    faqs: [{ question: "Why waist-to-height?", answer: "WHtR is considered a better predictor of cardiovascular risk than BMI because it accounts for central fat distribution." }],
+    faqs: [{ question: "Why waist-to-height?", answer: "WHtR is considered a better predictor of cardiovascular risk than BMI because it accounts for central fat distribution." }, { question: "What is a healthy waist-to-height ratio?", answer: "Below 0.5 — keep your waist under half your height. This calculator rates above 0.53 as Increased Risk and above 0.58 as High Risk, and shows your target waist as half your height in centimetres." }, { question: "How do I measure my waist for this ratio?", answer: "Stand relaxed and wrap a soft tape measure around your waist at navel level, keeping it level all the way round. Breathe out normally and read the measurement without pulling the tape tight. Measure your height in the same units — this calculator uses centimetres for both." }],
     relatedCalcs: healthRelated("waist-to-height-ratio-calculator"),
   },
   {
@@ -604,7 +604,7 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Weeks = (Weight × 7700 cal/kg) / (Deficit × 7)", variables: ["1 kg fat ≈ 7700 calories"] },
     howToUse: "Enter current weight, target weight, and daily calorie deficit.",
-    faqs: [{ question: "What's a safe rate?", answer: "0.5-1 kg per week (500-1000 cal/day deficit) is safe and sustainable." }],
+    faqs: [{ question: "What's a safe rate?", answer: "0.5-1 kg per week (500-1000 cal/day deficit) is safe and sustainable." }, { question: "How is the target date calculated?", answer: "The calculator works out the weeks to your goal from the kilograms to lose, the 7,700 calories per kilogram of body fat, and your daily deficit, then counts that many weeks forward from today. Losing 10 kg on a 500-calorie deficit takes 22 weeks." }, { question: "What happens if I reach a plateau?", answer: "As you get lighter, your body needs fewer calories, so the same diet becomes a smaller deficit and loss slows. Re-run the calculator with your new current weight and a slightly adjusted deficit to get a fresh target date." }],
     relatedCalcs: healthRelated("weight-loss-target-calculator"),
   },
   {
@@ -628,7 +628,7 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Weeks = (Weight × 7700) / (Surplus × 7)", variables: ["200-500 cal surplus for lean gains"] },
     howToUse: "Enter current weight, target, and daily calorie surplus.",
-    faqs: [{ question: "How fast can I gain muscle?", answer: "Beginners: ~1kg/month. Intermediate: ~0.5kg/month. Advanced: ~0.25kg/month." }],
+    faqs: [{ question: "How fast can I gain muscle?", answer: "Beginners: ~1kg/month. Intermediate: ~0.5kg/month. Advanced: ~0.25kg/month." }, { question: "What calorie surplus should I aim for?", answer: "The calculator's guidance is a 200-500 calorie daily surplus for lean gains. A bigger surplus gains weight faster, but more of the extra weight tends to be fat rather than muscle." }, { question: "How is the timeline calculated?", answer: "Weeks to goal equal the kilograms to gain times 7,700 calories per kilogram, divided by your daily surplus times 7. Gaining 8 kg on a 300-calorie surplus takes about 29 weeks, at 0.27 kg per week." }],
     relatedCalcs: healthRelated("weight-gain-calculator"),
   },
   {
@@ -697,7 +697,7 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Weekly Loss = (Deficit × 7) / 7700", variables: ["7700 cal per kg of fat"] },
     howToUse: "Enter your daily calorie deficit.",
-    faqs: [{ question: "Is 1000 cal deficit safe?", answer: "For most adults, 500-750 is safer. 1000 may be appropriate under medical supervision." }],
+    faqs: [{ question: "Is 1000 cal deficit safe?", answer: "For most adults, 500-750 is safer. 1000 may be appropriate under medical supervision." }, { question: "How many calories are in a kilogram of body fat?", answer: "About 7,700 calories. This calculator divides your weekly deficit (daily deficit times 7) by 7,700 to estimate weekly weight loss — a 500-calorie daily deficit gives about 0.45 kg per week." }, { question: "Why is my actual weight loss slower than the estimate?", answer: "The 7,700 rule is a planning estimate. Real weight loss slows as your body adapts and needs fewer calories, and day-to-day weight moves with water and food. Judge progress over weeks, not days, and re-run the calculator as your weight changes." }],
     relatedCalcs: healthRelated("weekly-weight-loss-calculator"),
   },
   {
@@ -1160,7 +1160,7 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Based on age/sex-adjusted fitness norms", variables: ["Lower RHR = better cardiovascular fitness"] },
     howToUse: "Measure pulse first thing in the morning for 60 seconds.",
-    faqs: [{ question: "Can I lower my RHR?", answer: "Yes, regular aerobic exercise can lower RHR by 5-20 bpm over months." }],
+    faqs: [{ question: "Can I lower my RHR?", answer: "Yes, regular aerobic exercise can lower RHR by 5-20 bpm over months." }, { question: "What is a normal resting heart rate?", answer: "The usual normal range is 60-100 bpm, which this calculator shows alongside your result. Trained athletes often sit below 60, and the fitness rating here starts at Athlete (under 50 bpm for men, under 54 for women)." }, { question: "Do men and women have different resting heart rate ranges?", answer: "Yes, slightly. This calculator rates men Athlete below 50 bpm, Excellent below 60, Good below 70, and Average below 80; for women each cut-off is 4 bpm higher (54, 64, 74, 84). The same heart rate can therefore give a different rating." }],
     relatedCalcs: healthRelated("resting-heart-rate-calculator"),
   },
   {
@@ -1663,7 +1663,7 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Sleep Debt = (Needed − Actual) × Days", variables: ["Chronic debt takes longer to recover"] },
     howToUse: "Enter sleep needed, actual sleep, and number of days.",
-    faqs: [{ question: "Can you catch up on sleep?", answer: "Short-term debt can be repaid over a few days. Chronic debt (months) requires consistent improved sleep habits." }],
+    faqs: [{ question: "Can you catch up on sleep?", answer: "Short-term debt can be repaid over a few days. Chronic debt (months) requires consistent improved sleep habits." }, { question: "How is sleep debt calculated?", answer: "Sleep debt is the gap between the hours you need each night and the hours you actually sleep, multiplied by the number of days. Needing 8 hours and sleeping 6 for 7 days builds 14 hours of debt." }, { question: "How long does it take to recover?", answer: "This calculator assumes you add about 2 extra hours of sleep per night, so recovery days are the total debt divided by 2, rounded up. Real recovery is slower for debt built over weeks or months, so treat the figure as a planning guide." }],
     relatedCalcs: healthRelated("sleep-debt-calculator"),
   },
   {

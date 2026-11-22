@@ -1235,7 +1235,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "σ² = Σ(xᵢ-μ)²/N", variables: ["s² = Σ(xᵢ-x̄)²/(n-1)"] },
-    howToUse: "Enter data values.", faqs: [{ question: "Variance vs standard deviation?", answer: "SD is the square root of variance. Variance is in squared units." }],
+    howToUse: "Enter data values.", faqs: [{ question: "Variance vs standard deviation?", answer: "SD is the square root of variance. Variance is in squared units." }, { question: "Population or sample variance — which do I use?", answer: "Population variance (dividing by N) when your data is the entire group; sample variance (dividing by n-1) when it is a sample from a larger group. For 4, 8, 6, 5, 3 the population variance is 2.96 and the sample variance is 3.70." }, { question: "How many values can I enter?", answer: "Exactly five. Enter one value in each of the five fields — the calculator computes the mean, both variances, and the population standard deviation from those five numbers." }],
     relatedCalcs: mathRelated("variance-calculator"),
   },
   {
@@ -1632,7 +1632,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "a mod b = a - b × floor(a/b)", variables: [] },
-    howToUse: "Enter dividend and divisor.", faqs: [{ question: "Is modulus the same as remainder?", answer: "For positive numbers, yes. Behavior differs for negatives depending on language." }],
+    howToUse: "Enter dividend and divisor.", faqs: [{ question: "Is modulus the same as remainder?", answer: "For positive numbers, yes. Behavior differs for negatives depending on language." }, { question: "What is modulus used for?", answer: "Anything that repeats or wraps: clock arithmetic (14 mod 12 = 2), testing even and odd (n mod 2), wrapping an index around the end of a list, and spreading values evenly in hashing." }, { question: "How is modulus different from division?", answer: "Division gives the quotient — how many whole times one number fits into another. Modulus gives the remainder — what is left over. 17 / 5 is 3 with a remainder of 2, so 17 mod 5 = 2." }],
     relatedCalcs: mathRelated("modulus-calculator"),
   },
   {
@@ -2061,7 +2061,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "Grade = Σ(score × weight) / Σweights", variables: [] },
-    howToUse: "Enter scores and weights for each component.", faqs: [{ question: "Do weights need to sum to 100?", answer: "Ideally yes, but the calculator normalizes if they don't." }],
+    howToUse: "Enter scores and weights for each component.", faqs: [{ question: "Do weights need to sum to 100?", answer: "Ideally yes, but the calculator normalizes if they don't." }, { question: "How is the semester grade calculated?", answer: "Each component score is multiplied by its weight, the products are added, and the total is divided by the sum of the weights. Assignments 88% (30), midterm 76% (30), final 91% (40) gives (2,640 + 2,280 + 3,640) / 100 = 85.60%." }, { question: "What letter grade will I get?", answer: "The scale is A at 93%+, A- at 90%+, B+ at 87%+, B at 83%+, B- at 80%+, C+ at 77%+, C at 73%+, C- at 70%+, D+ at 67%+, D at 60%+, and F below 60%. A grade of 85.60% is a B." }],
     relatedCalcs: mathRelated("semester-grade-calculator"),
   },
   {
@@ -2078,7 +2078,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
       return [{ label: "Weighted Average", value: `${grade.toFixed(2)}%`, highlight: true }];
     },
     formula: { expression: "Weighted Avg = Σ(grade × weight) / Σweights", variables: [] },
-    howToUse: "Enter grades and their weights.", faqs: [{ question: "What are weights?", answer: "How much each component counts toward the final grade." }],
+    howToUse: "Enter grades and their weights.", faqs: [{ question: "What are weights?", answer: "How much each component counts toward the final grade." }, { question: "How is the weighted average calculated?", answer: "Multiply each grade by its weight, add the products, and divide by the total weight. Grades 90 (weight 20), 80 (weight 30), and 95 (weight 50) give (1,800 + 2,400 + 4,750) / 100 = 89.50%." }, { question: "Do the weights need to add up to 100?", answer: "No. The calculator divides by whatever the weights total, so weights of 2, 3, and 5 work exactly like 20, 30, and 50 — only the ratio between them matters. If the total weight is zero, the result is 0%." }],
     relatedCalcs: mathRelated("weighted-grade-calculator"),
   },
   {
@@ -2318,7 +2318,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "Time = Words / Speed", variables: ["Average adult: 200-300 wpm"] },
-    howToUse: "Enter word count and reading speed.", faqs: [{ question: "What is average reading speed?", answer: "200-250 wpm for general reading, 100-150 for technical material." }],
+    howToUse: "Enter word count and reading speed.", faqs: [{ question: "What is average reading speed?", answer: "200-250 wpm for general reading, 100-150 for technical material." }, { question: "How many pages is my text?", answer: "The calculator divides the word count by 250 words per page. A 1,000-word text is 4.0 pages and a 5,000-word text is 20.0 pages." }, { question: "What reading speed should I enter?", answer: "The default is 250 words per minute, within the average adult range of 200-300 wpm for general reading. Use 100-150 wpm for technical material, and a slower speed than your comfortable rate when reading to remember rather than to skim." }],
     relatedCalcs: mathRelated("reading-time-calculator"),
   },
   {

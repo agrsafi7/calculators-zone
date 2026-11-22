@@ -148,7 +148,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Rolls = Wall Area ÷ Usable Coverage", variables: ["15% waste for pattern matching", "Coverage = Roll Width × Length"] },
     howToUse: "Enter room perimeter, wall height, and roll dimensions.",
-    faqs: [{ question: "Should I buy extra rolls?", answer: "Yes, buy 1-2 extra for mistakes, repairs, and pattern matching." }],
+    faqs: [{ question: "Should I buy extra rolls?", answer: "Yes, buy 1-2 extra for mistakes, repairs, and pattern matching." }, { question: "What does the 15% allowance cover?", answer: "Pattern matching and cutting waste. Each roll's usable coverage is 85% of its full coverage — a 21 in x 33 ft roll covers 57.75 sq ft but only 49.1 sq ft counts as usable." }, { question: "Does the calculator subtract doors and windows?", answer: "No. It uses the full wall area, so the estimate has some slack built in — a room with very large windows may need a roll less than shown." }],
     relatedCalcs: otherRel("wallpaper-calculator"),
   },
   {
@@ -256,7 +256,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Volume = L × W × Avg Depth × 7.48", variables: ["7.48 gallons per cubic foot"] },
     howToUse: "Enter pool length, width, and average depth.",
-    faqs: [{ question: "How do I find average depth?", answer: "Add shallow end depth to deep end depth and divide by 2." }],
+    faqs: [{ question: "How do I find average depth?", answer: "Add shallow end depth to deep end depth and divide by 2." }, { question: "How many gallons are in a cubic foot of water?", answer: "7.48 gallons. A 30 x 15 ft pool with a 5 ft average depth holds 2,250 cubic feet, or 16,830 gallons." }, { question: "What does the fill cost estimate assume?", answer: "$5 per 1,000 gallons of water. Water rates vary widely by area, so check your local rate for a more accurate figure." }],
     relatedCalcs: otherRel("pool-volume-calculator"),
   },
   {
@@ -310,7 +310,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Panels = (Daily kWh ÷ Sun Hours) × 1000 ÷ Panel Watts", variables: ["Daily kWh = Monthly ÷ 30", "Sun Hours = Peak sun hours per day"] },
     howToUse: "Enter monthly electricity usage, peak sun hours, and panel wattage.",
-    faqs: [{ question: "What are peak sun hours?", answer: "US average is 4-6 hours. Southwest gets 6-7. Northeast gets 3-4." }],
+    faqs: [{ question: "What are peak sun hours?", answer: "US average is 4-6 hours. Southwest gets 6-7. Northeast gets 3-4." }, { question: "How is the annual saving calculated?", answer: "Monthly kWh x 12 x $0.13 per kWh. A home using 900 kWh a month saves an estimated $1,404 a year at that rate — if your electricity costs more, the saving is larger." }, { question: "Does the panel count account for shading or inverter losses?", answer: "No. It assumes panels produce their full rated output during every peak sun hour. Roof direction, shading, and inverter losses all reduce real output, so get an installer's quote for a firm number." }],
     relatedCalcs: otherRel("solar-panel-calculator"),
   },
   {
@@ -361,7 +361,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Time = File Size (Mb) ÷ Speed (Mbps)", variables: ["1 MB = 8 Mb (megabits)", "Real speed may vary"] },
     howToUse: "Enter file size in MB and your internet speed in Mbps.",
-    faqs: [{ question: "Why is my download slower than expected?", answer: "Overhead, server limits, network congestion, and Wi-Fi vs wired differences." }],
+    faqs: [{ question: "Why is my download slower than expected?", answer: "Overhead, server limits, network congestion, and Wi-Fi vs wired differences." }, { question: "How long does a 500 MB file take at 25 Mbps?", answer: "500 MB × 8 = 4,000 megabits, divided by 25 Mbps = 160 seconds, or about 2.7 minutes. File sizes are in megabytes while speeds are in megabits per second, and one byte holds 8 bits." }, { question: "What is the difference between MB and Mbps?", answer: "MB (megabytes) measures file size; Mbps (megabits per second) measures speed. A 25 Mbps connection moves about 3.1 MB per second, not 25 MB — the factor of 8 is the most common source of confusion." }],
     relatedCalcs: otherRel("download-time-calculator"),
   },
   {
@@ -612,7 +612,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "US Size = (Circumference - 36.5) ÷ 2.55", variables: ["Circumference in mm", "Diameter = Circumference ÷ π"] },
     howToUse: "Measure finger circumference with a string, then measure the string in mm.",
-    faqs: [{ question: "How do I measure my finger?", answer: "Wrap a thin strip of paper around your finger, mark where it overlaps, and measure the length in mm." }],
+    faqs: [{ question: "How do I measure my finger?", answer: "Wrap a thin strip of paper around your finger, mark where it overlaps, and measure the length in mm." }, { question: "What is my EU ring size?", answer: "Your finger circumference in millimetres: a 54 mm finger is EU size 54. The US size uses the formula (circumference - 36.5) / 2.55, which gives 6.9 for a 54 mm finger." }, { question: "Should I size up or down if I am between sizes?", answer: "Size up for wide bands (6 mm and wider feel tighter) and if you will wear the ring in hot weather, when fingers swell. A jeweller can confirm the size before an expensive purchase." }],
     relatedCalcs: otherRel("ring-size-calculator"),
   },
   {
@@ -738,7 +738,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Dim Weight = L×W×H ÷ 139", variables: ["Billable = max(Actual, Dimensional)", "Rates are estimates"] },
     howToUse: "Enter package weight and dimensions.",
-    faqs: [{ question: "What is dimensional weight?", answer: "Carriers charge by whichever is greater: actual weight or space the package takes up." }],
+    faqs: [{ question: "What is dimensional weight?", answer: "Carriers charge by whichever is greater: actual weight or space the package takes up." }, { question: "Why does a light box sometimes cost more than a heavy one?", answer: "Carriers charge the greater of actual and dimensional weight. A 5 lb box measuring 24 x 18 x 18 inches has a dimensional weight of 55.9 lb, so it bills at 55.9 lb." }, { question: "Are these real carrier prices?", answer: "No. The calculator uses flat illustrative rates — ground $1.50/lb + $5, express $3.50/lb + $15. Real prices depend on the carrier, destination, and service; always get a live quote before shipping." }],
     relatedCalcs: otherRel("shipping-cost-calculator"),
   },
   {
@@ -770,7 +770,7 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Value = Weight × Purity × (Spot ÷ 31.1035)", variables: ["31.1035 grams per troy ounce", "Purity = Karat ÷ 24"] },
     howToUse: "Enter gold weight in grams, purity (karat), and current spot price per troy ounce.",
-    faqs: [{ question: "Where do I find the spot price?", answer: "Check financial websites like Kitco, Bloomberg, or Google 'gold price today'." }],
+    faqs: [{ question: "Where do I find the spot price?", answer: "Check financial websites like Kitco, Bloomberg, or Google 'gold price today'." }, { question: "How is gold value calculated?", answer: "Value = weight × purity × (spot price ÷ 31.1035), where 31.1035 is the grams in a troy ounce. 10 g of 22K gold (91.7% pure) at $2,400 per ounce is worth $707.32." }, { question: "Does the calculator use a live gold price?", answer: "No. You enter the spot price yourself — it holds no live price and does not fetch one. The result is the melt value of the gold content; a buyer will offer less to cover refining and margin." }],
     relatedCalcs: otherRel("gold-price-calculator"),
   },
 ];

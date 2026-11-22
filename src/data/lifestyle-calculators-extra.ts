@@ -169,7 +169,11 @@ export const lifestyleCalculatorsExtra: CalculatorConfig[] = [
   mk("wedding-budget-calculator", "Wedding Budget Calculator", "Estimate wedding costs by category.", "Free wedding budget calculator. Enter your total budget and guest count to split costs by category: venue, catering, photography, flowers, and decor.", "Relationships",
     [{ id: "budget", label: "Total Budget ($)", type: "number", defaultValue: 30000, step: 1000 }, { id: "guests", label: "Number of Guests", type: "number", defaultValue: 100, min: 1 }],
     (v) => { const venue = v.budget * 0.40; const catering = v.budget * 0.25; const photo = v.budget * 0.10; const attire = v.budget * 0.08; const perGuest = v.budget / v.guests; return [{ label: "Venue & Decor", value: `$${venue.toLocaleString()}`, highlight: true }, { label: "Catering", value: `$${catering.toLocaleString()}` }, { label: "Photography", value: `$${photo.toLocaleString()}` }, { label: "Attire", value: `$${attire.toLocaleString()}` }, { label: "Cost per Guest", value: `$${perGuest.toFixed(0)}` }]; },
-    { expression: "Venue 40%, Catering 25%, Photo 10%, Attire 8%", variables: ["Remaining 17% for other items"] }
+    { expression: "Venue 40%, Catering 25%, Photo 10%, Attire 8%", variables: ["Remaining 17% for other items"] },
+    [
+      { question: "What does the remaining 17% cover?", answer: "The four shown categories add up to 83% of the budget. The remaining 17% — $5,100 on a $30,000 budget — is left for everything else: flowers, decor, music, invitations, and other items." },
+      { question: "What is the average cost of a wedding?", answer: "About $30,000–$35,000 in the US in 2024, which is why the calculator defaults to a $30,000 budget." },
+    ]
   ),
   mk("wedding-guest-calculator", "Wedding Guest Calculator", "Estimate food and seating needs for wedding guests.", "Free wedding guest calculator.", "Relationships",
     [{ id: "guests", label: "Guest Count", type: "number", defaultValue: 120, min: 1 }, { id: "tables", label: "Seats per Table", type: "number", defaultValue: 8, min: 4 }],

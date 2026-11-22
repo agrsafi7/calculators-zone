@@ -320,7 +320,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     },
     formula: { expression: "BAC = (Drinks × 0.6 × 5.14) / (Weight × r) - 0.015 × Hours", variables: ["r = 0.73 (male), 0.66 (female)"] },
     howToUse: "Enter number of standard drinks, body weight, hours, and gender.",
-    faqs: [{ question: "What is a standard drink?", answer: "12oz beer, 5oz wine, or 1.5oz spirits." }],
+    faqs: [{ question: "What is a standard drink?", answer: "12oz beer, 5oz wine, or 1.5oz spirits." }, { question: "How is BAC estimated?", answer: "With the Widmark formula: BAC = (drinks × 0.6 × 5.14) ÷ (weight in pounds × r) − 0.015 × hours, where r is 0.73 for men and 0.66 for women. The result is an estimate, not a measurement — only a breath or blood test measures BAC directly." }, { question: "Can I drive if my BAC is below 0.08%?", answer: "Do not use this estimate to decide whether to drive. Impairment begins well below the legal limit, limits vary by place and driver, and food, metabolism, and drink strength all shift the real number. The only reliably safe choice after drinking is not to drive." }],
     relatedCalcs: batch2Rel("blood-alcohol-calculator"),
   },
   {
@@ -382,7 +382,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     },
     formula: { expression: "MAP = Diastolic + (Systolic - Diastolic) / 3", variables: ["Normal BP: < 120/80 mmHg"] },
     howToUse: "Enter systolic and diastolic blood pressure values.",
-    faqs: [{ question: "What's normal blood pressure?", answer: "Less than 120/80 mmHg is considered normal." }],
+    faqs: [{ question: "What's normal blood pressure?", answer: "Less than 120/80 mmHg is considered normal." }, { question: "What is mean arterial pressure (MAP)?", answer: "The average pressure in the arteries during one heartbeat: MAP = diastolic + (systolic − diastolic) ÷ 3. A reading of 135/85 has a MAP of 101.7 mmHg and a pulse pressure of 50 mmHg." }, { question: "Is one high reading a diagnosis?", answer: "No. Blood pressure rises and falls through the day with activity, stress, and caffeine, and a single reading is not a diagnosis. Repeated measurements and a clinician's judgement are what turn numbers into a diagnosis." }],
     relatedCalcs: batch2Rel("blood-pressure-calculator"),
   },
 
@@ -565,7 +565,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     },
     formula: { expression: "Time = kWh Needed ÷ Charger Power", variables: ["kWh = Battery × (Target - Current) / 100"] },
     howToUse: "Enter battery size, current/target charge levels, and charger power.",
-    faqs: [{ question: "Level 1 vs Level 2 vs DC Fast?", answer: "L1: 1.4kW, L2: 7-19kW, DC Fast: 50-350kW." }],
+    faqs: [{ question: "Level 1 vs Level 2 vs DC Fast?", answer: "L1: 1.4kW, L2: 7-19kW, DC Fast: 50-350kW." }, { question: "How long does it take to charge an EV?", answer: "Time = kWh needed ÷ charger power in kW. A 75 kWh battery charged from 20% to 80% needs 45 kWh, which takes 6 hours 26 minutes on a 7 kW home charger." }, { question: "What electricity price does the cost estimate use?", answer: "A fixed $0.13 per kWh — 45 kWh costs $5.85 at that rate. Your real rate may differ, and charging also slows as the battery fills, so the time and cost are planning estimates." }],
     relatedCalcs: batch2Rel("ev-charging-calculator"),
   },
 
@@ -1030,7 +1030,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     },
     formula: { expression: "Converted = Amount × Rate × (1 - Fee%)", variables: ["Rate = Exchange rate"] },
     howToUse: "Enter amount, exchange rate, and any service fee percentage.",
-    faqs: [{ question: "Where to find exchange rates?", answer: "Check Google, XE.com, or your bank for current rates." }],
+    faqs: [{ question: "Where to find exchange rates?", answer: "Check Google, XE.com, or your bank for current rates." }, { question: "Does this calculator use live exchange rates?", answer: "No. You enter the exchange rate yourself — it never fetches live rates and holds no built-in rates. The default rate of 0.85 is only a starting value; replace it with a current rate from your bank or a currency service." }, { question: "How does the fee affect what I receive?", answer: "The fee is a percentage of the converted amount. $1,000 at 0.85 converts to €850, a 2% fee takes €17, so you receive €833 — an effective rate of 0.8330, worse than the headline 0.85." }],
     relatedCalcs: batch2Rel("currency-exchange-calculator"),
   },
   {
@@ -1065,7 +1065,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     },
     formula: { expression: "Monthly = Remaining × r / ((1+r)^n - 1)", variables: ["r = Monthly interest rate", "n = Number of months"] },
     howToUse: "Enter your goal, current savings, timeline, and expected interest rate.",
-    faqs: [{ question: "Where to save for goals?", answer: "High-yield savings accounts offer 4-5% APY currently." }],
+    faqs: [{ question: "Where to save for goals?", answer: "High-yield savings accounts offer 4-5% APY currently." }, { question: "How does interest change the monthly amount?", answer: "It lowers it: saving $8,000 over 24 months needs $333.33 a month with no interest, but $320.73 a month at 4%, because you earn $302.41 in interest along the way." }, { question: "What if I already have some savings?", answer: "Enter it as current savings — it counts toward the goal. Only the remaining amount is spread across the months, so a $2,000 head start on a $10,000 goal means saving $8,000, not $10,000." }],
     relatedCalcs: batch2Rel("savings-goal-calculator"),
   },
   {
@@ -1090,7 +1090,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     },
     formula: { expression: "Price/SqFt = Total Price ÷ Square Footage", variables: ["Lower $/sqft = better value"] },
     howToUse: "Enter property price and total square footage.",
-    faqs: [{ question: "Average price per sq ft in US?", answer: "National average is ~$150-200, but varies hugely by location." }],
+    faqs: [{ question: "Average price per sq ft in US?", answer: "National average is ~$150-200, but varies hugely by location." }, { question: "How do I convert price per sq ft to price per sq m?", answer: "Multiply by 10.764, since one square meter equals 10.764 square feet. $194.44 per sq ft is $2,093.00 per sq m." }, { question: "Is a lower price per square foot always a better deal?", answer: "Not necessarily. It ignores condition, age, location, and lot size — a cheaper per-square-foot home may need major repairs. Compare similar homes in the same area." }],
     relatedCalcs: batch2Rel("price-per-sqft-calculator"),
   },
 
@@ -1334,7 +1334,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     },
     formula: { expression: "Print Size = Pixels ÷ DPI", variables: ["300 DPI = excellent quality", "150 DPI = good for posters"] },
     howToUse: "Enter your photo's pixel dimensions.",
-    faqs: [{ question: "What DPI for quality prints?", answer: "300 DPI for professional prints, 150 DPI acceptable for large posters." }],
+    faqs: [{ question: "What DPI for quality prints?", answer: "300 DPI for professional prints, 150 DPI acceptable for large posters." }, { question: "How many megapixels do I need for an 8x10 print?", answer: "At 300 DPI an 8x10 print needs 2400 x 3000 pixels, about 7.2 megapixels." }, { question: "Does cropping reduce my maximum print size?", answer: "Yes. Cropping removes pixels, and print size is pixels divided by DPI — halving each dimension quarters the megapixels and halves each print dimension." }],
     relatedCalcs: batch2Rel("photo-print-size-calculator"),
   },
   {
@@ -1483,7 +1483,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     },
     formula: { expression: "Distance = Steps × Stride Length ÷ 63360", variables: ["Average stride: 26-30 inches"] },
     howToUse: "Enter step count and your stride length in inches.",
-    faqs: [{ question: "How many steps in a mile?", answer: "About 2,000-2,500 steps depending on stride length." }],
+    faqs: [{ question: "How many steps in a mile?", answer: "About 2,000-2,500 steps depending on stride length." }, { question: "How do I measure my stride length?", answer: "Walk 10 normal steps, measure the total distance, and divide by 10. Measuring ten steps averages out the variation between strides." }, { question: "How accurate is the calorie estimate?", answer: "It is a rough figure — 0.04 calories per step, or about 400 calories for 10,000 steps — and it ignores body weight and pace. Treat it as a ballpark, not a precise burn." }],
     relatedCalcs: batch2Rel("steps-to-distance-calculator"),
   },
   {

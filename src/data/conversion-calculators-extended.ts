@@ -6,11 +6,11 @@ const rel = (exclude: string) => [
   { name: "Temperature Converter", slug: "temperature-converter", icon: "convert", category: "conversions" },
 ].filter(c => c.slug !== exclude);
 
-const mc = (slug: string, name: string, desc: string, meta: string, subcategory: string, inputs: CalculatorConfig["inputs"], calculate: CalculatorConfig["calculate"], formula: CalculatorConfig["formula"]): CalculatorConfig => ({
+const mc = (slug: string, name: string, desc: string, meta: string, subcategory: string, inputs: CalculatorConfig["inputs"], calculate: CalculatorConfig["calculate"], formula: CalculatorConfig["formula"], extraFaqs: { question: string; answer: string }[] = []): CalculatorConfig => ({
   slug, name, category: "Units", categorySlug: "conversions", description: desc, metaDescription: meta, icon: "convert", subcategory,
   inputs, calculate, formula,
   howToUse: `Enter a value to convert using the ${name}.`,
-  faqs: [{ question: `How does the ${name} work?`, answer: `It converts between related units using standard conversion factors.` }],
+  faqs: [{ question: `How does the ${name} work?`, answer: `It converts between related units using standard conversion factors.` }, ...extraFaqs],
   relatedCalcs: rel(slug),
 });
 
@@ -817,7 +817,11 @@ export const conversionCalculatorsExtended: CalculatorConfig[] = [
   mc("cooking-measurement-converter", "Cooking Measurement Converter", "Convert between tsp, tbsp, cups, mL, and fluid oz.", "Free cooking measurement converter. Convert between teaspoons, tablespoons, cups, milliliters, and fluid ounces for US and metric recipes.", "Cooking & Food",
     [{ id: "value", label: "Value", type: "number", defaultValue: 1, step: 0.25 }, { id: "from", label: "From", type: "select", defaultValue: 2, options: [{ value: 0, label: "Teaspoons" }, { value: 1, label: "Tablespoons" }, { value: 2, label: "Cups" }, { value: 3, label: "mL" }, { value: 4, label: "Fluid oz" }] }],
     (v) => { const toMl = [4.929, 14.787, 236.588, 1, 29.5735]; const ml = v.value * toMl[v.from]; return [{ label: "mL", value: ml.toFixed(2), highlight: true }, { label: "Teaspoons", value: (ml / 4.929).toFixed(2) }, { label: "Tablespoons", value: (ml / 14.787).toFixed(2) }, { label: "Cups", value: (ml / 236.588).toFixed(3) }, { label: "Fluid oz", value: (ml / 29.5735).toFixed(2) }]; },
-    { expression: "1 cup = 16 tbsp = 48 tsp", variables: ["1 tbsp = ~15 mL"] }
+    { expression: "1 cup = 16 tbsp = 48 tsp", variables: ["1 tbsp = ~15 mL"] },
+    [
+      { question: "How many millilitres are in 2 US cups?", answer: "473.18 mL. Each US cup is 236.588 mL, so 2 cups is 473.18 mL — which is also 32 tablespoons, 96 teaspoons, or 16 fluid ounces." },
+      { question: "Are US cups the same as metric cups?", answer: "No. A US cup is 236.6 mL while a metric cup (and an Australian cup) is 250 mL. This converter uses US cups, so a metric-cup recipe needs about 6% more of each ingredient than the US conversion shows." },
+    ]
   ),
 
   mc("sugar-conversion-calculator", "Sugar Conversion Calculator", "Convert between sugar types: granulated, powdered, brown, and honey.", "Free sugar conversion calculator.", "Cooking & Food",

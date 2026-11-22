@@ -5021,4 +5021,3257 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
+
+  "annuity-payout-calculator": [
+    {
+      heading: "How is an annuity payout calculated?",
+      paragraphs: [
+        "An annuity payout is the fixed monthly payment you receive when a lump sum is paid back to you, with interest, over a set number of years. It is calculated with the amortization formula: **PMT = PV × r / (1 − (1+r)^−n)**, where PV is the annuity value, r is the monthly interest rate, and n is the total number of monthly payments.",
+        "Each payment is part interest and part return of your original lump sum. Early payments are mostly interest; later payments draw down the remaining balance until it reaches zero at the end of the payout period. A higher interest rate or a shorter payout period raises the monthly payment, while a longer period stretches the same lump sum into smaller payments.",
+        "This calculator assumes a fixed rate and level monthly payments for the whole period. Real annuities vary: some pay for life rather than a fixed term, some adjust for inflation, and variable annuities tie payments to investment performance. Use the result as a planning estimate, not a quote from an insurer.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$500,000 annuity at 5% paid out over 20 years** (240 monthly payments). The monthly rate is 0.05 ÷ 12 = 0.004167. Plugging into the formula gives a monthly payout of **$3,299.78**, or **$39,597.34 a year**.",
+        "Over the full 20 years you receive **$791,946.89** in total — your original $500,000 plus **$291,946.89 of interest**. Stretch the same lump sum over 30 years instead and the monthly payout falls to **$2,684.11**, though the total paid out rises to **$966,278.92** because the balance earns interest for longer.",
+      ],
+    },
+    {
+      heading: "How do you choose a payout period?",
+      paragraphs: [
+        "Match the period to how long the money needs to last. A 20-year payout on $500,000 at 5% pays $3,299.78 a month; the same money over 30 years pays $2,684.11. The longer period gives you more total interest but less each month, and the payments stop entirely when the term ends.",
+        "If you need income you cannot outlive, a fixed-term payout is the wrong product — a lifetime annuity pays a smaller amount but keeps paying as long as you live. Also consider inflation: a fixed $3,299.78 a month buys less in year 20 than in year 1, so some annuities offer payments that rise each year in exchange for starting lower.",
+      ],
+    },
+  ],
+
+  "bonus-calculator": [
+    {
+      heading: "How is a bonus taxed?",
+      paragraphs: [
+        "A work bonus is taxed as supplemental wages, and your take-home bonus is the gross amount minus federal tax, state tax, and FICA. This calculator applies the flat rates you enter: **Net Bonus = Gross − Federal − State − FICA**.",
+        "Employers usually withhold federal tax on bonuses at the flat supplemental rate of 22% (37% on supplemental wages above $1 million in a year), rather than using your regular payroll withholding tables. That is why a bonus often feels heavily taxed: the withholding rate can be higher than the rate on your normal paychecks.",
+        "Withholding is not your final tax bill. When you file your return, the bonus is taxed as ordinary income at your marginal rate, so you may get some of the withholding back as a refund — or owe more if your marginal rate is above 22%. FICA (Social Security and Medicare) applies to bonuses just like regular wages.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$10,000 bonus** with 22% federal withholding, 5% state tax, and 7.65% FICA. Federal tax is $2,200, state tax is $500, and FICA is $765 — total taxes of **$3,465**.",
+        "That leaves a take-home bonus of **$6,535**, an effective tax rate of 34.65%. If your actual marginal federal rate is 12% rather than 22%, you would get roughly $1,000 of that withholding back when you file your tax return.",
+      ],
+    },
+    {
+      heading: "Can you reduce the tax on a bonus?",
+      paragraphs: [
+        "The most effective lever is a **401(k) contribution in the bonus pay period**: money you defer into a traditional 401(k) escapes federal and state income tax (though FICA still applies). Increasing your contribution rate before the bonus is paid can shelter a large part of it.",
+        "Timing matters too. If a bonus would push you into a higher bracket this year, asking for it to be paid in January instead of December — if your employer allows it — defers the tax by a year. Charitable donations in the same year also offset bonus income, but only if you itemize deductions.",
+      ],
+    },
+  ],
+
+  "canadian-mortgage-calculator": [
+    {
+      heading: "How is a Canadian mortgage payment calculated?",
+      paragraphs: [
+        "A Canadian mortgage payment is calculated with the standard amortization formula, but with one key difference: Canadian fixed-rate mortgages compound semi-annually, not monthly. The monthly rate is **r = (1 + i/2)^(1/6) − 1**, where i is the quoted annual rate, and the payment is then **M = P × r(1+r)ⁿ / ((1+r)ⁿ − 1)**.",
+        "Because of semi-annual compounding, a quoted Canadian rate is slightly cheaper than the same number in the US. A 5.5% Canadian mortgage has an equivalent monthly rate of about 0.4532%, versus 0.4583% if the same rate compounded monthly. The difference is small each month but adds up over a 25-year amortization.",
+        "This calculator uses the loan amount (home price minus down payment), the quoted rate, and the amortization period. It does not include CMHC mortgage insurance premiums, property tax, or homeowner's insurance, which are separate costs on top of the payment shown.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$600,000 home with a $120,000 down payment**, leaving a $480,000 mortgage at 5.5% amortized over 25 years (300 payments). The Canadian monthly rate is (1 + 0.055/2)^(1/6) − 1 = 0.004532, giving a monthly payment of **$2,929.88**.",
+        "Over 25 years you pay **$398,963.74 in interest** — nearly as much as the loan itself. If the same rate compounded monthly (the US method), the payment would be $2,947.62, or $17.74 more per month — **$5,322.25 more over the life of the loan**. That is the real cash value of Canada's semi-annual compounding rule.",
+      ],
+    },
+    {
+      heading: "How does the down payment change the payment?",
+      paragraphs: [
+        "A bigger down payment shrinks the loan and can remove a second cost entirely: in Canada, down payments under 20% require CMHC mortgage insurance, which is added to the loan balance. On a $600,000 home, a 20% down payment is $120,000 — exactly the amount that avoids the insurance premium.",
+        "The minimum down payment is 5% on the first $500,000 and 10% on the portion above that. On a $600,000 home that is $25,000 + $10,000 = $35,000, but the resulting $565,000 mortgage would carry CMHC insurance on top. Test different down payments in the calculator to see how the monthly payment and the insurance trade-off interact.",
+      ],
+    },
+  ],
+
+  "debt-consolidation-calculator": [
+    {
+      heading: "How does debt consolidation save money?",
+      paragraphs: [
+        "Debt consolidation replaces several high-interest debts with a single loan at a lower rate, so more of each payment goes toward the balance instead of interest. This calculator compares your current debts — total balance, average rate, and current monthly payments — with a consolidation loan's rate and term, and shows the difference in monthly payment and total cost.",
+        "The new loan's payment uses the standard amortization formula, while your current payoff time is derived from your balance, rate, and payment: if your monthly payment barely covers the interest, the payoff stretches for years. If the payment does not cover the monthly interest at all, the debt never gets paid off — the calculator flags that case directly.",
+        "Consolidation only saves money if the new rate is genuinely lower and the term is not stretched so far that total interest rises. A longer term lowers the monthly payment but can cost more overall, and origination fees or balance-transfer fees eat into the savings.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **$30,000 of credit card debt at 18%** with $800 a month in payments. At 18%, the monthly interest charge alone starts at $450, and paying $800 a month clears the debt in **56 months** at a total cost of **$44,800** — $14,800 of it interest.",
+        "Consolidate into a **48-month loan at 8%** and the monthly payment falls to **$732.39**, the total cost falls to **$35,154.61**, and you are debt-free 8 months sooner. The total saving is **$9,645.39**, plus **$67.61 a month** back in your pocket while the loan runs.",
+      ],
+    },
+    {
+      heading: "When is consolidation a bad idea?",
+      paragraphs: [
+        "Watch the term. Consolidating the $30,000 above into a 7-year loan at 8% would cut the payment to about $468 a month — but the total cost would rise to roughly $39,277, wiping out more than half the saving. A lower payment is not the same as a lower cost.",
+        "Consolidation also fails if the underlying spending does not change: paying off the cards and then running them up again leaves you with the consolidation loan plus new card debt. And secured consolidation — borrowing against your home — puts the house at risk if payments slip. Compare the total cost, not just the monthly payment, before signing.",
+      ],
+    },
+  ],
+
+  "financial-calculator": [
+    {
+      heading: "What is a financial (TVM) calculator?",
+      paragraphs: [
+        "A financial calculator solves time-value-of-money (TVM) problems: it works out the fixed monthly payment needed to pay off a loan of a given size, rate, and term. The core formula is **PMT = PV × r / (1 − (1+r)^−n)**, where PV is the present value (loan amount), r is the monthly rate, and n is the number of monthly payments.",
+        "Time value of money is the idea that a dollar today is worth more than a dollar in the future, because today's dollar can earn interest. That is why a loan costs more than its face value: you repay the principal plus interest for the use of the lender's money over time. The same relationship links present value, future value, payments, rate, and periods in every loan and savings calculation.",
+        "This calculator solves for the payment leg of that relationship and breaks the result into total paid and total interest. It assumes a fixed rate, level monthly payments, and monthly compounding — the standard structure for mortgages, auto loans, and personal loans.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$200,000 loan at 6% over 30 years** (360 payments). The monthly rate is 0.06 ÷ 12 = 0.005, giving a monthly payment of **$1,199.10**. Over the full term you pay **$431,676.38** in total — **$231,676.38 of it interest**, more than the amount you borrowed.",
+        "Shorten the term to 15 years and the payment rises to **$1,687.71**, but total interest falls to **$103,788.46** — a saving of **$127,887.92**. That trade-off between a higher payment and far less interest is exactly what this calculator is for: test the term and rate before you commit.",
+      ],
+    },
+    {
+      heading: "How do you use it for a savings goal?",
+      paragraphs: [
+        "A loan payment and a savings plan are mirror images, but they are not the same calculation. To pay off a $200,000 loan at 6% over 30 years takes $1,199.10 a month — but to save up $200,000 at the same rate over the same period takes only about **$199.10 a month**, because your deposits earn interest instead of costing it.",
+        "That gap is the cost of borrowing versus the reward of saving, and it is why the order matters: saving first and borrowing less almost always beats borrowing the full amount. Use this calculator for the loan side of any plan, and a compound interest calculator for the savings side, to compare both paths honestly.",
+      ],
+    },
+  ],
+
+  "irr-calculator": [
+    {
+      heading: "What is IRR, and how is it calculated?",
+      paragraphs: [
+        "The internal rate of return (IRR) is the annual rate at which an investment's future cash flows are worth exactly what you paid for it — the rate that makes the net present value (NPV) equal zero. It is found by solving **NPV = Σ CF_t / (1+IRR)^t = 0**, which has no simple formula, so this calculator finds it by iteration (Newton's method).",
+        "IRR turns a whole stream of cash flows into a single percentage you can compare with other investments or with your cost of capital. A project with an IRR above your cost of capital creates value; below it, the project destroys value even if the total cash coming back exceeds what you put in.",
+        "IRR has limits: it assumes cash flows are reinvested at the IRR itself, it can give multiple answers when cash flows change sign more than once, and it ignores the size of the investment — a 50% return on $1,000 is not better than a 15% return on $1,000,000. Use it alongside NPV and payback period, not alone.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$50,000 investment** returning $15,000 in year 1, $18,000 in year 2, $22,000 in year 3, and $12,000 in year 4 — $67,000 in total, a $17,000 profit and a 34% simple ROI. The IRR of that cash-flow stream is **12.98%**.",
+        "You can check it: discounting the cash flows at 10% gives an NPV of **+$3,237.48**, and at 13% the NPV is about **−$22** — essentially zero, which is exactly what IRR means. If your cost of capital is 10%, this project clears the bar; if it is 15%, it does not.",
+      ],
+    },
+    {
+      heading: "What is a good IRR?",
+      paragraphs: [
+        "There is no universal target — a good IRR is simply one above your cost of capital with enough margin for the risk. Many businesses look for 15–25% on new projects, while a safe, predictable investment might be acceptable at 8–10%. The riskier and less certain the cash flows, the higher the IRR should be.",
+        "Compare like with like: IRRs are most useful when the projects have similar lengths and risk. A 5-year project at 12% and a 2-year project at 12% are not equivalent, because the longer project ties your money up for longer. When projects differ in scale or timing, check the NPV in dollars too — it tells you how much value is actually created.",
+      ],
+    },
+  ],
+
+  "percent-off-calculator": [
+    {
+      heading: "How do you calculate percent off?",
+      paragraphs: [
+        "A percent-off discount is calculated as **Sale Price = Original Price × (1 − %off/100)**, and the amount you save is **Original Price × %off/100**. A 25% discount on a $100 item saves $25 and leaves a $75 sale price.",
+        "The mental shortcut is to find 10% first, then scale it: 10% of $80 is $8, so 30% off is $24 off and the sale price is $56. That trick works for any percentage because every percent is a multiple of 10% plus a small remainder.",
+        "Percent off is not the same as a percent change in the other direction. If a $100 item is marked down 25% to $75, restoring the price takes a 33.33% increase — because the 33.33% applies to the smaller $75 base. Discounts and markups are not symmetric.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a jacket priced at **$120 with 30% off**. The discount is $120 × 0.30 = **$36**, so the sale price is **$84**. At the register you would still pay sales tax on the $84, not on the original $120.",
+        "Stacked discounts do not add up the way they look. A sign saying '20% off, plus an extra 10% off' is not 30% off: the second discount applies to the already-reduced price, so $100 becomes $80 and then **$72** — a 28% total discount, not 30%.",
+      ],
+    },
+    {
+      heading: "How do you spot a fake discount?",
+      paragraphs: [
+        "Compare against the price the item actually sold at before the sale, not the 'was' price on the tag. A retailer can inflate the original price before applying a discount, making a 40% saving look bigger than it is — the sale price may be barely below the normal price.",
+        "Use the calculator to check the real numbers: enter the price you would actually have paid and the sale price, and work out the true percentage. A genuine deal saves money against the price you can verify elsewhere, not against a number the store chose.",
+      ],
+    },
+  ],
+
+  "property-tax-calculator": [
+    {
+      heading: "How is property tax calculated?",
+      paragraphs: [
+        "Property tax is calculated from your home's assessed value, not its market price: **Tax = (Home Value × Assessment Ratio − Exemptions) × Rate/1000**. The assessment ratio is the share of market value your county taxes, and the rate is usually quoted in mills — dollars of tax per $1,000 of assessed value.",
+        "Assessed value and market value are often different. A county may assess homes at 80% of market value, or reassess only every few years, so a home worth $400,000 today might be taxed on $320,000. Exemptions such as a homestead exemption reduce the assessed value further before the rate is applied.",
+        "The millage rate is set by local governments and varies widely by state and county. The effective rate — your tax bill divided by your home's market value — is the fairest way to compare the tax burden between areas, because it folds the assessment ratio and the millage rate into one number.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a home with a **$400,000 market value**, an 80% assessment ratio, a tax rate of $15 per $1,000, and no exemptions. The assessed value is $400,000 × 0.80 = **$320,000**, and the annual tax is $320,000 × 15/1000 = **$4,800** — **$400 a month**.",
+        "The effective tax rate is $4,800 ÷ $400,000 = **1.20%**. Add a $50,000 homestead exemption and the assessed value falls to $270,000, the tax falls to **$4,050**, and you save **$750 a year** — which is why checking your exemptions is worth a few minutes every year.",
+      ],
+    },
+    {
+      heading: "Can you lower your property tax?",
+      paragraphs: [
+        "The most direct route is an appeal. If your assessment is higher than what comparable homes in your neighborhood recently sold for, you can file an appeal with your county assessor — comparable sales data is the strongest evidence, and many appeals succeed at least partly.",
+        "The second route is exemptions. Homestead, senior citizen, veteran, and disability exemptions all reduce the assessed value, and some are not applied automatically — you have to claim them. A $50,000 exemption at a $15 millage rate is worth $750 a year, every year, for one form.",
+      ],
+    },
+  ],
+
+  "rent-calculator": [
+    {
+      heading: "How much rent can you afford?",
+      paragraphs: [
+        "The standard guideline is the 30% rule: your rent should be no more than 30% of your gross monthly income. This calculator applies it as **Max Rent = Monthly Income × Rent%**, then subtracts your estimated utilities to show what is left for the rent itself.",
+        "The 30% figure is a guideline, not a law. It exists because housing is usually the largest single expense, and keeping it at or under 30% leaves room for food, transport, savings, and everything else. In expensive cities many renters spend 40–50%, which is workable only if other costs are low and savings do not disappear entirely.",
+        "Note that the rule uses gross income — your pay before tax. A 30% rent on gross pay is a larger share of what actually lands in your bank account, so if you want a stricter budget, enter your take-home pay instead of your gross pay and the same percentage gives a more conservative answer.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$5,000 monthly gross income** with the 30% rule and $150 a month of utilities. The maximum rent budget is $5,000 × 0.30 = **$1,500 a month**, or **$18,000 a year**.",
+        "After the $150 of utilities, the rent you can actually afford is **$1,350 a month**, leaving **$3,500** of income for everything else. Raise the percentage to 40% and the budget becomes $2,000 — but that extra $500 a month is $6,000 a year that is no longer available for savings or emergencies.",
+      ],
+    },
+    {
+      heading: "What else should you budget for when renting?",
+      paragraphs: [
+        "Rent is not the whole housing cost. Utilities, renter's insurance, parking, and pet fees all add up, and most landlords also require a security deposit — often one month's rent — plus first month's rent upfront. This calculator's utilities field covers the recurring extras; the one-off move-in costs need separate savings.",
+        "Also remember that rent usually rises each year. A rent that is exactly 30% of your income today becomes 33% after a 10% rent increase unless your pay rises too. Leaving a small margin under your maximum gives you room to absorb the increase without moving.",
+      ],
+    },
+  ],
+
+  "rental-property-calculator": [
+    {
+      heading: "How do you analyze a rental property?",
+      paragraphs: [
+        "A rental property is judged by three numbers: monthly cash flow, cap rate, and cash-on-cash return. Cash flow is **Rent − Mortgage − Expenses**; the cap rate is **Annual NOI ÷ Purchase Price**, where NOI is rent minus expenses excluding the mortgage; and cash-on-cash return is **Annual Cash Flow ÷ Down Payment**.",
+        "The cap rate measures the property itself, ignoring how you financed it — which is why it is the standard way to compare two properties. Cash-on-cash return measures your money: the same property looks very different with a 25% down payment than with a 10% one, because leverage magnifies both gains and losses.",
+        "This calculator assumes a 30-year fixed mortgage and the monthly expenses you enter — tax, insurance, and maintenance. It does not include vacancy, property management fees, or tax, so treat the results as a screening estimate before a deeper analysis.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$300,000 property** with 25% down ($75,000), a $225,000 mortgage at 7% over 30 years, **$2,200 monthly rent**, and $600 a month of expenses. The monthly mortgage payment is **$1,496.93**.",
+        "Annual NOI is ($2,200 − $600) × 12 = **$19,200**, so the cap rate is $19,200 ÷ $300,000 = **6.40%**. Monthly cash flow is $2,200 − $1,496.93 − $600 = **$103.07**, giving a cash-on-cash return of $103.07 × 12 ÷ $75,000 = **1.65%**. The property pays for itself, but only just — one month of vacancy would wipe out most of a year's cash flow.",
+      ],
+    },
+    {
+      heading: "What makes a rental deal good enough?",
+      paragraphs: [
+        "A cap rate of 5–10% is typical, with higher rates usually signalling higher-risk areas. But cap rate alone is not enough: a property can have a healthy cap rate and still lose money each month if the mortgage is expensive, which is why cash flow is the number that decides whether you can hold the property.",
+        "Build in a margin for reality. Budget for at least one month of vacancy a year and for maintenance surprises — a new roof or a broken furnace can cost several years of cash flow. If the deal only works with perfect occupancy and zero repairs, it is not a deal yet.",
+      ],
+    },
+  ],
+
+  "rmd-calculator": [
+    {
+      heading: "How is a required minimum distribution calculated?",
+      paragraphs: [
+        "A required minimum distribution (RMD) is the smallest amount you must withdraw each year from a traditional IRA or 401(k) once you reach the required age. It is calculated as **RMD = Account Balance ÷ Distribution Factor**, where the factor comes from the IRS Uniform Lifetime Table and shrinks as you get older — so the required withdrawal grows each year.",
+        "Under the SECURE 2.0 Act, RMDs begin at age 73 for people born between 1951 and 1959, and at age 75 for those born in 1960 or later. Your first RMD must be taken by April 1 of the year after you reach that age, and every later RMD is due by December 31.",
+        "RMDs apply to traditional IRAs, 401(k)s, and similar pre-tax accounts — not to Roth IRAs during the owner's lifetime. The withdrawn amount counts as taxable income in the year you take it, which is why RMDs can push retirees into a higher tax bracket.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$500,000 traditional IRA balance at age 73**. The distribution factor at 73 is 26.5, so the RMD is $500,000 ÷ 26.5 = **$18,867.92 for the year**, or **$1,572.33 a month** — 3.77% of the balance.",
+        "By age 80 the factor has fallen to 20.2, so the same $500,000 balance would require **$24,752.48** — and by 75 (factor 24.6) it would be **$20,325.20**. The percentage rises every year, so even if the balance stays flat, the required withdrawal keeps growing.",
+      ],
+    },
+    {
+      heading: "What happens if you miss an RMD?",
+      paragraphs: [
+        "Missing an RMD is expensive: the penalty is 25% of the amount you should have withdrawn (reduced to 10% if corrected promptly). On an $18,867.92 RMD, that is a penalty of more than $4,700 — on top of the tax you still owe on the withdrawal itself.",
+        "The practical fix is automation. Most custodians let you schedule RMDs as automatic monthly or annual withdrawals, and many will calculate the amount for you each year. If you have several accounts, you can total the RMDs and take the full amount from one IRA — but 401(k) RMDs must be taken from each 401(k) separately.",
+      ],
+    },
+  ],
+
+  "roth-ira-calculator": [
+    {
+      heading: "How does a Roth IRA grow?",
+      paragraphs: [
+        "A Roth IRA grows tax-free: you contribute after-tax money, it compounds without tax, and qualified withdrawals in retirement are completely tax-free. This calculator projects the future value with **FV = P(1+r)^n + PMT×[(1+r)^n−1]/r**, where P is your current balance, PMT is your monthly contribution, r is the monthly return, and n is the number of months.",
+        "The power of a Roth IRA is time. Contributions are limited each year, but the growth on decades of contributions can dwarf the money you put in — and unlike a traditional IRA, none of that growth is ever taxed, and there are no required minimum distributions during your lifetime.",
+        "Contributions are capped annually (the limit rises with inflation and is higher once you turn 50), and eligibility phases out above certain incomes — check the current IRS limits before contributing. This calculator assumes a steady monthly contribution and a constant rate of return, which is a simplification: real investment returns vary year to year.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$10,000 current balance** with **$7,000 contributed each year** at a 7% average return for 30 years. The balance grows to **$792,814.72** — of which you contributed only **$220,000**. The other **$572,814.72 is tax-free growth**, more than two and a half times what you put in.",
+        "At retirement, a 4% withdrawal rate on that balance provides **$2,642.72 a month** of tax-free income. Start ten years later — 20 years of growth instead of 30 — and the balance reaches only **$344,261.27** on $150,000 contributed. Those first ten years are worth more than $448,000.",
+      ],
+    },
+    {
+      heading: "Roth IRA or traditional IRA?",
+      paragraphs: [
+        "The choice comes down to your tax rate now versus your tax rate in retirement. If you expect to be in a higher bracket later — common early in a career — the Roth wins, because you pay tax at today's lower rate and withdraw tax-free. If you expect a lower bracket in retirement, a traditional IRA's upfront deduction may be worth more.",
+        "The Roth has two extra advantages: your contributions (not the growth) can be withdrawn at any time without tax or penalty, and there are no required minimum distributions, so the money can keep growing — or pass to heirs — untouched. Many savers split contributions between both types to hedge against future tax changes.",
+      ],
+    },
+  ],
+
+  "social-security-calculator": [
+    {
+      heading: "How is a Social Security benefit calculated?",
+      paragraphs: [
+        "Your Social Security benefit starts from your Primary Insurance Amount (PIA) — the monthly benefit you receive at full retirement age. It is calculated from your average indexed monthly earnings with a progressive formula: **90% of the first bend-point amount, plus 32% of the next portion, plus 15% of the rest**, so lower earners get a higher share of their earnings replaced.",
+        "Claiming early reduces the benefit and claiming late increases it. For each month before full retirement age, the benefit is cut by 5/9 of 1% for the first 36 months and 5/12 of 1% beyond that — roughly 30% for claiming at 62 with a full retirement age of 67. For each year you wait past full retirement age, up to age 70, the benefit grows by 8%.",
+        "This calculator is an estimate: it uses the average annual earnings you enter as the basis for the benefit formula, while the Social Security Administration uses your highest 35 years of indexed earnings. The bend points in the formula are adjusted each year, so check your official estimate at ssa.gov before making a claiming decision.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **average annual earnings of $65,000** with a full retirement age of 67. Average monthly earnings are $5,416.67, and the bend-point formula gives a PIA of **$2,414.25 a month** at age 67 — **$28,971.04 a year**.",
+        "Claim at 62 and the benefit is cut by 30% to **$1,689.98 a month** ($20,279.73 a year). Wait until 70 and delayed credits add 24%, raising it to **$2,993.67 a month** ($35,924.09 a year). The gap between claiming at 62 and at 70 is **$1,303.69 every month, for life**.",
+      ],
+    },
+    {
+      heading: "Should you claim early or wait?",
+      paragraphs: [
+        "There is no single right answer. Waiting to 70 pays the highest monthly amount, but you give up eight years of payments to get it — the break-even point is usually around age 80–82, after which waiting wins. If you need the income, are in poor health, or have no other savings, claiming earlier is often the sensible choice.",
+        "Consider your spouse too: a higher earner who delays raises the survivor benefit their spouse would receive, which can be worth more than the extra payments. And remember that up to 85% of Social Security benefits can be taxable if your other income is high enough — another reason to plan the claiming age alongside your tax situation.",
+      ],
+    },
+  ],
+
+  "tax-refund-calculator": [
+    {
+      heading: "How is a tax refund calculated?",
+      paragraphs: [
+        "A tax refund is the difference between what you already paid in tax and what you actually owe: **Refund = Tax Withheld − Tax Owed**. If withholding was more than the tax, you get a refund; if it was less, you owe the balance.",
+        "Your tax is figured from taxable income — gross income minus deductions — run through the progressive federal brackets, where each slice of income is taxed at its own rate. Only the income above each bracket threshold is taxed at the higher rate, so moving into a higher bracket never makes you worse off overall. Tax credits then reduce the tax itself, dollar for dollar.",
+        "This calculator is a federal-only estimate using its built-in brackets and a single set of deductions. It does not include state tax, FICA, the standard deduction choice, or the higher 35% and 37% brackets, so it is best for typical incomes — use it as a planning estimate, not a filing figure.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **$75,000 of gross income**, **$14,600 of deductions**, and **$12,000 withheld**, with no credits. Taxable income is $75,000 − $14,600 = **$60,400**. The bracket tax is 10% of $11,600 ($1,160) plus 12% of the next $35,550 ($4,266) plus 22% of the remaining $13,250 ($2,915) — total tax of **$8,341**.",
+        "With $12,000 withheld, the refund is **$3,659**, and the effective tax rate is $8,341 ÷ $75,000 = **11.12%**. Note the marginal rate is 22% — the rate on the next dollar earned — even though only 11.12% of total income went to federal tax.",
+      ],
+    },
+    {
+      heading: "Is a big refund good news?",
+      paragraphs: [
+        "A refund feels like a bonus, but it is really an interest-free loan you gave the government: you overpaid during the year and are getting your own money back. A $3,659 refund means about $305 a month was withheld unnecessarily — money that could have been earning interest or paying down debt.",
+        "The ideal result is close to zero: enough withheld to avoid owing, but not so much that you are lending to the IRS. If your refund is large every year, adjust your W-4 withholding so more of your pay arrives in each paycheck instead. The exception is if you deliberately use the refund as forced savings — but a savings account pays you interest for the same job.",
+      ],
+    },
+  ],
+
+  "uk-mortgage-calculator": [
+    {
+      heading: "How is a UK mortgage repayment calculated?",
+      paragraphs: [
+        "A UK repayment mortgage is calculated with the standard amortization formula: **M = P × r(1+r)^n / ((1+r)^n − 1)**, where P is the mortgage amount (property price minus deposit), r is the monthly interest rate, and n is the total number of monthly payments. Each payment covers the month's interest plus a slice of the capital, so the balance reaches zero at the end of the term.",
+        "The deposit matters twice: it shrinks the loan, and it sets your loan-to-value (LTV) ratio, which is how lenders price your rate. A 10% deposit means a 90% LTV mortgage; a 20% deposit means 80% LTV, which usually qualifies for a lower rate — so the saving from a bigger deposit is larger than the smaller loan alone suggests.",
+        "Most UK mortgages are fixed for an initial period — commonly 2 or 5 years — then move to the lender's standard variable rate unless you remortgage. This calculator assumes one fixed rate for the whole term, so treat the total interest as a planning figure rather than a prediction of what you will actually pay.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **£300,000 property with a 10% deposit (£30,000)**, leaving a £270,000 mortgage at 5% over 25 years (300 payments). The monthly rate is 0.05 ÷ 12 = 0.004167, giving a monthly repayment of **£1,578.39**.",
+        "Over 25 years you pay **£203,517.93 in interest** — about 75% of the amount borrowed. Raise the deposit to 20% and the loan falls to £240,000, the payment falls to **£1,403.02**, and total interest falls to **£180,904.83** — a saving of £22,613.10 before any rate improvement from the lower LTV.",
+      ],
+    },
+    {
+      heading: "What else does a UK mortgage cost?",
+      paragraphs: [
+        "The monthly repayment is not the whole cost. Budget for the arrangement fee (often around £1,000, sometimes added to the loan), a valuation fee, legal/conveyancing costs, and Stamp Duty Land Tax on purchases above the threshold — first-time buyers get relief up to a higher threshold.",
+        "The other cost to plan for is the end of the fixed period. When a 2- or 5-year fix ends, the rate typically jumps to the lender's standard variable rate unless you remortgage, which can add hundreds of pounds a month. Diarise the fix end date and start shopping for a new deal three to six months before it arrives.",
+      ],
+    },
+  ],
+
+  "vat-calculator": [
+    {
+      heading: "How do you calculate VAT?",
+      paragraphs: [
+        "Value Added Tax is calculated two ways depending on whether your price already includes it. To add VAT to a net price: **Price + VAT = Amount × (1 + Rate/100)**. To remove VAT from a gross price: **Price excl. VAT = Amount ÷ (1 + Rate/100)** — dividing, not subtracting the percentage, because the VAT was charged on the smaller net amount.",
+        "VAT is a consumption tax collected at each stage of production, with businesses reclaiming the VAT they pay on inputs — so the final consumer bears the full tax. That is different from US sales tax, which is charged only once, at the final sale, though the consumer ends up paying a similar amount either way.",
+        "Rates vary by country and by product. The UK standard rate is 20%, EU standard rates range from 17% to 27%, and many countries charge reduced rates — often around 5% — on essentials such as food, books, and children's clothing.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a net price of **$500 with 20% VAT**. The VAT is $500 × 0.20 = **$100**, so the gross price is **$600**.",
+        "Now work backwards from a gross price of $500 at 20% VAT. The net price is $500 ÷ 1.20 = **$416.67**, and the VAT inside that price is **$83.33** — not $100. The common mistake is to subtract 20% of the gross price, which overstates the VAT because the tax was calculated on the net figure.",
+      ],
+    },
+    {
+      heading: "When do you add VAT, and when do you remove it?",
+      paragraphs: [
+        "Add VAT when you are quoting a price before tax — the usual case for businesses selling to other businesses, where prices are shown net and VAT is added on the invoice. Remove VAT when you are working backwards from a price a consumer already paid, such as checking how much of a till receipt was tax or reclaiming VAT on a business expense.",
+        "If you are a VAT-registered business, keep the two directions straight in your bookkeeping: the VAT you charge customers is not your money — you pass it to the tax authority, minus the VAT you paid on your own purchases. Getting the add/remove direction wrong is one of the most common small-business VAT errors.",
+      ],
+    },
+  ],
+
+  "cooking-measurement-converter": [
+    {
+      heading: "How do cooking measurements convert?",
+      paragraphs: [
+        "Cooking volumes convert through millilitres: every unit is first converted to mL, then to the unit you want. The key relationships are **1 US cup = 236.6 mL, 1 tablespoon = 14.8 mL, 1 teaspoon = 4.9 mL, and 1 fluid ounce = 29.6 mL** — and within the US system, 1 cup = 16 tablespoons = 48 teaspoons.",
+        "The catch is that a 'cup' is not the same everywhere. This calculator uses the US cup (236.6 mL). A metric cup is 250 mL and an Australian cup is also 250 mL, so a recipe written for metric cups needs about 6% more of each ingredient than the US conversion shows.",
+        "Volume and weight are different things: a cup of flour weighs about 125 g while a cup of sugar weighs about 200 g, because they have different densities. This converter handles volume-to-volume only — for volume-to-weight, use an ingredient density converter instead.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **2 US cups** of milk. In millilitres that is 2 × 236.588 = **473.18 mL**. In tablespoons it is 2 × 16 = **32 tbsp**, in teaspoons 2 × 48 = **96 tsp**, and in fluid ounces 473.18 ÷ 29.574 = **16 fl oz** — exactly one US pint.",
+        "If the recipe were written with metric cups instead, 2 cups would be 500 mL — 26.82 mL more. That is a small difference for milk, but for baking powder or yeast it can change the result, which is why checking which cup your recipe means is worth a moment.",
+      ],
+    },
+    {
+      heading: "How do you measure accurately without a scale?",
+      paragraphs: [
+        "Use the spoon-and-level method for dry ingredients: spoon flour into the cup rather than scooping the cup through the bag, then level it with a knife. Scooping compacts the flour and can add 20–30% more than the recipe intends.",
+        "For liquids, measure at eye level in a clear jug — reading from above makes the level look lower than it is. And when a recipe gives both weight and volume, trust the weight: it is the same in every country, while cups are not.",
+      ],
+    },
+  ],
+
+  "data-storage-converter": [
+    {
+      heading: "How do data storage units convert?",
+      paragraphs: [
+        "Data storage converts in powers of 1024: **1 KB = 1,024 bytes, 1 MB = 1,024 KB, 1 GB = 1,024 MB, and 1 TB = 1,024 GB**. This calculator uses the binary (base-2) system, where each step up multiplies by 1,024 — so 1 GB is 1,073,741,824 bytes, not one billion.",
+        "The confusion comes from the two systems in use. Formally, KB means 1,000 bytes (SI decimal) and KiB means 1,024 bytes (binary), but in everyday use KB almost always means 1,024 bytes — that is what operating systems show and what this calculator uses.",
+        "That dual system explains the most common storage mystery: a drive sold as '1 TB' holds 1,000,000,000,000 bytes by the manufacturer's decimal counting, but your computer divides by 1,024 at each step and reports only about 931 GB. No space is missing — the two sides are just counting in different units.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **2.5 GB**. In bytes that is 2.5 × 1,073,741,824 = **2,684,354,560 bytes**. In megabytes it is 2.5 × 1,024 = **2,560 MB**, and in kilobytes it is 2,560 × 1,024 = **2,621,440 KB**.",
+        "Going the other way, a 500 GB drive holds 500 × 1,024 = **512,000 MB**. And that '1 TB' drive: 1,000,000,000,000 ÷ 1,073,741,824 = **931.32 GB** as your computer reports it — the roughly 7% gap is the decimal-versus-binary difference, not lost space.",
+      ],
+    },
+    {
+      heading: "How much storage do you actually need?",
+      paragraphs: [
+        "Work backwards from what you store. A typical smartphone photo is 3–5 MB, so 10,000 photos need roughly 30–50 GB; an hour of 1080p video is about 3–6 GB, while 4K video can be 20 GB an hour or more. Add your files up in the same unit before buying.",
+        "Leave headroom: drives slow down and wear faster when nearly full, and operating systems need free space for updates and temporary files. A drive that is 80% full is effectively full — plan your next size up from what the arithmetic says.",
+      ],
+    },
+  ],
+
+  "fuel-consumption-converter": [
+    {
+      heading: "How do fuel consumption units convert?",
+      paragraphs: [
+        "Fuel consumption is measured two opposite ways: distance per unit of fuel (miles per gallon, km per litre) or fuel per unit of distance (litres per 100 km). The conversions are **km/L = MPG × 0.425144** and **L/100km = 100 ÷ km/L** — this calculator uses US gallons throughout.",
+        "The two styles point in opposite directions, which is the main source of confusion. Higher MPG or km/L means better efficiency — you travel further on each unit of fuel. Lower L/100km means better efficiency — you use less fuel for each 100 km. A car rated 30 MPG and a car rated 7.84 L/100km are exactly the same car.",
+        "Watch which gallon you are using. A US gallon is 3.785 litres, while an imperial gallon (UK) is 4.546 litres, so the same car shows a higher MPG figure in imperial gallons — 30 US MPG is about 36 imperial MPG. This calculator works in US gallons only.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a car rated at **30 MPG (US)**. In km/L that is 30 × 0.425144 = **12.75 km/L**. In litres per 100 km it is 100 ÷ 12.75432 = **7.84 L/100km**.",
+        "A more efficient car at 50 MPG converts to 50 × 0.425144 = **21.26 km/L**, or 100 ÷ 21.2572 = **4.70 L/100km**. And going the other way, a car rated 8 L/100km does 100 ÷ 8 = 12.5 km/L, which is 12.5 ÷ 0.425144 = **29.40 MPG**.",
+      ],
+    },
+    {
+      heading: "How much fuel does your commute actually use?",
+      paragraphs: [
+        "L/100km makes trip maths easy: multiply the figure by the distance in hundreds of kilometres. A 40 km round-trip commute in a car rated 7.84 L/100km uses 0.4 × 7.84 = **3.14 litres a day** — about 15.7 litres over a five-day week, or roughly 690 litres over 220 working days a year.",
+        "That is where small efficiency differences pay off. The same commute in a 4.70 L/100km car uses 1.88 litres a day — saving about 1.26 litres a day, or roughly 276 litres a year. At any fuel price, that adds up to a real annual saving.",
+      ],
+    },
+  ],
+
+  "inches-to-centimeters-converter": [
+    {
+      heading: "How do you convert inches to centimeters?",
+      paragraphs: [
+        "Inches convert to centimeters by a single exact factor: **cm = inches × 2.54**. Since 1959, the international inch has been defined as exactly 2.54 cm, so the conversion is exact — there is no rounding in the factor itself, only in how many decimal places you display.",
+        "The same factor gives you millimetres and metres for free: multiply the centimetres by 10 for millimetres, or divide by 100 for metres. This calculator shows all three, so one input covers every metric length you are likely to need.",
+        "Inches are still the everyday unit in the US for height, screen sizes, and many product dimensions, while most of the rest of the world uses centimetres — which is why this is one of the most common conversions there is.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **12 inches** — one foot. In centimetres that is 12 × 2.54 = **30.48 cm**, in millimetres **304.80 mm**, and in metres **0.3048 m**.",
+        "For height: a person who is 5 feet 10 inches tall is 70 inches, which is 70 × 2.54 = **177.80 cm**. And a 55-inch TV screen measures 55 × 2.54 = **139.70 cm** diagonally — the size is always the diagonal, not the width.",
+      ],
+    },
+    {
+      heading: "How do you estimate inches to centimeters in your head?",
+      paragraphs: [
+        "Multiply by 2.5 for a quick estimate and add a little: 2.5 is only 1.6% below the true 2.54, so 20 inches is about 50 cm by the shortcut and exactly 50.80 cm. For most everyday purposes — checking whether furniture fits, or whether a bag meets a size limit — the shortcut is close enough.",
+        "For the reverse direction, divide centimetres by 2.54, or multiply by 0.3937. A 100 cm desk is 39.37 inches wide. When precision matters — cutting materials, medical measurements, engineering — use the calculator rather than the shortcut.",
+      ],
+    },
+  ],
+
+  "kilograms-to-pounds-converter": [
+    {
+      heading: "How do you convert kilograms to pounds?",
+      paragraphs: [
+        "Kilograms convert to pounds with one factor: **lbs = kg × 2.20462**. The conversion is exact by definition — since 1959, one pound has been defined as exactly 0.45359237 kg — so the only rounding is in how many decimal places you keep.",
+        "This calculator also shows the result in ounces (pounds × 16) and in stones and pounds, the unit still used for body weight in the UK and Ireland. One stone is 14 pounds, so a weight in stones is just the pounds divided by 14, with the remainder shown as pounds.",
+        "Kilograms are the standard almost everywhere, while pounds remain everyday in the US — for body weight, food, luggage limits, and gym weights — which is why this conversion comes up constantly when travelling or following fitness and cooking content from another country.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **75 kg**. In pounds that is 75 × 2.20462 = **165.35 lb**, and in ounces it is 165.3465 × 16 = **2,645.54 oz**.",
+        "In stones and pounds: 165.3465 ÷ 14 = 11.81 stone, so the weight is **11 st 11.3 lb** (11 full stone plus the 11.35 lb remainder). And a 23 kg checked-bag limit — the standard economy allowance — is 23 × 2.20462 = **50.71 lb**.",
+      ],
+    },
+    {
+      heading: "How do you estimate kg to lbs in your head?",
+      paragraphs: [
+        "Double the kilograms and add 10% of the original: 75 kg doubled is 150, plus 7.5 is 157.5 — that shortcut gives 157.5 lb against the true 165.35 lb, so it underestimates by about 5%. A closer shortcut is to multiply by 2.2: 75 × 2.2 = 165 lb, within half a pound of the exact answer.",
+        "For the reverse direction, divide pounds by 2.2: 165 lb ÷ 2.2 = 75 kg. When the number matters — medication doses, luggage limits at check-in, or competition weight classes — use the exact factor rather than any shortcut.",
+      ],
+    },
+  ],
+
+  "liters-to-gallons-converter": [
+    {
+      heading: "How do you convert liters to gallons?",
+      paragraphs: [
+        "Litres convert to US gallons by dividing: **US gallons = litres ÷ 3.78541**, because one US gallon is defined as exactly 3.78541 litres. This calculator also shows imperial gallons (litres ÷ 4.54609) and US quarts (gallons × 4).",
+        "The two gallons are the trap. A US gallon is 3.785 litres; an imperial gallon, used in the UK, is 4.546 litres — about 20% larger. The same volume of fuel reads as fewer imperial gallons than US gallons, which is also why UK fuel-economy figures in MPG look higher than the equivalent US figures.",
+        "Litres are the standard for fuel, drinks, and containers almost everywhere except the US, where gallons rule for fuel and milk. Converting matters most when comparing fuel prices or tank sizes across countries, where mixing up the two gallons gives a wrong answer by a fifth.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **10 litres**. In US gallons that is 10 ÷ 3.78541 = **2.6417 gal**, in imperial gallons 10 ÷ 4.54609 = **2.1997 gal**, and in US quarts 2.6417 × 4 = **10.5669 qt**.",
+        "For a fuel tank: a 50-litre tank holds 50 ÷ 3.78541 = **13.21 US gallons**. At $3.50 a US gallon, filling it costs 13.21 × $3.50 = **$46.23** — and the same tank in imperial gallons is 50 ÷ 4.54609 = 11.00 gallons, which is why the same car is quoted with different tank sizes on each side of the Atlantic.",
+      ],
+    },
+    {
+      heading: "How do you compare fuel prices across countries?",
+      paragraphs: [
+        "Convert everything to the same unit before comparing. A litre price divided by 3.78541 gives the price per US gallon; multiplied by 4.54609 it gives the price per imperial gallon. Comparing a per-litre price directly with a per-gallon price without converting is meaningless.",
+        "Remember that taxes dominate fuel prices in many countries, so a price gap often reflects tax rather than the fuel itself. The conversion tells you the true price difference; the reason for it is usually policy, not the petrol station.",
+      ],
+    },
+  ],
+
+  "pressure-converter": [
+    {
+      heading: "How do pressure units convert?",
+      paragraphs: [
+        "Pressure converts through pascals: every unit is first converted to Pa, then to the unit you want. The key relationships are **1 atmosphere = 101,325 Pa, 1 bar = 100,000 Pa, 1 PSI = 6,894.76 Pa, and 1 mmHg = 133.322 Pa**.",
+        "Each unit has a home. Pascals are the scientific standard; PSI (pounds per square inch) is everyday in the US for tyres and plumbing; bar is common for tyres and weather in Europe; atmospheres describe pressure relative to sea level; and mmHg (millimetres of mercury) survives in medicine for blood pressure and in weather reports.",
+        "Standard atmospheric pressure at sea level is the anchor for all of them: 1 atm = 101,325 Pa = 14.696 PSI = 1.01325 bar = 760 mmHg. Weather reports describe high and low pressure systems as small departures from that figure.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **1 atmosphere**. In pascals that is **101,325 Pa**, in PSI it is 101,325 ÷ 6,894.76 = **14.6959 PSI**, in bar it is 101,325 ÷ 100,000 = **1.01325 bar**, and in mmHg it is 101,325 ÷ 133.322 = **760.00 mmHg**.",
+        "For a car tyre at 32 PSI: in pascals that is 32 × 6,894.76 = **220,632.32 Pa**, in bar it is 220,632.32 ÷ 100,000 = **2.21 bar**, and in atmospheres it is 220,632.32 ÷ 101,325 = **2.18 atm** — more than twice the pressure of the air around you, which is why a puncture releases air so forcefully.",
+      ],
+    },
+    {
+      heading: "Why does tyre pressure matter?",
+      paragraphs: [
+        "Tyre pressure is usually quoted in PSI in the US and bar in Europe, and the recommended pressure is printed on the driver's door jamb, not on the tyre — the number on the tyre is the maximum, not the target. Most cars want roughly 30–35 PSI (about 2.1–2.4 bar).",
+        "Pressure drops as temperature falls — roughly 1 PSI for every 10°F (5.6°C) drop — which is why the tyre warning light often appears on the first cold morning of autumn. Check pressures when the tyres are cold, before driving, for an accurate reading.",
+      ],
+    },
+  ],
+
+  "volume-converter": [
+    {
+      heading: "How do volume units convert?",
+      paragraphs: [
+        "Volume converts through litres: every unit is first converted to litres, then to the unit you want. The key relationships are **1 US gallon = 3.78541 L, 1 US cup = 0.236588 L, 1 millilitre = 0.001 L, and 1 fluid ounce = 0.0295735 L**.",
+        "This converter uses US units throughout — US gallons, US cups, and US fluid ounces. The imperial gallon used in the UK is larger (4.546 L), and the metric cup is 250 mL rather than the US cup's 236.6 mL, so check which system your source uses before converting.",
+        "Volume and weight are not interchangeable: a litre of water weighs 1 kg, but a litre of oil weighs about 0.91 kg and a litre of honey about 1.42 kg. This converter handles volume-to-volume only — converting between volume and weight needs the substance's density.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **1 US gallon**. In litres that is **3.78541 L**, in millilitres **3,785.41 mL**, in US cups 3.78541 ÷ 0.236588 = **16.00 cups**, and in fluid ounces 3.78541 ÷ 0.0295735 = **128.00 fl oz**.",
+        "Going the other way, 2 litres is 2 ÷ 3.78541 = **0.5283 US gallons**, or 2 ÷ 0.236588 = **8.45 US cups**. A standard 500 mL bottle is 0.5 litres — just over 2 cups (2.11) and about 16.91 fl oz.",
+      ],
+    },
+    {
+      heading: "How do you convert a recipe between US and metric?",
+      paragraphs: [
+        "Convert the whole recipe to one system before you start cooking, not ingredient by ingredient mid-recipe. Liquids convert cleanly through litres, but cups of dry ingredients are approximate — a cup of flour can vary by 20% depending on how it is measured — so metric recipes that give weights are more reliable.",
+        "For oven dishes, the container matters too: a recipe written for a 9×13 inch baking dish needs the metric equivalent (about 23×33 cm), and a different dish size changes the depth of the food and therefore the cooking time. Convert the pan as well as the ingredients.",
+      ],
+    },
+  ],
+
+  "carbon-footprint-calculator": [
+    {
+      heading: "How is a carbon footprint calculated?",
+      paragraphs: [
+        "A carbon footprint is the total greenhouse gases caused by your activities, measured in tonnes of CO2 per year. This calculator adds up three sources: **electricity (0.42 kg CO2 per kWh), heating gas (5.3 kg CO2 per therm), and driving (0.21 kg CO2 per km)** — each multiplied by your usage and converted to tonnes.",
+        "The three sources are shown separately because the fix is different for each. Electricity emissions depend on how your grid generates power; heating depends on your fuel and insulation; driving depends on distance and the car. Seeing the split tells you where a change actually moves the total.",
+        "This is a household-energy estimate, not a complete footprint: it does not count food, shopping, air travel, or the goods and services you buy, which for most people add several more tonnes. Treat the result as a starting point for the energy side of your footprint, not the whole picture.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a household using **400 kWh of electricity a month, 30 therms of gas a month, and driving 18,000 km a year**. Electricity gives 400 × 12 × 0.42 = **2,016 kg (2.0 t)**, heating gives 30 × 12 × 5.3 = **1,908 kg (1.9 t)**, and driving gives 18,000 × 0.21 = **3,780 kg (3.8 t)**.",
+        "The total is **7.7 tonnes of CO2 per year** — driving alone is nearly half of it. Cutting driving to 10,000 km a year would remove 8,000 × 0.21 = 1,680 kg, bringing the total down to **6.0 tonnes**. The global average is about 4.7 tonnes per person, so this household is above average before food and flights are even counted.",
+      ],
+    },
+    {
+      heading: "What cuts a carbon footprint fastest?",
+      paragraphs: [
+        "Start with the biggest slice in your own result. For the household above, driving is 3.8 of the 7.7 tonnes — so fewer kilometres, carpooling, or switching to an electric vehicle moves the total more than any change to lighting. For a household where heating dominates, insulation and a more efficient heating system matter most.",
+        "Electricity is the easiest win in many places: switching to a renewable electricity tariff can cut the electricity slice to near zero without changing how much power you use. The calculator's factors are averages, so use the result to rank your options, then measure the real change after you act.",
+      ],
+    },
+  ],
+
+  "potential-energy-calculator": [
+    {
+      heading: "How is gravitational potential energy calculated?",
+      paragraphs: [
+        "Gravitational potential energy is the energy an object has because of its height above a reference point, calculated as **PE = m × g × h**, where m is the mass in kilograms, g is gravitational acceleration (9.81 m/s² on Earth), and h is the height in metres. The result is in joules.",
+        "Potential energy is stored energy: it does not do anything until the object is allowed to fall. As it falls, the potential energy converts into kinetic energy — at the bottom, ignoring air resistance, all of the PE has become KE, which is why the same formula predicts how fast a dropped object will be moving.",
+        "The height is always measured from a chosen reference level — usually the ground — and only the change in height matters. Lifting an object from the first floor to the second adds the same energy as lifting it from the ground to the first floor, because the height gained is the same.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **10 kg object held 5 metres above the ground** on Earth (g = 9.81 m/s²). Its potential energy is 10 × 9.81 × 5 = **490.50 joules**, or **0.4905 kJ**.",
+        "Double the mass to 20 kg and the energy doubles to 981 J; double the height to 10 m instead and it also doubles to 981 J — the formula is linear in both. On the Moon, where g is 1.62 m/s², the same 10 kg object at 5 m has only 10 × 1.62 × 5 = **81 J** of potential energy.",
+      ],
+    },
+    {
+      heading: "Where does potential energy go when something falls?",
+      paragraphs: [
+        "It becomes kinetic energy. A 10 kg object dropped from 5 m reaches the ground with 490.50 J of kinetic energy, which is why the same mass hurts far more when dropped from a height than when it simply tips over on a table — the energy at impact grows directly with the height it fell from.",
+        "That conversion is also how hydroelectric power works on a large scale: water stored behind a dam has enormous gravitational potential energy, and as it flows downhill through turbines, the energy becomes electricity. A cubic metre of water (1,000 kg) falling 100 m releases 1,000 × 9.81 × 100 = 981,000 J — nearly a megajoule from a single tonne of water.",
+      ],
+    },
+  ],
+
+  "bra-size-calculator": [
+    {
+      heading: "How is bra size calculated?",
+      paragraphs: [
+        "Your bra size has two parts: the band number, which comes from your underbust measurement, and the cup letter, which comes from the difference between your bust and band measurements. This calculator finds both from two measurements taken with a soft tape measure, and returns a US size.",
+        "The band is your underbust measurement rounded to the nearest even number, because bands are sold in even sizes. The cup is set by the difference between your bust measurement and your band: a 1-inch difference is an A cup, 2 inches a B, 3 inches a C, 4 inches a D, and so on up to J.",
+        "Sizing varies between brands, so treat the result as a starting point. If the calculated size feels off, try a sister size — the same cup volume on a different band, such as 34C, 32D, or 36B — and judge by the fit of the band and cups rather than the label alone.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Underbust 31 inches, bust 36 inches. The band rounds 31 up to the next even number, 32. The difference is 36 − 32 = 4 inches, which is a D cup, so the result is **32D**.",
+        "If the same person measured a 35-inch bust instead, the difference would be 3 inches — a C cup — giving 32C. A single inch changes the cup, which is why measuring carefully matters more than the arithmetic.",
+      ],
+    },
+    {
+      heading: "How to measure for the best result",
+      paragraphs: [
+        "Measure the underbust snugly around your ribcage directly under your bust, with the tape level and firm but not tight. Then measure around the fullest part of your bust, keeping the tape level and not compressing the tissue. Standing upright and breathing normally gives the most repeatable numbers.",
+        "Re-measure after any significant weight change, and whenever a familiar size starts to fit differently — band size in particular changes with weight. If the two measurements fall between sizes, round the underbust to the nearest even number first, then work out the cup from the rounded band, exactly as this calculator does.",
+      ],
+    },
+  ],
+
+  "conception-calculator": [
+    {
+      heading: "How is the conception date estimated?",
+      paragraphs: [
+        "This calculator estimates the date of conception from either the first day of your last menstrual period (LMP) or your due date. From the LMP it adds 14 days, the typical point of ovulation in a 28-day cycle; from the due date it subtracts 266 days, the average length of pregnancy counted from conception.",
+        "It also shows a fertile window: the six days from five days before the estimated conception date through the conception date itself. That window reflects the fact that conception can follow intercourse in the days before ovulation, not only on the day of ovulation itself.",
+        "The result is an estimate, not a precise date. Ovulation does not always happen on day 14, cycles vary in length, and only an early ultrasound can date a pregnancy more precisely. Use the estimate for planning and for discussion with a clinician, not as a medical determination.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "LMP **June 15, 2025**: adding 14 days gives an estimated conception date of **June 29, 2025**, with a fertile window of **June 24–29, 2025**.",
+        "The same pregnancy dated from the other direction: a due date of **March 22, 2026** minus 266 days also gives June 29, 2025. The two routes agree because 280 days from LMP and 266 days from conception describe the same pregnancy — the 14-day gap is the time from LMP to ovulation.",
+      ],
+    },
+    {
+      heading: "When is the estimate less reliable?",
+      paragraphs: [
+        "The 14-day assumption fits a regular 28-day cycle. With longer cycles, ovulation usually comes later than day 14; with shorter cycles, earlier — so the estimated date shifts in the same direction. Irregular cycles, recent hormonal contraception, and breastfeeding all make the estimate less certain.",
+        "In those cases a first-trimester ultrasound is the more reliable dating method, and it takes priority when it disagrees with the LMP-based estimate. If the dates matter for medical decisions, bring both the LMP date and the ultrasound result to your clinician rather than relying on either alone.",
+      ],
+    },
+  ],
+
+  "overweight-calculator": [
+    {
+      heading: "How do you know if you are overweight?",
+      paragraphs: [
+        "This calculator uses body mass index (BMI): your weight in kilograms divided by your height in metres squared. A BMI of **25–29.9** is classed as overweight, **30 and above** as obese, and **18.5–24.9** as the healthy range.",
+        "It also shows your maximum healthy weight — the weight that would put your BMI at 24.9 for your height — and how far above it you are, if at all. That turns a category label into a concrete target.",
+        "BMI is a screening measure, not a diagnosis. It cannot tell muscle from fat, so a muscular person can score as overweight while carrying little body fat, and it says nothing about where fat is stored. Use it alongside a waist measurement and how you feel, and talk to a clinician before starting a weight-loss plan.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A person weighing **90 kg** at **175 cm**: BMI = 90 ÷ (1.75 × 1.75) = 90 ÷ 3.0625 = **29.4** — overweight. The maximum healthy weight is 24.9 × 3.0625 = **76.3 kg**, so the weight to lose is 90 − 76.3 = **13.7 kg**.",
+        "At 76 kg the same person would have a BMI of 24.8 — inside the healthy range. Small changes move the number: losing 5 kg, to 85 kg, gives a BMI of 27.8, still overweight but closer to the boundary.",
+      ],
+    },
+    {
+      heading: "What to do with the number",
+      paragraphs: [
+        "If your BMI is above the healthy range, the maximum healthy weight is a sensible first target — it is specific to your height and does not depend on an ideal body image. A gradual pace of about 0.5–1 kg a week is the generally advised rate for lasting loss.",
+        "Track more than the scale: waist measurement, energy, sleep, and how your clothes fit all move with real changes in body composition, sometimes before the BMI does. And if your BMI is high mainly because of muscle, a body-fat measurement will tell you more than this calculator can.",
+      ],
+    },
+  ],
+
+  "resting-heart-rate-calculator": [
+    {
+      heading: "What does resting heart rate tell you?",
+      paragraphs: [
+        "Your resting heart rate (RHR) is the number of times your heart beats per minute while you are at rest, and it is a simple gauge of cardiovascular fitness: a stronger, more efficient heart pumps more blood per beat, so it needs fewer beats. This calculator compares your RHR with fitness norms for your sex and rates it from Athlete to Below Average.",
+        "The bands differ for men and women. For men, under 50 bpm is rated Athlete, under 60 Excellent, under 70 Good, under 80 Average, and 80 or above Below Average. For women the cut-offs are 4 bpm higher: 54, 64, 74, and 84.",
+        "The calculator also shows the usual normal range of 60–100 bpm. A value outside that range is not automatically a problem — trained athletes often sit below 60 — but a sudden change, or a consistently high resting rate, is worth mentioning to a clinician.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A man with a resting heart rate of **58 bpm**: 58 is below the 60 threshold but not below 50, so the rating is **Excellent**. The same 58 bpm for a woman is also Excellent, since it falls below her 64 threshold.",
+        "At **72 bpm**, a man rates Average (72 is below 80, but not below 70) while a woman rates Good (72 is below 74). The 4 bpm difference between the two scales is why the same number can give a different rating.",
+      ],
+    },
+    {
+      heading: "How to measure it accurately",
+      paragraphs: [
+        "Measure first thing in the morning, before getting out of bed, and count your pulse for a full 60 seconds — a 15-second count multiplied by 4 is quicker but noisier. Two fingers on your wrist or the side of your neck, light pressure, and a still body give the cleanest reading.",
+        "Caffeine, a late workout, stress, illness, and a poor night's sleep all raise the number, so one high reading means little. Measure for several mornings in a row and use the average; a falling trend over weeks of regular aerobic exercise is the sign that fitness is improving.",
+      ],
+    },
+  ],
+
+  "sleep-debt-calculator": [
+    {
+      heading: "How is sleep debt calculated?",
+      paragraphs: [
+        "Sleep debt is the running total of sleep you have missed: the gap between the hours you need each night and the hours you actually sleep, multiplied by the number of days. If you need 8 hours but sleep 6, you build up 2 hours of debt every night.",
+        "This calculator also estimates recovery time, assuming you add about 2 extra hours of sleep per night until the debt is repaid. Recovery days are the total debt divided by 2, rounded up.",
+        "The model is deliberately simple. Real recovery is not perfectly linear — short-term debt clears in days, while debt built over weeks or months takes longer to repay than the arithmetic suggests, and oversleeping at the weekend does not fully undo a week of short nights. Treat the figures as a planning guide, not a precise measure of how rested you are.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Need 8 hours, sleeping 6, for 7 days: the daily deficit is 2 hours, the total debt is **14 hours**, and recovery takes about **7 days** at 2 extra hours a night.",
+        "A smaller gap adds up fast too: 7.5 hours needed against 7 hours slept is only 30 minutes a night, but over 30 days that is **15 hours** of debt — roughly two full nights of sleep — with a recovery estimate of 8 days.",
+      ],
+    },
+    {
+      heading: "How to pay sleep debt back",
+      paragraphs: [
+        "The steady way is a small, regular addition — an earlier bedtime of an hour or two, kept up for days — rather than one very long sleep. Short naps of 20–30 minutes can help in the afternoon, but long or late naps make the next night harder.",
+        "Prevention beats repayment: a consistent sleep and wake time, even at weekends, keeps the debt from building in the first place. If you regularly need far more sleep than you get, or you feel exhausted despite enough hours in bed, that is a question for a clinician rather than a calculator.",
+      ],
+    },
+  ],
+
+  "waist-to-height-ratio-calculator": [
+    {
+      heading: "What is the waist-to-height ratio?",
+      paragraphs: [
+        "The waist-to-height ratio (WHtR) is your waist circumference divided by your height, both in the same units. It is a simple check for central fat — fat stored around the waist — which is more closely linked to health risk than total body weight alone.",
+        "The rule of thumb is to keep your waist under half your height, a ratio below 0.5. This calculator rates the result in four bands: above 0.58 is High Risk, above 0.53 is Increased Risk, above 0.46 is Healthy, and 0.46 or below is Underweight Risk.",
+        "It also shows a target waist: half your height in centimetres. Unlike BMI, the ratio needs no weight measurement and adjusts for height automatically, which is why many health researchers prefer it as a quick screening check.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Waist **85 cm**, height **175 cm**: WHtR = 85 ÷ 175 = **0.486** — Healthy. The target waist is 175 × 0.5 = 87.5 cm, shown as **88 cm**.",
+        "At a **100 cm** waist the same height gives 100 ÷ 175 = **0.571** — Increased Risk, 12.5 cm above the 87.5 cm target. Losing 13 cm from the waist would bring the ratio to 0.497, just under the 0.5 line.",
+      ],
+    },
+    {
+      heading: "How to measure your waist",
+      paragraphs: [
+        "Stand relaxed and wrap a soft tape measure around your waist at navel level, level all the way round. Breathe out normally and read the measurement without pulling the tape tight or holding your stomach in.",
+        "Measure at the same time of day and in the same conditions each time — morning, before eating, is the most repeatable. A single measurement is a snapshot; the trend over weeks is what tells you whether a change in diet or activity is working.",
+      ],
+    },
+  ],
+
+  "weekly-weight-loss-calculator": [
+    {
+      heading: "How much weight will a calorie deficit lose each week?",
+      paragraphs: [
+        "This calculator turns a daily calorie deficit into expected weight loss using the standard rule that a kilogram of body fat stores about 7,700 calories. Weekly loss is your daily deficit times 7, divided by 7,700.",
+        "It also shows the monthly equivalent — weekly loss times 4.33, the average number of weeks in a month — and the weekly loss in pounds, using 2.205 lb per kilogram.",
+        "The 7,700 rule is a useful planning estimate, not a law of nature. Real weight loss slows as your body adapts, and day-to-day weight moves with water, food, and glycogen. Expect the scale to zigzag around the trend the calculator shows, and judge progress over weeks, not days.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **500-calorie** daily deficit: 500 × 7 ÷ 7,700 = **0.45 kg per week**, about **2.0 kg a month** and **1.0 lb a week**.",
+        "A 750-calorie deficit gives 750 × 7 ÷ 7,700 = **0.68 kg a week**. Doubling the deficit to 1,000 calories gives 0.91 kg a week — but very large deficits are harder to sustain, and a deficit that big is best discussed with a clinician first.",
+      ],
+    },
+    {
+      heading: "What deficit should you choose?",
+      paragraphs: [
+        "A deficit of 500–750 calories a day is the usual recommendation for steady, sustainable loss: enough to see progress each week without the hunger and fatigue that make a plan hard to stick to. Smaller deficits work too — they just take longer.",
+        "The deficit can come from food, activity, or both. Cutting 300 calories from food and adding 200 calories of walking reaches the same 500 total, and most people find a mix easier to maintain than diet alone.",
+      ],
+    },
+  ],
+
+  "weight-gain-calculator": [
+    {
+      heading: "How long does it take to gain weight?",
+      paragraphs: [
+        "This calculator estimates how many weeks it takes to reach a target weight from a daily calorie surplus, using the rule that a kilogram of body weight corresponds to about 7,700 calories. Weeks to goal equal the kilograms to gain times 7,700, divided by the surplus times 7.",
+        "It also shows the expected weekly gain — surplus times 7 divided by 7,700 — so you can see whether the pace is realistic before committing to a plan.",
+        "A modest surplus is the usual advice for gaining mostly muscle rather than fat: the calculator's guidance is 200–500 calories a day. Faster gains are possible with a bigger surplus, but more of the extra weight tends to be fat, and strength training decides how much of the gain is muscle.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "From **70 kg to 78 kg** with a **300-calorie** surplus: 8 kg to gain, so weeks = 8 × 7,700 ÷ (300 × 7) = 61,600 ÷ 2,100 = 29.3, shown as **29 weeks**, at **0.27 kg a week**.",
+        "A 500-calorie surplus shortens the same goal to 8 × 7,700 ÷ 3,500 = 17.6, shown as **18 weeks**, at 0.45 kg a week. The trade-off is pace against composition: the faster route gains the same 8 kg, but with more of it likely to be fat.",
+      ],
+    },
+    {
+      heading: "Gaining weight the steady way",
+      paragraphs: [
+        "Weigh yourself once a week, in the same conditions, and compare the trend with the calculator's weekly figure. If the scale is flat after two or three weeks, the surplus is smaller than you think — portion sizes are easy to underestimate.",
+        "Pair the surplus with progressive strength training and enough protein, and the gain skews toward muscle. Without training, extra calories mostly become fat, whatever the surplus size.",
+      ],
+    },
+  ],
+
+  "weight-loss-target-calculator": [
+    {
+      heading: "How long will it take to reach your target weight?",
+      paragraphs: [
+        "This calculator turns a weight-loss goal into a timeline: the kilograms to lose times 7,700 calories per kilogram, divided by your daily calorie deficit times 7, gives the weeks to your target. It also shows the target date and the expected weekly loss.",
+        "The 7,700 figure is the energy stored in a kilogram of body fat, so the calculation is really an energy budget — how many days of deficit it takes to burn the fat you want to lose.",
+        "Treat the date as a plan, not a promise. Weight loss slows as you get lighter, and the scale moves with water and food day to day. A steady 0.5–1 kg a week from a 500–1,000 calorie daily deficit is the generally advised pace.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "From **90 kg to 80 kg** with a **500-calorie** deficit: 10 kg to lose, so weeks = 10 × 7,700 ÷ (500 × 7) = 77,000 ÷ 3,500 = **22 weeks**, at **0.45 kg a week**.",
+        "A 750-calorie deficit cuts the same goal to 77,000 ÷ 5,250 = 14.7, shown as **15 weeks**, at 0.68 kg a week. The calculator also converts the timeline into a target date counted from today, so the plan has a date attached, not just a number of weeks.",
+      ],
+    },
+    {
+      heading: "Keeping the plan on track",
+      paragraphs: [
+        "Weigh yourself weekly, in the same conditions, and compare the trend with the calculator's weekly figure rather than any single reading. A plateau of two or three weeks usually means the deficit has shrunk — as you get lighter, your body needs fewer calories, so the same diet becomes a smaller deficit.",
+        "When that happens, the fix is a small adjustment — a little less food or a little more activity — not a crash diet. Re-run the calculator with your new current weight and the adjusted deficit to get a fresh target date.",
+      ],
+    },
+  ],
+
+  "hex-calculator": [
+    {
+      heading: "What does this hex calculator do?",
+      paragraphs: [
+        "This calculator converts decimal numbers to hexadecimal and adds them. Enter two decimal numbers and it shows each one in hex (base 16), their sum in hex, and their sum in decimal.",
+        "Hexadecimal uses sixteen digits — 0–9 then A–F, where A is 10 and F is 15 — so each hex digit holds exactly four bits. That makes hex the standard shorthand for binary values in programming: colours like #FF0000, memory addresses, and MAC addresses are all written in hex.",
+        "To convert by hand, divide the decimal number by 16 repeatedly and read the remainders backwards. 255 ÷ 16 = 15 remainder 15, and 15 ÷ 16 = 0 remainder 15, so 255 is 0xFF.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter **255** and **16**. The calculator shows **0xFF** and **0x10**, and their sum: 255 + 16 = **271**, which is **0x10F** in hex.",
+        "Check the hex addition directly: in the units column F + 0 = F; in the sixteens column F + 1 = 16 in decimal, which writes 0 and carries 1 to the next column, giving 0x10F. The decimal check agrees: 0x10F = 1×256 + 0×16 + 15 = 271.",
+      ],
+    },
+    {
+      heading: "Where you will meet hex",
+      paragraphs: [
+        "Web colours are the most familiar use: #FF0000 is red, with FF (255) for the red channel and 00 for green and blue. The same two-digit-per-byte pattern appears in MAC addresses, IPv6 addresses, and memory dumps.",
+        "Programmers also use hex for bit flags and file formats, because each hex digit maps cleanly to four bits — 0xF is 1111 in binary, 0x8 is 1000. Converting a few numbers by hand is the fastest way to build that intuition.",
+      ],
+    },
+  ],
+
+  "long-division-calculator": [
+    {
+      heading: "How does long division work?",
+      paragraphs: [
+        "Long division splits a number (the dividend) into equal groups of another number (the divisor). The answer has two parts: the quotient, how many whole groups fit, and the remainder, what is left over. This calculator also shows the exact decimal result.",
+        "The relationship to remember is: dividend = divisor × quotient + remainder. That single check verifies any long division answer, with or without a calculator.",
+        "Division by zero has no answer, and the calculator says so: entering 0 as the divisor shows an error instead of a result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "1,000 ÷ 7: the quotient is **142** and the remainder is **6**, so the result is **142 R 6**, and the decimal is **142.857143**. Check: 7 × 142 + 6 = 994 + 6 = 1,000.",
+        "The decimal never ends — 142.857142857… repeats the block 857142 — so the calculator shows it rounded to six decimal places. The remainder form, 142 R 6, is exact, which is why it is the form most school problems ask for.",
+      ],
+    },
+    {
+      heading: "When to use each form of the answer",
+      paragraphs: [
+        "Use the remainder form for sharing problems: 1,000 items split into boxes of 7 gives 142 full boxes with 6 left over. The remainder is a real quantity there, not a rounding artefact.",
+        "Use the decimal form for measurements and money, where a fraction of a unit is meaningful — 1,000 ÷ 7 litres is about 142.86 litres per share. And when the division is exact, both forms agree: 1,000 ÷ 8 = 125 R 0 = 125 exactly.",
+      ],
+    },
+  ],
+
+  "matrix-calculator": [
+    {
+      heading: "What does this matrix calculator find?",
+      paragraphs: [
+        "This calculator works with a 2×2 matrix — four numbers in two rows and two columns — and finds its determinant, its trace, and whether it is invertible. Enter the four elements and the results appear immediately.",
+        "The determinant is a single number that summarises the matrix: for a matrix with rows [a, b] and [c, d], it is a×d − b×c. If the determinant is not zero, the matrix has an inverse; if it is zero, the matrix is singular and cannot be inverted.",
+        "The trace is simpler — the sum of the diagonal elements, a + d. Both numbers appear constantly in linear algebra: the determinant measures how the matrix scales area, and the trace appears in eigenvalues and in the characteristic equation.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Matrix [[3, 1], [2, 4]]: determinant = 3×4 − 1×2 = 12 − 2 = **10**, trace = 3 + 4 = **7**, and since the determinant is not zero the matrix is **invertible**.",
+        "Change one number — [[3, 1], [6, 2]] — and the determinant becomes 3×2 − 1×6 = **0**, so the matrix is singular. The second row is exactly twice the first, which is why the determinant vanishes: the two rows carry the same information.",
+      ],
+    },
+    {
+      heading: "What the determinant tells you",
+      paragraphs: [
+        "Geometrically, the absolute value of the determinant is the area scaling factor of the transformation the matrix represents: a determinant of 10 stretches every area by a factor of 10, and a negative determinant also flips orientation, like a mirror image.",
+        "In equation solving, a non-zero determinant means a system of two linear equations has exactly one solution. A zero determinant means the equations are either dependent (infinitely many solutions) or contradictory (none) — the matrix alone cannot tell you which, only that there is no unique answer.",
+      ],
+    },
+  ],
+
+  "midpoint-calculator": [
+    {
+      heading: "How do you find the midpoint of two points?",
+      paragraphs: [
+        "The midpoint of two points is the point exactly halfway between them: average the x-coordinates and average the y-coordinates. For points (x₁, y₁) and (x₂, y₂), the midpoint is ((x₁+x₂)/2, (y₁+y₂)/2).",
+        "This calculator also shows the distance between the two points, from the distance formula: the square root of (x₂−x₁)² + (y₂−y₁)².",
+        "Midpoints come up wherever a centre is needed — the centre of a line segment, the middle of a shape, or the point halfway along a path in graphics and mapping.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Points **(2, 3)** and **(8, 7)**: midpoint = ((2+8)/2, (3+7)/2) = **(5, 5)**. The distance is √(36 + 16) = √52 = **7.2111**.",
+        "Check it on the number line: 5 is halfway between 2 and 8, and 5 is halfway between 3 and 7. The midpoint (5, 5) is the same distance from both points — half of 7.2111, or about 3.6056, from each.",
+      ],
+    },
+    {
+      heading: "Midpoints beyond two points",
+      paragraphs: [
+        "The same averaging idea extends: the centre of a triangle is the average of its three vertices, and the centre of any set of points is the average of their coordinates. That average point is the centroid, and it is the same calculation with more terms.",
+        "In three dimensions, just average the z-coordinates too. The formula stays the same shape no matter how many dimensions you add — the midpoint is always the coordinate-wise average.",
+      ],
+    },
+  ],
+
+  "modulus-calculator": [
+    {
+      heading: "What is the modulus?",
+      paragraphs: [
+        "The modulus is the remainder after division: a mod b is what is left when a is divided by b as many whole times as possible. 17 mod 5 is 2, because 5 fits into 17 three times (15) with 2 left over.",
+        "This calculator shows the remainder, the quotient, and a verification line: quotient × divisor + remainder = dividend. That identity is the quickest way to check any modulus result.",
+        "For positive numbers the modulus and the remainder are the same thing. With negative numbers, different systems disagree: this calculator follows the JavaScript remainder, so −17 mod 5 gives −2, while the mathematical modulus (as in Python) gives 3. For everyday uses — clocks, wrapping, even/odd checks — the numbers are positive and the two agree.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**17 mod 5**: quotient **3**, remainder **2**, and the verification reads 3 × 5 + 2 = 17.",
+        "A second check: 100 mod 7 = **2**, because 7 × 14 = 98 and 100 − 98 = 2. And 20 mod 5 = **0**, which is how the modulus tests divisibility — a remainder of 0 means the division is exact.",
+      ],
+    },
+    {
+      heading: "Where modulus shows up",
+      paragraphs: [
+        "Clock arithmetic is modulus in disguise: 14 o'clock is 2 o'clock because 14 mod 12 = 2. The same wrapping applies to days of the week, angles, and any cycle that repeats.",
+        "In programming, modulus tests even and odd (n mod 2), wraps an index around the end of a list, and spreads values evenly in hashing. Whenever something repeats or wraps, a modulus is usually doing the work.",
+      ],
+    },
+  ],
+
+  "number-sequence-calculator": [
+    {
+      heading: "What is a number sequence?",
+      paragraphs: [
+        "A number sequence is a list of numbers built by a rule. In an arithmetic sequence you add the same difference each time; in a geometric sequence you multiply by the same ratio each time. This calculator generates up to 20 terms of either kind, plus their sum.",
+        "The nth term of an arithmetic sequence is a₁ + (n−1)d, where a₁ is the first term and d the common difference. For a geometric sequence it is a₁ × r^(n−1), where r is the common ratio.",
+        "Sequences describe steady growth: arithmetic for adding the same amount each step, like saving a fixed sum monthly; geometric for multiplying, like compound interest or population growth.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Arithmetic, first term 2, difference 3, 8 terms: **2, 5, 8, 11, 14, 17, 20, 23**. The sum is **100** and the last term is **23** — check it with the formula: a₈ = 2 + 7×3 = 23.",
+        "Geometric, first term 2, ratio 3, 5 terms: **2, 6, 18, 54, 162**, summing to **242**. The terms grow fast: the fifth term alone, 162, is more than double the sum of the first four (80).",
+      ],
+    },
+    {
+      heading: "How to spot which pattern a sequence follows",
+      paragraphs: [
+        "Subtract consecutive terms: if the differences are constant, the sequence is arithmetic. Divide consecutive terms: if the ratios are constant, it is geometric. A sequence can be neither — 1, 1, 2, 3, 5, 8 is the Fibonacci pattern, where each term is the sum of the two before it.",
+        "Once you know the type and the first term, the whole sequence is determined — which is why this calculator only needs three inputs to generate all twenty terms.",
+      ],
+    },
+  ],
+
+  "p-value-calculator": [
+    {
+      heading: "What is a p-value?",
+      paragraphs: [
+        "A p-value is the probability of seeing a test result at least as extreme as yours if the null hypothesis — usually 'no effect' or 'no difference' — were true. A small p-value means the result would be surprising under the null, which is evidence against it. This calculator finds the p-value for a z-score, using the standard normal distribution.",
+        "The usual significance cut-off is 0.05: below it, a result is called statistically significant. This calculator also checks the stricter 0.01 level. It offers one-tailed and two-tailed tests — two-tailed doubles the one-tailed p-value, because it counts extremes in both directions.",
+        "A p-value is not the probability that the null hypothesis is true, and it says nothing about the size or importance of an effect. A tiny p-value from a huge sample can describe a trivial difference, and a non-significant result is not proof of no effect.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A z-score of **1.96**, two-tailed: p = **0.049996**, just below 0.05, so the result is significant at the 5% level but not at 1%. The same z-score one-tailed gives p = **0.024998** — half the two-tailed value, as expected.",
+        "A z-score of **2.58**, two-tailed, gives p = **0.009880** — significant at both 0.05 and 0.01. A small z-score of 0.5 gives p = **0.617075**, far from significant: a result that far from the mean happens most of the time by chance.",
+      ],
+    },
+    {
+      heading: "One-tailed or two-tailed — which should you choose?",
+      paragraphs: [
+        "Choose two-tailed when you are testing for any difference, in either direction — it is the default in most research and the safer choice when you are unsure. Choose one-tailed only when the hypothesis specifies a direction in advance, such as 'the new drug lowers blood pressure'.",
+        "The choice must be made before you see the data. Switching to one-tailed after seeing a two-tailed p-value of 0.08, just to get under 0.05, is not valid — it doubles your chance of a false positive.",
+      ],
+    },
+  ],
+
+  "percent-error-calculator": [
+    {
+      heading: "How is percent error calculated?",
+      paragraphs: [
+        "Percent error measures how far a measured value is from the accepted value, as a percentage of the accepted value: |experimental − theoretical| ÷ |theoretical| × 100. The absolute values keep the result positive — percent error is a size of error, not a direction.",
+        "The calculator also shows the absolute error (the raw difference, in the original units) and the relative error (the same difference as a fraction of the theoretical value, before multiplying by 100).",
+        "What counts as acceptable depends on the field: under 5% is usually good in school chemistry, while precise physics experiments aim for under 1%. The theoretical value cannot be zero — the calculator shows an error in that case, because the formula would divide by zero.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Experimental **9.8** against a theoretical **10.0**: absolute error 0.2, relative error 0.02, percent error **2.0000%**.",
+        "A larger miss shows the scale: measuring 9.0 against 10.0 gives a **10%** error, five times larger. And the direction does not matter — measuring 10.2 also gives 2%, because the formula takes the absolute difference.",
+      ],
+    },
+    {
+      heading: "Percent error vs percent difference",
+      paragraphs: [
+        "Percent error needs a known true value to compare against. When neither value is the 'true' one — two measurements of the same thing, say — percent difference is the right tool: it divides by the average of the two values instead of one theoretical value.",
+        "That makes percent difference symmetric: swapping the two values gives the same answer, while percent error changes if you swap the experimental and theoretical values. Use percent error for experiments against a known standard, and percent difference for comparing two measurements.",
+      ],
+    },
+  ],
+
+  "reading-time-calculator": [
+    {
+      heading: "How long will a text take to read?",
+      paragraphs: [
+        "Reading time is simply word count divided by reading speed: a 5,000-word article at 250 words per minute takes 20 minutes. This calculator also converts the word count into pages, at 250 words per page.",
+        "Average adult reading speed is roughly 200–300 words per minute for general reading, and slower — 100–150 words per minute — for technical or unfamiliar material. The default speed here is 250 words per minute.",
+        "The estimate assumes steady reading. Dense arguments, unfamiliar vocabulary, and note-taking all slow you down, so treat the result as a lower bound for study material and a fair estimate for light reading.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**1,000 words** at **240 words per minute**: 1,000 ÷ 240 = 4.17 minutes, shown as **4 min 10 sec**, and 1,000 ÷ 250 = **4.0 pages**.",
+        "A longer text shows the scaling: 5,000 words at 250 wpm takes exactly 20 minutes and fills 20.0 pages. Halving the speed to 125 wpm doubles the time to 40 minutes — reading time is inversely proportional to speed.",
+      ],
+    },
+    {
+      heading: "Using reading time to plan study",
+      paragraphs: [
+        "Count the words in a chapter or article — most word processors show the count — and you can plan a study session in minutes rather than pages. Three 2,000-word sections at 200 wpm is 30 minutes of reading, before any note-taking.",
+        "For exam preparation, use a slower speed than your comfortable rate: reading to remember is slower than reading to skim, and the time the calculator gives is for one pass only.",
+      ],
+    },
+  ],
+
+  "right-triangle-calculator": [
+    {
+      heading: "How do you solve a right triangle?",
+      paragraphs: [
+        "A right triangle has one 90° angle, and its sides obey the Pythagorean theorem: a² + b² = c², where c is the hypotenuse, the side opposite the right angle. Enter the two legs and this calculator finds the hypotenuse, both acute angles, the area, and the perimeter.",
+        "The angles come from the arctangent: angle A is arctan(b/a), and angle B is 90° minus angle A, since the three angles of any triangle add to 180°. The area is half the product of the legs, ½ × a × b.",
+        "Note that this calculator takes the two legs as its inputs. If you know the hypotenuse and one leg instead, find the missing leg first with a² = c² − b², then enter both legs here.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Legs **3** and **4**: hypotenuse √(9 + 16) = √25 = **5**, angles **53.13°** and **36.87°**, area ½ × 3 × 4 = **6**, perimeter 3 + 4 + 5 = **12**.",
+        "Check the angles: 53.13 + 36.87 + 90 = 180°, as required. The 3-4-5 triangle is the smallest Pythagorean triple — whole-number sides that satisfy the theorem exactly — and it is the classic check that a calculation is working.",
+      ],
+    },
+    {
+      heading: "Where right triangles appear",
+      paragraphs: [
+        "Builders use the 3-4-5 rule to square a corner: mark 3 units along one edge and 4 along the other, and the diagonal must measure 5 if the corner is square. The same geometry sizes roof pitches, ramps, and staircases.",
+        "Navigation and surveying reduce to right triangles too: a distance and a bearing give a right triangle whose legs are the east-west and north-south offsets. Any problem with a right angle and two known values is a problem this calculator can solve.",
+      ],
+    },
+  ],
+
+  "rounding-calculator": [
+    {
+      heading: "How does rounding work?",
+      paragraphs: [
+        "Rounding replaces a number with a nearby value that has fewer digits. The standard rule is simple: look at the first digit being dropped — if it is 5 or more, round the last kept digit up; if it is 4 or less, leave it. This calculator rounds to any number of decimal places from 0 to 10.",
+        "It also shows the floor (always rounded down), the ceiling (always rounded up), and the nearest integer, so you can compare all four ways of simplifying the same number at a glance.",
+        "This is standard rounding, not banker's rounding: a trailing 5 always rounds up, so 2.5 becomes 3. Banker's rounding would send 2.5 to 2, the nearest even number, to avoid bias over many roundings.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**3.14159** to 2 decimal places: the third decimal is 1, so the result is **3.14**. The floor is 3.14, the ceiling is 3.15, and the nearest integer is 3.",
+        "A case where the digit matters: 3.146 to 2 places is **3.15**, because the third decimal is 6. And 2.5 to 0 places is **3** — the .5 rounds up under the standard rule this calculator uses.",
+      ],
+    },
+    {
+      heading: "Rounding in real life",
+      paragraphs: [
+        "Money is rounded to 2 decimal places, measurements to the precision of the instrument that took them — reporting a length to six decimals from a ruler marked in millimetres is false precision, not accuracy.",
+        "One rule matters everywhere: do the rounding last. Rounding intermediate steps and then calculating from the rounded values compounds the error, sometimes enough to change the final answer.",
+      ],
+    },
+  ],
+
+  "sample-size-calculator": [
+    {
+      heading: "How many survey responses do you need?",
+      paragraphs: [
+        "The sample size for a survey depends on three things: the confidence level, the margin of error, and the population size. This calculator uses Cochran's formula with the most conservative assumption — a 50/50 split (p = 0.5) — which gives the largest sample size and keeps the results reliable whatever the true proportion turns out to be.",
+        "It starts with the infinite-population size, n₀ = z²p(1−p)/e², where z is 1.645 for 90%, 1.96 for 95%, or 2.576 for 99% confidence, then applies the finite population correction, n = n₀ ÷ (1 + (n₀−1)/N), which shrinks the sample when the population is small.",
+        "It also suggests how many surveys to send, assuming an 80% response rate: divide the required sample by 0.8. If you expect a lower response rate, send proportionally more.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "95% confidence, 5% margin, population 10,000: n₀ = 1.96² × 0.25 ÷ 0.05² = **384.16**, so **385** for an infinite population; with the correction, n = 384.16 ÷ (1 + 383.16/10,000) ≈ 369.98, rounded up to **370**. At an 80% response rate, send **463** surveys.",
+        "Dropping to 90% confidence shrinks the infinite-population sample to **271**, because z falls to 1.645. And halving the margin of error to 2.5% quadruples the infinite-population figure to 1,537 — precision is expensive.",
+      ],
+    },
+    {
+      heading: "What the numbers assume",
+      paragraphs: [
+        "The formula assumes random sampling: every member of the population has an equal chance of responding. A self-selected online poll does not meet that assumption, and no sample size fixes a biased sample.",
+        "It also assumes the worst case, p = 0.5. If you already know the proportion you are measuring is far from 50% — say 10% — a smaller sample would do, but this calculator keeps the conservative figure so the result stays reliable either way.",
+      ],
+    },
+  ],
+
+  "semester-grade-calculator": [
+    {
+      heading: "How is a semester grade calculated?",
+      paragraphs: [
+        "A semester grade is a weighted average: each component score is multiplied by its weight, the products are added, and the total is divided by the sum of the weights. This calculator combines assignments, midterm, and final exam scores, then converts the percentage to a letter grade.",
+        "The weights do not have to add up to 100 — the calculator divides by the actual total weight, so any consistent set of weights works. The letter scale runs from A at 93% down to F below 60%, with plus and minus steps in between.",
+        "Use it before the final to see what score you need: try different final-exam scores and watch the letter grade move.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Assignments **88%** (weight 30), midterm **76%** (weight 30), final **91%** (weight 40): (88×30 + 76×30 + 91×40) ÷ 100 = (2,640 + 2,280 + 3,640) ÷ 100 = **85.60%**, a **B**.",
+        "The final carries the most weight here: raising the final from 91 to 100 would lift the grade to 89.20%, a B+. And a 10-point drop on the final, to 81, would cost 4 points overall, giving 81.60% — a B−.",
+      ],
+    },
+    {
+      heading: "Planning for the final exam",
+      paragraphs: [
+        "Work backwards from the grade you want. To find the final score that earns a target percentage, rearrange the formula: needed final = (target × total weight − assignments × their weight − midterm × its weight) ÷ final weight.",
+        "If the required score is above 100, the target is out of reach this semester — that is useful information too, because it tells you to aim for the next grade down rather than chasing an impossible number.",
+      ],
+    },
+  ],
+
+  "variance-calculator": [
+    {
+      heading: "What is variance?",
+      paragraphs: [
+        "Variance measures how spread out a set of numbers is: the average of the squared differences from the mean. A small variance means the numbers cluster near the mean; a large one means they are widely scattered. This calculator takes five values and reports both population and sample variance, plus the mean and the population standard deviation.",
+        "Population variance divides the sum of squared differences by N, the number of values, and is used when the data is the entire group. Sample variance divides by n−1 instead, which corrects the slight underestimation that comes from using a sample to estimate a population — and is why the sample figure is always a little larger.",
+        "Variance is in squared units, which makes it hard to interpret directly. Its square root, the standard deviation, is in the original units — this calculator shows the population standard deviation for that reason.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Values **4, 8, 6, 5, 3**: the mean is **5.2**. Squared differences from the mean: 1.44, 7.84, 0.64, 0.04, 4.84, summing to 14.8. Population variance = 14.8 ÷ 5 = **2.96**; sample variance = 14.8 ÷ 4 = **3.70**; population standard deviation = √2.96 = **1.7205**.",
+        "The spread is driven by the extremes: the 8 alone contributes 7.84, more than half the total. If all five values were 5.2, every difference would be zero and the variance would be 0 — no spread at all.",
+      ],
+    },
+    {
+      heading: "When to use population vs sample variance",
+      paragraphs: [
+        "Use population variance when your five values are the whole group you care about — the test scores of an entire class, for example. Use sample variance when they are a sample drawn from a larger group you want to describe.",
+        "Most statistical work uses sample variance, because most data is a sample. The n−1 divisor is called Bessel's correction, and the gap between the two figures shrinks as the data set grows — with five values it is the difference between dividing by 5 and by 4.",
+      ],
+    },
+  ],
+
+  "weighted-grade-calculator": [
+    {
+      heading: "How is a weighted grade calculated?",
+      paragraphs: [
+        "A weighted grade is an average where each component counts according to its weight: multiply each grade by its weight, add the products, and divide by the total weight. This calculator takes three grade-and-weight pairs and returns the weighted average as a percentage.",
+        "The weights do not need to add up to 100 — the calculator divides by whatever the weights total, so weights of 2, 3, and 5 work exactly like 20, 30, and 50. What matters is the ratio between them.",
+        "If the total weight is zero, the calculator returns 0% — a grade needs at least one weighted component to mean anything.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Grades **90** (weight 20), **80** (weight 30), **95** (weight 50): (90×20 + 80×30 + 95×50) ÷ 100 = (1,800 + 2,400 + 4,750) ÷ 100 = **89.50%**.",
+        "Compare the plain average: (90 + 80 + 95) ÷ 3 = 88.33%. The weighted result is higher because the best grade, 95, carries half the weight. The same three grades with equal weights of 1, 1, 1 would give exactly the plain average, 88.33%.",
+      ],
+    },
+    {
+      heading: "Weights, points, and percentages",
+      paragraphs: [
+        "A syllabus may give weights as percentages (20%, 30%, 50%), as points (200, 300, 500), or as counts of assignments — all three work here, because the calculator normalises by the total. Enter the numbers as they appear in the syllabus.",
+        "One common mistake is entering a grade as a fraction (0.9) instead of a percentage (90). The calculator expects percentages, so a 0.9 would be read as 0.9%, not 90% — and the average would collapse accordingly.",
+      ],
+    },
+  ],
+
+  "z-score-calculator": [
+    {
+      heading: "What is a z-score?",
+      paragraphs: [
+        "A z-score (standard score) tells you how many standard deviations a value sits from the mean: z = (x − μ) ÷ σ. A z-score of 2 means the value is two standard deviations above the mean; a negative z-score means it is below the mean.",
+        "This calculator also converts the z-score into a percentile — the percentage of values in a normal distribution that fall below yours — using the standard normal curve. A z-score of 0 is the 50th percentile by definition.",
+        "Z-scores let you compare values from different distributions on the same scale: a test score and a height, for example, can both be expressed as 'how many standard deviations above average'.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A value of **130** with mean 100 and standard deviation 15: z = (130 − 100) ÷ 15 = **2.00**, above the mean, at the **97.72nd percentile** — higher than about 97.72% of values.",
+        "The same distance below the mean, a value of 70, gives z = **−2.00** and the **2.28th percentile**. The two percentiles sum to 100, as they must: 97.72 + 2.28 = 100.",
+      ],
+    },
+    {
+      heading: "The 68-95-99.7 rule",
+      paragraphs: [
+        "For a normal distribution, about 68% of values fall within one standard deviation of the mean (z between −1 and 1), about 95% within two, and about 99.7% within three. That is why a z-score of 2 is already unusual, and a z-score of 3 is rare.",
+        "The rule is a quick sanity check: if a data set claims to be normal but a third of its values sit beyond z = ±1, something is off — either the distribution is not normal, or the mean and standard deviation are wrong.",
+      ],
+    },
+  ],
+
+  "cycling-speed-calculator": [
+    {
+      heading: "How is cycling speed calculated?",
+      paragraphs: [
+        "Average cycling speed is simply **distance divided by time**: ride 20 miles in 1 hour and 15 minutes and your average speed is 16 mph. This calculator takes the distance in miles and the ride time in hours and minutes, then reports your average speed in mph and km/h, plus your pace in minutes per mile.",
+        "The km/h figure is the mph speed multiplied by 1.609, and pace is 60 divided by the mph speed — so a 16 mph ride is a 3.8-minute mile. Because the calculation uses total elapsed time, any stops along the way count against your average, just as they would on a bike computer that is left running.",
+        "Average speed is the most useful single number for comparing rides, but it hides the detail: a hilly 16 mph ride is a much harder effort than a flat 16 mph ride. Use the pace figure when you want to plan how long a route will take — multiply the minutes-per-mile pace by the distance.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **20-mile ride completed in 1 hour 15 minutes**. The total time is 1 + 15/60 = **1.25 hours**, so the average speed is 20 ÷ 1.25 = **16.0 mph**. In metric that is 16.0 × 1.609 = **25.7 km/h**, and the pace is 60 ÷ 16.0 = **3.8 minutes per mile**.",
+        "If the same 20 miles took 1 hour 40 minutes instead, the time would be 1.667 hours and the speed would fall to 20 ÷ 1.667 = **12.0 mph** — a reminder that a small change in time makes a big difference to the average over a short ride.",
+      ],
+    },
+    {
+      heading: "What is a good cycling speed?",
+      paragraphs: [
+        "The calculator's own guidance puts **casual riding at 10–14 mph** and **racing at 25 mph and above**. Most recreational riders on flat ground sit somewhere in the mid-teens, and anything above 20 mph for a sustained ride is a strong effort for a non-racer.",
+        "Compare like with like: wind, hills, road surface, and bike type all move the number. A 14 mph average into a headwind on a heavy bike can be a harder ride than 18 mph with a tailwind on a road bike. Track your speed on the same route over time — that is where the trend means something.",
+        "Note that this calculator reports speed and pace only; it does not estimate calories burned. If you want a calorie figure, a bike computer or fitness app that knows your weight and the route profile will give a much better estimate than distance alone.",
+      ],
+    },
+  ],
+
+  "day-of-week-calculator": [
+    {
+      heading: "How do you find the day of the week for a date?",
+      paragraphs: [
+        "Enter the year, month, and day, and the calculator works out which day of the week that date falls on — Sunday through Saturday — using the standard Gregorian calendar. It also tells you whether the year is a leap year.",
+        "A year is a leap year if it is divisible by 4, **except** century years, which must be divisible by 400. So 2024 and 2000 were leap years, but 1900 was not. Leap years matter here because the extra day shifts every date after February forward by one weekday.",
+        "The calculator accepts any year you type, past or future. Enter the date as numbers — month 1–12, day 1–31 — and it returns the weekday, the formatted date, and the leap-year answer in one go.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter **1 January 2000**: the calculator returns **Saturday**, and the year is a leap year (2000 ÷ 400 = 5 exactly, so it passes the century rule). Enter **20 July 1969**, the day of the first Moon landing, and it returns **Sunday**.",
+        "The leap-year rule is easy to check by hand for recent years: 2024 ÷ 4 = 506 with no remainder, so 2024 was a leap year; 2025 ÷ 4 leaves a remainder, so it was not.",
+      ],
+    },
+    {
+      heading: "What is the day-of-week calculator useful for?",
+      paragraphs: [
+        "The most common use is curiosity — finding the weekday you were born on, or the day a historical event happened. It is also handy for planning: checking which weekday an anniversary, holiday, or deadline falls on in a future year before you book anything.",
+        "One thing to watch: the calculator does not reject impossible dates. Enter 30 February and it rolls forward to 2 March (or 1 March in a leap year) instead of showing an error, so double-check the formatted date in the results before trusting the weekday.",
+        "Very old dates use modern Gregorian calendar rules, which were only adopted in 1582 — dates before that may not match the Julian calendar that was actually in use at the time.",
+      ],
+    },
+  ],
+
+  "dew-point-calculator": [
+    {
+      heading: "What is dew point, and how is it calculated?",
+      paragraphs: [
+        "The dew point is the temperature at which air becomes saturated with moisture, so water starts to condense — it is the temperature at which dew forms. This calculator works it out from the air temperature in °C and the relative humidity using the **Magnus formula**.",
+        "The formula first computes an intermediate value, α = 17.27 × T ÷ (237.7 + T) + ln(RH ÷ 100), where T is the air temperature and RH is the relative humidity as a percentage. The dew point is then Td = 237.7 × α ÷ (17.27 − α). The calculator also converts the result to °F and labels the comfort level.",
+        "Dew point is a better guide to how humid the air feels than relative humidity, because it measures the actual amount of moisture in the air. Relative humidity changes as the temperature changes through the day; the dew point stays roughly steady unless the air mass itself changes.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take air at **25°C with 60% relative humidity**. First, α = 17.27 × 25 ÷ (237.7 + 25) + ln(0.60) = 1.6434 − 0.5108 = **1.1326**. Then the dew point is 237.7 × 1.1326 ÷ (17.27 − 1.1326) = **16.7°C**, which is **62.0°F**.",
+        "The calculator rates that **Somewhat Humid**: its bands are Dry at 10°C and below, Comfortable from 10–16°C, Somewhat Humid from 16–20°C, Very Humid from 20–24°C, and Extremely Humid above 24°C.",
+      ],
+    },
+    {
+      heading: "What dew point feels comfortable?",
+      paragraphs: [
+        "Below 10°C the air feels dry, and 10–16°C is generally comfortable — the range most people find pleasant. Once the dew point passes 16°C the air starts to feel sticky, and above 20°C most people find it oppressive, because sweat evaporates slowly and the body struggles to cool down.",
+        "If the dew point equals the air temperature, the relative humidity is 100% and condensation is happening — fog, dew, or rain. A large gap between the temperature and the dew point means dry air and clear skies; a small gap means humid, muggy conditions.",
+        "Gardeners and builders use the dew point too: it predicts when condensation will form on surfaces, which matters for painting, varnishing, and preventing mould. Paint applied when surfaces are near the dew point can fail to dry properly.",
+      ],
+    },
+  ],
+
+  "dice-roller": [
+    {
+      heading: "How does the dice roller work?",
+      paragraphs: [
+        "The dice roller picks a random number between 1 and the number of sides for each die you roll, then adds them up. You choose how many dice (1–20) and how many sides each die has (2–100), and it shows the total, the individual rolls, the average roll, and the highest total possible.",
+        "Every die is an independent random pick, so each face is equally likely on every roll. Click Calculate again to re-roll — the results change every time, and past rolls have no effect on future ones.",
+        "The roller covers all the standard tabletop dice — d4, d6, d8, d10, d12, and d20 — plus any custom size up to 100 sides, which makes it useful for board games, role-playing games, and classroom probability experiments alike.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Roll **2 six-sided dice**. One possible result is a 4 and a 6: the total is **10**, the average roll is **5.0**, and the maximum possible total is 2 × 6 = **12**. Re-roll and you might get a 2 and a 3 for a total of 5 — both outcomes are equally the result of the same random process.",
+        "Over many rolls the averages settle down: a single six-sided die averages **3.5** (the faces 1–6 add to 21, divided by 6), so two dice average **7**. Seven is also the single most likely total, with 6 of the 36 possible combinations — 1+6, 2+5, 3+4, 4+3, 5+2, and 6+1 — giving a probability of 6 ÷ 36, or about **16.7%**.",
+      ],
+    },
+    {
+      heading: "Is the dice roller fair?",
+      paragraphs: [
+        "For games, yes. The roller uses JavaScript's Math.random(), which produces pseudo-random numbers — evenly distributed and unpredictable enough for board games, RPGs, and teaching. It is not a cryptographic random generator, so it is not suitable for lotteries, gambling, or security uses.",
+        "Because the dice are independent, there is no such thing as a die being 'due' a good roll. A run of low numbers does not make a high number more likely next time — each roll starts fresh, which is exactly how physical dice behave.",
+        "One practical note: the roller caps the roll at 20 dice even if you enter a larger number, but the 'Max Possible' figure still uses the number you typed. Keep the number of dice at 20 or below and the two figures will agree.",
+      ],
+    },
+  ],
+
+  "electricity-calculator": [
+    {
+      heading: "How is electricity cost calculated?",
+      paragraphs: [
+        "Electricity cost is calculated from energy use: **kilowatt-hours (kWh) = watts × hours ÷ 1,000**, and **cost = kWh × your rate per kWh**. This calculator takes an appliance's wattage, how many hours a day it runs, and your electricity rate, then shows the daily, monthly, and annual cost.",
+        "The monthly figure is the daily cost multiplied by 30, and the annual figure is the daily cost multiplied by 365. That is a small inconsistency worth knowing about: twelve 30-day months are 360 days, not 365, so the monthly figure times 12 comes out slightly lower than the annual figure.",
+        "A kilowatt-hour is the energy a 1,000-watt appliance uses in one hour — a 100-watt bulb running for 10 hours uses exactly 1 kWh. Your electricity bill charges per kWh, which is why the rate is quoted in dollars per kWh.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **1,500-watt space heater running 6 hours a day** at a rate of **$0.17 per kWh**. Daily energy use is 1,500 × 6 ÷ 1,000 = **9.0 kWh**, costing 9.0 × $0.17 = **$1.53 a day**.",
+        "The monthly cost is $1.53 × 30 = **$45.90**, and the annual cost is $1.53 × 365 = **$558.45**. Twelve months at $45.90 would be $550.80 — the $7.65 gap is the 30-day month versus 365-day year difference described above.",
+      ],
+    },
+    {
+      heading: "How can you lower an appliance's electricity cost?",
+      paragraphs: [
+        "Only three things move the number: **watts, hours, and rate**. A lower-wattage appliance, fewer hours of use, or a cheaper tariff are the only levers — everything else is detail. The biggest wins usually come from high-wattage appliances that run for hours: heaters, air conditioners, water heaters, and older fridges.",
+        "Find an appliance's wattage on its label or in its manual — a typical LED bulb is about 10W, a laptop about 50W, and an air conditioner 1,000–3,500W. If the label gives amps instead of watts, multiply amps by volts (120V in the US) to get watts.",
+        "Use the calculator to compare before you buy: a 1,500W heater and a 750W heater cost exactly half as much to run for the same hours, and a device left on standby still draws power. Small wattages add up when they run all day, every day.",
+      ],
+    },
+  ],
+
+  "fence-calculator": [
+    {
+      heading: "How is fence material calculated?",
+      paragraphs: [
+        "Fence material is calculated from the length of the fence run: **posts = length ÷ post spacing + 1** (rounded up), **rails = sections × 3**, and **pickets = length ÷ 0.5**, assuming 6-inch-wide pickets. Post depth is one-third of the fence height.",
+        "The '+1' in the post count is the end post: a fence with 13 sections needs 14 posts, one at each end plus one between every pair of sections. Rails are counted as three per 8-foot section, and pickets at two per foot of fence length.",
+        "Enter the total fence length, the height, and the spacing between posts, and the calculator returns the post, rail, and picket counts plus the recommended post depth — the four numbers you need for a materials list.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **100-foot fence, 6 feet high, with posts 8 feet apart**. Posts = 100 ÷ 8 rounded up (13) + 1 = **14 posts**. Rails = 13 sections × 3 = **39 rails**. Pickets = 100 ÷ 0.5 = **200 pickets**. Post depth = 6 ÷ 3 = **2 feet**.",
+        "So the shopping list is 14 posts (8 feet long, to allow 2 feet underground and 6 feet above), 39 eight-foot rails, and 200 pickets — before adding gates, concrete, and hardware, which the calculator does not cover.",
+      ],
+    },
+    {
+      heading: "What should you check before buying fence materials?",
+      paragraphs: [
+        "Buy a few extra pickets and at least one spare post: boards split, posts arrive warped, and cuts go wrong. The calculator gives exact counts for a straight run, so corners, slopes, and gates all need adjusting by hand.",
+        "Two assumptions are built into this calculator: rails are counted as three per 8-foot section whatever the fence height or post spacing, and pickets assume 6-inch boards with no gap. If you are building a shorter fence with two rails per section, or pickets with gaps between them, adjust the rail and picket counts yourself.",
+        "Check local rules before you dig: many areas limit fence height (often 6 feet in back gardens, lower in front), require the finished side to face outwards, and need you to call before digging to mark buried utilities.",
+      ],
+    },
+  ],
+
+  "flooring-calculator": [
+    {
+      heading: "How much flooring do I need?",
+      paragraphs: [
+        "Flooring is calculated from the room area plus a waste allowance: **total = length × width × (1 + waste%)**. This calculator takes the room's length and width in feet and a waste percentage, then shows the square footage to buy and the number of boxes, assuming 20 sq ft per box.",
+        "The waste allowance covers cuts, damaged boards, and the odd mistake — it is not optional padding. A rectangular room with straight cuts wastes less than a room with angles, doorways, and a diagonal layout.",
+        "Boxes are rounded up, because you cannot buy part of a box. The room area is shown separately so you can see exactly how much of the total is waste.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **15 × 12 foot room with a 10% waste allowance**. The room area is 15 × 12 = **180 sq ft**. Adding 10% waste gives 180 × 1.10 = **198 sq ft** to buy.",
+        "At 20 sq ft per box, 198 ÷ 20 = 9.9 boxes, rounded up to **10 boxes** — 200 sq ft in total, leaving 2 sq ft spare for future repairs.",
+      ],
+    },
+    {
+      heading: "How much waste should you allow for flooring?",
+      paragraphs: [
+        "The calculator's guidance is **10% for a straight layout and 15% for a diagonal layout**. Diagonal boards need more cuts at the walls, so more material ends up as offcuts. Rooms with many doorways, closets, or angled walls deserve the higher figure too.",
+        "Check the box size on your actual product: the calculator assumes 20 sq ft per box, but coverage varies by brand and plank size. Divide your total square footage by the real coverage to get the true box count.",
+        "Keep the leftover boards after installation. A matching spare box is far more useful than a refund — flooring lines get discontinued, and a damaged board years later is much easier to fix if you have the exact product on hand.",
+      ],
+    },
+  ],
+
+  "gdp-calculator": [
+    {
+      heading: "How is GDP calculated?",
+      paragraphs: [
+        "GDP — Gross Domestic Product — is calculated with the **expenditure approach**: **GDP = C + I + G + (X − M)**, where C is consumption, I is investment, G is government spending, and (X − M) is net exports. Add up what everyone in the country spends and you get the total value of everything produced.",
+        "This calculator takes the five components in billions and returns total GDP, net exports, and consumption as a percentage of GDP. All five inputs must be in the same units — the results are labelled in billions to match.",
+        "Consumption is usually the largest component in developed economies, often around two-thirds of GDP. Investment covers business spending on equipment and buildings plus new housing; government spending covers public services and infrastructure, but not transfer payments like pensions.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Use the calculator's default values: consumption **$14,000B**, investment **$3,500B**, government spending **$3,200B**, exports **$2,500B**, and imports **$3,100B**. Net exports are 2,500 − 3,100 = **−$600B** — negative, because imports exceed exports.",
+        "GDP is then 14,000 + 3,500 + 3,200 − 600 = **$20,100B**. Consumption as a share of GDP is 14,000 ÷ 20,100 × 100 = **69.7%**.",
+      ],
+    },
+    {
+      heading: "What does GDP not tell you?",
+      paragraphs: [
+        "GDP measures the size of an economy, not how well off its people are. It says nothing about how income is distributed, what the money buys, or what is left out — unpaid housework, volunteering, and the informal economy are all invisible to it.",
+        "This calculator gives **nominal GDP** — the raw total at current prices. Comparing GDP across years needs a real (inflation-adjusted) figure, and comparing across countries needs a per-person figure and a common currency. A country with twice the GDP is not necessarily twice as wealthy per person.",
+        "Net exports are the component most often misunderstood: a negative figure is a trade deficit, and it subtracts from GDP arithmetically — but a deficit on its own is not a verdict on an economy's health, since imports include the machinery and materials that domestic production depends on.",
+      ],
+    },
+  ],
+
+  "golf-handicap-calculator": [
+    {
+      heading: "How is a golf handicap calculated?",
+      paragraphs: [
+        "A golf handicap starts from a **score differential**: **(score − course rating) × 113 ÷ slope rating**. The differential adjusts your raw score for how hard the course is, so a 92 on a tough course counts for more than a 92 on an easy one. This calculator works out the differential for each of your three scores, then multiplies the best one by 0.96 to give an estimated handicap index.",
+        "The course rating is the score a scratch golfer is expected to shoot on that course; the slope rating (55–155, with 113 as standard) measures how much harder the course plays for a bogey golfer than for a scratch golfer. Both numbers are printed on the scorecard.",
+        "The 0.96 multiplier — sometimes called the 'bonus for excellence' — slightly rewards your best rounds, so your index reflects what you are capable of rather than your average day.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take scores of **92, 88, and 95** on a course rated **72** with a slope of **113**. The differentials are (92 − 72) × 113 ÷ 113 = **20.0**, (88 − 72) = **16.0**, and (95 − 72) = **23.0**. The best differential is **16.0** and the average is **19.7**.",
+        "The estimated handicap index is the best differential × 0.96 = 16.0 × 0.96 = **15.4**. On a standard course, that means roughly 15 strokes above par.",
+      ],
+    },
+    {
+      heading: "Is this an official handicap index?",
+      paragraphs: [
+        "No — this is a simplified estimate from three rounds. An official WHS (World Handicap System) index uses the best 8 differentials from your last 20 rounds, averaged and multiplied by 0.96, and is maintained by a golf club or national association. Use this calculator as a guide, not as a tournament handicap.",
+        "Because it takes your single best differential, this estimate runs lower — more generous — than an official index computed from the same three rounds would. With more rounds entered, the official method's average-of-eight would give a steadier, fairer number.",
+        "Lower is better: a handicap of 0 means you typically shoot par, and a 15.4 index means about 15 strokes over par on a standard course. The lower your index, the fewer strokes you receive in handicap competition.",
+      ],
+    },
+  ],
+
+  "gravel-calculator": [
+    {
+      heading: "How much gravel do I need?",
+      paragraphs: [
+        "Gravel is calculated from the volume of the area to cover: **cubic feet = length × width × (depth in inches ÷ 12)**, then **cubic yards = cubic feet ÷ 27**, and **tons = cubic yards × 1.4**. Enter the length, width, and depth, and the calculator returns all three figures.",
+        "The 1.4 tons per cubic yard is a typical average for crushed stone — suppliers sell by the cubic yard or by the ton, so having both numbers lets you compare quotes either way. Actual weight varies by stone type and moisture, so confirm with your supplier if you are ordering by weight.",
+        "Depth is the input people most often get wrong. It is the finished, compacted depth of gravel, not the depth of the hole — so measure the depth you want the gravel to sit at once it has been spread and settled.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **20 × 10 foot area at 3 inches deep**. The volume is 20 × 10 × (3 ÷ 12) = **50 cubic feet**. Divide by 27 to get **1.85 cubic yards**, and multiply by 1.4 to get **2.59 tons**.",
+        "A supplier selling by the yard would quote for 1.85 cubic yards — most round up to 2 yards — and one selling by the ton would quote about 2.6 tons. Either way, the same volume is being described.",
+      ],
+    },
+    {
+      heading: "How deep should gravel be?",
+      paragraphs: [
+        "The calculator's guidance is **3–4 inches for driveways, 2–3 inches for walkways, 6–12 inches for drainage, and 2 inches for decorative cover**. Driveways need the extra depth because vehicle weight compacts and displaces the stone over time.",
+        "Order 5–10% more than the calculator shows for settling, spillage, and uneven ground — the figure is exact for a perfectly flat area at a perfectly even depth, and real ground is neither. It is cheaper to order a little extra than to pay a second delivery fee.",
+        "For driveways, lay the gravel in layers if you can: a compacted base layer of larger stone with a thinner top layer of smaller gravel gives a firmer surface than one deep layer of a single size.",
+      ],
+    },
+  ],
+
+  "heat-index-calculator": [
+    {
+      heading: "What is the heat index, and how is it calculated?",
+      paragraphs: [
+        "The heat index is the **'feels like' temperature** — how hot the air actually feels once humidity is taken into account. This calculator uses the **Rothfusz regression equation** published by the National Weather Service, which combines air temperature in °F and relative humidity into a single apparent temperature.",
+        "Humidity matters because sweat is the body's cooling system: in humid air, sweat evaporates slowly, so the body sheds heat less effectively and the same air temperature feels hotter. At low humidity the heat index is close to the air temperature; at high humidity it can run 10–15°F hotter.",
+        "The equation is designed for temperatures of 80°F and above with humidity of 40% and above. Outside that range the result is less meaningful — below 80°F, humidity barely changes how the temperature feels.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take an air temperature of **95°F with 55% relative humidity**. Plugging those values into the Rothfusz equation gives a heat index of **109°F** (43°C) — 14 degrees hotter than the thermometer reads — and the calculator rates it **Danger**.",
+        "For comparison, 90°F at 40% humidity gives a heat index of about **91°F**, barely above the air temperature. The same 90°F at 80% humidity would feel far worse, which is why the humidity input matters as much as the temperature.",
+      ],
+    },
+    {
+      heading: "When is the heat index dangerous?",
+      paragraphs: [
+        "The calculator's danger bands are: below 90°F **Caution**, 90–104°F **Extreme Caution**, 105–129°F **Danger**, and 130°F and above **Extreme Danger**. Above 105°F, heat illness becomes likely with prolonged exposure or physical activity.",
+        "In the Danger band and above, the practical steps are simple: stay in shade or air conditioning during the hottest hours, drink water before you feel thirsty, and cut back on strenuous activity. Heat stroke is a medical emergency — confusion, hot dry skin, or fainting in the heat needs urgent help.",
+        "Note that this calculator applies the core Rothfusz equation without the National Weather Service's small adjustments for very low or very high humidity, so at the extremes of the humidity range the figure is approximate rather than exact.",
+      ],
+    },
+  ],
+
+  "horsepower-calculator": [
+    {
+      heading: "How is horsepower calculated from torque and RPM?",
+      paragraphs: [
+        "Horsepower is calculated from torque and engine speed with the formula **HP = torque × RPM ÷ 5,252**, where torque is in pound-feet. This calculator also converts the result to kilowatts (× 0.7457) and metric horsepower, or PS (× 1.01387).",
+        "Torque is the twisting force the engine produces; horsepower is how fast it can do work — torque multiplied by how quickly the engine is spinning. That is why the same torque figure means very different power at different RPM: double the revs and you double the horsepower.",
+        "The constant 5,252 comes from the definition of one horsepower as 33,000 foot-pounds per minute, divided by 2π to convert revolutions to radians. At exactly 5,252 RPM, an engine's horsepower and torque numbers are equal — a handy check when reading a dyno chart.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take an engine making **300 lb-ft of torque at 5,000 RPM**. Horsepower is 300 × 5,000 ÷ 5,252 = **285.6 HP**. In metric terms that is 285.6 × 0.7457 = **213.0 kW**, and 285.6 × 1.01387 = **289.6 PS**.",
+        "At 2,500 RPM the same 300 lb-ft would give only 300 × 2,500 ÷ 5,252 = **142.8 HP** — half the power, because the engine is doing the same work half as often. This is why engines are rated at their peak-RPM power figure, not at idle.",
+      ],
+    },
+    {
+      heading: "Horsepower vs torque: which matters?",
+      paragraphs: [
+        "Both, for different things. **Torque is what you feel** — the push that accelerates the car from a standstill and pulls it up a hill. **Horsepower is what sustains speed** — it decides how fast the car can ultimately go and how quickly it accelerates at higher speeds.",
+        "A diesel truck and a sports car can have similar horsepower with very different torque: the truck makes its torque low in the rev range for pulling loads, while the sports car makes its power high in the rev range for speed. The calculator shows the relationship at one operating point — a full picture needs the torque curve across the rev range.",
+        "This calculator works from torque and RPM only. It does not estimate horsepower from vehicle weight or acceleration times, so you need a torque figure — from the manufacturer's spec sheet or a dyno run — to use it.",
+      ],
+    },
+  ],
+
+  "ip-subnet-calculator": [
+    {
+      heading: "How do subnet calculations work?",
+      paragraphs: [
+        "A subnet is defined by its **CIDR prefix length** — the number after the slash, such as /24. The prefix tells you how many of the 32 bits in an IPv4 address identify the network, and the rest identify hosts: **total addresses = 2^(32 − prefix)**, and **usable hosts = total − 2**.",
+        "Two addresses are always unusable: the first address in the range is the network address and the last is the broadcast address, so neither can be assigned to a device. The subnet mask is the prefix written as four octets — a /24 is 255.255.255.0 — and the wildcard mask is its inverse, 0.0.0.255.",
+        "Each extra prefix bit halves the number of addresses: /24 has 256 addresses, /25 has 128, and /26 has 64. Going the other way, /23 has 512 and /16 has 65,536.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter a prefix of **24**. Total addresses = 2^(32 − 24) = 2^8 = **256**, and usable hosts = 256 − 2 = **254**. The subnet mask is **255.255.255.0** and the wildcard mask is **0.0.0.255**.",
+        "Enter **26** instead: total addresses = 2^6 = **64**, usable hosts = **62**, and the mask is **255.255.255.192** — the last octet keeps 2 host bits (192 = 128 + 64) and the wildcard mask is 0.0.0.63.",
+      ],
+    },
+    {
+      heading: "What can you do with the subnet numbers?",
+      paragraphs: [
+        "The usual job is sizing a network: pick the smallest prefix that fits your device count with room to grow. A 50-device office fits in a /26 (62 usable hosts), but a /25 (126 usable) leaves headroom for growth without wasting much address space.",
+        "The wildcard mask is used in access-control lists and some routing configurations, where it says which bits of an address must match and which can vary. It is simply 255 minus each octet of the subnet mask.",
+        "Two limits to know: this calculator works from the prefix length alone, so it cannot show the network or broadcast address for a specific IP — you need an IP address as well as a prefix for that. And for /31 and /32 prefixes it reports 0 usable hosts, even though /31 links are used for point-to-point connections where both addresses carry traffic.",
+      ],
+    },
+  ],
+
+  "mulch-calculator": [
+    {
+      heading: "How much mulch do I need?",
+      paragraphs: [
+        "Mulch is calculated from the volume of the bed: **cubic feet = length × width × (depth in inches ÷ 12)**, then **cubic yards = cubic feet ÷ 27**. This calculator also converts the volume into standard 2-cubic-foot bags, rounded up.",
+        "Suppliers sell mulch by the cubic yard in bulk or by the bag at a garden centre, so the calculator gives you both numbers. A cubic yard is 27 cubic feet — about 13.5 two-cubic-foot bags, or 14 bags rounded up.",
+        "Depth is the finished depth of mulch on the bed, not the depth of the bed itself. Measure the length and width of the area in feet and the depth you want in inches, and the calculator does the rest.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **20 × 10 foot bed at 3 inches deep**. The volume is 20 × 10 × (3 ÷ 12) = **50 cubic feet**. Divide by 27 to get **1.85 cubic yards**, and divide 50 by 2 to get **25 bags** of 2 cubic feet each.",
+        "A bulk supplier would quote about 2 cubic yards for this job; buying bags, you would need exactly 25. The bulk price per cubic yard is usually much lower than the bagged price, so for anything over a yard or two, bulk is the cheaper route.",
+      ],
+    },
+    {
+      heading: "How deep should mulch be, and how often should you top it up?",
+      paragraphs: [
+        "The ideal depth is **2–4 inches**. Too thin and weeds push through and moisture escapes; too thick and it can suffocate roots and trap too much moisture against stems. Keep mulch a few inches away from tree trunks and plant stems — piling it against bark (the 'mulch volcano') causes rot.",
+        "Mulch breaks down over a season, so most gardeners add 1–2 inches each spring to bring the depth back up. The calculator gives the volume for a full fresh layer; for a top-up, enter the depth you are adding rather than the total depth.",
+        "Bag counts assume standard 2-cubic-foot bags. If your bags are 3 cubic feet, divide the cubic-feet figure by 3 instead — the 50 cubic feet in the example would need 17 bags of that size, rounded up.",
+      ],
+    },
+  ],
+
+  "password-generator": [
+    {
+      heading: "How does the password generator work?",
+      paragraphs: [
+        "The password generator builds a password by picking characters at random from a **character pool**. Lowercase letters are always included; you can add uppercase letters, numbers, and symbols by setting each option to 1, and you choose the length from 4 to 64 characters. Click Calculate to generate a new password.",
+        "The pool sizes are fixed: 26 lowercase letters, 26 uppercase, 10 digits, and 26 symbols — so with all four types selected the pool is **88 characters**. Every character in the password is an independent random pick from that pool.",
+        "The calculator also reports **entropy**, the strength of the password measured in bits: entropy = log₂(pool size) × length. It rates the result Weak, Moderate, Strong, or Very Strong based on that number — over 40 bits is Moderate, over 60 is Strong, and over 80 is Very Strong.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Generate a **16-character password with all character types** (uppercase, numbers, and symbols all set to 1). The pool is 26 + 26 + 10 + 26 = **88 characters**, and the entropy is log₂(88) × 16 ≈ 6.46 × 16 = **103 bits**, rated **Very Strong**. A password like this would take far longer than the age of the universe to brute-force with current computers.",
+        "For comparison, a **12-character password using lowercase letters only** has a pool of 26 and entropy of log₂(26) × 12 ≈ 4.70 × 12 = **56 bits**, rated **Moderate**. Length matters more than character variety: adding four characters to a password strengthens it far more than adding symbols to a short one.",
+      ],
+    },
+    {
+      heading: "How should you use generated passwords?",
+      paragraphs: [
+        "Use a **different password for every account** and store them in a password manager — that is the point of generating random passwords you could never memorise. A 16-character generated password is strong; the same password reused across ten sites is not.",
+        "Two honest limits of this tool: it generates passwords with JavaScript's Math.random(), which is pseudo-random rather than cryptographically secure, so for the highest-security accounts a password manager's built-in generator is the better choice. And because characters are picked purely at random, there is no guarantee that every selected character type actually appears in the password — with 16 characters it almost always does, but check before you rely on it.",
+        "Longer is better, and there is no real downside to length: a 20- or 24-character password is barely harder to store in a manager than a 16-character one, and each extra character multiplies the guessing effort by the size of the pool.",
+      ],
+    },
+  ],
+
+  "random-number-generator": [
+    {
+      heading: "How does the random number generator work?",
+      paragraphs: [
+        "The generator picks integers at random from the range you set: **random = floor(Math.random() × (max − min + 1)) + min**. Every whole number between the minimum and maximum, inclusive, has an equal chance of appearing. Each click of Calculate returns three numbers — one main result plus two bonus numbers — all drawn independently from the same range.",
+        "The '+1' in the formula is what makes the maximum reachable: without it, the highest number could never be picked. So a range of 1 to 100 has exactly 100 possible values, and any specific number — 42, say — has a 1 in 100 chance on each draw.",
+        "The numbers come from JavaScript's Math.random(), which is pseudo-random: evenly distributed and unpredictable enough for games, raffles, and sampling, but not suitable for cryptography, lotteries, or anything where the randomness itself must be provably secure.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Set the minimum to **1** and the maximum to **100**, then click Calculate. You might get a main number of 42 with bonus numbers of 17 and 88 — the exact values are random, but the structure is fixed: three independent draws from 100 possible values, each with a 1% chance of being any particular number.",
+        "Narrow the range to **1 to 6** and the generator behaves like a die: each draw has a 1-in-6 chance of any face. Widen it to 1 to 1,000 and each specific number has a 0.1% chance. The maths is the same at any range — only the odds change.",
+      ],
+    },
+    {
+      heading: "What is a random number generator used for?",
+      paragraphs: [
+        "The everyday uses are picking winners, rolling dice, choosing names from a list, and sampling — any time you need a fair, unbiased pick. Teachers use it for random student selection, and developers use it to generate test data.",
+        "One rule to follow: **enter the smaller number as the minimum**. The calculator does not swap them for you, so entering the numbers the wrong way round produces wrong results — for numbers between 10 and 50, enter min 10 and max 50.",
+        "For a raffle or draw, decide the rules before you generate: draw once and use the main number, or use all three numbers for first, second, and third place. Either way, the draw is only as fair as the range is honest — make sure every entry maps to exactly one number.",
+      ],
+    },
+  ],
+
+  "recipe-converter": [
+    {
+      heading: "How do you scale a recipe up or down?",
+      paragraphs: [
+        "Recipe scaling is a simple proportion: **scale factor = desired servings ÷ original servings**, and every ingredient amount is multiplied by that factor. This calculator takes the original and desired serving counts plus two ingredient amounts, and returns the scaled amounts.",
+        "Doubling a 4-serving recipe to 8 gives a factor of 2.00×; halving it to 2 servings gives 0.50×. The factor applies equally to every ingredient, which is what keeps the recipe's proportions — and therefore its flavour — the same.",
+        "The calculator scales two ingredient amounts at a time and keeps the units you enter. Run it once per pair of ingredients for a longer recipe, and write the scaled amounts down as you go.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Scale a recipe from **4 servings to 8 servings** with ingredient amounts of **2 cups** and **1.5 cups**. The scale factor is 8 ÷ 4 = **2.00×**, so the first ingredient becomes 2 × 2 = **4.00 cups** and the second becomes 1.5 × 2 = **3.00 cups**.",
+        "Scaling the same recipe down to **2 servings** gives a factor of 2 ÷ 4 = **0.50×**, so 2 cups become **1.00 cup** and 1.5 cups become **0.75 cups**. The maths works identically in both directions.",
+      ],
+    },
+    {
+      heading: "What does not scale with a recipe?",
+      paragraphs: [
+        "Cooking times do **not** scale proportionally. A doubled batch may need slightly longer in the oven, especially for baking, but it will not need double the time — check for doneness with a thermometer or skewer rather than trusting the clock.",
+        "Strong seasonings — salt, chilli, garlic, spices — are best scaled cautiously. Start with about three-quarters of the scaled amount, taste, and add more: it is easy to add seasoning and impossible to take it out. Leavening agents like baking powder also behave differently in very large or very small batches.",
+        "This calculator scales amounts only; it does not convert units. If your recipe is in cups and you want grams, convert the units separately before or after scaling — and remember that pan size matters too: a doubled cake needs a bigger tin, not just more batter.",
+      ],
+    },
+  ],
+
+  "resistor-calculator": [
+    {
+      heading: "How do you calculate series and parallel resistance?",
+      paragraphs: [
+        "Resistors in **series** simply add up: **R = R1 + R2 + R3**. Resistors in **parallel** combine by reciprocals: **1/R = 1/R1 + 1/R2 + 1/R3**. This calculator takes up to three resistor values in ohms and shows both totals, plus the series and parallel results for the first two resistors alone.",
+        "Series increases total resistance — the current has to push through each resistor in turn. Parallel decreases it — each added resistor gives the current another path, so the total is always **less than the smallest individual resistor**.",
+        "The parallel formula is the one people get wrong most often: you add the reciprocals and then take the reciprocal of the sum. For two resistors there is a shortcut — R = (R1 × R2) ÷ (R1 + R2) — which gives the same answer as the reciprocal method.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take resistors of **100 Ω, 220 Ω, and 330 Ω**. In series: 100 + 220 + 330 = **650.0 Ω**. In parallel: 1/R = 1/100 + 1/220 + 1/330 = 0.01 + 0.004545 + 0.003030 = 0.017576, so R = 1 ÷ 0.017576 = **56.89 Ω** — less than the smallest resistor, as expected.",
+        "For the first two alone: series is 100 + 220 = **320.0 Ω**, and parallel is 1 ÷ (1/100 + 1/220) = 1 ÷ 0.014545 = **68.75 Ω**. The shortcut agrees: (100 × 220) ÷ (100 + 220) = 22,000 ÷ 320 = 68.75 Ω.",
+      ],
+    },
+    {
+      heading: "When should you use series vs parallel?",
+      paragraphs: [
+        "Use **series** when you need more resistance than a single resistor provides, or to split a voltage — two resistors in series form a voltage divider, with the voltage across each proportional to its resistance. Use **parallel** when you need less resistance, to share current between resistors, or to hit a value you do not have in a single part.",
+        "A practical trick: two equal resistors in parallel give half the value of one, so two 100 Ω resistors in parallel make 50 Ω. Combining series and parallel lets you build almost any value from a standard set of parts.",
+        "Watch the power rating, not just the resistance: a resistor that works electrically can still overheat if it carries too much current. Power is V² ÷ R, so a resistor dropping a large voltage at low resistance dissipates real heat — check the wattage before you build the circuit.",
+      ],
+    },
+  ],
+
+  "roofing-calculator": [
+    {
+      heading: "How is roofing material calculated?",
+      paragraphs: [
+        "Roofing is calculated from the **sloped roof area**, not the building's footprint: **roof area = length × width × pitch multiplier**, where the pitch multiplier is **√(1 + (pitch ÷ 12)²)**. Waste is added, then the total is divided by 100 to give **roofing squares** — the unit roofers buy in — and multiplied by 3 for the number of bundles.",
+        "Pitch is the rise in inches for every 12 inches of horizontal run: a 6/12 pitch rises 6 inches per foot. A steeper pitch means more roof surface over the same footprint, so the multiplier grows with pitch — 1.118 for 6/12, but 1.414 for a steep 12/12 pitch.",
+        "One roofing square covers 100 square feet, and the calculator assumes 3 bundles per square, which is standard for 3-tab shingles. The waste percentage covers cuts, starter rows, ridge caps, and mistakes.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **40 × 30 foot building with a 6/12 pitch and 15% waste**. The pitch multiplier is √(1 + (6 ÷ 12)²) = √1.25 = **1.118**, so the roof area is 40 × 30 × 1.118 = **1,342 sq ft**.",
+        "Adding 15% waste gives 1,342 × 1.15 = 1,543 sq ft, which is **15.4 squares**. Bundles are 15.4 × 3 = 46.3, rounded up to **47 bundles**. Without the pitch adjustment, the flat footprint of 1,200 sq ft would have under-ordered by about 12%.",
+      ],
+    },
+    {
+      heading: "What should you check before ordering roofing?",
+      paragraphs: [
+        "Measure to the **outer edge of the roof**, including the overhang — the calculator uses the building's length and width, so if you enter the wall dimensions you will under-order. Add the overhang on all sides, or bump the waste percentage to cover it.",
+        "Check your shingle type: the calculator assumes **3 bundles per square**, which suits standard 3-tab shingles. Architectural (laminate) shingles often need 4 bundles per square, which would raise the example above from 47 to 62 bundles.",
+        "Roofing squares cover the field shingles only. Ridge caps, starter strips, underlayment, flashing, and vents are separate items — and complex roofs with valleys, dormers, and hips need more waste than a simple gable roof, so 15% is a floor, not a ceiling.",
+      ],
+    },
+  ],
+
+  "running-pace-calculator": [
+    {
+      heading: "How is running pace calculated?",
+      paragraphs: [
+        "Running pace is **time divided by distance**: run 3.1 miles in 25 minutes and your pace is 25 ÷ 3.1, or about 8 minutes per mile. This calculator takes the distance in miles and the time in minutes, then shows your pace per mile, your speed in mph, and a predicted 5K finish time.",
+        "Speed is the inverse calculation — distance divided by time, multiplied by 60 to get miles per hour. The 5K prediction multiplies your pace by 3.107, the number of miles in 5 kilometres, assuming you hold the same pace for the whole race.",
+        "Pace and speed describe the same run from opposite directions: pace answers 'how long does each mile take?', while speed answers 'how far do I get in an hour?'. Runners usually think in pace; the speed figure is useful for comparing with cycling or treadmill settings.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Run **3.1 miles in 25 minutes**. Pace is 25 ÷ 3.1 = 8.065 minutes per mile, shown as **8:04 per mile**. Speed is 3.1 ÷ (25 ÷ 60) = **7.4 mph**.",
+        "The 5K prediction is 8.065 × 3.107 = 25.06 minutes, shown as **25:03**. That is close to the input time because 3.1 miles is already almost exactly a 5K (5 km = 3.107 miles) — the prediction just corrects for the small difference.",
+      ],
+    },
+    {
+      heading: "What is a good running pace?",
+      paragraphs: [
+        "A common guide is **10–12 minutes per mile for beginners, 8–10 for intermediate runners, and under 7 for advanced runners**. The example above — 8:04 per mile — sits at the faster end of intermediate. What counts as 'good' depends on age, distance, and how long you have been running.",
+        "Time is entered in **minutes only** on this page, so enter 25.5 for 25 minutes 30 seconds. The 5K prediction also assumes an even pace throughout — in a real race, most runners slow down over the later miles, so treat it as a best case rather than a promise.",
+        "Use pace to plan training, not just to judge it: a target pace for a race tells you what each mile split should look like, and an easy-run pace 1–2 minutes per mile slower than race pace is where most weekly mileage should sit.",
+      ],
+    },
+  ],
+
+  "screen-resolution-calculator": [
+    {
+      heading: "How is screen resolution measured?",
+      paragraphs: [
+        "The key number is **PPI — pixels per inch**, calculated as **√(width² + height²) ÷ diagonal size in inches**. It measures pixel density: how tightly the pixels are packed. This calculator takes the horizontal and vertical pixel counts and the screen's diagonal size, then shows PPI, total megapixels, and the aspect ratio.",
+        "The formula uses Pythagoras' theorem: the diagonal in pixels is the hypotenuse of the width-by-height triangle, and dividing by the diagonal in inches gives pixels per inch. Megapixels are simply width × height ÷ 1,000,000, and the aspect ratio is the width and height reduced by their greatest common divisor.",
+        "PPI is what decides whether a screen looks sharp. Resolution alone does not: the same 1920 × 1080 panel is crisp on a 24-inch monitor and visibly coarse on a 55-inch TV, because the pixels are spread over a much larger area.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **27-inch monitor at 2560 × 1440**. The diagonal in pixels is √(2560² + 1440²) = √8,627,200 = **2,937.2 pixels**. Divide by 27 inches to get **108.8 PPI**.",
+        "Total pixels are 2560 × 1440 = 3,686,400, or **3.69 megapixels**. The greatest common divisor of 2560 and 1440 is 160, so the aspect ratio is 2560 ÷ 160 : 1440 ÷ 160 = **16:9**.",
+      ],
+    },
+    {
+      heading: "What PPI do you need?",
+      paragraphs: [
+        "It depends on viewing distance. The calculator's guidance is that **Retina — the point where individual pixels become hard to see — starts around 220 PPI** for laptops, and about 300 PPI for phones held close to the face. A 27-inch 1440p display at 108.8 PPI is well below that, but at arm's length on a desk it still looks sharp to most people.",
+        "TVs get away with far lower PPI because you sit metres away: a 55-inch 4K TV is about 80 PPI and looks perfectly sharp from a sofa. Chasing PPI on a big screen matters less than colour accuracy, brightness, and contrast.",
+        "When comparing monitors, match PPI to your use: text-heavy work benefits most from high density, since small text is where coarse pixels show first. For gaming, refresh rate and response time usually matter more than a few extra PPI.",
+      ],
+    },
+  ],
+
+  "tile-calculator": [
+    {
+      heading: "How many tiles do I need?",
+      paragraphs: [
+        "Tile quantity is calculated from area: **tiles = room area ÷ tile area**, rounded up, then multiplied by (1 + waste%). This calculator takes the room's length and width in feet, the tile size in inches (square tiles), and a waste percentage, then shows the tile count with and without waste, plus the number of boxes at 12 tiles per box.",
+        "Tile area comes from the size in inches: a 12-inch tile covers 144 square inches, which is exactly 1 square foot (144 ÷ 144). A 6-inch tile covers 36 square inches, or 0.25 square feet — so it takes four of them to cover one square foot.",
+        "Both roundings are up: you cannot buy part of a tile or part of a box, and the waste is applied to the already-rounded tile count. The 'tiles (no waste)' figure lets you see exactly how much of your order is the waste allowance.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Tile a **12 × 10 foot room with 12-inch tiles and 10% waste**. The room area is 12 × 10 = **120 sq ft**, and each tile covers 1 sq ft, so you need **120 tiles** before waste.",
+        "Adding 10% waste gives 120 × 1.10 = **132 tiles**. At 12 tiles per box, 132 ÷ 12 = **11 boxes** exactly — no partial box left over.",
+      ],
+    },
+    {
+      heading: "How much waste should you allow for tiling?",
+      paragraphs: [
+        "The standard guidance is **10% for a straight layout, 15% for diagonal, and 20% for complex patterns** or rooms with many cuts. Diagonal layouts waste more because every tile meeting a wall needs an angled cut, and the offcut is usually unusable.",
+        "This calculator assumes **square tiles** — one size in inches. For a rectangular tile, use the square root of its area: a 6 × 24 inch tile covers 144 square inches, so enter 12 as the tile size and the maths works out the same.",
+        "Check the box quantity on your product: the calculator assumes 12 tiles per box, but counts vary. And keep the spares — tiles get discontinued, and a cracked tile years later is a much smaller job if you have matching replacements on hand.",
+      ],
+    },
+  ],
+
+  "time-card-calculator": [
+    {
+      heading: "How are work hours and pay calculated?",
+      paragraphs: [
+        "Work hours are calculated as **(clock-out time − clock-in time − break) ÷ 60**, and pay is **hours × hourly rate**. This calculator takes start and end times in 24-hour format, a break in minutes, and an hourly rate, then shows hours worked, decimal hours, daily pay, and a weekly figure equal to five identical days.",
+        "Overnight shifts are handled automatically: if the end time is earlier than the start time, the calculator assumes the shift crossed midnight and adds 24 hours. A 22:00 start with a 06:00 finish is treated as an 8-hour shift, not a negative one.",
+        "Decimal hours are what payroll systems use — 7 hours 30 minutes is 7.50 decimal hours — so the calculator shows both formats. The weekly figure is simply the daily pay multiplied by 5.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Clock in at **09:00** and out at **17:30**, with a **30-minute break**, at **$25 an hour**. Total minutes are (17 × 60 + 30) − (9 × 60) − 30 = 1,050 − 540 − 30 = **480 minutes**, which is **8h 0m** or **8.00 decimal hours**.",
+        "Daily pay is 8.00 × $25 = **$200.00**, and the weekly figure is $200.00 × 5 = **$1,000.00**. For an overnight shift — 22:00 to 06:00 with the same 30-minute break — the total is 360 − 1,320 − 30 = −990 minutes, plus 1,440 for crossing midnight = **450 minutes (7h 30m)**, paying **$187.50**.",
+      ],
+    },
+    {
+      heading: "What should you watch out for on a time card?",
+      paragraphs: [
+        "Keep the **break shorter than the shift**. The overnight adjustment adds 24 hours whenever the total goes negative, so a break longer than the shift — say a 10-hour break on an 8-hour shift — wraps around and shows as a very long shift instead of an error.",
+        "The weekly figure assumes five identical days. If your days vary in length, run each day separately and add the daily pay figures together — the ×5 shortcut only works when every day matches.",
+        "This calculator does not apply overtime rules: it pays every hour at the same rate. If your jurisdiction pays time-and-a-half over 40 hours a week, work out the overtime hours separately and add the premium yourself.",
+      ],
+    },
+  ],
+
+  "tire-size-calculator": [
+    {
+      heading: "How are tire dimensions calculated?",
+      paragraphs: [
+        "Tire dimensions are calculated from the size code on the sidewall: **sidewall height = width × aspect ratio**, **overall diameter = (2 × sidewall ÷ 25.4) + rim diameter**, **circumference = diameter × π**, and **revolutions per mile = 63,360 ÷ circumference**. Enter the width in millimetres, the aspect ratio as a percentage, and the rim diameter in inches.",
+        "The aspect ratio is a percentage of the width, not a fixed height: a 55-series sidewall on a 225 mm tyre is 123.75 mm tall, but the same 55-series on a 265 mm tyre would be taller. That is why two tyres with the same aspect ratio can have different overall diameters.",
+        "Revolutions per mile is the figure that connects tyre size to your speedometer and odometer — both count wheel revolutions, so a tyre that turns fewer times per mile makes them read low.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **225/55R17** tyre: 225 mm wide, 55% aspect ratio, radial construction, 17-inch rim. The sidewall is 225 × 0.55 = **123.8 mm**. The overall diameter is (2 × 123.75 ÷ 25.4) + 17 = 9.74 + 17 = **26.7 inches**.",
+        "The circumference is 26.74 × π = **84.0 inches**, and revolutions per mile are 63,360 ÷ 84.0 = **754**. A tyre with a larger diameter would turn fewer times per mile — and make the speedometer under-read.",
+      ],
+    },
+    {
+      heading: "What happens if you change tire size?",
+      paragraphs: [
+        "Changing the overall diameter changes what your speedometer and odometer report. A larger diameter means fewer revolutions per mile, so the speedometer reads lower than your true speed; a smaller diameter makes it read high. The revolutions-per-mile figure lets you compare two sizes before you buy.",
+        "Width and aspect ratio trade off against each other: a wider tyre with a lower aspect ratio can keep the same overall diameter. That is the idea behind 'plus sizing' — a bigger rim with a lower-profile tyre that preserves the original diameter and keeps the speedometer accurate.",
+        "Before fitting a different size, check clearance for the wider or taller tyre at full steering lock and full suspension travel, and confirm the size is approved for your vehicle — the load rating and speed rating matter as much as the dimensions.",
+      ],
+    },
+  ],
+
+  "travel-budget-calculator": [
+    {
+      heading: "How is a travel budget calculated?",
+      paragraphs: [
+        "A travel budget is the sum of its parts: **total = flights + (hotel per night × nights) + (food + activities per day) × days**, where **days = nights + 1**. This calculator takes those five inputs and returns the total, the hotel and food subtotals, and a daily average.",
+        "Food and activities are charged for nights + 1 days because a 5-night trip spans 6 days — you eat and do things on both travel days, but you only sleep in the hotel for 5 nights. The daily average divides the total by the same day count.",
+        "The result is an estimate built from your own numbers, not a prediction: the quality of the answer depends entirely on how realistic the per-day figures are for your destination.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Use the calculator's defaults: flights **$500**, hotel **$120 a night for 5 nights**, food **$50 a day**, and activities **$30 a day**. Hotel is 120 × 5 = **$600**; food is 50 × 6 = **$300**; activities are 30 × 6 = **$180**.",
+        "The total is 500 + 600 + 300 + 180 = **$1,580**, and the daily average is 1,580 ÷ 6 = **$263**. The flight is nearly a third of the whole trip — the single biggest lever on the total.",
+      ],
+    },
+    {
+      heading: "How should you budget for a trip in practice?",
+      paragraphs: [
+        "Add a **10–20% buffer** on top of the total for the things no calculator itemises: tips, local transport, souvenirs, airport parking, and the meal that costs twice what you expected. The calculator does not add this for you — add it yourself after you see the total.",
+        "Price the big items first and honestly. Flights and hotels are usually more than half the budget, and a realistic per-day food figure for your destination matters more than getting the activities line exactly right.",
+        "If you are travelling with others, decide what is shared before you split: a hotel room split two ways halves the per-person cost, but food and activities usually do not split at all. Run the calculator once per person for the personal items and once for the shared ones.",
+      ],
+    },
+  ],
+
+  "wedding-budget-calculator": [
+    {
+      heading: "How is a wedding budget split?",
+      paragraphs: [
+        "A wedding budget is split by percentage: this calculator allocates **40% to venue and decor, 25% to catering, 10% to photography, and 8% to attire**, leaving the remaining **17% for everything else**. Enter your total budget and guest count, and it shows each category in dollars plus the cost per guest.",
+        "The percentages are industry-standard starting points, not rules. Venue and catering together take nearly two-thirds of a typical budget, which is why those two decisions drive the total more than any other.",
+        "Cost per guest is simply the total budget divided by the number of guests — the single most useful number for comparing venues and packages, because it scales with the size of the wedding in a way the headline total does not.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$30,000 budget with 100 guests**. Venue and decor are 40% = **$12,000**; catering is 25% = **$7,500**; photography is 10% = **$3,000**; attire is 8% = **$2,400**.",
+        "The cost per guest is 30,000 ÷ 100 = **$300**. The four shown categories add to $24,900 (83%), leaving **$5,100** — the remaining 17% — for flowers, music, invitations, transport, and everything else.",
+      ],
+    },
+    {
+      heading: "How should you use the budget breakdown?",
+      paragraphs: [
+        "Treat the percentages as a starting point and adjust to your priorities: a couple who care most about photography can move money from decor, and a small guest list frees up far more per guest than any amount of bargain-hunting on individual items.",
+        "The guest count is the biggest lever on the whole budget. Cutting 20 guests from a 100-guest wedding at $300 per head saves $6,000 — more than most couples save by negotiating with any single vendor.",
+        "Track the 17% remainder explicitly. Flowers, decor, music, invitations, rings, and transport are individually small but collectively large, and they are the items most often forgotten until late in the planning — when the money is already committed elsewhere.",
+      ],
+    },
+  ],
+
+  "wind-chill-calculator": [
+    {
+      heading: "What is wind chill, and how is it calculated?",
+      paragraphs: [
+        "Wind chill is the **'feels like' temperature in cold wind** — how cold exposed skin actually feels once the wind strips away the insulating layer of warm air around the body. This calculator uses the **National Weather Service formula**: WC = 35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16, where T is the air temperature in °F and V is the wind speed in mph.",
+        "The formula only applies when the temperature is **50°F or below** and the wind is **at least 3 mph**. Warmer than 50°F, or calmer than 3 mph, and the wind has no meaningful chilling effect — the calculator simply reports the air temperature with no wind-chill adjustment.",
+        "Wind chill is a rate, not a temperature the world actually reaches: it describes how fast exposed skin loses heat. Objects cool to the air temperature faster in wind, but wind cannot make them colder than the air itself.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take an air temperature of **20°F with a 15 mph wind**. The wind factor is 15^0.16 ≈ 1.542, so the wind chill is 35.74 + 0.6215 × 20 − 35.75 × 1.542 + 0.4275 × 20 × 1.542 = **6°F** (−14°C) — fourteen degrees colder than the thermometer reads, with a **low frostbite risk**.",
+        "At **0°F with a 20 mph wind**, the wind chill falls to **−22°F**, and the calculator flags **frostbite in 15 minutes**. The same 0°F air with no wind would feel like 0°F — the wind alone accounts for the entire 22-degree difference.",
+      ],
+    },
+    {
+      heading: "When is wind chill dangerous?",
+      paragraphs: [
+        "The calculator flags **frostbite in 30 minutes when the wind chill falls below 0°F, and in 15 minutes below −18°F**. Those times are for exposed skin: covered skin is protected, which is why the practical advice is about clothing, not about staying indoors at all costs.",
+        "Dress in layers, cover exposed skin — face, ears, and hands lose heat fastest — and keep dry: wet clothing loses its insulating value and accelerates heat loss far more than wind alone.",
+        "Wind chill also matters for planning, not just comfort. It decides whether a school run, a construction shift, or a winter hike needs extra precautions, and it is the number weather forecasts quote for a reason: the air temperature alone understates the cold whenever the wind is up.",
+      ],
+    },
+  ],
+
+  "aspect-ratio-calculator": [
+    {
+      heading: "How is an aspect ratio calculated?",
+      paragraphs: [
+        "An aspect ratio describes the shape of a rectangle — how wide it is compared with how tall — written as two numbers separated by a colon, like 16:9. This calculator finds it by dividing the width and the height by their **greatest common divisor (GCD)**, which reduces the pair to its simplest whole-number form.",
+        "Resizing without distortion uses the same idea in reverse: the **new height = (new width ÷ old width) × old height**. As long as the width and height change by the same factor, the shape stays identical — nothing is stretched or squashed. The calculator also reports the total megapixels, which is simply width × height divided by one million.",
+        "One detail to know: the new height is **rounded to the nearest whole pixel**, because screens and image files cannot have fractional pixels. On very small images that rounding can shift the ratio by a pixel, which is normally invisible but worth knowing if you need exact dimensions.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a Full HD image, **1920 × 1080 pixels**. The GCD of 1920 and 1080 is 120, so 1920 ÷ 120 = 16 and 1080 ÷ 120 = 9 — the aspect ratio is **16:9**. The image holds 1920 × 1080 = 2,073,600 pixels, or **2.07 megapixels**.",
+        "Resize it to **1280 pixels wide** and the matching height is (1280 ÷ 1920) × 1080 = **720 pixels** — the familiar 720p size, still exactly 16:9. If you instead forced the height to 800 pixels, the picture would stretch vertically, which is exactly the distortion this calculator helps you avoid.",
+      ],
+    },
+    {
+      heading: "Common aspect ratios and where they are used",
+      paragraphs: [
+        "**16:9** is the widescreen standard for TVs, monitors, and YouTube videos. **4:3** was the old television and early digital-camera standard and is still common in presentation slides. **1:1** is the square format used for many social-media images, **21:9** is the ultrawide cinema and monitor format, and **3:2** is the classic 35mm photo ratio.",
+        "When a video or image must fit a frame with a different ratio, something has to give: either the image is cropped, or empty bars appear (letterboxing). Knowing the ratio before you resize tells you which of those will happen, so you can plan the crop instead of discovering it afterwards.",
+      ],
+    },
+  ],
+
+  "baking-ratio-calculator": [
+    {
+      heading: "How are baking ratios calculated?",
+      paragraphs: [
+        "Professional bakers measure recipes with **baker's percentage**: every ingredient is expressed as a percentage of the flour weight, and flour is always 100%. So a recipe at 65% hydration uses 65 g of water for every 100 g of flour, whatever the batch size — the formula scales to any amount without changing the dough.",
+        "This calculator applies that one rule to each ingredient: **ingredient weight = flour weight × (percentage ÷ 100)**. Water comes from the hydration percentage, salt and yeast from their own percentages, and the total dough weight is simply flour plus water plus salt plus yeast.",
+        "Hydration is the number that most changes the bread. Wetter doughs (higher hydration) give a more open, airy crumb but are stickier and harder to handle; drier doughs are easier to shape but denser. Salt is usually around 2% — enough to flavour the loaf and strengthen the dough without slowing the yeast too much.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Start with **500 g of flour at 65% hydration, 2% salt, and 1% yeast**. Water = 500 × 0.65 = **325 g**. Salt = 500 × 0.02 = **10.0 g**. Yeast = 500 × 0.01 = **5.0 g**. Add them up: 500 + 325 + 10 + 5 = **840 g of dough**, enough for one large loaf or two small ones.",
+        "To double the batch, just double the flour to 1,000 g and keep the same percentages: 650 g water, 20 g salt, 10 g yeast, and 1,680 g of dough. That is the whole point of baker's percentage — the ratios stay fixed while the batch size changes freely.",
+      ],
+    },
+    {
+      heading: "Which hydration level should you use?",
+      paragraphs: [
+        "As a starting guide: **sandwich bread 60–65%**, **artisan loaves 65–75%**, and **ciabatta 75–85%**. If you are new to a recipe, begin at the low end of the range — the dough will be easier to knead and shape — and raise the hydration by a few percent on the next bake once you know how the flour behaves.",
+        "Different flours absorb different amounts of water, so the same percentage can feel wetter or drier depending on the flour. Wholegrain and high-protein bread flours generally need more water than plain white flour, and humid kitchens need slightly less. Treat the calculator's numbers as a reliable starting point, then adjust by feel.",
+      ],
+    },
+  ],
+
+  "binary-to-decimal-calculator": [
+    {
+      heading: "How is binary converted to decimal?",
+      paragraphs: [
+        "Binary is the base-2 number system computers use, with only two digits: 0 and 1. Each position in a binary number is worth a power of 2, starting from 2⁰ = 1 on the right and doubling to the left: 1, 2, 4, 8, 16, 32, and so on. To convert, you **add up the place values where the bit is 1** and ignore the places where it is 0.",
+        "This calculator does that addition for you and also shows the same value in **hexadecimal (base 16) and octal (base 8)**, plus the number of bits entered. Type the binary digits into the input as a number — for example, type 1010 for the binary number 1010.",
+        "Because the input is a numeric field, **leading zeros are dropped** (00101 becomes 101), but that never changes the value — leading zeros contribute nothing. If any digit other than 0 or 1 is entered, the calculator shows an error message instead of a result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Convert **11010110** to decimal. Reading from the right, the place values are 1, 2, 4, 8, 16, 32, 64, 128. The 1 bits sit at 128, 64, 16, 4, and 2, so the total is 128 + 64 + 16 + 4 + 2 = **214**. The same value is **0xD6 in hexadecimal**, **0o326 in octal**, and it uses **8 bits** — one byte.",
+        "A shorter example: **1010** has 1 bits at 8 and 2, so it equals **10** in decimal. Notice the pattern: each binary digit you add on the left doubles the largest value you can represent, which is why 8 bits reach 255 and 16 bits reach 65,535.",
+      ],
+    },
+    {
+      heading: "Where binary shows up in everyday computing",
+      paragraphs: [
+        "Binary is the native language of computers because a bit maps directly onto a switch that is on or off. File sizes, memory addresses, colour values, and network data are all stored as binary underneath, even when software displays them in decimal or hexadecimal for humans.",
+        "Hexadecimal is a common shorthand for binary because each hex digit stands for exactly four bits: one byte is always two hex digits. That is why colour codes like #FF0000 (red) and memory addresses are written in hex — they are far shorter than the equivalent string of 1s and 0s.",
+      ],
+    },
+  ],
+
+  "blood-alcohol-calculator": [
+    {
+      heading: "How is blood alcohol content (BAC) estimated?",
+      paragraphs: [
+        "Blood alcohol content is the percentage of alcohol in the bloodstream, estimated here with the widely used **Widmark formula**. It takes the alcohol consumed (each standard drink is counted as 0.6 fluid ounces of pure alcohol), divides it by body weight adjusted for sex, and subtracts the alcohol the body clears over time — about **0.015% per hour**.",
+        "The formula is: **BAC = (drinks × 0.6 × 5.14) ÷ (weight in pounds × r) − 0.015 × hours**, where r is 0.73 for men and 0.66 for women, reflecting average differences in body water. The result is an **estimate, not a measurement**: food, metabolism, medication, and the strength of the drinks all shift the real number, and only a breath or blood test measures BAC directly.",
+        "This calculator is for general information only and is not medical advice. Never use an estimate to decide whether you are safe to drive — impairment begins well below the legal limit, and the only reliably safe choice after drinking is not to drive.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a man weighing **180 lb** who has **3 standard drinks over 2 hours**. The formula gives (3 × 0.6 × 5.14) ÷ (180 × 0.73) − 0.015 × 2 = 9.252 ÷ 131.4 − 0.03 = 0.070 − 0.03 = **0.040%**. The calculator labels this **Mildly impaired** and estimates **2.7 hours** until the BAC reaches zero (0.040 ÷ 0.015).",
+        "For comparison, the same 3 drinks over 2 hours for a **160 lb** man give about **0.049%**, and a single drink over one hour for a 160 lb man gives about **0.011%**. Body weight makes a large difference: the same drinks produce a higher BAC in a lighter person. The US legal driving limit shown by the tool is **0.080%**, but limits vary by country and by driver — and impairment starts below any limit.",
+      ],
+    },
+    {
+      heading: "What affects BAC besides the number of drinks?",
+      paragraphs: [
+        "Drinking on an empty stomach raises BAC faster and higher than drinking with food, because food slows alcohol absorption. Stronger drinks count as more than one standard drink — a pint of strong beer or a large glass of wine can equal two standard drinks even though it looks like one.",
+        "Time is the only thing that lowers BAC. Coffee, cold air, exercise, and food do not speed up the liver's steady rate of about 0.015% per hour. If you are unsure, wait longer than the estimate suggests — the calculator cannot account for how your own body processes alcohol.",
+      ],
+    },
+  ],
+
+  "blood-pressure-calculator": [
+    {
+      heading: "How is blood pressure classified?",
+      paragraphs: [
+        "Blood pressure is two numbers measured in mmHg: **systolic** (the pressure when the heart beats) over **diastolic** (the pressure between beats). This calculator sorts a reading into the standard categories: **Normal** is below 120/80, **Elevated** is systolic 120–129 with diastolic below 80, **Stage 1 Hypertension** is 130–139 or 80–89, **Stage 2 Hypertension** is 140 or higher, or 90 or higher, and **Hypertensive Crisis** is 180 or higher, or 120 or higher.",
+        "It also calculates two derived figures. **Mean arterial pressure (MAP)** is the average pressure in the arteries during one heartbeat: MAP = diastolic + (systolic − diastolic) ÷ 3. **Pulse pressure** is the simple gap between the two numbers: systolic − diastolic.",
+        "This calculator is for general information only and is not medical advice. A single reading is not a diagnosis — blood pressure rises and falls through the day with activity, stress, caffeine, and even the measurement itself. Repeated readings and a clinician's judgement are what turn numbers into a diagnosis.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a reading of **135/85 mmHg**. The systolic value of 135 falls in the 130–139 band, so the classification is **Stage 1 Hypertension**. Mean arterial pressure is 85 + (135 − 85) ÷ 3 = 85 + 16.7 = **101.7 mmHg**, and pulse pressure is 135 − 85 = **50 mmHg**.",
+        "Compare a reading of **118/76 mmHg**: systolic below 120 and diastolic below 80, so it is **Normal**, with a MAP of 76 + (118 − 76) ÷ 3 = **90.0 mmHg** and a pulse pressure of **42 mmHg**. Small changes in either number can move a reading across a category boundary, which is why the exact category matters less than the overall pattern over time.",
+      ],
+    },
+    {
+      heading: "What do MAP and pulse pressure tell you?",
+      paragraphs: [
+        "Mean arterial pressure is the figure clinicians watch for whether organs are getting enough blood flow. A MAP roughly between 70 and 100 mmHg is generally considered adequate at rest; much lower can mean organs are under-perfused, and much higher over time strains the arteries.",
+        "Pulse pressure tends to widen with age as arteries stiffen, so a large gap between systolic and diastolic is more common in older adults. Both figures are context for a clinician, not verdicts on their own — if your readings are consistently outside the normal range, or you have symptoms such as chest pain or severe headache, seek medical care rather than relying on a calculator.",
+      ],
+    },
+  ],
+
+  "caffeine-calculator": [
+    {
+      heading: "How is daily caffeine intake calculated?",
+      paragraphs: [
+        "This calculator adds up the caffeine in the drinks you enter, using a fixed average for each type: **coffee 95 mg per cup, tea 47 mg per cup, soda 40 mg per can, and energy drinks 160 mg per can**. Your total is compared with the **400 mg daily limit** that is generally cited as a safe upper amount for most healthy adults, and the result is shown as a percentage of that limit.",
+        "The per-drink figures are averages, not exact values. A strong brewed coffee can hold well over 95 mg, a small espresso shot far less, and energy drinks vary widely by brand and can size. The total is therefore a reasonable estimate of a typical day, not a precise measurement.",
+        "This calculator is for general information only and is not medical advice. Sensitivity to caffeine varies, and lower amounts are advised for people who are pregnant, sensitive to stimulants, or have certain health conditions — check with a clinician if you are unsure what level is right for you.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a day with **2 cups of coffee, 1 cup of tea, and 1 energy drink**. That is 2 × 95 + 47 + 160 = 190 + 47 + 160 = **397 mg** — **99.25% of the 400 mg limit**, so the calculator reports it as within the safe limit, but only just.",
+        "Add one more coffee and the picture changes: **3 coffees and 1 energy drink** come to 3 × 95 + 160 = **445 mg**, which is over the limit. That is how easy it is to cross 400 mg — two strong coffees plus an energy drink can do it before lunch.",
+      ],
+    },
+    {
+      heading: "Where else caffeine hides",
+      paragraphs: [
+        "This calculator counts only the four drink types it asks about, but caffeine also appears in **chocolate, some pain relievers, pre-workout supplements, and certain teas and soft drinks** that are not labelled as energy drinks. If you consume those as well, your true daily total is higher than the number shown here.",
+        "Timing matters as well as amount: caffeine has a half-life of roughly five to six hours, so a late-afternoon coffee can still be affecting sleep at midnight. If sleep is the concern, the total for the day is only half the story — when the last drink was matters too.",
+      ],
+    },
+  ],
+
+  "car-depreciation-calculator": [
+    {
+      heading: "How is car depreciation calculated?",
+      paragraphs: [
+        "This calculator estimates a car's value with **compound depreciation**: each year the car keeps a fixed percentage of the previous year's value, so the dollar loss shrinks over time even though the rate stays the same. The formula is **current value = purchase price × (1 − rate) ^ years**, where the rate is the annual depreciation percentage you enter.",
+        "From that value it derives three more figures: **total depreciation** (purchase price minus current value), **average annual loss** (total depreciation divided by years owned), and **value retained** (current value as a percentage of the purchase price). Enter at least one year owned — the average annual loss divides by the number of years.",
+        "The rate you enter is an estimate, and real depreciation is not a smooth curve. Most cars lose value fastest in the first year, then more slowly; brand, mileage, condition, and local demand all shift the real figure. Use the result as a planning estimate, not a guaranteed resale price.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a car bought for **$30,000** with an annual depreciation rate of **15%**, owned for **5 years**. The current value is $30,000 × 0.85⁵ = $30,000 × 0.4437 = **$13,311**. Total depreciation is $30,000 − $13,311 = **$16,689**, the average annual loss is $16,689 ÷ 5 = **$3,338**, and the value retained is **44.4%**.",
+        "Notice the first year alone: after one year the car is worth $30,000 × 0.85 = **$25,500**, a $4,500 drop — more than the $3,338 average. That front-loaded loss is why the average annual figure understates the early years and overstates the later ones.",
+      ],
+    },
+    {
+      heading: "What makes one car hold value better than another?",
+      paragraphs: [
+        "Reliability reputation, fuel economy, and low running costs help a car keep its value; luxury cars and models with high maintenance costs tend to depreciate faster. Low mileage, a full service history, and a popular colour and specification also support resale value, while accident damage and gaps in servicing push it down.",
+        "Because the calculator applies one steady rate, it cannot capture these differences — it treats every car the same. If you know a particular model holds value well, use a lower rate (say 10–12%); for a fast-depreciating model, use a higher one (say 20% or more). The existing FAQ's rule of thumb is 15–20% per year for most cars.",
+      ],
+    },
+  ],
+
+  "car-insurance-calculator": [
+    {
+      heading: "How is the insurance estimate calculated?",
+      paragraphs: [
+        "This calculator gives a rough estimate of annual car insurance cost from just three inputs. It starts with a base premium of **4% of the car's value per year**, then adjusts for driver age — **drivers under 25 pay 1.5× the base, and drivers over 65 pay 1.2×** — and finally reduces the premium for a higher deductible: each $1,000 of deductible cuts the premium by 6%, up to the formula's limit.",
+        "The result is an **estimate, not a quote**. Real premiums depend on many things this tool never asks about: where you live, your driving record, how far you drive, the coverage type and limits, and the insurer itself. Two drivers with the same car and age can easily pay very different amounts.",
+        "Keep the deductible within a realistic range (a few hundred to a few thousand dollars). The discount formula is designed for ordinary deductibles; very large values push the estimate outside any sensible range.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a car worth **$20,000**, a **30-year-old** driver, and a **$500 deductible**. The base premium is $20,000 × 4% = **$800** a year. Age 30 attracts no adjustment. The deductible discount is (500 ÷ 5000) × 0.3 = 3%, so the annual premium is $800 × 0.97 = **$776.00** — **$64.67 a month** and **$2.13 a day**.",
+        "Change just the age to **22** and the base premium rises by half: $800 × 1.5 = $1,200, and after the same 3% deductible discount the annual premium becomes **$1,164.00**. That age adjustment alone adds $388 a year — the single biggest lever in this estimate.",
+      ],
+    },
+    {
+      heading: "What a real quote depends on that this tool ignores",
+      paragraphs: [
+        "Location is usually the largest missing factor: dense urban areas with more accidents and theft cost more to insure than quiet rural ones. Your driving record matters just as much — a clean record earns discounts, while accidents and tickets raise premiums for years.",
+        "Coverage choices also move the price: liability-only cover is far cheaper than full cover, and the limits you choose set the ceiling on what the insurer pays. Use this calculator to get a ballpark figure for budgeting, then get quotes from several insurers — comparing three or more quotes is the most reliable way to find a fair price.",
+      ],
+    },
+  ],
+
+  "ceiling-fan-size-calculator": [
+    {
+      heading: "How is ceiling fan size chosen?",
+      paragraphs: [
+        "A ceiling fan is sized by the room's floor area: the fan's blade span (the diameter of the circle the blades sweep) must be large enough to move air across the whole room. This calculator multiplies **room length × room width** to get the area in square feet, then matches it to a standard size band.",
+        "The bands are: up to **75 sq ft → 29–36 in**, up to **144 sq ft → 36–42 in**, up to **225 sq ft → 44–50 in**, up to **400 sq ft → 50–54 in**, and anything larger → **54–72 in**. The ranges overlap at the boundaries — a 36-inch fan appears in two bands — because the right size also depends on ceiling height, room shape, and how much airflow you want.",
+        "Blade span is only part of the story. A fan that is too small leaves still corners; one that is too large can feel like a wind tunnel on its lowest setting and may not fit safely in a small room. The size band is a starting point, not a precise requirement.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a bedroom **12 ft long and 15 ft wide**. The area is 12 × 15 = **180 sq ft**, which falls in the 144–225 band, so the recommended fan size is **44–50 inches**.",
+        "For comparison, a **10 × 10 ft** room is 100 sq ft, which needs a **36–42 inch** fan, while a large **20 × 20 ft** living room is 400 sq ft and needs a **50–54 inch** fan. If a room sits near a boundary — say 150 sq ft — either neighbouring size works; the larger one moves more air, the smaller one is quieter and less visually dominant.",
+      ],
+    },
+    {
+      heading: "What else affects the right fan besides room size?",
+      paragraphs: [
+        "Ceiling height matters: standard mounts suit 8–9 ft ceilings, while higher ceilings need a **downrod** to bring the fan blades to about 8–9 ft above the floor, where they move air effectively. On very low ceilings a flush (hugger) mount keeps the blades safely clear of head height.",
+        "Blade count and pitch also affect airflow — more blades or a steeper pitch generally move more air but need a stronger motor. And in rooms with a strong draught or an open-plan layout, one fan may not be enough: very large spaces often work better with two smaller fans than one oversized one.",
+      ],
+    },
+  ],
+
+  "combination-calculator": [
+    {
+      heading: "How are combinations calculated?",
+      paragraphs: [
+        "A combination counts how many ways you can **choose r items from n items when the order does not matter**. The formula is **nCr = n! ÷ (r! × (n−r)!)**, where '!' means factorial — multiplying a number by every whole number below it. Choosing a 3-person committee from 10 people is a combination, because the same three people in a different order are still the same committee.",
+        "This calculator also shows the probability of one specific combination: **1 ÷ nCr**, expressed as a percentage when it is not too small. Note that the tool **caps n at 30** (and r at n) — larger values are clamped to 30, so results for bigger problems must be worked out elsewhere.",
+        "Combinations differ from **permutations**, where order does matter: arranging 3 people in a row from 10 gives far more results than merely choosing the same 3 people, because every arrangement of the same three counts separately.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Choose **3 items from 10**: C(10,3) = 10! ÷ (3! × 7!) = (10 × 9 × 8) ÷ (3 × 2 × 1) = 720 ÷ 6 = **120 combinations**. The chance of picking one particular set of three is 1 ÷ 120 = **0.8333%**.",
+        "A smaller check: choose **2 from 5** and you get C(5,2) = (5 × 4) ÷ (2 × 1) = **10** — few enough to list by hand. By contrast, the same choice as a permutation would give 5 × 4 = 20, because each pair can be ordered two ways.",
+      ],
+    },
+    {
+      heading: "Where combinations actually get used",
+      paragraphs: [
+        "Lotteries are the classic example: the odds of matching all six numbers in a 6-from-49 draw are 1 in C(49,6) = 13,983,816 — though note that this tool caps n at 30, so it cannot compute that example directly. Card games, team selection, quality-control sampling, and genetics all use the same counting.",
+        "A useful shortcut: C(n,r) always equals C(n, n−r), because choosing which r items to take is the same as choosing which n−r items to leave behind. So C(10,7) is the same as C(10,3) — 120 — which can save a lot of arithmetic when r is large.",
+      ],
+    },
+  ],
+
+  "cooking-time-calculator": [
+    {
+      heading: "How is cooking time calculated?",
+      paragraphs: [
+        "Roasting time for meat is estimated from its weight: **total cooking time = weight in pounds × minutes per pound**. The minutes-per-pound figure depends on the meat and the oven temperature, so this calculator asks you to enter it — common values are listed in the FAQ below, and the tool also converts your oven temperature between Fahrenheit and Celsius.",
+        "The calculator also suggests a **rest time** after cooking: at least 10 minutes, or about 3 minutes per pound of meat, whichever is longer. Resting lets the juices redistribute through the meat instead of running out when it is cut, and the internal temperature keeps rising a few degrees while it rests.",
+        "One honest limitation: the **oven temperature you enter is shown for reference only** — it does not change the cooking time. The time comes entirely from weight × minutes per pound, so if you roast hotter or cooler than the standard for that minutes-per-pound figure, the estimate will be off. Always check the internal temperature with a meat thermometer rather than trusting time alone.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Roast a **12 lb turkey at 14 minutes per pound** in a **325°F** oven. Total time = 12 × 14 = **168 minutes**, or **2 hours 48 minutes**. The recommended rest is 12 × 3 = **36 minutes** (well above the 10-minute minimum), and 325°F converts to **163°C**.",
+        "A smaller example: a **5 lb chicken at 20 minutes per pound** needs 5 × 20 = **100 minutes (1 hour 40 minutes)** with a 15-minute rest. Both examples assume the bird goes into a fully preheated oven at the temperature the minutes-per-pound figure was written for.",
+      ],
+    },
+    {
+      heading: "Minutes per pound for common meats",
+      paragraphs: [
+        "As a guide: **turkey 13–15 min/lb at 325°F**, **beef roast 20–25 min/lb at 350°F** (medium), **pork loin 20–25 min/lb at 350°F**, and **chicken 20 min/lb at 350°F**. These are starting points — bone-in cuts, stuffed birds, and crowded ovens all take longer.",
+        "The only reliable test of doneness is temperature: poultry is safe at 165°F (74°C) in the thickest part, beef and pork steaks and roasts at 145°F (63°C) plus a rest. Because ovens vary and thermometers are cheap, use this calculator to plan the schedule and the thermometer to decide when dinner is ready.",
+      ],
+    },
+  ],
+
+  "currency-exchange-calculator": [
+    {
+      heading: "How does currency exchange work here?",
+      paragraphs: [
+        "This calculator converts an amount from one currency to another by multiplying by an **exchange rate that you enter yourself**: converted amount = amount × rate. It does not fetch live rates and it holds no built-in rates — the default rate of 0.85 is only a starting value, so always replace it with a current rate from your bank or a currency service before trusting the result.",
+        "It also accounts for the **service fee** many exchanges charge: the fee is a percentage of the converted amount, and the calculator shows the fee amount, what you actually receive after the fee, and the **effective rate** — the rate you really got once the fee is included. That effective rate is the honest number for comparing services.",
+        "Exchange rates move constantly while markets are open, and the rate a bank or bureau offers you is always worse than the mid-market rate you see quoted online. This tool is for planning and comparison; the final figure comes from whoever actually makes the exchange.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Convert **$1,000 at a rate of 0.85** with a **2% service fee**. The converted amount is $1,000 × 0.85 = **€850.00**. The fee is 2% of €850 = **€17.00**, so you receive €850 − €17 = **€833.00**. The effective rate is €833 ÷ $1,000 = **0.8330** — noticeably worse than the headline 0.85.",
+        "That gap is the point of the tool: a service advertising a good rate with a high fee can leave you worse off than a service with a slightly worse rate and no fee. Comparing effective rates, not headline rates, is how you find the better deal.",
+      ],
+    },
+    {
+      heading: "Why the amount you receive is always less than the converted figure",
+      paragraphs: [
+        "Currency services make money on the **spread** — the gap between the rate they buy currency at and the rate they sell it at — plus any flat fee or percentage commission. A '0% commission' offer usually just hides the charge inside a worse rate.",
+        "For larger amounts, small rate differences matter a lot: on $10,000, a 1% worse rate costs $100. Check a current mid-market rate first, then compare the total you would actually receive from each service after fees, rather than comparing their advertised rates alone.",
+      ],
+    },
+  ],
+
+  "download-time-calculator": [
+    {
+      heading: "How is download time calculated?",
+      paragraphs: [
+        "Download time is the file size divided by the connection speed — with one catch: file sizes are measured in **megabytes (MB)** while speeds are measured in **megabits per second (Mbps)**, and one byte holds 8 bits. So the formula is **time in seconds = file size in MB × 8 ÷ speed in Mbps**.",
+        "This calculator shows the result in the most readable unit — seconds for short downloads, minutes for medium ones, hours for very large files — plus the total seconds, the file size (shown in GB once it passes 1,000 MB), and the speed you entered.",
+        "The result is a best-case estimate at a steady speed. Real downloads are almost always slower: network overhead, server limits, congestion, other devices sharing the connection, and Wi-Fi signal strength all eat into the advertised speed, which is itself a maximum rather than a guarantee.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Download a **500 MB** file on a **25 Mbps** connection. The file holds 500 × 8 = 4,000 megabits, so the time is 4,000 ÷ 25 = **160 seconds**, or about **2.7 minutes**.",
+        "The same 160 seconds appears for a **2 GB (2,000 MB)** file on a **100 Mbps** connection: 2,000 × 8 = 16,000 megabits ÷ 100 = 160 seconds. Doubling both the file and the speed leaves the time unchanged — what matters is the ratio between them.",
+      ],
+    },
+    {
+      heading: "Why real downloads take longer than the estimate",
+      paragraphs: [
+        "Internet providers advertise speeds 'up to' a figure, and the speed you actually get varies with time of day and network load. On top of that, roughly 5–10% of the raw speed is consumed by protocol overhead — the addressing and error-checking data wrapped around your file.",
+        "The server at the other end can also be the bottleneck: a slow or busy server will not feed your connection at full speed no matter how fast your plan is. If downloads are consistently much slower than this estimate, a speed test at different times of day will show whether the connection or the server is the limiting factor.",
+      ],
+    },
+  ],
+
+  "dpi-calculator": [
+    {
+      heading: "How is DPI calculated?",
+      paragraphs: [
+        "DPI — dots per inch — measures how densely an image's pixels are packed when printed. The formula is simple: **DPI = pixel width ÷ print width in inches**. A 3000-pixel-wide image printed 10 inches wide packs 300 dots into every inch; print the same image 20 inches wide and the density halves to 150 DPI.",
+        "This calculator also reports the **print height** (pixel height ÷ DPI), the total **megapixels**, and a quality rating: **300 DPI or more is Excellent, 200–299 Good, 150–199 Acceptable, and below 150 Low**. Those bands match common print practice, where 300 DPI is the standard for sharp close-up prints.",
+        "Note that DPI is calculated from the **width only** — the height follows from the image's aspect ratio, so the result assumes square pixels and no cropping. If you crop the image, recalculate with the cropped pixel dimensions.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take an image **3000 × 2000 pixels** printed **10 inches wide**. DPI = 3000 ÷ 10 = **300 DPI**, rated **Excellent**. The print height is 2000 ÷ 300 = **6.7 inches**, so the print is 10 × 6.7 inches, and the image holds 3000 × 2000 = 6,000,000 pixels, or **6.0 megapixels**.",
+        "Print the same image **20 inches wide** instead and the DPI drops to 3000 ÷ 20 = 150 — merely Acceptable. To keep 300 DPI at that size you would need an image 6000 pixels wide. That trade-off between print size and sharpness is the whole point of the calculation.",
+      ],
+    },
+    {
+      heading: "What DPI do you actually need?",
+      paragraphs: [
+        "**300 DPI** is the standard for photos, books, and anything examined at arm's length. **150 DPI** is fine for posters and prints viewed from a few feet away, where the eye cannot resolve individual dots. **72 DPI** — the old screen standard — looks coarse in print but is irrelevant on screens, which display pixels directly rather than dots per inch.",
+        "Going above 300 DPI rarely helps: most printers cannot reproduce detail beyond it, and the file just gets bigger. If your image falls short, printing slightly smaller is usually a better fix than upscaling, which adds pixels without adding real detail.",
+      ],
+    },
+  ],
+
+  "ev-charging-calculator": [
+    {
+      heading: "How is EV charging time calculated?",
+      paragraphs: [
+        "Charging time is the energy you need divided by the power the charger delivers: **time = kWh needed ÷ charger power in kW**. The energy needed comes from the battery size and how much charge you are adding: **kWh needed = battery size × (target % − current %) ÷ 100**. A bigger battery or a bigger top-up takes longer; a more powerful charger takes less time.",
+        "This calculator also estimates the **cost** using a fixed electricity price of **$0.13 per kWh** and the **range added** at an assumed efficiency of **3.5 miles per kWh**. Both figures are approximations — your electricity rate and your car's real efficiency will differ — so treat them as planning numbers, not exact bills.",
+        "One simplification to know: the calculator assumes **constant charging power** from start to finish. Real EVs charge fastest in the middle of the battery's range and slow down markedly above about 80%, so a top-up to 100% takes longer in practice than the steady-rate estimate suggests.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **75 kWh** battery charged from **20% to 80%** on a **7 kW** home charger. The energy needed is 75 × (80 − 20) ÷ 100 = **45.0 kWh**. Charging time is 45 ÷ 7 = 6.43 hours, shown as **6h 26m**. Cost is 45 × $0.13 = **$5.85**, and the range added is 45 × 3.5 = **158 miles**.",
+        "On a **50 kW DC fast charger** the same 45 kWh would take 45 ÷ 50 = 0.9 hours — about 54 minutes — in this simplified model. In reality the car would slow down as it approached 80%, so the real fast-charge time would be somewhat longer than the estimate.",
+      ],
+    },
+    {
+      heading: "Charger levels and what they mean in practice",
+      paragraphs: [
+        "**Level 1** is a standard household outlet at about 1.4 kW — fine for overnight top-ups of a few dozen miles, but far too slow for a full charge. **Level 2** home and public chargers run at 7–19 kW and can fill most cars overnight. **DC fast charging** at 50–350 kW is for road trips, adding a large chunk of range in under an hour.",
+        "For daily use, home Level 2 charging is usually the cheapest and most convenient option, and keeping the battery between roughly 20% and 80% for everyday driving is gentler on long-term battery health than routinely charging to 100%.",
+      ],
+    },
+  ],
+
+  "fertilizer-calculator": [
+    {
+      heading: "How is the amount of fertilizer calculated?",
+      paragraphs: [
+        "Lawns are fed by nitrogen, and fertilizer bags are labelled with three numbers — the **NPK ratio** — showing the percentages of nitrogen (N), phosphorus (P), and potassium (K) by weight. A bag marked 20-5-10 is 20% nitrogen, 5% phosphorus, and 10% potassium.",
+        "This calculator works from the nitrogen alone. First it finds the nitrogen your lawn needs: **nitrogen needed = lawn area ÷ 1,000 × nitrogen rate** (pounds of nitrogen per 1,000 sq ft). Then it converts that into product: **product needed = nitrogen needed ÷ (nitrogen % ÷ 100)**. It also rounds up to whole 25 lb and 50 lb bags, since you cannot buy part of a bag.",
+        "The nitrogen rate you enter is the key judgement call — a common maintenance rate is around 1 lb of nitrogen per 1,000 sq ft per application. Local guidance and the product label matter more than any rule of thumb, and more fertilizer is not better: excess nitrogen scorches grass and washes into waterways.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **5,000 sq ft** lawn, a nitrogen rate of **1 lb per 1,000 sq ft**, and a **20% nitrogen** fertilizer (the first number on the bag). Nitrogen needed = 5,000 ÷ 1,000 × 1 = **5.0 lbs**. Product needed = 5 ÷ 0.20 = **25.0 lbs** — exactly one 25 lb bag, or one 50 lb bag with half left over.",
+        "Switch to a **10% nitrogen** product and the same lawn needs 5 ÷ 0.10 = 50 lbs of product — two 25 lb bags. Lower-nitrogen products are not worse; they simply take more bag weight to deliver the same feeding, which is why comparing products by price per bag alone is misleading.",
+      ],
+    },
+    {
+      heading: "What the calculator does not cover",
+      paragraphs: [
+        "Only the nitrogen number drives the amount — phosphorus and potassium are ignored. That is usually fine, because nitrogen is the nutrient lawns run short of most often, but a soil test is the only way to know whether your lawn also needs P or K.",
+        "Application timing matters as much as amount: feeding during active growth (spring and autumn for cool-season grasses) gives the best uptake, while feeding dormant or heat-stressed grass wastes product. Water the lawn after applying granular fertilizer unless the label says otherwise, and keep it off paths and driveways where it washes straight into drains.",
+      ],
+    },
+  ],
+
+  "fibonacci-calculator": [
+    {
+      heading: "How are Fibonacci numbers calculated?",
+      paragraphs: [
+        "The Fibonacci sequence starts with **F(0) = 0 and F(1) = 1**, and every number after that is the **sum of the two before it**: F(n) = F(n−1) + F(n−2). So the sequence runs 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, and keeps growing, each step adding the previous two.",
+        "This calculator shows **F(n)** for the position you enter, plus the next number **F(n+1)**, the **golden ratio φ = (1 + √5) ÷ 2 ≈ 1.61803399**, and the ratio of F(n) to F(n−1). As n grows, that ratio creeps closer and closer to φ — one of the most famous connections in mathematics.",
+        "The tool **caps n at 70**, because Fibonacci numbers grow exponentially and F(70) is already over 190 trillion. Positions above 70 are clamped to 70, so the largest value it reports is F(70) = 190,392,490,709,135 — shown in exponential form as 1.9039e+14, since the tool switches to scientific notation above one trillion.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Find **F(10)**. Counting up from F(0) = 0 and F(1) = 1: F(2) = 1, F(3) = 2, F(4) = 3, F(5) = 5, F(6) = 8, F(7) = 13, F(8) = 21, F(9) = 34, and F(10) = 21 + 34 = **55**. The next number, F(11), is 34 + 55 = **89**.",
+        "The ratio F(10) ÷ F(9) is 55 ÷ 34 = **1.617647** — already within 0.0004 of the golden ratio 1.61803399. By F(20) = 6,765 the match is closer still, which is why the ratio column is such a satisfying check that the sequence is behaving as the mathematics predicts.",
+      ],
+    },
+    {
+      heading: "Where Fibonacci numbers appear",
+      paragraphs: [
+        "Fibonacci numbers show up in nature — the spirals of pine cones and sunflowers, the petals of many flowers — and in art, architecture, and design, where the golden ratio is used as a proportion that the eye finds pleasing. They also appear in financial trading, computer algorithms, and even music.",
+        "Part of the fascination is how a rule a child could follow — add the last two numbers — produces a sequence tied to one of mathematics' most celebrated constants. The calculator is a quick way to explore that: try a few positions and watch the ratio settle toward φ.",
+      ],
+    },
+  ],
+
+  "gcd-calculator": [
+    {
+      heading: "How is the greatest common divisor calculated?",
+      paragraphs: [
+        "The greatest common divisor (GCD) of two numbers is the **largest whole number that divides both of them exactly**. This calculator finds it with the **Euclidean algorithm**, a method over 2,000 years old: replace the larger number with the remainder of dividing it by the smaller, and repeat until the remainder is 0 — the last non-zero remainder is the GCD.",
+        "The same two numbers also give the **least common multiple (LCM)** — the smallest number both divide into — through the identity LCM = (A × B) ÷ GCD. The calculator shows both, plus A ÷ GCD and B ÷ GCD, which are the two numbers with their common factor stripped out.",
+        "The tool rounds its inputs to whole numbers and uses their absolute values, so decimals and negative signs do not change the result. Enter two non-zero whole numbers: with both inputs zero, the LCM has no defined value and the result is not meaningful.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Find the GCD of **48 and 36**. Divide 48 by 36: remainder 12. Divide 36 by 12: remainder 0. So the GCD is **12**. The LCM is (48 × 36) ÷ 12 = 1728 ÷ 12 = **144**. And 48 ÷ 12 = **4**, 36 ÷ 12 = **3** — the pair reduced to its simplest form.",
+        "That reduction is the GCD's most common everyday use: the fraction 48/36 simplifies to **4/3** by dividing top and bottom by 12. Another example: GCD(270, 192) = **6**, found the same way — 270 ÷ 192 leaves 78, 192 ÷ 78 leaves 36, 78 ÷ 36 leaves 6, and 36 ÷ 6 leaves 0.",
+      ],
+    },
+    {
+      heading: "Where the GCD and LCM come in handy",
+      paragraphs: [
+        "Simplifying fractions is the classic use, but the GCD also answers practical questions: the largest square tile that fits a 48 × 36 inch floor exactly is 12 inches (the GCD), and the LCM tells you when two repeating cycles line up — two buses running every 48 and 36 minutes coincide every 144 minutes.",
+        "The Euclidean algorithm is remarkably fast even for very large numbers, which is why it is still used in computer cryptography and algebra software today. For the small numbers on this page it finishes in a handful of steps, as the worked example shows.",
+      ],
+    },
+  ],
+
+  "gold-price-calculator": [
+    {
+      heading: "How is the value of gold calculated?",
+      paragraphs: [
+        "Gold is priced by the **troy ounce** (31.1035 grams — heavier than the ordinary ounce of 28.35 grams), and its value depends on weight and purity. This calculator converts the spot price you enter into a price per gram, then multiplies by the pure gold in your item: **value = weight × (karat ÷ 24) × (spot price ÷ 31.1035)**.",
+        "Purity comes from the karat rating: 24K is pure gold, 22K is 22/24 = 91.7% pure, 18K is 75.0%, and 14K is 58.3%. The tool offers those four ratings — if your item is marked 10K or 9K, it is not covered here.",
+        "The **spot price is entered by you** — the calculator holds no live price and does not fetch one, so check a current price from a financial source before calculating. Also note that the result is the **melt value** of the gold content, not what a buyer will pay: dealers and refiners pay below melt value to cover their costs and margin.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **10 grams of 22K gold** with a spot price of **$2,400 per troy ounce**. Purity is 22 ÷ 24 = **91.7%**, so the item holds 10 × 0.9167 = **9.17 g of pure gold**. The price per gram is $2,400 ÷ 31.1035 = **$77.16**, giving a value of **$707.32** (the tool multiplies the unrounded figures: 9.1667 g × $77.1616).",
+        "The same 10 grams in **24K at the tool's default $2,000 per ounce** would be worth 10 × ($2,000 ÷ 31.1035) = **$643.01**. Comparing the two examples shows how much both the karat and the spot price move the answer — always confirm both before relying on the figure.",
+      ],
+    },
+    {
+      heading: "Melt value is not the selling price",
+      paragraphs: [
+        "A buyer will offer less than the melt value — typically 70–95% of it depending on the buyer, the item, and the market — because refining, assaying, and reselling all cost money. Jewellery also carries craftsmanship value that the melt calculation ignores entirely, though second-hand jewellery rarely sells for its original retail price.",
+        "One detail to check: the tool treats 24K as 100% pure, although its own label describes 24K as 99.9% — the difference is a tenth of a percent and rarely matters, but it is a reminder that this is an estimate, not an assay. For a valuable item, a professional appraisal is worth the fee.",
+      ],
+    },
+  ],
+
+  "hex-to-decimal-calculator": [
+    {
+      heading: "What does this calculator actually convert?",
+      paragraphs: [
+        "Hexadecimal (hex) is the base-16 number system, using the digits 0–9 plus the letters **A–F for the values 10–15**. It is a compact way of writing binary: each hex digit stands for exactly four bits, so one byte is always two hex digits.",
+        "One important detail about this tool: despite the page name, **it converts from decimal to hexadecimal, not the other way round**. The input is a plain decimal number, and the tool shows its hex, binary, and octal forms. It cannot accept hex letters such as A–F because the input field only takes numbers — to convert hex to decimal, use the explanation below and check the result by entering the decimal answer here.",
+        "The hex-to-decimal rule is: multiply each hex digit by 16 raised to its position (from the right, starting at 0) and add them up. So 0x1A3 = 1 × 256 + 10 × 16 + 3 = **419**.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter the decimal number **255**. The tool shows **0xFF** in hexadecimal, **11111111** in binary, and **0o377** in octal. Check the hex by hand: F stands for 15, so 0xFF = 15 × 16 + 15 = 240 + 15 = **255** — the same number, as expected.",
+        "The other direction works the same way: **0xFF** converts back to 255, and **0x1A3** is 1 × 256 + 10 × 16 + 3 × 1 = **419**. Each hex digit to the left is worth sixteen times the one to its right, just as each decimal digit is worth ten times the one to its right.",
+      ],
+    },
+    {
+      heading: "Where hexadecimal is used",
+      paragraphs: [
+        "Hex is everywhere in computing: **colour codes** like #FF0000 (red) are three bytes in hex, **memory addresses** and **MAC addresses** are written in hex, and programmers use it to describe binary data compactly. A single hex digit replaces four binary digits, which is why long binary strings are almost always shown in hex instead.",
+        "Because this tool works decimal-to-hex, it is most useful as a quick check: enter a decimal value you know and read off the hex, binary, and octal forms together. For converting a hex value you already have, apply the place-value rule above — or enter the decimal result here to confirm it matches.",
+      ],
+    },
+  ],
+
+  "hourly-rate-calculator": [
+    {
+      heading: "How is a freelance hourly rate calculated?",
+      paragraphs: [
+        "A sustainable freelance rate starts from the annual income you need and divides it by the hours you can actually bill. The formula is **hourly rate = (desired salary + annual expenses) ÷ ((52 − vacation weeks) × billable hours per week)**. The expenses figure covers the costs of running your freelance work — software, equipment, insurance, marketing — that an employer would normally pay for you.",
+        "The denominator is the part most new freelancers get wrong: you cannot bill 40 hours a week for 52 weeks. Holidays, sick days, admin, pitching, and gaps between projects all eat into billable time, which is why the calculator asks for vacation weeks and billable hours separately.",
+        "The rate this produces covers your salary and expenses only. It does **not** include income tax, retirement savings, or health cover — all of which you must fund yourself as a freelancer — so treat the result as a floor, not a finished price.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Aim for a **$60,000** salary with **$10,000** of annual expenses, working **30 billable hours a week** with **4 weeks of vacation**. Work weeks = 52 − 4 = **48**, billable hours per year = 48 × 30 = **1,440**, and annual revenue needed = $60,000 + $10,000 = **$70,000**. The hourly rate is $70,000 ÷ 1,440 = **$48.61**, and monthly revenue needed is $70,000 ÷ 12 = **$5,833.33**.",
+        "Drop the billable hours to 20 a week and the same $70,000 must come from 960 hours, pushing the rate to **$72.92** an hour. That is the trade-off freelancers live with: fewer billable hours mean a higher rate is needed to earn the same living.",
+      ],
+    },
+    {
+      heading: "What to add on top of this rate",
+      paragraphs: [
+        "Tax is the biggest missing piece: as a freelancer you pay both the employee's and the employer's share of payroll taxes in many systems, plus income tax, so setting aside 25–30% of revenue for tax is a common rule of thumb. Retirement contributions and health insurance are also yours to fund.",
+        "Non-billable time is the other hidden cost — quoting, invoicing, chasing payments, and learning new tools all take hours you cannot charge for. Many experienced freelancers add 10–20% to their calculated rate as a buffer for exactly these costs, and raise it further when demand for their work is strong.",
+      ],
+    },
+  ],
+
+  "invoice-calculator": [
+    {
+      heading: "How is an invoice total calculated?",
+      paragraphs: [
+        "An invoice total is built in a fixed order: **discount first, then tax**. The discount is a percentage of the subtotal, and the tax is charged on the amount left after the discount — not on the original subtotal. So total due = (subtotal − discount) + tax on the discounted amount.",
+        "This calculator takes the subtotal, a discount percentage, and a tax rate, and shows each line separately: the subtotal, the discount as a negative amount, the tax as a positive amount, and the total due. Keeping the lines visible makes it easy to check the arithmetic before sending the invoice.",
+        "The tool handles a single subtotal only — it has no line items. If an invoice has several products or services, add them together first and enter the combined subtotal.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a subtotal of **$500** with a **10% discount** and **8% tax**. The discount is $500 × 10% = **$50.00**, leaving $450.00. Tax is $450 × 8% = **$36.00**. The total due is $450 + $36 = **$486.00**.",
+        "Notice the order matters: if tax were charged on the full $500 first, the tax would be $40 instead of $36 and the total would be $490. The $4 difference is the tax saved on the discounted portion — small here, but it scales with the invoice size, and most tax rules require the discount-first order this calculator uses.",
+      ],
+    },
+    {
+      heading: "Discounts, tax, and getting paid",
+      paragraphs: [
+        "A discount is a real cost: 10% off a $500 invoice is $50 of revenue given away, so offer discounts deliberately — for early payment, for example — rather than by habit. Tax rates vary by location and by what is being sold, and some goods and services are exempt, so confirm the correct rate for your situation rather than guessing.",
+        "For the invoice itself, the essentials are a unique invoice number, the date, payment terms (such as 'due within 14 days'), and a clear breakdown of what was sold. A calculator gives you the numbers; clear terms are what get the invoice paid on time.",
+      ],
+    },
+  ],
+
+  "lawn-seed-calculator": [
+    {
+      heading: "How much grass seed do you need?",
+      paragraphs: [
+        "Grass seed is sold by weight and sown at a rate per 1,000 square feet, so the calculation is: **seed needed = (lawn area ÷ 1,000) × seed rate**. The lawn area is simply length × width in feet, and the seed rate depends on the grass type — fine grasses need far less seed per square foot than coarse ones.",
+        "This calculator also shows the amount for **overseeding** — sowing into an existing lawn to thicken it — which is **half the new-lawn rate**, and rounds the total up to whole **5 lb bags**, since seed is sold in bags rather than by the pound.",
+        "The rate you enter is the main judgement call. Typical new-lawn rates are **Kentucky bluegrass 2–3 lbs, Bermuda 1–2 lbs, and tall fescue 6–8 lbs per 1,000 sq ft**. Always check the bag label for the variety you are buying, since rates vary by cultivar and by region.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a lawn **40 ft long and 60 ft wide** — an area of 40 × 60 = **2,400 sq ft** — sown with fescue at **6 lbs per 1,000 sq ft**. Seed needed = (2,400 ÷ 1,000) × 6 = **14.4 lbs**. For overseeding the same lawn you would need half that, **7.2 lbs**.",
+        "Buying 14.4 lbs means **three 5 lb bags** (15 lbs total), because two bags would only give 10 lbs. The small surplus is useful: it covers thin patches and gives you seed for repairs later in the season.",
+      ],
+    },
+    {
+      heading: "Getting the seed to grow",
+      paragraphs: [
+        "Seed needs contact with soil, moisture, and the right temperature — usually soil above 50°F (10°C) for cool-season grasses and above 65°F (18°C) for warm-season ones. Scattering seed onto dry, hard ground or into the heat of midsummer wastes most of it, however accurate the quantity.",
+        "Water lightly and often until the seedlings are established, then switch to deeper, less frequent watering. Sowing in early autumn suits cool-season grasses best: warm soil, cooler air, and less competition from weeds give new grass the strongest start.",
+      ],
+    },
+  ],
+
+  "led-savings-calculator": [
+    {
+      heading: "How are LED savings calculated?",
+      paragraphs: [
+        "Switching a bulb to LED saves money because an LED produces the same light with far fewer watts. The annual cost of running any bulb is **bulbs × watts × hours per day × 365 ÷ 1,000 × electricity rate**, which converts watts into kilowatt-hours and then into money. This calculator runs that formula twice — once for the old bulbs, once for the LEDs — and the difference is the annual saving.",
+        "It also shows the **energy reduction** as a percentage: (old watts − LED watts) ÷ old watts. A 60W bulb replaced by a 9W LED uses 85% less energy for the same light, which is why the savings are so large relative to the effort involved.",
+        "The result compares **running costs only** — it does not subtract the price of the LED bulbs themselves. To work out the payback time, divide what the bulbs cost by the annual saving; with cheap bulbs and heavy use, payback is often a matter of months.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Replace **10 bulbs** from **60W to 9W**, used **5 hours a day**, at an electricity rate of **$0.15 per kWh**. The old bulbs use 10 × 60 × 5 × 365 ÷ 1,000 = **1,095 kWh a year**, costing **$164.25**. The LEDs use 10 × 9 × 5 × 365 ÷ 1,000 = **164.25 kWh**, costing **$24.64**. The annual saving is $164.25 − $24.64 = **$139.61**, an **85%** energy reduction.",
+        "If the ten LED bulbs cost $30 in total, the payback time is $30 ÷ $139.61 ≈ 0.21 years — about **two and a half months**. After that, the saving is pure gain, and LEDs also last far longer than old bulbs, so replacement costs fall too.",
+      ],
+    },
+    {
+      heading: "Where the biggest savings hide",
+      paragraphs: [
+        "The bulbs that run longest save the most: kitchen, living-room, and outdoor lights that burn five or more hours a day repay an LED swap quickly, while a bulb in a rarely used cupboard may take years to pay back. Start with the high-use rooms first.",
+        "Wattage is not brightness — match the **lumens**, not the watts, when choosing a replacement. A 60W old bulb gives about 800 lumens, which a 9–10W LED matches; buying on watts alone can leave a room dimmer than expected.",
+      ],
+    },
+  ],
+
+  "logarithm-calculator": [
+    {
+      heading: "How is a logarithm calculated?",
+      paragraphs: [
+        "A logarithm answers the question: **to what power must the base be raised to get this number?** So log₂(64) = 6 because 2⁶ = 64, and log₁₀(1000) = 3 because 10³ = 1000. This calculator uses the **change-of-base formula** — log_b(x) = ln(x) ÷ ln(b) — which works for any base.",
+        "Alongside your chosen base, it always shows the three most common logarithms: the **natural log (ln, base e ≈ 2.71828)**, **log base 10**, and **log base 2**. Base 10 suits orders of magnitude and scientific scales, base e appears throughout calculus and growth mathematics, and base 2 is the natural choice in computing.",
+        "Logarithms are only defined for **positive numbers** with a **positive base that is not 1**. Entering zero, a negative number, or a base of 1 produces NaN or Infinity rather than a result — the tool does not validate its inputs, so check yours before trusting the output.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take the number **64** with base **2**. Since 2⁶ = 64, **log₂(64) = 6.000000**. The same number's other logarithms are ln(64) = **4.158883**, log₁₀(64) = **1.806180**, and log₂(64) = **6.000000** — the calculator shows all four together so you can compare bases at a glance.",
+        "Another check: **log₅(125) = 3**, because 5³ = 125. And log₁₀(100) = 2, which shows the base-10 logarithm simply counting the zeros for powers of ten — the reason it is used for scales like pH, decibels, and the Richter scale, where each whole step means ten times as much.",
+      ],
+    },
+    {
+      heading: "Where logarithms show up",
+      paragraphs: [
+        "Anything that grows or shrinks by multiplication rather than addition is naturally described with logarithms: **compound interest, population growth, radioactive decay, and the spread of an infection** all become straight lines on a log scale, which is why scientists and analysts reach for them.",
+        "Everyday scales hide logarithms too. A sound 10 decibels louder carries ten times the energy, a magnitude-6 earthquake releases about 32 times the energy of a magnitude-5 one, and each whole pH step means a tenfold change in acidity. Logarithms are how we keep such enormous ranges readable.",
+      ],
+    },
+  ],
+
+  "margin-calculator": [
+    {
+      heading: "How is profit margin calculated?",
+      paragraphs: [
+        "Profit margin is the share of your revenue that is left as profit, expressed as a percentage. **Gross margin is (revenue − cost of goods) ÷ revenue × 100**, and **net margin subtracts operating expenses as well** before dividing by revenue.",
+        "This calculator shows both figures from the same three inputs. Gross profit is revenue minus the direct cost of what you sold; net profit is gross profit minus operating expenses such as rent, salaries, and marketing. Dividing each by revenue turns them into margins you can compare across products, months, or businesses of different sizes.",
+        "Margin is always measured against **revenue (the selling price)**, not against cost. That is what separates it from markup, which is measured against cost: a product bought for $60 and sold for $100 has a 40% margin but a 66.7% markup on cost.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a month with **$10,000 of revenue, $6,000 in cost of goods, and $2,000 in operating expenses**. Gross profit is $10,000 − $6,000 = **$4,000**, so gross margin is $4,000 ÷ $10,000 × 100 = **40.0%**.",
+        "Net profit is $4,000 − $2,000 = **$2,000**, so net margin is $2,000 ÷ $10,000 × 100 = **20.0%**. Half of the gross profit is absorbed by operating expenses — which is exactly why the two margins tell different stories, and why this calculator shows both.",
+      ],
+    },
+    {
+      heading: "What is a good profit margin?",
+      paragraphs: [
+        "It depends on the industry: a 10–20% net margin is generally considered healthy, but grocery stores run happily on 1–3% while software companies often exceed 20%. Compare your margin with businesses like yours, not with a universal target.",
+        "To improve margin you have three levers: **raise prices**, **lower the cost of goods** (cheaper suppliers, less waste), or **cut operating expenses**. Raising prices is usually the fastest lever — on $10,000 of revenue, a 5% price rise with no change in costs adds $500 straight to profit.",
+        "Watch the two margins separately. If gross margin is strong but net margin is thin, the problem is overhead, not pricing. If gross margin itself is thin, no amount of cost-cutting on expenses will fix the business — the price or the product cost has to change.",
+      ],
+    },
+  ],
+
+  "median-calculator": [
+    {
+      heading: "How is the median calculated?",
+      paragraphs: [
+        "The median is the **middle value of a sorted list of numbers**. Sort the values from smallest to largest and take the one in the middle — half the values are above it and half below it.",
+        "This calculator works with **exactly five values**. Enter them in any order: it sorts them, picks the middle one as the median, and also shows the mean, the range, and the minimum and maximum so you can see how the median compares with the average.",
+        "The median is useful because a single extreme value barely moves it, while the mean can be pulled a long way. That is why incomes and house prices are usually reported as medians: one billionaire in a survey would distort the mean but leave the median almost untouched.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter the values **12, 7, 25, 18, and 9**. Sorted, they are **7, 9, 12, 18, 25**, and the middle value — the third of five — is **12**, so the median is 12.",
+        "The mean is (7 + 9 + 12 + 18 + 25) ÷ 5 = 71 ÷ 5 = **14.2**, noticeably higher than the median because the outlier 25 pulls the average up. The range is 25 − 7 = **18**, with a minimum of 7 and a maximum of 25.",
+      ],
+    },
+    {
+      heading: "When should you use the median instead of the mean?",
+      paragraphs: [
+        "Use the median when your data is **skewed** — when a few very large or very small values would drag the mean away from the typical value. Salaries, house prices, and waiting times are classic cases.",
+        "Use the mean when every value matters equally and there are no strong outliers, for example when averaging test scores or daily temperatures. When the two are close together, the data is fairly symmetric and either figure describes it well.",
+        "Because this calculator takes five values, it is best for quick checks and small data sets. For larger lists, the same rule applies: sort the values and take the middle one (or the average of the two middle ones, if the count is even).",
+      ],
+    },
+  ],
+
+  "modulo-calculator": [
+    {
+      heading: "What is the modulo operation?",
+      paragraphs: [
+        "Modulo gives you the **remainder after division**. 17 mod 5 is 2, because 17 ÷ 5 = 3 with 2 left over. It answers the question 'what is left?' rather than 'how many times does it fit?'",
+        "The relationship is **dividend = quotient × divisor + remainder**. This calculator shows all three parts: the remainder, the whole-number quotient, and the full division written out, plus whether the dividend is even or odd.",
+        "Dividing by zero has no answer, so if you enter 0 as the divisor the calculator shows an error instead of a result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter a dividend of **17** and a divisor of **5**. 5 fits into 17 three whole times (3 × 5 = 15), leaving **17 − 15 = 2**, so the remainder is **2** and the quotient is **3**.",
+        "The calculator writes this out as **17 = 3 × 5 + 2**, and reports that 17 is odd — because 17 mod 2 = 1, there is a remainder of 1 when dividing by 2.",
+      ],
+    },
+    {
+      heading: "Where is modulo used?",
+      paragraphs: [
+        "Modulo is how clocks work: 15:00 is 3 o'clock because 15 mod 12 = 3. The same idea cycles through anything that repeats — days of the week, array positions in programming, and rotating schedules.",
+        "It is also the standard test for even and odd numbers: a number is even when n mod 2 = 0 and odd when n mod 2 = 1. Hash functions and cryptography use modulo heavily to keep results inside a fixed range.",
+        "A practical everyday use is splitting things evenly: 17 items shared among 5 people give 3 each with 2 left over — the remainder is exactly what modulo returns.",
+      ],
+    },
+  ],
+
+  "password-strength-calculator": [
+    {
+      heading: "How is password strength measured?",
+      paragraphs: [
+        "Password strength is measured as **entropy in bits: length × log₂(pool size)**, where the pool is the number of different characters that could appear in each position. More bits means more possible passwords, and therefore more guesses for an attacker to try.",
+        "This calculator offers four character pools: lowercase only (26 characters), lower plus upper case (52), letters plus numbers (62), and all characters including symbols (95). It rates the result **Weak below 40 bits, Moderate from 40, Strong from 60, and Very Strong from 80 bits**, and estimates crack time assuming an attacker can try 10 billion guesses per second.",
+        "The estimate assumes the password is **random** — every character chosen independently. A real word, a name, or a common pattern is far weaker than its entropy suggests, because attackers try dictionary words and leaked passwords first.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **12-character password using all 95 characters** has entropy of 12 × log₂(95) = **78.8 bits**, rated **Strong**. The number of possible combinations is 95¹², about **5.40 × 10²³** — at 10 billion guesses per second, trying them all would take about **1,715,429 years**.",
+        "Compare an **8-character lowercase-only password**: entropy is 8 × log₂(26) = **37.6 bits**, rated **Weak**. There are only about 209 billion combinations, and at the same guessing rate they fall in about **21 seconds**. Four extra characters and a bigger pool turn seconds into millions of years.",
+      ],
+    },
+    {
+      heading: "How can you make a password stronger?",
+      paragraphs: [
+        "**Length beats complexity.** Each extra character multiplies the combinations by the pool size, so going from 8 to 12 characters with the same character set multiplies the guessing work by 95⁴ — roughly 81 million times — for a full character set.",
+        "The easiest way to get length is a **passphrase**: four or five unrelated words strung together. It is long, memorable, and hard to guess — far better than a short password with a symbol swapped in.",
+        "Use a **different password for every important account** and a password manager to remember them. Strength only helps if the password is unique: a very strong password reused across sites is compromised the moment any one of those sites leaks it.",
+      ],
+    },
+  ],
+
+  "permutation-calculator": [
+    {
+      heading: "How are permutations calculated?",
+      paragraphs: [
+        "A permutation is an **arrangement where order matters**, and the count is **nPr = n! ÷ (n−r)!** — the number of ways to pick r items from n and arrange them. The exclamation mark means factorial: n! is n × (n−1) × … × 1.",
+        "This calculator also shows the matching **combination count, nCr = n! ÷ (r! × (n−r)!)**, where order does not matter, plus the values of n! and (n−r)! so you can see the working. It accepts n up to 20 and always keeps r no larger than n.",
+        "The difference between the two counts is the factor r!: every combination of r items can be arranged in r! different orders, so permutations always outnumber combinations by exactly that factor.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **n = 10 items and choose r = 3**. The number of permutations is 10P3 = 10! ÷ 7! = 3,628,800 ÷ 5,040 = **720** — equivalently 10 × 9 × 8, since the first pick has 10 options, the second 9, and the third 8.",
+        "The number of combinations is 10C3 = 10! ÷ (3! × 7!) = **120**. The ratio 720 ÷ 120 = 6 is exactly 3! — each set of 3 items can be ordered 6 ways, and permutations count every ordering separately.",
+      ],
+    },
+    {
+      heading: "When do permutations apply?",
+      paragraphs: [
+        "Use permutations whenever **the order of the result matters**: the finishing order of a race, the digits of a lock code, or the batting order of a team. Swapping two items gives a genuinely different outcome.",
+        "Use combinations when order does **not** matter: lottery numbers, a committee chosen from a group, or a hand of cards. ABC and CBA are the same committee, so combinations are the right count.",
+        "A quick check: if rearranging the chosen items changes the result, you need permutations; if it does not, you need combinations. This calculator shows both, so you can compare them for the same n and r.",
+      ],
+    },
+  ],
+
+  "photo-print-size-calculator": [
+    {
+      heading: "How big can I print my photo?",
+      paragraphs: [
+        "The maximum print size is **pixels ÷ DPI (dots per inch)**. At 300 DPI — professional print quality — a 4032 × 3024 photo prints at 13.4 × 10.1 inches; at 150 DPI the same photo stretches to 26.9 × 20.2 inches.",
+        "This calculator works from the pixel dimensions of your image. It reports the megapixel count (width × height ÷ 1,000,000) and the largest print at both **300 DPI for excellent quality** and **150 DPI, which is acceptable for large posters** viewed from a distance.",
+        "The shape of the print follows the shape of the image: a 4032 × 3024 photo has a 4:3 aspect ratio, so it fits 8 × 6 or 12 × 9 inch frames without cropping, but would need trimming for a 10 × 8 frame.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter an image **4032 pixels wide and 3024 pixels tall** — a typical 12-megapixel phone photo. The megapixel count is 4032 × 3024 ÷ 1,000,000 = **12.2 MP**.",
+        "At 300 DPI the maximum print is 4032 ÷ 300 = **13.4 inches** wide and 3024 ÷ 300 = **10.1 inches** tall. At 150 DPI it doubles: **26.9 × 20.2 inches**. So the same photo makes a crisp 13 × 10 inch print, or a poster over two feet wide if you accept the lower resolution.",
+      ],
+    },
+    {
+      heading: "What DPI should you print at?",
+      paragraphs: [
+        "**300 DPI is the standard for prints you hold or view up close** — photo books, framed prints, and anything examined at arm's length. Below about 240 DPI, sharp-eyed viewers start to notice softness in a close-up print.",
+        "**150 DPI is fine for posters and wall art** viewed from a few feet away, where the eye cannot resolve individual dots. Billboards print at far lower DPI still, because nobody views them from two feet away.",
+        "Cropping shrinks your printable size: cutting a photo in half in each direction quarters the pixel count and halves each print dimension. If you plan to print large, crop as little as possible and keep the original full-resolution file.",
+      ],
+    },
+  ],
+
+  "pool-volume-calculator": [
+    {
+      heading: "How do you calculate pool volume?",
+      paragraphs: [
+        "For a rectangular pool, the volume is **length × width × average depth × 7.48 gallons per cubic foot**. Multiply the three dimensions to get cubic feet, then convert to gallons.",
+        "The tricky input is **average depth**: add the shallow-end depth to the deep-end depth and divide by 2. A pool that runs from 3 feet to 7 feet deep has an average depth of 5 feet. This calculator also converts the result to liters (gallons × 3.785) and estimates the cost of filling the pool at $5 per 1,000 gallons.",
+        "The formula assumes a rectangular pool with a roughly even slope. For round or oval pools, or pools with large steps and benches, the result is an approximation — measure the main body of the pool and treat shelves and steps as extra.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a pool **30 feet long, 15 feet wide, with an average depth of 5 feet**. The volume is 30 × 15 × 5 = **2,250 cubic feet**.",
+        "In gallons that is 2,250 × 7.48 = **16,830 gallons**, or 16,830 × 3.785 = **63,702 liters**. At the calculator's $5 per 1,000 gallons, filling it costs about **$84.15** — check your local water rate, since prices vary widely by area.",
+      ],
+    },
+    {
+      heading: "Why does pool volume matter?",
+      paragraphs: [
+        "**Chemical dosing depends on it.** Chlorine, pH adjusters, and algaecides are all dosed per gallon, so guessing the volume means either under-treating the water or wasting chemicals. A 16,830-gallon pool needs roughly twice the chlorine of an 8,000-gallon pool.",
+        "It also sizes your equipment: pumps, filters, and heaters are rated by how many gallons they can handle, and running costs scale with volume. Knowing the exact figure makes quotes comparable.",
+        "If your pool has a sloped floor, re-measure the average depth rather than guessing — a one-foot error in depth on a 30 × 15 pool changes the volume by 3,366 gallons, about 20% of the total.",
+      ],
+    },
+  ],
+
+  "price-per-sqft-calculator": [
+    {
+      heading: "How is price per square foot calculated?",
+      paragraphs: [
+        "Price per square foot is simply **the property price divided by its square footage**. A $350,000 home with 1,800 square feet costs $194.44 per square foot.",
+        "This calculator also converts the figure to **price per square meter by multiplying by 10.764**, since one square meter equals 10.764 square feet. It shows the total price and total area alongside, so you can check the inputs at a glance.",
+        "The figure is most useful for **comparing similar homes in the same area**. It strips out size differences so a 1,200 sq ft condo and a 2,400 sq ft house can be compared on equal terms — at least on price.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter a property price of **$350,000** and **1,800 square feet**. The price per square foot is $350,000 ÷ 1,800 = **$194.44**.",
+        "Per square meter that is $194.44 × 10.764 = **$2,093.00**. If a second home nearby is listed at $210 per square foot, it is about 8% more expensive per unit of space — a gap worth investigating before offering.",
+      ],
+    },
+    {
+      heading: "What price per square foot does not tell you",
+      paragraphs: [
+        "It says nothing about **condition, age, land, or location**. A renovated home and a fixer-upper on the same street can have very different prices per square foot, and both can be fairly priced — the figure alone cannot tell you which is the better buy.",
+        "It also ignores what is included in the square footage: finished basements, garages, and porches are counted differently by different listings, so two homes with the same headline figure may not be directly comparable. Check what the area includes before comparing.",
+        "Use it as a **screening tool, not a valuation**. As a rough guide, the US national average sits around $150–$200 per square foot, but it varies hugely by location — the same figure that is cheap in one city is expensive in another.",
+      ],
+    },
+  ],
+
+  "prime-number-checker": [
+    {
+      heading: "How do you check if a number is prime?",
+      paragraphs: [
+        "A prime number is a whole number **greater than 1 that is divisible only by 1 and itself**. To test a number n, you only need to check divisibility by numbers from 2 up to the square root of n — if none of them divide evenly, the number is prime.",
+        "This calculator runs that test for you and goes further: it finds the **next prime and the previous prime**, and for numbers that are not prime it lists the factors it found. For prime numbers it shows the digit count instead.",
+        "Checking up to the square root is enough because factors come in pairs: if n has a factor larger than √n, it must also have a partner factor smaller than √n, so the smaller one would already have been found.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter **97**. The calculator tests divisibility from 2 up to √97 (about 9.8): 97 is not divisible by 2, 3, 5, or 7, so the answer is **Yes — 97 is prime**. The next prime is **101**, the previous prime is **89**, and 97 has **2 digits**.",
+        "Now enter **91**. It looks prime at a glance, but 91 ÷ 7 = 13, so the answer is **No — 91 is not prime**, with factors **7 and 13**. Its neighbouring primes are the same pair: next **97**, previous **89**.",
+      ],
+    },
+    {
+      heading: "Why do prime numbers matter?",
+      paragraphs: [
+        "Primes are the **building blocks of all whole numbers**: every number greater than 1 is either prime or can be broken into prime factors, in exactly one way. That is why the factor list this calculator shows is so useful for mental arithmetic and fractions.",
+        "They also secure the internet. Public-key encryption multiplies two very large primes together; the product is public, but recovering the original primes from it is so slow that the encryption holds. The security of online banking rests on how hard factoring is.",
+        "A few facts worth knowing: **2 is the only even prime**, 1 is not prime (it has only one divisor), and there are infinitely many primes — a fact proved over 2,000 years ago.",
+      ],
+    },
+  ],
+
+  "profit-calculator": [
+    {
+      heading: "How is profit calculated?",
+      paragraphs: [
+        "Profit per unit is **selling price minus cost price**, and total profit is profit per unit multiplied by the number of units sold. Sell 100 units at a $45 profit each and you make $4,500.",
+        "This calculator shows four figures: profit per unit, **Profit %**, total profit, and total revenue. Note that the Profit % here is measured against **cost** — profit ÷ cost × 100 — which is the return on what you paid for the goods, sometimes called markup. It is not the same as margin, which is measured against the selling price.",
+        "Total revenue is selling price × units sold. It is the money coming in, not the money you keep — profit is what remains after the cost of the goods is subtracted.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Buy a product for **$75**, sell it for **$120**, and sell **100 units**. Profit per unit is $120 − $75 = **$45**, and Profit % is $45 ÷ $75 × 100 = **60.0%**.",
+        "Total profit is $45 × 100 = **$4,500**, and total revenue is $120 × 100 = **$12,000**. For comparison, the margin on the selling price would be $45 ÷ $120 = 37.5% — the same sale, measured against a different base.",
+      ],
+    },
+    {
+      heading: "Profit vs margin — which should you watch?",
+      paragraphs: [
+        "Watch **both**. Profit % against cost tells you how much each dollar you spend on stock earns back; margin against price tells you how much of each sales dollar you keep. A 60% profit on cost sounds generous, but the same sale keeps only 37.5 cents of each dollar of revenue.",
+        "If profit per unit is thin, you need volume to make the business work; if it is fat, each sale counts more. Use this calculator to test the trade-off: a lower price may sell more units but shrink the profit on each one, and the total profit can go either way.",
+        "Remember that this calculator covers the **cost of goods only**. Rent, shipping, fees, and your time come out of the gross profit it shows, so the real bottom line is lower than the figure here.",
+      ],
+    },
+  ],
+
+  "proportion-calculator": [
+    {
+      heading: "How do you solve a proportion?",
+      paragraphs: [
+        "A proportion is two equal ratios, written **A/B = C/D**. To find the missing value, cross-multiply: **D = (B × C) ÷ A**. The calculator solves for D from the three values you enter.",
+        "It also shows both ratios as decimals, so you can check that they match — if A/B and C/D are equal, the proportion holds. The full proportion is written out with the solved value filled in.",
+        "Proportions only work when the relationship is genuinely proportional: doubling one side must double the other. If the relationship has a fixed fee or a minimum, a proportion will give the wrong answer.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Solve **3/4 = 9/D**. Cross-multiplying gives D = (4 × 9) ÷ 3 = 36 ÷ 3 = **12**.",
+        "Check the ratios: 3 ÷ 4 = **0.75** and 9 ÷ 12 = **0.75**. They match, so the proportion holds: 3 is to 4 as 9 is to 12.",
+      ],
+    },
+    {
+      heading: "Where do proportions show up?",
+      paragraphs: [
+        "**Scaling recipes and mixtures**: if 3 cups of flour serve 4 people, 9 cups serve 12. The same math scales paint, concrete, and any recipe up or down.",
+        "**Maps and scale drawings**: a scale of 1:50 means 1 cm on the drawing is 50 cm in reality, so a 9 cm line on the plan is a 4.5 m wall. Unit prices work the same way — comparing a 12 oz bottle with a 20 oz bottle is a proportion problem.",
+        "A classic classroom use is **similar triangles**: the sides of two similar shapes are in proportion, so measuring one triangle lets you calculate the other without measuring it at all.",
+      ],
+    },
+  ],
+
+  "recipe-scaler-calculator": [
+    {
+      heading: "How do you scale a recipe?",
+      paragraphs: [
+        "Scaling a recipe means multiplying every ingredient by the **scale factor: desired servings ÷ original servings**. A recipe for 4 scaled to 6 servings uses a factor of 1.5, so every amount grows by half.",
+        "This calculator scales **up to three ingredients at once** and shows the scale factor itself, so you can apply it to the rest of the recipe by hand. It works for scaling down as well as up — halving a recipe for 8 down to 4 uses a factor of 0.5.",
+        "Amounts are shown to two decimal places. For kitchen use, round to the nearest practical measure: 2.25 cups is 2¼ cups, and 0.75 cup is ¾ cup.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Scale a recipe from **4 servings to 6 servings**. The scale factor is 6 ÷ 4 = **1.5×**.",
+        "With 2 cups of flour, 1.5 cups of sugar, and 0.5 cup of butter, the scaled amounts are 2 × 1.5 = **3 cups** of flour, 1.5 × 1.5 = **2.25 cups** of sugar, and 0.5 × 1.5 = **0.75 cup** of butter.",
+      ],
+    },
+    {
+      heading: "What does not scale neatly?",
+      paragraphs: [
+        "**Seasonings and leavening** do not scale linearly. Salt, spices, baking powder, and yeast should be increased more cautiously than the main ingredients — scale them by roughly two-thirds of the factor, then taste and adjust.",
+        "**Cooking time and temperature** barely change. A doubled cake does not bake twice as long; it bakes in a larger pan at the same temperature, usually with only a little extra time. Check for doneness early rather than trusting the original timing.",
+        "**Pan size matters**: doubling a recipe into the same pan gives a thicker layer that cooks unevenly. Use a larger pan, or split the batch across two pans, when you scale up.",
+      ],
+    },
+  ],
+
+  "ring-size-calculator": [
+    {
+      heading: "How is ring size calculated from circumference?",
+      paragraphs: [
+        "Measure your finger's circumference in millimetres, and the size follows from it. The US size is approximately **(circumference − 36.5) ÷ 2.55**, and the **EU size is simply the circumference in millimetres** — a 54 mm finger is a EU size 54.",
+        "This calculator also gives the ring's **inside diameter (circumference ÷ π)** and an approximate UK letter size. The US formula is a linear approximation of the standard sizing tables, so it is accurate to about a quarter of a size for typical fingers.",
+        "Because the UK letter is only approximate, check it against a jeweller's sizing chart before ordering — and when in doubt, size with a physical ring sizer rather than relying on any formula.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Measure a finger circumference of **54 mm**. The inside diameter is 54 ÷ π = **17.2 mm**.",
+        "The US size is (54 − 36.5) ÷ 2.55 = 17.5 ÷ 2.55 = **6.9**, and the EU size is **54** — the circumference itself, rounded to the nearest whole millimetre.",
+      ],
+    },
+    {
+      heading: "How do you measure your finger?",
+      paragraphs: [
+        "Wrap a **thin strip of paper around your finger**, mark where it overlaps, and measure the length in millimetres. A string works too, but paper stretches less and gives a steadier reading.",
+        "Measure at the **end of the day**, when your fingers are at their largest, and make sure the strip slides over your knuckle — a ring that fits the finger but not the knuckle is unwearable. Warm hands measure larger than cold hands, so avoid measuring straight after coming in from the cold.",
+        "If you are between sizes, **size up for wide bands** (6 mm and wider feel tighter than narrow ones) and for rings you will wear in hot weather. A jeweller can confirm the size in under a minute if the ring is an expensive purchase.",
+      ],
+    },
+  ],
+
+  "savings-goal-calculator": [
+    {
+      heading: "How much do I need to save each month?",
+      paragraphs: [
+        "The monthly saving needed is **remaining amount × monthly rate ÷ ((1 + monthly rate)^months − 1)**, where the remaining amount is your goal minus what you already have. With no interest, it simplifies to remaining ÷ months.",
+        "This calculator uses the **sinking-fund formula**: it works out the fixed monthly deposit that, with interest compounding each month, reaches exactly your goal on time. It also shows the interest you will earn along the way and the equivalent weekly amount (monthly ÷ 4.33).",
+        "The formula assumes you deposit at the end of each month and the rate stays fixed. Real savings rates move around, so treat the result as a plan, not a promise — and revisit it if your rate changes.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Save for a **$10,000 goal with $2,000 already saved, over 24 months at 4% annual interest**. The remaining amount is $8,000 and the monthly rate is 0.04 ÷ 12 = 0.003333.",
+        "The monthly saving is $8,000 × 0.003333 ÷ ((1.003333)²⁴ − 1) = **$320.73**. Over two years you contribute $7,697.59 and earn **$302.41 in interest** — without interest you would need $8,000 ÷ 24 = $333.33 a month, so the interest saves about $12.60 a month. The weekly equivalent is **$74.07**.",
+      ],
+    },
+    {
+      heading: "How can you reach the goal faster?",
+      paragraphs: [
+        "**Start with what you have.** Every dollar already saved is a dollar you do not need to contribute, plus the interest it earns. Even a small starting balance shortens the road noticeably on a two-year goal.",
+        "**Automate the deposit** for payday, so the saving happens before spending can absorb it. A high-yield savings account lets the interest do some of the work — the 4% in the example above covers nearly $300 of the goal by itself.",
+        "If the monthly figure is out of reach, you have three honest options: extend the deadline, lower the goal, or find a higher rate. What does not work is ignoring the gap — a plan you cannot follow is worse than a smaller plan you can.",
+      ],
+    },
+  ],
+
+  "screen-size-calculator": [
+    {
+      heading: "How are screen width and height calculated?",
+      paragraphs: [
+        "A screen's advertised size is its **diagonal**, and the width and height follow from the diagonal and the aspect ratio using Pythagoras' theorem. Width = diagonal × ratioW ÷ √(ratioW² + ratioH²), and height uses ratioH in place of ratioW.",
+        "This calculator takes the diagonal in inches and the aspect ratio (for example 16 and 9) and returns the width, height, and viewing area in square inches. The ratio is shown back to you as entered, so you can confirm the inputs.",
+        "The result is the size of the **screen panel itself**, not the whole device — bezels, stands, and frames add to the overall footprint, so allow extra space when planning a desk or wall mount.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **27-inch monitor with a 16:9 aspect ratio**. The divisor is √(16² + 9²) = √337 ≈ 18.36, so the width is 27 × 16 ÷ 18.36 = **23.53 inches** and the height is 27 × 9 ÷ 18.36 = **13.24 inches**.",
+        "The viewing area is 23.53 × 13.24 = **311.5 square inches**. The same 27-inch diagonal in a 21:9 ultrawide ratio gives a wider but shorter screen — 24.82 × 10.64 inches — with only 263.9 square inches of area, about 47.6 square inches less.",
+      ],
+    },
+    {
+      heading: "Why is diagonal size misleading?",
+      paragraphs: [
+        "Two screens with the **same diagonal can have very different areas**. The wider the aspect ratio, the less total area a given diagonal buys — as the example shows, a 27-inch 21:9 screen has about 15% less viewing area than a 27-inch 16:9 screen.",
+        "Diagonal size also grows more slowly than it feels: going from a 24-inch to a 27-inch screen is a 12.5% increase in diagonal but a 26.6% increase in area, because area scales with the square of the diagonal. That is why a modest-sounding upgrade can feel much bigger.",
+        "When comparing screens, compare **width, height, and area** — not just the diagonal. This calculator gives you all three from the two numbers on the box.",
+      ],
+    },
+  ],
+
+  "shipping-cost-calculator": [
+    {
+      heading: "How is shipping cost estimated?",
+      paragraphs: [
+        "Carriers charge by **billable weight — the greater of the actual weight and the dimensional weight**. Dimensional weight is length × width × height ÷ 139, the standard divisor for US domestic parcels, and it prices the space a box takes up rather than what it weighs.",
+        "This calculator prices the billable weight at flat illustrative rates: **ground at $1.50 per pound plus $5, and express at $3.50 per pound plus $15**. The estimate uses weight and dimensions only — it is not a live carrier quote, and real rates vary by carrier, destination, and service.",
+        "Dimensional weight is why a large, light box can cost more to ship than a small, heavy one: the carrier is selling space in the truck, and a bulky parcel takes the space of several small ones.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Ship a **5 lb box measuring 24 × 18 × 18 inches**. Its dimensional weight is 24 × 18 × 18 ÷ 139 = 7,776 ÷ 139 = **55.9 lb** — far above its actual weight, so the billable weight is 55.9 lb.",
+        "Ground shipping is 55.9 × $1.50 + $5 = **$88.91**, and express is 55.9 × $3.50 + $15 = **$210.80**. By contrast, a dense 10 lb box measuring 12 × 10 × 8 inches has a dimensional weight of only 6.9 lb, so it bills at its actual 10 lb: ground **$20.00**, express **$50.00**.",
+      ],
+    },
+    {
+      heading: "How can you lower shipping costs?",
+      paragraphs: [
+        "**Use the smallest box that fits.** Dimensional weight is based on the box, not the contents, so every spare inch of packaging costs money. A box 2 inches smaller in each direction can cut the dimensional weight by a quarter or more.",
+        "**Pack light but safe.** Lightweight void fill protects the contents without adding billable pounds — but remember that if dimensional weight already exceeds actual weight, shaving ounces off the contents changes nothing. Shrinking the box is what pays.",
+        "Always compare the estimate with a **real carrier quote** before committing. This calculator's flat rates are a planning aid; the carrier's actual price depends on the destination zone, fuel surcharges, and the service level you choose.",
+      ],
+    },
+  ],
+
+  "soil-calculator": [
+    {
+      heading: "How much soil do I need?",
+      paragraphs: [
+        "Soil volume is **length × width × depth**, with the depth converted from inches to feet. Divide the cubic feet by 27 to get cubic yards — the unit bulk soil is sold in.",
+        "This calculator takes a bed's length, width, and depth in inches and returns the volume in **cubic feet and cubic yards**, the estimated weight (about 1.1 tons per cubic yard of topsoil), and the number of 40 lb bags the volume corresponds to.",
+        "Beds are rarely perfectly rectangular. For an irregular shape, split it into rectangles, calculate each one, and add the volumes together — or measure the longest and widest points and accept a small overestimate.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Fill a raised bed **12 feet long and 4 feet wide to a depth of 6 inches**. The depth in feet is 6 ÷ 12 = 0.5, so the volume is 12 × 4 × 0.5 = **24 cubic feet**.",
+        "In cubic yards that is 24 ÷ 27 = **0.89 cubic yards** — just under a yard, so ordering one cubic yard covers it with a little to spare. At 1.1 tons per cubic yard, the soil weighs about **0.98 tons**, roughly 1,960 pounds.",
+      ],
+    },
+    {
+      heading: "How deep should soil be?",
+      paragraphs: [
+        "Depth depends on what you are growing: **vegetable gardens need 8–12 inches**, flower beds 4–6 inches, and a new lawn 2–4 inches of topsoil. Shallow soil dries out fast and limits root growth, so it is better to err deep.",
+        "**Order about 10% extra.** Fresh soil settles after watering and the first few weeks of weather, so a bed filled exactly to the brim will sink below it. The extra also covers uneven ground and the soil lost to wheelbarrows and spills.",
+        "For large jobs, bulk delivery by the cubic yard is far cheaper than bags — but check access first. A delivery truck needs room to tip, and a cubic yard of soil weighs over a ton, so it cannot be moved far by hand.",
+      ],
+    },
+  ],
+
+  "solar-panel-calculator": [
+    {
+      heading: "How many solar panels do I need?",
+      paragraphs: [
+        "The panel count comes from your energy use and your sunlight: **panels = (monthly kWh ÷ 30 ÷ peak sun hours) × 1,000 ÷ panel wattage**. Divide monthly use into a daily figure, divide by the sun hours to get the system size in kilowatts, then divide by each panel's wattage.",
+        "This calculator takes your **monthly electricity use in kWh, peak sun hours per day, and panel wattage**, and returns the panels needed, the system size, the daily kWh, and an estimated annual saving. The saving assumes electricity at **$0.13 per kWh**, a fixed figure built into the calculator — your actual rate may be higher or lower.",
+        "The sizing assumes the panels produce their full rated output during every peak sun hour. Real systems lose some energy to inverter conversion, heat, wiring, and shading, so treat the panel count as a starting estimate rather than a final design.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a home using **900 kWh a month, with 5 peak sun hours a day and 400 W panels**. Daily use is 900 ÷ 30 = **30 kWh**, so the system size is 30 ÷ 5 = **6.0 kW**.",
+        "The panels needed are 6,000 ÷ 400 = **15 panels**. The estimated annual saving is 900 × 12 × $0.13 = **$1,404** — the value of the electricity the system is expected to offset over a year at the calculator's $0.13 rate.",
+      ],
+    },
+    {
+      heading: "What the estimate leaves out",
+      paragraphs: [
+        "**Your roof matters.** Direction, pitch, and shading change real output a great deal: a south-facing roof with no shade outperforms an east-facing or partly shaded one, even with the same panels. Peak sun hours also vary by region — the US average is 4–6 hours, the Southwest gets 6–7, and the Northeast 3–4.",
+        "**Savings depend on your electricity rate and your utility's rules.** The $0.13 per kWh in this calculator is a fixed assumption; if your rate is higher, the saving is larger, and net-metering rules decide how much you are paid for surplus power sent to the grid.",
+        "Use this estimate to size the conversation, then get quotes from installers. A site survey accounts for roof condition, shading, local permits, and incentives — none of which a calculator can see.",
+      ],
+    },
+  ],
+
+  "stamp-duty-calculator": [
+    {
+      heading: "How is stamp duty calculated?",
+      paragraphs: [
+        "Stamp duty — the tax paid when buying property — is calculated here as a **flat rate: property price × the rate you enter, minus any first-time buyer discount**. This calculator does not apply any specific country or state's bands, thresholds, or exemptions: you enter the rate that applies in your jurisdiction.",
+        "The discount is a percentage off the duty itself, not off the price. The calculator also shows the **effective rate** — the final duty as a percentage of the price — so you can see what you are actually paying after the discount.",
+        "Because the calculation is flat-rate, it is an estimator for planning, not a tax assessment. Many jurisdictions use banded systems where different rates apply to different slices of the price, and the real bill can be lower than a flat rate suggests.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Buy a property for **$400,000** with a stamp duty rate of **2.5%** and no discount. The duty is $400,000 × 0.025 = **$10,000**, an effective rate of **2.50%**.",
+        "With a **50% first-time buyer discount**, the discount is $10,000 × 0.50 = **$5,000**, so the duty payable falls to **$5,000** and the effective rate to **1.25%**.",
+      ],
+    },
+    {
+      heading: "What should you check before relying on the number?",
+      paragraphs: [
+        "**Find your actual rate first.** Stamp duty rates, thresholds, and first-time buyer relief differ by jurisdiction and change with budgets and elections. Enter the rate from your tax authority's current schedule, not a remembered figure.",
+        "**Ask whether the system is banded.** Where rates rise in bands, only the part of the price above each threshold is charged at the higher rate — a flat-rate estimate can overstate the bill substantially on an expensive property.",
+        "**Confirm who pays and when.** In most places the buyer pays at completion, and the duty is due on top of the price, so it needs to be in your cash budget alongside the deposit, legal fees, and moving costs.",
+      ],
+    },
+  ],
+
+  "steps-to-distance-calculator": [
+    {
+      heading: "How do you convert steps to distance?",
+      paragraphs: [
+        "Distance is **steps × stride length ÷ 63,360**, the number of inches in a mile. Your stride length is the distance covered by one step, typically 26–30 inches for walking.",
+        "This calculator takes your step count and stride length in inches and returns the distance in **miles and kilometres** (miles × 1.60934), plus a rough calorie estimate of **0.04 calories per step**. The calorie figure is a broad average that ignores body weight and pace.",
+        "Stride length varies with height and speed: taller people and faster walkers take longer strides. The default of 30 inches suits an average adult walking briskly; a shorter or slower walker may be closer to 26.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Walk **10,000 steps** with a **30-inch stride**. The total is 10,000 × 30 = 300,000 inches, and 300,000 ÷ 63,360 = **4.73 miles**.",
+        "In kilometres that is 4.73 × 1.60934 = **7.62 km**, and the rough calorie estimate is 10,000 × 0.04 = **400 calories**. At a typical walking pace of about 3 miles per hour, the walk takes around an hour and a half.",
+      ],
+    },
+    {
+      heading: "How do you measure your stride length?",
+      paragraphs: [
+        "Walk **10 normal steps** on flat ground, measure the total distance, and divide by 10. Measuring ten steps at once averages out the natural variation between individual strides and is far more accurate than measuring one.",
+        "Measure at your **usual walking pace** — a relaxed stroll and a brisk walk give different stride lengths, and the calculator can only use one figure. If you mostly run, measure a running stride separately; it is considerably longer.",
+        "Fitness trackers estimate distance the same way, from step count and an assumed stride length. If your tracker and this calculator disagree, the stride length is the likely cause — measure yours and the numbers will line up.",
+      ],
+    },
+  ],
+
+  "typing-speed-calculator": [
+    {
+      heading: "How is typing speed measured?",
+      paragraphs: [
+        "Typing speed is measured in **words per minute (WPM), where one 'word' is defined as 5 characters**. The formula is WPM = (characters ÷ 5) ÷ minutes — spaces and punctuation count as characters, just like letters.",
+        "This calculator shows two speeds: **gross WPM**, your raw pace, and **net WPM**, which subtracts one word for each error before dividing — so accuracy affects the headline figure. It also reports accuracy as a percentage and your characters per minute.",
+        "The 5-character word is a long-standing convention from typewriter tests, chosen because it is close to the average length of an English word plus a space. It lets speeds from different tests be compared fairly.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Type **500 characters in 120 seconds with 5 errors**. That is 500 ÷ 5 = 100 words in 2 minutes, so the gross speed is 100 ÷ 2 = **50 WPM**.",
+        "Net speed subtracts the 5 errors as words: (100 − 5) ÷ 2 = 47.5, shown as **48 WPM**. Accuracy is (500 − 5) ÷ 500 × 100 = **99.0%**, and the pace is 500 ÷ 2 = **250 characters per minute**.",
+      ],
+    },
+    {
+      heading: "What is a good typing speed?",
+      paragraphs: [
+        "Around **40 WPM is average** for an adult, **60 WPM and above is good**, and **80 WPM or more is excellent** — the level of professional typists and fast touch-typists. Most office work is comfortable at 50–60 WPM.",
+        "**Accuracy matters more than raw speed.** Errors cost time twice: once in the mistake and once in the correction. A typist at 50 WPM with 99% accuracy produces more usable text than one at 65 WPM with 92% accuracy — which is why this calculator leads with the net figure.",
+        "To improve, practise touch typing in short daily sessions and let speed follow accuracy. Ten focused minutes a day beats an occasional hour, and speed gains come steadily over weeks rather than overnight.",
+      ],
+    },
+  ],
+
+  "unit-conversion-cooking": [
+    {
+      heading: "How do cooking measurements convert?",
+      paragraphs: [
+        "This converter works through **millilitres as a common base**: 1 US cup = 236.588 mL, 1 tablespoon = 14.787 mL, 1 teaspoon = 4.929 mL, and 1 fluid ounce = 29.574 mL. Enter an amount in any one unit and it converts to mL first, then out to all the others.",
+        "The units you can convert from are **cups, tablespoons, teaspoons, and fluid ounces**, and the results cover all of those plus millilitres. The familiar kitchen ratios fall straight out of the numbers: 1 cup = 16 tablespoons = 48 teaspoons.",
+        "These are **US customary measures**. A metric cup is 250 mL, not 236.588 mL, so recipes written for metric cups will be slightly off if you convert with US figures — about 6% off per cup.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Convert **2 cups**. In millilitres that is 2 × 236.588 = **473.2 mL**.",
+        "The same amount is 473.2 ÷ 14.787 = **32.0 tablespoons**, 473.2 ÷ 4.929 = **96.0 teaspoons**, and 473.2 ÷ 29.574 = **16.00 fluid ounces**. Every figure is the same volume, expressed four ways.",
+      ],
+    },
+    {
+      heading: "Should you convert by volume or by weight?",
+      paragraphs: [
+        "For baking, **weight is more accurate than volume**. A cup of flour can weigh anywhere from 120 g to 150 g depending on how it is scooped and packed, while 125 g is always 125 g. Volume conversions are exact for liquids but approximate for dry ingredients.",
+        "Volume-to-weight conversion depends on the **ingredient's density**: a cup of honey weighs far more than a cup of flour. This converter handles volume only — for grams and ounces by ingredient, use a density-based converter.",
+        "When a recipe's origin is unclear, check whether its cups are US (236.588 mL) or metric (250 mL). The difference is small per cup but adds up across a whole recipe, and it is the most common cause of 'the recipe didn't work' in international baking.",
+      ],
+    },
+  ],
+
+  "wallpaper-calculator": [
+    {
+      heading: "How many rolls of wallpaper do I need?",
+      paragraphs: [
+        "The roll count is **wall area ÷ usable coverage per roll, rounded up**. Wall area is the room's perimeter × wall height, and usable coverage is 85% of a roll's full coverage — the 15% allowance covers pattern matching and cutting waste.",
+        "A roll's full coverage is **(roll width in inches ÷ 12) × roll length in feet**. This calculator shows the wall area, the usable coverage per roll, and the total coverage, so you can see how the allowance affects the result.",
+        "The calculator does not subtract doors and windows, so the estimate has some slack built in — the 15% allowance is for pattern matching and waste, not for openings. For a room with very large windows, the true need may be a roll less than shown.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a room with a **54-foot perimeter and 8-foot walls**, papered with rolls **21 inches wide and 33 feet long**. The wall area is 54 × 8 = **432 square feet**.",
+        "Each roll covers (21 ÷ 12) × 33 = 1.75 × 33 = **57.75 square feet**, of which 85% is usable: 57.75 × 0.85 = **49.1 square feet**. The rolls needed are 432 ÷ 49.1 = 8.8, rounded up to **9 rolls**.",
+      ],
+    },
+    {
+      heading: "Should you buy extra rolls?",
+      paragraphs: [
+        "**Yes — buy 1–2 extra rolls** beyond the calculated number, for mistakes, repairs, and pattern matching. A miscut strip or a damaged corner is cheap to fix if you have spare paper from the same batch, and impossible to fix well if you do not.",
+        "**Buy all rolls at once, from the same dye lot.** Wallpaper colour varies slightly between production runs, and two lots hung side by side can show a visible line. The batch number is printed on the roll label — check that every roll matches.",
+        "Keep a leftover roll after the job. Future repairs — scuffs, stains, a moved picture hook — need matching paper, and a pattern discontinued a year later cannot be reordered at any price.",
+      ],
+    },
+  ],
+
+  "weighted-average-calculator": [
+    {
+      heading: "How is a weighted average calculated?",
+      paragraphs: [
+        "A weighted average is **the sum of each value multiplied by its weight, divided by the total weight**. Values that matter more get bigger weights, so they pull the average further toward themselves.",
+        "This calculator takes **three values with three weights** and shows the weighted average, the simple average for comparison, the total weight, and the difference between the two averages. The weights do not need to total 100 — the calculator divides by the actual total, so any set of weights works.",
+        "If all the weights are equal, the weighted average is exactly the simple average. The two figures only diverge when the weights differ — which is the whole point of weighting.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take three scores: **90 with weight 30, 85 with weight 30, and 78 with weight 40**. Multiply and add: 90 × 30 + 85 × 30 + 78 × 40 = 2,700 + 2,550 + 3,120 = **8,370**.",
+        "The total weight is 30 + 30 + 40 = 100, so the weighted average is 8,370 ÷ 100 = **83.70**. The simple average is (90 + 85 + 78) ÷ 3 = **84.33**, and the difference is **−0.63** — the lowest score carries the heaviest weight, so it drags the weighted average below the simple one.",
+      ],
+    },
+    {
+      heading: "When should you use a weighted average?",
+      paragraphs: [
+        "**Course grades** are the classic case: a final exam worth 40% of the grade should count more than a quiz worth 10%. Averaging the scores equally would overstate the quizzes and understate the exam.",
+        "The same logic applies to **investment portfolios** (a return on a large holding matters more than one on a small holding), **survey results** (weighting responses to match the population), and any rating built from parts of unequal importance.",
+        "A useful check: if the weighted average and the simple average are far apart, the weights are doing real work — look at which value carries the most weight, because that is the one driving the result.",
+      ],
+    },
+  ],
+
+  "word-count-calculator": [
+    {
+      heading: "What does the word count calculator estimate?",
+      paragraphs: [
+        "This calculator starts from a **word count you already know** and estimates everything else: characters (words × average characters per word), sentences (about 15 words each), paragraphs (about 5 sentences each), reading time at 250 words per minute, and speaking time at 150 words per minute.",
+        "Note that it does **not count words from pasted text** — there is no text box. You enter the word count (from your document or editor) and the average characters per word, and the calculator derives the rest. The default of 5 characters per word is a reasonable average for English prose.",
+        "The sentence and paragraph figures are rough by design: real sentences vary in length, and real paragraphs vary even more. Treat them as planning estimates, not exact counts.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Enter **1,500 words** with an average of **5 characters per word**. The character count is 1,500 × 5 = **7,500 characters**.",
+        "The estimates are 1,500 ÷ 15 = **100 sentences** and 100 ÷ 5 = **20 paragraphs**. Reading time is 1,500 ÷ 250 = **6.0 minutes**, and speaking time is 1,500 ÷ 150 = **10.0 minutes** — a useful pair when a piece is both published and presented.",
+      ],
+    },
+    {
+      heading: "How can you use these estimates?",
+      paragraphs: [
+        "**Plan article length.** A typical SEO blog post runs 1,500–2,500 words; at 250 words per minute, that is 6–10 minutes of reading — the range most readers will finish. Shorter formats need far less: social posts run 40–80 words and emails 50–200.",
+        "**Time a talk or video script.** A 10-minute presentation needs about 1,500 spoken words, and speakers who rush through a script written for 2,000 words will run over. Work backwards from the speaking time to the word count, not the other way round.",
+        "**Set reading-time labels honestly.** A '5-minute read' label should mean about 1,250 words at average reading speed. Understating the time annoys readers; overstating it puts them off starting at all.",
+      ],
+    },
+  ],
+
 };

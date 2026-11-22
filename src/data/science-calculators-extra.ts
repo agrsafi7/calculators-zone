@@ -6,11 +6,11 @@ const rel = (exclude: string) => [
   { name: "Ideal Gas Law", slug: "ideal-gas-law-calculator", icon: "flask", category: "science" },
 ].filter(c => c.slug !== exclude);
 
-const mk = (slug: string, name: string, desc: string, meta: string, sub: string, inputs: CalculatorConfig["inputs"], calculate: CalculatorConfig["calculate"], formula: CalculatorConfig["formula"]): CalculatorConfig => ({
+const mk = (slug: string, name: string, desc: string, meta: string, sub: string, inputs: CalculatorConfig["inputs"], calculate: CalculatorConfig["calculate"], formula: CalculatorConfig["formula"], extraFaqs: { question: string; answer: string }[] = []): CalculatorConfig => ({
   slug, name, category: "Science", categorySlug: "science", description: desc, metaDescription: meta, icon: "flask", subcategory: sub,
   inputs, calculate, formula,
   howToUse: `Enter values to calculate using the ${name}.`,
-  faqs: [{ question: `What does the ${name} do?`, answer: desc }],
+  faqs: [{ question: `What does the ${name} do?`, answer: desc }, ...extraFaqs],
   relatedCalcs: rel(slug),
 });
 
@@ -447,7 +447,11 @@ export const scienceCalculatorsExtra: CalculatorConfig[] = [
   mk("carbon-footprint-calculator", "Carbon Footprint Calculator", "Estimate your annual carbon footprint.", "Free carbon footprint calculator. Estimate your annual CO2 emissions in tonnes from electricity, heating gas, and driving, broken down by source.", "Environmental Science",
     [{ id: "electricity", label: "Monthly Electricity (kWh)", type: "number", defaultValue: 400, step: 10 }, { id: "gas", label: "Monthly Gas (therms)", type: "number", defaultValue: 30, step: 1 }, { id: "driving", label: "Annual Driving (km)", type: "number", defaultValue: 18000, step: 1000 }],
     (v) => { const elec = v.electricity * 12 * 0.42; const gas = v.gas * 12 * 5.3; const drive = v.driving * 0.21; const total = (elec + gas + drive) / 1000; return [{ label: "Annual CO₂", value: `${total.toFixed(1)} tonnes`, highlight: true }, { label: "Electricity", value: `${(elec / 1000).toFixed(1)} t` }, { label: "Heating", value: `${(gas / 1000).toFixed(1)} t` }, { label: "Driving", value: `${(drive / 1000).toFixed(1)} t` }]; },
-    { expression: "Sum of energy, heating, and transport emissions", variables: ["Global average: ~4.7 tonnes/person"] }
+    { expression: "Sum of energy, heating, and transport emissions", variables: ["Global average: ~4.7 tonnes/person"] },
+    [
+      { question: "What is the average carbon footprint?", answer: "The global average is about 4.7 tonnes of CO2 per person per year. The default example on this page — 400 kWh of electricity, 30 therms of gas, and 18,000 km of driving — produces 7.7 tonnes from energy alone, before food and flights are counted." },
+      { question: "Which part of my footprint is biggest?", answer: "It depends on your inputs — the calculator breaks the total into electricity, heating, and driving so you can see which dominates. In the default example, driving is nearly half the total at 3.8 of 7.7 tonnes." },
+    ]
   ),
   mk("water-footprint-calculator", "Water Footprint Calculator", "Estimate daily water footprint.", "Free water footprint calculator.", "Environmental Science",
     [{ id: "showers", label: "Shower Minutes/Day", type: "number", defaultValue: 8, step: 1 }, { id: "laundry", label: "Laundry Loads/Week", type: "number", defaultValue: 3, step: 1 }, { id: "meals", label: "Meals with Meat/Day", type: "number", defaultValue: 1, min: 0, max: 3 }],

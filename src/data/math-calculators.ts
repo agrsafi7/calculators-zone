@@ -528,7 +528,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "det = a₁₁×a₂₂ − a₁₂×a₂₁", variables: ["trace = a₁₁ + a₂₂"] },
     howToUse: "Enter the four elements of a 2×2 matrix to compute its determinant and trace.",
-    faqs: [{ question: "What does the determinant tell us?", answer: "If det≠0, the matrix is invertible. The absolute value represents the area scaling factor of the linear transformation." }],
+    faqs: [{ question: "What does the determinant tell us?", answer: "If det≠0, the matrix is invertible. The absolute value represents the area scaling factor of the linear transformation." }, { question: "What is the trace of a matrix?", answer: "The sum of the diagonal elements. For a 2x2 matrix with rows [a, b] and [c, d], the trace is a + d. For [[3, 1], [2, 4]] the trace is 3 + 4 = 7." }, { question: "When is a matrix not invertible?", answer: "When its determinant is zero — the matrix is then called singular. For example, [[3, 1], [6, 2]] has determinant 3x2 - 1x6 = 0, because the second row is exactly twice the first." }],
     relatedCalcs: mathRelated("matrix-calculator"),
   },
   // 15. Determinant Calculator (same as matrix for 2x2 — could be 3x3)
@@ -982,7 +982,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "M = ((x₁+x₂)/2, (y₁+y₂)/2)", variables: ["Average of x's and y's"] },
     howToUse: "Enter two points to find the midpoint between them.",
-    faqs: [{ question: "What is the midpoint used for?", answer: "Finding centers of line segments, bisectors, and center points in geometry and graphics." }],
+    faqs: [{ question: "What is the midpoint used for?", answer: "Finding centers of line segments, bisectors, and center points in geometry and graphics." }, { question: "How is the midpoint calculated?", answer: "Average the x-coordinates and average the y-coordinates. For points (2, 3) and (8, 7), the midpoint is ((2+8)/2, (3+7)/2) = (5, 5)." }, { question: "Does this calculator also find the distance between the points?", answer: "Yes. It shows the distance from the distance formula, the square root of (x2-x1) squared plus (y2-y1) squared. For (2, 3) and (8, 7) the distance is 7.2111." }],
     relatedCalcs: mathRelated("midpoint-calculator"),
   },
   // 29. Area Calculator
@@ -1110,7 +1110,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert, compute, display in hex", variables: ["Hex digits: 0-9, A-F"] },
     howToUse: "Enter two decimal numbers. The calculator shows hex conversions and arithmetic.",
-    faqs: [{ question: "Where is hex used?", answer: "Colors (#FF0000), memory addresses, MAC addresses, and many programming contexts." }],
+    faqs: [{ question: "Where is hex used?", answer: "Colors (#FF0000), memory addresses, MAC addresses, and many programming contexts." }, { question: "How do I enter a hex value?", answer: "You enter decimal numbers, and the calculator converts them to hex for you. Enter 255 to see 0xFF, or enter 255 and 16 to see their sum, 271, shown as 0x10F." }, { question: "How do I convert hex to decimal by hand?", answer: "Multiply each digit by its place value (powers of 16) and add. For 0xFF: 15 x 16 + 15 = 255. For 0x10F: 1 x 256 + 0 x 16 + 15 = 271." }],
     relatedCalcs: mathRelated("hex-calculator"),
   },
   // 33. Percent Error Calculator
@@ -1135,7 +1135,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "% Error = |Experimental − Theoretical| / |Theoretical| × 100", variables: ["Always positive (absolute value)"] },
     howToUse: "Enter your measured value and the accepted/theoretical value.",
-    faqs: [{ question: "What is acceptable percent error?", answer: "Depends on the field. In chemistry: <5% is good. In physics: <1% for precise experiments." }],
+    faqs: [{ question: "What is acceptable percent error?", answer: "Depends on the field. In chemistry: <5% is good. In physics: <1% for precise experiments." }, { question: "Can percent error be negative?", answer: "No. The formula uses absolute values — |experimental - theoretical| / |theoretical| x 100 — so the result is always positive. Measuring 10.2 against 10.0 gives the same 2% error as measuring 9.8." }, { question: "What is the difference between absolute and relative error?", answer: "Absolute error is the raw difference in the original units (|experimental - theoretical|). Relative error is that difference divided by the theoretical value, and percent error is relative error times 100. For 9.8 against 10.0: absolute error 0.2, relative error 0.02, percent error 2%." }],
     relatedCalcs: mathRelated("percent-error-calculator"),
   },
   // 34. Ratio Calculator
@@ -1196,7 +1196,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "z = (x − μ) / σ", variables: ["x = value", "μ = mean", "σ = standard deviation"] },
     howToUse: "Enter a data point, the population mean, and standard deviation to find the z-score.",
-    faqs: [{ question: "What does a z-score mean?", answer: "A z-score of 2 means the value is 2 standard deviations above the mean. About 95% of data falls within z = ±2." }],
+    faqs: [{ question: "What does a z-score mean?", answer: "A z-score of 2 means the value is 2 standard deviations above the mean. About 95% of data falls within z = ±2." }, { question: "What percentile does a z-score of 2 correspond to?", answer: "About the 97.72nd percentile — higher than about 97.72% of values in a normal distribution. A z-score of -2 is the 2.28th percentile, and the two sum to 100." }, { question: "Can a z-score be negative?", answer: "Yes. A negative z-score means the value is below the mean — a value of 70 with mean 100 and standard deviation 15 gives z = -2.00. The calculator labels the result Above or Below the mean." }],
     relatedCalcs: mathRelated("z-score-calculator"),
   },
   // 36. Circle Calculator
@@ -1393,7 +1393,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "c = √(a²+b²); Angle = arctan(opposite/adjacent)", variables: ["All angles sum to 180°", "One angle = 90°"] },
     howToUse: "Enter the two legs to calculate the hypotenuse, angles, area, and perimeter.",
-    faqs: [{ question: "What makes a triangle 'right'?", answer: "A right triangle has exactly one 90° angle. The side opposite the right angle is the hypotenuse." }],
+    faqs: [{ question: "What makes a triangle 'right'?", answer: "A right triangle has exactly one 90° angle. The side opposite the right angle is the hypotenuse." }, { question: "What is the Pythagorean theorem?", answer: "In a right triangle, a squared + b squared = c squared, where c is the hypotenuse. With legs 3 and 4: 9 + 16 = 25, so the hypotenuse is 5." }, { question: "Can I use this calculator if I know the hypotenuse and one leg?", answer: "Enter both legs — the calculator takes the two legs as its inputs. If you know the hypotenuse and one leg, find the missing leg first with a squared = c squared - b squared, then enter both legs here." }],
     relatedCalcs: mathRelated("right-triangle-calculator"),
   },
   // 41. Triangle Calculator
@@ -1491,7 +1491,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "n = n₀ / (1 + (n₀-1)/N); n₀ = z²p(1-p)/e²", variables: ["z = z-score for confidence", "p = 0.5 (maximum)", "e = margin of error"] },
     howToUse: "Select confidence level, set margin of error, and enter population size.",
-    faqs: [{ question: "Why is p set to 0.5?", answer: "Using p=0.5 gives the maximum sample size (worst case), ensuring your results are reliable regardless of the actual proportion." }],
+    faqs: [{ question: "Why is p set to 0.5?", answer: "Using p=0.5 gives the maximum sample size (worst case), ensuring your results are reliable regardless of the actual proportion." }, { question: "What margin of error should I use?", answer: "5% is the most common choice for surveys. At 95% confidence, a 5% margin needs 385 responses for a large population; halving the margin to 2.5% quadruples that to 1,537, so tighter precision costs much larger samples." }, { question: "What does the 80% response rate factor mean?", answer: "Not everyone you invite will respond. The calculator divides the required sample by 0.8 to suggest how many surveys to send — for a sample of 370, that is 463 surveys. If you expect a lower response rate, send proportionally more." }],
     relatedCalcs: mathRelated("sample-size-calculator"),
   },
   // 44. Confidence Interval Calculator
@@ -1548,7 +1548,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "P-value from standard normal distribution", variables: ["Two-tailed = 2 × one-tailed", "Approximation using polynomial"] },
     howToUse: "Enter your test statistic and select one or two-tailed test.",
-    faqs: [{ question: "What is a p-value?", answer: "The probability of observing results as extreme as the test statistic, assuming the null hypothesis is true. Lower = stronger evidence against null." }],
+    faqs: [{ question: "What is a p-value?", answer: "The probability of observing results as extreme as the test statistic, assuming the null hypothesis is true. Lower = stronger evidence against null." }, { question: "What p-value is considered significant?", answer: "Below 0.05 is the usual cut-off, and this calculator also checks the stricter 0.01 level. A z-score of 1.96 (two-tailed) gives p = 0.049996, just significant at 0.05; a z-score of 2.58 gives p = 0.009880, significant at both levels." }, { question: "One-tailed or two-tailed — which do I choose?", answer: "Two-tailed tests for any difference in either direction and is the default in most research. One-tailed tests a difference in one specified direction only, and must be chosen before you see the data — it halves the p-value, so switching after the fact is not valid." }],
     relatedCalcs: mathRelated("p-value-calculator"),
   },
   // 46. Long Division Calculator
@@ -1575,7 +1575,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Dividend = Divisor × Quotient + Remainder", variables: ["Quotient = floor(Dividend / Divisor)"] },
     howToUse: "Enter the dividend and divisor. See the quotient, remainder, and decimal result.",
-    faqs: [{ question: "What is a remainder?", answer: "The amount left over after division. 17 ÷ 5 = 3 remainder 2 (because 5 × 3 = 15, and 17 − 15 = 2)." }],
+    faqs: [{ question: "What is a remainder?", answer: "The amount left over after division. 17 ÷ 5 = 3 remainder 2 (because 5 × 3 = 15, and 17 − 15 = 2)." }, { question: "How do I check my long division answer?", answer: "Use the identity dividend = divisor x quotient + remainder. For 1,000 / 7 = 142 R 6: 7 x 142 + 6 = 994 + 6 = 1,000." }, { question: "Can the divisor be zero?", answer: "No. Dividing by zero has no defined answer, so the calculator shows an error message instead of a quotient and remainder." }],
     relatedCalcs: mathRelated("long-division-calculator"),
   },
   // 47. Rounding Calculator
@@ -1602,7 +1602,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Standard rounding: ≥5 rounds up, <5 rounds down", variables: ["Floor always rounds toward −∞", "Ceiling always rounds toward +∞"] },
     howToUse: "Enter a number and number of decimal places to round to.",
-    faqs: [{ question: "What is banker's rounding?", answer: "Banker's rounding rounds .5 to the nearest even number to reduce bias. Standard rounding always rounds .5 up." }],
+    faqs: [{ question: "What is banker's rounding?", answer: "Banker's rounding rounds .5 to the nearest even number to reduce bias. Standard rounding always rounds .5 up." }, { question: "What is the difference between floor and ceiling?", answer: "Floor always rounds down and ceiling always rounds up. For 3.14159 to 2 decimal places, the floor is 3.14 and the ceiling is 3.15, while standard rounding gives 3.14." }, { question: "How does this calculator round .5?", answer: "It uses standard rounding: .5 always rounds up, so 2.5 becomes 3. That is different from banker's rounding, which rounds .5 to the nearest even number." }],
     relatedCalcs: mathRelated("rounding-calculator"),
   },
   // 48. Number Sequence Calculator
@@ -1634,7 +1634,7 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Arithmetic: aₙ = a₁ + (n−1)d; Geometric: aₙ = a₁ × r^(n−1)", variables: ["d = common difference", "r = common ratio"] },
     howToUse: "Enter the first term, difference/ratio, and number of terms.",
-    faqs: [{ question: "What is an arithmetic sequence?", answer: "Each term increases by a constant amount (common difference). Example: 2, 5, 8, 11..." }],
+    faqs: [{ question: "What is an arithmetic sequence?", answer: "Each term increases by a constant amount (common difference). Example: 2, 5, 8, 11..." }, { question: "What is a geometric sequence?", answer: "Each term is multiplied by a constant ratio. Starting at 2 with a ratio of 3 gives 2, 6, 18, 54, 162. The nth term is a1 x r^(n-1), where a1 is the first term and r is the ratio." }, { question: "How many terms can I generate?", answer: "Up to 20. The calculator shows the sequence, its sum, the last term, and the count — the sum covers only the terms shown." }],
     relatedCalcs: mathRelated("number-sequence-calculator"),
   },
   // 49. Factor Calculator

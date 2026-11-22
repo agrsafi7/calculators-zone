@@ -28,12 +28,20 @@ export const lifestyleCalculatorsExtended: CalculatorConfig[] = [
   makeLife("flooring-calculator", "Flooring Calculator", "Calculate flooring material needed for a room with waste factor.", "Free flooring calculator. Enter room length and width plus a waste allowance to estimate the square footage and number of boxes you need.", "Home & Construction",
     [{ id: "length", label: "Room Length (ft)", type: "number", defaultValue: 15, step: 0.5 }, { id: "width", label: "Room Width (ft)", type: "number", defaultValue: 12, step: 0.5 }, { id: "waste", label: "Waste (%)", type: "number", defaultValue: 10, min: 0 }],
     (v) => { const area = v.length * v.width; const withWaste = area * (1 + v.waste / 100); const boxes = Math.ceil(withWaste / 20); return [{ label: "Flooring Needed", value: `${withWaste.toFixed(0)} sq ft`, highlight: true }, { label: "Room Area", value: `${area.toFixed(0)} sq ft` }, { label: "Boxes (20 sq ft/box)", value: `${boxes}` }]; },
-    { expression: "Total = Area × (1 + Waste%)", variables: ["Add 10% for straight, 15% for diagonal"] }
+    { expression: "Total = Area × (1 + Waste%)", variables: ["Add 10% for straight, 15% for diagonal"] },
+    [
+      { question: "How much extra flooring should I buy?", answer: "10% extra for a straight layout and 15% for a diagonal layout, which is the guidance the calculator uses. Buy extra for cuts, mistakes, and future repairs." },
+      { question: "How many square feet are in a box?", answer: "The calculator assumes 20 sq ft per box. Check your product's actual coverage — it varies by brand and plank size — and divide your total square footage by that number instead if it differs." },
+    ]
   ),
   makeLife("fence-calculator", "Fence Calculator", "Calculate fence materials needed: posts, rails, and pickets.", "Free fence calculator. Enter fence length, height, and post spacing to estimate the posts, rails, and pickets your fence will need.", "Home & Construction",
     [{ id: "length", label: "Fence Length (ft)", type: "number", defaultValue: 100, step: 1 }, { id: "height", label: "Fence Height (ft)", type: "number", defaultValue: 6, step: 0.5 }, { id: "postSpacing", label: "Post Spacing (ft)", type: "number", defaultValue: 8, step: 1 }],
     (v) => { const posts = Math.ceil(v.length / v.postSpacing) + 1; const rails = Math.ceil(v.length / 8) * 3; const pickets = Math.ceil(v.length / 0.5); return [{ label: "Posts Needed", value: `${posts}`, highlight: true }, { label: "Rails (8ft)", value: `${rails}` }, { label: "Pickets", value: `${pickets}` }, { label: "Post Depth", value: `${Math.ceil(v.height / 3)} ft` }]; },
-    { expression: "Posts = Length/Spacing + 1", variables: ["Post depth = 1/3 of height"] }
+    { expression: "Posts = Length/Spacing + 1", variables: ["Post depth = 1/3 of height"] },
+    [
+      { question: "How deep should fence posts be?", answer: "About one-third of the post's height below ground — the calculator uses post depth = height ÷ 3, so a 6-foot fence needs posts buried 2 feet deep." },
+      { question: "Does the calculator include gates or concrete?", answer: "No. It estimates posts, rails, and pickets only. Gates, concrete, hardware, and caps are extra, so add them to your materials list separately." },
+    ]
   ),
   makeLife("deck-calculator", "Deck Calculator", "Calculate decking boards, joists, and screws for a deck.", "Free deck calculator. Enter deck length and width to estimate the decking boards, joists, and screws needed to build your deck.", "Home & Construction",
     [{ id: "length", label: "Deck Length (ft)", type: "number", defaultValue: 16, step: 1 }, { id: "width", label: "Deck Width (ft)", type: "number", defaultValue: 12, step: 1 }],
@@ -66,12 +74,20 @@ export const lifestyleCalculatorsExtended: CalculatorConfig[] = [
   makeLife("running-pace-calculator", "Running Pace Calculator", "Calculate running pace, speed, and finish time from distance and time.", "Free running pace calculator. Enter distance and time to find your pace per mile and kilometer, your speed, and predicted race finish times.", "Sports & Fitness",
     [{ id: "distance", label: "Distance (miles)", type: "number", defaultValue: 3.1, step: 0.1 }, { id: "minutes", label: "Time (minutes)", type: "number", defaultValue: 25, step: 0.5 }],
     (v) => { if (v.distance === 0) return [{ label: "Error", value: "Distance cannot be zero" }]; const pace = v.minutes / v.distance; const speed = v.distance / (v.minutes / 60); const paceMin = Math.floor(pace); const paceSec = Math.round((pace - paceMin) * 60); return [{ label: "Pace", value: `${paceMin}:${String(paceSec).padStart(2, "0")} /mi`, highlight: true }, { label: "Speed", value: `${speed.toFixed(1)} mph` }, { label: "5K Time", value: `${Math.floor(pace * 3.107)}:${String(Math.round(((pace * 3.107) % 1) * 60)).padStart(2, "0")}` }]; },
-    { expression: "Pace = Time / Distance", variables: ["Speed = Distance / (Time/60)"] }
+    { expression: "Pace = Time / Distance", variables: ["Speed = Distance / (Time/60)"] },
+    [
+      { question: "What is a good 5K pace?", answer: "Beginners often run 10–12 minutes per mile, intermediate runners 8–10, and advanced runners under 7. The example on this page — 3.1 miles in 25 minutes — is 8:04 per mile." },
+      { question: "Can I enter seconds as well as minutes?", answer: "Not on this page: time is entered in minutes only, so enter 25.5 for 25 minutes 30 seconds. The 5K prediction assumes you hold the same pace for the full 3.1 miles." },
+    ]
   ),
   makeLife("cycling-speed-calculator", "Cycling Speed Calculator", "Calculate cycling speed from distance and time.", "Free cycling speed calculator. Enter ride distance and time to compute your average speed in mph and km/h, plus an estimated calorie burn.", "Sports & Fitness",
     [{ id: "distance", label: "Distance (miles)", type: "number", defaultValue: 20, step: 0.1 }, { id: "hours", label: "Hours", type: "number", defaultValue: 1, min: 0 }, { id: "minutes", label: "Minutes", type: "number", defaultValue: 0, min: 0, max: 59 }],
     (v) => { const totalH = v.hours + v.minutes / 60; if (totalH === 0) return [{ label: "Error", value: "Time cannot be zero" }]; const speed = v.distance / totalH; return [{ label: "Average Speed", value: `${speed.toFixed(1)} mph`, highlight: true }, { label: "km/h", value: `${(speed * 1.609).toFixed(1)}` }, { label: "Pace", value: `${(60 / speed).toFixed(1)} min/mile` }]; },
-    { expression: "Speed = Distance / Time", variables: ["Casual: 10-14 mph", "Racing: 25+ mph"] }
+    { expression: "Speed = Distance / Time", variables: ["Casual: 10-14 mph", "Racing: 25+ mph"] },
+    [
+      { question: "What is a good average cycling speed?", answer: "For casual riders, 10–14 mph is typical, and the calculator's own guidance lists racing speeds at 25 mph and above. Hills, wind, and bike type change the number a lot, so compare rides on similar routes." },
+      { question: "Does the calculator estimate calories burned?", answer: "No. This calculator reports average speed in mph and km/h plus pace per mile. It does not estimate calorie burn." },
+    ]
   ),
   makeLife("swimming-pace-calculator", "Swimming Pace Calculator", "Calculate swimming pace per 100m/yd from total distance and time.", "Free swimming pace calculator.", "Sports & Fitness",
     [{ id: "distance", label: "Distance (meters)", type: "number", defaultValue: 1500, step: 25 }, { id: "minutes", label: "Total Minutes", type: "number", defaultValue: 25, step: 0.5 }],
@@ -93,7 +109,11 @@ export const lifestyleCalculatorsExtended: CalculatorConfig[] = [
   makeLife("screen-resolution-calculator", "Screen Resolution Calculator", "Calculate pixels per inch (PPI) from screen size and resolution.", "Free screen resolution calculator. Enter pixel dimensions and screen size to find pixel density (PPI), total pixels, and aspect ratio.", "Tech & Digital",
     [{ id: "widthPx", label: "Width (pixels)", type: "number", defaultValue: 2560, step: 1 }, { id: "heightPx", label: "Height (pixels)", type: "number", defaultValue: 1440, step: 1 }, { id: "diagonal", label: "Screen Size (inches)", type: "number", defaultValue: 27, step: 0.1 }],
     (v) => { if (v.diagonal === 0) return [{ label: "Error", value: "Size cannot be zero" }]; const diagPx = Math.sqrt(v.widthPx ** 2 + v.heightPx ** 2); const ppi = diagPx / v.diagonal; const megapixels = (v.widthPx * v.heightPx) / 1e6; return [{ label: "PPI", value: `${ppi.toFixed(1)}`, highlight: true }, { label: "Megapixels", value: `${megapixels.toFixed(2)} MP` }, { label: "Aspect Ratio", value: `${v.widthPx / (function gcd(a: number, b: number): number { return b ? gcd(b, a % b) : a; })(v.widthPx, v.heightPx)}:${v.heightPx / (function gcd(a: number, b: number): number { return b ? gcd(b, a % b) : a; })(v.widthPx, v.heightPx)}` }]; },
-    { expression: "PPI = √(W² + H²) / diagonal", variables: ["Higher PPI = sharper display", "Retina ≈ 220+ PPI"] }
+    { expression: "PPI = √(W² + H²) / diagonal", variables: ["Higher PPI = sharper display", "Retina ≈ 220+ PPI"] },
+    [
+      { question: "What PPI is 'Retina'?", answer: "Apple's Retina label starts around 220 PPI for laptops and about 300 PPI for phones, where individual pixels become hard to see at normal viewing distance. A 27-inch 1440p display is about 109 PPI, well below that." },
+      { question: "Does higher PPI always mean a better screen?", answer: "Not always. PPI matters most at close viewing distances — phones and laptops — while a TV viewed from across the room looks sharp at much lower PPI. Color accuracy, brightness, and contrast matter too." },
+    ]
   ),
   makeLife("internet-speed-calculator", "Internet Speed Calculator", "Estimate download times based on internet speed for common file sizes.", "Free internet speed calculator.", "Tech & Digital",
     [{ id: "speed", label: "Internet Speed (Mbps)", type: "number", defaultValue: 100, step: 1 }],
