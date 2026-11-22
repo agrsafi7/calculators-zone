@@ -296,7 +296,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Water (ml) = Weight×35 + Exercise Bonus + Climate", variables: ["35ml per kg body weight"] },
     howToUse: "Enter weight, daily exercise, and climate.",
-    faqs: [{ question: "Does coffee count?", answer: "Moderate caffeine intake does count toward hydration, though water is preferred." }],
+    faqs: [
+      { question: "Does coffee count?", answer: "Moderate caffeine intake does count toward hydration, though water is preferred." },
+      { question: "Is the '8 glasses a day' rule accurate?", answer: "It's a rough average, not a prescription. Needs vary with body size, activity, and climate — this calculator personalises the estimate from your weight and exercise instead." },
+      { question: "Can you drink too much water?", answer: "Yes, though it's rare. Drinking far more than your kidneys can excrete can dilute blood sodium (hyponatremia). For most people, drinking to thirst plus the amount shown here is a safe guide." },
+    ],
     relatedCalcs: healthRelated("daily-water-intake-calculator"),
   },
   {
@@ -1093,7 +1097,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Standard: 220−Age; Tanaka: 208−0.7×Age", variables: ["Individual variation: ±12 bpm"] },
     howToUse: "Enter your age.",
-    faqs: [{ question: "How accurate is 220−age?", answer: "It's a rough estimate with ±12 bpm variation. Tanaka (208−0.7×age) is more accurate for older adults." }],
+    faqs: [
+      { question: "How accurate is 220−age?", answer: "It's a rough estimate with ±12 bpm variation. Tanaka (208−0.7×age) is more accurate for older adults." },
+      { question: "Which formula should I use?", answer: "For most adults the Tanaka formula (208 − 0.7 × age) is the better default — it was built from a large meta-analysis and tracks older adults more closely than 220 − age. The Gulati formula (206 − 0.88 × age) was developed specifically for women." },
+      { question: "Can I measure my real maximum heart rate?", answer: "Yes, with a graded exercise test — usually on a treadmill or bike, increasing effort until you can't continue. It should be supervised if you have heart risk factors. The highest rate from hard intervals is a rough field alternative." },
+    ],
     relatedCalcs: healthRelated("maximum-heart-rate-calculator"),
   },
   {
@@ -1262,7 +1270,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Ovulation ≈ LMP + Cycle − 14 days", variables: ["Fertile window: 5 days before to 1 day after ovulation"] },
     howToUse: "Enter last period date and cycle length.",
-    faqs: [{ question: "How long is the fertile window?", answer: "Sperm survive up to 5 days, and the egg lives 12-24 hours, creating a ~6-day fertile window." }],
+    faqs: [
+      { question: "How long is the fertile window?", answer: "Sperm survive up to 5 days, and the egg lives 12-24 hours, creating a ~6-day fertile window." },
+      { question: "Can I use this calculator as contraception?", answer: "No. The calendar method cannot reliably prevent pregnancy — ovulation timing varies from cycle to cycle, and sperm can survive up to 5 days. Use a proven contraceptive method instead." },
+      { question: "What if my cycles are irregular?", answer: "Then the calendar estimate is much less reliable, because ovulation doesn't fall a fixed 14 days before the next period. Ovulation predictor kits or basal body temperature tracking give a better read." },
+    ],
     relatedCalcs: healthRelated("fertility-window-calculator"),
   },
   {
@@ -1683,7 +1695,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Bedtime = Wake Time − (Cycles × 90min) − 15min", variables: ["1 cycle = 90 minutes", "15 min to fall asleep"] },
     howToUse: "Enter your desired wake time.",
-    faqs: [{ question: "Why 90-minute cycles?", answer: "Sleep cycles through light, deep, and REM stages in ~90 minutes. Waking between cycles feels more refreshed." }],
+    faqs: [
+      { question: "Why 90-minute cycles?", answer: "Sleep cycles through light, deep, and REM stages in ~90 minutes. Waking between cycles feels more refreshed." },
+      { question: "How much sleep do adults need?", answer: "Most adults need 7–9 hours — five to six full 90-minute cycles. Six cycles (9 hours) is the top of the range; five cycles (7.5 hours) suits many people." },
+      { question: "What if I can't fall asleep in 15 minutes?", answer: "The calculator assumes 15 minutes to fall asleep. If you usually take longer, go to bed earlier by the difference — the cycle counts still apply from the moment you actually fall asleep." },
+    ],
     relatedCalcs: healthRelated("sleep-cycle-calculator"),
   },
   {

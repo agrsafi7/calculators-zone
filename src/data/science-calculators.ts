@@ -287,7 +287,11 @@ const _scienceCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "M = Σ(atoms × atomic mass)", variables: ["C = 12.011", "H = 1.008", "O = 15.999", "N = 14.007"] },
     howToUse: "Enter the number of each type of atom in your molecule. Example: Glucose (C₆H₁₂O₆) → C=6, H=12, O=6.",
-    faqs: [{ question: "What is molar mass?", answer: "The mass of one mole (6.022 × 10²³) of a substance, in grams per mole." }],
+    faqs: [
+      { question: "What is molar mass?", answer: "The mass of one mole (6.022 × 10²³) of a substance, in grams per mole." },
+      { question: "What is the molar mass of water?", answer: "H₂O = 2 × 1.008 + 15.999 = 18.015 g/mol. Glucose (C₆H₁₂O₆) is 180.156 g/mol and carbon dioxide (CO₂) is 44.009 g/mol." },
+      { question: "Which elements does this calculator support?", answer: "Four: carbon (C), hydrogen (H), oxygen (O), and nitrogen (N). Compounds containing other elements, like table salt (NaCl) or sulfuric acid (H₂SO₄), cannot be calculated here." },
+    ],
     relatedCalcs: sciRelated("molar-mass-calculator"),
   },
   {
@@ -381,7 +385,11 @@ const _scienceCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "PV = nRT → T = PV/(nR)", variables: ["R = 0.08206 L·atm/(mol·K)", "T in Kelvin"] },
     howToUse: "Enter pressure, volume, and moles to solve for temperature.",
-    faqs: [{ question: "What is R?", answer: "The ideal gas constant. R = 0.08206 L·atm/(mol·K) = 8.314 J/(mol·K)." }],
+    faqs: [
+      { question: "What is R?", answer: "The ideal gas constant. R = 0.08206 L·atm/(mol·K) = 8.314 J/(mol·K)." },
+      { question: "Why must temperature be in Kelvin?", answer: "Gas laws work on ratios of temperature, and only the Kelvin scale has a true zero at absolute zero (−273.15 °C). A Celsius temperature plugged into PV = nRT gives a meaningless result." },
+      { question: "Can this calculator solve for pressure or volume?", answer: "No — it solves for temperature only, even though the page description says it solves for any variable. Rearrange the law yourself: P = nRT ÷ V and V = nRT ÷ P, with R = 0.08206 L·atm/(mol·K)." },
+    ],
     relatedCalcs: sciRelated("ideal-gas-law-calculator"),
   },
   {

@@ -3997,4 +3997,1028 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
+
+  "annuity-calculator": [
+    {
+      heading: "What is an annuity and how is it calculated?",
+      paragraphs: [
+        "An annuity is a series of equal payments made at regular intervals — for example, $1,000 deposited every year into a retirement account. Its future value is calculated with **FV = PMT × [(1+r)ⁿ − 1] / r**, where PMT is the payment, r is the interest rate per period, and n is the number of periods.",
+        "There are two kinds. An **ordinary annuity** pays at the *end* of each period, while an **annuity due** pays at the *beginning*, so each payment earns interest for one extra period and ends up worth more. This calculator shows both, plus the **present value** — what the whole stream of future payments is worth in today's dollars, using PV = PMT × [(1 − (1+r)⁻ⁿ) / r].",
+        "Note the units this tool uses: the rate is an **annual** rate and each period is **one year**, so a 20-period annuity is a 20-year plan with one payment a year. The calculator assumes a constant rate and ignores taxes and fees, and it needs a rate above zero — at 0% the formula divides by zero and shows no result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Pay **$1,000 a year for 20 years at 5%**. The future value of an ordinary annuity is $1,000 × [(1.05²⁰ − 1) / 0.05] = $1,000 × 33.06595 = **$33,065.95**. The same payments as an annuity due are worth $33,065.95 × 1.05 = **$34,719.25** — the extra year of interest on every payment adds $1,653.30.",
+        "You paid in **$20,000** in total, so $13,065.95 of the ordinary annuity's value is interest earned. The present value is **$12,462.21**: that is the lump sum you would need to invest today at 5% to fund the same twenty $1,000 payments. If someone offers you $11,000 cash instead of this payment stream, the calculator tells you the stream is worth more.",
+      ],
+    },
+    {
+      heading: "How to use the annuity result in planning",
+      paragraphs: [
+        "The present-value figure is the practical one: it lets you compare a lump sum against a payment stream on equal terms. Lottery winners, structured-settlement recipients, and retirees choosing between a pension lump sum and monthly payments all face exactly this comparison.",
+        "Small changes in the inputs move the answer a lot over long periods. Try raising the rate by one point, or adding five years, and watch the future value jump — that is compounding doing the heavy lifting. The flip side is that the result is only as good as the rate you assume: a guaranteed 5% and a hoped-for 5% are very different things, so run the calculation at a conservative rate as well as an optimistic one before making a decision.",
+      ],
+    },
+  ],
+
+  "bond-calculator": [
+    {
+      heading: "How is a bond's price calculated?",
+      paragraphs: [
+        "A bond's price is the present value of everything it will pay you: all its future coupon (interest) payments plus the face value returned at maturity, each discounted back to today at the current market rate. The formula is **Price = Σ(Coupon ÷ (1+r)ᵗ) + Face ÷ (1+r)ⁿ**, where r is the market rate (yield to maturity) and n is the years to maturity.",
+        "This is why bond prices move in the opposite direction to interest rates. When market rates rise, the bond's fixed coupons are discounted more heavily, so the bond is worth less. When rates fall, the same fixed coupons become more valuable and the price rises. A bond trades at a **premium** when its coupon rate is above the market rate, at a **discount** when below, and at **par** when the two are equal.",
+        "This calculator assumes **annual coupon payments** and takes the market rate (yield to maturity) as an input — it prices the bond for you, but it does not solve for the yield itself. It also needs a market rate above zero; at 0% the formula divides by zero and shows no result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$1,000 bond with a 5% coupon and 10 years to maturity**, when the market rate is **4%**. The annual coupon is $50. The present value of ten $50 coupons at 4% is about $405.54, and the present value of the $1,000 face value is about $675.56 — so the bond is worth **$1,081.11**. Because the 5% coupon beats the 4% market rate, it sells at a premium of $81.11.",
+        "Now suppose market rates rise to **6%**. The same bond is worth only **$926.40** — the coupons are worth about $368.00 in today's dollars and the face value about $558.39. The bond lost about 14% of its value from a two-point rate rise, even though nothing about the bond itself changed. The **current yield** also shifts: $50 ÷ $1,081.11 = **4.62%** at the 4% market rate, but $50 ÷ $926.40 = **5.40%** at 6%.",
+      ],
+    },
+    {
+      heading: "What the price tells you — and what it doesn't",
+      paragraphs: [
+        "The price tells you what the bond is worth today, not what you will earn. **Current yield** (coupon ÷ price) ignores the gain or loss when the bond matures at face value; **yield to maturity** counts it, which is why it is the better comparison between bonds. A premium bond's YTM is always below its coupon rate, because part of your return is given back as the price falls toward face value at maturity.",
+        "Before buying, compare the YTM with bonds of similar maturity and credit quality, and remember the price assumes the issuer pays in full and on time. A high yield on a bond usually means the market thinks the issuer is riskier — the extra return is compensation for extra risk, not a free lunch.",
+      ],
+    },
+  ],
+
+  "business-loan-calculator": [
+    {
+      heading: "How are business loan payments calculated?",
+      paragraphs: [
+        "A business term loan is repaid in equal monthly instalments that cover interest plus a slice of the principal, calculated with the standard amortization formula **M = P × [r(1+r)ⁿ] / [(1+r)ⁿ − 1]**, where P is the loan amount, r is the monthly rate (annual rate ÷ 12), and n is the number of months. This calculator adds the origination fee on top: the fee is part of your total cost, and it is deducted from the cash you actually receive.",
+        "That last point matters when comparing offers. A loan's headline rate ignores fees, so two loans with the same rate can have very different total costs once origination fees are counted. This calculator shows the **total cost of the loan** (all payments plus the fee) and the **total amount received** (loan minus fee) so you can compare like with like.",
+        "The calculation assumes a fixed rate and equal monthly payments for the whole term. It does not include variable-rate changes, prepayment penalties, or closing costs beyond the origination fee you enter — check those separately before signing.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Borrow **$100,000 at 8% for 5 years (60 months)** with a **2% origination fee**. The monthly rate is 0.08 ÷ 12 = 0.006667, giving a monthly payment of **$2,027.64**. Over 60 months you pay $121,658.37 in total, of which **$21,658.37 is interest**. The 2% fee is **$2,000**, so the total cost is **$123,658.37** — and you actually receive **$98,000**, because the fee is taken out of the loan proceeds.",
+        "Term length is the biggest lever after the rate. The same $100,000 at 8% over **3 years** costs **$3,133.64 a month** but only **$12,810.92 in interest** — a saving of $8,847.45 against the 5-year loan. Stretch it to **7 years** and the payment drops to **$1,558.62**, but total interest climbs to **$30,924.20**. A lower payment is not a cheaper loan.",
+      ],
+    },
+    {
+      heading: "How to compare business loan offers",
+      paragraphs: [
+        "Compare **total cost**, not the monthly payment and not the rate alone. A loan with a lower rate but a 5% origination fee can cost more than a slightly higher-rate loan with no fee — run both through this calculator with their real fees and terms before deciding.",
+        "Also match the term to what the money buys. Equipment that lasts five years should not be financed over ten, and short-term working capital should not carry a long-term loan's interest bill. SBA loans usually offer lower rates and longer terms but slower approval and more paperwork; online term lenders are faster but often pricier. Whatever the source, confirm whether the rate is fixed, whether there is a prepayment penalty, and whether the lender requires a personal guarantee — none of those show up in a payment calculation, and all of them affect the real cost.",
+      ],
+    },
+  ],
+
+  "commission-calculator": [
+    {
+      heading: "How is commission calculated?",
+      paragraphs: [
+        "Commission is a percentage of the sales you make: **Commission = Sales × Rate ÷ 100**. If you also earn a base salary, your total earnings are the base plus the commission. This calculator uses that flat-rate formula, then annualizes the result by multiplying by 12.",
+        "With the default figures — **$50,000 in sales at an 8% commission rate with a $3,000 monthly base salary** — the commission is $50,000 × 0.08 = **$4,000**, total monthly earnings are **$7,000**, and the annual projection is **$84,000**. The 'effective earnings rate' of **14.00%** is total earnings divided by sales, so it includes the base salary — it is not the same as your commission rate.",
+        "Note that this calculator works with a **single flat rate** only, even though its description mentions tiered structures. If your plan pays different rates at different sales levels, calculate each tier separately and add them up, or run the tool once per tier.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A salesperson closes **$75,000 in a month at a 10% commission rate** with a **$3,000 base salary**. Commission is $75,000 × 0.10 = **$7,500**, so total monthly earnings are **$10,500** and the annual projection is **$126,000** — assuming every month matches this one.",
+        "Now compare a higher-rate, lower-base offer: **12% commission with a $1,500 base** on the same $75,000 of sales pays $9,000 + $1,500 = **$10,500** — exactly the same this month. But in a slow $30,000 month, the first plan pays $3,000 + $3,000 = **$6,000** while the second pays $3,600 + $1,500 = **$5,100**. The break-even point between the two plans is $75,000 in monthly sales: below it the higher base wins, above it the higher rate wins. That is the calculation worth doing before accepting a compensation plan.",
+      ],
+    },
+    {
+      heading: "Flat, tiered, and draw — know your plan",
+      paragraphs: [
+        "A **flat rate** pays the same percentage on every sale and is the easiest to forecast. A **tiered plan** pays more as you sell more — for example 5% on the first $20,000 and 10% above it — which rewards high performers but makes income lumpy. A **draw** is an advance against future commission: it smooths your income, but if your commissions fall short of the draw you may owe the difference back, depending on whether the draw is recoverable.",
+        "Whichever structure you are on, check three things in writing: whether commission is paid on the sale price or on collected revenue, when it is paid (at sale, at delivery, or at payment), and what happens to unpaid commission if you leave. The rate is only one part of what a plan is actually worth.",
+      ],
+    },
+  ],
+
+  "credit-cards-payoff-calculator": [
+    {
+      heading: "How long does it take to pay off a credit card?",
+      paragraphs: [
+        "Payoff time depends on three numbers — your balance, your APR, and your fixed monthly payment — and it follows the formula **Months = −log(1 − Balance×r ÷ Payment) ÷ log(1+r)**, where r is the monthly rate (APR ÷ 12). The critical condition is that your payment must be larger than one month's interest, or the balance never shrinks at all; this calculator shows an error message if the payment you enter is too low.",
+        "The reason card debt is so stubborn is that interest is charged on the balance every month. Early on, most of each payment goes to interest and only a little reduces what you owe. As the balance falls, more of each payment attacks the principal — which is why raising your payment even modestly shortens the payoff dramatically.",
+        "This calculator assumes a fixed monthly payment, a fixed APR, and no new charges. It also rounds the payoff time up to whole months, so the final payment is counted in full — the true total paid is very slightly less than shown.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take an **$8,000 balance at 22% APR** with a **$200 monthly payment**. One month's interest is $8,000 × 0.22 ÷ 12 = $146.67, so only $53.33 of the first payment reduces the balance. The payoff takes **73 months — 6.1 years** — and you pay **$14,600 in total, including $6,600 of interest**, nearly doubling the cost of whatever you bought.",
+        "Raise the payment to **$300 a month** and the picture changes completely: payoff falls to **37 months**, total paid to **$11,100**, and interest to **$3,100**. An extra $100 a month saves **$3,500 in interest and three years of payments**. Even $250 a month cuts the payoff to 49 months and interest to $4,250.",
+      ],
+    },
+    {
+      heading: "How to pay off card debt faster",
+      paragraphs: [
+        "The fastest lever is the payment itself: pay as much above the minimum as you can, every month, and stop adding new charges to the card. If you carry several cards, the **avalanche method** (extra money to the highest APR first) minimizes total interest, while the **snowball method** (smallest balance first) gives quicker wins — this site has a calculator for each.",
+        "Two other options can help: a **balance-transfer card** with a 0% introductory APR stops interest accruing while you pay down principal (watch the transfer fee and what happens when the intro period ends), and a **personal loan** at a lower fixed rate can replace revolving card debt with a fixed payoff date. Either way, the habit that matters is the one the calculator assumes — a fixed payment, made every month, with no new borrowing on top.",
+      ],
+    },
+  ],
+
+  "debt-avalanche-calculator": [
+    {
+      heading: "How does the debt avalanche method work?",
+      paragraphs: [
+        "The avalanche method attacks your debts in order of interest rate, highest first. You pay the minimum on every debt, then throw all your extra money at the highest-rate balance until it is gone, then move to the next-highest rate. Because high-rate debt generates the most interest per dollar, clearing it first minimizes the total interest you pay — it is the mathematically cheapest way to become debt-free.",
+        "This calculator assumes a minimum payment of **2% of each balance (with a $25 floor)** and applies your extra monthly payment to the highest-rate debt that still has a balance. It models up to three debts. One thing to know: when a debt is cleared, this tool does **not** roll that debt's freed minimum payment into the next target — your total monthly payment shrinks instead. A textbook avalanche keeps the total payment constant by rolling freed minimums forward, so the tool's payoff time is slightly longer than a strict avalanche would be.",
+        "Avalanche is cheapest on paper, but it has a motivational weakness: if your highest-rate debt is also your biggest, months can pass before any debt disappears. That is the trade-off against the snowball method, which clears a debt quickly for a morale boost.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Suppose you owe **$3,000 at 10%, $5,000 at 24%, and $12,000 at 6%** — $20,000 in total — and you can pay **$500 a month extra** on top of minimums. The avalanche targets the 24% card first: it is cleared in about 10 months, and the whole $20,000 is gone in **27 months (2 years 3 months)** with **$1,864.10 of interest** paid.",
+        "Pay the same debts smallest-first (the snowball method) and it takes **28 months with $2,199.99 of interest** — the avalanche saves **$335.89 and one month**. The saving comes entirely from killing the 24% balance early instead of letting it accrue interest while you clear cheaper debts. With the calculator's default debts ($2,000 at 18%, $8,000 at 12%, $15,000 at 6%), both methods give the same answer — 30 months and $2,317.07 of interest — because the smallest debt is also the highest-rate one, so both methods attack it first. The methods only diverge when the smallest balance is not the highest rate.",
+      ],
+    },
+    {
+      heading: "When avalanche beats snowball — and when it doesn't",
+      paragraphs: [
+        "Avalanche wins whenever the rate spread between your debts is wide: a 24% card against a 6% loan is a clear case for attacking the card first. The bigger the rate gap and the bigger the high-rate balance, the more the avalanche saves. Run both calculators with your real numbers — the difference is sometimes hundreds of dollars, sometimes almost nothing.",
+        "But the cheapest plan is only the best plan if you stick to it. Research on debt payoff consistently finds that people who clear a debt quickly are more likely to keep going, and avalanche's first win can be months away. If you have tried the avalanche before and stalled, the snowball's early wins may be worth more than the interest saved. Either method beats minimum payments by a wide margin: paying only minimums on the default debts takes 94 months and costs $7,174.57 in interest — more than triple the avalanche's $2,317.07.",
+      ],
+    },
+  ],
+
+  "debt-snowball-calculator": [
+    {
+      heading: "How does the debt snowball method work?",
+      paragraphs: [
+        "The snowball method attacks your debts in order of balance, smallest first. You pay the minimum on every debt, then throw all your extra money at the smallest balance until it is gone, then move to the next-smallest. Each cleared debt is a visible win, and the method is designed around motivation: quick victories keep you paying when a long slog would not.",
+        "This calculator assumes a minimum payment of **2% of each balance (with a $25 floor)** and applies your extra monthly payment to the smallest debt that still has a balance. It models up to three debts. One thing to know: when a debt is cleared, this tool does **not** roll that debt's freed minimum payment into the next target — your total monthly payment shrinks instead. A textbook snowball keeps the total payment constant by rolling freed minimums forward, so the tool's payoff time is slightly longer than a strict snowball would be.",
+        "The trade-off is cost. Because the snowball ignores interest rates, a high-rate balance can keep accruing expensive interest while you clear cheaper debts first. The avalanche method (highest rate first) is mathematically cheaper — the question is whether the snowball's momentum is worth the extra interest to you.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Suppose you owe **$3,000 at 10%, $5,000 at 24%, and $12,000 at 6%** — $20,000 in total — and you can pay **$500 a month extra** on top of minimums. The snowball targets the $3,000 balance first: with its $60 minimum plus the $500 extra, it is cleared in **6 months**. That first win comes four months sooner than the avalanche's first cleared debt, which takes about 10 months.",
+        "The whole $20,000 is gone in **28 months (2 years 4 months)** with **$2,199.99 of interest** paid. The avalanche would finish one month sooner and cost **$335.89 less in interest** — the price of the snowball's quicker wins in this example. With the calculator's default debts ($2,000 at 18%, $8,000 at 12%, $15,000 at 6%), both methods give the same answer — 30 months and $2,317.07 of interest — because the smallest debt is also the highest-rate one. And either method crushes minimum-only payments, which would take 94 months and cost $7,174.57 in interest on those same debts.",
+      ],
+    },
+    {
+      heading: "Why the snowball works even though it costs more",
+      paragraphs: [
+        "Debt payoff fails more often from lost motivation than from bad arithmetic. Clearing a whole debt in a few months proves the plan works, frees up a payment, and shrinks the number of creditors chasing you — and studies of real payoff behaviour find that people using the smallest-first order are more likely to eliminate their debts entirely than people who start with the highest rate.",
+        "The snowball makes most sense when your debts' interest rates are close together, so the extra cost is small, or when you have several small balances you can clear in quick succession. If one debt carries a much higher rate than the rest — a 24% card next to a 6% loan — run the avalanche calculator too and compare the interest difference. If the gap is a few hundred dollars, the snowball's momentum may be worth it; if it is thousands, the avalanche deserves a serious look. The method you finish is always better than the method you quit.",
+      ],
+    },
+  ],
+
+  "discount-calculator": [
+    {
+      heading: "How is a discount calculated?",
+      paragraphs: [
+        "A discount is a percentage taken off the original price: **Sale Price = Original Price × (1 − Discount ÷ 100)**, and **Savings = Original Price × Discount ÷ 100**. A 25% discount on a $100 item saves $25 and leaves a $75 sale price.",
+        "Going the other way, the discount percentage is **((Original − Sale) ÷ Original) × 100** — so an $80 item marked down to $60 is 25% off. This calculator works in the first direction only: you enter the original price and the discount percentage, and it shows the sale price and your savings. Its description mentions finding the discount percentage from a sale price, but the tool has no sale-price input, so use the formula above for that.",
+        "One label to read carefully: the 'Discount Amount' row shows the discount **percentage** (25.00%), not a dollar amount — the dollar savings are on the 'You Save' row.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A jacket is priced at **$240 with 30% off**. The savings are $240 × 0.30 = **$72**, so the sale price is $240 − $72 = **$168**. A quick mental check: 10% of $240 is $24, so 30% is three times that, $72.",
+        "Now suppose the store offers an extra 10% off at the till. The second discount applies to the already-reduced $168, not the original $240: $168 × 0.90 = **$151.20**. The total saving is $88.80, or 37% — not the 40% you get by adding 30 and 10. Stacked discounts always multiply, never add.",
+      ],
+    },
+    {
+      heading: "Discount traps to watch for",
+      paragraphs: [
+        "'**Up to 70% off**' usually means a handful of items at 70% and most at far less — check the actual price, not the headline. A 'was $200, now $100' tag is only a bargain if the item genuinely sold at $200; inflated 'was' prices are common enough that comparing the sale price against other stores is worth the minute it takes.",
+        "Also remember that the discount applies to the price **before tax** in most places, so your total at the till will be higher than the sale price shown here. And a discount only saves money if you were going to buy the item anyway — 50% off something you don't need is still 50% spent, not 50% saved.",
+      ],
+    },
+  ],
+
+  "heloc-calculator": [
+    {
+      heading: "How much can you borrow with a HELOC?",
+      paragraphs: [
+        "A HELOC (home equity line of credit) lets you borrow against the equity in your home, up to a limit set by the lender: **Max HELOC = Home Value × Max LTV% − Mortgage Balance**. LTV (loan-to-value) is the share of your home's value the lender will let you borrow in total, including your existing mortgage — 85% is a common cap.",
+        "With a **$400,000 home, a $250,000 mortgage balance, and an 85% LTV limit**, the maximum is $400,000 × 0.85 − $250,000 = **$90,000**. Your total equity is $400,000 − $250,000 = **$150,000**, but the LTV cap means you cannot borrow all of it — the lender keeps a cushion. If the result is negative (your mortgage already exceeds the LTV cap), the calculator shows $0.",
+        "A HELOC is a **revolving line**, like a credit card secured by your home: you draw what you need, pay interest only on what you have drawn, and can borrow again as you repay. The rate is usually variable, tied to the prime rate, so payments move with the market.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Using the figures above, you draw **$50,000 at an 8.5% rate**. During the draw period most HELOCs require interest-only payments: $50,000 × 0.085 ÷ 12 = **$354.17 a month**. Drawing the full $90,000 maximum would cost **$637.50 a month** in interest-only payments at the same rate.",
+        "The 'Equity Used' figure shows how much of your home's value is now borrowed against: ($250,000 mortgage + $50,000 draw) ÷ $400,000 = **75%**. That leaves 25% of the home's value as your remaining equity cushion — and it is the number lenders watch if you ever refinance or sell.",
+      ],
+    },
+    {
+      heading: "What to know before drawing on a HELOC",
+      paragraphs: [
+        "The payment this calculator shows is **interest-only**, which is what you pay during the draw period (often 10 years). After that comes the repayment period, when you must pay down the principal too — typically over 15–20 years — and the monthly payment jumps. Budget for the repayment-phase payment, not just the interest-only figure, because the jump catches many borrowers by surprise.",
+        "Two more things to check before you draw. First, the rate is variable: at 8.5% the interest-only payment on $50,000 is $354.17, but if rates rise two points it becomes $437.50 — and the rate has no fixed ceiling unless your agreement sets one. Second, your home secures the loan, so missed payments put the house itself at risk. On tax, HELOC interest is generally deductible only when the money is used to buy, build, or substantially improve the home that secures the loan — check the current IRS rules or ask a tax professional before assuming a deduction.",
+      ],
+    },
+  ],
+
+  "lease-calculator": [
+    {
+      heading: "How is a car lease payment calculated?",
+      paragraphs: [
+        "A lease payment has two parts: **depreciation** (the value the car loses while you drive it) plus a **finance charge** (the leasing company's profit on the money tied up). The formulas are **Depreciation = (Cap Cost − Residual Value) ÷ Term** and **Finance Charge = (Cap Cost + Residual Value) × Money Factor**, where the cap cost is the negotiated price minus your down payment, and the residual value is what the car is expected to be worth when the lease ends.",
+        "The **money factor** is the lease world's version of an interest rate, written as a small decimal. Multiply it by 2,400 to get the approximate APR: a money factor of 0.002 is about 4.8% APR. Dealers sometimes quote the money factor precisely because it looks tiny — always convert it before comparing with a loan rate.",
+        "This calculator covers depreciation, finance charge, and the down payment. It does not include sales tax, acquisition fees, disposition fees, or registration, which can add a meaningful amount to the real monthly cost — ask the dealer for the all-in figure before signing.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Lease a **$40,000 car with a 55% residual value, a 0.002 money factor, $3,000 down, and a 36-month term**. The residual value is $40,000 × 0.55 = **$22,000**, and the cap cost is $40,000 − $3,000 = **$37,000**. Depreciation is ($37,000 − $22,000) ÷ 36 = **$416.67 a month**; the finance charge is ($37,000 + $22,000) × 0.002 = **$118.00 a month**. Total monthly payment: **$534.67**, and the total cost over the lease is $534.67 × 36 + $3,000 = **$22,248**.",
+        "What if you put nothing down? The cap cost stays $40,000, depreciation rises to $500.00 and the finance charge to $124.00, for a payment of **$624.00 a month** and a total of **$22,464**. The $3,000 down payment saves only **$216** over three years — and that money is at risk: if the car is totaled early in the lease, your down payment is generally not refunded. Many lease guides advise keeping the down payment small for exactly that reason.",
+      ],
+    },
+    {
+      heading: "How to get a better lease deal",
+      paragraphs: [
+        "Three numbers decide your payment, and all three are negotiable or choosable. **Negotiate the cap cost** like a purchase price — every $1,000 off the price cuts roughly $30 a month on a 36-month lease. **Pick a car with a high residual value**: a 60% residual instead of 55% on this $40,000 car would cut the depreciation charge from $416.67 to $361.11 a month. And **check the money factor** against current loan rates — a money factor of 0.003 is 7.2% APR, which may be more than a loan would cost.",
+        "Before signing, confirm the mileage allowance and the per-mile overage charge, the wear-and-tear standards, and the disposition fee at turn-in. A cheap monthly payment with a 10,000-mile annual limit is expensive if you drive 15,000 miles a year — at $0.25 a mile, 5,000 extra miles a year costs $1,250 a year, or about $104 a month.",
+      ],
+    },
+  ],
+
+  "markup-calculator": [
+    {
+      heading: "How is markup calculated?",
+      paragraphs: [
+        "Markup is the percentage added to an item's cost to set its selling price: **Selling Price = Cost × (1 + Markup ÷ 100)**. A 75% markup on a $40 item adds $30 and gives a $70 selling price. The profit is the difference between selling price and cost, and this calculator also shows the **equivalent profit margin** — profit as a percentage of the selling price, not the cost.",
+        "Markup and margin are the two ways of describing the same profit, and mixing them up is the most common pricing mistake in small business. A 75% markup sounds like a 75% profit, but the margin is $30 ÷ $70 = **42.86%** — less than half the selling price is profit. Margin can never exceed 100%; markup has no ceiling.",
+        "This calculator works in one direction: cost plus markup gives you the selling price. Its description mentions finding the markup from cost and selling price, but the tool has no selling-price input — for that, use Markup = (Selling Price − Cost) ÷ Cost × 100.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "You buy a product for **$40** and apply a **75% markup**. The selling price is $40 × 1.75 = **$70**, the profit per unit is **$30**, and the equivalent margin is $30 ÷ $70 = **42.86%**. Sell 100 units a month and the gross profit is $3,000 — before rent, wages, and other overheads.",
+        "Now try a steeper markup: a **$12** cost with **150% markup** gives a selling price of $12 × 2.50 = **$30**, a profit of **$18**, and a margin of **60%**. Notice the pattern: 100% markup always means a 50% margin, because doubling the cost makes profit exactly half the selling price. A 300% markup — common on drinks in restaurants — means a 75% margin.",
+      ],
+    },
+    {
+      heading: "Markup vs margin: why the mix-up costs money",
+      paragraphs: [
+        "Suppose you want a 25% **margin** and mistakenly apply a 25% **markup** to a $40 cost. You price at $50 and earn $10 — but your margin is $10 ÷ $50 = 20%, not 25%. To get a true 25% margin you need a markup of 25 ÷ (1 − 0.25) = **33.3%**, giving a $53.33 price and $13.33 profit. On thin-margin products that 5-point gap is the difference between profit and loss.",
+        "When choosing a markup, start from the margin you need to cover overheads and profit, then convert it to a markup with **Markup = Margin ÷ (1 − Margin ÷ 100)**. Then check the market: the right markup is the one customers will pay while leaving you enough margin after all costs — not the one a rule of thumb suggests.",
+      ],
+    },
+  ],
+
+  "mutual-fund-calculator": [
+    {
+      heading: "How does a mutual fund investment grow?",
+      paragraphs: [
+        "A mutual fund investment grows in two ways: your initial lump sum compounds, and each regular contribution (a SIP — Systematic Investment Plan) compounds from the month it goes in. The formula is **FV = P(1+r)ⁿ + SIP × [(1+r)ⁿ − 1] / r**, where r is the monthly return (annual return ÷ 12) and n is the number of months. This calculator assumes monthly compounding and contributions at the end of each month.",
+        "The key force is compounding: returns earn returns, so growth accelerates over time. In the early years most of the balance is money you put in; in the later years most of it is growth. That is why starting early matters more than starting big — time in the market beats timing the market, and a few extra years of compounding can outweigh years of larger contributions.",
+        "The projection assumes a **constant** return every month, which real funds never deliver, and it ignores expense ratios, taxes, and inflation. Treat the result as a scenario — 'what if the fund returned exactly this much, every month, for 15 years' — not a forecast. The calculator also needs a return above zero; at 0% the formula divides by zero and shows no result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Invest **$5,000 upfront plus $500 a month for 15 years at a 10% annual return**. The lump sum grows to $22,269.60 and the monthly contributions grow to $207,235.17, for a future value of **$229,505**. You invested **$95,000** in total ($5,000 + $500 × 180 months), so the wealth gained is **$134,505** — a growth multiple of **2.42×** your money.",
+        "Now run the same plan at **7%**: the future value is **$172,726** and the wealth gained is **$77,726**. Three percentage points of return cost **$56,779** — which shows how sensitive long-term projections are to the return you assume. And without the monthly contributions, the $5,000 lump sum alone would reach only **$22,270**: the SIP did most of the work.",
+      ],
+    },
+    {
+      heading: "What the projection leaves out",
+      paragraphs: [
+        "Three real-world costs are missing from this calculator. **Expense ratios** — the fund's annual fee, often 0.5–1% for actively managed funds and far less for index funds — come straight out of your return every year. **Taxes** apply to distributions and to gains when you sell (unless the fund is in a tax-advantaged account). And **inflation** shrinks what the final number buys: $229,505 in 15 years is worth considerably less in today's dollars at even 2–3% annual inflation.",
+        "Use the calculator to compare scenarios — a higher SIP, a longer horizon, a lower assumed return — rather than to predict an exact outcome. The most useful question it answers is not 'how rich will I be?' but 'how much difference does an extra $100 a month, or five more years, actually make?'",
+      ],
+    },
+  ],
+
+  "overtime-pay-calculator": [
+    {
+      heading: "How is overtime pay calculated?",
+      paragraphs: [
+        "Overtime pay is your hourly rate multiplied by an overtime multiplier — usually **1.5× (time and a half)** — for each overtime hour, added to your regular pay: **Total = (Rate × Regular Hours) + (Rate × Multiplier × OT Hours)**. Under the federal Fair Labor Standards Act (FLSA), non-exempt employees must be paid at least 1.5× their regular rate for hours worked over 40 in a workweek.",
+        "This calculator takes the hours you enter as given: you type in your regular hours and your overtime hours separately, and it does not enforce the 40-hour threshold itself. Choose the 1.5× multiplier for standard overtime or 2× for double time, which some employers pay for Sundays, holidays, or very long shifts.",
+        "The monthly estimate multiplies your weekly total by **4.33** (52 weeks ÷ 12 months), which is the standard way to convert a weekly figure to a monthly average — it is slightly more than four weeks' pay, because most months have more than four weeks.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "You earn **$20 an hour** and work **40 regular hours plus 10 overtime hours** in a week at time and a half. Regular pay is $20 × 40 = **$800**. The overtime rate is $20 × 1.5 = **$30 an hour**, so overtime pay is $30 × 10 = **$300**. Your weekly total is **$1,100**, and the monthly estimate is $1,100 × 4.33 = **$4,763**.",
+        "At **double time** instead, the overtime rate is $40 an hour, overtime pay is **$400**, and the weekly total is **$1,200** — $100 more for the same 10 extra hours. Over a year, that difference is $5,200, which is why the multiplier in your contract matters as much as the hourly rate.",
+      ],
+    },
+    {
+      heading: "Overtime rules worth knowing",
+      paragraphs: [
+        "Not everyone qualifies. Under the FLSA, salaried executive, administrative, and professional employees are **exempt** from overtime only if they are paid at least **$684 a week ($35,568 a year)** — the federal threshold in force in 2026, after courts vacated the 2024 rule that would have raised it and the Department of Labor formally restored the 2019 figures in May 2026. Below that salary, the exemption cannot apply. Duties matter too: a job title alone does not make someone exempt.",
+        "State rules can be stricter than federal law. California, for example, requires daily overtime after 8 hours in a day, not just weekly overtime after 40 — so a worker doing four 10-hour days earns daily overtime in California but none under the FLSA alone. And overtime is taxed at the same rates as regular pay: a bigger paycheck may have more tax withheld that week, but your total tax for the year depends on your total income, not on which hours were overtime.",
+      ],
+    },
+  ],
+
+  "pension-calculator": [
+    {
+      heading: "How is a pension calculated?",
+      paragraphs: [
+        "Most defined-benefit pensions use a simple formula: **Annual Pension = Final Average Salary × Benefit Multiplier × Years of Service**. The final average salary is usually your average pay over your last few years (often the highest 3–5 years), the multiplier is a percentage per year of service set by your plan — typically 1.5–2.5% — and the result is the annual income you receive in retirement.",
+        "With a **$80,000 final average salary, 25 years of service, and a 2% multiplier**, the pension is $80,000 × 0.02 × 25 = **$40,000 a year**, or **$3,333.33 a month**. The **income replacement rate** is 50%: the pension replaces half of your final salary. Work 30 years at the same multiplier and the replacement rate rises to 60%, or $48,000 a year.",
+        "This calculator gives the gross pension from the formula alone. It does not include cost-of-living adjustments (COLA), taxes, early-retirement reductions, survivor benefit options, or any cap your plan may set — and it has no cap of its own, so very long service at a high multiplier can show a replacement rate above 100%, which most real plans do not allow.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A teacher retires with a **final average salary of $80,000 after 25 years**, in a plan with a **2% multiplier**. Her annual pension is $80,000 × 2% × 25 = **$40,000**, paid as **$3,333.33 a month**, replacing **50%** of her final salary.",
+        "Each extra year of service is worth 2% of final salary — **$1,600 a year for life** in this example. Working five more years (30 total) raises the pension to **$48,000 a year ($4,000 a month)**, a 60% replacement rate. That is why the last few years before retirement are the most valuable in a defined-benefit plan: each year adds the same percentage, and it is applied to your highest salary years.",
+      ],
+    },
+    {
+      heading: "What the estimate doesn't include",
+      paragraphs: [
+        "The headline number is only the starting point. Many plans **reduce the pension if you retire early** — sometimes by 5% or more per year before the normal retirement age — and some cap the replacement rate (80% is a common ceiling), which this calculator does not apply. If your plan offers a **COLA**, the pension keeps pace with inflation; without one, a $40,000 pension loses roughly a third of its buying power over 20 years at 2% inflation.",
+        "Also check whether your pension is coordinated with Social Security (some public plans reduce the pension by part of your Social Security benefit), whether survivor options reduce your monthly amount, and how the pension is taxed in your state. The calculator's job is to show what the formula produces — your plan's summary document is the authority on what you will actually receive.",
+      ],
+    },
+  ],
+
+  "army-body-fat-calculator": [
+    {
+      heading: "How is Army body fat percentage calculated?",
+      paragraphs: [
+        "The U.S. Army estimates body fat percentage from tape measurements and height, using the Department of Defense circumference equations. For men the formula uses **waist and neck circumferences**; for women it adds the **hip circumference**. No scales, calipers, or lab equipment are needed — just a tape measure.",
+        "The male equation is **86.010 × log₁₀(waist − neck) − 70.041 × log₁₀(height) + 36.76**, and the female equation is **163.205 × log₁₀(waist + hip − neck) − 97.684 × log₁₀(height) − 78.387**, with all measurements in inches. The waist-minus-neck term captures abdominal fat, while height adjusts for body size. This calculator applies these exact equations.",
+        "This is an **estimate, not a medical measurement**: the tape method typically lands within about 3–4 percentage points of lab methods such as DEXA scans. One thing to know about this tool: its 'Army Max Allowed' figure is fixed at **26% for men and 36% for women**, which are the ceilings for soldiers aged 40 and over. The Army's actual limits rise with age — for men they run from 20% (ages 17–20) up to 26% (40+), and for women from 30% to 36% — so younger soldiers should check the limit for their own age group rather than relying on the tool's fixed figure.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a man who is **70 inches tall with a 34-inch waist and a 15.5-inch neck**. Waist minus neck is 18.5. Plugging in: 86.010 × log₁₀(18.5) = 108.99, and 70.041 × log₁₀(70) = 129.23. So body fat = 108.99 − 129.23 + 36.76 = **16.5%** — comfortably within the Army standard.",
+        "Now a woman who is **64 inches tall with a 28-inch waist, 38-inch hips, and a 13-inch neck**. Waist + hip − neck = 53. Plugging in: 163.205 × log₁₀(53) = 281.41, and 97.684 × log₁₀(64) = 176.44. So body fat = 281.41 − 176.44 − 78.39 = **26.6%** — also within the standard, and below the 30% limit that applies to women aged 17–20.",
+      ],
+    },
+    {
+      heading: "How to measure accurately",
+      paragraphs: [
+        "Your result is only as good as your measurements. Measure the **waist at the navel** (men) or at the narrowest point of the torso (women), the **neck just below the Adam's apple**, and the **hips at the widest point of the buttocks**. Keep the tape level, snug against the skin without compressing it, and take each measurement at the end of a normal exhale.",
+        "Small errors matter: a half-inch error on the waist can shift the result by roughly a full percentage point. Measure in the morning, before eating, and repeat each measurement twice — if the two readings differ, take a third and use the middle value. And remember that this method estimates fat from body shape; very muscular people can score higher than their true body fat because a thick neck and waist read as fat to the formula.",
+      ],
+    },
+  ],
+
+  "carbohydrate-calculator": [
+    {
+      heading: "How many grams of carbs should you eat per day?",
+      paragraphs: [
+        "Your daily carbohydrate target in grams is **(daily calories × carb percentage) ÷ 4**, because carbohydrates provide 4 kilocalories per gram. This calculator does that conversion for you: enter your calorie target, pick the share of calories you want from carbs, and it gives you the gram figure you will actually track on food labels.",
+        "Dietary guidelines suggest carbohydrates make up **45–65% of total calories** for most adults. The middle of that range — around 50% — suits most moderately active people, while endurance athletes trend higher and low-carb dieters lower. This calculator offers 45%, 50%, 55%, and 60%; if you want a share above 60%, apply the formula directly (for example, 2,500 kcal at 65% is 2,500 × 0.65 ÷ 4 = 406 g).",
+        "Carbohydrates are not a single food group: the gram target covers everything from vegetables and whole grains to added sugars. Where your carbs come from matters as much as the total — whole-food sources bring fibre, vitamins, and slower-digesting energy, while sugary drinks and refined snacks deliver the same grams with little else.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **2,500 kcal diet at 50% carbs**. Calories from carbs are 2,500 × 0.50 = 1,250 kcal. Divide by 4 kcal per gram: 1,250 ÷ 4 = **312.5 g**, which the calculator rounds to **313 g per day**.",
+        "Now a **2,000 kcal diet at 45% carbs** (the lower-carb option): 2,000 × 0.45 = 900 kcal from carbs, and 900 ÷ 4 = **225 g per day**. The same person at 60% would need 2,000 × 0.60 ÷ 4 = **300 g** — a 75 g swing from a 15-point change in the percentage, which shows why picking the right share for your activity level matters.",
+      ],
+    },
+    {
+      heading: "What counts toward your carb target?",
+      paragraphs: [
+        "Food labels list **total carbohydrates** per serving — that is the number to add up against your target. It includes sugars, starches, and fibre. Some low-carb approaches track 'net carbs' (total carbs minus fibre), but this calculator's gram figure is a total-carb target, so compare it with the total-carbohydrate line on labels.",
+        "A practical way to hit the target without constant arithmetic: build each meal around a carb anchor you know — a cup of cooked rice is about 45 g, a medium banana about 27 g, two slices of bread about 30 g — and let vegetables fill the rest. If you train hard, put more of your carbs in the meals around your workout, when your muscles use them most readily.",
+      ],
+    },
+  ],
+
+  "daily-water-intake-calculator": [
+    {
+      heading: "How much water should you drink per day?",
+      paragraphs: [
+        "This calculator estimates your daily water need as **35 ml per kilogram of body weight, plus 350 ml for every 30 minutes of exercise, plus a climate adjustment** (500 ml for hot or humid weather, 250 ml for cold and dry conditions). It is a personalised rule of thumb — more useful than a flat '8 glasses' because it scales with your size and activity.",
+        "The 35 ml/kg figure is a widely used baseline for total water intake, and it includes the water in food: roughly a fifth of daily water typically comes from food, especially fruit, vegetables, and soups, so the amount you need to *drink* is somewhat less than the headline number. Treat the result as a target to aim for across the day, not a quota to force down in one sitting.",
+        "Your needs rise further with illness (fever, vomiting), breastfeeding, and high altitude, and fall if you eat a lot of water-rich food. Thirst, urine colour (pale straw is the aim), and how you feel are better day-to-day guides than any single number.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a person weighing **70 kg who exercises 30 minutes a day in a temperate climate**. Base intake: 70 × 35 = 2,450 ml. Exercise adds 350 ml. Climate adds nothing. Total: **2,800 ml, or 2.8 litres per day**.",
+        "In everyday units that is about **11 cups of 250 ml** (2,800 ÷ 250 = 11.2) or **95 fluid ounces** (2,800 ÷ 29.574 = 94.7). The same person on a hot day would add 500 ml, reaching **3.3 litres**, and with an hour of exercise instead of 30 minutes would add another 350 ml on top of that.",
+      ],
+    },
+    {
+      heading: "Does coffee count — and other hydration questions",
+      paragraphs: [
+        "Yes — **moderate caffeine counts toward hydration**. Coffee and tea are mostly water, and at normal intakes (a few cups a day) their mild diuretic effect does not cancel out the fluid they provide. Water is still the best default, but you do not need to 'subtract' your coffee from your daily total. Alcohol is the exception: it genuinely dehydrates, so it does not count.",
+        "Two cautions. First, **more is not always better**: drinking far beyond thirst can dilute blood sodium (hyponatremia), a rare but serious condition seen mostly in endurance athletes who over-drink. Second, this calculator's figure is a general estimate, not medical advice — people with kidney, heart, or liver conditions may have fluid limits set by their doctor, and those limits override any calculator.",
+      ],
+    },
+  ],
+
+  "fat-intake-calculator": [
+    {
+      heading: "How many grams of fat should you eat per day?",
+      paragraphs: [
+        "Your daily fat target in grams is **(daily calories × fat percentage) ÷ 9**, because fat provides 9 kilocalories per gram — more than double the energy of carbs or protein. This calculator applies that formula to your calorie target and the fat share you choose.",
+        "Dietary guidelines suggest fat make up **20–35% of total calories** for most adults. The calculator offers 20% (low fat), 30% (moderate), 40% (high fat), and 65% (keto). The 65% keto option sits well above the standard guideline range — it is a deliberate therapeutic-style diet, not a general recommendation, and it works by replacing most carbs with fat.",
+        "One row of this calculator deserves a caution: the **'Saturated Fat Limit' is calculated as 33% of your total fat grams**. That happens to match the standard guidance (saturated fat below 10% of calories) at the 30% setting, but it drifts at other settings — at 65% keto on 2,000 kcal it shows about 48 g, while 10% of calories is only 22 g. Use the 10%-of-calories rule directly for saturated fat rather than trusting that row at high-fat settings.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **2,000 kcal diet at 30% fat**. Calories from fat: 2,000 × 0.30 = 600 kcal. Divide by 9 kcal per gram: 600 ÷ 9 = **66.7 g**, which the calculator rounds to **67 g per day**. The saturated-fat limit shown is a third of that, about **22 g** — which matches 10% of 2,000 kcal (200 kcal ÷ 9 = 22.2 g).",
+        "Now the same 2,000 kcal at **65% (keto)**: 2,000 × 0.65 = 1,300 kcal from fat, and 1,300 ÷ 9 = **144 g per day** — more than double the moderate-fat figure. At 20% (low fat) it would be 2,000 × 0.20 ÷ 9 = **44 g**. The same calorie target produces very different gram targets depending on the share you choose, so pick the share that matches the diet you can actually sustain.",
+      ],
+    },
+    {
+      heading: "Which fats matter more than the total",
+      paragraphs: [
+        "Not all fat grams are equal. **Unsaturated fats** — olive oil, nuts, seeds, avocados, and oily fish — support heart health and are the fats to build your intake around. **Saturated fats** (butter, fatty meat, coconut oil) raise LDL cholesterol, which is why guidelines cap them below 10% of calories. **Trans fats** (partially hydrogenated oils) should be avoided entirely.",
+        "In practice, hitting your gram target is easy; hitting it with the right fats takes a little planning. Cook with olive or rapeseed oil instead of butter, snack on nuts instead of crisps, and eat oily fish once or twice a week. If your target is high — 100 g or more — spreading fat across meals keeps each meal from feeling heavy and helps your body absorb fat-soluble vitamins (A, D, E, and K) through the day.",
+      ],
+    },
+  ],
+
+  "fertility-window-calculator": [
+    {
+      heading: "When is the fertile window?",
+      paragraphs: [
+        "The fertile window is the roughly six-day stretch each cycle when conception is possible, ending on ovulation day. This calculator estimates **ovulation as your last period's first day plus your cycle length minus 14 days**, then places the window from **5 days before ovulation to 1 day after it**. The timing works because sperm can survive up to 5 days inside the body, while the egg lives only 12–24 hours after release — so the days *before* ovulation matter most.",
+        "The 'minus 14 days' rule reflects the luteal phase — the stretch between ovulation and the next period — which is about 14 days in most cycles. That is why the calculation counts backwards from your *next* expected period rather than forwards from your last one.",
+        "This is an **estimate, not a guarantee**: ovulation timing varies from cycle to cycle, and stress, illness, and travel can shift it. The calendar method cannot be relied on as contraception. If you have been trying to conceive for 12 months (or 6 months if you are over 35) without success, a clinician can investigate.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a last period starting **1 January 2026 with a regular 28-day cycle**. Ovulation is estimated at 1 January + 28 − 14 days = **15 January**. The fertile window runs from 5 days before ovulation to 1 day after: **10 January to 16 January**.",
+        "The **most fertile days** — the two days before ovulation plus ovulation day itself, when conception chances are highest — are **13 to 15 January**. Note that this calculator's window is 7 days inclusive (5 before, ovulation day, and 1 after), a day wider than the classic 6-day window, because it includes the day after ovulation when the egg may still be viable.",
+      ],
+    },
+    {
+      heading: "Why the calendar method has limits",
+      paragraphs: [
+        "The calculation assumes you ovulate exactly 14 days before your next period, every cycle. In reality, the luteal phase ranges roughly from 11 to 17 days, and the first half of the cycle — before ovulation — is the part that varies most. With irregular cycles, a calendar estimate can be off by several days in either direction.",
+        "For a more precise read, combine the calendar with **ovulation predictor kits** (which detect the LH surge 12–36 hours before ovulation), **basal body temperature** (which rises slightly after ovulation), or cervical mucus changes. Used together, these signs confirm ovulation in a way a date calculation alone never can. And if your cycles are consistently shorter than 21 days or longer than 35, that is worth discussing with a doctor regardless of conception plans.",
+      ],
+    },
+  ],
+
+  "gfr-calculator": [
+    {
+      heading: "What is GFR and how is it estimated?",
+      paragraphs: [
+        "Glomerular filtration rate (GFR) measures how well your kidneys filter blood, in **millilitres per minute per 1.73 m² of body surface area**. Because measuring it directly is complex, doctors estimate it from a blood test: this calculator uses the **CKD-EPI 2021 equation**, which takes your **serum creatinine, age, and sex** and returns an estimated GFR (eGFR) — no race term, in line with the current standard.",
+        "The equation is **eGFR = 142 × min(Scr/κ, 1)^α × max(Scr/κ, 1)^−1.200 × 0.9938^Age × 1.012 (if female)**, where Scr is serum creatinine in mg/dL, κ is 0.7 for women and 0.9 for men, and α is −0.241 for women and −0.302 for men. Creatinine is a waste product from muscle that healthy kidneys clear steadily, so higher creatinine in the blood means lower filtration.",
+        "An eGFR is an **estimate, not a diagnosis**. A single result below 60 does not by itself mean kidney disease — chronic kidney disease (CKD) is diagnosed when eGFR stays below 60 for at least 3 months, or when there are other signs of kidney damage. Always discuss results with a clinician, and never change medication or diet on the basis of a calculator result alone.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **45-year-old man with serum creatinine of 1.0 mg/dL**. Here κ = 0.9 and α = −0.302, so Scr/κ = 1.11. The equation gives 142 × 1 × (1.11)^−1.200 × 0.9938^45 ≈ **95 mL/min/1.73m²**, which the calculator rounds to **95** and labels **Normal (G1)** — at or above 90.",
+        "Now a **60-year-old woman with creatinine of 1.2 mg/dL**. Here κ = 0.7 and α = −0.241, so Scr/κ = 1.71. The equation gives 142 × 1 × (1.71)^−1.200 × 0.9938^60 × 1.012 ≈ **52 mL/min/1.73m²**, labelled **Moderate (G3a)** — the 45–59 band. The same creatinine level means something different at different ages and for different sexes, which is why the equation adjusts for both.",
+      ],
+    },
+    {
+      heading: "What the CKD stages mean",
+      paragraphs: [
+        "Kidney function is grouped into stages by eGFR: **G1 (90 and above)** normal, **G2 (60–89)** mildly decreased, **G3a (45–59)** mild-to-moderate decrease, **G3b (30–44)** moderate-to-severe decrease, **G4 (15–29)** severely decreased, and **G5 (below 15)** kidney failure. This calculator shows the stage alongside your eGFR using exactly these cut-offs. Note that G1 and G2 only count as CKD if there is other evidence of kidney damage, such as protein in the urine.",
+        "Creatinine-based eGFR has known blind spots: **high muscle mass, heavy exercise, and cooked meat** can raise creatinine and make kidneys look worse than they are, while **low muscle mass** (from ageing, illness, or amputation) can hide a real decline. If your result is unexpected, your doctor may repeat the test, check cystatin C (a marker less affected by muscle), or look at urine protein. Blood pressure and blood sugar control are the two most powerful ways to protect kidney function over time.",
+      ],
+    },
+  ],
+
+  "maximum-heart-rate-calculator": [
+    {
+      heading: "What is maximum heart rate and how is it calculated?",
+      paragraphs: [
+        "Maximum heart rate (MHR) is the highest number of beats per minute your heart can reach during all-out exertion. Because measuring it requires a maximal-effort test, it is usually **estimated from age**. This calculator shows three established formulas side by side: the classic **220 − age**, **Tanaka (208 − 0.7 × age)**, and **Gulati (206 − 0.88 × age)**, which was developed specifically for women.",
+        "All three are estimates with real individual variation — typically around **±10–12 beats per minute** — so two healthy people of the same age can have maximums 20 bpm apart. The Tanaka formula, built from a large meta-analysis, generally tracks older adults more closely than 220 − age, which tends to overestimate the maximum for younger people and underestimate it for older ones.",
+        "Maximum heart rate is mainly useful as an anchor for **training zones**: workouts are prescribed as percentages of MHR (for example, 70–80% for steady cardio). It is not a fitness score — a higher maximum does not mean you are fitter — and it declines with age in everyone, athletes included.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **30-year-old**. The classic formula gives 220 − 30 = **190 bpm**. Tanaka gives 208 − 0.7 × 30 = 208 − 21 = **187 bpm**. Gulati gives 206 − 0.88 × 30 = 206 − 26.4 = **180 bpm** (rounded). The calculator's 'Average' row averages the first two formulas: (190 + 187) ÷ 2 = **189 bpm**.",
+        "At **age 50** the formulas diverge more: 220 − 50 = **170 bpm**, Tanaka gives 208 − 35 = **173 bpm**, and Gulati gives 206 − 44 = **162 bpm**. Notice that Tanaka overtakes 220 − age after about age 40 — one reason it is often preferred for older adults. For training, 70% of a 190 bpm maximum is **133 bpm** and 80% is **152 bpm**, which is the steady-cardio band for the 30-year-old in the first example.",
+      ],
+    },
+    {
+      heading: "How to use your maximum heart rate for training",
+      paragraphs: [
+        "The usual five zones, as percentages of MHR, are: **50–60%** warm-up and recovery, **60–70%** light aerobic, **70–80%** steady cardio, **80–90%** hard effort, and **90–100%** maximal intervals. Most weekly training should sit in the 60–80% bands; the top zones are for short, deliberate intervals with recovery between them.",
+        "If you want your true maximum rather than an estimate, a **graded exercise test** — treadmill or bike, effort rising until you cannot continue — measures it directly. It should be supervised if you have heart risk factors, high blood pressure, or symptoms such as chest pain or dizziness on exertion. A rough field alternative is the highest heart rate you reach in the final minute of a hard uphill interval session, though that usually lands a few beats below your true maximum.",
+      ],
+    },
+  ],
+
+  "sleep-cycle-calculator": [
+    {
+      heading: "How do sleep cycles work?",
+      paragraphs: [
+        "Sleep runs in repeating cycles of about **90 minutes**, each moving through light sleep, deep sleep, and REM (dreaming) sleep. Waking in the middle of a deep-sleep phase is what produces that groggy, heavy feeling; waking at the **boundary between cycles** usually feels much easier — even if you slept slightly less in total.",
+        "This calculator works backwards from your wake time: **bedtime = wake time − (cycles × 90 minutes) − 15 minutes to fall asleep**. It shows three options — 4, 5, or 6 cycles — so you can pick the bedtime that fits your evening while still landing on a cycle boundary.",
+        "The 90-minute figure is an average, not a fixed law: real cycles range roughly from 80 to 120 minutes and lengthen and shorten across the night, with more deep sleep early and more REM later. The calculator's bedtimes are therefore good starting points to test for a week or two, not precise predictions.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **7:00 AM wake time**. For **6 cycles** (9 hours of sleep): 6 × 90 = 540 minutes of sleep plus 15 minutes to fall asleep = 555 minutes, or 9 hours 15 minutes, before 7:00 AM — a bedtime of **9:45 PM**. For **5 cycles** (7.5 hours): 450 + 15 = 465 minutes before 7:00 AM, giving **11:15 PM**. For **4 cycles** (6 hours): 360 + 15 = 375 minutes, giving **12:45 AM**.",
+        "The 6-cycle bedtime is the one the calculator highlights as ideal, and 9 hours sits at the top of the recommended range for adults. The 5-cycle option, 7.5 hours, suits many people well. The 4-cycle option, 6 hours, is below the recommended 7–9 hours for adults — fine occasionally, but not a nightly plan.",
+      ],
+    },
+    {
+      heading: "How many cycles do you actually need?",
+      paragraphs: [
+        "Most adults need **7–9 hours**, which is 5 to 6 full cycles. Individual needs vary: some people genuinely thrive on 7 hours, others need 9, and the right amount is the one that leaves you alert through the day without an alarm or caffeine to function. Sleeping longer than you need does not bank extra rest — regularity matters more than occasional long nights.",
+        "Two practical notes. First, the calculator assumes **15 minutes to fall asleep** — if you usually take 30, go to bed 15 minutes earlier than it suggests. Second, the 'Sleep Duration' row on this page is a fixed recommendation ('6–9 hours recommended'), not a figure computed from your inputs. The most powerful sleep habit is not the bedtime itself but keeping the **same wake time every day**, weekends included, which steadies your body clock far more than any single early night.",
+      ],
+    },
+  ],
+
+  "body-type-calculator": [
+    {
+      heading: "What is body frame size?",
+      paragraphs: [
+        "Body frame size — small, medium, or large — is an estimate of your **bone structure**, calculated from your height divided by your wrist circumference. The ratio works because wrist size reflects bone thickness: for the same height, a thicker wrist means a larger frame. This calculator applies the standard height-to-wrist ratio with separate thresholds for men and women.",
+        "For **men**, a ratio above 10.4 is a small frame, 9.6–10.4 is medium, and below 9.6 is large. For **women**, the cut-offs are higher — above 11 is small, 10.1–11 is medium, and below 10.1 is large — because women's wrists are typically slimmer relative to height. These are screening cut-offs from frame-size tables, not medical diagnoses.",
+        "Frame size is about **bone**, not fat or muscle: it does not change when you gain or lose weight, and it says nothing on its own about whether you are at a healthy weight. Its main use is adjusting ideal-weight estimates — a large-framed person can healthily weigh more than a small-framed person of the same height — so pair it with BMI and waist measurement for a fuller picture.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a man who is **175 cm tall with a 17 cm wrist**. The ratio is 175 ÷ 17 = **10.3**, which falls in the 9.6–10.4 band — a **medium frame**. If his wrist were 16 cm instead, the ratio would be 175 ÷ 16 = 10.9, a small frame; at 19 cm it would be 175 ÷ 19 = 9.2, a large frame. One centimetre of wrist changes the category, so measure carefully.",
+        "Now a woman who is **165 cm tall with a 14.5 cm wrist**. The ratio is 165 ÷ 14.5 = **11.4**, above the 11 cut-off — a **small frame**. The same wrist on a 175 cm woman would give 175 ÷ 14.5 = 12.1, also small; height stretches the ratio in the same direction for everyone.",
+      ],
+    },
+    {
+      heading: "Why does frame size matter for ideal weight?",
+      paragraphs: [
+        "Ideal-weight tables (such as the classic Metropolitan Life tables) give a **range**, not a single number — typically about ±10% around the midpoint — and frame size decides where in that range you sit. A large-framed person at the top of the range is carrying bone, not excess fat, while a small-framed person at the same weight may genuinely be carrying more fat.",
+        "To measure your wrist, wrap a flexible tape around the **smallest part of your wrist, just above the wrist bone**, keeping it snug but not tight, on your non-dominant hand. Do not include the bony bump at the base of the hand, and measure with the hand relaxed — flexing the forearm changes the reading. If you land near a cut-off, treat the category as approximate: the boundary between 'medium' and 'large' is a convention, not a cliff.",
+      ],
+    },
+  ],
+
+  "basic-calculator": [
+    {
+      heading: "What can a basic calculator do?",
+      paragraphs: [
+        "A basic calculator performs **two-number arithmetic**: addition, subtraction, multiplication, division, and powers. Enter the first number, pick the operation, enter the second number, and the answer appears instantly — no buttons to press, no app to open.",
+        "Because it handles one operation at a time, there is no order-of-operations puzzle: each calculation is exactly the two numbers and the operation you chose. It accepts **decimals and negative numbers** freely, and division by zero is flagged as 'Undefined (÷ 0)' rather than crashing or showing an error.",
+        "One limit to know: very large powers can overflow — for example, 10^400 is beyond what the underlying number system can represent, and the result shows as Infinity. For everyday arithmetic — bills, measurements, tips, homework checks — that limit never comes up.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "Using the calculator's own defaults, **12 + 8 = 20**. A few more: **48 × 7 = 336**, **100 ÷ 4 = 25**, and **2^10 = 1,024** (2 multiplied by itself ten times: 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2). Subtraction with a negative result works the same way: **15 − 23 = −8**.",
+        "A practical example: three friends split an **$87 restaurant bill** evenly. Enter 87, choose divide, enter 3 — the answer is **$29 each**. Or a quick discount check: a $60 jacket at 25% off means you pay 75%, and 60 × 0.75 = **$45**. For percentage problems like that, the percentage calculator on this site does the whole job in one step.",
+      ],
+    },
+    {
+      heading: "When should you reach for a bigger tool?",
+      paragraphs: [
+        "This calculator is deliberately simple — one operation, two numbers. When the job grows, use a specialist: the **percentage calculator** for discounts, tips, and percent change; the **scientific calculator** for square roots, logarithms, and trigonometry; and the **fraction calculator** for exact fraction arithmetic.",
+        "A useful habit for any quick calculation is a **sanity check against a round number**. If 48 × 7 comes out as 336, check it against 50 × 7 = 350 — close, and slightly lower, which is exactly what you expect. That ten-second habit catches most typos before they reach a bill, a quote, or a homework answer.",
+      ],
+    },
+  ],
+
+  "binary-calculator": [
+    {
+      heading: "What is binary and how do you convert decimal to binary?",
+      paragraphs: [
+        "Binary is the **base-2 number system**: it uses only the digits 0 and 1, where each position represents a power of 2 (1, 2, 4, 8, 16, and so on) instead of a power of 10. It is the language computers work in internally, because electronic circuits have two states — on and off.",
+        "To convert a decimal number to binary, **divide by 2 repeatedly and record the remainders**, then read them from bottom to top. The same method works for any base: divide by 8 for octal, by 16 for hexadecimal. This calculator shows all three conversions at once — binary, octal, and hexadecimal — from a single decimal input.",
+        "One behaviour to know: this calculator works with **whole, non-negative numbers**. It rounds decimal inputs down and drops any minus sign, so entering −42 or 42.9 both give the result for 42. That matches how binary conversion is normally taught, but enter whole numbers to avoid surprises.",
+      ],
+    },
+    {
+      heading: "Worked examples",
+      paragraphs: [
+        "Take **255**, the calculator's default. In binary it is **11111111** — eight 1s, because 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255. In octal it is **377** (3 × 64 + 7 × 8 + 7 = 255), and in hexadecimal it is **FF** (15 × 16 + 15 = 255).",
+        "Now **42**, worked out by repeated division: 42 ÷ 2 = 21 remainder 0; 21 ÷ 2 = 10 remainder 1; 10 ÷ 2 = 5 remainder 0; 5 ÷ 2 = 2 remainder 1; 2 ÷ 2 = 1 remainder 0; 1 ÷ 2 = 0 remainder 1. Reading the remainders from bottom to top gives **101010**. Check it: 32 + 8 + 2 = 42. In octal 42 is **52**, and in hex it is **2A**.",
+      ],
+    },
+    {
+      heading: "Where does binary show up in everyday tech?",
+      paragraphs: [
+        "**255 is the largest value a single byte can hold** (2^8 − 1 = 255), which is why it appears everywhere: each colour channel in a screen runs from 0 to 255, so pure red is written as #FF0000 in hex, and each block of an IP address (like 192.168.1.1) is a number from 0 to 255. File sizes, too, are powers of two at heart — a kilobyte is 1,024 bytes, or 2^10.",
+        "Octal and hexadecimal exist as shorthand for binary: one hex digit stands for exactly four binary digits, so a long binary string like 11111111 collapses to just FF. Programmers read memory addresses, colour codes, and error codes in hex for exactly this reason — it is binary you can actually read at a glance.",
+      ],
+    },
+  ],
+
+  "cgpa-calculator": [
+    {
+      heading: "How is CGPA calculated?",
+      paragraphs: [
+        "CGPA (Cumulative Grade Point Average) is the **credit-weighted average of your semester GPAs**: multiply each semester's GPA by its credit hours, add those products together, and divide by your total credit hours. It is not a simple average of your semester GPAs, because semesters with more credits count more.",
+        "The formula is **CGPA = Σ(semester GPA × credits) ÷ Σcredits**. A 4.0 in a 16-credit semester pulls your CGPA up more than a 3.0 in a 12-credit semester pulls it down — the weights are the credit hours, not the semesters.",
+        "This calculator covers **three semesters**. If you have more, combine your earlier semesters into a single line: add their credits together and use their combined weighted GPA as that line's GPA. The percentage shown is CGPA × 25 — a rough approximation on a 4.0 scale, not an official conversion; universities and countries use different formulas, so check your institution's own conversion before using it on an application.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take the calculator's defaults: semester 1 is **3.5 GPA over 15 credits**, semester 2 is **3.7 over 16 credits**, and semester 3 is **3.3 over 14 credits**. The weighted sum is (3.5 × 15) + (3.7 × 16) + (3.3 × 14) = 52.5 + 59.2 + 46.2 = **157.9 grade points**. Total credits: 15 + 16 + 14 = **45**. CGPA = 157.9 ÷ 45 = **3.51**.",
+        "Note that the simple average of the three GPAs would be (3.5 + 3.7 + 3.3) ÷ 3 = 3.50 — very close here, but not the same, because the semesters carry different credit loads. The percentage approximation is 3.51 × 25 = **87.7%**.",
+      ],
+    },
+    {
+      heading: "How can you raise your CGPA?",
+      paragraphs: [
+        "Later semesters matter most when they carry more credits, and every semester dilutes the last. Continuing the example above, one more **16-credit semester at 4.0** adds 64 grade points: (157.9 + 64) ÷ (45 + 16) = 221.9 ÷ 61 = **3.64** — a jump of 0.13 from a single strong semester. The same 4.0 in a 12-credit semester would give (157.9 + 48) ÷ 57 = **3.61**.",
+        "The practical lesson: **front-load your effort into high-credit semesters and high-credit courses**, and protect your CGPA early — a weak first semester is mathematically the hardest to undo, because each later semester is a smaller share of a growing total. If your university allows retaking a course to replace a grade, that is usually the fastest single lever, since it removes the low grade points entirely rather than diluting them.",
+      ],
+    },
+  ],
+
+  "confidence-interval-calculator": [
+    {
+      heading: "What is a confidence interval?",
+      paragraphs: [
+        "A confidence interval is a **range of plausible values for a population mean**, built from sample data: **x̄ ± z × (s ÷ √n)**, where x̄ is the sample mean, s is the standard deviation, n is the sample size, and z is the critical value for your confidence level (1.645 for 90%, 1.96 for 95%, 2.576 for 99%). The part after the ± is the margin of error.",
+        "A 95% confidence interval means that if you repeated the study 100 times, about **95 of the intervals would contain the true population mean**. It does not mean there is a 95% chance the true mean is in *this* interval — the true mean is fixed; it is the interval that varies from sample to sample. That distinction is the single most common misunderstanding in statistics.",
+        "This calculator uses **z-values for every sample size**. That is standard practice for large samples, but for small samples (usually under 30) the t-distribution gives wider, more honest intervals. With large samples the two are nearly identical, so the calculator's results are reliable for the common case — just treat small-sample results as slightly optimistic.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a sample with **mean 50, standard deviation 10, and size 100**, at the **95%** level. The standard error is 10 ÷ √100 = 10 ÷ 10 = **1**. The margin of error is 1.96 × 1 = **1.96**. So the confidence interval is 50 ± 1.96, or **48.04 to 51.96**.",
+        "At **99%** confidence with the same sample, the margin grows to 2.576 × 1 = 2.576, giving **47.42 to 52.58** — a wider interval, because more confidence demands more room. And if the sample size were 400 instead of 100, the standard error would halve to 10 ÷ √400 = 0.5, the 95% margin would shrink to 0.98, and the interval would narrow to **49.02 to 50.98**.",
+      ],
+    },
+    {
+      heading: "What makes an interval narrower?",
+      paragraphs: [
+        "Three things shrink a confidence interval: a **larger sample**, a **smaller standard deviation**, and a **lower confidence level**. Sample size is the lever you control most directly — but it works through the square root, so quadrupling the sample only halves the margin of error. Doubling the sample narrows it by only about 29%.",
+        "That square-root law is why survey margins of error are so stubborn: moving a poll from ±3 points to ±1.5 points needs four times the respondents, not twice. Before collecting data, decide how narrow the interval needs to be for the decision it will inform — then work backwards to the sample size, rather than collecting data first and hoping the interval comes out useful.",
+      ],
+    },
+  ],
+
+  "final-grade-calculator": [
+    {
+      heading: "What grade do you need on the final?",
+      paragraphs: [
+        "The grade you need on the final exam is **(target − current × (1 − w)) ÷ w**, where your current grade and target are percentages and w is the final exam's weight as a decimal. The formula works out how much of your final grade is still undecided, then how much of that remaining slice you must win to reach your target.",
+        "Your **current grade** is the weighted average of everything graded so far — homework, quizzes, midterms — and it counts for (1 − w) of your final grade. The final exam counts for w. If the final is worth 30%, then 70% of your grade is already banked and 30% is still to play for.",
+        "If the answer comes out **above 100%**, the target is out of reach on the final alone — you would need extra credit or a lower target. If it comes out **negative**, you have already secured your target even if you score zero on the final; this calculator still shows 'Achievable? Yes' in that case, so treat a negative number as a cushion, not a score to aim for.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a student with a **current grade of 82%** who wants a **90%** final grade, with the final exam worth **30%**. Needed = (90 − 82 × 0.70) ÷ 0.30 = (90 − 57.4) ÷ 0.30 = 32.6 ÷ 0.30 = **108.7%**. That is above 100%, so the target is not reachable on the final alone — the calculator flags this as 'Difficult (>100% needed)'.",
+        "Now the same student with a **current grade of 88%** and a final worth **40%**: needed = (90 − 88 × 0.60) ÷ 0.40 = (90 − 52.8) ÷ 0.40 = 37.2 ÷ 0.40 = **93.0%**. Tough but achievable. Notice how much the final's weight matters: the same 88% current grade with a 30% final would need (90 − 61.6) ÷ 0.30 = **94.7%**.",
+      ],
+    },
+    {
+      heading: "What to do when the number is over 100%",
+      paragraphs: [
+        "First, **recheck your current grade** — the most common error is forgetting a dropped assignment or mis-weighting categories, and a few points of current grade can move the answer a lot when the final's weight is small. If the number is genuinely over 100%, your options are to lower the target (an 88% instead of a 90% may need only a realistic score), ask about **extra credit**, or check whether your instructor rounds borderline grades.",
+        "Use the calculator as a planning tool, not just a verdict: try your target with different final weights to see which courses deserve your study time. A course where you need 75% on a 40% final is a better use of an evening than one where you need 98% on a 10% final — the first is winnable, the second is nearly decided already.",
+      ],
+    },
+  ],
+
+  "cube-root-calculator": [
+    {
+      heading: "How is a cube root calculated?",
+      paragraphs: [
+        "The cube root of a number is the value that, multiplied by itself three times, gives back the original number — so ∛27 = 3 because 3 × 3 × 3 = 27. In power form, the cube root is the same as raising a number to the power of one third: **∛x = x^(1/3)**.",
+        "Unlike square roots, cube roots work for **negative numbers** too: ∛(−27) = −3, because (−3) × (−3) × (−3) = −27. A negative number has no real square root, but it always has a real cube root.",
+        "This calculator shows the cube root to six decimal places and tells you whether the result is a whole number — a **perfect cube**. Whole-number cube roots (1, 8, 27, 64, 125, 216, 343, 512, 729, 1000…) are exact; most other numbers have cube roots that go on forever, so the tool rounds them.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **∛10**: no whole number cubed gives 10 (2³ = 8 and 3³ = 27), so the answer is not a whole number. The calculator gives **∛10 ≈ 2.154435**. Check it: 2.154435³ ≈ 10.000000.",
+        "A negative example: **∛(−125) = −5**, because (−5)³ = −125. And a perfect cube: **∛1000 = 10** exactly, since 10³ = 1000.",
+        "A practical use: a cube-shaped box holds **125 cm³**. Each side is ∛125 = **5 cm**. Cube roots turn a volume back into a length — the reverse of cubing a side to get a volume.",
+      ],
+    },
+    {
+      heading: "Where cube roots show up",
+      paragraphs: [
+        "Cube roots appear whenever a volume scales. Double every side of a cube and its volume grows **eightfold** (2³ = 8); to make a tank hold eight times as much, each side only needs to double — the cube root of 8 is 2. The same scaling governs shipping boxes, water tanks, and storage containers.",
+        "They also appear in science and engineering: the size of a crater from an explosion, the radius of a sphere from its volume, and the **cube-root scaling** used in some strength and acoustics calculations all run through cube roots.",
+        "One mental shortcut: for perfect cubes, the last digit of the cube root matches a fixed pattern — cubes ending in 7 come from numbers ending in 3 (3³ = 27), cubes ending in 8 come from numbers ending in 2 (2³ = 8). It only works for perfect cubes, but it is a quick check when one turns up.",
+      ],
+    },
+  ],
+
+  "factor-calculator": [
+    {
+      heading: "What is a factor, and how are factors found?",
+      paragraphs: [
+        "A **factor** of a number is a whole number that divides into it evenly, with no remainder. The factors of 12 are 1, 2, 3, 4, 6, and 12 — each one divides 12 exactly. This calculator lists every factor, counts them, pairs them up, and tells you whether the number is prime.",
+        "It finds factors by testing every whole number from 1 up to the square root of n: whenever i divides n evenly, both i and n ÷ i are factors. Checking only up to √n is enough, because every factor larger than √n pairs with one smaller than √n.",
+        "Two input details: the tool takes the **absolute value** of a negative number (so −12 is factored as 12) and **rounds decimals down** to whole numbers before factoring. Factors are defined for whole numbers, so a decimal input is floored first.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **60**. Testing 1 to √60 (≈ 7.75) gives the divisors 1, 2, 3, 4, 5, and 6, and each pairs with its partner: 1×60, 2×30, 3×20, 4×15, 5×12, 6×10. The full factor list is **1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60 — 12 factors** in total.",
+        "Now take **36**: its factors are **1, 2, 3, 4, 6, 9, 12, 18, 36 — 9 factors**. The count is odd because 6 pairs with itself (6×6 = 36). An odd factor count is the signature of a perfect square: only squares have a factor that is its own partner.",
+        "And **17** has just two factors, 1 and 17, so the tool reports it as prime. The number 1 is a special case: it has only one factor (itself), so it is **neither prime nor composite**, and the tool correctly answers 'No' to 'Is Prime?' for it.",
+      ],
+    },
+    {
+      heading: "Why factors matter",
+      paragraphs: [
+        "**Simplifying fractions** runs on factors: 18/24 simplifies by dividing top and bottom by their greatest common factor, 6, giving 3/4. Listing both numbers' factors makes the common ones obvious.",
+        "**Prime testing** is factoring in disguise — a number is prime exactly when its only factors are 1 and itself. The same trial division the tool uses (test up to √n) is the oldest primality test there is.",
+        "Factors also solve everyday grouping problems: 60 guests split evenly into tables of 4, 5, 6, 10, 12, 15, 20, or 30, because those are 60's factors. If a group size is not a factor, the split leaves a remainder — and the factor list tells you that before you start arranging chairs.",
+      ],
+    },
+  ],
+
+  "angle-converter": [
+    {
+      heading: "How are angles converted between units?",
+      paragraphs: [
+        "Every angle unit measures the same thing — how far around a circle you have turned — so converting is just rescaling by a fixed ratio. A full circle is **360 degrees = 2π radians = 400 gradians = 1 turn**, and this converter works through degrees as the middle step: your value is first converted to degrees, then from degrees into all four units.",
+        "The conversion factors are exact definitions, not measurements: **180° = π radians**, **1 gradian = 0.9°**, and **1 turn = 360°**. Because the factors are exact, converting there and back returns your starting value (apart from the display rounding — degrees and gradians show 4 decimals, radians and turns 6).",
+        "One angle to memorise: **1 radian ≈ 57.2958°**. A radian is the angle where the arc length equals the radius, which is why it is the natural unit in mathematics even though degrees are more familiar day to day.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **180°** — a straight line, half a circle. In radians that is π, shown as **3.141593 rad**; in gradians it is 180 ÷ 0.9 = **200 gon**; in turns it is 180 ÷ 360 = **0.5 turns**.",
+        "A right angle, **90°**, converts to π/2 = **1.570796 rad**, **100 gon**, and **0.25 turns**. A quarter turn is the same angle in all four systems — only the number changes.",
+        "Going the other way, **1 radian** is 180 ÷ π = **57.2958°**, or 63.6620 gon, or 0.159155 turns. That is why a radian feels like a large angle: it is nearly 60 degrees, more than a sixth of a full circle.",
+      ],
+    },
+    {
+      heading: "Which unit do you use when?",
+      paragraphs: [
+        "**Degrees** are the everyday unit: navigation bearings, latitude and longitude, oven dials, and school geometry. They survive because 360 divides neatly by 2, 3, 4, 5, 6, 8, 9, 10, and 12 — a third of a circle is exactly 120°.",
+        "**Radians** are the unit of mathematics and physics: calculus, trigonometry, and rotational motion all use them, because the formulas for arc length (s = rθ), angular speed, and derivatives of sine and cosine only work cleanly in radians. Whenever a formula contains π as an angle, it is in radians.",
+        "**Gradians** (gon) divide a circle into 400, so a right angle is exactly 100 gon — a decimal-friendly system used in some surveying work, mostly in continental Europe. **Turns** (revolutions) suit rotating machinery: a motor spinning at 3,000 revolutions per minute turns 50 times every second.",
+      ],
+    },
+  ],
+
+  "area-converter": [
+    {
+      heading: "How is area converted between units?",
+      paragraphs: [
+        "Area units are all measures of the same surface, so converting between them is multiplication by a fixed factor. This converter works through **square metres (m²)** as a base unit: your value is first converted to m², then from m² into square feet, acres, and hectares.",
+        "The factors the tool uses are **rounded**: 1 sq ft = 0.092903 m² (exactly 0.09290304 m²) and 1 acre = 4,046.86 m² (exactly 4,046.8564224 m²). The rounding is tiny — 1 acre comes out as 43,560.06 sq ft instead of exactly 43,560 — but it explains small last-digit differences from exact tables.",
+        "One gap to know: **square kilometres are accepted as an input but do not appear in the results**. To get km² from the tool, take the square-metre result and divide by 1,000,000 — 1 km² is exactly one million m².",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **1 acre**, the tool's default input. It converts to **4,046.86 m²** and **0.404686 hectares**, and to **43,560.06 sq ft** (the exact figure is 43,560 sq ft — the extra 0.06 is the tool's rounded factor at work).",
+        "Going the other way, **1 hectare** is exactly **10,000 m²**, which the tool shows as **2.471052 acres** (exact: 2.471054 acres). A hectare is a square 100 m on each side — about two and a half acres.",
+        "A room-sized example: **100 m²** is 100 ÷ 0.092903 = **1,076.39 sq ft**. For a quick mental estimate, multiply square metres by 10.7639 to get square feet, or divide square feet by 10.7639 to get square metres.",
+      ],
+    },
+    {
+      heading: "Area sizes worth knowing",
+      paragraphs: [
+        "An American football field without end zones measures 300 × 160 ft = 48,000 sq ft, about **1.1 acres** — so an acre is a little smaller than the playing field. A doubles tennis court is 78 × 36 ft = 2,808 sq ft, about **260.87 m²**.",
+        "Land is usually priced per acre in the US and per hectare in metric countries. Because 1 hectare ≈ 2.47 acres, a price per hectare divided by 2.47 gives the rough price per acre — handy when comparing listings across unit systems.",
+        "Watch out for the **square trap**: doubling a room's length and width quadruples its area, it does not double it. A 10 × 10 ft room is 100 sq ft, but a 20 × 20 ft room is 400 sq ft — four times the flooring, paint, and cost, even though each side only doubled.",
+      ],
+    },
+  ],
+
+  "energy-converter": [
+    {
+      heading: "How is energy converted between units?",
+      paragraphs: [
+        "Energy is measured in several units — joules, calories, kilowatt-hours, and BTU — but they all measure the same quantity, so converting is multiplication by a fixed factor. This converter works through **joules (J)** as a base unit: your value is first converted to joules, then from joules into calories, kilowatt-hours, and BTU.",
+        "Two of the factors are exact definitions: **1 calorie = 4.184 J** (the thermochemical calorie) and **1 kWh = 3,600,000 J** (1,000 watts for 3,600 seconds). The third is rounded: the tool uses **1 BTU = 1,055.06 J**, while the exact ISO value is 1,055.05585262 J — close enough that results agree to about four significant figures.",
+        "One honest limitation: the page description mentions **electron volts (eV)**, but the tool does not convert them — the inputs and results cover joules, calories, kWh, and BTU only. Electron volts belong to atomic-scale physics, where 1 eV = 1.602 × 10⁻¹⁹ J.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **1,000 joules**, the tool's default input. In calories that is 1,000 ÷ 4.184 = **239.01 cal**; in kilowatt-hours it is 1,000 ÷ 3,600,000 = **0.000278 kWh**; in BTU it is 1,000 ÷ 1,055.06 = **0.9478 BTU**.",
+        "The other direction shows why kWh is the billing unit: **1 kWh** equals **3,600,000 J**, which is **860,420.65 cal** and **3,412.13 BTU**. Joules are too small for household energy — a single kWh is millions of them — so bills use kWh instead.",
+        "The food connection: a **kilocalorie** (the 'Calorie' on nutrition labels) is 1,000 calories, so 1 kcal = **4,184 J**. A 2,000 kcal day is 8,368,000 J, or about **2.32 kWh** of food energy.",
+      ],
+    },
+    {
+      heading: "Calories on labels vs calories in physics",
+      paragraphs: [
+        "The calorie on a food label is **1,000 physics calories** — a kilocalorie, written with a capital C. A 100-Calorie snack bar holds 100,000 physics calories, or 418,400 J. The two units differ by a factor of a thousand, which is the single most common energy-conversion mistake.",
+        "BTU is the heating and cooling unit: air conditioners and furnaces are rated in BTU per hour, and natural gas is often sold by the therm (1 therm = 100,000 BTU ≈ 29.3 kWh). Converting BTU to kWh lets you compare gas and electric heating costs directly.",
+        "A sense of scale helps: lifting an apple (about 1 newton of weight) one metre takes roughly **1 joule**; boiling a litre of water from room temperature takes about **335,000 J**; and a typical US home uses roughly **30 kWh per day** — about 108 million joules.",
+      ],
+    },
+  ],
+
+  "power-converter": [
+    {
+      heading: "How is power converted between units?",
+      paragraphs: [
+        "Power is the **rate** at which energy is used or produced — energy divided by time — and its SI unit is the watt: 1 watt = 1 joule per second. This converter works through **watts (W)** as a base unit: your value is first converted to watts, then from watts into kilowatts, horsepower, and BTU per hour.",
+        "The factors the tool uses are **rounded**: 1 horsepower = 745.7 W (the exact mechanical horsepower is 745.699872 W) and 1 BTU/h = 0.293071 W. The kilowatt factor is exact: **1 kW = 1,000 W**. The rounding shifts results only in the fourth decimal place and beyond.",
+        "One honest limitation: the page description mentions **foot-pounds per second**, but the tool does not convert it — the inputs and results cover watts, kilowatts, horsepower, and BTU/h only. For reference, 1 ft·lb/s ≈ 1.3558 W.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **746 watts**, the tool's default input — chosen because it is almost exactly one horsepower. The tool gives 746 ÷ 1,000 = **0.7460 kW**, 746 ÷ 745.7 = **1.0004 hp**, and 746 ÷ 0.293071 = **2,545.46 BTU/h**.",
+        "A rounder example: **1,000 W = 1 kW = 1.3410 hp = 3,412.14 BTU/h**. And **1 horsepower** on its own is 745.7 W, or 745.7 ÷ 0.293071 = **2,544.43 BTU/h**.",
+        "Notice the direction of the BTU/h factor: a watt is a small unit, so a modest 1,000 W heater is over 3,400 BTU/h. Air conditioners are rated in BTU/h precisely because the numbers come out in the thousands, which suits equipment sizing.",
+      ],
+    },
+    {
+      heading: "Power vs energy — and what your bill actually charges",
+      paragraphs: [
+        "Power and energy are different quantities, and mixing them up is the most common mistake with these units. **Power (watts) is a rate; energy (watt-hours) is power × time.** A 100 W bulb running for 10 hours uses 1,000 Wh = 1 kWh of energy.",
+        "That is why electricity bills charge per **kWh**, not per kW: the bill measures total energy consumed. A 1.5 kW space heater running for 4 hours uses 1.5 × 4 = **6 kWh**; at $0.12 per kWh that is $0.72.",
+        "Horsepower survives mainly for engines and motors — a car engine, a lawnmower, a pump — while watts and kilowatts cover everything electrical. When a motor is rated 2 hp, it delivers about 1,491 W of mechanical power, and the electrical input will be higher still, because no motor is 100% efficient.",
+      ],
+    },
+  ],
+
+  "flight-time-calculator": [
+    {
+      heading: "How is flight time calculated?",
+      paragraphs: [
+        "Flight time is simply **distance divided by speed**: a 5,000 km flight at a cruise speed of 850 km/h takes 5,000 ÷ 850 ≈ 5.9 hours. This calculator takes a distance in kilometres and a cruise speed in km/h, and shows the result in hours (to one decimal) and in whole minutes.",
+        "The figure it gives is the **cruise-only time** — the time spent actually flying at speed. It does not add time for taxiing, takeoff, climb, descent, or landing, and it has no input for wind, so a real gate-to-gate journey always takes longer than the number shown here.",
+        "One edge case: entering a cruise speed of **0** divides by zero, and the tool shows 'Infinity hours' instead of an error. Keep the speed above zero — a typical jet cruises at roughly 800–900 km/h.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "With the tool's defaults — **5,000 km at 850 km/h** — the flight time is 5,000 ÷ 850 = **5.88 hours, shown as 5.9 hours**, or 5.88 × 60 = **353 minutes**. That is roughly a transatlantic-length flight, such as London to New York.",
+        "A shorter hop: **3,000 km at 800 km/h** gives 3,000 ÷ 800 = **3.75 hours, shown as 3.8 hours**, or **225 minutes**. The hours figure is rounded to one decimal, so the minutes figure is the more precise of the two.",
+        "Speed matters more than it looks: raising the cruise speed from 800 to 900 km/h on a 5,000 km route cuts the time from 6.25 hours to 5.56 hours — about **41 minutes saved**. That is why airlines care about cruise speed even when the difference seems small.",
+      ],
+    },
+    {
+      heading: "Why your actual flight takes longer",
+      paragraphs: [
+        "Airlines publish **gate-to-gate** times, which include taxiing out, takeoff, climbing to cruise altitude, descending, landing, and taxiing in. Those phases add a substantial chunk on top of the cruise-only figure this tool computes — which is why a scheduled time always looks longer than distance ÷ speed.",
+        "Wind changes the answer too. A headwind slows the aircraft's ground speed and stretches the flight; a tailwind shortens it. The same route can take noticeably different times in each direction, and this calculator — which has no wind input — gives the still-air figure.",
+        "Routes are also not straight lines: aircraft follow airways, avoid weather, and queue for landing. Use this tool for a quick estimate of the flying portion, then add the ground phases and a buffer when planning connections.",
+      ],
+    },
+  ],
+
+  "week-number-calculator": [
+    {
+      heading: "How is the ISO week number found?",
+      paragraphs: [
+        "The **ISO 8601** week system numbers the weeks of the year from 1 to 52 (sometimes 53): weeks start on **Monday**, and **week 1 is the week containing the first Thursday of January** — equivalently, the week containing January 4th. This calculator finds that week number for any date you enter, along with the day of the year, the weekday, and the quarter.",
+        "The rule exists so that every week belongs entirely to one year and every year starts on a Monday. The trade-off is that the ISO year does not line up exactly with the calendar year: a few days at the start of January can belong to the previous ISO year, and a few days at the end of December can belong to the next one.",
+        "Most years have 52 ISO weeks, but years in which January 1st is a Thursday — or leap years starting on a Wednesday — have **53**. The year 2020, for example, had 53 ISO weeks.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **15 June 2025**. June 15th is a Sunday, the **166th day** of the year, in the second quarter (**Q2**). Counting Mondays from the start of week 1 (Monday 30 December 2024), it falls in **Week 24** — the week running Monday 9 June to Sunday 15 June 2025.",
+        "A year-boundary example: **1 January 2026** is a Thursday, so it is in **Week 1** of 2026 — the week containing the first Thursday falls exactly on New Year's Day that year, and week 1 runs Monday 29 December 2025 to Sunday 4 January 2026.",
+        "The day-of-year count is straightforward: add the days of the completed months plus the day of the month. For 15 June 2025: 31 (Jan) + 28 (Feb) + 31 (Mar) + 30 (Apr) + 31 (May) + 15 = **166**.",
+      ],
+    },
+    {
+      heading: "The year-boundary trap — read this before trusting edge dates",
+      paragraphs: [
+        "This tool assigns every date to the ISO week of the **calendar year you enter**, and that breaks at the year boundary. **1 January 2023** (a Sunday) belongs to ISO week 52 of 2022, but the tool shows Week 1. **29–31 December 2025** belong to ISO week 1 of 2026, but the tool shows Week 53.",
+        "For dates in the middle of the year the tool is exactly right — the error only touches the handful of days around New Year when the ISO week-year and the calendar year disagree. If a week number near January 1st matters (payroll weeks, school terms, reporting periods), double-check it against an ISO calendar.",
+        "One more quirk: the tool does not validate the date. Entering **30 February** does not produce an error — JavaScript silently rolls it forward to 2 March, and the tool reports that date's week instead. Enter only real calendar dates.",
+      ],
+    },
+  ],
+
+  "bandwidth-calculator": [
+    {
+      heading: "How is download time calculated?",
+      paragraphs: [
+        "Download time is **file size divided by speed** — but the units need matching first. File sizes are in bytes (MB) and speeds in bits per second (Mbps), and there are 8 bits in a byte. This calculator converts the file to megabits (MB × 8) and divides by the speed in Mbps to get the time in seconds.",
+        "The tool also shows an **'Actual (80% efficiency)'** figure, which divides the ideal time by 0.8. Real connections rarely sustain their advertised speed, so the 80% row is the more realistic planning number — it is the ideal time plus a 25% allowance.",
+        "One unit detail: the tool treats megabytes as **decimal** (1 MB = 1,000,000 bytes, so 1 MB = 8 Mb). Operating systems often report sizes in binary units instead, which is why a file can look bigger on your computer than the number you typed here — see below.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "With the tool's defaults — a **1,000 MB file at 100 Mbps** — the file is 1,000 × 8 = 8,000 megabits, and 8,000 ÷ 100 = **80.0 seconds**. At 80% efficiency the same download takes 80 ÷ 0.8 = **100.0 seconds**.",
+        "A bigger file on a slower line: **5,000 MB at 50 Mbps** is 40,000 megabits ÷ 50 = **800 seconds, or 13.3 minutes** — and 1,000 seconds (16.7 minutes) at 80% efficiency. Doubling the file or halving the speed doubles the time; the relationship is exactly proportional.",
+        "The bits-versus-bytes trap: a '100 Mbps' connection moves at most 12.5 MB per second (100 ÷ 8), not 100 MB per second. If a download shows 12 MB/s on a 100 Mbps line, it is running at full speed — the units just differ by a factor of eight.",
+      ],
+    },
+    {
+      heading: "Why real downloads are slower — and the MB vs MiB gap",
+      paragraphs: [
+        "The 80% efficiency row exists because advertised speed is a ceiling, not a guarantee: protocol overhead, network congestion, server limits, Wi-Fi interference, and other devices sharing the connection all take their cut. On a busy home network, 60–80% of the rated speed is typical, which is why the tool's FAQ quotes that range.",
+        "The binary-unit gap adds a second surprise. A file Windows calls '1 GB' is 1,073,741,824 bytes — **1,073.74 decimal MB** — so at 100 Mbps it takes 85.9 seconds, about **7% longer** than the 80 seconds the tool shows for 1,000 MB. If your download runs longer than the estimate, check whether the file size you entered was in binary gigabytes.",
+        "Uploads follow the same maths but usually run slower: most home connections offer far less upload than download speed. A 1,000 MB upload on a 10 Mbps upload link takes 800 seconds (13.3 minutes) even before the efficiency allowance — worth knowing before a video call or a cloud backup.",
+      ],
+    },
+  ],
+
+  "electricity-bill-calculator": [
+    {
+      heading: "How is an electricity bill estimated?",
+      paragraphs: [
+        "A monthly electricity bill is your **usage charge plus your fixed charges**: multiply the kilowatt-hours (kWh) you used by your rate per kWh, then add the fixed monthly charge for connection and service. This calculator does exactly that, and also shows the daily cost (monthly total ÷ 30) and the annual estimate (monthly total × 12).",
+        "The tool uses a **single flat rate** for all usage — the rate you type in applies to every kWh. Real tariffs are often more complicated (see below), so the result is an estimate, not a replica of your supplier's bill.",
+        "The defaults describe a typical US household: **900 kWh per month** at **$0.12 per kWh** with a **$15 fixed charge**. Your own usage is on your bill, usually as the month's kWh total.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "With the tool's defaults: 900 kWh × $0.12 = **$108.00 usage charge**, plus the $15.00 fixed charge, gives a **monthly bill of $123.00**. The daily cost is $123.00 ÷ 30 = **$4.10**, and the annual estimate is $123.00 × 12 = **$1,476**.",
+        "A lighter user: **600 kWh at $0.15 per kWh** with a $10 fixed charge gives 600 × $0.15 = $90.00 + $10.00 = **$100.00 per month**. Even though the rate is higher, the smaller usage more than makes up for it — usage, not rate, is usually the bigger lever on the bill.",
+        "To check your own numbers, find your **all-in rate**: divide your bill's total by its kWh. If a $138 bill covered 900 kWh, your all-in rate is $0.153 per kWh — higher than the headline energy rate, because it folds in the fixed charge and any taxes and fees.",
+      ],
+    },
+    {
+      heading: "What this estimate leaves out",
+      paragraphs: [
+        "Many suppliers use **tiered (block) pricing**, where the first block of kWh is cheap and later blocks cost more — or **time-of-use rates**, where evening electricity costs more than overnight electricity. A single flat rate cannot reproduce either, so heavy users on tiered tariffs will find the real bill higher than this estimate.",
+        "Taxes, delivery charges, and surcharges are also outside the formula unless you fold them into the fixed charge or the rate. The cleanest way to handle them is the all-in rate above: total bill ÷ kWh, entered as your rate with the fixed charge set to zero.",
+        "Usage is seasonal: air conditioning in summer and heating in winter can easily double a household's kWh. The annual estimate multiplies one month by 12, so it is only as representative as the month you entered — average three or four months of bills for a better yearly figure.",
+      ],
+    },
+  ],
+
+  "ideal-gas-law-calculator": [
+    {
+      heading: "How is temperature found from the ideal gas law?",
+      paragraphs: [
+        "The ideal gas law, **PV = nRT**, links a gas's pressure (P), volume (V), amount in moles (n), and absolute temperature (T) through the gas constant R. This calculator rearranges it to solve for temperature: **T = PV ÷ (nR)**, using R = 0.08206 L·atm/(mol·K), and shows the answer in kelvin and in Celsius.",
+        "Temperature must be in **kelvin** — the absolute scale that starts at absolute zero (−273.15 °C). Gas laws work on ratios of temperature, and only the kelvin scale has a true zero; plugging in a Celsius temperature would give a meaningless result.",
+        "One honest limitation: the page description says the tool solves for 'any variable', but it **solves for temperature only**. To find pressure or volume instead, rearrange the law yourself: P = nRT ÷ V and V = nRT ÷ P, with R = 0.08206 L·atm/(mol·K).",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "The tool's defaults are the textbook standard conditions: **1 atm, 22.414 L, 1 mol**. The temperature is T = (1 × 22.414) ÷ (1 × 0.08206) = **273.14 K**, shown as **−0.01 °C**. That is the standard temperature of 0 °C — one mole of an ideal gas occupies 22.414 litres at 1 atm and 0 °C.",
+        "The tiny 0.01 K shortfall is the tool's **rounded gas constant** at work: the exact R is 0.082057366 L·atm/(mol·K), and the tool uses 0.08206. Using the exact R gives 273.15 K exactly; the rounding costs about a hundredth of a degree, which is negligible for homework and lab estimates.",
+        "A second example: **2 atm, 10 L, 1 mol** gives T = (2 × 10) ÷ (1 × 0.08206) = **243.72 K**, or **−29.43 °C**. Doubling the pressure while holding volume fixed would double the temperature; here the smaller volume pulls it back down.",
+      ],
+    },
+    {
+      heading: "When the ideal gas law breaks down",
+      paragraphs: [
+        "The law assumes gas particles have no volume and never attract each other — a good approximation at **low pressure and high temperature**, where molecules are far apart and moving fast. Near condensation, at high pressure, or at very low temperature, real gases deviate: their measured PV is smaller than nRT predicts, because attractions pull molecules together and their own volume starts to matter.",
+        "Unit discipline is the most common source of wrong answers. This tool expects **pressure in atm and volume in litres** to match its R = 0.08206 L·atm/(mol·K). If your pressure is in pascals or your volume in cubic metres, use R = 8.314 J/(mol·K) instead — or convert first (1 atm = 101,325 Pa, 1 m³ = 1,000 L).",
+        "The tool guards against zero moles (it shows an error), but it does not stop negative or zero pressure or volume — physically meaningless inputs that produce a meaningless temperature, including a negative kelvin value. Keep all three inputs positive and the result stays physical.",
+      ],
+    },
+  ],
+
+  "molar-mass-calculator": [
+    {
+      heading: "How is molar mass calculated?",
+      paragraphs: [
+        "A compound's molar mass is the **sum of its atoms' atomic masses**: count how many atoms of each element the formula contains, multiply each count by that element's atomic mass, and add them up. The result is in **grams per mole (g/mol)** — the mass of one mole (6.022 × 10²³ particles) of the substance.",
+        "This calculator covers **four elements — carbon, hydrogen, oxygen, and nitrogen** — with the atomic masses C = 12.011, H = 1.008, O = 15.999, and N = 14.007. Enter the atom counts from the formula (glucose C₆H₁₂O₆ means C = 6, H = 12, O = 6) and it returns the molar mass in g/mol and in kg/mol.",
+        "The atomic masses are **weighted averages** of each element's isotopes as found in nature, which is why carbon is 12.011 rather than exactly 12 — most carbon is carbon-12, but about 1% is the heavier carbon-13.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **glucose, C₆H₁₂O₆**, the tool's default: 6 × 12.011 = 72.066 for carbon, 12 × 1.008 = 12.096 for hydrogen, and 6 × 15.999 = 95.994 for oxygen. Adding them: 72.066 + 12.096 + 95.994 = **180.156 g/mol** (0.180156 kg/mol).",
+        "**Water, H₂O**, is the simplest check: 2 × 1.008 + 15.999 = **18.015 g/mol** — the figure every chemistry student memorises. **Carbon dioxide, CO₂**, is 12.011 + 2 × 15.999 = **44.009 g/mol**, and **urea, CH₄N₂O**, is 12.011 + 4 × 1.008 + 2 × 14.007 + 15.999 = **60.056 g/mol**.",
+        "Molar mass turns grams into moles and back: **90.078 g of glucose is exactly half a mole**, because 90.078 ÷ 180.156 = 0.5. That conversion — moles = mass ÷ molar mass — is the bridge between the lab bench and the balanced equation.",
+      ],
+    },
+    {
+      heading: "What this tool can't do — and why molar mass matters",
+      paragraphs: [
+        "The tool handles only **C, H, O, and N**, which covers most organic molecules and the common gases — but not table salt (NaCl), sulfuric acid (H₂SO₄), or anything containing sulfur, chlorine, metals, or other elements. For those, add up the atomic masses by hand from a periodic table using the same method.",
+        "Molar mass is what makes **stoichiometry** possible: a balanced equation tells you the mole ratios of a reaction, and molar mass converts those moles into weighable grams. Without it, you cannot work out how much reactant to weigh or how much product to expect.",
+        "It also connects gases to the ideal gas law: one mole of any ideal gas occupies 22.414 L at standard temperature and pressure, so 44.009 g of CO₂ (one mole) fills 22.414 L at 0 °C and 1 atm — the same 22.414 L the ideal gas law calculator uses as its default volume.",
+      ],
+    },
+  ],
 };

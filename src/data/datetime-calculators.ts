@@ -319,7 +319,11 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "ISO 8601 week numbering", variables: ["Week 1 contains January 4th"] },
     howToUse: "Enter a date to find its ISO week number, day of year, and more.",
-    faqs: [{ question: "What is ISO week numbering?", answer: "ISO 8601 defines week 1 as the week containing the first Thursday of January. Weeks start on Monday." }],
+    faqs: [
+      { question: "What is ISO week numbering?", answer: "ISO 8601 defines week 1 as the week containing the first Thursday of January. Weeks start on Monday." },
+      { question: "Can a year have 53 weeks?", answer: "Yes. Most years have 52 ISO weeks, but a year has 53 when January 1st falls on a Thursday, or in a leap year starting on a Wednesday. 2020 had 53 ISO weeks." },
+      { question: "Why does the tool show Week 53 for 29 December 2025?", answer: "ISO week-years do not line up exactly with calendar years: 29–31 December 2025 belong to ISO week 1 of 2026. This tool assigns every date to the calendar year you enter, so those dates show as Week 53 instead. The same applies at the start of January — 1 January 2023 belongs to ISO week 52 of 2022 but shows as Week 1 here." },
+    ],
     relatedCalcs: dtRelated("week-number-calculator"),
   },
   {

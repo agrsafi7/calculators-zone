@@ -676,7 +676,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "∛x = x^(1/3)", variables: ["Works for negative numbers too"] },
     howToUse: "Enter any number (positive or negative) to find its cube root.",
-    faqs: [{ question: "Can you cube root negatives?", answer: "Yes. For example, ∛(−27) = −3, because (−3)³ = −27." }],
+    faqs: [
+      { question: "Can you cube root negatives?", answer: "Yes. For example, ∛(−27) = −3, because (−3)³ = −27." },
+      { question: "What is the cube root of 10?", answer: "∛10 ≈ 2.154435. It is irrational, so the decimal goes on forever — the calculator shows it rounded to six decimal places." },
+      { question: "How is a cube root different from a square root?", answer: "A cube root undoes cubing: ∛x is the number that gives x when multiplied by itself three times, while √x gives x when multiplied by itself twice. Cube roots also work for negative numbers, but square roots of negatives have no real answer." },
+    ],
     relatedCalcs: mathRelated("cube-root-calculator"),
   },
   // 20. LCM
@@ -877,7 +881,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Needed = (Target − Current×(1−w)) / w", variables: ["w = Final exam weight as decimal"] },
     howToUse: "Enter your current grade, desired final grade, and the weight of the final exam.",
-    faqs: [{ question: "What if I need more than 100%?", answer: "You would need extra credit or to adjust your target grade downward." }],
+    faqs: [
+      { question: "What if I need more than 100%?", answer: "You would need extra credit or to adjust your target grade downward." },
+      { question: "How do I find my current grade?", answer: "Add up the points you've earned and divide by the points possible so far, then multiply by 100. If your course uses weighted categories, weight each category first — your syllabus usually lists the weights." },
+      { question: "What does a negative 'needed' score mean?", answer: "You've already secured your target: even a zero on the final leaves you at or above it. The calculator still shows 'Achievable? Yes' — treat the negative number as a cushion, not a score to aim for." },
+    ],
     relatedCalcs: mathRelated("final-grade-calculator"),
   },
   // 26. Slope
@@ -1073,7 +1081,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Divide by base repeatedly, collect remainders", variables: ["Binary = base 2", "Octal = base 8", "Hex = base 16"] },
     howToUse: "Enter a decimal number to see its binary, octal, and hex representations.",
-    faqs: [{ question: "Why is binary important?", answer: "Computers use binary (0s and 1s) internally. Understanding binary is fundamental to computer science." }],
+    faqs: [
+      { question: "Why is binary important?", answer: "Computers use binary (0s and 1s) internally. Understanding binary is fundamental to computer science." },
+      { question: "How do you convert binary back to decimal?", answer: "Add the place values of each 1 bit. In 101010, the 1s sit in the 32, 8, and 2 places: 32 + 8 + 2 = 42." },
+      { question: "Why is 255 a special number in computing?", answer: "255 is the largest value one byte can hold (2⁸ − 1 = 255), so it appears everywhere — from colour values (0–255 per channel) to IP address octets." },
+    ],
     relatedCalcs: mathRelated("binary-calculator"),
   },
   // 32. Hex Calculator
@@ -1505,7 +1517,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "CI = x̄ ± z × (σ/√n)", variables: ["x̄ = sample mean", "σ = standard deviation", "n = sample size"] },
     howToUse: "Enter sample mean, standard deviation, sample size, and confidence level.",
-    faqs: [{ question: "What does 95% confidence mean?", answer: "If you repeated the study 100 times, about 95 of the intervals would contain the true population mean." }],
+    faqs: [
+      { question: "What does 95% confidence mean?", answer: "If you repeated the study 100 times, about 95 of the intervals would contain the true population mean." },
+      { question: "How do I get a narrower confidence interval?", answer: "Increase the sample size, reduce variability, or accept a lower confidence level. Quadrupling the sample size halves the margin of error, because the standard error divides by √n." },
+      { question: "When should I use the t-distribution instead?", answer: "For small samples (usually under 30) the t-distribution gives wider, more honest intervals than the z-values this calculator uses. With large samples the two are nearly identical." },
+    ],
     relatedCalcs: mathRelated("confidence-interval-calculator"),
   },
   // 45. P-Value Calculator
@@ -1648,7 +1664,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Check divisibility from 1 to √n", variables: ["If n/i is integer, both i and n/i are factors"] },
     howToUse: "Enter a positive integer to find all its factors.",
-    faqs: [{ question: "What is a factor?", answer: "A factor divides evenly into a number with no remainder. Factors of 12 are 1, 2, 3, 4, 6, 12." }],
+    faqs: [
+      { question: "What is a factor?", answer: "A factor divides evenly into a number with no remainder. Factors of 12 are 1, 2, 3, 4, 6, 12." },
+      { question: "How do you know if a number is prime?", answer: "A prime number has exactly two factors: 1 and itself. 17 is prime (factors 1, 17); 1 is neither prime nor composite, since it has only one factor." },
+      { question: "Why does a perfect square have an odd number of factors?", answer: "Because its square root pairs with itself. 36 has 9 factors — 1, 2, 3, 4, 6, 9, 12, 18, 36 — and 6 × 6 = 36, so 6 has no distinct partner. Every other factor count is even." },
+    ],
     relatedCalcs: mathRelated("factor-calculator"),
   },
   // 50. Statistics Calculator

@@ -674,6 +674,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is the difference between ordinary annuity and annuity due?", answer: "An ordinary annuity has payments at the end of each period. An annuity due has payments at the beginning. Annuity due has a slightly higher future value because payments earn interest for one extra period." },
       { question: "When would I use an annuity?", answer: "Annuities are used in retirement planning, structured settlements, lease payments, and any scenario with regular periodic payments." },
+      { question: "How much will $1,000 a year grow to at 5% over 20 years?", answer: "$33,066 as an ordinary annuity (payments at year-end) or $34,719 as an annuity due (payments at year-start). You pay in $20,000, so $13,066 of the ordinary annuity's value is interest earned." },
+      { question: "What is the present value of an annuity?", answer: "What the whole stream of future payments is worth in today's dollars. Twenty annual payments of $1,000 at 5% are worth $12,462 today — that is the lump sum you would need to invest now at 5% to fund the same payments." },
     ],
     relatedCalcs: financeRelated("annuity-calculator"),
   },
@@ -1070,6 +1072,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Who qualifies for overtime?", answer: "Under the FLSA, non-exempt employees must receive 1.5× pay for hours over 40/week. Salaried employees earning below $35,568/year are also eligible." },
       { question: "Is overtime taxed differently?", answer: "Overtime is taxed at the same rates as regular income. It may push you into a higher withholding bracket for that paycheck, but total tax is the same." },
+      { question: "How is the monthly estimate calculated?", answer: "Your weekly total is multiplied by 4.33, which is 52 weeks divided by 12 months. A $1,100 week becomes a $4,763 monthly estimate." },
+      { question: "Do all states follow the 40-hour rule?", answer: "The 40-hour week is the federal FLSA baseline, but some states are stricter. California, for example, requires daily overtime after 8 hours in a day. Check your state's rules if you regularly work long shifts." },
     ],
     relatedCalcs: financeRelated("overtime-pay-calculator"),
   },
@@ -1103,6 +1107,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is a typical commission rate?", answer: "Rates vary by industry: real estate (5-6%), insurance (5-15%), SaaS sales (8-15%), retail (1-3%). Higher-value sales often have lower percentage rates." },
       { question: "Draw vs commission?", answer: "A draw is an advance against future commissions. If your commissions don't cover the draw, you may owe the difference back to your employer." },
+      { question: "Does this calculator handle tiered commission?", answer: "No — it calculates a single flat rate on your total sales. If your plan pays different rates at different sales levels, calculate each tier separately and add the results together." },
+      { question: "What is the effective earnings rate?", answer: "Your total monthly earnings (base salary plus commission) divided by your sales. With $50,000 in sales, an 8% rate, and a $3,000 base, it is $7,000 / $50,000 = 14.00%. Because it includes your base salary, it is higher than your commission rate." },
     ],
     relatedCalcs: financeRelated("commission-calculator"),
   },
@@ -1523,6 +1529,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is a money factor?", answer: "The money factor is the lease equivalent of an interest rate. Multiply by 2,400 to convert to an approximate APR. A money factor of 0.002 ≈ 4.8% APR." },
       { question: "What is residual value?", answer: "Residual value is the car's estimated worth at lease end, expressed as a percentage of MSRP. Higher residual = lower monthly payments because you're paying less depreciation." },
+      { question: "Should I put money down on a lease?", answer: "A down payment lowers the monthly payment but saves little overall: on the default example, $3,000 down gives a $534.67 payment and $22,248 total cost, versus $624.00 a month and $22,464 with nothing down — a saving of only $216. The down payment is also at risk if the car is totaled early in the lease." },
+      { question: "Does the calculator include taxes and fees?", answer: "No. Sales tax, acquisition fees, disposition fees, and registration are not included, so ask the dealer for the all-in monthly figure before signing." },
     ],
     relatedCalcs: financeRelated("lease-calculator"),
   },
@@ -1558,6 +1566,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What types of business loans are available?", answer: "Common types include SBA loans (lower rates, longer terms), term loans, equipment financing, lines of credit, and invoice factoring. Each has different qualifications and terms." },
       { question: "What do I need to qualify?", answer: "Most lenders look at business revenue, time in business (2+ years preferred), credit score (680+), and business plan. SBA loans have specific eligibility requirements." },
+      { question: "How does the origination fee affect what I receive?", answer: "The fee is deducted from the loan proceeds: on a $100,000 loan with a 2% fee, you pay $2,000 and receive $98,000 — but your monthly payments are still calculated on the full $100,000." },
+      { question: "Is a shorter loan term always better?", answer: "It saves interest but raises the payment. On $100,000 at 8%, a 3-year term costs $3,133.64 a month and $12,810.92 in interest, versus $2,027.64 a month and $21,658.37 in interest over 5 years — a saving of $8,847.45 for a payment $1,106 higher." },
     ],
     relatedCalcs: financeRelated("business-loan-calculator"),
   },
@@ -1661,6 +1671,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What markup should I use?", answer: "Depends on industry: retail clothing 50-100%, grocery 5-15%, restaurants 300% on drinks. Research industry standards and consider your overhead costs." },
       { question: "How do I convert margin to markup?", answer: "Markup = Margin / (1 − Margin/100) × 100. For example, a 25% margin = 33.3% markup." },
+      { question: "What is the difference between markup and margin?", answer: "Markup is profit as a percentage of cost; margin is profit as a percentage of selling price. A 75% markup on a $40 item gives a $70 price and a $30 profit — a margin of 42.86%, not 75%." },
+      { question: "Can markup be over 100%?", answer: "Yes — markup has no ceiling. A 150% markup on a $12 cost gives a $30 price and a 60% margin. Margin, by contrast, can never exceed 100%." },
     ],
     relatedCalcs: financeRelated("markup-calculator"),
   },
@@ -1692,6 +1704,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "How do I calculate the discount percentage?", answer: "Discount % = ((Original − Sale) / Original) × 100. For example, $80 marked down to $60 = (($80-$60)/$80)×100 = 25% off." },
       { question: "Do stacked discounts multiply?", answer: "Stacked discounts (e.g., 20% + 10%) don't equal 30%. The second discount applies to the already-reduced price: $100 → $80 → $72, which is 28% total, not 30%." },
+      { question: "How do I find the original price from a sale price?", answer: "Divide the sale price by (1 - discount / 100). An item on sale for $60 at 25% off originally cost $60 / 0.75 = $80." },
+      { question: "Why isn't 50% off plus another 50% off free?", answer: "Because the second discount applies to the already-reduced price. A $100 item at 50% off is $50, and another 50% off that is $25 — a total discount of 75%, not 100%." },
     ],
     relatedCalcs: financeRelated("discount-calculator"),
   },
@@ -1900,7 +1914,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Price = Σ(Coupon/(1+r)^t) + Face/(1+r)^n", variables: ["PV of coupon payments + PV of face value"] },
     howToUse: "Enter face value, coupon rate, years to maturity, and market rate to calculate the bond's fair price.",
-    faqs: [{ question: "What is yield to maturity?", answer: "YTM is the total return expected if the bond is held to maturity, accounting for coupon payments and price gain/loss." }],
+    faqs: [
+      { question: "What is yield to maturity?", answer: "YTM is the total return expected if the bond is held to maturity, accounting for coupon payments and price gain/loss." },
+      { question: "Why does a bond's price fall when interest rates rise?", answer: "Because the bond's fixed coupons are discounted at the higher market rate, making them worth less today. A $1,000 bond with a 5% coupon and 10 years left is worth $1,081.11 at a 4% market rate but only $926.40 at 6%." },
+      { question: "What is the difference between current yield and yield to maturity?", answer: "Current yield is the annual coupon divided by the price — $50 / $1,081.11 = 4.62% in this calculator's default example. Yield to maturity also counts the gain or loss when the bond matures at face value, so it is the better way to compare bonds." },
+      { question: "What does it mean when a bond sells at a premium?", answer: "Its price is above face value, which happens when its coupon rate is higher than the market rate. A 5% coupon bond is worth $1,081.11 when the market rate is 4% — an $81.11 premium. Premium bonds still mature at face value, so part of the return is given back over time." },
+    ],
     relatedCalcs: financeRelated("bond-calculator"),
   },
   // 52. Roth IRA Calculator
@@ -2072,7 +2091,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Pension = Final Salary × Multiplier × Years of Service", variables: ["Typical multiplier: 1.5-2.5% per year"] },
     howToUse: "Enter your final average salary, years of service, and your plan's benefit multiplier.",
-    faqs: [{ question: "What is a typical multiplier?", answer: "Government pensions often use 1.5-2.5%. After 30 years at 2%, you'd receive 60% of your final salary." }],
+    faqs: [
+      { question: "What is a typical multiplier?", answer: "Government pensions often use 1.5-2.5%. After 30 years at 2%, you'd receive 60% of your final salary." },
+      { question: "What is a replacement rate?", answer: "Your pension as a percentage of your final salary. A $40,000 pension on an $80,000 final salary replaces 50% of your income. Many planners suggest targeting 70-80% of pre-retirement income from all sources combined, including Social Security and savings." },
+      { question: "Does the calculator include cost-of-living increases?", answer: "No. It shows the pension at retirement with no COLA, tax, early-retirement reduction, or survivor-option adjustment applied. Check your plan's documents for how each of those affects your actual payment." },
+      { question: "What if my plan caps pension benefits?", answer: "This calculator has no cap, so long service at a high multiplier can show a replacement rate above 100% — for example 2.5% times 45 years would show 112.5%. Many plans cap benefits at 80% or less, so check your plan's limit." },
+    ],
     relatedCalcs: financeRelated("pension-calculator"),
   },
   // 58. IRR Calculator
@@ -2140,7 +2164,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Max HELOC = Home Value × LTV% − Mortgage Balance", variables: ["Interest-only = Draw × Rate / 12"] },
     howToUse: "Enter your home value, mortgage balance, LTV limit, HELOC rate, and desired draw amount.",
-    faqs: [{ question: "HELOC vs home equity loan?", answer: "HELOC is a revolving line of credit with variable rates. Home equity loans are lump-sum with fixed rates." }],
+    faqs: [
+      { question: "HELOC vs home equity loan?", answer: "HELOC is a revolving line of credit with variable rates. Home equity loans are lump-sum with fixed rates." },
+      { question: "What is the maximum LTV most lenders allow?", answer: "Commonly 80-85% of your home's value, including your existing mortgage. This calculator defaults to 85%: on a $400,000 home with a $250,000 mortgage, that allows a HELOC of up to $90,000." },
+      { question: "Is the interest-only payment my full payment?", answer: "Only during the draw period, usually the first 10 years. After that comes the repayment period, when you must pay down the principal as well and the monthly payment rises. This calculator shows the interest-only figure only." },
+      { question: "Is HELOC interest tax-deductible?", answer: "Generally only when the borrowed money is used to buy, build, or substantially improve the home that secures the loan. Interest on money used for other purposes is generally not deductible — check the current IRS rules or ask a tax professional." },
+    ],
     relatedCalcs: financeRelated("heloc-calculator"),
   },
   // 60. FHA Loan Calculator
@@ -2291,7 +2320,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "FV = P(1+r)^n + SIP × [(1+r)^n − 1] / r", variables: ["SIP = Systematic Investment Plan"] },
     howToUse: "Enter initial investment, monthly SIP amount, expected return, and period.",
-    faqs: [{ question: "What is SIP?", answer: "Systematic Investment Plan — investing a fixed amount regularly (monthly). It averages out market volatility through dollar-cost averaging." }],
+    faqs: [
+      { question: "What is SIP?", answer: "Systematic Investment Plan — investing a fixed amount regularly (monthly). It averages out market volatility through dollar-cost averaging." },
+      { question: "What return should I assume?", answer: "Use a conservative one and compare scenarios. The default plan — $5,000 plus $500 a month for 15 years — reaches $229,505 at 10% but only $172,726 at 7%, a difference of $56,779. Past performance does not guarantee future returns." },
+      { question: "Does the calculator include fees and taxes?", answer: "No. Expense ratios, taxes on distributions and gains, and inflation are all excluded, so the projected value is higher than what you would actually keep." },
+      { question: "What if I invest a lump sum only, with no monthly contributions?", answer: "Growth is much slower. A $5,000 lump sum at 10% for 15 years reaches $22,270 on its own, versus $229,505 with $500 a month added — the regular contributions do most of the work." },
+    ],
     relatedCalcs: financeRelated("mutual-fund-calculator"),
   },
   // 65. Rent Calculator
@@ -2572,7 +2606,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Months = −log(1 − Balance×r/Payment) / log(1+r)", variables: ["r = monthly rate = APR/12"] },
     howToUse: "Enter your credit card balance, APR, and monthly payment amount.",
-    faqs: [{ question: "Why does minimum payment take so long?", answer: "Minimum payments (often 2% of balance) mostly cover interest. A $5,000 balance at 20% APR with minimums takes 25+ years." }],
+    faqs: [
+      { question: "Why does minimum payment take so long?", answer: "Minimum payments (often 2% of balance) mostly cover interest. A $5,000 balance at 20% APR with minimums takes 25+ years." },
+      { question: "How much difference does an extra $100 a month make?", answer: "A large one. On an $8,000 balance at 22% APR, raising the payment from $200 to $300 a month cuts the payoff from 73 months to 37 and saves $3,500 in interest." },
+      { question: "What if my payment doesn't cover the interest?", answer: "The balance grows instead of shrinking, and the calculator shows an error. On an $8,000 balance at 22% APR, one month's interest is $146.67 — any payment below that never reduces what you owe." },
+      { question: "Does the calculator assume I stop using the card?", answer: "Yes. It assumes a fixed payment, a fixed APR, and no new charges. It also rounds the payoff up to whole months, so the total paid counts the final payment in full and is very slightly higher than the true amount." },
+    ],
     relatedCalcs: financeRelated("credit-cards-payoff-calculator"),
   },
   // 74. VA Mortgage Calculator

@@ -6,11 +6,11 @@ const rel = (exclude: string) => [
   { name: "Electricity Calculator", slug: "electricity-calculator", icon: "smile", category: "lifestyle" },
 ].filter(c => c.slug !== exclude);
 
-const mk = (slug: string, name: string, desc: string, meta: string, sub: string, inputs: CalculatorConfig["inputs"], calculate: CalculatorConfig["calculate"], formula: CalculatorConfig["formula"]): CalculatorConfig => ({
+const mk = (slug: string, name: string, desc: string, meta: string, sub: string, inputs: CalculatorConfig["inputs"], calculate: CalculatorConfig["calculate"], formula: CalculatorConfig["formula"], extraFaqs?: CalculatorConfig["faqs"]): CalculatorConfig => ({
   slug, name, category: "Lifestyle", categorySlug: "lifestyle", description: desc, metaDescription: meta, icon: "smile", subcategory: sub,
   inputs, calculate, formula,
   howToUse: `Enter values to use the ${name}.`,
-  faqs: [{ question: `What does the ${name} do?`, answer: desc }],
+  faqs: [{ question: `What does the ${name} do?`, answer: desc }, ...(extraFaqs ?? [])],
   relatedCalcs: rel(slug),
 });
 
@@ -208,7 +208,11 @@ export const lifestyleCalculatorsExtra: CalculatorConfig[] = [
   mk("electricity-bill-calculator", "Electricity Bill Calculator", "Estimate monthly electricity bill from usage.", "Free electricity bill calculator. Enter usage in kWh, your rate per kWh, and fixed charges to estimate monthly, daily, and annual power costs.", "Home & Household",
     [{ id: "kwh", label: "Monthly kWh", type: "number", defaultValue: 900, step: 10 }, { id: "rate", label: "Rate ($/kWh)", type: "number", defaultValue: 0.12, step: 0.01 }, { id: "fixed", label: "Fixed Charges ($)", type: "number", defaultValue: 15, step: 1 }],
     (v) => { const usage = v.kwh * v.rate; const total = usage + v.fixed; return [{ label: "Monthly Bill", value: `$${total.toFixed(2)}`, highlight: true }, { label: "Usage Charge", value: `$${usage.toFixed(2)}` }, { label: "Daily Cost", value: `$${(total / 30).toFixed(2)}` }, { label: "Annual Estimate", value: `$${(total * 12).toLocaleString()}` }]; },
-    { expression: "Bill = kWh × Rate + Fixed", variables: ["Average US home: 900 kWh/month"] }
+    { expression: "Bill = kWh × Rate + Fixed", variables: ["Average US home: 900 kWh/month"] },
+    [
+      { question: "How do I find my rate per kWh?", answer: "It is on your electricity bill, usually as the supply or energy rate. For the most accurate estimate, divide your bill's total by its kWh — that all-in rate folds in fixed charges, taxes, and fees." },
+      { question: "Does this include taxes and tiered rates?", answer: "No. The calculator uses one flat rate for all usage plus a single fixed charge. It cannot reproduce tiered (block) pricing, time-of-use rates, or taxes — fold those into the rate or fixed charge you enter." },
+    ]
   ),
   mk("water-usage-calculator", "Water Usage Calculator", "Estimate household water usage and costs.", "Free water usage calculator.", "Home & Household",
     [{ id: "people", label: "People in Household", type: "number", defaultValue: 4, min: 1 }, { id: "gallonsPerDay", label: "Gallons/Person/Day", type: "number", defaultValue: 80, step: 5 }, { id: "rate", label: "Rate ($/1000 gal)", type: "number", defaultValue: 5, step: 0.5 }],

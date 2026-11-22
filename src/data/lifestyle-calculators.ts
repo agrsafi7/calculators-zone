@@ -1283,7 +1283,11 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Time = File Size (Mb) / Speed (Mbps)", variables: ["1 MB = 8 Mb", "Real speed ≈ 80% of advertised"] },
     howToUse: "Enter file size in MB and your internet speed in Mbps.",
-    faqs: [{ question: "Why is actual speed lower?", answer: "Overhead from protocols, network congestion, server limits, and Wi-Fi losses typically reduce throughput to 60-80% of rated speed." }],
+    faqs: [
+      { question: "Why is actual speed lower?", answer: "Overhead from protocols, network congestion, server limits, and Wi-Fi losses typically reduce throughput to 60-80% of rated speed." },
+      { question: "What is the difference between MB and Mbps?", answer: "MB (megabytes) measures file size; Mbps (megabits per second) measures speed. There are 8 bits in a byte, so a 100 Mbps connection moves at most 12.5 MB per second." },
+      { question: "How long does a 1,000 MB download take at 100 Mbps?", answer: "80 seconds in theory (1,000 × 8 ÷ 100), or 100 seconds at the tool's 80% efficiency figure. Real downloads usually land closer to the 80% number." },
+    ],
     relatedCalcs: lifeRelated("bandwidth-calculator"),
   },
   // IP Subnet Calculator

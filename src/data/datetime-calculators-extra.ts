@@ -13,7 +13,8 @@ const mk = (
   description: string,
   inputs: CalculatorConfig["inputs"],
   calculate: CalculatorConfig["calculate"],
-  formula?: { expression: string; variables: string[] }
+  formula?: { expression: string; variables: string[] },
+  extraFaqs?: CalculatorConfig["faqs"]
 ): CalculatorConfig => ({
   slug,
   name,
@@ -27,7 +28,7 @@ const mk = (
   calculate,
   formula,
   howToUse: `Enter the required information to use the ${name}.`,
-  faqs: [{ question: `How does the ${name} work?`, answer: description }],
+  faqs: [{ question: `How does the ${name} work?`, answer: description }, ...(extraFaqs ?? [])],
   relatedCalcs: rel(slug),
 });
 
@@ -990,7 +991,11 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
         { label: "Distance", value: `${v.distance} km` },
       ];
     },
-    { expression: "Time = Distance / Cruise Speed", variables: ["Typical commercial flight"] }
+    { expression: "Time = Distance / Cruise Speed", variables: ["Typical commercial flight"] },
+    [
+      { question: "Does flight time include takeoff and landing?", answer: "No. This calculator gives the cruise-only time — distance divided by cruise speed. Taxiing, takeoff, climb, descent, and landing are not included, so a real gate-to-gate journey always takes longer." },
+      { question: "How long is a 5,000 km flight at 850 km/h?", answer: "5,000 ÷ 850 = 5.9 hours, or 353 minutes. That is roughly a transatlantic-length flight, such as London to New York." },
+    ]
   ),
 
   // Astronomy Time Calculators

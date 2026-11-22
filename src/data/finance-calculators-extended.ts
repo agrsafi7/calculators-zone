@@ -1683,7 +1683,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Pay minimums on all, extra goes to smallest balance", variables: ["When one is paid off, roll payment to next"] },
     howToUse: "Enter up to 3 debts with balances and rates, plus your extra monthly payment.",
-    faqs: [{ question: "Snowball vs avalanche?", answer: "Snowball pays smallest first (motivation). Avalanche pays highest rate first (saves more interest). Choose what keeps you motivated." }],
+    faqs: [
+      { question: "Snowball vs avalanche?", answer: "Snowball pays smallest first (motivation). Avalanche pays highest rate first (saves more interest). Choose what keeps you motivated." },
+      { question: "How fast is the first win with the snowball?", answer: "Often within months. With debts of $3,000 at 10%, $5,000 at 24%, and $12,000 at 6% plus $500 extra a month, the $3,000 debt is cleared in 6 months — four months sooner than the avalanche's first cleared debt." },
+      { question: "Does the snowball cost more than the avalanche?", answer: "Usually, yes — it ignores interest rates. In the example above the snowball costs $2,199.99 in interest versus $1,864.10 for the avalanche, a difference of $335.89. Many people accept the extra cost for the motivation of early wins." },
+      { question: "What minimum payment does the calculator assume?", answer: "2% of each balance, with a $25 minimum. Real minimums vary by card and usually fall as the balance falls, so treat the result as an estimate." },
+    ],
     relatedCalcs: financeRelated("debt-snowball-calculator"),
   },
   {
@@ -1730,7 +1735,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Pay minimums on all, extra goes to highest rate", variables: ["Mathematically optimal for minimizing interest"] },
     howToUse: "Enter debts with balances and rates, plus your extra monthly payment.",
-    faqs: [{ question: "How much does avalanche save?", answer: "Typically saves 10-30% on interest compared to snowball, depending on rate differences and balances." }],
+    faqs: [
+      { question: "How much does avalanche save?", answer: "Typically saves 10-30% on interest compared to snowball, depending on rate differences and balances." },
+      { question: "How much does the avalanche save over the snowball?", answer: "It depends on the gap between your rates. On debts of $3,000 at 10%, $5,000 at 24%, and $12,000 at 6% with $500 extra a month, the avalanche costs $1,864.10 in interest versus $2,199.99 for the snowball — a saving of $335.89 and one month." },
+      { question: "What minimum payment does the calculator assume?", answer: "2% of each balance, with a $25 minimum. Real minimums vary by card and usually fall as the balance falls, so treat the result as an estimate." },
+      { question: "Can I use this calculator with more than three debts?", answer: "The tool models up to three debts. If you have more, combine your smallest balances into one entry, or run the highest-rate debts first and add the rest in a second pass." },
+    ],
     relatedCalcs: financeRelated("debt-avalanche-calculator"),
   },
   {

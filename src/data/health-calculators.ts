@@ -692,6 +692,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your daily calorie target and preferred fat percentage to calculate your daily fat gram intake.",
     faqs: [
       { question: "Are all fats bad?", answer: "No. Unsaturated fats (olive oil, nuts, avocados) are beneficial. Limit saturated fats to <10% of calories and avoid trans fats entirely." },
+      { question: "How many grams of fat per day for weight loss?", answer: "It depends on your total calories. At 1,500 kcal and 30% fat, that's 50 g/day. Keep protein adequate and choose mostly unsaturated fats — total calories, not fat alone, determine weight change." },
+      { question: "What is the difference between saturated and unsaturated fat?", answer: "Saturated fats (butter, fatty meat) raise LDL cholesterol; unsaturated fats (olive oil, nuts, fish) support heart health. Dietary guidelines suggest keeping saturated fat below 10% of calories." },
     ],
     relatedCalcs: healthRelated("fat-intake-calculator"),
   },
@@ -833,7 +835,11 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Male: 86.01×log(waist−neck) − 70.04×log(height) + 36.76", variables: ["Female adds hip measurement", "All measurements in inches"] },
     howToUse: "Enter measurements in inches. Women must also enter hip measurement.",
-    faqs: [{ question: "What are Army body fat standards?", answer: "Males: 26% max (ages 17-20) to 26%. Females: 30-36% depending on age. Standards vary by branch." }],
+    faqs: [
+      { question: "What are Army body fat standards?", answer: "Males: 26% max (ages 17-20) to 26%. Females: 30-36% depending on age. Standards vary by branch." },
+      { question: "How accurate is the Army body fat test?", answer: "The tape method typically lands within about 3-4 percentage points of lab methods like DEXA scans. Technique matters: a tape pulled too tight or placed in the wrong spot can shift the result by several points." },
+      { question: "Do the Army's body fat limits change with age?", answer: "Yes. The limits rise with age — men range from 20% (ages 17-20) to 26% (40+), and women from 30% to 36%. This calculator shows the 40-and-over ceiling (26% men, 36% women) for everyone, so younger soldiers should check the limit for their age group." },
+    ],
     relatedCalcs: healthRelated("army-body-fat-calculator"),
   },
   // 24. Calories Burned Calculator
@@ -962,7 +968,11 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "CKD-EPI 2021 (race-free)", variables: ["eGFR based on creatinine, age, sex"] },
     howToUse: "Enter gender, age, and serum creatinine level from a blood test.",
-    faqs: [{ question: "What is a normal GFR?", answer: "Normal is ≥90 mL/min/1.73m². Below 60 sustained for 3 months indicates chronic kidney disease." }],
+    faqs: [
+      { question: "What is a normal GFR?", answer: "Normal is ≥90 mL/min/1.73m². Below 60 sustained for 3 months indicates chronic kidney disease." },
+      { question: "What can make creatinine — and eGFR — misleading?", answer: "Creatinine rises with muscle mass, heavy exercise, cooked meat, and some medicines, and falls with low muscle mass. A muscular athlete can show a low eGFR with healthy kidneys; a doctor may order a cystatin C test or a repeat test to confirm." },
+      { question: "Does one low eGFR result mean kidney disease?", answer: "No. CKD is diagnosed when eGFR stays below 60 for at least 3 months, or when there are other signs of kidney damage such as protein in the urine. A single low reading needs a repeat test and a clinician's interpretation." },
+    ],
     relatedCalcs: healthRelated("gfr-calculator"),
   },
   // 28. Conception Calculator
@@ -1052,7 +1062,11 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Ratio = Height / Wrist Circumference", variables: ["Male: >10.4 small, 9.6-10.4 medium, <9.6 large"] },
     howToUse: "Enter your gender, height, and wrist circumference to determine body frame size.",
-    faqs: [{ question: "Why does frame size matter?", answer: "Frame size affects ideal weight calculations. A large-framed person can healthily weigh more than a small-framed person of the same height." }],
+    faqs: [
+      { question: "Why does frame size matter?", answer: "Frame size affects ideal weight calculations. A large-framed person can healthily weigh more than a small-framed person of the same height." },
+      { question: "How do I measure my wrist correctly?", answer: "Wrap a flexible tape around the smallest part of your wrist, just above the wrist bone, keeping it snug but not tight. Measure on your non-dominant hand, and don't include the bony bump at the base of the hand." },
+      { question: "Is body frame the same as body type (ectomorph, mesomorph, endomorph)?", answer: "No. Frame size is a bone-structure measure from wrist and height. The ectomorph/mesomorph/endomorph somatotypes describe overall build and muscle/fat tendency — a related but different idea." },
+    ],
     relatedCalcs: healthRelated("body-type-calculator"),
   },
   // 31. Anorexic BMI Calculator

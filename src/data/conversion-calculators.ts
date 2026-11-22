@@ -142,7 +142,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to m², then to target", variables: ["1 acre = 4046.86 m²", "1 hectare = 10000 m²"] },
     howToUse: "Enter a value and source unit to convert between area units.",
-    faqs: [{ question: "How big is an acre?", answer: "About 43,560 sq ft, roughly the size of a football field without end zones." }],
+    faqs: [
+      { question: "How big is an acre?", answer: "About 43,560 sq ft, roughly the size of a football field without end zones." },
+      { question: "How many square feet are in a square meter?", answer: "10.7639 sq ft per m². So 100 m² is 1,076.39 sq ft. To go the other way, divide square feet by 10.7639." },
+      { question: "Why isn't square kilometres in the results?", answer: "Square kilometres are accepted as an input but not shown in the results — the results list square metres, square feet, acres, and hectares. To get km², divide the square-metre result by 1,000,000." },
+    ],
     relatedCalcs: convRelated("area-converter"),
   },
   {
@@ -247,7 +251,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to joules, then to target", variables: ["1 cal = 4.184 J", "1 kWh = 3,600,000 J"] },
     howToUse: "Enter an energy value and unit to convert between energy units.",
-    faqs: [{ question: "What is a joule?", answer: "The SI unit of energy. One joule is the energy needed to exert 1 newton of force over 1 meter." }],
+    faqs: [
+      { question: "What is a joule?", answer: "The SI unit of energy. One joule is the energy needed to exert 1 newton of force over 1 meter." },
+      { question: "How many joules are in a food Calorie?", answer: "One food Calorie (kilocalorie) is 1,000 physics calories, so 1 kcal = 4,184 J. A 2,000 kcal day is about 8,368,000 J, or 2.32 kWh." },
+      { question: "Does this converter handle electron volts?", answer: "No. The page description mentions electron volts, but the tool converts joules, calories, kilowatt-hours, and BTU only. 1 eV = 1.602 × 10⁻¹⁹ J." },
+    ],
     relatedCalcs: convRelated("energy-converter"),
   },
   {
@@ -296,7 +304,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to watts, then to target", variables: ["1 HP = 745.7 W", "1 kW = 1000 W"] },
     howToUse: "Enter a power value and unit to convert.",
-    faqs: [{ question: "What is horsepower?", answer: "Originally defined by James Watt. 1 HP ≈ 745.7 watts." }],
+    faqs: [
+      { question: "What is horsepower?", answer: "Originally defined by James Watt. 1 HP ≈ 745.7 watts." },
+      { question: "What is the difference between power and energy?", answer: "Power (watts) is the rate at which energy is used; energy (watt-hours) is power × time. A 100 W bulb running for 10 hours uses 1,000 Wh = 1 kWh of energy." },
+      { question: "How many watts are in a kilowatt?", answer: "Exactly 1,000 W. A 1 kW heater is 1,000 W, about 1.3410 hp, and 3,412.14 BTU/h." },
+    ],
     relatedCalcs: convRelated("power-converter"),
   },
   {
@@ -372,7 +384,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "1 turn = 360° = 2π rad = 400 gon", variables: ["π rad = 180°"] },
     howToUse: "Enter an angle and unit to convert between angle units.",
-    faqs: [{ question: "What is a radian?", answer: "The angle subtended by an arc equal to the radius. A full circle = 2π radians." }],
+    faqs: [
+      { question: "What is a radian?", answer: "The angle subtended by an arc equal to the radius. A full circle = 2π radians." },
+      { question: "How many degrees are in one radian?", answer: "1 radian = 180 ÷ π ≈ 57.2958°. A radian is a large angle — nearly 60 degrees, more than a sixth of a full circle." },
+      { question: "What is a gradian?", answer: "A gradian (gon) is 1/400 of a full circle, equal to 0.9°. A right angle is exactly 100 gon, which is why gradians are used in some surveying work." },
+    ],
     relatedCalcs: convRelated("angle-converter"),
   },
   {

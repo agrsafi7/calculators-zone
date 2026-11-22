@@ -2226,7 +2226,11 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "CGPA = Σ(semester_GPA × credits) / Σcredits", variables: [] },
-    howToUse: "Enter GPA and credits for each semester.", faqs: [{ question: "CGPA vs GPA?", answer: "GPA is for one semester, CGPA is cumulative across all semesters." }],
+    howToUse: "Enter GPA and credits for each semester.", faqs: [
+      { question: "CGPA vs GPA?", answer: "GPA is for one semester, CGPA is cumulative across all semesters." },
+      { question: "Why isn't CGPA just the average of my semester GPAs?", answer: "Because semesters carry different credit loads. A 4.0 in a 16-credit semester counts more than a 3.0 in a 12-credit one — CGPA weights each GPA by its credits." },
+      { question: "How do I convert CGPA to a percentage?", answer: "There's no universal formula — it varies by university and country. This calculator uses CGPA × 25 (so 3.51 ≈ 87.7%), a common rough approximation on a 4.0 scale; check your institution's official conversion before using it on an application." },
+    ],
     relatedCalcs: mathRelated("cgpa-calculator"),
   },
   {

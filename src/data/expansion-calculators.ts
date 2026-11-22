@@ -224,6 +224,7 @@ export const expansionCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Why use this instead of my phone's calculator?", answer: "No app switching, no clutter — it's instant in your browser, works on any device, and keeps a clean history-free interface for one-off calculations." },
       { question: "Can it handle decimals and negatives?", answer: "Yes. Enter decimal points and negative numbers freely; division by zero is flagged rather than crashing." },
+      { question: "What happens if I divide by zero?", answer: "The calculator flags it as 'Undefined (÷ 0)' instead of crashing or showing an error — division by zero has no defined answer in mathematics." },
     ],
     relatedCalcs: [
       { name: "Scientific Calculator", slug: "scientific-calculator", icon: "hash", category: "math" },
@@ -336,6 +337,7 @@ export const expansionCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "How many carbs should I eat per day?", answer: "For a 2,500 kcal diet at 50% carbs, that's about 313 g/day. Active people and endurance athletes trend higher (55–60%); low-carb approaches go below 45%. Match the percentage to your training and goals." },
       { question: "Are carbs bad for weight loss?", answer: "No — total calories determine weight change, not carbs alone. Very low-carb diets work for some people mainly because they reduce overall intake. Choose the carb level you can sustain." },
+      { question: "What percentage of calories should come from carbs?", answer: "Dietary guidelines suggest 45–65% of calories from carbohydrates. Most people do well around 50%; endurance athletes trend higher and low-carb dieters lower. This calculator offers 45–60% — above 60%, use the formula directly: grams = calories × % ÷ 4." },
     ],
     relatedCalcs: [
       { name: "Calorie Calculator", slug: "calorie-calculator", icon: "heart", category: "health" },
