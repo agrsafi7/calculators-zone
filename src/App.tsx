@@ -1,9 +1,5 @@
 import { lazy, Suspense } from "react";
 import type { ReactNode } from "react";
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Header from "@/components/Header";
@@ -33,30 +29,36 @@ const BlogIndex = lazy(() => import("./pages/BlogIndex"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const queryClient = new QueryClient();
+// No global providers: the app shell used to mount QueryClientProvider,
+// Sonner, the Radix Toaster and TooltipProvider here, but all four were
+// dead weight on the entry path (PageSpeed item 53, 22 Nov 2026):
+// - QueryClientProvider: zero useQuery calls anywhere in src/
+// - Sonner: toast() from "sonner" is called nowhere (the Radix use-toast
+//   toast() is a different system, used by ScienceCalculator + ContactPage)
+// - Radix <Toaster />: now mounted by the two lazy pages that call
+//   toast() (ScienceCalculator, LegalPages ContactPage), so the toast
+//   primitives leave the entry bundle
+// - TooltipProvider: no live component renders a Radix <Tooltip> (the
+//   only usage is dead sidebar.tsx; ScienceChart's Tooltip is recharts')
 
 // Shared shell: everything rendered inside the router. The client wraps it in
 // BrowserRouter; the build-time prerenderer wraps it in StaticRouter with the
 // same route tree, so the static HTML matches what the client hydrates.
 export const AppShell = ({ children }: { children: ReactNode }) => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <ScrollToTop />
-      <div className="flex flex-col min-h-screen app-container">
-        <Header />
-        <main className="flex-1 pt-16">
-          <Suspense fallback={<PageLoadingSkeleton />}>
-            <PageTransition>{children}</PageTransition>
-          </Suspense>
-        </main>
-        <Footer />
-        <BackToTop />
-      </div>
-      <SpeedInsights />
-    </TooltipProvider>
-  </QueryClientProvider>
+  <>
+    <ScrollToTop />
+    <div className="flex flex-col min-h-screen app-container">
+      <Header />
+      <main className="flex-1 pt-16">
+        <Suspense fallback={<PageLoadingSkeleton />}>
+          <PageTransition>{children}</PageTransition>
+        </Suspense>
+      </main>
+      <Footer />
+      <BackToTop />
+    </div>
+    <SpeedInsights />
+  </>
 );
 
 const ClientRoutes = () => (

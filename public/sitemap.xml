@@ -2178,5 +2178,23 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://thecalculator.us/blog/how-age-is-calculated-birthdays-leap-years</loc>
+    <lastmod>2026-11-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thecalculator.us/blog/how-loan-interest-really-works</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thecalculator.us/blog/how-much-to-tip-guide-every-situation</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <!-- NOTE (SEO audit F3): the remaining drip blog posts are intentionally absent until their publishDates arrive; re-add each post's <url> block at the next deploy after its publish date. -->
 </urlset>

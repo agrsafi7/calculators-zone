@@ -514,7 +514,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2026-10-21",
     category: "Date & Time",
     readMinutes: 7,
-    related: [{ name: "Time Calculator", path: "/datetime/time-calculator" }],
+    related: [{ name: "Time Duration Calculator", path: "/datetime/time-duration-calculator" }],
     sections: [
       {
         heading: "The core trick: convert everything to minutes",

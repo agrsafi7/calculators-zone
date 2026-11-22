@@ -303,11 +303,12 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       const food = v.foodPerDay * (v.nights + 1);
       const activities = v.activitiesPerDay * (v.nights + 1);
       const total = v.flights + hotel + food + activities;
+      const days = v.nights + 1;
       return [
         { label: "Total Budget", value: `$${total.toLocaleString()}`, highlight: true },
         { label: "Hotel Total", value: `$${hotel.toLocaleString()}` },
         { label: "Food Total", value: `$${food.toLocaleString()}` },
-        { label: "Daily Average", value: `$${Math.round(total / (v.nights + 1))}` },
+        { label: "Daily Average", value: days > 0 ? `$${Math.round(total / days)}` : "—" },
       ];
     },
     formula: { expression: "Total = Flights + (Hotel × Nights) + (Food + Activities) × Days", variables: ["Days = Nights + 1"] },
@@ -404,11 +405,11 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       { id: "amount2", label: "Ingredient 2 Amount", type: "number", defaultValue: 1.5, step: 0.25 },
     ],
     calculate: (v) => {
-      const factor = v.desiredServings / v.originalServings;
+      const factor = v.originalServings > 0 ? v.desiredServings / v.originalServings : 0;
       return [
-        { label: "Scale Factor", value: `${factor.toFixed(2)}×`, highlight: true },
-        { label: "Ingredient 1 (scaled)", value: `${(v.amount1 * factor).toFixed(2)}` },
-        { label: "Ingredient 2 (scaled)", value: `${(v.amount2 * factor).toFixed(2)}` },
+        { label: "Scale Factor", value: v.originalServings > 0 ? `${factor.toFixed(2)}×` : "—", highlight: true },
+        { label: "Ingredient 1 (scaled)", value: v.originalServings > 0 ? `${(v.amount1 * factor).toFixed(2)}` : "—" },
+        { label: "Ingredient 2 (scaled)", value: v.originalServings > 0 ? `${(v.amount2 * factor).toFixed(2)}` : "—" },
       ];
     },
     formula: { expression: "Scaled = Original × (Desired Servings / Original Servings)", variables: ["Simple proportion scaling"] },
@@ -486,6 +487,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       { id: "sides", label: "Sides per Die", type: "number", defaultValue: 6, min: 2, max: 100 },
     ],
     calculate: (v) => {
+      if (v.numDice <= 0 || v.sides <= 0) return [{ label: "Error", value: "Enter at least 1 die with at least 2 sides" }];
       const rolls: number[] = [];
       for (let i = 0; i < Math.min(v.numDice, 20); i++) rolls.push(Math.floor(Math.random() * v.sides) + 1);
       const total = rolls.reduce((a, b) => a + b, 0);
@@ -599,16 +601,18 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       if (v.temp > 50 || v.wind < 3) return [{ label: "Wind Chill", value: `${v.temp}°F (no effect)`, highlight: true }];
       const wc = 35.74 + 0.6215 * v.temp - 35.75 * Math.pow(v.wind, 0.16) + 0.4275 * v.temp * Math.pow(v.wind, 0.16);
-      const frostbiteMin = wc < -18 ? "15 minutes" : wc < 0 ? "30 minutes" : "Low risk";
+      // NWS frostbite times for exposed skin, by wind chill
+      const wcR = Math.round(wc);
+      const frostbiteMin = wcR <= -45 ? "5 minutes" : wcR <= -25 ? "10 minutes" : wcR <= -19 ? "30 minutes" : "Low risk";
       return [
-        { label: "Wind Chill", value: `${Math.round(wc)}°F`, highlight: true },
+        { label: "Wind Chill", value: `${wcR}°F`, highlight: true },
         { label: "Feels Like (°C)", value: `${Math.round((wc - 32) * 5 / 9)}°C` },
         { label: "Frostbite Risk", value: frostbiteMin },
       ];
     },
-    formula: { expression: "WC = 35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16", variables: ["T = temperature (°F)", "V = wind speed (mph)", "NWS formula"] },
+    formula: { expression: "WC = 35.74 + 0.6215T − 35.75V^0.16 + 0.4275TV^0.16", variables: ["T = temperature (°F)", "V = wind speed (mph)", "NWS formula", "Frostbite times: −19 to −24°F: 30 min; −25 to −44°F: 10 min; −45°F and below: 5 min"] },
     howToUse: "Enter air temperature and wind speed. Valid when temp ≤ 50°F and wind ≥ 3 mph.",
-    faqs: [{ question: "What is wind chill?", answer: "It measures the cooling effect of wind on exposed skin. Faster winds make it feel colder than the actual temperature." }, { question: "When is wind chill dangerous?", answer: "The calculator flags frostbite in 30 minutes when the wind chill falls below 0°F, and in 15 minutes below −18°F. At 0°F with a 20 mph wind, the wind chill is −22°F." }, { question: "Does wind chill affect objects like cars?", answer: "No — wind chill describes how fast exposed skin loses heat. Wind makes objects cool to the air temperature faster, but it cannot make them colder than the air itself." }],
+    faqs: [{ question: "What is wind chill?", answer: "It measures the cooling effect of wind on exposed skin. Faster winds make it feel colder than the actual temperature." }, { question: "When is wind chill dangerous?", answer: "Frostbite times on exposed skin (NWS): at a wind chill of −19 to −24°F, about 30 minutes; −25 to −44°F, about 10 minutes; −45°F and below, about 5 minutes. At 0°F with a 20 mph wind, the wind chill is −22°F, so frostbite in about 30 minutes." }, { question: "Does wind chill affect objects like cars?", answer: "No — wind chill describes how fast exposed skin loses heat. Wind makes objects cool to the air temperature faster, but it cannot make them colder than the air itself." }],
     relatedCalcs: lifeRelated("wind-chill-calculator"),
   },
   // Dew Point Calculator
@@ -622,6 +626,11 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       { id: "humidity", label: "Relative Humidity (%)", type: "number", defaultValue: 60, min: 1, max: 100, step: 1 },
     ],
     calculate: (v) => {
+      if (v.humidity <= 0) return [
+        { label: "Dew Point", value: "—", highlight: true },
+        { label: "Dew Point (°F)", value: "—" },
+        { label: "Comfort Level", value: "—" },
+      ];
       const a = 17.27, b = 237.7;
       const alpha = (a * v.temp) / (b + v.temp) + Math.log(v.humidity / 100);
       const dewPoint = (b * alpha) / (a - alpha);
@@ -738,8 +747,10 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       { id: "rate", label: "Hourly Rate ($)", type: "number", defaultValue: 25, step: 0.5 },
     ],
     calculate: (v) => {
-      let totalMin = (v.endH * 60 + v.endM) - (v.startH * 60 + v.startM) - v.breakMin;
-      if (totalMin < 0) totalMin += 1440;
+      let shiftMin = (v.endH * 60 + v.endM) - (v.startH * 60 + v.startM);
+      if (shiftMin < 0) shiftMin += 1440; // overnight shift crosses midnight
+      if (v.breakMin > shiftMin) return [{ label: "Error", value: "Break cannot be longer than the shift", highlight: true }];
+      const totalMin = shiftMin - v.breakMin;
       const hours = totalMin / 60;
       const pay = hours * v.rate;
       return [
@@ -751,7 +762,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Hours = (End − Start − Break) / 60", variables: ["Pay = Hours × Rate"] },
     howToUse: "Enter clock-in time, clock-out time, break duration, and hourly rate.",
-    faqs: [{ question: "Does this handle overnight shifts?", answer: "Yes, if end time is before start time, it assumes the shift crosses midnight." }, { question: "How is the weekly pay calculated?", answer: "It multiplies the daily pay by 5, assuming five identical days. If your days vary, run each day separately and add them up." }, { question: "What if my break is longer than my shift?", answer: "The result will be wrong: the calculator adds 24 hours whenever the total goes negative, so an over-long break can show as a very long shift. Keep the break shorter than the shift length." }],
+    faqs: [{ question: "Does this handle overnight shifts?", answer: "Yes, if end time is before start time, it assumes the shift crosses midnight." }, { question: "How is the weekly pay calculated?", answer: "It multiplies the daily pay by 5, assuming five identical days. If your days vary, run each day separately and add them up." }, { question: "What if my break is longer than my shift?", answer: "The calculator shows an error — a break cannot be longer than the shift itself. Shorten the break or check the start and end times." }],
     relatedCalcs: lifeRelated("time-card-calculator"),
   },
   // Horsepower Calculator
@@ -791,12 +802,33 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       { id: "includeSymbols", label: "Include Symbols (1=yes)", type: "number", defaultValue: 1, min: 0, max: 1 },
     ],
     calculate: (v) => {
-      let chars = "abcdefghijklmnopqrstuvwxyz";
-      if (v.includeUpper) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      if (v.includeNumbers) chars += "0123456789";
-      if (v.includeSymbols) chars += "!@#$%^&*()_+-=[]{}|;:,.<>?";
-      let password = "";
-      for (let i = 0; i < v.length; i++) password += chars[Math.floor(Math.random() * chars.length)];
+      // Cryptographically secure random index (rejection sampling avoids modulo bias)
+      const randIndex = (n: number): number => {
+        const buf = new Uint32Array(1);
+        const limit = Math.floor(0x100000000 / n) * n;
+        let x: number;
+        do { crypto.getRandomValues(buf); x = buf[0]; } while (x >= limit);
+        return x % n;
+      };
+      const sets = ["abcdefghijklmnopqrstuvwxyz"];
+      if (v.includeUpper) sets.push("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+      if (v.includeNumbers) sets.push("0123456789");
+      if (v.includeSymbols) sets.push("!@#$%^&*()_+-=[]{}|;:,.<>?");
+      const chars = sets.join("");
+      if (v.length <= 0) return [
+        { label: "Password", value: "Enter a length above 0", highlight: true },
+        { label: "Strength", value: "—" },
+        { label: "Entropy", value: "—" },
+        { label: "Character Pool", value: `${chars.length} chars` },
+      ];
+      // Guarantee at least one character from each selected type, then shuffle
+      const picked = sets.map((s) => s[randIndex(s.length)]);
+      while (picked.length < v.length) picked.push(chars[randIndex(chars.length)]);
+      for (let i = picked.length - 1; i > 0; i--) {
+        const j = randIndex(i + 1);
+        [picked[i], picked[j]] = [picked[j], picked[i]];
+      }
+      const password = picked.join("");
       const entropy = Math.log2(chars.length) * v.length;
       let strength = "Weak";
       if (entropy > 80) strength = "Very Strong";
@@ -809,9 +841,9 @@ const _lifestyleCalculators: CalculatorConfig[] = [
         { label: "Character Pool", value: `${chars.length} chars` },
       ];
     },
-    formula: { expression: "Random selection from character pool", variables: ["Entropy = log₂(pool size) × length"] },
+    formula: { expression: "CSPRNG selection from character pool", variables: ["Entropy = log₂(pool size) × length", "At least one character from each selected type"] },
     howToUse: "Set length and character options, then click Calculate to generate a new password.",
-    faqs: [{ question: "How long should my password be?", answer: "At least 12-16 characters. Longer is better. Use a password manager to store unique passwords for each account." }, { question: "Is this generator safe to use for real passwords?", answer: "The passwords are random enough for everyday use, but they are generated with JavaScript's Math.random(), which is pseudo-random rather than cryptographically secure. For the highest-security accounts, use a password manager's built-in generator." }, { question: "What does the entropy number mean?", answer: "Entropy measures how hard a password is to guess, in bits. A 16-character password using all character types has about 103 bits of entropy and rates 'Very Strong'; a 12-character lowercase-only password has about 56 bits and rates 'Moderate'." }],
+    faqs: [{ question: "How long should my password be?", answer: "At least 12-16 characters. Longer is better. Use a password manager to store unique passwords for each account." }, { question: "Is this generator safe to use for real passwords?", answer: "Yes. Passwords are generated in your browser with crypto.getRandomValues(), a cryptographically secure random source, and every password is guaranteed to contain at least one character from each character type you select. For the highest-security accounts, a password manager's built-in generator is still the best choice." }, { question: "What does the entropy number mean?", answer: "Entropy measures how hard a password is to guess, in bits. A 16-character password using all character types has about 103 bits of entropy and rates 'Very Strong'; a 12-character lowercase-only password has about 56 bits and rates 'Moderate'." }],
     relatedCalcs: lifeRelated("password-generator"),
   },
   // Molarity Calculator
@@ -856,8 +888,9 @@ const _lifestyleCalculators: CalculatorConfig[] = [
         ? (v.fatherHeight + v.motherHeight + 13) / 2
         : (v.fatherHeight + v.motherHeight - 13) / 2;
       const inFeet = predicted / 30.48;
-      const feet = Math.floor(inFeet);
-      const inches = Math.round((inFeet - feet) * 12);
+      let feet = Math.floor(inFeet);
+      let inches = Math.round((inFeet - feet) * 12);
+      if (inches === 12) { feet += 1; inches = 0; } // carry 12 inches into the next foot
       return [
         { label: "Predicted Height", value: `${predicted.toFixed(1)} cm`, highlight: true },
         { label: "In Feet/Inches", value: `${feet}'${inches}"` },
@@ -939,6 +972,11 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       { id: "slopeRating", label: "Slope Rating", type: "number", defaultValue: 113, min: 55, max: 155 },
     ],
     calculate: (v) => {
+      if (v.slopeRating <= 0) return [
+        { label: "Handicap Index", value: "—", highlight: true },
+        { label: "Best Differential", value: "—" },
+        { label: "Avg Differential", value: "—" },
+      ];
       const diffs = [v.score1, v.score2, v.score3].map(s => (s - v.courseRating) * 113 / v.slopeRating);
       const best = Math.min(...diffs);
       const avg = diffs.reduce((a, b) => a + b, 0) / diffs.length;
@@ -969,12 +1007,12 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       const sidewall = v.width * (v.aspect / 100);
       const diameter = (sidewall * 2 / 25.4) + v.rim;
       const circumference = diameter * Math.PI;
-      const revsPerMile = 63360 / circumference;
+      const revsPerMile = circumference > 0 ? 63360 / circumference : 0;
       return [
         { label: "Overall Diameter", value: `${diameter.toFixed(1)} inches`, highlight: true },
         { label: "Sidewall Height", value: `${sidewall.toFixed(1)} mm` },
         { label: "Circumference", value: `${circumference.toFixed(1)} inches` },
-        { label: "Revs per Mile", value: `${Math.round(revsPerMile)}` },
+        { label: "Revs per Mile", value: circumference > 0 ? `${Math.round(revsPerMile)}` : "—" },
       ];
     },
     formula: { expression: "Diameter = (2 × Width × Aspect% / 25.4) + Rim", variables: ["225/55R17 = 225mm wide, 55% aspect, 17\" rim"] },
@@ -997,13 +1035,13 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const areaSqFt = v.areaLength * v.areaWidth;
       const tileSqFt = (v.tileSize * v.tileSize) / 144;
-      const tilesNeeded = Math.ceil(areaSqFt / tileSqFt);
+      const tilesNeeded = tileSqFt > 0 ? Math.ceil(areaSqFt / tileSqFt) : 0;
       const withWaste = Math.ceil(tilesNeeded * (1 + v.waste / 100));
       return [
-        { label: "Tiles Needed (with waste)", value: `${withWaste}`, highlight: true },
-        { label: "Tiles (no waste)", value: `${tilesNeeded}` },
+        { label: "Tiles Needed (with waste)", value: tileSqFt > 0 ? `${withWaste}` : "—", highlight: true },
+        { label: "Tiles (no waste)", value: tileSqFt > 0 ? `${tilesNeeded}` : "—" },
         { label: "Room Area", value: `${areaSqFt} sq ft` },
-        { label: "Boxes (12/box)", value: `${Math.ceil(withWaste / 12)}` },
+        { label: "Boxes (12/box)", value: tileSqFt > 0 ? `${Math.ceil(withWaste / 12)}` : "—" },
       ];
     },
     formula: { expression: "Tiles = (Room Area / Tile Area) × (1 + Waste%)", variables: ["Add 10% for straight cuts, 15% for diagonal"] },
@@ -1132,6 +1170,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       { id: "riserHeight", label: "Desired Riser Height (inches)", type: "number", defaultValue: 7.5, step: 0.25 },
     ],
     calculate: (v) => {
+      if (v.totalRise <= 0 || v.riserHeight <= 0) return [{ label: "Error", value: "Total rise and riser height must be above 0" }];
       const numStairs = Math.round(v.totalRise / v.riserHeight);
       const actualRiser = v.totalRise / numStairs;
       const tread = 25 - actualRiser; // 7-11 rule: riser + tread ≈ 17-18"
@@ -1170,7 +1209,7 @@ const _lifestyleCalculators: CalculatorConfig[] = [
       return [
         { label: "GDP", value: `$${gdp.toLocaleString()}B`, highlight: true },
         { label: "Net Exports", value: `$${netExports.toLocaleString()}B` },
-        { label: "C as % of GDP", value: `${((v.consumption / gdp) * 100).toFixed(1)}%` },
+        { label: "C as % of GDP", value: gdp !== 0 ? `${((v.consumption / gdp) * 100).toFixed(1)}%` : "—" },
       ];
     },
     formula: { expression: "GDP = C + I + G + (X − M)", variables: ["C = Consumption", "I = Investment", "G = Government", "X−M = Net Exports"] },

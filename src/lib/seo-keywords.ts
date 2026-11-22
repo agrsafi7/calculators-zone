@@ -235,7 +235,7 @@ export const categorySEOData: Record<string, CategorySEO> = {
       { name: "Health & Fitness", slug: "health" },
     ],
     topCalcLinks: [
-      { name: "Tip Calculator", slug: "lifestyle", calcSlug: "tip-calculator", anchor: "Calculate tips and split bills easily" },
+      { name: "Tip Calculator", slug: "finance", calcSlug: "tip-calculator", anchor: "Calculate tips and split bills easily" },
       { name: "Sleep Calculator", slug: "lifestyle", calcSlug: "sleep-calculator", anchor: "Find the best time to sleep and wake up" },
       { name: "Fuel Cost Calculator", slug: "lifestyle", calcSlug: "fuel-cost-calculator", anchor: "Estimate gas costs for your trip" },
       { name: "Pet Age Calculator", slug: "lifestyle", calcSlug: "pet-age-calculator", anchor: "Convert pet years to human years" },
@@ -265,7 +265,7 @@ export const globalPopularLinks = [
   { name: "Length Converter", path: "/conversions/length-converter" },
   { name: "Calorie Calculator", path: "/health/calorie-calculator" },
   { name: "GPA Calculator", path: "/math/gpa-calculator" },
-  { name: "Tip Calculator", path: "/lifestyle/tip-calculator" },
+  { name: "Tip Calculator", path: "/finance/tip-calculator" },
   { name: "Force Calculator", path: "/science/force-calculator" },
   { name: "Salary Calculator", path: "/finance/salary-calculator" },
   { name: "Temperature Converter", path: "/conversions/temperature-converter" },

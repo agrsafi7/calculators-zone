@@ -24,7 +24,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       const gcd = (a: number, b: number): number => b === 0 ? a : gcd(b, a % b);
       const a = Math.abs(Math.round(v.num1)), b = Math.abs(Math.round(v.num2));
       const g = gcd(a, b);
-      const lcm = (a * b) / g;
+      const lcm = g === 0 ? 0 : (a * b) / g;
       return [
         { label: "LCM", value: lcm.toLocaleString(), highlight: true },
         { label: "GCD", value: g.toLocaleString() },
@@ -49,12 +49,12 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       const gcd = (a: number, b: number): number => b === 0 ? a : gcd(b, a % b);
       const a = Math.abs(Math.round(v.num1)), b = Math.abs(Math.round(v.num2));
       const g = gcd(a, b);
-      const lcm = (a * b) / g;
+      const lcm = g === 0 ? 0 : (a * b) / g;
       return [
         { label: "GCD", value: g.toLocaleString(), highlight: true },
         { label: "LCM", value: lcm.toLocaleString() },
-        { label: "A ÷ GCD", value: (a / g).toString() },
-        { label: "B ÷ GCD", value: (b / g).toString() },
+        { label: "A ÷ GCD", value: g === 0 ? "—" : (a / g).toString() },
+        { label: "B ÷ GCD", value: g === 0 ? "—" : (b / g).toString() },
       ];
     },
     formula: { expression: "Euclidean Algorithm: GCD(A, B) = GCD(B, A mod B)", variables: ["Repeats until remainder is 0"] },
@@ -76,10 +76,10 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       const inverse = Math.pow(v.base, -v.exponent);
       const root = v.exponent !== 0 ? Math.pow(v.base, 1 / v.exponent) : 0;
       return [
-        { label: "Result", value: result > 1e12 ? result.toExponential(4) : result.toLocaleString(), highlight: true },
+        { label: "Result", value: Number.isFinite(result) ? (result > 1e12 ? result.toExponential(4) : result.toLocaleString()) : "—", highlight: true },
         { label: "Expression", value: `${v.base}^${v.exponent}` },
-        { label: "Inverse (base^-exp)", value: inverse < 0.0001 ? inverse.toExponential(4) : inverse.toFixed(6) },
-        { label: "Root (base^(1/exp))", value: root.toFixed(6) },
+        { label: "Inverse (base^-exp)", value: Number.isFinite(inverse) ? (inverse < 0.0001 ? inverse.toExponential(4) : inverse.toFixed(6)) : "—" },
+        { label: "Root (base^(1/exp))", value: Number.isFinite(root) ? root.toFixed(6) : "—" },
       ];
     },
     formula: { expression: "Result = Base^Exponent", variables: ["Inverse = Base^(-Exponent)", "Root = Base^(1/Exponent)"] },
@@ -97,20 +97,21 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       { id: "base", label: "Base", type: "number", defaultValue: 10, step: 0.1, min: 0.1 },
     ],
     calculate: (v) => {
-      const logResult = Math.log(v.number) / Math.log(v.base);
-      const ln = Math.log(v.number);
-      const log10 = Math.log10(v.number);
-      const log2 = Math.log2(v.number);
+      const logResult = v.number > 0 && v.base > 0 && v.base !== 1 ? Math.log(v.number) / Math.log(v.base) : NaN;
+      const ln = v.number > 0 ? Math.log(v.number) : NaN;
+      const log10 = v.number > 0 ? Math.log10(v.number) : NaN;
+      const log2 = v.number > 0 ? Math.log2(v.number) : NaN;
+      const fmt6 = (x: number) => Number.isFinite(x) ? x.toFixed(6) : "—";
       return [
-        { label: `log₍${v.base}₎(${v.number})`, value: logResult.toFixed(6), highlight: true },
-        { label: "Natural Log (ln)", value: ln.toFixed(6) },
-        { label: "Log Base 10", value: log10.toFixed(6) },
-        { label: "Log Base 2", value: log2.toFixed(6) },
+        { label: `log₍${v.base}₎(${v.number})`, value: fmt6(logResult), highlight: true },
+        { label: "Natural Log (ln)", value: fmt6(ln) },
+        { label: "Log Base 10", value: fmt6(log10) },
+        { label: "Log Base 2", value: fmt6(log2) },
       ];
     },
     formula: { expression: "log_b(x) = ln(x) ÷ ln(b)", variables: ["ln = natural logarithm (base e)", "Change of base formula"] },
     howToUse: "Enter a number and the logarithm base.",
-    faqs: [{ question: "What bases are most common?", answer: "Base 10 (common log), base e (natural log), and base 2 (computer science)." }, { question: "What is log base 2 of 64?", answer: "6, because 2^6 = 64. The same number's other logarithms are ln(64) = 4.158883 and log10(64) = 1.806180." }, { question: "What inputs does the calculator accept?", answer: "The number must be positive and the base must be positive and not equal to 1. Entering zero, a negative number, or a base of 1 gives NaN or Infinity — the tool does not validate its inputs." }],
+    faqs: [{ question: "What bases are most common?", answer: "Base 10 (common log), base e (natural log), and base 2 (computer science)." }, { question: "What is log base 2 of 64?", answer: "6, because 2^6 = 64. The same number's other logarithms are ln(64) = 4.158883 and log10(64) = 1.806180." }, { question: "What inputs does the calculator accept?", answer: "The number must be positive and the base must be positive and not equal to 1. Entering zero, a negative number, or a base of 1 shows '—' instead of a result for the undefined logarithms." }],
     relatedCalcs: otherRel3("logarithm-calculator"),
   },
   {
@@ -152,13 +153,13 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       const a = Math.abs(Math.round(v.a)), b = Math.abs(Math.round(v.b));
       const g = gcd(a, b);
       const total = a + b;
-      const pctA = (a / total) * 100;
-      const pctB = (b / total) * 100;
+      const pctA = total > 0 ? (a / total) * 100 : NaN;
+      const pctB = total > 0 ? (b / total) * 100 : NaN;
       return [
-        { label: "Simplified Ratio", value: `${a/g}:${b/g}`, highlight: true },
+        { label: "Simplified Ratio", value: g === 0 ? "0:0" : `${a/g}:${b/g}`, highlight: true },
         { label: "Original Ratio", value: `${a}:${b}` },
-        { label: "A Percentage", value: pctA.toFixed(1) + "%" },
-        { label: "B Percentage", value: pctB.toFixed(1) + "%" },
+        { label: "A Percentage", value: Number.isFinite(pctA) ? pctA.toFixed(1) + "%" : "—" },
+        { label: "B Percentage", value: Number.isFinite(pctB) ? pctB.toFixed(1) + "%" : "—" },
       ];
     },
     formula: { expression: "Simplified = A/GCD : B/GCD", variables: ["GCD = Greatest Common Divisor"] },
@@ -177,14 +178,15 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       { id: "c", label: "C", type: "number", defaultValue: 9 },
     ],
     calculate: (v) => {
-      const d = (v.b * v.c) / v.a;
-      const ratio1 = v.a / v.b;
-      const ratio2 = v.c / d;
+      const d = v.a !== 0 ? (v.b * v.c) / v.a : NaN;
+      const ratio1 = v.b !== 0 ? v.a / v.b : NaN;
+      const ratio2 = Number.isFinite(d) && d !== 0 ? v.c / d : NaN;
+      const fmt4 = (x: number) => Number.isFinite(x) ? x.toFixed(4) : "—";
       return [
-        { label: "D (missing value)", value: d.toFixed(4), highlight: true },
-        { label: "Proportion", value: `${v.a}/${v.b} = ${v.c}/${d.toFixed(2)}` },
-        { label: "Ratio A/B", value: ratio1.toFixed(4) },
-        { label: "Ratio C/D", value: ratio2.toFixed(4) },
+        { label: "D (missing value)", value: fmt4(d), highlight: true },
+        { label: "Proportion", value: Number.isFinite(d) ? `${v.a}/${v.b} = ${v.c}/${d.toFixed(2)}` : "—" },
+        { label: "Ratio A/B", value: fmt4(ratio1) },
+        { label: "Ratio C/D", value: fmt4(ratio2) },
       ];
     },
     formula: { expression: "A/B = C/D → D = (B × C) ÷ A", variables: ["Cross multiply to solve"] },
@@ -203,8 +205,8 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       if (v.divisor === 0) return [{ label: "Error", value: "Cannot divide by zero", highlight: true }];
-      const remainder = v.dividend % v.divisor;
       const quotient = Math.floor(v.dividend / v.divisor);
+      const remainder = v.dividend - v.divisor * quotient;
       const isEven = v.dividend % 2 === 0;
       return [
         { label: "Remainder (mod)", value: remainder.toString(), highlight: true },
@@ -215,7 +217,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "A mod B = A - B × floor(A/B)", variables: ["mod = remainder after division"] },
     howToUse: "Enter dividend and divisor to find the remainder.",
-    faqs: [{ question: "Where is modulo used?", answer: "Clock arithmetic, cryptography, hash functions, even/odd checking, cycling through arrays." }, { question: "What is the difference between modulo and division?", answer: "Division tells you how many times one number fits into another; modulo tells you what is left over. 17 divided by 5 is 3 with a remainder of 2, so 17 mod 5 = 2." }, { question: "Why does the calculator show an error for a zero divisor?", answer: "Dividing by zero has no defined result, so the calculator shows 'Cannot divide by zero' instead of a number." }],
+    faqs: [{ question: "Where is modulo used?", answer: "Clock arithmetic, cryptography, hash functions, even/odd checking, cycling through arrays." }, { question: "What is the difference between modulo and division?", answer: "Division tells you how many times one number fits into another; modulo tells you what is left over. 17 divided by 5 is 3 with a remainder of 2, so 17 mod 5 = 2." }, { question: "What is -17 mod 5?", answer: "3. This calculator uses the mathematical (floor) definition: -17 - 5 x floor(-17/5) = -17 - 5 x (-4) = 3. Check it with the Division row: -17 = -4 x 5 + 3. The remainder always has the same sign as the divisor." }, { question: "Why does the calculator show an error for a zero divisor?", answer: "Dividing by zero has no defined result, so the calculator shows 'Cannot divide by zero' instead of a number." }],
     relatedCalcs: otherRel3("modulo-calculator"),
   },
   {
@@ -273,7 +275,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
         { label: "Is Prime?", value: prime ? "Yes ✓" : "No ✗", highlight: true },
         { label: "Next Prime", value: nextPrime.toLocaleString() },
         { label: "Previous Prime", value: prevPrime > 1 ? prevPrime.toLocaleString() : "N/A" },
-        { label: prime ? "Digits" : "Factors", value: prime ? n.toString().length.toString() : factors.slice(0,6).join(", ") },
+        { label: prime ? "Digits" : "Factors", value: prime ? n.toString().length.toString() : (factors.length > 0 ? factors.slice(0,6).join(", ") : "None") },
       ];
     },
     formula: { expression: "Check divisibility from 2 to √n", variables: ["If no divisors found, number is prime"] },
@@ -314,16 +316,16 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     metaDescription: "Free combination calculator. Calculate nCr selections.",
     icon: "layers",
     inputs: [
-      { id: "n", label: "Total Items (n)", type: "number", defaultValue: 52, min: 0, max: 30 },
-      { id: "r", label: "Items Chosen (r)", type: "number", defaultValue: 5, min: 0, max: 30 },
+      { id: "n", label: "Total Items (n)", type: "number", defaultValue: 52, min: 0, max: 170 },
+      { id: "r", label: "Items Chosen (r)", type: "number", defaultValue: 5, min: 0, max: 170 },
     ],
     calculate: (v) => {
-      const factorial = (num: number): number => num <= 1 ? 1 : num * factorial(num - 1);
-      const n = Math.min(30, Math.max(0, Math.round(v.n)));
+      const n = Math.min(170, Math.max(0, Math.round(v.n)));
       const r = Math.min(n, Math.max(0, Math.round(v.r)));
-      // Use multiplicative formula for larger numbers
+      // Use multiplicative formula for larger numbers (C(n,r) = C(n,n-r), so loop over the smaller side)
+      const k = Math.min(r, n - r);
       let comb = 1;
-      for (let i = 0; i < r; i++) { comb = comb * (n - i) / (i + 1); }
+      for (let i = 0; i < k; i++) { comb = comb * (n - i) / (i + 1); }
       comb = Math.round(comb);
       const probability = 1 / comb;
       return [
@@ -334,7 +336,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     },
     formula: { expression: "nCr = n! ÷ (r! × (n-r)!)", variables: ["n = total items", "r = items chosen", "Order does NOT matter"] },
     howToUse: "Enter total items (n) and items chosen (r).",
-    faqs: [{ question: "Lottery example?", answer: "Picking 6 from 49: C(49,6) = 13,983,816 possible combinations." }, { question: "What is the difference between combinations and permutations?", answer: "In combinations, order does not matter; in permutations it does. Choosing 2 from 5 gives C(5,2) = 10 combinations, but 5 × 4 = 20 permutations, because each pair can be ordered two ways." }, { question: "What is the largest n the calculator accepts?", answer: "30. Larger values are clamped to 30, and r is capped at n. The lottery example in the first FAQ (C(49,6) = 13,983,816) is beyond the tool's limit, so it cannot be computed here directly." }],
+    faqs: [{ question: "Lottery example?", answer: "Picking 6 from 49: C(49,6) = 13,983,816 possible combinations." }, { question: "What is the difference between combinations and permutations?", answer: "In combinations, order does not matter; in permutations it does. Choosing 2 from 5 gives C(5,2) = 10 combinations, but 5 × 4 = 20 permutations, because each pair can be ordered two ways." }, { question: "What is the largest n the calculator accepts?", answer: "170. Larger values are clamped to 170, and r is capped at n. Results above one trillion are shown in scientific notation — for example, C(170,85) is about 9.1448e+49." }],
     relatedCalcs: otherRel3("combination-calculator"),
   },
   {
@@ -348,7 +350,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       { id: "trials", label: "Number of Trials", type: "number", defaultValue: 10, min: 1 },
     ],
     calculate: (v) => {
-      const prob = v.favorable / v.total;
+      const prob = v.total > 0 ? v.favorable / v.total : 0;
       const odds = v.favorable / (v.total - v.favorable);
       const expected = prob * v.trials;
       const atLeastOne = 1 - Math.pow(1 - prob, v.trials);
@@ -375,6 +377,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       { id: "stdDev", label: "Std Deviation (σ)", type: "number", defaultValue: 10, step: 0.1, min: 0.01 },
     ],
     calculate: (v) => {
+      if (v.stdDev === 0) return [{ label: "Error", value: "SD cannot be zero" }];
       const z = (v.value - v.mean) / v.stdDev;
       // Approximate percentile using normal distribution
       const t = 1 / (1 + 0.2316419 * Math.abs(z));
@@ -408,7 +411,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const totalWeight = v.wt1 + v.wt2 + v.wt3;
-      const weighted = (v.val1 * v.wt1 + v.val2 * v.wt2 + v.val3 * v.wt3) / totalWeight;
+      const weighted = totalWeight > 0 ? (v.val1 * v.wt1 + v.val2 * v.wt2 + v.val3 * v.wt3) / totalWeight : 0;
       const simpleAvg = (v.val1 + v.val2 + v.val3) / 3;
       return [
         { label: "Weighted Average", value: weighted.toFixed(2), highlight: true },
@@ -495,7 +498,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     calculate: (v) => {
       const cubicFeet = v.length * v.width * (v.depth / 12);
       const cubicYards = cubicFeet / 27;
-      const bags40lb = Math.ceil(cubicFeet * 0.75);
+      const bags40lb = Math.ceil(cubicFeet / 0.75);
       const weightTons = cubicYards * 1.1;
       return [
         { label: "Cubic Yards", value: cubicYards.toFixed(2), highlight: true },
@@ -504,9 +507,9 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
         { label: "Weight (tons)", value: weightTons.toFixed(2) },
       ];
     },
-    formula: { expression: "Volume = L × W × (D÷12) ÷ 27", variables: ["D in inches converted to feet", "1 cubic yard ≈ 1.1 tons topsoil"] },
+    formula: { expression: "Volume = L × W × (D÷12) ÷ 27", variables: ["D in inches converted to feet", "1 cubic yard ≈ 1.1 tons topsoil", "1 × 40 lb bag ≈ 0.75 cu ft"] },
     howToUse: "Enter bed length, width in feet and desired soil depth in inches.",
-    faqs: [{ question: "How deep should topsoil be?", answer: "Vegetable gardens: 8-12 inches. Flower beds: 4-6 inches. Lawn: 2-4 inches." }, { question: "How many cubic feet are in a cubic yard?", answer: "27. A 12 x 4 ft bed filled 6 inches deep holds 24 cubic feet, or 0.89 cubic yards." }, { question: "How heavy is a cubic yard of topsoil?", answer: "About 1.1 tons, or roughly 2,200 pounds. The 0.89 cubic yards in the example weigh about 0.98 tons." }],
+    faqs: [{ question: "How deep should topsoil be?", answer: "Vegetable gardens: 8-12 inches. Flower beds: 4-6 inches. Lawn: 2-4 inches." }, { question: "How many cubic feet are in a cubic yard?", answer: "27. A 12 x 4 ft bed filled 6 inches deep holds 24 cubic feet, or 0.89 cubic yards." }, { question: "How many 40 lb bags do I need?", answer: "A 40 lb bag holds about 0.75 cubic feet, so divide your cubic feet by 0.75 and round up. The 12 x 4 ft bed above holds 24 cubic feet, so it needs 24 ÷ 0.75 = 32 bags." }, { question: "How heavy is a cubic yard of topsoil?", answer: "About 1.1 tons, or roughly 2,200 pounds. The 0.89 cubic yards in the example weigh about 0.98 tons." }],
     relatedCalcs: otherRel3("soil-calculator"),
   },
   {
@@ -552,7 +555,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       const attire = v.totalBudget * 0.08;
       const flowers = v.totalBudget * 0.08;
       const misc = v.totalBudget * 0.07;
-      const costPerGuest = v.totalBudget / v.guests;
+      const costPerGuest = v.guests > 0 ? v.totalBudget / v.guests : NaN;
       return [
         { label: "Venue & Reception", value: fmt0(venue), highlight: true },
         { label: "Catering", value: fmt0(catering) },
@@ -560,7 +563,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
         { label: "Attire & Beauty", value: fmt0(attire) },
         { label: "Flowers & Decor", value: fmt0(flowers) },
         { label: "Misc (DJ, favors)", value: fmt0(misc) },
-        { label: "Cost Per Guest", value: fmt(costPerGuest) },
+        { label: "Cost Per Guest", value: Number.isFinite(costPerGuest) ? fmt(costPerGuest) : "—" },
       ];
     },
     formula: { expression: "Industry standard allocation percentages", variables: ["Venue: 40%", "Catering: 25%", "Photo: 12%", "Attire: 8%"] },
@@ -757,7 +760,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const nNeeded = (v.area / 1000) * v.nRate;
-      const productNeeded = nNeeded / (v.nPercent / 100);
+      const productNeeded = v.nPercent > 0 ? nNeeded / (v.nPercent / 100) : 0;
       const bags25 = Math.ceil(productNeeded / 25);
       const bags50 = Math.ceil(productNeeded / 50);
       return [
@@ -784,13 +787,13 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const diagPixels = Math.sqrt(v.hPixels * v.hPixels + v.vPixels * v.vPixels);
-      const ppi = diagPixels / v.diagonal;
+      const ppi = v.diagonal > 0 ? diagPixels / v.diagonal : NaN;
       const totalPixels = v.hPixels * v.vPixels;
       const gcd = (a: number, b: number): number => b === 0 ? a : gcd(b, a % b);
       const g = gcd(v.hPixels, v.vPixels);
       return [
-        { label: "PPI", value: Math.round(ppi) + " PPI", highlight: true },
-        { label: "Aspect Ratio", value: `${v.hPixels/g}:${v.vPixels/g}` },
+        { label: "PPI", value: Number.isFinite(ppi) ? Math.round(ppi) + " PPI" : "—", highlight: true },
+        { label: "Aspect Ratio", value: g === 0 ? "0:0" : `${v.hPixels/g}:${v.vPixels/g}` },
         { label: "Total Pixels", value: (totalPixels / 1e6).toFixed(2) + " MP" },
         { label: "Resolution", value: `${v.hPixels}×${v.vPixels}` },
       ];
@@ -814,7 +817,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
       const mn = Math.min(v.min, v.max);
       const mx = Math.max(v.min, v.max);
       const nums: number[] = [];
-      for (let i = 0; i < Math.min(v.count, 10); i++) {
+      for (let i = 0; i < Math.max(1, Math.min(v.count, 10)); i++) {
         nums.push(Math.floor(Math.random() * (mx - mn + 1)) + mn);
       }
       const range = mx - mn;
@@ -835,26 +838,31 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     metaDescription: "Free word count calculator. Count words, characters, and estimate reading time.",
     icon: "layers",
     inputs: [
-      { id: "words", label: "Word Count", type: "number", defaultValue: 1500 },
-      { id: "charsPerWord", label: "Avg Characters/Word", type: "number", defaultValue: 5, step: 0.1 },
+      { id: "text", label: "Your Text", type: "textarea", defaultValue: "The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.\n\nHow vexingly quick daft zebras jump! Bright vixens jump; dozy fowl quack." },
     ],
     calculate: (v) => {
-      const characters = v.words * v.charsPerWord;
-      const sentences = Math.round(v.words / 15);
-      const paragraphs = Math.round(sentences / 5);
-      const readingTime = v.words / 250;
-      const speakingTime = v.words / 150;
+      const text = String(v.text ?? "");
+      const trimmed = text.trim();
+      const words = trimmed === "" ? 0 : trimmed.split(/\s+/).length;
+      const characters = text.length;
+      const charactersNoSpaces = text.replace(/\s/g, "").length;
+      const sentences = (text.match(/[.!?]+/g) || []).length;
+      const paragraphs = trimmed === "" ? 0 : text.split(/\n\s*\n/).filter((p) => p.trim().length > 0).length;
+      const readingTime = words / 250;
+      const speakingTime = words / 150;
       return [
-        { label: "Characters", value: Math.round(characters).toLocaleString(), highlight: true },
-        { label: "Sentences (est)", value: sentences.toLocaleString() },
-        { label: "Paragraphs (est)", value: paragraphs.toString() },
+        { label: "Words", value: words.toLocaleString(), highlight: true },
+        { label: "Characters", value: characters.toLocaleString() },
+        { label: "Characters (no spaces)", value: charactersNoSpaces.toLocaleString() },
+        { label: "Sentences", value: sentences.toLocaleString() },
+        { label: "Paragraphs", value: paragraphs.toString() },
         { label: "Reading Time", value: readingTime.toFixed(1) + " min" },
         { label: "Speaking Time", value: speakingTime.toFixed(1) + " min" },
       ];
     },
-    formula: { expression: "Characters = Words × Avg Chars/Word", variables: ["Reading: ~250 WPM", "Speaking: ~150 WPM"] },
-    howToUse: "Enter word count and average characters per word.",
-    faqs: [{ question: "Average blog post length?", answer: "1500-2500 words for SEO. Social posts: 40-80 words. Emails: 50-200 words." }, { question: "Does this calculator count words from pasted text?", answer: "No. There is no text box — you enter the word count yourself (from your document or editor) and the calculator estimates characters, sentences, paragraphs, and reading and speaking time from it." }, { question: "How is reading time estimated?", answer: "At 250 words per minute, and speaking time at 150 words per minute. A 1,500-word piece takes about 6.0 minutes to read and 10.0 minutes to speak aloud." }],
+    formula: { expression: "Words = text split on whitespace", variables: ["Reading: ~250 WPM", "Speaking: ~150 WPM", "Sentences end in . ! or ?"] },
+    howToUse: "Paste or type your text into the box. Word, character, sentence, and paragraph counts update as you type.",
+    faqs: [{ question: "Average blog post length?", answer: "1500-2500 words for SEO. Social posts: 40-80 words. Emails: 50-200 words." }, { question: "Does this calculator count words from pasted text?", answer: "Yes. Paste or type your text into the box and it counts the words, characters, sentences, and paragraphs for you, and estimates reading and speaking time. The sample text loaded by default has 29 words, 160 characters, 4 sentences, and 2 paragraphs." }, { question: "How is reading time estimated?", answer: "At 250 words per minute, and speaking time at 150 words per minute. A 1,500-word piece takes about 6.0 minutes to read and 10.0 minutes to speak aloud." }],
     relatedCalcs: otherRel3("word-count-calculator"),
   },
   {
@@ -872,7 +880,7 @@ export const otherCalculatorsExtra: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const totalWeight = v.weight1 + v.weight2 + v.weight3;
-      const overall = (v.score1 * v.weight1 + v.score2 * v.weight2 + v.score3 * v.weight3) / totalWeight;
+      const overall = totalWeight > 0 ? (v.score1 * v.weight1 + v.score2 * v.weight2 + v.score3 * v.weight3) / totalWeight : 0;
       let letter = "F";
       if (overall >= 93) letter = "A";
       else if (overall >= 90) letter = "A-";

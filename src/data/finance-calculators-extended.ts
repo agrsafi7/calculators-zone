@@ -278,7 +278,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
       { id: "years", label: "Number of Years", type: "number", defaultValue: 5 },
     ],
     calculate: (v) => {
-      if (v.beginValue <= 0 || v.years <= 0) return [{ label: "Error", value: "Values must be positive" }];
+      if (v.beginValue <= 0 || v.endValue < 0 || v.years <= 0) return [{ label: "Error", value: "Values must be positive" }];
       const cagr = (Math.pow(v.endValue / v.beginValue, 1 / v.years) - 1) * 100;
       const totalReturn = ((v.endValue - v.beginValue) / v.beginValue) * 100;
       return [
@@ -1348,12 +1348,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     inputs: [
       { id: "income", label: "Gross Income", type: "number", defaultValue: 75000, prefix: "$" },
       { id: "withheld", label: "Total Tax Withheld", type: "number", defaultValue: 12000, prefix: "$" },
-      { id: "deductions", label: "Deductions", type: "number", defaultValue: 14600, prefix: "$" },
+      { id: "deductions", label: "Deductions", type: "number", defaultValue: 16100, prefix: "$" },
       { id: "credits", label: "Tax Credits", type: "number", defaultValue: 0, prefix: "$" },
     ],
     calculate: (v) => {
       const taxable = Math.max(v.income - v.deductions, 0);
-      const brackets = [{ limit: 11600, rate: 0.10 }, { limit: 47150, rate: 0.12 }, { limit: 100525, rate: 0.22 }, { limit: 191950, rate: 0.24 }, { limit: Infinity, rate: 0.32 }];
+      const brackets = [{ limit: 12400, rate: 0.10 }, { limit: 50400, rate: 0.12 }, { limit: 105700, rate: 0.22 }, { limit: 201775, rate: 0.24 }, { limit: 256225, rate: 0.32 }, { limit: 640600, rate: 0.35 }, { limit: Infinity, rate: 0.37 }];
       let tax = 0, remaining = taxable, prev = 0;
       for (const b of brackets) { const chunk = Math.min(remaining, b.limit - prev); if (chunk <= 0) break; tax += chunk * b.rate; remaining -= chunk; prev = b.limit; }
       tax = Math.max(tax - v.credits, 0);
@@ -1361,13 +1361,13 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
       return [
         { label: refund >= 0 ? "Estimated Refund" : "Amount Owed", value: fmt(Math.abs(refund)), highlight: true },
         { label: "Total Tax", value: fmt0(tax) },
-        { label: "Effective Rate", value: pct((tax / v.income) * 100) },
+        { label: "Effective Rate", value: pct(v.income > 0 ? (tax / v.income) * 100 : 0) },
         { label: "Taxable Income", value: fmt0(taxable) },
       ];
     },
     formula: { expression: "Refund = Withheld − Calculated Tax + Credits", variables: [] },
     howToUse: "Enter income, total tax withheld, deductions, and credits.",
-    faqs: [{ question: "Is a big refund good?", answer: "A large refund means you overpaid during the year. Consider adjusting W-4 to keep more in each paycheck." }, { question: "How is the tax in this calculator worked out?", answer: "Taxable income (gross income minus deductions) is run through the progressive federal brackets, then credits are subtracted. On $75,000 income with $14,600 of deductions, taxable income is $60,400 and the tax is $8,341 — 10% of $11,600, plus 12% of the next $35,550, plus 22% of the remaining $13,250." }, { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on the next dollar you earn — 22% in the example above. Your effective rate is total tax divided by total income — $8,341 ÷ $75,000 = 11.12%. Only the income above each bracket threshold is taxed at the higher rate." }, { question: "Does this calculator include state tax?", answer: "No. It estimates federal income tax only, using its built-in federal brackets. State income tax is separate and varies by state — some states have no income tax at all." }],
+    faqs: [{ question: "Is a big refund good?", answer: "A large refund means you overpaid during the year. Consider adjusting W-4 to keep more in each paycheck." }, { question: "How is the tax in this calculator worked out?", answer: "Taxable income (gross income minus deductions) is run through the progressive federal brackets, then credits are subtracted. On $75,000 income with $16,100 of deductions, taxable income is $58,900 and the tax is $7,670 — 10% of $12,400, plus 12% of the next $38,000, plus 22% of the remaining $8,500." }, { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on the next dollar you earn — 22% in the example above. Your effective rate is total tax divided by total income — $7,670 ÷ $75,000 = 10.23%. Only the income above each bracket threshold is taxed at the higher rate." }, { question: "Does this calculator include state tax?", answer: "No. It estimates federal income tax only, using its built-in federal brackets. State income tax is separate and varies by state — some states have no income tax at all." }],
     relatedCalcs: financeRelated("tax-refund-calculator"),
   },
   {
@@ -1380,15 +1380,15 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
       { id: "filingStatus", label: "Filing Status", type: "select", defaultValue: 1, options: [{ value: 1, label: "Single" }, { value: 2, label: "Married Filing Jointly" }] },
     ],
     calculate: (v) => {
-      const single = [{ limit: 11600, rate: 10 }, { limit: 47150, rate: 12 }, { limit: 100525, rate: 22 }, { limit: 191950, rate: 24 }, { limit: 243725, rate: 32 }, { limit: 609350, rate: 35 }, { limit: Infinity, rate: 37 }];
-      const married = [{ limit: 23200, rate: 10 }, { limit: 94300, rate: 12 }, { limit: 201050, rate: 22 }, { limit: 383900, rate: 24 }, { limit: 487450, rate: 32 }, { limit: 731200, rate: 35 }, { limit: Infinity, rate: 37 }];
+      const single = [{ limit: 12400, rate: 10 }, { limit: 50400, rate: 12 }, { limit: 105700, rate: 22 }, { limit: 201775, rate: 24 }, { limit: 256225, rate: 32 }, { limit: 640600, rate: 35 }, { limit: Infinity, rate: 37 }];
+      const married = [{ limit: 24800, rate: 10 }, { limit: 100800, rate: 12 }, { limit: 211400, rate: 22 }, { limit: 403550, rate: 24 }, { limit: 512450, rate: 32 }, { limit: 768700, rate: 35 }, { limit: Infinity, rate: 37 }];
       const brackets = v.filingStatus === 1 ? single : married;
       let tax = 0, remaining = v.taxableIncome, prev = 0, marginal = 10;
       for (const b of brackets) { const chunk = Math.min(remaining, b.limit - prev); if (chunk <= 0) break; tax += chunk * (b.rate / 100); marginal = b.rate; remaining -= chunk; prev = b.limit; }
       return [
         { label: "Marginal Tax Bracket", value: `${marginal}%`, highlight: true },
         { label: "Federal Tax", value: fmt0(tax) },
-        { label: "Effective Rate", value: pct((tax / v.taxableIncome) * 100) },
+        { label: "Effective Rate", value: pct(v.taxableIncome > 0 ? (tax / v.taxableIncome) * 100 : 0) },
         { label: "After-Tax Income", value: fmt0(v.taxableIncome - tax) },
       ];
     },
@@ -1396,8 +1396,8 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     howToUse: "Enter your taxable income and filing status.",
     faqs: [
       { question: "Am I taxed at my bracket rate on everything?", answer: "No! Only income within each bracket is taxed at that rate. Your effective rate is always lower than your marginal rate." },
-      { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on your last dollar of income; your effective rate is total tax divided by total income. A single filer with $85,000 of taxable income is in the 22% marginal bracket but pays an effective rate of 16.18%." },
-      { question: "Which year's brackets does this calculator use?", answer: "The 2024 federal brackets. The IRS adjusts the thresholds for inflation each year, so the exact cutoffs shift slightly from year to year — check the current year's figures when filing." },
+      { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on your last dollar of income; your effective rate is total tax divided by total income. A single filer with $85,000 of taxable income is in the 22% marginal bracket but pays an effective rate of 15.78%." },
+      { question: "Which year's brackets does this calculator use?", answer: "The 2026 federal brackets. The IRS adjusts the thresholds for inflation each year, so the exact cutoffs shift slightly from year to year — check the current year's figures when filing." },
       { question: "Is this my whole tax bill?", answer: "No. This is federal income tax only — it does not include state tax, FICA, or tax credits. The income you enter is taxable income after deductions, not your gross salary." },
     ],
     relatedCalcs: financeRelated("tax-bracket-calculator"),
@@ -1412,7 +1412,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
       { id: "employees", label: "Number of Employees", type: "number", defaultValue: 1 },
     ],
     calculate: (v) => {
-      const ssWage = Math.min(v.grossPay, 168600);
+      const ssWage = Math.min(v.grossPay, 184500);
       const ssTax = ssWage * 0.062;
       const medicareTax = v.grossPay * 0.0145;
       const additionalMedicare = Math.max(v.grossPay - 200000, 0) * 0.009;
@@ -1426,9 +1426,9 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
         { label: "Medicare", value: fmt(medicareTax + additionalMedicare) },
       ];
     },
-    formula: { expression: "SS = 6.2% (up to $168,600); Medicare = 1.45%", variables: ["Employer matches employee amounts"] },
+    formula: { expression: "SS = 6.2% (up to $184,500); Medicare = 1.45%", variables: ["Employer matches employee amounts"] },
     howToUse: "Enter gross annual pay and number of employees.",
-    faqs: [{ question: "What is the SS wage base?", answer: "For 2024, Social Security tax applies only to the first $168,600 of earnings. Medicare has no wage cap." }],
+    faqs: [{ question: "What is the SS wage base?", answer: "For 2026, Social Security tax applies only to the first $184,500 of earnings. Medicare has no wage cap." }],
     relatedCalcs: financeRelated("payroll-tax-calculator"),
   },
   {
@@ -1441,7 +1441,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const taxableBase = v.netEarnings * 0.9235;
-      const ssBase = Math.min(taxableBase, 168600);
+      const ssBase = Math.min(taxableBase, 184500);
       const ssTax = ssBase * 0.124;
       const medicareTax = taxableBase * 0.029;
       const additionalMedicare = Math.max(taxableBase - 200000, 0) * 0.009;
@@ -1533,10 +1533,10 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     calculate: (v) => {
       const target = v.monthlyExpenses * v.months;
       const gap = Math.max(target - v.currentFund, 0);
-      const progress = (v.currentFund / target) * 100;
+      const progress = target !== 0 ? (v.currentFund / target) * 100 : 0;
       return [
         { label: "Target Emergency Fund", value: fmt0(target), highlight: true },
-        { label: "Current Progress", value: pct(progress) },
+        { label: "Current Progress", value: target !== 0 ? pct(progress) : "—" },
         { label: "Gap to Fill", value: fmt0(gap) },
         { label: "Monthly Save (12mo goal)", value: fmt(gap / 12) },
       ];
@@ -1572,7 +1572,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
         { label: "Net Worth", value: fmt0(netWorth), highlight: true },
         { label: "Total Assets", value: fmt0(totalAssets) },
         { label: "Total Liabilities", value: fmt0(totalLiabilities) },
-        { label: "Debt-to-Asset Ratio", value: pct((totalLiabilities / totalAssets) * 100) },
+        { label: "Debt-to-Asset Ratio", value: totalAssets !== 0 ? pct((totalLiabilities / totalAssets) * 100) : "—" },
       ];
     },
     formula: { expression: "Net Worth = Total Assets − Total Liabilities", variables: [] },
@@ -1660,10 +1660,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
         { balance: v.debt3, rate: v.rate3, minPay: Math.max(v.debt3 * 0.02, 25) },
       ].sort((a, b) => a.balance - b.balance);
       const totalDebt = debts.reduce((s, d) => s + d.balance, 0);
+      const totalMin = debts.reduce((s, d) => s + d.minPay, 0);
       let totalInterest = 0, months = 0;
       const balances = debts.map(d => d.balance);
       while (balances.some(b => b > 0) && months < 600) {
-        let extra = v.extraPayment;
+        const activeMin = debts.reduce((s, d, i) => s + (balances[i] > 0 ? d.minPay : 0), 0);
+        const extra = v.extraPayment + (totalMin - activeMin);
         for (let i = 0; i < debts.length; i++) {
           if (balances[i] <= 0) continue;
           const intPmt = balances[i] * (debts[i].rate / 100 / 12);
@@ -1686,7 +1688,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     faqs: [
       { question: "Snowball vs avalanche?", answer: "Snowball pays smallest first (motivation). Avalanche pays highest rate first (saves more interest). Choose what keeps you motivated." },
       { question: "How fast is the first win with the snowball?", answer: "Often within months. With debts of $3,000 at 10%, $5,000 at 24%, and $12,000 at 6% plus $500 extra a month, the $3,000 debt is cleared in 6 months — four months sooner than the avalanche's first cleared debt." },
-      { question: "Does the snowball cost more than the avalanche?", answer: "Usually, yes — it ignores interest rates. In the example above the snowball costs $2,199.99 in interest versus $1,864.10 for the avalanche, a difference of $335.89. Many people accept the extra cost for the motivation of early wins." },
+      { question: "Does the snowball cost more than the avalanche?", answer: "Usually, yes — it ignores interest rates. In the example above the snowball costs $2,073.61 in interest versus $1,801.92 for the avalanche, a difference of $271.69. Many people accept the extra cost for the motivation of early wins." },
       { question: "What minimum payment does the calculator assume?", answer: "2% of each balance, with a $25 minimum. Real minimums vary by card and usually fall as the balance falls, so treat the result as an estimate." },
     ],
     relatedCalcs: financeRelated("debt-snowball-calculator"),
@@ -1712,10 +1714,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
         { balance: v.debt3, rate: v.rate3, minPay: Math.max(v.debt3 * 0.02, 25) },
       ].sort((a, b) => b.rate - a.rate);
       const totalDebt = debts.reduce((s, d) => s + d.balance, 0);
+      const totalMin = debts.reduce((s, d) => s + d.minPay, 0);
       let totalInterest = 0, months = 0;
       const balances = debts.map(d => d.balance);
       while (balances.some(b => b > 0) && months < 600) {
-        let extra = v.extraPayment;
+        const activeMin = debts.reduce((s, d, i) => s + (balances[i] > 0 ? d.minPay : 0), 0);
+        const extra = v.extraPayment + (totalMin - activeMin);
         for (let i = 0; i < debts.length; i++) {
           if (balances[i] <= 0) continue;
           const intPmt = balances[i] * (debts[i].rate / 100 / 12);
@@ -1737,7 +1741,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     howToUse: "Enter debts with balances and rates, plus your extra monthly payment.",
     faqs: [
       { question: "How much does avalanche save?", answer: "Typically saves 10-30% on interest compared to snowball, depending on rate differences and balances." },
-      { question: "How much does the avalanche save over the snowball?", answer: "It depends on the gap between your rates. On debts of $3,000 at 10%, $5,000 at 24%, and $12,000 at 6% with $500 extra a month, the avalanche costs $1,864.10 in interest versus $2,199.99 for the snowball — a saving of $335.89 and one month." },
+      { question: "How much does the avalanche save over the snowball?", answer: "It depends on the gap between your rates. On debts of $3,000 at 10%, $5,000 at 24%, and $12,000 at 6% with $500 extra a month, the avalanche costs $1,801.92 in interest versus $2,073.61 for the snowball — a saving of $271.69, with both methods finishing in 25 months." },
       { question: "What minimum payment does the calculator assume?", answer: "2% of each balance, with a $25 minimum. Real minimums vary by card and usually fall as the balance falls, so treat the result as an estimate." },
       { question: "Can I use this calculator with more than three debts?", answer: "The tool models up to three debts. If you have more, combine your smallest balances into one entry, or run the highest-rate debts first and add the rest in a second pass." },
     ],
@@ -1982,7 +1986,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
       { id: "loanAmount", label: "Mortgage Amount", type: "number", defaultValue: 300000, prefix: "$" },
       { id: "rate", label: "Interest Rate (%)", type: "number", defaultValue: 6.5, suffix: "%", step: 0.1 },
       { id: "taxBracket", label: "Tax Bracket (%)", type: "number", defaultValue: 22, suffix: "%" },
-      { id: "standardDeduction", label: "Standard Deduction", type: "number", defaultValue: 14600, prefix: "$" },
+      { id: "standardDeduction", label: "Standard Deduction", type: "number", defaultValue: 16100, prefix: "$" },
     ],
     calculate: (v) => {
       const annualInterest = v.loanAmount * (v.rate / 100);
@@ -1997,7 +2001,7 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Savings = Interest × Tax Bracket %", variables: ["Only beneficial if itemizing exceeds standard deduction"] },
     howToUse: "Enter mortgage details and tax bracket.",
-    faqs: [{ question: "Should I itemize for mortgage interest?", answer: "Only if your total itemized deductions (mortgage interest + state taxes + charity) exceed the standard deduction ($14,600 single, $29,200 married)." }],
+    faqs: [{ question: "Should I itemize for mortgage interest?", answer: "Only if your total itemized deductions (mortgage interest + state taxes + charity) exceed the standard deduction ($16,100 single, $32,200 married)." }],
     relatedCalcs: financeRelated("mortgage-tax-savings-calculator"),
   },
   {

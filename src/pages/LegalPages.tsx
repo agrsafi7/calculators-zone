@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SEO from "@/components/SEO";
 import { toast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 import { supabase } from "@/integrations/supabase/client";
 
 const LegalPage = ({
@@ -227,11 +228,16 @@ export const ContactPage = () => {
   };
 
   return (
-    <LegalPage
-      title="Contact Us"
-      description="Contact TheCalculator.us — questions, feedback, error reports, and partnership inquiries."
-      canonical="/contact"
-    >
+    <>
+      {/* Toaster lives here (not in AppShell): ContactPage is the only legal
+          page that calls toast(), and mounting it locally keeps the toast
+          primitives out of the entry bundle (PageSpeed item 53). */}
+      <Toaster />
+      <LegalPage
+        title="Contact Us"
+        description="Contact TheCalculator.us — questions, feedback, error reports, and partnership inquiries."
+        canonical="/contact"
+      >
       <p>We'd love to hear from you! Whether you have a question about our calculators, feedback, or partnership inquiries, feel free to reach out.</p>
 
       <h2 className="text-lg font-bold text-foreground mt-6">Get in Touch</h2>
@@ -282,6 +288,7 @@ export const ContactPage = () => {
         <li><strong className="text-foreground">Email:</strong> support@thecalculator.us</li>
         <li><strong className="text-foreground">Business Inquiries:</strong> partners@thecalculator.us</li>
       </ul>
-    </LegalPage>
+      </LegalPage>
+    </>
   );
 };

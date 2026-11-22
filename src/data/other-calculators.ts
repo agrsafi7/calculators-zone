@@ -26,13 +26,13 @@ export const otherCalculators: CalculatorConfig[] = [
       { id: "price", label: "Gas Price ($/gallon)", type: "number", defaultValue: 3.5, prefix: "$", step: 0.01 },
     ],
     calculate: (v) => {
-      const gallons = v.distance / v.mpg;
+      const gallons = v.mpg > 0 ? v.distance / v.mpg : 0;
       const cost = gallons * v.price;
-      const costPerMile = cost / v.distance;
+      const costPerMile = v.distance > 0 ? cost / v.distance : 0;
       return [
-        { label: "Total Fuel Cost", value: fmt(cost), highlight: true },
-        { label: "Gallons Needed", value: gallons.toFixed(1) + " gal" },
-        { label: "Cost Per Mile", value: fmt(costPerMile) },
+        { label: "Total Fuel Cost", value: v.mpg > 0 ? fmt(cost) : "—", highlight: true },
+        { label: "Gallons Needed", value: v.mpg > 0 ? gallons.toFixed(1) + " gal" : "—" },
+        { label: "Cost Per Mile", value: v.mpg > 0 && v.distance > 0 ? fmt(costPerMile) : "—" },
       ];
     },
     formula: { expression: "Cost = (Distance ÷ MPG) × Price", variables: ["Distance = Trip distance in miles", "MPG = Miles per gallon", "Price = Price per gallon"] },
@@ -58,12 +58,12 @@ export const otherCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const currentValue = v.price * Math.pow(1 - v.rate / 100, v.years);
       const totalLoss = v.price - currentValue;
-      const annualLoss = totalLoss / v.years;
+      const annualLoss = v.years > 0 ? totalLoss / v.years : 0;
       return [
         { label: "Current Value", value: fmt0(currentValue), highlight: true },
         { label: "Total Depreciation", value: fmt0(totalLoss) },
-        { label: "Avg Annual Loss", value: fmt0(annualLoss) },
-        { label: "Value Retained", value: ((currentValue / v.price) * 100).toFixed(1) + "%" },
+        { label: "Avg Annual Loss", value: v.years > 0 ? fmt0(annualLoss) : "—" },
+        { label: "Value Retained", value: v.price > 0 ? ((currentValue / v.price) * 100).toFixed(1) + "%" : "—" },
       ];
     },
     formula: { expression: "Value = Price × (1 - Rate)^Years", variables: ["Price = Original purchase price", "Rate = Annual depreciation rate", "Years = Number of years owned"] },
@@ -154,7 +154,7 @@ export const otherCalculators: CalculatorConfig[] = [
         { label: "Annual Property Tax", value: fmt0(annualTax), highlight: true },
         { label: "Monthly Property Tax", value: fmt(monthlyTax) },
         { label: "Taxable Value", value: fmt0(taxableValue) },
-        { label: "Effective Rate", value: ((annualTax / v.homeValue) * 100).toFixed(2) + "%" },
+        { label: "Effective Rate", value: v.homeValue > 0 ? ((annualTax / v.homeValue) * 100).toFixed(2) + "%" : "—" },
       ];
     },
     formula: { expression: "Tax = (Home Value - Exemptions) × Rate", variables: ["Home Value = Assessed property value", "Rate = Local tax rate"] },
@@ -275,12 +275,12 @@ export const otherCalculators: CalculatorConfig[] = [
       const baseStampDuty = v.price * (v.rate / 100);
       const discount = baseStampDuty * (v.firstHome / 100);
       const finalDuty = baseStampDuty - discount;
-      const effectiveRate = (finalDuty / v.price) * 100;
+      const effectiveRate = v.price > 0 ? (finalDuty / v.price) * 100 : 0;
       return [
         { label: "Stamp Duty Payable", value: fmt0(finalDuty), highlight: true },
         { label: "Before Discount", value: fmt0(baseStampDuty) },
         { label: "Discount Amount", value: fmt0(discount) },
-        { label: "Effective Rate", value: effectiveRate.toFixed(2) + "%" },
+        { label: "Effective Rate", value: v.price > 0 ? effectiveRate.toFixed(2) + "%" : "—" },
       ];
     },
     formula: { expression: "Duty = Price × Rate − Discount", variables: ["Price = Purchase price", "Rate = Stamp duty rate"] },
@@ -305,12 +305,12 @@ export const otherCalculators: CalculatorConfig[] = [
       { id: "ingredient3", label: "Ingredient 3 Amount", type: "number", defaultValue: 0.5, step: 0.25 },
     ],
     calculate: (v) => {
-      const factor = v.desiredServings / v.originalServings;
+      const factor = v.originalServings > 0 ? v.desiredServings / v.originalServings : 0;
       return [
-        { label: "Scale Factor", value: factor.toFixed(2) + "×", highlight: true },
-        { label: "Ingredient 1 (scaled)", value: (v.ingredient1 * factor).toFixed(2) },
-        { label: "Ingredient 2 (scaled)", value: (v.ingredient2 * factor).toFixed(2) },
-        { label: "Ingredient 3 (scaled)", value: (v.ingredient3 * factor).toFixed(2) },
+        { label: "Scale Factor", value: v.originalServings > 0 ? factor.toFixed(2) + "×" : "—", highlight: true },
+        { label: "Ingredient 1 (scaled)", value: v.originalServings > 0 ? (v.ingredient1 * factor).toFixed(2) : "—" },
+        { label: "Ingredient 2 (scaled)", value: v.originalServings > 0 ? (v.ingredient2 * factor).toFixed(2) : "—" },
+        { label: "Ingredient 3 (scaled)", value: v.originalServings > 0 ? (v.ingredient3 * factor).toFixed(2) : "—" },
       ];
     },
     formula: { expression: "Scaled = Original × (Desired ÷ Original Servings)", variables: ["Original = Original ingredient amount", "Desired = Target servings"] },
@@ -496,11 +496,11 @@ export const otherCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const markupAmt = v.cost * (v.markup / 100);
       const sellingPrice = v.cost + markupAmt;
-      const margin = (markupAmt / sellingPrice) * 100;
+      const margin = sellingPrice !== 0 ? (markupAmt / sellingPrice) * 100 : 0;
       return [
         { label: "Selling Price", value: fmt(sellingPrice), highlight: true },
         { label: "Markup Amount", value: fmt(markupAmt) },
-        { label: "Profit Margin", value: margin.toFixed(1) + "%" },
+        { label: "Profit Margin", value: sellingPrice !== 0 ? margin.toFixed(1) + "%" : "—" },
         { label: "Cost", value: fmt(v.cost) },
       ];
     },
@@ -525,13 +525,13 @@ export const otherCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const grossProfit = v.revenue - v.cost;
       const netProfit = grossProfit - v.expenses;
-      const grossMargin = (grossProfit / v.revenue) * 100;
-      const netMargin = (netProfit / v.revenue) * 100;
+      const grossMargin = v.revenue !== 0 ? (grossProfit / v.revenue) * 100 : 0;
+      const netMargin = v.revenue !== 0 ? (netProfit / v.revenue) * 100 : 0;
       return [
         { label: "Gross Profit", value: fmt(grossProfit), highlight: true },
         { label: "Net Profit", value: fmt(netProfit) },
-        { label: "Gross Margin", value: grossMargin.toFixed(1) + "%" },
-        { label: "Net Margin", value: netMargin.toFixed(1) + "%" },
+        { label: "Gross Margin", value: v.revenue !== 0 ? grossMargin.toFixed(1) + "%" : "—" },
+        { label: "Net Margin", value: v.revenue !== 0 ? netMargin.toFixed(1) + "%" : "—" },
       ];
     },
     formula: { expression: "Margin = (Revenue - Costs) ÷ Revenue × 100", variables: ["Revenue = Total sales", "Costs = Cost of goods sold"] },
@@ -556,12 +556,12 @@ export const otherCalculators: CalculatorConfig[] = [
       const contribution = v.pricePerUnit - v.costPerUnit;
       const breakEvenUnits = contribution > 0 ? v.fixedCosts / contribution : 0;
       const breakEvenRevenue = breakEvenUnits * v.pricePerUnit;
-      const marginPerUnit = (contribution / v.pricePerUnit) * 100;
+      const marginPerUnit = v.pricePerUnit !== 0 ? (contribution / v.pricePerUnit) * 100 : 0;
       return [
         { label: "Break-Even Units", value: Math.ceil(breakEvenUnits).toLocaleString(), highlight: true },
         { label: "Break-Even Revenue", value: fmt0(breakEvenRevenue) },
         { label: "Contribution Per Unit", value: fmt(contribution) },
-        { label: "Contribution Margin", value: marginPerUnit.toFixed(1) + "%" },
+        { label: "Contribution Margin", value: v.pricePerUnit !== 0 ? marginPerUnit.toFixed(1) + "%" : "—" },
       ];
     },
     formula: { expression: "Break-Even = Fixed Costs ÷ (Price - Variable Cost)", variables: ["Fixed Costs = Rent, salaries, etc.", "Contribution = Price - Variable Cost"] },
@@ -641,12 +641,12 @@ export const otherCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const profitPerUnit = v.sellingPrice - v.costPrice;
-      const profitPercent = (profitPerUnit / v.costPrice) * 100;
+      const profitPercent = v.costPrice !== 0 ? (profitPerUnit / v.costPrice) * 100 : 0;
       const totalProfit = profitPerUnit * v.unitsSold;
       const totalRevenue = v.sellingPrice * v.unitsSold;
       return [
         { label: "Profit Per Unit", value: fmt(profitPerUnit), highlight: true },
-        { label: "Profit %", value: profitPercent.toFixed(1) + "%" },
+        { label: "Profit %", value: v.costPrice !== 0 ? profitPercent.toFixed(1) + "%" : "—" },
         { label: "Total Profit", value: fmt(totalProfit) },
         { label: "Total Revenue", value: fmt(totalRevenue) },
       ];
@@ -669,13 +669,14 @@ export const otherCalculators: CalculatorConfig[] = [
       { id: "wpm", label: "Reading Speed (WPM)", type: "number", defaultValue: 250 },
     ],
     calculate: (v) => {
-      const minutes = v.wordCount / v.wpm;
-      const hours = Math.floor(minutes / 60);
-      const mins = Math.round(minutes % 60);
+      const minutes = v.wpm > 0 ? v.wordCount / v.wpm : 0;
+      const totalMins = Math.round(minutes);
+      const hours = Math.floor(totalMins / 60);
+      const mins = totalMins % 60;
       const pages = v.wordCount / 250;
       return [
-        { label: "Reading Time", value: hours > 0 ? `${hours}h ${mins}m` : `${mins} min`, highlight: true },
-        { label: "Total Minutes", value: minutes.toFixed(1) + " min" },
+        { label: "Reading Time", value: v.wpm > 0 ? (hours > 0 ? `${hours}h ${mins}m` : `${mins} min`) : "—", highlight: true },
+        { label: "Total Minutes", value: v.wpm > 0 ? minutes.toFixed(1) + " min" : "—" },
         { label: "Estimated Pages", value: pages.toFixed(1) },
         { label: "Words", value: v.wordCount.toLocaleString() },
       ];
@@ -701,14 +702,14 @@ export const otherCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const words = v.characters / 5;
       const minutes = v.seconds / 60;
-      const grossWpm = words / minutes;
-      const netWpm = Math.max(0, (words - v.errors) / minutes);
-      const accuracy = ((v.characters - v.errors) / v.characters) * 100;
+      const grossWpm = minutes > 0 ? words / minutes : 0;
+      const netWpm = minutes > 0 ? Math.max(0, (words - v.errors) / minutes) : 0;
+      const accuracy = v.characters > 0 ? ((v.characters - v.errors) / v.characters) * 100 : 0;
       return [
-        { label: "Net WPM", value: Math.round(netWpm) + " WPM", highlight: true },
-        { label: "Gross WPM", value: Math.round(grossWpm) + " WPM" },
-        { label: "Accuracy", value: accuracy.toFixed(1) + "%" },
-        { label: "Characters/Min", value: Math.round(v.characters / minutes).toLocaleString() },
+        { label: "Net WPM", value: minutes > 0 ? Math.round(netWpm) + " WPM" : "—", highlight: true },
+        { label: "Gross WPM", value: minutes > 0 ? Math.round(grossWpm) + " WPM" : "—" },
+        { label: "Accuracy", value: v.characters > 0 ? accuracy.toFixed(1) + "%" : "—" },
+        { label: "Characters/Min", value: minutes > 0 ? Math.round(v.characters / minutes).toLocaleString() : "—" },
       ];
     },
     formula: { expression: "WPM = (Characters ÷ 5) ÷ Minutes", variables: ["5 characters = 1 word", "Net WPM subtracts errors"] },
@@ -771,13 +772,13 @@ export const otherCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const gcd = (a: number, b: number): number => b === 0 ? a : gcd(b, a % b);
       const d = gcd(v.width, v.height);
-      const ratioW = v.width / d;
-      const ratioH = v.height / d;
-      const newHeight = (v.newWidth / v.width) * v.height;
+      const ratioW = d > 0 ? v.width / d : 0;
+      const ratioH = d > 0 ? v.height / d : 0;
+      const newHeight = v.width !== 0 ? (v.newWidth / v.width) * v.height : 0;
       const megapixels = (v.width * v.height) / 1e6;
       return [
-        { label: "Aspect Ratio", value: `${ratioW}:${ratioH}`, highlight: true },
-        { label: "New Height", value: Math.round(newHeight) + " px" },
+        { label: "Aspect Ratio", value: d > 0 ? `${ratioW}:${ratioH}` : "0:0", highlight: true },
+        { label: "New Height", value: v.width !== 0 ? Math.round(newHeight) + " px" : "—" },
         { label: "Original Size", value: `${v.width}×${v.height}` },
         { label: "Megapixels", value: megapixels.toFixed(2) + " MP" },
       ];
@@ -801,17 +802,17 @@ export const otherCalculators: CalculatorConfig[] = [
       { id: "printWidth", label: "Print Width (inches)", type: "number", defaultValue: 10, step: 0.5 },
     ],
     calculate: (v) => {
-      const dpiW = v.pixelWidth / v.printWidth;
-      const printHeight = v.pixelHeight / dpiW;
+      const dpiW = v.printWidth > 0 ? v.pixelWidth / v.printWidth : 0;
+      const printHeight = dpiW > 0 ? v.pixelHeight / dpiW : 0;
       const megapixels = (v.pixelWidth * v.pixelHeight) / 1e6;
       let quality = "Low";
       if (dpiW >= 300) quality = "Excellent";
       else if (dpiW >= 200) quality = "Good";
       else if (dpiW >= 150) quality = "Acceptable";
       return [
-        { label: "DPI", value: Math.round(dpiW) + " DPI", highlight: true },
+        { label: "DPI", value: v.printWidth > 0 ? Math.round(dpiW) + " DPI" : "—", highlight: true },
         { label: "Print Quality", value: quality },
-        { label: "Print Height", value: printHeight.toFixed(1) + " in" },
+        { label: "Print Height", value: dpiW > 0 ? printHeight.toFixed(1) + " in" : "—" },
         { label: "Megapixels", value: megapixels.toFixed(1) + " MP" },
       ];
     },
@@ -856,27 +857,30 @@ export const otherCalculators: CalculatorConfig[] = [
     name: "Hex to Decimal Calculator",
     category: "Other Calculators",
     categorySlug: "other",
-    description: "Convert hexadecimal values to decimal. Enter hex as a decimal approximation.",
-    metaDescription: "Free hex to decimal converter. Quick hexadecimal conversions.",
+    description: "Convert hexadecimal values to decimal. Enter hex digits (0-9, A-F) with or without a 0x prefix.",
+    metaDescription: "Free hex to decimal converter. Convert hexadecimal to decimal, binary, and octal.",
     icon: "layers",
     inputs: [
-      { id: "hexVal", label: "Hex Value (decimal)", type: "number", defaultValue: 255 },
+      { id: "hexVal", label: "Hex Value", type: "text", defaultValue: "FF" },
     ],
     calculate: (v) => {
-      const dec = Math.abs(Math.round(v.hexVal));
+      const raw = String(v.hexVal ?? "").trim().replace(/^0x/i, "");
+      if (!/^[0-9a-fA-F]+$/.test(raw)) return [{ label: "Error", value: "Enter a valid hexadecimal value (digits 0-9 and letters A-F)", highlight: true }];
+      if (raw.length > 12) return [{ label: "Error", value: "Hex value too large — enter at most 12 hex digits", highlight: true }];
+      const dec = parseInt(raw, 16);
       const hex = dec.toString(16).toUpperCase();
       const binary = dec.toString(2);
       const octal = dec.toString(8);
       return [
-        { label: "Hexadecimal", value: "0x" + hex, highlight: true },
-        { label: "Decimal", value: dec.toLocaleString() },
+        { label: "Decimal", value: dec.toLocaleString(), highlight: true },
+        { label: "Hexadecimal", value: "0x" + hex },
         { label: "Binary", value: binary },
         { label: "Octal", value: "0o" + octal },
       ];
     },
-    formula: { expression: "Hex uses digits 0-9 and A-F (base 16)", variables: ["A=10, B=11, C=12, D=13, E=14, F=15"] },
-    howToUse: "Enter a decimal number to see its hex, binary, and octal representations.",
-    faqs: [{ question: "Where is hex used?", answer: "Colors (#FF0000), memory addresses, MAC addresses, and programming." }, { question: "How do I convert FF from hex to decimal?", answer: "F stands for 15, so 0xFF = 15 × 16 + 15 = 255. Each hex digit is worth sixteen times the digit to its right, just as each decimal digit is worth ten times the one to its right." }, { question: "Why does the tool ask for a decimal number?", answer: "This tool converts from decimal to hexadecimal: enter a decimal number such as 255 and it shows the hex equivalent (0xFF) plus binary (11111111) and octal (0o377). It cannot accept hex letters like A–F because the input is a numeric field." }],
+    formula: { expression: "Decimal = Σ(digit × 16^position)", variables: ["A=10, B=11, C=12, D=13, E=14, F=15", "Rightmost digit = position 0"] },
+    howToUse: "Enter a hexadecimal value (digits 0-9 and letters A-F), with or without a 0x prefix, to see its decimal, binary, and octal equivalents.",
+    faqs: [{ question: "Where is hex used?", answer: "Colors (#FF0000), memory addresses, MAC addresses, and programming." }, { question: "How do I convert FF from hex to decimal?", answer: "F stands for 15, so 0xFF = 15 × 16 + 15 = 255. Each hex digit is worth sixteen times the digit to its right, just as each decimal digit is worth ten times the one to its right." }, { question: "Can I enter hex letters like A-F?", answer: "Yes. Type the hex value directly — for example, FF converts to 255, and 1A3 converts to 419. A 0x prefix is optional, and upper- or lowercase letters both work." }],
     relatedCalcs: otherRelated("hex-to-decimal-calculator"),
   },
   {

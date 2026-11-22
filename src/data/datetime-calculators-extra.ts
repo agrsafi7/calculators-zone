@@ -768,25 +768,6 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
   ),
 
   // Time Zone Calculators
-  mk(
-    "time-zone-converter",
-    "Time Zone Converter",
-    "Time Zone Tools",
-    "Convert time between time zones",
-    [
-      { id: "hour", label: "Hour (0-23)", type: "number", defaultValue: 14, min: 0, max: 23 },
-      { id: "offsetDiff", label: "Offset Difference (hours)", type: "number", defaultValue: 5, step: 1 },
-    ],
-    (v) => {
-      const newHour = (v.hour + v.offsetDiff + 24) % 24;
-      return [
-        { label: "Converted Time", value: `${newHour}:00`, highlight: true },
-        { label: "Original Time", value: `${v.hour}:00` },
-        { label: "Offset", value: `${v.offsetDiff > 0 ? '+' : ''}${v.offsetDiff}h` },
-      ];
-    },
-    { expression: "New Time = (Original + Offset) mod 24", variables: ["24-hour format"] }
-  ),
 
   mk(
     "meeting-time-planner",
@@ -983,6 +964,11 @@ export const datetimeCalculatorsExtra: CalculatorConfig[] = [
       { id: "speed", label: "Cruise Speed (km/h)", type: "number", defaultValue: 850, step: 50 },
     ],
     (v) => {
+      if (v.speed <= 0) return [
+        { label: "Flight Time", value: "Enter a cruise speed above 0", highlight: true },
+        { label: "Minutes", value: "—" },
+        { label: "Distance", value: `${v.distance} km` },
+      ];
       const hours = v.distance / v.speed;
       const minutes = hours * 60;
       return [

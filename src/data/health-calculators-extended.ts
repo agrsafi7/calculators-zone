@@ -21,11 +21,16 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
       { id: "height", label: "Height (cm)", type: "number", defaultValue: 170, step: 0.1 },
     ],
     calculate: (v) => {
+      if (v.height <= 0) return [
+        { label: "Waist-to-Height Ratio", value: "Enter a height above 0", highlight: true },
+        { label: "Risk Category", value: "—" },
+        { label: "Target (keep below 0.5)", value: "—" },
+      ];
       const ratio = v.waist / v.height;
       let risk = "Healthy";
       if (ratio > 0.58) risk = "High Risk";
       else if (ratio > 0.53) risk = "Increased Risk";
-      else if (ratio > 0.46) risk = "Healthy";
+      else if (ratio >= 0.46) risk = "Healthy";
       else risk = "Underweight Risk";
       return [
         { label: "Waist-to-Height Ratio", value: ratio.toFixed(3), highlight: true },
@@ -33,9 +38,9 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
         { label: "Target (keep below 0.5)", value: `${(v.height * 0.5).toFixed(0)} cm waist` },
       ];
     },
-    formula: { expression: "WHtR = Waist / Height", variables: ["<0.5 = healthy", ">0.58 = high risk"] },
+    formula: { expression: "WHtR = Waist / Height", variables: ["0.46–0.53 = healthy", "0.53–0.58 = increased risk", ">0.58 = high risk", "<0.46 = underweight risk"] },
     howToUse: "Enter your waist circumference and height in centimeters.",
-    faqs: [{ question: "Why waist-to-height?", answer: "WHtR is considered a better predictor of cardiovascular risk than BMI because it accounts for central fat distribution." }, { question: "What is a healthy waist-to-height ratio?", answer: "Below 0.5 — keep your waist under half your height. This calculator rates above 0.53 as Increased Risk and above 0.58 as High Risk, and shows your target waist as half your height in centimetres." }, { question: "How do I measure my waist for this ratio?", answer: "Stand relaxed and wrap a soft tape measure around your waist at navel level, keeping it level all the way round. Breathe out normally and read the measurement without pulling the tape tight. Measure your height in the same units — this calculator uses centimetres for both." }],
+    faqs: [{ question: "Why waist-to-height?", answer: "WHtR is considered a better predictor of cardiovascular risk than BMI because it accounts for central fat distribution." }, { question: "What is a healthy waist-to-height ratio?", answer: "This calculator rates 0.46–0.53 as healthy, above 0.53 as Increased Risk and above 0.58 as High Risk. As a simple rule of thumb, keep your waist under half your height (below 0.5) — the calculator shows that target waist in centimetres." }, { question: "How do I measure my waist for this ratio?", answer: "Stand relaxed and wrap a soft tape measure around your waist at navel level, keeping it level all the way round. Breathe out normally and read the measurement without pulling the tape tight. Measure your height in the same units — this calculator uses centimetres for both." }],
     relatedCalcs: healthRelated("waist-to-height-ratio-calculator"),
   },
   {
@@ -49,11 +54,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
       { id: "gender", label: "Gender", type: "select", defaultValue: 0, options: [{ value: 0, label: "Male" }, { value: 1, label: "Female" }] },
     ],
     calculate: (v) => {
-      const ratio = v.waist / v.hip;
+      const ratio = v.hip > 0 ? v.waist / v.hip : NaN;
       const threshold = v.gender === 0 ? 0.9 : 0.85;
       return [
-        { label: "Waist-to-Hip Ratio", value: ratio.toFixed(3), highlight: true },
-        { label: "Risk Level", value: ratio > threshold ? "High Risk" : "Normal" },
+        { label: "Waist-to-Hip Ratio", value: Number.isFinite(ratio) ? ratio.toFixed(3) : "—", highlight: true },
+        { label: "Risk Level", value: Number.isFinite(ratio) ? (ratio > threshold ? "High Risk" : "Normal") : "—" },
         { label: "Threshold", value: threshold.toString() },
       ];
     },
@@ -593,12 +598,13 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const toLose = v.currentWeight - v.targetWeight;
-      const weeksNeeded = (toLose * 7700) / (v.deficit * 7);
+      const weeksNeeded = toLose > 0 && v.deficit > 0 ? (toLose * 7700) / (v.deficit * 7) : NaN;
       const targetDate = new Date(); targetDate.setDate(targetDate.getDate() + weeksNeeded * 7);
+      const timeLabel = toLose === 0 ? "Already at goal ✓" : toLose < 0 ? "Target must be below current weight" : v.deficit <= 0 ? "Enter a daily deficit above 0" : `${Math.round(weeksNeeded)} weeks`;
       return [
-        { label: "Time to Goal", value: `${Math.round(weeksNeeded)} weeks`, highlight: true },
+        { label: "Time to Goal", value: timeLabel, highlight: true },
         { label: "Weight to Lose", value: `${toLose.toFixed(1)} kg` },
-        { label: "Target Date", value: targetDate.toLocaleDateString("en-US", { month: "short", year: "numeric" }) },
+        { label: "Target Date", value: Number.isFinite(weeksNeeded) ? targetDate.toLocaleDateString("en-US", { month: "short", year: "numeric" }) : "—" },
         { label: "Weekly Loss", value: `${(v.deficit * 7 / 7700).toFixed(2)} kg/week` },
       ];
     },
@@ -619,9 +625,10 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const toGain = v.targetWeight - v.currentWeight;
-      const weeksNeeded = (toGain * 7700) / (v.surplus * 7);
+      const weeksNeeded = toGain > 0 && v.surplus > 0 ? (toGain * 7700) / (v.surplus * 7) : NaN;
+      const timeLabel = toGain === 0 ? "Already at goal ✓" : toGain < 0 ? "Target must be above current weight" : v.surplus <= 0 ? "Enter a daily surplus above 0" : `${Math.round(weeksNeeded)} weeks`;
       return [
-        { label: "Time to Goal", value: `${Math.round(weeksNeeded)} weeks`, highlight: true },
+        { label: "Time to Goal", value: timeLabel, highlight: true },
         { label: "Weight to Gain", value: `${toGain.toFixed(1)} kg` },
         { label: "Weekly Gain", value: `${(v.surplus * 7 / 7700).toFixed(2)} kg/week` },
       ];
@@ -642,9 +649,9 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const lost = v.startWeight - v.currentWeight;
-      const pct = (lost / v.startWeight) * 100;
+      const pct = v.startWeight !== 0 ? (lost / v.startWeight) * 100 : NaN;
       return [
-        { label: "Weight Loss %", value: `${pct.toFixed(1)}%`, highlight: true },
+        { label: "Weight Loss %", value: Number.isFinite(pct) ? `${pct.toFixed(1)}%` : "—", highlight: true },
         { label: "Weight Lost", value: `${lost.toFixed(1)} kg` },
         { label: "Remaining Weight", value: `${v.currentWeight.toFixed(1)} kg` },
       ];
@@ -666,11 +673,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const change = v.currentWeight - v.startWeight;
-      const weeklyRate = change / v.weeks;
+      const weeklyRate = v.weeks !== 0 ? change / v.weeks : NaN;
       return [
         { label: "Total Change", value: `${change > 0 ? "+" : ""}${change.toFixed(1)} kg`, highlight: true },
-        { label: "Weekly Rate", value: `${weeklyRate > 0 ? "+" : ""}${weeklyRate.toFixed(2)} kg/wk` },
-        { label: "Monthly Rate", value: `${(weeklyRate * 4.33).toFixed(1)} kg/mo` },
+        { label: "Weekly Rate", value: Number.isFinite(weeklyRate) ? `${weeklyRate > 0 ? "+" : ""}${weeklyRate.toFixed(2)} kg/wk` : "—" },
+        { label: "Monthly Rate", value: Number.isFinite(weeklyRate) ? `${(weeklyRate * 4.33).toFixed(1)} kg/mo` : "—" },
       ];
     },
     formula: { expression: "Change = Current − Start", variables: ["Rate = Change / Weeks"] },
@@ -711,11 +718,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const totalCal = v.toLose * 7700;
-      const dailyDeficit = totalCal / (v.weeks * 7);
+      const dailyDeficit = v.weeks > 0 ? totalCal / (v.weeks * 7) : 0;
       return [
         { label: "Daily Deficit Needed", value: `${Math.round(dailyDeficit)} cal`, highlight: true },
         { label: "Weekly Deficit", value: `${Math.round(dailyDeficit * 7)} cal` },
-        { label: "Rate", value: `${(v.toLose / v.weeks).toFixed(2)} kg/week` },
+        { label: "Rate", value: v.weeks > 0 ? `${(v.toLose / v.weeks).toFixed(2)} kg/week` : "0.00 kg/week" },
         { label: "Safety", value: dailyDeficit > 1000 ? "⚠ Too aggressive" : "✓ Sustainable" },
       ];
     },
@@ -738,10 +745,10 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
       { id: "weeks", label: "Weeks to Achieve", type: "number", defaultValue: 20 },
     ],
     calculate: (v) => {
-      const dailySurplus = (v.toGain * 7700) / (v.weeks * 7);
+      const dailySurplus = v.weeks > 0 ? (v.toGain * 7700) / (v.weeks * 7) : 0;
       return [
         { label: "Daily Surplus Needed", value: `${Math.round(dailySurplus)} cal`, highlight: true },
-        { label: "Weekly Gain", value: `${(v.toGain / v.weeks).toFixed(2)} kg/week` },
+        { label: "Weekly Gain", value: v.weeks > 0 ? `${(v.toGain / v.weeks).toFixed(2)} kg/week` : "0.00 kg/week" },
         { label: "Type", value: dailySurplus <= 500 ? "Lean Bulk" : "Aggressive Bulk" },
       ];
     },
@@ -1322,7 +1329,7 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
       const weeks = Math.floor(diffDays / 7);
       const days = diffDays % 7;
       const due = new Date(lmp); due.setDate(due.getDate() + 280);
-      const trimester = weeks < 13 ? "1st" : weeks < 27 ? "2nd" : "3rd";
+      const trimester = weeks < 14 ? "1st" : weeks < 28 ? "2nd" : "3rd";
       return [
         { label: "Current Week", value: `${weeks} weeks, ${days} days`, highlight: true },
         { label: "Trimester", value: trimester },
@@ -1347,22 +1354,23 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const lmp = new Date(v.lmpYear, v.lmpMonth - 1, v.lmpDay);
-      const t1End = new Date(lmp); t1End.setDate(t1End.getDate() + 12 * 7);
-      const t2End = new Date(lmp); t2End.setDate(t2End.getDate() + 27 * 7);
+      // ACOG: 1st trimester runs through 13w6d, 2nd from 14w0d through 27w6d, 3rd from 28w0d
+      const t1End = new Date(lmp); t1End.setDate(t1End.getDate() + 14 * 7);
+      const t2End = new Date(lmp); t2End.setDate(t2End.getDate() + 28 * 7);
       const due = new Date(lmp); due.setDate(due.getDate() + 280);
       const fmt = (d: Date) => d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
       const now = new Date();
       const weeks = Math.floor((now.getTime() - lmp.getTime()) / 86400000 / 7);
       return [
-        { label: "Current Trimester", value: weeks < 13 ? "1st Trimester" : weeks < 27 ? "2nd Trimester" : "3rd Trimester", highlight: true },
+        { label: "Current Trimester", value: weeks < 14 ? "1st Trimester" : weeks < 28 ? "2nd Trimester" : "3rd Trimester", highlight: true },
         { label: "1st Trimester", value: `Until ${fmt(t1End)}` },
         { label: "2nd Trimester", value: `Until ${fmt(t2End)}` },
         { label: "Due Date", value: fmt(due) },
       ];
     },
-    formula: { expression: "1st: weeks 1-12, 2nd: 13-26, 3rd: 27-40", variables: [] },
+    formula: { expression: "1st: weeks 1-13, 2nd: 14-27, 3rd: 28-40", variables: ["1st ends at 13w6d, 2nd at 27w6d (ACOG)"] },
     howToUse: "Enter your LMP date.",
-    faqs: [{ question: "What happens each trimester?", answer: "1st: major organ development. 2nd: growth and movement. 3rd: weight gain and preparation for birth." }],
+    faqs: [{ question: "What happens each trimester?", answer: "1st: major organ development. 2nd: growth and movement. 3rd: weight gain and preparation for birth." }, { question: "When does each trimester end?", answer: "The 1st trimester runs through 13 weeks and 6 days, the 2nd from 14 weeks through 27 weeks and 6 days, and the 3rd from 28 weeks to birth. The milestone dates shown are the first day of the next trimester." }],
     relatedCalcs: healthRelated("pregnancy-trimester-calculator"),
   },
   {
@@ -1652,8 +1660,8 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
       { id: "days", label: "Days of Deficit", type: "number", defaultValue: 7 },
     ],
     calculate: (v) => {
-      const dailyDebt = v.needed - v.actual;
-      const totalDebt = dailyDebt * v.days;
+      const dailyDebt = Math.max(0, v.needed - v.actual);
+      const totalDebt = Math.max(0, dailyDebt * v.days);
       const recoveryDays = Math.ceil(totalDebt / 2);
       return [
         { label: "Total Sleep Debt", value: `${totalDebt.toFixed(1)} hours`, highlight: true },

@@ -60,6 +60,69 @@ const mathSubcategoryMap: Record<string, string> = {
   "final-grade-calculator": "Grade Calculators",
 };
 
+// Student's t-distribution p-value via the regularized incomplete beta
+// function (Numerical Recipes betacf + Lanczos log-gamma). Two-tailed
+// p = I(df/(df+t^2); df/2, 1/2). Verified against scipy to ~1e-6.
+const _lgamma = (z: number): number => {
+  const p = [0.99999999999980993, 676.5203681218851, -1259.1392167224028,
+    771.32342877765313, -176.61502916214059, 12.507343278686905,
+    -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
+  if (z < 0.5) return Math.log(Math.PI / Math.sin(Math.PI * z)) - _lgamma(1 - z);
+  z -= 1;
+  let x = p[0];
+  for (let i = 1; i < 9; i++) x += p[i] / (z + i);
+  const t = z + 7.5;
+  return 0.5 * Math.log(2 * Math.PI) + (z + 0.5) * Math.log(t) - t + Math.log(x);
+};
+const _betacf = (a: number, b: number, x: number): number => {
+  const MAXIT = 100, EPS = 3e-14, FPMIN = 1e-300;
+  const qab = a + b, qap = a + 1, qam = a - 1;
+  let c = 1, d = 1 - qab * x / qap;
+  if (Math.abs(d) < FPMIN) d = FPMIN;
+  d = 1 / d;
+  let h = d;
+  for (let m = 1; m <= MAXIT; m++) {
+    const m2 = 2 * m;
+    let aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+    d = 1 + aa * d; if (Math.abs(d) < FPMIN) d = FPMIN;
+    c = 1 + aa / c; if (Math.abs(c) < FPMIN) c = FPMIN;
+    d = 1 / d; h *= d * c;
+    aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+    d = 1 + aa * d; if (Math.abs(d) < FPMIN) d = FPMIN;
+    c = 1 + aa / c; if (Math.abs(c) < FPMIN) c = FPMIN;
+    d = 1 / d;
+    const del = d * c;
+    h *= del;
+    if (Math.abs(del - 1) < EPS) break;
+  }
+  return h;
+};
+const _betai = (a: number, b: number, x: number): number => {
+  if (x <= 0) return 0;
+  if (x >= 1) return 1;
+  const bt = Math.exp(_lgamma(a + b) - _lgamma(a) - _lgamma(b) + a * Math.log(x) + b * Math.log(1 - x));
+  if (x < (a + 1) / (a + b + 2)) return bt * _betacf(a, b, x) / a;
+  return 1 - bt * _betacf(b, a, 1 - x) / b;
+};
+const _tPValue = (t: number, df: number, twoTailed: boolean): number => {
+  const pTwo = _betai(df / 2, 0.5, df / (df + t * t));
+  return twoTailed ? pTwo : pTwo / 2;
+};
+// t critical values (two-tailed) for df 1–29: [90%, 95%, 99%].
+// Used by the confidence interval calculator for small samples (n < 30).
+const tCritical: Record<number, [number, number, number]> = {
+  1: [6.3138, 12.7062, 63.6567], 2: [2.9200, 4.3027, 9.9248], 3: [2.3534, 3.1824, 5.8409],
+  4: [2.1318, 2.7764, 4.6041], 5: [2.0150, 2.5706, 4.0321], 6: [1.9432, 2.4469, 3.7074],
+  7: [1.8946, 2.3646, 3.4995], 8: [1.8595, 2.3060, 3.3554], 9: [1.8331, 2.2622, 3.2498],
+  10: [1.8125, 2.2281, 3.1693], 11: [1.7959, 2.2010, 3.1058], 12: [1.7823, 2.1788, 3.0545],
+  13: [1.7709, 2.1604, 3.0123], 14: [1.7613, 2.1448, 2.9768], 15: [1.7531, 2.1314, 2.9467],
+  16: [1.7459, 2.1199, 2.9208], 17: [1.7396, 2.1098, 2.8982], 18: [1.7341, 2.1009, 2.8784],
+  19: [1.7291, 2.0930, 2.8609], 20: [1.7247, 2.0860, 2.8453], 21: [1.7207, 2.0796, 2.8314],
+  22: [1.7171, 2.0739, 2.8188], 23: [1.7139, 2.0687, 2.8073], 24: [1.7109, 2.0639, 2.7969],
+  25: [1.7081, 2.0595, 2.7874], 26: [1.7056, 2.0555, 2.7787], 27: [1.7033, 2.0518, 2.7707],
+  28: [1.7011, 2.0484, 2.7633], 29: [1.6991, 2.0452, 2.7564],
+};
+
 const _mathCalculators: CalculatorConfig[] = [
   // 1. Percentage Increase
   {
@@ -698,8 +761,8 @@ const _mathCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const gcdFn = (a: number, b: number): number => { a = Math.abs(a); b = Math.abs(b); return b === 0 ? a : gcdFn(b, a % b); };
-      const lcm = Math.abs(v.a * v.b) / gcdFn(v.a, v.b);
       const gcd = gcdFn(v.a, v.b);
+      const lcm = gcd === 0 ? 0 : Math.abs(v.a * v.b) / gcd;
       return [
         { label: "LCM", value: lcm.toLocaleString(), highlight: true },
         { label: "GCD", value: gcd.toLocaleString() },
@@ -731,7 +794,7 @@ const _mathCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const gcdFn = (a: number, b: number): number => { a = Math.abs(a); b = Math.abs(b); return b === 0 ? a : gcdFn(b, a % b); };
       const gcd = gcdFn(v.a, v.b);
-      const lcm = Math.abs(v.a * v.b) / gcd;
+      const lcm = gcd === 0 ? 0 : Math.abs(v.a * v.b) / gcd;
       return [
         { label: "GCF (GCD)", value: gcd.toLocaleString(), highlight: true },
         { label: "LCM", value: lcm.toLocaleString() },
@@ -800,7 +863,7 @@ const _mathCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const totalPoints = v.g1 * v.c1 + v.g2 * v.c2 + v.g3 * v.c3;
       const totalCredits = v.c1 + v.c2 + v.c3;
-      const gpa = totalPoints / totalCredits;
+      const gpa = totalCredits > 0 ? totalPoints / totalCredits : 0;
       let letterEst = "A";
       if (gpa >= 3.7) letterEst = "A/A−";
       else if (gpa >= 3.3) letterEst = "B+";
@@ -872,6 +935,7 @@ const _mathCalculators: CalculatorConfig[] = [
       { id: "finalWeight", label: "Final Exam Weight (%)", type: "number", defaultValue: 30, min: 1, max: 100 },
     ],
     calculate: (v) => {
+      if (v.finalWeight <= 0) return [{ label: "Error", value: "Final exam weight must be above 0" }];
       const needed = (v.target - v.current * (1 - v.finalWeight / 100)) / (v.finalWeight / 100);
       return [
         { label: "Needed on Final", value: `${needed.toFixed(1)}%`, highlight: true },
@@ -1151,13 +1215,14 @@ const _mathCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const gcdFn = (a: number, b: number): number => { a = Math.abs(a); b = Math.abs(b); return b === 0 ? a : gcdFn(b, a % b); };
       const g = gcdFn(Math.round(v.a), Math.round(v.b));
-      const sa = Math.round(v.a) / g;
-      const sb = Math.round(v.b) / g;
+      const sa = g === 0 ? 0 : Math.round(v.a) / g;
+      const sb = g === 0 ? 0 : Math.round(v.b) / g;
+      const dec = v.b !== 0 ? v.a / v.b : NaN;
       return [
         { label: "Simplified Ratio", value: `${sa}:${sb}`, highlight: true },
         { label: "As Fraction", value: `${sa}/${sb}` },
-        { label: "As Decimal", value: (v.a / v.b).toFixed(4) },
-        { label: "As Percentage", value: `${((v.a / v.b) * 100).toFixed(2)}%` },
+        { label: "As Decimal", value: Number.isFinite(dec) ? dec.toFixed(4) : "—" },
+        { label: "As Percentage", value: Number.isFinite(dec) ? `${(dec * 100).toFixed(2)}%` : "—" },
       ];
     },
     formula: { expression: "Divide both by GCD to simplify", variables: ["a:b = (a/GCD):(b/GCD)"] },
@@ -1354,8 +1419,8 @@ const _mathCalculators: CalculatorConfig[] = [
       const harmonic = n / data.reduce((sum, x) => sum + 1 / x, 0);
       return [
         { label: "Arithmetic Mean", value: arithmetic.toFixed(2), highlight: true },
-        { label: "Geometric Mean", value: geometric.toFixed(2) },
-        { label: "Harmonic Mean", value: harmonic.toFixed(2) },
+        { label: "Geometric Mean", value: Number.isFinite(geometric) ? geometric.toFixed(2) : "—" },
+        { label: "Harmonic Mean", value: Number.isFinite(harmonic) ? harmonic.toFixed(2) : "—" },
         { label: "Sum", value: data.reduce((a, b) => a + b, 0).toLocaleString() },
       ];
     },
@@ -1380,13 +1445,13 @@ const _mathCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const c = Math.sqrt(v.a ** 2 + v.b ** 2);
-      const angleA = Math.atan(v.b / v.a) * (180 / Math.PI);
+      const angleA = c > 0 ? Math.atan(v.b / v.a) * (180 / Math.PI) : NaN;
       const angleB = 90 - angleA;
       const area = 0.5 * v.a * v.b;
       return [
         { label: "Hypotenuse", value: c.toFixed(4), highlight: true },
-        { label: "Angle A", value: `${angleA.toFixed(2)}°` },
-        { label: "Angle B", value: `${angleB.toFixed(2)}°` },
+        { label: "Angle A", value: Number.isFinite(angleA) ? `${angleA.toFixed(2)}°` : "—" },
+        { label: "Angle B", value: Number.isFinite(angleB) ? `${angleB.toFixed(2)}°` : "—" },
         { label: "Area", value: area.toFixed(2) },
         { label: "Perimeter", value: (v.a + v.b + c).toFixed(2) },
       ];
@@ -1478,11 +1543,12 @@ const _mathCalculators: CalculatorConfig[] = [
       { id: "population", label: "Population Size", type: "number", defaultValue: 10000 },
     ],
     calculate: (v) => {
+      if (v.margin <= 0) return [{ label: "Error", value: "Margin of error must be above 0", highlight: true }];
       const p = 0.5; // max variability
       const e = v.margin / 100;
       const z = v.confidence;
       const n0 = (z ** 2 * p * (1 - p)) / (e ** 2);
-      const n = Math.ceil(n0 / (1 + (n0 - 1) / v.population));
+      const n = v.population > 0 ? Math.ceil(n0 / (1 + (n0 - 1) / v.population)) : Math.ceil(n0);
       return [
         { label: "Required Sample Size", value: n.toLocaleString(), highlight: true },
         { label: "Infinite Pop. Sample", value: Math.ceil(n0).toLocaleString() },
@@ -1490,7 +1556,7 @@ const _mathCalculators: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "n = n₀ / (1 + (n₀-1)/N); n₀ = z²p(1-p)/e²", variables: ["z = z-score for confidence", "p = 0.5 (maximum)", "e = margin of error"] },
-    howToUse: "Select confidence level, set margin of error, and enter population size.",
+    howToUse: "Select confidence level, set margin of error, and enter population size. Enter 0 for population if unknown or very large.",
     faqs: [{ question: "Why is p set to 0.5?", answer: "Using p=0.5 gives the maximum sample size (worst case), ensuring your results are reliable regardless of the actual proportion." }, { question: "What margin of error should I use?", answer: "5% is the most common choice for surveys. At 95% confidence, a 5% margin needs 385 responses for a large population; halving the margin to 2.5% quadruples that to 1,537, so tighter precision costs much larger samples." }, { question: "What does the 80% response rate factor mean?", answer: "Not everyone you invite will respond. The calculator divides the required sample by 0.8 to suggest how many surveys to send — for a sample of 370, that is 463 surveys. If you expect a lower response rate, send proportionally more." }],
     relatedCalcs: mathRelated("sample-size-calculator"),
   },
@@ -1507,20 +1573,27 @@ const _mathCalculators: CalculatorConfig[] = [
       { id: "confidence", label: "Confidence Level", type: "select", defaultValue: 1.96, options: [{ value: 1.645, label: "90%" }, { value: 1.96, label: "95%" }, { value: 2.576, label: "99%" }] },
     ],
     calculate: (v) => {
+      if (v.n < 2) return [{ label: "Error", value: "Sample size must be at least 2", highlight: true }];
+      const level = v.confidence === 1.645 ? 0 : v.confidence === 2.576 ? 2 : 1;
+      const nInt = Math.floor(v.n);
+      const df = nInt - 1;
+      const useT = nInt < 30;
+      const crit = useT ? tCritical[df][level] : v.confidence;
       const se = v.sd / Math.sqrt(v.n);
-      const margin = v.confidence * se;
+      const margin = crit * se;
       return [
         { label: "Confidence Interval", value: `${(v.mean - margin).toFixed(2)} – ${(v.mean + margin).toFixed(2)}`, highlight: true },
         { label: "Margin of Error", value: `±${margin.toFixed(4)}` },
         { label: "Standard Error", value: se.toFixed(4) },
+        { label: "Method", value: useT ? `t-distribution (df = ${df})` : "Normal (z) distribution" },
       ];
     },
-    formula: { expression: "CI = x̄ ± z × (σ/√n)", variables: ["x̄ = sample mean", "σ = standard deviation", "n = sample size"] },
+    formula: { expression: "CI = x̄ ± t × (σ/√n) for n < 30; x̄ ± z × (σ/√n) for n ≥ 30", variables: ["x̄ = sample mean", "σ = standard deviation", "n = sample size", "t = t critical value, df = n − 1"] },
     howToUse: "Enter sample mean, standard deviation, sample size, and confidence level.",
     faqs: [
       { question: "What does 95% confidence mean?", answer: "If you repeated the study 100 times, about 95 of the intervals would contain the true population mean." },
       { question: "How do I get a narrower confidence interval?", answer: "Increase the sample size, reduce variability, or accept a lower confidence level. Quadrupling the sample size halves the margin of error, because the standard error divides by √n." },
-      { question: "When should I use the t-distribution instead?", answer: "For small samples (usually under 30) the t-distribution gives wider, more honest intervals than the z-values this calculator uses. With large samples the two are nearly identical." },
+      { question: "When should I use the t-distribution instead?", answer: "For small samples (usually under 30) the t-distribution gives wider, more honest intervals than the z-values used for large samples — this calculator uses t automatically when n is under 30, and z when n is 30 or more. With large samples the two are nearly identical." },
     ],
     relatedCalcs: mathRelated("confidence-interval-calculator"),
   },
@@ -1528,27 +1601,40 @@ const _mathCalculators: CalculatorConfig[] = [
   {
     slug: "p-value-calculator", name: "P-Value Calculator", category: "Math", categorySlug: "math",
     description: "Calculate the p-value from a z-score or t-statistic for hypothesis testing.",
-    metaDescription: "Free p-value calculator. Find the p-value from a z-score for statistical hypothesis testing.",
+    metaDescription: "Free p-value calculator. Find the p-value from a z-score or t-statistic for statistical hypothesis testing.",
     icon: "hash",
     inputs: [
-      { id: "zScore", label: "Z-Score / Test Statistic", type: "number", defaultValue: 1.96, step: 0.01 },
+      { id: "zScore", label: "Test Statistic (z or t)", type: "number", defaultValue: 1.96, step: 0.01 },
+      { id: "distribution", label: "Distribution", type: "select", defaultValue: 0, options: [{ value: 0, label: "Normal (z-score)" }, { value: 1, label: "t-Distribution" }] },
+      { id: "df", label: "Degrees of Freedom (t only)", type: "number", defaultValue: 10, min: 1 },
       { id: "tail", label: "Test Type", type: "select", defaultValue: 2, options: [{ value: 1, label: "One-Tailed" }, { value: 2, label: "Two-Tailed" }] },
     ],
     calculate: (v) => {
-      const z = Math.abs(v.zScore);
-      const t = 1 / (1 + 0.2316419 * z);
-      const d = 0.3989422804014327;
-      const p1 = d * Math.exp(-z * z / 2) * (0.3193815 * t - 0.3565638 * t * t + 1.781478 * t ** 3 - 1.821256 * t ** 4 + 1.330274 * t ** 5);
-      const pValue = v.tail === 2 ? 2 * p1 : p1;
+      const stat = Math.abs(v.zScore);
+      const twoTailed = v.tail === 2;
+      let pValue: number;
+      let distLabel: string;
+      if (v.distribution === 1) {
+        const df = Math.max(1, Math.floor(v.df));
+        pValue = _tPValue(stat, df, twoTailed);
+        distLabel = `t (df = ${df})`;
+      } else {
+        const t = 1 / (1 + 0.2316419 * stat);
+        const d = 0.3989422804014327;
+        const p1 = d * Math.exp(-stat * stat / 2) * (0.3193815 * t - 0.3565638 * t * t + 1.781478 * t ** 3 - 1.821256 * t ** 4 + 1.330274 * t ** 5);
+        pValue = twoTailed ? 2 * p1 : p1;
+        distLabel = "Normal (z)";
+      }
       return [
         { label: "P-Value", value: pValue < 0.0001 ? pValue.toExponential(4) : pValue.toFixed(6), highlight: true },
+        { label: "Distribution", value: distLabel },
         { label: "Significant (α=0.05)?", value: pValue < 0.05 ? "Yes ✓" : "No" },
         { label: "Significant (α=0.01)?", value: pValue < 0.01 ? "Yes ✓" : "No" },
       ];
     },
-    formula: { expression: "P-value from standard normal distribution", variables: ["Two-tailed = 2 × one-tailed", "Approximation using polynomial"] },
-    howToUse: "Enter your test statistic and select one or two-tailed test.",
-    faqs: [{ question: "What is a p-value?", answer: "The probability of observing results as extreme as the test statistic, assuming the null hypothesis is true. Lower = stronger evidence against null." }, { question: "What p-value is considered significant?", answer: "Below 0.05 is the usual cut-off, and this calculator also checks the stricter 0.01 level. A z-score of 1.96 (two-tailed) gives p = 0.049996, just significant at 0.05; a z-score of 2.58 gives p = 0.009880, significant at both levels." }, { question: "One-tailed or two-tailed — which do I choose?", answer: "Two-tailed tests for any difference in either direction and is the default in most research. One-tailed tests a difference in one specified direction only, and must be chosen before you see the data — it halves the p-value, so switching after the fact is not valid." }],
+    formula: { expression: "P-value from the standard normal or Student's t-distribution", variables: ["Two-tailed = 2 × one-tailed", "z: polynomial approximation", "t: incomplete beta function"] },
+    howToUse: "Enter your test statistic, choose the normal (z) or t-distribution, and select one or two-tailed test. For a t-statistic, enter the degrees of freedom.",
+    faqs: [{ question: "What is a p-value?", answer: "The probability of observing results as extreme as the test statistic, assuming the null hypothesis is true. Lower = stronger evidence against null." }, { question: "What p-value is considered significant?", answer: "Below 0.05 is the usual cut-off, and this calculator also checks the stricter 0.01 level. A z-score of 1.96 (two-tailed) gives p = 0.049996, just significant at 0.05; a z-score of 2.58 gives p = 0.009880, significant at both levels." }, { question: "When should I use the t-distribution instead of z?", answer: "Use the t-distribution when your test statistic comes from a sample with an estimated standard deviation — the usual case for small samples. The t-distribution has heavier tails, so it gives larger p-values: t = 2.228 with 10 degrees of freedom gives p = 0.050012 (two-tailed), while the same value as a z-score would give p = 0.025880. With large samples the two are nearly identical." }, { question: "One-tailed or two-tailed — which do I choose?", answer: "Two-tailed tests for any difference in either direction and is the default in most research. One-tailed tests a difference in one specified direction only, and must be chosen before you see the data — it halves the p-value, so switching after the fact is not valid." }],
     relatedCalcs: mathRelated("p-value-calculator"),
   },
   // 46. Long Division Calculator
@@ -1563,8 +1649,10 @@ const _mathCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       if (v.divisor === 0) return [{ label: "Error", value: "Cannot divide by zero" }];
+      // Floor division: quotient rounds toward -∞, remainder takes the sign of the divisor,
+      // so Dividend = Divisor × Quotient + Remainder always holds (e.g. -17 ÷ 5 = -4 R 3).
       const quotient = Math.floor(v.dividend / v.divisor);
-      const remainder = v.dividend % v.divisor;
+      const remainder = v.dividend - v.divisor * quotient;
       const decimal = v.dividend / v.divisor;
       return [
         { label: "Quotient", value: `${quotient}`, highlight: true },
@@ -1573,9 +1661,9 @@ const _mathCalculators: CalculatorConfig[] = [
         { label: "Decimal", value: decimal.toFixed(6) },
       ];
     },
-    formula: { expression: "Dividend = Divisor × Quotient + Remainder", variables: ["Quotient = floor(Dividend / Divisor)"] },
+    formula: { expression: "Dividend = Divisor × Quotient + Remainder", variables: ["Quotient = floor(Dividend / Divisor)", "Remainder always has the sign of the divisor"] },
     howToUse: "Enter the dividend and divisor. See the quotient, remainder, and decimal result.",
-    faqs: [{ question: "What is a remainder?", answer: "The amount left over after division. 17 ÷ 5 = 3 remainder 2 (because 5 × 3 = 15, and 17 − 15 = 2)." }, { question: "How do I check my long division answer?", answer: "Use the identity dividend = divisor x quotient + remainder. For 1,000 / 7 = 142 R 6: 7 x 142 + 6 = 994 + 6 = 1,000." }, { question: "Can the divisor be zero?", answer: "No. Dividing by zero has no defined answer, so the calculator shows an error message instead of a quotient and remainder." }],
+    faqs: [{ question: "What is a remainder?", answer: "The amount left over after division. 17 ÷ 5 = 3 remainder 2 (because 5 × 3 = 15, and 17 − 15 = 2)." }, { question: "How do I check my long division answer?", answer: "Use the identity dividend = divisor x quotient + remainder. For 1,000 / 7 = 142 R 6: 7 x 142 + 6 = 994 + 6 = 1,000." }, { question: "What about negative numbers?", answer: "This calculator uses floor division, so -17 ÷ 5 = -4 R 3 (check: 5 x -4 + 3 = -17). The remainder always has the same sign as the divisor, which keeps the check identity true for negative dividends too." }, { question: "Can the divisor be zero?", answer: "No. Dividing by zero has no defined answer, so the calculator shows an error message instead of a quotient and remainder." }],
     relatedCalcs: mathRelated("long-division-calculator"),
   },
   // 47. Rounding Calculator
@@ -1618,6 +1706,7 @@ const _mathCalculators: CalculatorConfig[] = [
       { id: "type", label: "Sequence Type", type: "select", defaultValue: 0, options: [{ value: 0, label: "Arithmetic (+)" }, { value: 1, label: "Geometric (×)" }] },
     ],
     calculate: (v) => {
+      if (v.n < 1) return [{ label: "Error", value: "Number of terms must be at least 1" }];
       const terms: number[] = [];
       let sum = 0;
       for (let i = 0; i < Math.min(v.n, 20); i++) {

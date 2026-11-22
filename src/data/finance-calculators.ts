@@ -7,12 +7,18 @@ const fmt0 = (n: number) =>
 const pct = (n: number) => `${n.toFixed(2)}%`;
 
 const loanCalc = (principal: number, annualRate: number, months: number) => {
+  if (months <= 0) return { monthly: 0, totalInterest: 0, totalPayment: principal };
   if (annualRate === 0) return { monthly: principal / months, totalInterest: 0, totalPayment: principal };
   const r = annualRate / 100 / 12;
   const monthly = (principal * r * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1);
   const totalPayment = monthly * months;
   return { monthly, totalInterest: totalPayment - principal, totalPayment };
 };
+
+// Future-value annuity factor ((1+r)^n − 1)/r, with the correct 0% limit (n).
+const annuityFactor = (r: number, n: number) => (r === 0 ? n : (Math.pow(1 + r, n) - 1) / r);
+// Present-value annuity factor (1 − (1+r)^−n)/r, with the correct 0% limit (n).
+const pvAnnuityFactor = (r: number, n: number) => (r === 0 ? n : (1 - Math.pow(1 + r, -n)) / r);
 
 const financeRelated = (exclude: string) => [
   { name: "Mortgage Calculator", slug: "mortgage-calculator", icon: "dollar", category: "finance" },
@@ -310,6 +316,11 @@ const _financeCalculators: CalculatorConfig[] = [
       { id: "term", label: "Loan Term (months)", type: "number", defaultValue: 60 },
     ],
     calculate: (v) => {
+      if (v.principal <= 0 || v.term <= 0) return [{ label: "Error", value: "Enter a loan amount and term above 0", highlight: true }];
+      if (v.payment * v.term < v.principal) return [
+        { label: "Estimated Annual Rate", value: "Payment too low", highlight: true },
+        { label: "Note", value: "Your payments never cover the loan amount — raise the payment or extend the term" },
+      ];
       // Newton's method to find rate
       let rate = 0.05 / 12; // initial guess
       for (let i = 0; i < 100; i++) {
@@ -323,6 +334,7 @@ const _financeCalculators: CalculatorConfig[] = [
         rate = newRate;
       }
       const annualRate = rate * 12 * 100;
+      if (!Number.isFinite(annualRate)) return [{ label: "Error", value: "Could not find a rate for these inputs", highlight: true }];
       const totalPaid = v.payment * v.term;
       return [
         { label: "Estimated Annual Rate", value: pct(annualRate), highlight: true },
@@ -337,7 +349,7 @@ const _financeCalculators: CalculatorConfig[] = [
       { question: "How accurate is this calculation?", answer: "The Newton's method approach converges to an extremely accurate result, typically within 0.001% of the actual rate." },
       { question: "Why would I need to calculate the rate?", answer: "This is useful when a dealer or lender quotes a monthly payment without clearly stating the rate, allowing you to compare offers." },
       { question: "Is the rate the same as APR?", answer: "No. This is the nominal interest rate implied by your payment. APR also includes fees and other charges, so it is usually slightly higher than the interest rate alone." },
-      { question: "Why does the calculator show a negative rate?", answer: "If your total payments add up to less than the loan amount, no positive interest rate can produce that payment — for example, $300 a month for 60 months only totals $18,000 on a $20,000 loan. Check that your payment, term, and loan amount are entered correctly." },
+      { question: "What if my payment is too low to repay the loan?", answer: "The calculator says so instead of showing a negative rate. If your total payments add up to less than the loan amount, no positive interest rate can produce that payment — for example, $300 a month for 60 months only totals $18,000 on a $20,000 loan. Raise the payment or extend the term." },
     ],
     relatedCalcs: financeRelated("interest-rate-calculator"),
   },
@@ -362,14 +374,14 @@ const _financeCalculators: CalculatorConfig[] = [
       const r = v.rate / 100;
       const t = v.years;
       const futureP = v.principal * Math.pow(1 + r / n, n * t);
-      const futureC = v.monthly * ((Math.pow(1 + r / n, n * t) - 1) / (r / n));
+      const futureC = v.monthly * annuityFactor(r / n, n * t);
       const total = futureP + futureC;
       const totalContributed = v.principal + v.monthly * 12 * t;
       return [
         { label: "Future Value", value: fmt0(total), highlight: true },
         { label: "Total Contributions", value: fmt0(totalContributed) },
         { label: "Total Interest Earned", value: fmt0(total - totalContributed) },
-        { label: "Interest as % of Total", value: pct(((total - totalContributed) / total) * 100) },
+        { label: "Interest as % of Total", value: total !== 0 ? pct(((total - totalContributed) / total) * 100) : "—" },
       ];
     },
     formula: { expression: "A = P(1 + r/n)^(nt) + PMT × [(1 + r/n)^(nt) − 1] / (r/n)", variables: ["A = Future Value", "P = Principal", "PMT = Monthly Contribution", "r = Annual Rate", "n = Compounds/Year"] },
@@ -399,7 +411,7 @@ const _financeCalculators: CalculatorConfig[] = [
       return [
         { label: "Total Interest", value: fmt(interest), highlight: true },
         { label: "Total Amount", value: fmt(v.principal + interest) },
-        { label: "Monthly Interest", value: fmt(interest / (v.time * 12)) },
+        { label: "Monthly Interest", value: fmt(v.principal * (v.rate / 100) / 12) },
       ];
     },
     formula: { expression: "I = P × R × T", variables: ["I = Interest", "P = Principal", "R = Annual Rate", "T = Time in Years"] },
@@ -430,14 +442,14 @@ const _financeCalculators: CalculatorConfig[] = [
       const r = v.rate / 100 / 12;
       const n = v.years * 12;
       const fvInitial = v.initial * Math.pow(1 + r, n);
-      const fvContrib = v.monthly * ((Math.pow(1 + r, n) - 1) / r);
+      const fvContrib = v.monthly * annuityFactor(r, n);
       const total = fvInitial + fvContrib;
       const totalInvested = v.initial + v.monthly * n;
       return [
         { label: "Future Value", value: fmt0(total), highlight: true },
         { label: "Total Invested", value: fmt0(totalInvested) },
         { label: "Investment Gains", value: fmt0(total - totalInvested) },
-        { label: "Return on Investment", value: pct(((total - totalInvested) / totalInvested) * 100) },
+        { label: "Return on Investment", value: totalInvested !== 0 ? pct(((total - totalInvested) / totalInvested) * 100) : "—" },
       ];
     },
     formula: { expression: "FV = PV(1+r)^n + PMT × [(1+r)^n − 1] / r", variables: ["FV = Future Value", "PV = Present Value", "PMT = Monthly Payment", "r = Monthly Return Rate"] },
@@ -464,13 +476,13 @@ const _financeCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const gain = v.returned - v.invested;
-      const roi = (gain / v.invested) * 100;
-      const annualized = (Math.pow(v.returned / v.invested, 1 / v.years) - 1) * 100;
+      const roi = v.invested !== 0 ? (gain / v.invested) * 100 : NaN;
+      const annualized = v.invested > 0 && v.returned >= 0 && v.years > 0 ? (Math.pow(v.returned / v.invested, 1 / v.years) - 1) * 100 : NaN;
       return [
-        { label: "ROI", value: pct(roi), highlight: true },
-        { label: "Annualized Return", value: pct(annualized) },
+        { label: "ROI", value: Number.isFinite(roi) ? pct(roi) : "—", highlight: true },
+        { label: "Annualized Return", value: Number.isFinite(annualized) ? pct(annualized) : "—" },
         { label: "Net Profit", value: fmt(gain) },
-        { label: "Profit per Year", value: fmt(gain / v.years) },
+        { label: "Profit per Year", value: v.years !== 0 ? fmt(gain / v.years) : "—" },
       ];
     },
     formula: { expression: "ROI = [(Final Value − Initial Cost) / Initial Cost] × 100", variables: ["Annualized = (Final/Initial)^(1/years) − 1"] },
@@ -501,7 +513,7 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const r = v.rate / 100 / 12;
       const n = v.years * 12;
-      const fv = v.initial * Math.pow(1 + r, n) + v.monthly * ((Math.pow(1 + r, n) - 1) / r);
+      const fv = v.initial * Math.pow(1 + r, n) + v.monthly * annuityFactor(r, n);
       const totalDeposited = v.initial + v.monthly * n;
       return [
         { label: "Future Balance", value: fmt0(fv), highlight: true },
@@ -540,7 +552,7 @@ const _financeCalculators: CalculatorConfig[] = [
       const yearsToRetire = v.retireAge - v.age;
       const months = yearsToRetire * 12;
       const r = v.rate / 100 / 12;
-      const fv = v.currentSavings * Math.pow(1 + r, months) + v.monthlyContrib * ((Math.pow(1 + r, months) - 1) / r);
+      const fv = v.currentSavings * Math.pow(1 + r, months) + v.monthlyContrib * annuityFactor(r, months);
       const annualIncome = fv * (v.withdrawalRate / 100);
       return [
         { label: "Projected Nest Egg", value: fmt0(fv), highlight: true },
@@ -583,7 +595,7 @@ const _financeCalculators: CalculatorConfig[] = [
       const totalMonthly = (yourAnnual + employerAnnual) / 12;
       const r = v.rate / 100 / 12;
       const n = v.years * 12;
-      const fv = v.currentBalance * Math.pow(1 + r, n) + totalMonthly * ((Math.pow(1 + r, n) - 1) / r);
+      const fv = v.currentBalance * Math.pow(1 + r, n) + totalMonthly * annuityFactor(r, n);
       return [
         { label: "Projected 401k Balance", value: fmt0(fv), highlight: true },
         { label: "Your Annual Contribution", value: fmt0(yourAnnual) },
@@ -622,7 +634,7 @@ const _financeCalculators: CalculatorConfig[] = [
       const r = v.rate / 100 / 12;
       const n = v.years * 12;
       const monthlyContrib = v.annual / 12;
-      const fv = v.current * Math.pow(1 + r, n) + monthlyContrib * ((Math.pow(1 + r, n) - 1) / r);
+      const fv = v.current * Math.pow(1 + r, n) + monthlyContrib * annuityFactor(r, n);
       const rothAfterTax = fv; // Roth = no tax on withdrawal
       const tradAfterTax = fv * (1 - v.taxRate / 100);
       return [
@@ -659,9 +671,9 @@ const _financeCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const r = v.rate / 100;
-      const fvOrdinary = v.payment * ((Math.pow(1 + r, v.periods) - 1) / r);
+      const fvOrdinary = v.payment * annuityFactor(r, v.periods);
       const fvDue = fvOrdinary * (1 + r);
-      const pvOrdinary = v.payment * ((1 - Math.pow(1 + r, -v.periods)) / r);
+      const pvOrdinary = v.payment * pvAnnuityFactor(r, v.periods);
       return [
         { label: "Future Value (Ordinary)", value: fmt0(fvOrdinary), highlight: true },
         { label: "Future Value (Annuity Due)", value: fmt0(fvDue) },
@@ -699,7 +711,7 @@ const _financeCalculators: CalculatorConfig[] = [
       return [
         { label: "Present Value", value: fmt(pv), highlight: true },
         { label: "Discount Amount", value: fmt(discount) },
-        { label: "Total Discount Factor", value: (pv / v.futureValue).toFixed(4) },
+        { label: "Total Discount Factor", value: (1 / Math.pow(1 + v.rate / 100, v.years)).toFixed(4) },
       ];
     },
     formula: { expression: "PV = FV / (1 + r)^n", variables: ["PV = Present Value", "FV = Future Value", "r = Discount Rate", "n = Years"] },
@@ -732,7 +744,7 @@ const _financeCalculators: CalculatorConfig[] = [
       return [
         { label: "Future Value", value: fmt0(fv), highlight: true },
         { label: "Total Growth", value: fmt0(growth) },
-        { label: "Growth Factor", value: `${(fv / v.presentValue).toFixed(2)}×` },
+        { label: "Growth Factor", value: `${Math.pow(1 + v.rate / 100, v.years).toFixed(2)}×` },
       ];
     },
     formula: { expression: "FV = PV × (1 + r)^n", variables: ["FV = Future Value", "PV = Present Value", "r = Annual Rate", "n = Years"] },
@@ -767,7 +779,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Future Cost of Same Goods", value: fmt0(futureEquivalent), highlight: true },
         { label: "Future Purchasing Power", value: fmt0(purchasingPower) },
         { label: "Purchasing Power Lost", value: fmt0(lost) },
-        { label: "Percentage Lost", value: pct((lost / v.amount) * 100) },
+        { label: "Percentage Lost", value: pct((1 - 1 / Math.pow(1 + v.inflation / 100, v.years)) * 100) },
       ];
     },
     formula: { expression: "Future Cost = Amount × (1 + inflation)^years", variables: ["Purchasing Power = Amount / (1 + inflation)^years"] },
@@ -798,7 +810,7 @@ const _financeCalculators: CalculatorConfig[] = [
       const r = loanCalc(v.principal, v.rate, v.term);
       const totalCost = r.monthly * v.term;
       const totalInterestPlusFees = totalCost - v.principal + v.fees;
-      const apr = (totalInterestPlusFees / v.principal / (v.term / 12)) * 100;
+      const apr = v.principal > 0 && v.term > 0 ? (totalInterestPlusFees / v.principal / (v.term / 12)) * 100 : 0;
       return [
         { label: "Effective APR", value: pct(apr), highlight: true },
         { label: "Monthly Payment", value: fmt(r.monthly) },
@@ -834,8 +846,10 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const r = v.apr / 100 / 12;
       if (v.payment <= v.balance * r) return [{ label: "Error", value: "Payment too low to pay off debt", highlight: true }];
-      const months = Math.ceil(-Math.log(1 - (v.balance * r) / v.payment) / Math.log(1 + r));
-      const totalPaid = v.payment * months;
+      const months = r === 0 ? Math.ceil(v.balance / v.payment) : Math.ceil(-Math.log(1 - (v.balance * r) / v.payment) / Math.log(1 + r));
+      const balanceBeforeFinal = r === 0 ? v.balance - v.payment * (months - 1) : v.balance * Math.pow(1 + r, months - 1) - v.payment * ((Math.pow(1 + r, months - 1) - 1) / r);
+      const finalPayment = balanceBeforeFinal * (1 + r);
+      const totalPaid = v.payment * (months - 1) + finalPayment;
       const totalInterest = totalPaid - v.balance;
       return [
         { label: "Months to Pay Off", value: `${months} months (${(months / 12).toFixed(1)} years)`, highlight: true },
@@ -848,7 +862,7 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Why does credit card interest feel so high?", answer: "Credit card APRs (15-25%+) are much higher than other loans because they're unsecured. Even small balances can generate significant interest if only minimum payments are made." },
       { question: "How can I pay off my card faster?", answer: "Pay more than the minimum, transfer balances to 0% APR cards, or use the avalanche method (pay highest APR debts first)." },
-      { question: "How long does it take to pay off $5,000 at 22% APR?", answer: "Paying $150 a month, it takes 52 months (4.3 years) and costs $2,800 in interest. Paying $200 a month cuts it to 34 months and $1,800 in interest — an extra $50 a month saves $1,000 and 18 months." },
+      { question: "How long does it take to pay off $5,000 at 22% APR?", answer: "Paying $150 a month, it takes 52 months (4.3 years) and costs $2,798.05 in interest. Paying $200 a month cuts it to 34 months and $1,749.88 in interest — an extra $50 a month saves $1,048.17 and 18 months." },
       { question: "What happens if my monthly payment is too low?", answer: "If your payment doesn't exceed the monthly interest charge, the balance never shrinks. On a $5,000 balance at 22% APR, the first month's interest alone is $91.67 — a payment below that leaves you in debt forever. The calculator shows an error when the payment is too low to ever pay the card off." },
     ],
     relatedCalcs: financeRelated("credit-card-payment-calculator"),
@@ -902,6 +916,7 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const r = v.avgRate / 100 / 12;
       const calcMonths = (payment: number) => {
+        if (r === 0) return payment > 0 ? Math.ceil(v.totalDebt / payment) : Infinity;
         if (payment <= v.totalDebt * r) return Infinity;
         return Math.ceil(-Math.log(1 - (v.totalDebt * r) / payment) / Math.log(1 + r));
       };
@@ -911,10 +926,10 @@ const _financeCalculators: CalculatorConfig[] = [
       const totalExtra = (v.monthlyPayment + v.extraPayment) * monthsExtra;
       return [
         { label: "Payoff (Current)", value: monthsNormal === Infinity ? "Never" : `${monthsNormal} months`, highlight: true },
-        { label: "Payoff (With Extra)", value: `${monthsExtra} months` },
-        { label: "Time Saved", value: monthsNormal === Infinity ? "∞" : `${monthsNormal - monthsExtra} months` },
-        { label: "Interest Saved", value: fmt0(totalNormal - totalExtra - v.totalDebt + v.totalDebt) },
-        { label: "Total Cost (With Extra)", value: fmt0(totalExtra) },
+        { label: "Payoff (With Extra)", value: monthsExtra === Infinity ? "Never" : `${monthsExtra} months` },
+        { label: "Time Saved", value: monthsNormal === Infinity ? (monthsExtra === Infinity ? "—" : "∞") : `${monthsNormal - monthsExtra} months` },
+        { label: "Interest Saved", value: Number.isFinite(totalNormal) && Number.isFinite(totalExtra) ? fmt0(totalNormal - totalExtra) : "—" },
+        { label: "Total Cost (With Extra)", value: Number.isFinite(totalExtra) ? fmt0(totalExtra) : "—" },
       ];
     },
     formula: { expression: "Months = −ln(1 − Dr/P) / ln(1+r)", variables: ["D = Total Debt", "r = Monthly Rate", "P = Payment"] },
@@ -946,15 +961,15 @@ const _financeCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const totalDebt = v.mortgage + v.carPayment + v.studentLoan + v.creditCards + v.otherDebt;
-      const dti = (totalDebt / v.monthlyIncome) * 100;
+      const dti = v.monthlyIncome > 0 ? (totalDebt / v.monthlyIncome) * 100 : NaN;
       let rating = "Excellent";
       if (dti > 50) rating = "Very High Risk";
       else if (dti > 43) rating = "High";
       else if (dti > 36) rating = "Acceptable";
       else if (dti > 20) rating = "Good";
       return [
-        { label: "Debt-to-Income Ratio", value: pct(dti), highlight: true },
-        { label: "Rating", value: rating },
+        { label: "Debt-to-Income Ratio", value: Number.isFinite(dti) ? pct(dti) : "—", highlight: true },
+        { label: "Rating", value: Number.isFinite(dti) ? rating : "—" },
         { label: "Total Monthly Debt", value: fmt(totalDebt) },
         { label: "Remaining Income", value: fmt(v.monthlyIncome - totalDebt) },
       ];
@@ -984,9 +999,10 @@ const _financeCalculators: CalculatorConfig[] = [
       { id: "weeksPerYear", label: "Work Weeks Per Year", type: "number", defaultValue: 52 },
     ],
     calculate: (v) => {
-      const hourly = v.annual / (v.hoursPerWeek * v.weeksPerYear);
-      const weekly = v.annual / v.weeksPerYear;
-      const biweekly = v.annual / (v.weeksPerYear / 2);
+      const totalHours = v.hoursPerWeek * v.weeksPerYear;
+      const hourly = totalHours !== 0 ? v.annual / totalHours : 0;
+      const weekly = v.weeksPerYear !== 0 ? v.annual / v.weeksPerYear : 0;
+      const biweekly = v.weeksPerYear !== 0 ? v.annual / (v.weeksPerYear / 2) : 0;
       const monthly = v.annual / 12;
       return [
         { label: "Hourly Rate", value: fmt(hourly), highlight: true },
@@ -1099,7 +1115,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Commission Earned", value: fmt(commission), highlight: true },
         { label: "Total Monthly Earnings", value: fmt(totalEarnings) },
         { label: "Annual Projection", value: fmt0(totalEarnings * 12) },
-        { label: "Effective Earnings Rate", value: pct(effectiveRate) },
+        { label: "Effective Earnings Rate", value: v.salesAmount !== 0 ? pct(effectiveRate) : "—" },
       ];
     },
     formula: { expression: "Commission = Sales × Rate / 100", variables: ["Total = Base Salary + Commission"] },
@@ -1139,7 +1155,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "State Tax", value: fmt(stateTax) },
         { label: "FICA (SS + Medicare)", value: fmt(ficaTax) },
         { label: "Total Taxes", value: fmt(totalTax) },
-        { label: "Effective Tax Rate", value: pct((totalTax / v.bonusAmount) * 100) },
+        { label: "Effective Tax Rate", value: pct(v.fedRate + v.stateRate + v.fica) },
       ];
     },
     formula: { expression: "Net Bonus = Gross − Federal − State − FICA", variables: ["Federal supplemental rate = 22% (flat)", "FICA = 7.65%"] },
@@ -1184,7 +1200,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Biweekly Paycheck", value: fmt(netAnnual / 26) },
         { label: "Federal Tax", value: fmt0(fedTax) },
         { label: "Total Deductions", value: fmt0(totalDeductions) },
-        { label: "Effective Tax Rate", value: pct((totalDeductions / v.grossAnnual) * 100) },
+        { label: "Effective Deduction Rate", value: v.grossAnnual !== 0 ? pct((totalDeductions / v.grossAnnual) * 100) : "—" },
       ];
     },
     formula: { expression: "Take-Home = Gross − Federal − State − FICA − Retirement − Insurance", variables: ["Retirement reduces taxable income", "FICA on full gross"] },
@@ -1208,20 +1224,20 @@ const _financeCalculators: CalculatorConfig[] = [
     icon: "dollar",
     inputs: [
       { id: "income", label: "Gross Annual Income", type: "number", defaultValue: 85000, prefix: "$" },
-      { id: "deductions", label: "Total Deductions", type: "number", defaultValue: 14600, prefix: "$" },
+      { id: "deductions", label: "Total Deductions", type: "number", defaultValue: 16100, prefix: "$" },
       { id: "stateRate", label: "State Tax Rate (%)", type: "number", defaultValue: 5, suffix: "%" },
     ],
     calculate: (v) => {
       const taxable = Math.max(v.income - v.deductions, 0);
-      // 2024 single brackets (simplified)
+      // 2026 single brackets (simplified)
       let fedTax = 0;
       const brackets = [
-        { limit: 11600, rate: 0.10 },
-        { limit: 47150, rate: 0.12 },
-        { limit: 100525, rate: 0.22 },
-        { limit: 191950, rate: 0.24 },
-        { limit: 243725, rate: 0.32 },
-        { limit: 609350, rate: 0.35 },
+        { limit: 12400, rate: 0.10 },
+        { limit: 50400, rate: 0.12 },
+        { limit: 105700, rate: 0.22 },
+        { limit: 201775, rate: 0.24 },
+        { limit: 256225, rate: 0.32 },
+        { limit: 640600, rate: 0.35 },
         { limit: Infinity, rate: 0.37 },
       ];
       let remaining = taxable;
@@ -1241,14 +1257,14 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Federal Income Tax", value: fmt0(fedTax) },
         { label: "State Income Tax", value: fmt0(stateTax) },
         { label: "FICA Taxes", value: fmt0(fica) },
-        { label: "Effective Tax Rate", value: pct((total / v.income) * 100) },
+        { label: "Effective Tax Rate", value: v.income !== 0 ? pct((total / v.income) * 100) : "—" },
         { label: "After-Tax Income", value: fmt0(v.income - total) },
       ];
     },
-    formula: { expression: "Tax = Σ (Taxable Income in Bracket × Bracket Rate)", variables: ["Uses 2024 US federal tax brackets (single filer)", "Standard deduction = $14,600"] },
+    formula: { expression: "Tax = Σ (Taxable Income in Bracket × Bracket Rate)", variables: ["Uses 2026 US federal tax brackets (single filer)", "Standard deduction = $16,100"] },
     howToUse: "Enter your gross income, total deductions (standard or itemized), and state tax rate. See your estimated tax breakdown across federal, state, and FICA.",
     faqs: [
-      { question: "Standard vs itemized deductions?", answer: "The 2024 standard deduction is $14,600 (single) or $29,200 (married filing jointly). Itemize if your deductions (mortgage interest, charity, state taxes, etc.) exceed these amounts." },
+      { question: "Standard vs itemized deductions?", answer: "The 2026 standard deduction is $16,100 (single) or $32,200 (married filing jointly). Itemize if your deductions (mortgage interest, charity, state taxes, etc.) exceed these amounts." },
       { question: "What is the marginal vs effective tax rate?", answer: "Your marginal rate is the rate on your last dollar of income. Your effective rate is total tax divided by total income — always lower than your marginal rate due to progressive brackets." },
     ],
     relatedCalcs: financeRelated("tax-calculator"),
@@ -1260,7 +1276,7 @@ const _financeCalculators: CalculatorConfig[] = [
     category: "Finance",
     categorySlug: "finance",
     description: "Calculate your federal income tax using current tax brackets. See your marginal and effective tax rates for better planning.",
-    metaDescription: "Free income tax calculator with 2024 federal brackets. Calculate marginal rate, effective rate, and total tax owed.",
+    metaDescription: "Free income tax calculator with 2026 federal brackets. Calculate marginal rate, effective rate, and total tax owed.",
     icon: "dollar",
     inputs: [
       { id: "income", label: "Taxable Income", type: "number", defaultValue: 75000, prefix: "$" },
@@ -1268,12 +1284,12 @@ const _financeCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const singleBrackets = [
-        { limit: 11600, rate: 0.10 }, { limit: 47150, rate: 0.12 }, { limit: 100525, rate: 0.22 },
-        { limit: 191950, rate: 0.24 }, { limit: 243725, rate: 0.32 }, { limit: 609350, rate: 0.35 }, { limit: Infinity, rate: 0.37 },
+        { limit: 12400, rate: 0.10 }, { limit: 50400, rate: 0.12 }, { limit: 105700, rate: 0.22 },
+        { limit: 201775, rate: 0.24 }, { limit: 256225, rate: 0.32 }, { limit: 640600, rate: 0.35 }, { limit: Infinity, rate: 0.37 },
       ];
       const marriedBrackets = [
-        { limit: 23200, rate: 0.10 }, { limit: 94300, rate: 0.12 }, { limit: 201050, rate: 0.22 },
-        { limit: 383900, rate: 0.24 }, { limit: 487450, rate: 0.32 }, { limit: 731200, rate: 0.35 }, { limit: Infinity, rate: 0.37 },
+        { limit: 24800, rate: 0.10 }, { limit: 100800, rate: 0.12 }, { limit: 211400, rate: 0.22 },
+        { limit: 403550, rate: 0.24 }, { limit: 512450, rate: 0.32 }, { limit: 768700, rate: 0.35 }, { limit: Infinity, rate: 0.37 },
       ];
       const brackets = v.filingStatus === 1 ? singleBrackets : marriedBrackets;
       let tax = 0, remaining = v.income, prev = 0, marginalRate = 0.10;
@@ -1287,18 +1303,18 @@ const _financeCalculators: CalculatorConfig[] = [
       }
       return [
         { label: "Federal Income Tax", value: fmt0(tax), highlight: true },
-        { label: "Effective Tax Rate", value: pct((tax / v.income) * 100) },
+        { label: "Effective Tax Rate", value: pct(v.income > 0 ? (tax / v.income) * 100 : 0) },
         { label: "Marginal Tax Rate", value: pct(marginalRate * 100) },
         { label: "After-Tax Income", value: fmt0(v.income - tax) },
       ];
     },
-    formula: { expression: "Progressive brackets: each portion taxed at its bracket rate", variables: ["2024 rates: 10%, 12%, 22%, 24%, 32%, 35%, 37%"] },
+    formula: { expression: "Progressive brackets: each portion taxed at its bracket rate", variables: ["2026 rates: 10%, 12%, 22%, 24%, 32%, 35%, 37%"] },
     howToUse: "Enter your taxable income and filing status. The calculator applies current federal tax brackets to show your total tax, effective rate, and marginal rate.",
     faqs: [
       { question: "What is the difference between taxable and gross income?", answer: "Gross income is your total earnings. Taxable income is what's left after subtracting deductions (standard or itemized) and any pre-tax contributions." },
       { question: "How do tax brackets work?", answer: "The US uses progressive brackets. Only the income within each bracket is taxed at that rate — not your entire income. Moving into a higher bracket only affects the income above that threshold." },
-      { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on your last dollar of income; your effective rate is total tax divided by total income. On $75,000 of taxable income as a single filer, the marginal rate is 22% but the effective rate is only 15.40% ($11,553 of tax) — because the lower brackets tax most of the income at 10% and 12%." },
-      { question: "Which tax year do this calculator's brackets come from?", answer: "This calculator uses the 2024 federal brackets (10% to 37%) for single filers and married couples filing jointly. The IRS adjusts the bracket thresholds for inflation each year — for example, the top of the 10% single bracket is $11,600 for 2024 but $12,400 for 2026 — so for a current-year estimate, check the latest IRS figures. It covers federal income tax only, not state tax or payroll taxes." },
+      { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on your last dollar of income; your effective rate is total tax divided by total income. On $75,000 of taxable income as a single filer, the marginal rate is 22% but the effective rate is only 14.95% ($11,212 of tax) — because the lower brackets tax most of the income at 10% and 12%." },
+      { question: "Which tax year do this calculator's brackets come from?", answer: "This calculator uses the 2026 federal brackets (10% to 37%) for single filers and married couples filing jointly. The IRS adjusts the bracket thresholds for inflation each year — for example, the top of the 10% single bracket is $12,400 for 2026 — so for a different tax year, check the IRS figures for that year. It covers federal income tax only, not state tax or payroll taxes." },
     ],
     relatedCalcs: financeRelated("income-tax-calculator"),
   },
@@ -1437,7 +1453,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Annual Property Tax", value: fmt0(annualTax), highlight: true },
         { label: "Monthly Tax", value: fmt(annualTax / 12) },
         { label: "Assessed Value", value: fmt0(assessedValue) },
-        { label: "Effective Tax Rate", value: pct((annualTax / v.homeValue) * 100) },
+        { label: "Effective Tax Rate", value: v.homeValue !== 0 ? pct((annualTax / v.homeValue) * 100) : "—" },
       ];
     },
     formula: { expression: "Tax = (Home Value × Assessment Ratio − Exemptions) × Rate/1000", variables: ["Assessed value differs from market value", "Millage rate = tax per $1,000"] },
@@ -1518,7 +1534,7 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const residualValue = v.msrp * (v.residualPct / 100);
       const capCost = v.msrp - v.downPayment;
-      const depreciation = (capCost - residualValue) / v.term;
+      const depreciation = v.term > 0 ? (capCost - residualValue) / v.term : 0;
       const financeCharge = (capCost + residualValue) * v.moneyFactor;
       const monthlyPayment = depreciation + financeCharge;
       const impliedAPR = v.moneyFactor * 2400;
@@ -1583,8 +1599,8 @@ const _financeCalculators: CalculatorConfig[] = [
     name: "Profit Margin Calculator",
     category: "Finance",
     categorySlug: "finance",
-    description: "Calculate gross and net profit margins for your business. Understand the profitability of your products or services.",
-    metaDescription: "Free profit margin calculator. Calculate gross margin, net margin, and markup percentage from cost and revenue.",
+    description: "Calculate gross profit margin and markup for your business. Understand the profitability of your products or services.",
+    metaDescription: "Free profit margin calculator. Calculate gross margin and markup percentage from cost and revenue.",
     icon: "dollar",
     inputs: [
       { id: "revenue", label: "Revenue / Selling Price", type: "number", defaultValue: 100, prefix: "$" },
@@ -1592,13 +1608,14 @@ const _financeCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const profit = v.revenue - v.cost;
-      const margin = (profit / v.revenue) * 100;
-      const markup = (profit / v.cost) * 100;
+      const margin = v.revenue !== 0 ? (profit / v.revenue) * 100 : NaN;
+      const markup = v.cost !== 0 ? (profit / v.cost) * 100 : NaN;
+      const costPct = v.revenue !== 0 ? (v.cost / v.revenue) * 100 : NaN;
       return [
         { label: "Profit", value: fmt(profit), highlight: true },
-        { label: "Profit Margin", value: pct(margin) },
-        { label: "Markup", value: pct(markup) },
-        { label: "Cost as % of Revenue", value: pct((v.cost / v.revenue) * 100) },
+        { label: "Profit Margin", value: Number.isFinite(margin) ? pct(margin) : "—" },
+        { label: "Markup", value: Number.isFinite(markup) ? pct(markup) : "—" },
+        { label: "Cost as % of Revenue", value: Number.isFinite(costPct) ? pct(costPct) : "—" },
       ];
     },
     formula: { expression: "Margin = (Revenue − Cost) / Revenue × 100", variables: ["Markup = (Revenue − Cost) / Cost × 100"] },
@@ -1664,12 +1681,12 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const sellingPrice = v.cost * (1 + v.markup / 100);
       const profit = sellingPrice - v.cost;
-      const margin = (profit / sellingPrice) * 100;
+      const margin = sellingPrice !== 0 ? (profit / sellingPrice) * 100 : NaN;
       return [
         { label: "Selling Price", value: fmt(sellingPrice), highlight: true },
         { label: "Profit Per Unit", value: fmt(profit) },
         { label: "Markup Percentage", value: pct(v.markup) },
-        { label: "Equivalent Profit Margin", value: pct(margin) },
+        { label: "Equivalent Profit Margin", value: Number.isFinite(margin) ? pct(margin) : "—" },
       ];
     },
     formula: { expression: "Selling Price = Cost × (1 + Markup / 100)", variables: ["Profit = Selling Price − Cost", "Margin = Profit / Selling Price × 100"] },
@@ -1702,7 +1719,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Sale Price", value: fmt(salePrice), highlight: true },
         { label: "You Save", value: fmt(savings) },
         { label: "Original Price", value: fmt(v.originalPrice) },
-        { label: "Discount Amount", value: pct(v.discount) },
+        { label: "Discount Amount", value: fmt(savings) },
       ];
     },
     formula: { expression: "Sale Price = Original × (1 − Discount / 100)", variables: ["Savings = Original × Discount / 100"] },
@@ -1810,13 +1827,13 @@ const _financeCalculators: CalculatorConfig[] = [
       const maxMonthly = Math.min(maxPayment28, maxPayment36);
       const mr = v.rate / 100 / 12;
       const n = v.term * 12;
-      const maxLoan = maxMonthly > 0 ? maxMonthly * ((Math.pow(1 + mr, n) - 1) / (mr * Math.pow(1 + mr, n))) : 0;
+      const maxLoan = maxMonthly > 0 ? maxMonthly * pvAnnuityFactor(mr, n) : 0;
       const maxHome = maxLoan + v.downPayment;
       return [
         { label: "Max Home Price", value: fmt0(maxHome), highlight: true },
         { label: "Max Loan Amount", value: fmt0(maxLoan) },
         { label: "Max Monthly Payment", value: fmt(maxMonthly) },
-        { label: "DTI at Max", value: pct(((maxMonthly + v.monthlyDebts) / monthlyIncome) * 100) },
+        { label: "DTI at Max", value: monthlyIncome !== 0 ? pct(((maxMonthly + v.monthlyDebts) / monthlyIncome) * 100) : "—" },
       ];
     },
     formula: { expression: "Max Payment = min(28% of income, 36% of income − debts)", variables: ["Max Loan derived from payment using amortization formula"] },
@@ -1875,19 +1892,20 @@ const _financeCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const t = v.term / 12;
-      const fv = v.deposit * Math.pow(1 + v.rate / 100 / v.compound, v.compound * t);
+      const periodicRate = Math.pow(1 + v.rate / 100, 1 / v.compound) - 1;
+      const fv = v.deposit * Math.pow(1 + periodicRate, v.compound * t);
       const interest = fv - v.deposit;
       return [
         { label: "Maturity Value", value: fmt(fv), highlight: true },
         { label: "Total Interest", value: fmt(interest) },
-        { label: "Monthly Interest (avg)", value: fmt(interest / v.term) },
+        { label: "Monthly Interest (avg)", value: v.term > 0 ? fmt(interest / v.term) : "—" },
       ];
     },
-    formula: { expression: "FV = P × (1 + r/n)^(nt)", variables: ["P = deposit", "r = APY", "n = compounds/year", "t = years"] },
+    formula: { expression: "FV = P × (1 + APY)^t", variables: ["P = deposit", "APY = annual percentage yield", "t = years", "Periodic rate = (1 + APY)^(1/n) − 1"] },
     howToUse: "Enter deposit amount, APY, term, and compounding frequency to see your CD's maturity value.",
     faqs: [
       { question: "Is my CD insured?", answer: "Yes, CDs at FDIC-insured banks are protected up to $250,000 per depositor per institution." },
-      { question: "What is the difference between APY and interest rate?", answer: "APY is the total yield over a year including compounding, while the interest rate is the base rate before compounding. This calculator compounds the rate you enter at the frequency you choose, so a 5% rate with monthly compounding returns $10,511.62 on $10,000 after one year — slightly more than a true 5% APY." },
+      { question: "What is the difference between APY and interest rate?", answer: "APY is the total yield over a year including compounding, while the interest rate is the base rate before compounding. This calculator treats the rate you enter as a true APY, so a 5% APY returns exactly $10,500 on $10,000 after one year, whatever compounding frequency you choose." },
       { question: "What happens if I withdraw from a CD early?", answer: "You usually pay an early-withdrawal penalty, typically several months of interest, and some banks may reduce your principal. Only lock away money you will not need before the term ends." },
       { question: "Should I choose a longer CD term?", answer: "Longer terms usually pay higher rates but lock your money away longer. If you are unsure when you will need the money, consider laddering — splitting it across CDs with different maturity dates." },
     ],
@@ -1908,13 +1926,13 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const coupon = v.faceValue * (v.couponRate / 100);
       const r = v.marketRate / 100;
-      const pvCoupons = coupon * ((1 - Math.pow(1 + r, -v.years)) / r);
+      const pvCoupons = coupon * pvAnnuityFactor(r, v.years);
       const pvFace = v.faceValue / Math.pow(1 + r, v.years);
       const price = pvCoupons + pvFace;
       return [
         { label: "Bond Price", value: fmt(price), highlight: true },
         { label: "Annual Coupon", value: fmt(coupon) },
-        { label: "Current Yield", value: pct((coupon / price) * 100) },
+        { label: "Current Yield", value: price !== 0 ? pct((coupon / price) * 100) : "—" },
         { label: "Premium/Discount", value: price > v.faceValue ? "Premium" : price < v.faceValue ? "Discount" : "Par" },
       ];
     },
@@ -1944,7 +1962,7 @@ const _financeCalculators: CalculatorConfig[] = [
       const r = v.rate / 100 / 12;
       const n = v.years * 12;
       const mo = v.annual / 12;
-      const fv = v.current * Math.pow(1 + r, n) + mo * ((Math.pow(1 + r, n) - 1) / r);
+      const fv = r > 0 ? v.current * Math.pow(1 + r, n) + mo * ((Math.pow(1 + r, n) - 1) / r) : v.current + mo * n;
       const contributed = v.current + v.annual * v.years;
       return [
         { label: "Tax-Free Balance", value: fmt0(fv), highlight: true },
@@ -1955,7 +1973,7 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "FV = P(1+r)^n + PMT×[(1+r)^n−1]/r", variables: ["All growth and withdrawals are tax-free"] },
     howToUse: "Enter your current Roth IRA balance, annual contribution, expected return, and years to retirement.",
-    faqs: [{ question: "Who can contribute to a Roth IRA?", answer: "Single filers earning under $161,000 and married couples under $240,000 (2024). Contribution limit is $7,000/year ($8,000 if 50+)." }, { question: "How much will $7,000 a year grow to in 30 years?", answer: "Starting from $10,000 at a 7% average return, the balance reaches $792,814.72 — you contributed $220,000 and the other $572,814.72 is tax-free growth. Starting ten years later, the balance reaches only $344,261.27." }, { question: "Are Roth IRA withdrawals really tax-free?", answer: "Qualified withdrawals are completely tax-free: the account must be at least 5 years old and you must be 59½ or older (with some exceptions). Your contributions — but not the growth — can be withdrawn at any time without tax or penalty." }, { question: "What is the 4% rule figure on this page?", answer: "It is 4% of your projected final balance, shown as monthly retirement income. On a $792,814.72 balance, 4% a year is $31,712.59, or $2,642.72 a month of tax-free income." }],
+    faqs: [{ question: "Who can contribute to a Roth IRA?", answer: "For 2026, single filers with modified AGI under $153,000 can contribute the full amount; the amount phases out between $153,000 and $168,000 (married filing jointly: $242,000–$252,000). The contribution limit is $7,500/year ($8,600 if 50+)." }, { question: "How much will $7,000 a year grow to in 30 years?", answer: "Starting from $10,000 at a 7% average return, the balance reaches $792,814.72 — you contributed $220,000 and the other $572,814.72 is tax-free growth. Starting ten years later, the balance reaches only $344,261.27." }, { question: "Are Roth IRA withdrawals really tax-free?", answer: "Qualified withdrawals are completely tax-free: the account must be at least 5 years old and you must be 59½ or older (with some exceptions). Your contributions — but not the growth — can be withdrawn at any time without tax or penalty." }, { question: "What is the 4% rule figure on this page?", answer: "It is 4% of your projected final balance, shown as monthly retirement income. On a $792,814.72 balance, 4% a year is $31,712.59, or $2,642.72 a month of tax-free income." }],
     relatedCalcs: financeRelated("roth-ira-calculator"),
   },
   // 53. RMD Calculator
@@ -1976,7 +1994,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Annual RMD", value: fmt0(rmd), highlight: true },
         { label: "Monthly RMD", value: fmt(rmd / 12) },
         { label: "Distribution Factor", value: factor.toFixed(1) },
-        { label: "RMD as % of Balance", value: pct((rmd / v.balance) * 100) },
+        { label: "RMD as % of Balance", value: pct(100 / factor) },
       ];
     },
     formula: { expression: "RMD = Account Balance / Distribution Factor", variables: ["Factor from IRS Uniform Lifetime Table"] },
@@ -2059,7 +2077,7 @@ const _financeCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const r = loanCalc(v.totalDebt, v.newRate, v.newTerm);
-      const currentMonths = (() => { const mr = v.avgRate / 100 / 12; if (v.currentPayment <= v.totalDebt * mr) return Infinity; return Math.ceil(-Math.log(1 - (v.totalDebt * mr) / v.currentPayment) / Math.log(1 + mr)); })();
+      const currentMonths = (() => { const mr = v.avgRate / 100 / 12; if (mr === 0) return v.currentPayment > 0 ? Math.ceil(v.totalDebt / v.currentPayment) : Infinity; if (v.currentPayment <= v.totalDebt * mr) return Infinity; return Math.ceil(-Math.log(1 - (v.totalDebt * mr) / v.currentPayment) / Math.log(1 + mr)); })();
       const currentTotal = v.currentPayment * currentMonths;
       return [
         { label: "New Monthly Payment", value: fmt(r.monthly), highlight: true },
@@ -2088,7 +2106,7 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const annualPension = v.finalSalary * (v.multiplier / 100) * v.yearsOfService;
       const monthlyPension = annualPension / 12;
-      const replacementRate = (annualPension / v.finalSalary) * 100;
+      const replacementRate = v.multiplier * v.yearsOfService;
       return [
         { label: "Annual Pension", value: fmt0(annualPension), highlight: true },
         { label: "Monthly Pension", value: fmt(monthlyPension) },
@@ -2119,6 +2137,14 @@ const _financeCalculators: CalculatorConfig[] = [
       { id: "cf4", label: "Year 4 Cash Flow", type: "number", defaultValue: 12000, prefix: "$" },
     ],
     calculate: (v) => {
+      const totalReturn = v.cf1 + v.cf2 + v.cf3 + v.cf4;
+      const roiValue = v.initial !== 0 ? pct(((totalReturn - v.initial) / v.initial) * 100) : "—";
+      if (v.initial <= 0 || totalReturn === 0) return [
+        { label: "IRR", value: "No IRR for these inputs", highlight: true },
+        { label: "Total Cash Flows", value: fmt0(totalReturn) },
+        { label: "Net Profit", value: fmt0(totalReturn - v.initial) },
+        { label: "ROI", value: roiValue },
+      ];
       const cfs = [-v.initial, v.cf1, v.cf2, v.cf3, v.cf4];
       let rate = 0.1;
       for (let iter = 0; iter < 200; iter++) {
@@ -2131,12 +2157,11 @@ const _financeCalculators: CalculatorConfig[] = [
         if (Math.abs(newRate - rate) < 1e-10) break;
         rate = newRate;
       }
-      const totalReturn = v.cf1 + v.cf2 + v.cf3 + v.cf4;
       return [
-        { label: "IRR", value: pct(rate * 100), highlight: true },
+        { label: "IRR", value: Number.isFinite(rate) ? pct(rate * 100) : "No IRR", highlight: true },
         { label: "Total Cash Flows", value: fmt0(totalReturn) },
         { label: "Net Profit", value: fmt0(totalReturn - v.initial) },
-        { label: "ROI", value: pct(((totalReturn - v.initial) / v.initial) * 100) },
+        { label: "ROI", value: roiValue },
       ];
     },
     formula: { expression: "NPV = Σ CF_t / (1+IRR)^t = 0, solve for IRR", variables: ["Newton's method iteration"] },
@@ -2165,7 +2190,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Max HELOC Amount", value: fmt0(Math.max(maxBorrow, 0)), highlight: true },
         { label: "Total Home Equity", value: fmt0(equity) },
         { label: "Interest-Only Payment", value: fmt(interestOnly) },
-        { label: "Equity Used", value: pct(((v.mortgageBalance + v.drawAmount) / v.homeValue) * 100) },
+        { label: "Equity Used", value: v.homeValue !== 0 ? pct(((v.mortgageBalance + v.drawAmount) / v.homeValue) * 100) : "—" },
       ];
     },
     formula: { expression: "Max HELOC = Home Value × LTV% − Mortgage Balance", variables: ["Interest-only = Draw × Rate / 12"] },
@@ -2230,12 +2255,12 @@ const _financeCalculators: CalculatorConfig[] = [
       const r = loanCalc(loan, v.rate, 360);
       const noi = (v.monthlyRent - v.expenses) * 12;
       const cashFlow = v.monthlyRent - r.monthly - v.expenses;
-      const capRate = (noi / v.purchasePrice) * 100;
-      const cocReturn = (cashFlow * 12 / dp) * 100;
+      const capRate = v.purchasePrice !== 0 ? (noi / v.purchasePrice) * 100 : NaN;
+      const cocReturn = dp !== 0 ? (cashFlow * 12 / dp) * 100 : NaN;
       return [
         { label: "Monthly Cash Flow", value: fmt(cashFlow), highlight: true },
-        { label: "Cap Rate", value: pct(capRate) },
-        { label: "Cash-on-Cash Return", value: pct(cocReturn) },
+        { label: "Cap Rate", value: Number.isFinite(capRate) ? pct(capRate) : "—" },
+        { label: "Cash-on-Cash Return", value: Number.isFinite(cocReturn) ? pct(cocReturn) : "—" },
         { label: "Monthly Mortgage", value: fmt(r.monthly) },
         { label: "Annual NOI", value: fmt0(noi) },
       ];
@@ -2315,13 +2340,13 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const r = v.rate / 100 / 12;
       const n = v.years * 12;
-      const fv = v.initial * Math.pow(1 + r, n) + v.monthly * ((Math.pow(1 + r, n) - 1) / r);
+      const fv = v.initial * Math.pow(1 + r, n) + v.monthly * annuityFactor(r, n);
       const invested = v.initial + v.monthly * n;
       return [
         { label: "Future Value", value: fmt0(fv), highlight: true },
         { label: "Total Invested", value: fmt0(invested) },
         { label: "Wealth Gained", value: fmt0(fv - invested) },
-        { label: "Growth Multiple", value: `${(fv / invested).toFixed(2)}×` },
+        { label: "Growth Multiple", value: invested !== 0 ? `${(fv / invested).toFixed(2)}×` : "—" },
       ];
     },
     formula: { expression: "FV = P(1+r)^n + SIP × [(1+r)^n − 1] / r", variables: ["SIP = Systematic Investment Plan"] },
@@ -2383,7 +2408,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Total 4-Year Cost", value: fmt0(total), highlight: true },
         { label: "Year 1 Cost", value: fmt0(annualCost * Math.pow(1 + v.inflation / 100, v.years)) },
         { label: "Current 4-Year Cost", value: fmt0(currentCost) },
-        { label: "Monthly Savings Needed", value: fmt(total / (v.years * 12)) },
+        { label: "Monthly Savings Needed", value: v.years > 0 ? fmt(total / (v.years * 12)) : "—" },
       ];
     },
     formula: { expression: "Future Cost = Current × (1 + inflation)^years", variables: ["Summed over 4 years of college"] },
@@ -2414,7 +2439,7 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const residual = v.msrp * (v.residualPct / 100);
       const capCost = v.negotiatedPrice - v.downPayment;
-      const depreciation = (capCost - residual) / v.term;
+      const depreciation = v.term > 0 ? (capCost - residual) / v.term : 0;
       const finance = (capCost + residual) * v.moneyFactor;
       const preTax = depreciation + finance;
       const monthly = preTax * (1 + v.taxRate / 100);
@@ -2479,11 +2504,11 @@ const _financeCalculators: CalculatorConfig[] = [
         for (const b of brackets) { const c = Math.min(rem, b.limit - prev); if (c <= 0) break; tax += c * b.rate; rem -= c; prev = b.limit; }
         return tax;
       };
-      const single = [{ limit: 11600, rate: 0.10 }, { limit: 47150, rate: 0.12 }, { limit: 100525, rate: 0.22 }, { limit: 191950, rate: 0.24 }, { limit: 243725, rate: 0.32 }, { limit: 609350, rate: 0.35 }, { limit: Infinity, rate: 0.37 }];
-      const married = [{ limit: 23200, rate: 0.10 }, { limit: 94300, rate: 0.12 }, { limit: 201050, rate: 0.22 }, { limit: 383900, rate: 0.24 }, { limit: 487450, rate: 0.32 }, { limit: 731200, rate: 0.35 }, { limit: Infinity, rate: 0.37 }];
-      const tax1 = calcTax(v.income1 - 14600, single);
-      const tax2 = calcTax(v.income2 - 14600, single);
-      const taxJoint = calcTax(v.income1 + v.income2 - 29200, married);
+      const single = [{ limit: 12400, rate: 0.10 }, { limit: 50400, rate: 0.12 }, { limit: 105700, rate: 0.22 }, { limit: 201775, rate: 0.24 }, { limit: 256225, rate: 0.32 }, { limit: 640600, rate: 0.35 }, { limit: Infinity, rate: 0.37 }];
+      const married = [{ limit: 24800, rate: 0.10 }, { limit: 100800, rate: 0.12 }, { limit: 211400, rate: 0.22 }, { limit: 403550, rate: 0.24 }, { limit: 512450, rate: 0.32 }, { limit: 768700, rate: 0.35 }, { limit: Infinity, rate: 0.37 }];
+      const tax1 = calcTax(v.income1 - 16100, single);
+      const tax2 = calcTax(v.income2 - 16100, single);
+      const taxJoint = calcTax(v.income1 + v.income2 - 32200, married);
       const diff = (tax1 + tax2) - taxJoint;
       return [
         { label: diff >= 0 ? "Marriage Bonus" : "Marriage Penalty", value: fmt(Math.abs(diff)), highlight: true },
@@ -2491,7 +2516,7 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Tax as Married", value: fmt0(taxJoint) },
       ];
     },
-    formula: { expression: "Compare single taxes vs married filing jointly", variables: ["2024 brackets with standard deductions"] },
+    formula: { expression: "Compare single taxes vs married filing jointly", variables: ["2026 brackets with standard deductions"] },
     howToUse: "Enter each spouse's income to see if marriage creates a tax bonus or penalty.",
     faqs: [{ question: "What causes a marriage penalty?", answer: "When both spouses earn similar high incomes, the combined income pushes into higher brackets faster than two single returns." }],
     relatedCalcs: financeRelated("marriage-tax-calculator"),
@@ -2537,9 +2562,9 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const aime = v.avgEarnings / 12;
       let pia = 0;
-      if (aime <= 1174) pia = aime * 0.9;
-      else if (aime <= 7078) pia = 1174 * 0.9 + (aime - 1174) * 0.32;
-      else pia = 1174 * 0.9 + (7078 - 1174) * 0.32 + (aime - 7078) * 0.15;
+      if (aime <= 1286) pia = aime * 0.9;
+      else if (aime <= 7749) pia = 1286 * 0.9 + (aime - 1286) * 0.32;
+      else pia = 1286 * 0.9 + (7749 - 1286) * 0.32 + (aime - 7749) * 0.15;
       let benefit = pia;
       if (v.claimAge < v.fra) {
         const monthsEarly = (v.fra - v.claimAge) * 12;
@@ -2552,12 +2577,12 @@ const _financeCalculators: CalculatorConfig[] = [
         { label: "Monthly Benefit", value: fmt(benefit), highlight: true },
         { label: "Annual Benefit", value: fmt0(benefit * 12) },
         { label: "PIA (at FRA)", value: fmt(pia) },
-        { label: "Adjustment", value: v.claimAge < v.fra ? `−${pct(((pia - benefit) / pia) * 100)}` : `+${pct(((benefit - pia) / pia) * 100)}` },
+        { label: "Adjustment", value: pia > 0 ? (v.claimAge < v.fra ? `−${pct(((pia - benefit) / pia) * 100)}` : `+${pct(((benefit - pia) / pia) * 100)}`) : "—" },
       ];
     },
-    formula: { expression: "PIA = 90%×first $1,174 + 32%×next $5,904 + 15%×remainder", variables: ["Reduced ~6.7%/yr before FRA", "Increased 8%/yr after FRA to age 70"] },
+    formula: { expression: "PIA = 90%×first $1,286 + 32%×next $6,463 + 15%×remainder", variables: ["Reduced ~6.7%/yr before FRA", "Increased 8%/yr after FRA to age 70"] },
     howToUse: "Enter your average annual earnings, claiming age, and full retirement age.",
-    faqs: [{ question: "Should I claim early?", answer: "Claiming at 62 reduces benefits ~30%. Waiting to 70 increases ~24% above FRA. Consider health, savings, and other income." }, { question: "What is the benefit on $65,000 average earnings at age 67?", answer: "A Primary Insurance Amount of $2,414.25 a month, or $28,971.04 a year. Claiming at 62 cuts it by 30% to $1,689.98, and waiting until 70 raises it by 24% to $2,993.67." }, { question: "How much more do I get by waiting until 70?", answer: "24% more than at full retirement age, and $1,303.69 a month more than claiming at 62 — for life. The trade-off is giving up eight years of payments to get the higher amount." }, { question: "Is this calculator's estimate the same as my SSA statement?", answer: "No. The Social Security Administration uses your highest 35 years of indexed earnings; this calculator uses the average annual earnings you enter. Check your official estimate at ssa.gov before making a claiming decision." }],
+    faqs: [{ question: "Should I claim early?", answer: "Claiming at 62 reduces benefits ~30%. Waiting to 70 increases ~24% above FRA. Consider health, savings, and other income." }, { question: "What is the benefit on $65,000 average earnings at age 67?", answer: "A Primary Insurance Amount of $2,479.21 a month, or $29,750.56 a year. Claiming at 62 cuts it by 30% to $1,735.45, and waiting until 70 raises it by 24% to $3,074.22." }, { question: "How much more do I get by waiting until 70?", answer: "24% more than at full retirement age, and $1,338.77 a month more than claiming at 62 — for life. The trade-off is giving up eight years of payments to get the higher amount." }, { question: "Is this calculator's estimate the same as my SSA statement?", answer: "No. The Social Security Administration uses your highest 35 years of indexed earnings; this calculator uses the average annual earnings you enter. Check your official estimate at ssa.gov before making a claiming decision." }],
     relatedCalcs: financeRelated("social-security-calculator"),
   },
   // 72. Annuity Payout Calculator
@@ -2574,7 +2599,7 @@ const _financeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const r = v.rate / 100 / 12;
       const n = v.years * 12;
-      const pmt = r > 0 ? v.principal * r / (1 - Math.pow(1 + r, -n)) : v.principal / n;
+      const pmt = n > 0 ? (r > 0 ? v.principal * r / (1 - Math.pow(1 + r, -n)) : v.principal / n) : 0;
       return [
         { label: "Monthly Payout", value: fmt(pmt), highlight: true },
         { label: "Annual Payout", value: fmt0(pmt * 12) },
@@ -2602,7 +2627,9 @@ const _financeCalculators: CalculatorConfig[] = [
       const mr = v.apr / 100 / 12;
       if (v.payment <= v.balance * mr) return [{ label: "Error", value: "Payment too low to cover interest", highlight: true }];
       const months = Math.ceil(-Math.log(1 - (v.balance * mr) / v.payment) / Math.log(1 + mr));
-      const totalPaid = v.payment * months;
+      const balanceBeforeFinal = v.balance * Math.pow(1 + mr, months - 1) - v.payment * ((Math.pow(1 + mr, months - 1) - 1) / mr);
+      const finalPayment = balanceBeforeFinal * (1 + mr);
+      const totalPaid = v.payment * (months - 1) + finalPayment;
       const totalInterest = totalPaid - v.balance;
       return [
         { label: "Months to Payoff", value: `${months} months (${(months / 12).toFixed(1)} yrs)`, highlight: true },
@@ -2614,9 +2641,9 @@ const _financeCalculators: CalculatorConfig[] = [
     howToUse: "Enter your credit card balance, APR, and monthly payment amount.",
     faqs: [
       { question: "Why does minimum payment take so long?", answer: "Minimum payments (often 2% of balance) mostly cover interest. A $5,000 balance at 20% APR with minimums takes 25+ years." },
-      { question: "How much difference does an extra $100 a month make?", answer: "A large one. On an $8,000 balance at 22% APR, raising the payment from $200 to $300 a month cuts the payoff from 73 months to 37 and saves $3,500 in interest." },
+      { question: "How much difference does an extra $100 a month make?", answer: "A large one. On an $8,000 balance at 22% APR, raising the payment from $200 to $300 a month cuts the payoff from 73 months to 37 and saves $3,468 in interest." },
       { question: "What if my payment doesn't cover the interest?", answer: "The balance grows instead of shrinking, and the calculator shows an error. On an $8,000 balance at 22% APR, one month's interest is $146.67 — any payment below that never reduces what you owe." },
-      { question: "Does the calculator assume I stop using the card?", answer: "Yes. It assumes a fixed payment, a fixed APR, and no new charges. It also rounds the payoff up to whole months, so the total paid counts the final payment in full and is very slightly higher than the true amount." },
+      { question: "Does the calculator assume I stop using the card?", answer: "Yes. It assumes a fixed payment, a fixed APR, and no new charges. The payoff time is rounded up to whole months, and the final payment is the smaller amount actually needed to clear the balance, so the total paid is exact." },
     ],
     relatedCalcs: financeRelated("credit-cards-payoff-calculator"),
   },

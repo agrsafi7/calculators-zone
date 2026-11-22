@@ -1625,14 +1625,16 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       if (v.b === 0) return [{ label: "Error", value: "Cannot divide by zero" }];
+      const quotient = Math.floor(v.a / v.b);
+      const remainder = v.a - v.b * quotient;
       return [
-        { label: "Remainder", value: `${v.a % v.b}`, highlight: true },
-        { label: "Quotient", value: `${Math.floor(v.a / v.b)}` },
-        { label: "Verification", value: `${Math.floor(v.a / v.b)} × ${v.b} + ${v.a % v.b} = ${v.a}` },
+        { label: "Remainder", value: `${remainder}`, highlight: true },
+        { label: "Quotient", value: `${quotient}` },
+        { label: "Verification", value: `${quotient} × ${v.b} + ${remainder} = ${v.a}` },
       ];
     },
     formula: { expression: "a mod b = a - b × floor(a/b)", variables: [] },
-    howToUse: "Enter dividend and divisor.", faqs: [{ question: "Is modulus the same as remainder?", answer: "For positive numbers, yes. Behavior differs for negatives depending on language." }, { question: "What is modulus used for?", answer: "Anything that repeats or wraps: clock arithmetic (14 mod 12 = 2), testing even and odd (n mod 2), wrapping an index around the end of a list, and spreading values evenly in hashing." }, { question: "How is modulus different from division?", answer: "Division gives the quotient — how many whole times one number fits into another. Modulus gives the remainder — what is left over. 17 / 5 is 3 with a remainder of 2, so 17 mod 5 = 2." }],
+    howToUse: "Enter dividend and divisor.", faqs: [{ question: "Is modulus the same as remainder?", answer: "For positive numbers, yes. For negatives this calculator uses the mathematical (floor) definition, so -17 mod 5 = 3 — the remainder always has the sign of the divisor. Some programming languages use a truncated remainder instead, which gives -2 for the same input." }, { question: "What is modulus used for?", answer: "Anything that repeats or wraps: clock arithmetic (14 mod 12 = 2), testing even and odd (n mod 2), wrapping an index around the end of a list, and spreading values evenly in hashing." }, { question: "How is modulus different from division?", answer: "Division gives the quotient — how many whole times one number fits into another. Modulus gives the remainder — what is left over. 17 / 5 is 3 with a remainder of 2, so 17 mod 5 = 2." }],
     relatedCalcs: mathRelated("modulus-calculator"),
   },
   {
@@ -2053,7 +2055,8 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
       { id: "fw", label: "Final Weight (%)", type: "number", defaultValue: 40 },
     ],
     calculate: (v) => {
-      const grade = (v.assignments * v.aw + v.midterm * v.mw + v.final * v.fw) / (v.aw + v.mw + v.fw);
+      const totalW = v.aw + v.mw + v.fw;
+      const grade = totalW > 0 ? (v.assignments * v.aw + v.midterm * v.mw + v.final * v.fw) / totalW : 0;
       const letter = grade >= 93 ? "A" : grade >= 90 ? "A-" : grade >= 87 ? "B+" : grade >= 83 ? "B" : grade >= 80 ? "B-" : grade >= 77 ? "C+" : grade >= 73 ? "C" : grade >= 70 ? "C-" : grade >= 67 ? "D+" : grade >= 60 ? "D" : "F";
       return [
         { label: "Semester Grade", value: `${grade.toFixed(2)}%`, highlight: true },
@@ -2061,7 +2064,7 @@ export const mathCalculatorsExtended: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "Grade = Σ(score × weight) / Σweights", variables: [] },
-    howToUse: "Enter scores and weights for each component.", faqs: [{ question: "Do weights need to sum to 100?", answer: "Ideally yes, but the calculator normalizes if they don't." }, { question: "How is the semester grade calculated?", answer: "Each component score is multiplied by its weight, the products are added, and the total is divided by the sum of the weights. Assignments 88% (30), midterm 76% (30), final 91% (40) gives (2,640 + 2,280 + 3,640) / 100 = 85.60%." }, { question: "What letter grade will I get?", answer: "The scale is A at 93%+, A- at 90%+, B+ at 87%+, B at 83%+, B- at 80%+, C+ at 77%+, C at 73%+, C- at 70%+, D+ at 67%+, D at 60%+, and F below 60%. A grade of 85.60% is a B." }],
+    howToUse: "Enter scores and weights for each component.", faqs: [{ question: "Do weights need to sum to 100?", answer: "Ideally yes, but the calculator normalizes if they don't. If all weights are 0, the grade is 0%." }, { question: "How is the semester grade calculated?", answer: "Each component score is multiplied by its weight, the products are added, and the total is divided by the sum of the weights. Assignments 88% (30), midterm 76% (30), final 91% (40) gives (2,640 + 2,280 + 3,640) / 100 = 85.60%." }, { question: "What letter grade will I get?", answer: "The scale is A at 93%+, A- at 90%+, B+ at 87%+, B at 83%+, B- at 80%+, C+ at 77%+, C at 73%+, C- at 70%+, D+ at 67%+, D at 60%+, and F below 60%. A grade of 85.60% is a B." }],
     relatedCalcs: mathRelated("semester-grade-calculator"),
   },
   {

@@ -1646,8 +1646,8 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "Worked example",
       paragraphs: [
-        "Take a **$5,000 balance at 22% APR** with a **$150 monthly payment**. The first month's interest is $5,000 × 0.22 ÷ 12 = **$91.67** — so only **$58.33** of your $150 actually reduces the balance. The calculator shows **52 months (4.3 years)** to pay it off, with **$2,800 in interest** on top of the $5,000 borrowed: $7,800 total.",
-        "Raise the payment to **$200 a month** and the picture changes sharply: **34 months**, **$1,800 in interest**. That extra $50 a month saves **$1,000 in interest and 18 months** of payments. Go the other way — just $100 a month — and it takes **137 months (over 11 years)** and costs **$8,700 in interest**, more than the original balance.",
+        "Take a **$5,000 balance at 22% APR** with a **$150 monthly payment**. The first month's interest is $5,000 × 0.22 ÷ 12 = **$91.67** — so only **$58.33** of your $150 actually reduces the balance. The calculator shows **52 months (4.3 years)** to pay it off, with **$2,798.05 in interest** on top of the $5,000 borrowed: $7,798.05 total.",
+        "Raise the payment to **$200 a month** and the picture changes sharply: **34 months**, **$1,749.88 in interest**. That extra $50 a month saves **$1,048.17 in interest and 18 months** of payments. Go the other way — just $100 a month — and it takes **137 months (over 11 years)** and costs **$8,678.06 in interest**, more than the original balance.",
       ],
     },
     {
@@ -2553,15 +2553,15 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "The US federal income tax is **progressive**: income is taxed in slices, and each slice is taxed at its own rate. Only the income inside a bracket is taxed at that bracket's rate — moving into a higher bracket never raises the tax on the income below it.",
         "That is why two different rates matter. Your **marginal rate** is the rate on your last dollar of income; your **effective rate** is your total tax divided by your total income, and it is always lower than your marginal rate. Confusing the two is the most common tax misunderstanding there is.",
-        "This calculator applies the **2024 federal brackets** (10%, 12%, 22%, 24%, 32%, 35%, 37%) for single filers and married couples filing jointly, to the **taxable income** you enter — that is, your income after deductions. It covers federal income tax only: no state tax, no Social Security or Medicare payroll tax, and no head-of-household or married-filing-separately options. The IRS adjusts the bracket thresholds for inflation each year, so for a current-year estimate check the latest IRS figures.",
+        "This calculator applies the **2026 federal brackets** (10%, 12%, 22%, 24%, 32%, 35%, 37%) for single filers and married couples filing jointly, to the **taxable income** you enter — that is, your income after deductions. It covers federal income tax only: no state tax, no Social Security or Medicare payroll tax, and no head-of-household or married-filing-separately options. The IRS adjusts the bracket thresholds for inflation each year, so for a different tax year's estimate check the IRS figures for that year.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Take **$75,000 of taxable income as a single filer**, using this calculator's 2024 brackets. The first $11,600 is taxed at 10% (**$1,160**); the next $35,550 (up to $47,150) at 12% (**$4,266**); and the remaining $27,850 (up to $75,000) at 22% (**$6,127**). Total federal tax: **$11,553**.",
-        "The **marginal rate is 22%**, but the **effective rate is only 15.40%** ($11,553 ÷ $75,000) — because most of the income was taxed at 10% and 12%. After-tax income is **$63,447**. The same $75,000 as a married couple filing jointly owes **$8,536** — an 11.38% effective rate and a 12% marginal rate — because the joint brackets are roughly twice as wide.",
-        "For context, under the IRS's **2026 brackets** the same single filer would owe **$11,212** instead of $11,553 — the thresholds rise with inflation each year (the top of the 10% single bracket is $12,400 for 2026, versus $11,600 for 2024). This calculator's 2024-based figure is therefore a close estimate, not a filing-year number.",
+        "Take **$75,000 of taxable income as a single filer**, using this calculator's 2026 brackets. The first $12,400 is taxed at 10% (**$1,240**); the next $38,000 (up to $50,400) at 12% (**$4,560**); and the remaining $24,600 (up to $75,000) at 22% (**$5,412**). Total federal tax: **$11,212**.",
+        "The **marginal rate is 22%**, but the **effective rate is only 14.95%** ($11,212 ÷ $75,000) — because most of the income was taxed at 10% and 12%. After-tax income is **$63,788**. The same $75,000 as a married couple filing jointly owes **$8,504** — an 11.34% effective rate and a 12% marginal rate — because the joint brackets are roughly twice as wide.",
+        "For context, the thresholds rise with inflation each year — the top of the 10% single bracket is $12,400 for 2026, versus $11,600 for 2024 — so a filing-year estimate should always use that year's IRS figures. Use this calculator's figure as a planning estimate, not a filing number.",
       ],
     },
     {
@@ -2807,7 +2807,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "Everyday uses for date arithmetic",
       paragraphs: [
         "The classic uses are **deadlines and notice periods** ('90 days from today'), **warranty and return windows**, **travel planning** ('what date is 14 days before my flight?'), and **countdowns** to events. The day-of-week output matters as much as the date — a deadline landing on a Sunday is a different problem from one landing on a Tuesday.",
-        "One thing to know: the **weeks breakdown is exact for days you add**; for subtracted (negative) day counts, use the result date itself rather than the weeks figure. And if your span crosses February in a leap year, the calculator adds the extra day automatically — 2028 is the next leap year after 2024.",
+        "One thing to know: the **weeks breakdown is exact in both directions** — subtracting 90 days restates as **12 weeks and 6 days**, just like adding 90 days. And if your span crosses February in a leap year, the calculator adds the extra day automatically — 2028 is the next leap year after 2024.",
       ],
     },
   ],
@@ -2832,7 +2832,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "What the prediction can't capture",
       paragraphs: [
         "Parents' heights explain a lot, but not everything. **Nutrition, childhood health, the timing of puberty, and genes from the wider family** all move the final result, which is why the ±5 cm band covers only about half of children — the other half land further from the target in either direction.",
-        "Use the prediction as a rough guide, not a verdict on a child's growth. If growth seems unusually fast or slow, or a child drops across centile lines on a growth chart, a paediatrician can assess it properly. One display note: the feet-and-inches figure is rounded to the nearest inch, so at a few heights the rounding can show 12 inches — for example, 182 cm displays as 5'12\" — which simply means 6'0\".",
+        "Use the prediction as a rough guide, not a verdict on a child's growth. If growth seems unusually fast or slow, or a child drops across centile lines on a growth chart, a paediatrician can assess it properly. One display note: the feet-and-inches figure is rounded to the nearest inch, and when the rounding reaches 12 inches it carries into the next foot — for example, 182 cm displays as **6'0\"**.",
       ],
     },
   ],
@@ -3077,7 +3077,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "Temperature is measured on three scales in everyday use. **Celsius (°C)** is the scientific and world standard, defined by water freezing at 0 °C and boiling at 100 °C. **Fahrenheit (°F)** is still standard in the US, with water freezing at 32 °F and boiling at 212 °F. **Kelvin (K)** is the scientific absolute scale, starting at absolute zero.",
         "Unlike other unit conversions, temperature conversion is **not just multiplication** — Fahrenheit has a shifted zero, so you must add or subtract 32 as well. **°F = °C × 9/5 + 32**, and going back, **°C = (°F − 32) × 5/9**. Kelvin is simpler: **K = °C + 273.15**, a pure shift with no scaling, because one kelvin is the same size as one degree Celsius.",
-        "This converter takes a temperature in any of the three scales and shows all three at once, rounded to two decimal places. Note that it accepts any number — including physically impossible values below absolute zero — so treat results below 0 K as a sign of an input error.",
+        "This converter takes a temperature in any of the three scales and shows all three at once, rounded to two decimal places. It rejects temperatures below absolute zero (0 K / −273.15 °C / −459.67 °F) — nothing can be colder than 0 K, so the converter says so instead of showing a result.",
       ],
     },
     {
@@ -3110,7 +3110,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "Worked example",
       paragraphs: [
         "Take a **$75,000 salary** with a 22% federal rate, 5% state rate, 7.65% FICA, a 6% retirement contribution, and $200 a month for health insurance. The retirement contribution is **$4,500**, which lowers taxable income to **$70,500**. Federal tax is $15,510, state tax is $3,525, FICA is $5,737.50 on the full gross, and health insurance costs $2,400 a year — total deductions of **$31,672.50**.",
-        "That leaves **$43,327.50 a year**, or **$3,610.63 a month** and **$1,666.44 every two weeks**. The 6% retirement contribution saves **$1,215 in income tax** (27% of $4,500). Note that the calculator's 'effective tax rate' of 42.23% counts every deduction, including retirement savings and insurance — not just tax.",
+        "That leaves **$43,327.50 a year**, or **$3,610.63 a month** and **$1,666.44 every two weeks**. The 6% retirement contribution saves **$1,215 in income tax** (27% of $4,500). Note that the calculator's 'effective deduction rate' of 42.23% counts every deduction, including retirement savings and insurance — not just tax.",
       ],
     },
     {
@@ -3201,16 +3201,16 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "How does a CD earn interest?",
       paragraphs: [
-        "A certificate of deposit (CD) pays a fixed interest rate on a lump sum that you lock away for a set term. The maturity value is calculated as **FV = P × (1 + r/n)^(nt)**, where P is the deposit, r is the annual rate, n is the number of compounding periods per year, and t is the term in years.",
-        "One detail matters: the rate field on this page is labeled APY, but the formula compounds the rate you enter at the frequency you choose — that is, it treats the rate as a **nominal annual rate**. A true 5% APY would return exactly $10,500 on a $10,000 deposit after one year; with monthly compounding this calculator returns **$10,511.62**. The difference is small, but it is real.",
+        "A certificate of deposit (CD) pays a fixed interest rate on a lump sum that you lock away for a set term. The maturity value is calculated as **FV = P × (1 + APY)^t**, where P is the deposit, APY is the annual percentage yield, and t is the term in years. Behind the scenes the APY is converted to the matching periodic rate — (1 + APY)^(1/n) − 1 — for the compounding frequency you choose, so the result is the same whatever frequency you pick.",
+        "One detail matters: the rate field on this page is labeled APY, and the calculator honours that — the rate you enter is the **effective annual yield**, not a nominal rate. A 5% APY returns exactly **$10,500** on a $10,000 deposit after one year, whether interest compounds monthly, quarterly, or daily. If a bank quotes you a nominal rate instead, its APY will be slightly higher — a 5% nominal rate compounded monthly is a 5.12% APY.",
         "CDs at FDIC-insured banks are protected up to **$250,000 per depositor, per bank**. The trade-off for the fixed rate is access: withdrawing early usually triggers a penalty of several months' interest, so only lock away money you will not need before the term ends.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Deposit **$10,000 at 5% for 12 months with monthly compounding**. The maturity value is $10,000 × (1 + 0.05 ÷ 12)^12 = **$10,511.62**, so the CD earns **$511.62 in interest** — an average of **$42.63 a month**.",
-        "Compounding more often helps only slightly: daily compounding gives **$10,512.67**, just $1.05 more over the year. Time matters far more than frequency — the same $10,000 at 5% for five years grows to **$12,833.59**, earning **$2,833.59 in interest**.",
+        "Deposit **$10,000 at 5% APY for 12 months**. The maturity value is $10,000 × 1.05 = **$10,500.00**, so the CD earns **$500.00 in interest** — an average of **$41.67 a month**.",
+        "Compounding frequency does not change the result at all: because the rate is a true APY, monthly, quarterly, and daily compounding all give the same $10,500.00. Time matters far more than frequency — the same $10,000 at 5% APY for five years grows to **$12,762.82**, earning **$2,762.82 in interest**.",
       ],
     },
     {
@@ -3328,7 +3328,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "If you know the loan amount, the monthly payment, and the term, the interest rate can be worked backward from the loan payment formula. There is no direct formula for the rate, so this calculator solves it iteratively with **Newton's method** — refining a guess until the payment it produces matches yours.",
         "This is useful when a dealer or lender quotes a **monthly payment without clearly stating the rate**: the implied rate lets you compare offers fairly. The result is the nominal annual interest rate — it is not the APR, which also includes fees and is usually slightly higher.",
-        "One limit to know: the payment must cover the principal over the term. If your total payments add up to less than the loan amount, no positive interest rate can produce that payment, and the result will not be meaningful — so check your numbers if the answer looks wrong.",
+        "One limit to know: the payment must cover the principal over the term. If your total payments add up to less than the loan amount, no positive interest rate can produce that payment, and the calculator says so instead of showing a negative rate — raise the payment or extend the term.",
       ],
     },
     {
@@ -3402,15 +3402,15 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How do federal tax brackets work?",
       paragraphs: [
         "The US federal income tax is progressive: your income is taxed in slices, with each slice taxed at its own rate. Your **marginal bracket** is the rate on your last dollar of income, while your **effective rate** — total tax divided by total income — is always lower.",
-        "This calculator uses the **2024 federal brackets** for two filing statuses — Single and Married Filing Jointly — with seven rates: 10%, 12%, 22%, 24%, 32%, 35%, and 37%. The IRS adjusts the bracket thresholds for inflation each year, so the figures shift slightly from year to year. The income you enter is **taxable income** — what remains after the standard deduction ($14,600 for single filers in 2024) or itemized deductions — not your gross salary.",
+        "This calculator uses the **2026 federal brackets** for two filing statuses — Single and Married Filing Jointly — with seven rates: 10%, 12%, 22%, 24%, 32%, 35%, and 37%. The IRS adjusts the bracket thresholds for inflation each year, so the figures shift slightly from year to year. The income you enter is **taxable income** — what remains after the standard deduction ($16,100 for single filers in 2026) or itemized deductions — not your gross salary.",
         "The result is **federal income tax only**. It does not include state tax, FICA, or tax credits, and it does not cover the Head of Household or Married Filing Separately statuses — so treat it as a planning estimate, not a filing figure.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "A **single filer with $85,000 of taxable income** falls in the **22% marginal bracket** — but only the income above $47,150 is taxed at 22%. The bill is 10% of the first $11,600 ($1,160), plus 12% of the next $35,550 ($4,266), plus 22% of the remaining $37,850 ($8,327): total federal tax **$13,753**, an effective rate of **16.18%**, and **$71,247 after tax**.",
-        "The same $85,000 for **married filing jointly** is taxed as 10% of the first $23,200 ($2,320) plus 12% of the remaining $61,800 ($7,416): **$9,736** total, a **12% marginal bracket**, and an **11.45% effective rate**. Taxing the whole $85,000 at 22% — the common misunderstanding — would give $18,700, overstating the real bill by **$4,947**.",
+        "A **single filer with $85,000 of taxable income** falls in the **22% marginal bracket** — but only the income above $50,400 is taxed at 22%. The bill is 10% of the first $12,400 ($1,240), plus 12% of the next $38,000 ($4,560), plus 22% of the remaining $34,600 ($7,612): total federal tax **$13,412**, an effective rate of **15.78%**, and **$71,588 after tax**.",
+        "The same $85,000 for **married filing jointly** is taxed as 10% of the first $24,800 ($2,480) plus 12% of the remaining $60,200 ($7,224): **$9,704** total, a **12% marginal bracket**, and an **11.42% effective rate**. Taxing the whole $85,000 at 22% — the common misunderstanding — would give $18,700, overstating the real bill by **$5,288**.",
       ],
     },
     {
@@ -3434,7 +3434,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "Worked example",
       paragraphs: [
         "LMP = **January 1, 2026**. Adding 280 days gives an estimated due date of **Thursday, October 8, 2026**. The same result comes from the classic Naegele shortcut: add 7 days (January 8), subtract 3 months (October 8, 2025), add 1 year (October 8, 2026).",
-        "Milestones from that LMP: week 13 begins **April 2, 2026**, week 27 begins **July 9, 2026**, and full term (39 weeks) begins **October 1, 2026**. This calculator counts the first trimester as weeks 0–12, the second as weeks 13–26, and the third from week 27 — definitions vary by a week between sources, so your clinician's dates may differ slightly.",
+        "Milestones from that LMP: the 2nd trimester begins at 14 weeks (**April 9, 2026**), the 3rd at 28 weeks (**July 16, 2026**), and full term (39 weeks) begins **October 1, 2026**. This calculator follows the ACOG definitions: the 1st trimester runs through 13 weeks and 6 days, the 2nd from 14 weeks through 27 weeks and 6 days, and the 3rd from 28 weeks to birth.",
       ],
     },
     {
@@ -3775,8 +3775,8 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "How does a countdown calculator work?",
       paragraphs: [
-        "A countdown calculator subtracts the current moment from a target date: **time remaining = target date − now**. It converts that gap from milliseconds into **days, total hours, whole weeks, and approximate months**, so you can see the same wait in whichever unit makes sense.",
-        "The conversions are straightforward: hours are days × 24 plus the leftover hours, weeks are whole 7-day blocks (any leftover days are dropped), and months use the average month length of **30.44 days** (365.25 ÷ 12), which is why the months figure is labelled approximate. If the target date has already passed, every result shows **0** rather than a negative number.",
+        "A countdown calculator counts the calendar days from today to a target date: **days remaining = target date − today**. It converts that gap into **days, total hours, whole weeks, and approximate months**, so you can see the same wait in whichever unit makes sense.",
+        "The conversions are straightforward: hours are days × 24, weeks are whole 7-day blocks (any leftover days are dropped), and months use the average month length of **30.44 days** (365.25 ÷ 12), which is why the months figure is labelled approximate. If the target date has already passed, every result shows **0** rather than a negative number.",
         "The countdown is a snapshot: it is calculated when the page loads or when you change the target date. It does not tick down in real time, so refresh the page for the latest figure.",
       ],
     },
@@ -3791,7 +3791,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "What are countdowns useful for?",
       paragraphs: [
         "Countdowns turn vague dates into concrete plans: **exam revision** (days left sets the daily study load), **travel** (weeks left sets the booking and packing schedule), **project deadlines**, and **events** like weddings and product launches, where the same number in days, weeks, and months helps different people plan.",
-        "One caution: the days figure counts **whole 24-hour periods** from now, not calendar dates, so a target 'tomorrow' can show 0 days if less than 24 hours remain. For date-only planning, the Date Calculator or Days Between Dates tool gives the calendar-day count instead.",
+        "One point to know: the days figure counts **whole calendar dates**, not 24-hour periods, so a target 'tomorrow' always shows 1 day, and a target today shows 0.",
       ],
     },
   ],
@@ -4004,7 +4004,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "An annuity is a series of equal payments made at regular intervals — for example, $1,000 deposited every year into a retirement account. Its future value is calculated with **FV = PMT × [(1+r)ⁿ − 1] / r**, where PMT is the payment, r is the interest rate per period, and n is the number of periods.",
         "There are two kinds. An **ordinary annuity** pays at the *end* of each period, while an **annuity due** pays at the *beginning*, so each payment earns interest for one extra period and ends up worth more. This calculator shows both, plus the **present value** — what the whole stream of future payments is worth in today's dollars, using PV = PMT × [(1 − (1+r)⁻ⁿ) / r].",
-        "Note the units this tool uses: the rate is an **annual** rate and each period is **one year**, so a 20-period annuity is a 20-year plan with one payment a year. The calculator assumes a constant rate and ignores taxes and fees, and it needs a rate above zero — at 0% the formula divides by zero and shows no result.",
+        "Note the units this tool uses: the rate is an **annual** rate and each period is **one year**, so a 20-period annuity is a 20-year plan with one payment a year. The calculator assumes a constant rate and ignores taxes and fees. At 0% there is no interest to compound, so each figure is simply the payments added up: $1,000 a year for 20 years is $20,000 as a future value, an annuity due, and a present value alike.",
       ],
     },
     {
@@ -4029,7 +4029,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "A bond's price is the present value of everything it will pay you: all its future coupon (interest) payments plus the face value returned at maturity, each discounted back to today at the current market rate. The formula is **Price = Σ(Coupon ÷ (1+r)ᵗ) + Face ÷ (1+r)ⁿ**, where r is the market rate (yield to maturity) and n is the years to maturity.",
         "This is why bond prices move in the opposite direction to interest rates. When market rates rise, the bond's fixed coupons are discounted more heavily, so the bond is worth less. When rates fall, the same fixed coupons become more valuable and the price rises. A bond trades at a **premium** when its coupon rate is above the market rate, at a **discount** when below, and at **par** when the two are equal.",
-        "This calculator assumes **annual coupon payments** and takes the market rate (yield to maturity) as an input — it prices the bond for you, but it does not solve for the yield itself. It also needs a market rate above zero; at 0% the formula divides by zero and shows no result.",
+        "This calculator assumes **annual coupon payments** and takes the market rate (yield to maturity) as an input — it prices the bond for you, but it does not solve for the yield itself. At a 0% market rate there is no discounting, so the price is simply the coupons plus the face value added up: a $1,000 bond with a 5% coupon and 10 years left is worth $1,500.",
       ],
     },
     {
@@ -4104,14 +4104,14 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "Payoff time depends on three numbers — your balance, your APR, and your fixed monthly payment — and it follows the formula **Months = −log(1 − Balance×r ÷ Payment) ÷ log(1+r)**, where r is the monthly rate (APR ÷ 12). The critical condition is that your payment must be larger than one month's interest, or the balance never shrinks at all; this calculator shows an error message if the payment you enter is too low.",
         "The reason card debt is so stubborn is that interest is charged on the balance every month. Early on, most of each payment goes to interest and only a little reduces what you owe. As the balance falls, more of each payment attacks the principal — which is why raising your payment even modestly shortens the payoff dramatically.",
-        "This calculator assumes a fixed monthly payment, a fixed APR, and no new charges. It also rounds the payoff time up to whole months, so the final payment is counted in full — the true total paid is very slightly less than shown.",
+        "This calculator assumes a fixed monthly payment, a fixed APR, and no new charges. The payoff time is rounded up to whole months, and the final payment is the smaller amount actually needed to clear the balance — so the total paid is exact.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Take an **$8,000 balance at 22% APR** with a **$200 monthly payment**. One month's interest is $8,000 × 0.22 ÷ 12 = $146.67, so only $53.33 of the first payment reduces the balance. The payoff takes **73 months — 6.1 years** — and you pay **$14,600 in total, including $6,600 of interest**, nearly doubling the cost of whatever you bought.",
-        "Raise the payment to **$300 a month** and the picture changes completely: payoff falls to **37 months**, total paid to **$11,100**, and interest to **$3,100**. An extra $100 a month saves **$3,500 in interest and three years of payments**. Even $250 a month cuts the payoff to 49 months and interest to $4,250.",
+        "Take an **$8,000 balance at 22% APR** with a **$200 monthly payment**. One month's interest is $8,000 × 0.22 ÷ 12 = $146.67, so only $53.33 of the first payment reduces the balance. The payoff takes **73 months — 6.1 years** — and you pay **$14,551.27 in total, including $6,551.27 of interest**, nearly doubling the cost of whatever you bought.",
+        "Raise the payment to **$300 a month** and the picture changes completely: payoff falls to **37 months**, total paid to **$11,083.27**, and interest to **$3,083.27**. An extra $100 a month saves **$3,468 in interest and three years of payments**. Even $250 a month cuts the payoff to 49 months and interest to $4,158.37.",
       ],
     },
     {
@@ -4128,22 +4128,22 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How does the debt avalanche method work?",
       paragraphs: [
         "The avalanche method attacks your debts in order of interest rate, highest first. You pay the minimum on every debt, then throw all your extra money at the highest-rate balance until it is gone, then move to the next-highest rate. Because high-rate debt generates the most interest per dollar, clearing it first minimizes the total interest you pay — it is the mathematically cheapest way to become debt-free.",
-        "This calculator assumes a minimum payment of **2% of each balance (with a $25 floor)** and applies your extra monthly payment to the highest-rate debt that still has a balance. It models up to three debts. One thing to know: when a debt is cleared, this tool does **not** roll that debt's freed minimum payment into the next target — your total monthly payment shrinks instead. A textbook avalanche keeps the total payment constant by rolling freed minimums forward, so the tool's payoff time is slightly longer than a strict avalanche would be.",
+        "This calculator assumes a minimum payment of **2% of each balance (with a $25 floor)** and applies your extra monthly payment to the highest-rate debt that still has a balance. It models up to three debts. When a debt is cleared, its freed minimum payment rolls into the next target, so your total monthly payment stays constant until every debt is gone — the textbook avalanche behaviour.",
         "Avalanche is cheapest on paper, but it has a motivational weakness: if your highest-rate debt is also your biggest, months can pass before any debt disappears. That is the trade-off against the snowball method, which clears a debt quickly for a morale boost.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Suppose you owe **$3,000 at 10%, $5,000 at 24%, and $12,000 at 6%** — $20,000 in total — and you can pay **$500 a month extra** on top of minimums. The avalanche targets the 24% card first: it is cleared in about 10 months, and the whole $20,000 is gone in **27 months (2 years 3 months)** with **$1,864.10 of interest** paid.",
-        "Pay the same debts smallest-first (the snowball method) and it takes **28 months with $2,199.99 of interest** — the avalanche saves **$335.89 and one month**. The saving comes entirely from killing the 24% balance early instead of letting it accrue interest while you clear cheaper debts. With the calculator's default debts ($2,000 at 18%, $8,000 at 12%, $15,000 at 6%), both methods give the same answer — 30 months and $2,317.07 of interest — because the smallest debt is also the highest-rate one, so both methods attack it first. The methods only diverge when the smallest balance is not the highest rate.",
+        "Suppose you owe **$3,000 at 10%, $5,000 at 24%, and $12,000 at 6%** — $20,000 in total — and you can pay **$500 a month extra** on top of minimums. The avalanche targets the 24% card first: it is cleared in about 10 months, and the whole $20,000 is gone in **25 months (2 years 1 month)** with **$1,801.92 of interest** paid.",
+        "Pay the same debts smallest-first (the snowball method) and it takes **25 months with $2,073.61 of interest** — the avalanche saves **$271.69**, finishing in the same time. The saving comes entirely from killing the 24% balance early instead of letting it accrue interest while you clear cheaper debts. With the calculator's default debts ($2,000 at 18%, $8,000 at 12%, $15,000 at 6%), both methods give the same answer — 27 months and $2,166.93 of interest — because the smallest debt is also the highest-rate one, so both methods attack it first. The methods only diverge when the smallest balance is not the highest rate.",
       ],
     },
     {
       heading: "When avalanche beats snowball — and when it doesn't",
       paragraphs: [
         "Avalanche wins whenever the rate spread between your debts is wide: a 24% card against a 6% loan is a clear case for attacking the card first. The bigger the rate gap and the bigger the high-rate balance, the more the avalanche saves. Run both calculators with your real numbers — the difference is sometimes hundreds of dollars, sometimes almost nothing.",
-        "But the cheapest plan is only the best plan if you stick to it. Research on debt payoff consistently finds that people who clear a debt quickly are more likely to keep going, and avalanche's first win can be months away. If you have tried the avalanche before and stalled, the snowball's early wins may be worth more than the interest saved. Either method beats minimum payments by a wide margin: paying only minimums on the default debts takes 94 months and costs $7,174.57 in interest — more than triple the avalanche's $2,317.07.",
+        "But the cheapest plan is only the best plan if you stick to it. Research on debt payoff consistently finds that people who clear a debt quickly are more likely to keep going, and avalanche's first win can be months away. If you have tried the avalanche before and stalled, the snowball's early wins may be worth more than the interest saved. Either method beats minimum payments by a wide margin: paying only minimums on the default debts takes 94 months and costs $7,174.57 in interest — more than triple the avalanche's $2,166.93.",
       ],
     },
   ],
@@ -4153,7 +4153,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How does the debt snowball method work?",
       paragraphs: [
         "The snowball method attacks your debts in order of balance, smallest first. You pay the minimum on every debt, then throw all your extra money at the smallest balance until it is gone, then move to the next-smallest. Each cleared debt is a visible win, and the method is designed around motivation: quick victories keep you paying when a long slog would not.",
-        "This calculator assumes a minimum payment of **2% of each balance (with a $25 floor)** and applies your extra monthly payment to the smallest debt that still has a balance. It models up to three debts. One thing to know: when a debt is cleared, this tool does **not** roll that debt's freed minimum payment into the next target — your total monthly payment shrinks instead. A textbook snowball keeps the total payment constant by rolling freed minimums forward, so the tool's payoff time is slightly longer than a strict snowball would be.",
+        "This calculator assumes a minimum payment of **2% of each balance (with a $25 floor)** and applies your extra monthly payment to the smallest debt that still has a balance. It models up to three debts. When a debt is cleared, its freed minimum payment rolls into the next target, so your total monthly payment stays constant until every debt is gone — the textbook snowball behaviour.",
         "The trade-off is cost. Because the snowball ignores interest rates, a high-rate balance can keep accruing expensive interest while you clear cheaper debts first. The avalanche method (highest rate first) is mathematically cheaper — the question is whether the snowball's momentum is worth the extra interest to you.",
       ],
     },
@@ -4161,7 +4161,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "Worked example",
       paragraphs: [
         "Suppose you owe **$3,000 at 10%, $5,000 at 24%, and $12,000 at 6%** — $20,000 in total — and you can pay **$500 a month extra** on top of minimums. The snowball targets the $3,000 balance first: with its $60 minimum plus the $500 extra, it is cleared in **6 months**. That first win comes four months sooner than the avalanche's first cleared debt, which takes about 10 months.",
-        "The whole $20,000 is gone in **28 months (2 years 4 months)** with **$2,199.99 of interest** paid. The avalanche would finish one month sooner and cost **$335.89 less in interest** — the price of the snowball's quicker wins in this example. With the calculator's default debts ($2,000 at 18%, $8,000 at 12%, $15,000 at 6%), both methods give the same answer — 30 months and $2,317.07 of interest — because the smallest debt is also the highest-rate one. And either method crushes minimum-only payments, which would take 94 months and cost $7,174.57 in interest on those same debts.",
+        "The whole $20,000 is gone in **25 months (2 years 1 month)** with **$2,073.61 of interest** paid. The avalanche would finish in the same 25 months and cost **$271.69 less in interest** — the price of the snowball's quicker wins in this example. With the calculator's default debts ($2,000 at 18%, $8,000 at 12%, $15,000 at 6%), both methods give the same answer — 27 months and $2,166.93 of interest — because the smallest debt is also the highest-rate one. And either method crushes minimum-only payments, which would take 94 months and cost $7,174.57 in interest on those same debts.",
       ],
     },
     {
@@ -4179,7 +4179,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "A discount is a percentage taken off the original price: **Sale Price = Original Price × (1 − Discount ÷ 100)**, and **Savings = Original Price × Discount ÷ 100**. A 25% discount on a $100 item saves $25 and leaves a $75 sale price.",
         "Going the other way, the discount percentage is **((Original − Sale) ÷ Original) × 100** — so an $80 item marked down to $60 is 25% off. This calculator works in the first direction only: you enter the original price and the discount percentage, and it shows the sale price and your savings. Its description mentions finding the discount percentage from a sale price, but the tool has no sale-price input, so use the formula above for that.",
-        "One label to read carefully: the 'Discount Amount' row shows the discount **percentage** (25.00%), not a dollar amount — the dollar savings are on the 'You Save' row.",
+        "The results show the saving in dollars on both the 'Discount Amount' and 'You Save' rows, so the amount you keep is clear at a glance.",
       ],
     },
     {
@@ -4279,7 +4279,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "A mutual fund investment grows in two ways: your initial lump sum compounds, and each regular contribution (a SIP — Systematic Investment Plan) compounds from the month it goes in. The formula is **FV = P(1+r)ⁿ + SIP × [(1+r)ⁿ − 1] / r**, where r is the monthly return (annual return ÷ 12) and n is the number of months. This calculator assumes monthly compounding and contributions at the end of each month.",
         "The key force is compounding: returns earn returns, so growth accelerates over time. In the early years most of the balance is money you put in; in the later years most of it is growth. That is why starting early matters more than starting big — time in the market beats timing the market, and a few extra years of compounding can outweigh years of larger contributions.",
-        "The projection assumes a **constant** return every month, which real funds never deliver, and it ignores expense ratios, taxes, and inflation. Treat the result as a scenario — 'what if the fund returned exactly this much, every month, for 15 years' — not a forecast. The calculator also needs a return above zero; at 0% the formula divides by zero and shows no result.",
+        "The projection assumes a **constant** return every month, which real funds never deliver, and it ignores expense ratios, taxes, and inflation. Treat the result as a scenario — 'what if the fund returned exactly this much, every month, for 15 years' — not a forecast. At 0% there is no growth, so the future value is just the money you put in: $5,000 plus $500 a month for 15 years is $95,000.",
       ],
     },
     {
@@ -4354,13 +4354,13 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "The U.S. Army estimates body fat percentage from tape measurements and height, using the Department of Defense circumference equations. For men the formula uses **waist and neck circumferences**; for women it adds the **hip circumference**. No scales, calipers, or lab equipment are needed — just a tape measure.",
         "The male equation is **86.010 × log₁₀(waist − neck) − 70.041 × log₁₀(height) + 36.76**, and the female equation is **163.205 × log₁₀(waist + hip − neck) − 97.684 × log₁₀(height) − 78.387**, with all measurements in inches. The waist-minus-neck term captures abdominal fat, while height adjusts for body size. This calculator applies these exact equations.",
-        "This is an **estimate, not a medical measurement**: the tape method typically lands within about 3–4 percentage points of lab methods such as DEXA scans. One thing to know about this tool: its 'Army Max Allowed' figure is fixed at **26% for men and 36% for women**, which are the ceilings for soldiers aged 40 and over. The Army's actual limits rise with age — for men they run from 20% (ages 17–20) up to 26% (40+), and for women from 30% to 36% — so younger soldiers should check the limit for their own age group rather than relying on the tool's fixed figure.",
+        "This is an **estimate, not a medical measurement**: the tape method typically lands within about 3–4 percentage points of lab methods such as DEXA scans. The **'Army Max Allowed' figure depends on your age**, following AR 600-9 Table B-2: for men the limit is 20% (ages 17–20), 22% (21–27), 24% (28–39), and 26% (40+); for women 30%, 32%, 34%, and 36% in the same bands. Enter your age and the calculator applies the limit for your age group.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Take a man who is **70 inches tall with a 34-inch waist and a 15.5-inch neck**. Waist minus neck is 18.5. Plugging in: 86.010 × log₁₀(18.5) = 108.99, and 70.041 × log₁₀(70) = 129.23. So body fat = 108.99 − 129.23 + 36.76 = **16.5%** — comfortably within the Army standard.",
+        "Take a man who is **70 inches tall with a 34-inch waist and a 15.5-inch neck**. Waist minus neck is 18.5. Plugging in: 86.010 × log₁₀(18.5) = 108.99, and 70.041 × log₁₀(70) = 129.23. So body fat = 108.99 − 129.23 + 36.76 = **16.5%** — comfortably within the Army standard at any age (the strictest limit, for ages 17–20, is 20%).",
         "Now a woman who is **64 inches tall with a 28-inch waist, 38-inch hips, and a 13-inch neck**. Waist + hip − neck = 53. Plugging in: 163.205 × log₁₀(53) = 281.41, and 97.684 × log₁₀(64) = 176.44. So body fat = 281.41 − 176.44 − 78.39 = **26.6%** — also within the standard, and below the 30% limit that applies to women aged 17–20.",
       ],
     },
@@ -4429,13 +4429,13 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "Your daily fat target in grams is **(daily calories × fat percentage) ÷ 9**, because fat provides 9 kilocalories per gram — more than double the energy of carbs or protein. This calculator applies that formula to your calorie target and the fat share you choose.",
         "Dietary guidelines suggest fat make up **20–35% of total calories** for most adults. The calculator offers 20% (low fat), 30% (moderate), 40% (high fat), and 65% (keto). The 65% keto option sits well above the standard guideline range — it is a deliberate therapeutic-style diet, not a general recommendation, and it works by replacing most carbs with fat.",
-        "One row of this calculator deserves a caution: the **'Saturated Fat Limit' is calculated as 33% of your total fat grams**. That happens to match the standard guidance (saturated fat below 10% of calories) at the 30% setting, but it drifts at other settings — at 65% keto on 2,000 kcal it shows about 48 g, while 10% of calories is only 22 g. Use the 10%-of-calories rule directly for saturated fat rather than trusting that row at high-fat settings.",
+        "The **'Saturated Fat Limit' row follows the dietary guideline directly: saturated fat below 10% of calories**, so at 2,000 kcal it shows under 22 g whatever fat share you choose (2,000 × 0.10 ÷ 9 = 22.2 g). It does not rise with your fat percentage — a keto diet's higher total fat does not raise the saturated-fat ceiling.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Take a **2,000 kcal diet at 30% fat**. Calories from fat: 2,000 × 0.30 = 600 kcal. Divide by 9 kcal per gram: 600 ÷ 9 = **66.7 g**, which the calculator rounds to **67 g per day**. The saturated-fat limit shown is a third of that, about **22 g** — which matches 10% of 2,000 kcal (200 kcal ÷ 9 = 22.2 g).",
+        "Take a **2,000 kcal diet at 30% fat**. Calories from fat: 2,000 × 0.30 = 600 kcal. Divide by 9 kcal per gram: 600 ÷ 9 = **66.7 g**, which the calculator rounds to **67 g per day**. The saturated-fat limit shown is **under 22 g** — 10% of 2,000 kcal is 200 kcal, and 200 ÷ 9 = 22.2 g — and it stays at that figure whatever fat share you pick.",
         "Now the same 2,000 kcal at **65% (keto)**: 2,000 × 0.65 = 1,300 kcal from fat, and 1,300 ÷ 9 = **144 g per day** — more than double the moderate-fat figure. At 20% (low fat) it would be 2,000 × 0.20 ÷ 9 = **44 g**. The same calorie target produces very different gram targets depending on the share you choose, so pick the share that matches the diet you can actually sustain.",
       ],
     },
@@ -4652,9 +4652,9 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "What is a confidence interval?",
       paragraphs: [
-        "A confidence interval is a **range of plausible values for a population mean**, built from sample data: **x̄ ± z × (s ÷ √n)**, where x̄ is the sample mean, s is the standard deviation, n is the sample size, and z is the critical value for your confidence level (1.645 for 90%, 1.96 for 95%, 2.576 for 99%). The part after the ± is the margin of error.",
+        "A confidence interval is a **range of plausible values for a population mean**, built from sample data: **x̄ ± z × (s ÷ √n)**, where x̄ is the sample mean, s is the standard deviation, n is the sample size, and z is the critical value for your confidence level (1.645 for 90%, 1.96 for 95%, 2.576 for 99%). The part after the ± is the margin of error. For samples under 30, the calculator uses the **t-distribution** instead, with the t critical value for n − 1 degrees of freedom — the formula is the same, only the critical value changes.",
         "A 95% confidence interval means that if you repeated the study 100 times, about **95 of the intervals would contain the true population mean**. It does not mean there is a 95% chance the true mean is in *this* interval — the true mean is fixed; it is the interval that varies from sample to sample. That distinction is the single most common misunderstanding in statistics.",
-        "This calculator uses **z-values for every sample size**. That is standard practice for large samples, but for small samples (usually under 30) the t-distribution gives wider, more honest intervals. With large samples the two are nearly identical, so the calculator's results are reliable for the common case — just treat small-sample results as slightly optimistic.",
+        "This calculator uses **z-values for samples of 30 or more** and the **t-distribution for smaller samples** (t critical value with n − 1 degrees of freedom). That matches standard practice: with large samples the two are nearly identical, but for small samples the t-distribution gives wider, more honest intervals. The calculator states which method it used in the results.",
       ],
     },
     {
@@ -4662,6 +4662,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "Take a sample with **mean 50, standard deviation 10, and size 100**, at the **95%** level. The standard error is 10 ÷ √100 = 10 ÷ 10 = **1**. The margin of error is 1.96 × 1 = **1.96**. So the confidence interval is 50 ± 1.96, or **48.04 to 51.96**.",
         "At **99%** confidence with the same sample, the margin grows to 2.576 × 1 = 2.576, giving **47.42 to 52.58** — a wider interval, because more confidence demands more room. And if the sample size were 400 instead of 100, the standard error would halve to 10 ÷ √400 = 0.5, the 95% margin would shrink to 0.98, and the interval would narrow to **49.02 to 50.98**.",
+        "With a small sample — mean 50, standard deviation 10, size 10, at 95% — the calculator uses the t-distribution with 9 degrees of freedom (t = 2.2622). The standard error is 10 ÷ √10 = 3.16, the margin is 2.2622 × 3.16 = **±7.15**, and the interval is **42.85 to 57.15** — noticeably wider than the ±6.20 the z-value would give, because a small sample leaves more uncertainty about the true mean.",
       ],
     },
     {
@@ -4866,7 +4867,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "Flight time is simply **distance divided by speed**: a 5,000 km flight at a cruise speed of 850 km/h takes 5,000 ÷ 850 ≈ 5.9 hours. This calculator takes a distance in kilometres and a cruise speed in km/h, and shows the result in hours (to one decimal) and in whole minutes.",
         "The figure it gives is the **cruise-only time** — the time spent actually flying at speed. It does not add time for taxiing, takeoff, climb, descent, or landing, and it has no input for wind, so a real gate-to-gate journey always takes longer than the number shown here.",
-        "One edge case: entering a cruise speed of **0** divides by zero, and the tool shows 'Infinity hours' instead of an error. Keep the speed above zero — a typical jet cruises at roughly 800–900 km/h.",
+        "One edge case: entering a cruise speed of **0** shows a message asking for a speed above 0 instead of a time — there is no flight time to calculate when the aircraft is not moving. Keep the speed above zero — a typical jet cruises at roughly 800–900 km/h.",
       ],
     },
     {
@@ -4905,11 +4906,11 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
     {
-      heading: "The year-boundary trap — read this before trusting edge dates",
+      heading: "How the year boundary works",
       paragraphs: [
-        "This tool assigns every date to the ISO week of the **calendar year you enter**, and that breaks at the year boundary. **1 January 2023** (a Sunday) belongs to ISO week 52 of 2022, but the tool shows Week 1. **29–31 December 2025** belong to ISO week 1 of 2026, but the tool shows Week 53.",
-        "For dates in the middle of the year the tool is exactly right — the error only touches the handful of days around New Year when the ISO week-year and the calendar year disagree. If a week number near January 1st matters (payroll weeks, school terms, reporting periods), double-check it against an ISO calendar.",
-        "One more quirk: the tool does not validate the date. Entering **30 February** does not produce an error — JavaScript silently rolls it forward to 2 March, and the tool reports that date's week instead. Enter only real calendar dates.",
+        "The ISO week-year can differ from the calendar year at the boundary, and this tool handles that correctly: it shows the week number **with the ISO year it belongs to**. **1 January 2023** (a Sunday) belongs to ISO week 52 of 2022, and the tool shows 'Week 52 of 2022'. **29–31 December 2025** belong to ISO week 1 of 2026, and the tool shows 'Week 1 of 2026'.",
+        "The rule behind it is the Thursday rule: the week containing the first Thursday of January is week 1, and a date's ISO year is the year its week's Thursday falls in. That is why the handful of days around New Year can belong to the neighbouring year — and why the tool shows the ISO year alongside the week number instead of assuming it matches the calendar year.",
+        "The tool also validates the date you enter. **30 February** is not a real date, so entering it produces an error instead of silently rolling forward to 2 March. Enter only real calendar dates, and the week, day-of-year, weekday, and quarter will all agree with each other.",
       ],
     },
   ],
@@ -4972,25 +4973,25 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "How is temperature found from the ideal gas law?",
       paragraphs: [
-        "The ideal gas law, **PV = nRT**, links a gas's pressure (P), volume (V), amount in moles (n), and absolute temperature (T) through the gas constant R. This calculator rearranges it to solve for temperature: **T = PV ÷ (nR)**, using R = 0.08206 L·atm/(mol·K), and shows the answer in kelvin and in Celsius.",
+        "The ideal gas law, **PV = nRT**, links a gas's pressure (P), volume (V), amount in moles (n), and absolute temperature (T) through the gas constant R. This calculator rearranges it to solve for temperature: **T = PV ÷ (nR)**, using R = 0.082057 L·atm/(mol·K), and shows the answer in kelvin and in Celsius.",
         "Temperature must be in **kelvin** — the absolute scale that starts at absolute zero (−273.15 °C). Gas laws work on ratios of temperature, and only the kelvin scale has a true zero; plugging in a Celsius temperature would give a meaningless result.",
-        "One honest limitation: the page description says the tool solves for 'any variable', but it **solves for temperature only**. To find pressure or volume instead, rearrange the law yourself: P = nRT ÷ V and V = nRT ÷ P, with R = 0.08206 L·atm/(mol·K).",
+        "One point to know: the tool **solves for temperature only**. To find pressure or volume instead, rearrange the law yourself: P = nRT ÷ V and V = nRT ÷ P, with R = 0.082057 L·atm/(mol·K).",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "The tool's defaults are the textbook standard conditions: **1 atm, 22.414 L, 1 mol**. The temperature is T = (1 × 22.414) ÷ (1 × 0.08206) = **273.14 K**, shown as **−0.01 °C**. That is the standard temperature of 0 °C — one mole of an ideal gas occupies 22.414 litres at 1 atm and 0 °C.",
-        "The tiny 0.01 K shortfall is the tool's **rounded gas constant** at work: the exact R is 0.082057366 L·atm/(mol·K), and the tool uses 0.08206. Using the exact R gives 273.15 K exactly; the rounding costs about a hundredth of a degree, which is negligible for homework and lab estimates.",
-        "A second example: **2 atm, 10 L, 1 mol** gives T = (2 × 10) ÷ (1 × 0.08206) = **243.72 K**, or **−29.43 °C**. Doubling the pressure while holding volume fixed would double the temperature; here the smaller volume pulls it back down.",
+        "The tool's defaults are the textbook standard conditions: **1 atm, 22.414 L, 1 mol**. The temperature is T = (1 × 22.414) ÷ (1 × 0.082057) = **273.15 K**, shown as **0.00 °C**. That is the standard temperature of 0 °C — one mole of an ideal gas occupies 22.414 litres at 1 atm and 0 °C.",
+        "The tool uses R = 0.082057 L·atm/(mol·K), which reproduces the standard temperature of 273.15 K at these inputs; the exact constant is 0.082057366, and the difference is negligible for homework and lab estimates.",
+        "A second example: **2 atm, 10 L, 1 mol** gives T = (2 × 10) ÷ (1 × 0.082057) = **243.73 K**, or **−29.42 °C**. Doubling the pressure while holding volume fixed would double the temperature; here the smaller volume pulls it back down.",
       ],
     },
     {
       heading: "When the ideal gas law breaks down",
       paragraphs: [
         "The law assumes gas particles have no volume and never attract each other — a good approximation at **low pressure and high temperature**, where molecules are far apart and moving fast. Near condensation, at high pressure, or at very low temperature, real gases deviate: their measured PV is smaller than nRT predicts, because attractions pull molecules together and their own volume starts to matter.",
-        "Unit discipline is the most common source of wrong answers. This tool expects **pressure in atm and volume in litres** to match its R = 0.08206 L·atm/(mol·K). If your pressure is in pascals or your volume in cubic metres, use R = 8.314 J/(mol·K) instead — or convert first (1 atm = 101,325 Pa, 1 m³ = 1,000 L).",
-        "The tool guards against zero moles (it shows an error), but it does not stop negative or zero pressure or volume — physically meaningless inputs that produce a meaningless temperature, including a negative kelvin value. Keep all three inputs positive and the result stays physical.",
+        "Unit discipline is the most common source of wrong answers. This tool expects **pressure in atm and volume in litres** to match its R = 0.082057 L·atm/(mol·K). If your pressure is in pascals or your volume in cubic metres, use R = 8.314 J/(mol·K) instead — or convert first (1 atm = 101,325 Pa, 1 m³ = 1,000 L).",
+        "The tool guards against zero moles and against negative pressure, volume, or moles (it shows an error in each case) — physically meaningless inputs that would produce a meaningless temperature, including a negative kelvin value. Keep all three inputs positive and the result stays physical.",
       ],
     },
   ],
@@ -5334,8 +5335,8 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "Worked example",
       paragraphs: [
-        "Take **average annual earnings of $65,000** with a full retirement age of 67. Average monthly earnings are $5,416.67, and the bend-point formula gives a PIA of **$2,414.25 a month** at age 67 — **$28,971.04 a year**.",
-        "Claim at 62 and the benefit is cut by 30% to **$1,689.98 a month** ($20,279.73 a year). Wait until 70 and delayed credits add 24%, raising it to **$2,993.67 a month** ($35,924.09 a year). The gap between claiming at 62 and at 70 is **$1,303.69 every month, for life**.",
+        "Take **average annual earnings of $65,000** with a full retirement age of 67. Average monthly earnings are $5,416.67, and the bend-point formula gives a PIA of **$2,479.21 a month** at age 67 — **$29,750.56 a year**.",
+        "Claim at 62 and the benefit is cut by 30% to **$1,735.45 a month** ($20,825.39 a year). Wait until 70 and delayed credits add 24%, raising it to **$3,074.22 a month** ($36,890.69 a year). The gap between claiming at 62 and at 70 is **$1,338.77 every month, for life**.",
       ],
     },
     {
@@ -5353,20 +5354,20 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "A tax refund is the difference between what you already paid in tax and what you actually owe: **Refund = Tax Withheld − Tax Owed**. If withholding was more than the tax, you get a refund; if it was less, you owe the balance.",
         "Your tax is figured from taxable income — gross income minus deductions — run through the progressive federal brackets, where each slice of income is taxed at its own rate. Only the income above each bracket threshold is taxed at the higher rate, so moving into a higher bracket never makes you worse off overall. Tax credits then reduce the tax itself, dollar for dollar.",
-        "This calculator is a federal-only estimate using its built-in brackets and a single set of deductions. It does not include state tax, FICA, the standard deduction choice, or the higher 35% and 37% brackets, so it is best for typical incomes — use it as a planning estimate, not a filing figure.",
+        "This calculator is a federal-only estimate using its built-in 2026 brackets and a single set of deductions. It does not include state tax or FICA, and it uses a single standard deduction rather than a standard-versus-itemized choice — use it as a planning estimate, not a filing figure.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Take **$75,000 of gross income**, **$14,600 of deductions**, and **$12,000 withheld**, with no credits. Taxable income is $75,000 − $14,600 = **$60,400**. The bracket tax is 10% of $11,600 ($1,160) plus 12% of the next $35,550 ($4,266) plus 22% of the remaining $13,250 ($2,915) — total tax of **$8,341**.",
-        "With $12,000 withheld, the refund is **$3,659**, and the effective tax rate is $8,341 ÷ $75,000 = **11.12%**. Note the marginal rate is 22% — the rate on the next dollar earned — even though only 11.12% of total income went to federal tax.",
+        "Take **$75,000 of gross income**, **$16,100 of deductions**, and **$12,000 withheld**, with no credits. Taxable income is $75,000 − $16,100 = **$58,900**. The bracket tax is 10% of $12,400 ($1,240) plus 12% of the next $38,000 ($4,560) plus 22% of the remaining $8,500 ($1,870) — total tax of **$7,670**.",
+        "With $12,000 withheld, the refund is **$4,330**, and the effective tax rate is $7,670 ÷ $75,000 = **10.23%**. Note the marginal rate is 22% — the rate on the next dollar earned — even though only 10.23% of total income went to federal tax.",
       ],
     },
     {
       heading: "Is a big refund good news?",
       paragraphs: [
-        "A refund feels like a bonus, but it is really an interest-free loan you gave the government: you overpaid during the year and are getting your own money back. A $3,659 refund means about $305 a month was withheld unnecessarily — money that could have been earning interest or paying down debt.",
+        "A refund feels like a bonus, but it is really an interest-free loan you gave the government: you overpaid during the year and are getting your own money back. A $4,330 refund means about $361 a month was withheld unnecessarily — money that could have been earning interest or paying down debt.",
         "The ideal result is close to zero: enough withheld to avoid owing, but not so much that you are lending to the IRS. If your refund is large every year, adjust your W-4 withholding so more of your pay arrives in each paycheck instead. The exception is if you deliberately use the refund as forced savings — but a savings account pays you interest for the same job.",
       ],
     },
@@ -5802,7 +5803,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "What is the waist-to-height ratio?",
       paragraphs: [
         "The waist-to-height ratio (WHtR) is your waist circumference divided by your height, both in the same units. It is a simple check for central fat — fat stored around the waist — which is more closely linked to health risk than total body weight alone.",
-        "The rule of thumb is to keep your waist under half your height, a ratio below 0.5. This calculator rates the result in four bands: above 0.58 is High Risk, above 0.53 is Increased Risk, above 0.46 is Healthy, and 0.46 or below is Underweight Risk.",
+        "The rule of thumb is to keep your waist under half your height, a ratio below 0.5. This calculator rates the result in four bands: above 0.58 is High Risk, above 0.53 is Increased Risk, 0.46–0.53 is Healthy, and below 0.46 is Underweight Risk.",
         "It also shows a target waist: half your height in centimetres. Unlike BMI, the ratio needs no weight measurement and adjusts for height automatically, which is why many health researchers prefer it as a quick screening check.",
       ],
     },
@@ -5927,7 +5928,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How does long division work?",
       paragraphs: [
         "Long division splits a number (the dividend) into equal groups of another number (the divisor). The answer has two parts: the quotient, how many whole groups fit, and the remainder, what is left over. This calculator also shows the exact decimal result.",
-        "The relationship to remember is: dividend = divisor × quotient + remainder. That single check verifies any long division answer, with or without a calculator.",
+        "The relationship to remember is: dividend = divisor × quotient + remainder. That single check verifies any long division answer, with or without a calculator. For negative dividends the calculator uses floor division, so −17 ÷ 5 = **−4 R 3** (check: 5 × −4 + 3 = −17) — the remainder always has the sign of the divisor, which keeps the check identity true.",
         "Division by zero has no answer, and the calculator says so: entering 0 as the divisor shows an error instead of a result.",
       ],
     },
@@ -6003,7 +6004,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "The modulus is the remainder after division: a mod b is what is left when a is divided by b as many whole times as possible. 17 mod 5 is 2, because 5 fits into 17 three times (15) with 2 left over.",
         "This calculator shows the remainder, the quotient, and a verification line: quotient × divisor + remainder = dividend. That identity is the quickest way to check any modulus result.",
-        "For positive numbers the modulus and the remainder are the same thing. With negative numbers, different systems disagree: this calculator follows the JavaScript remainder, so −17 mod 5 gives −2, while the mathematical modulus (as in Python) gives 3. For everyday uses — clocks, wrapping, even/odd checks — the numbers are positive and the two agree.",
+        "For positive numbers the modulus and the remainder are the same thing. With negative numbers, different systems disagree: this calculator uses the mathematical (floor) modulus, so −17 mod 5 gives **3** — the remainder always has the sign of the divisor. Some programming languages use a truncated remainder instead, which gives −2 for the same input.",
       ],
     },
     {
@@ -6051,7 +6052,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "What is a p-value?",
       paragraphs: [
-        "A p-value is the probability of seeing a test result at least as extreme as yours if the null hypothesis — usually 'no effect' or 'no difference' — were true. A small p-value means the result would be surprising under the null, which is evidence against it. This calculator finds the p-value for a z-score, using the standard normal distribution.",
+        "A p-value is the probability of seeing a test result at least as extreme as yours if the null hypothesis — usually 'no effect' or 'no difference' — were true. A small p-value means the result would be surprising under the null, which is evidence against it. This calculator finds the p-value for a z-score, using the standard normal distribution, or for a t-statistic, using Student's t-distribution with the degrees of freedom you enter.",
         "The usual significance cut-off is 0.05: below it, a result is called statistically significant. This calculator also checks the stricter 0.01 level. It offers one-tailed and two-tailed tests — two-tailed doubles the one-tailed p-value, because it counts extremes in both directions.",
         "A p-value is not the probability that the null hypothesis is true, and it says nothing about the size or importance of an effect. A tiny p-value from a huge sample can describe a trivial difference, and a non-significant result is not proof of no effect.",
       ],
@@ -6061,6 +6062,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "A z-score of **1.96**, two-tailed: p = **0.049996**, just below 0.05, so the result is significant at the 5% level but not at 1%. The same z-score one-tailed gives p = **0.024998** — half the two-tailed value, as expected.",
         "A z-score of **2.58**, two-tailed, gives p = **0.009880** — significant at both 0.05 and 0.01. A small z-score of 0.5 gives p = **0.617075**, far from significant: a result that far from the mean happens most of the time by chance.",
+        "A t-statistic of **2.228 with 10 degrees of freedom**, two-tailed, gives p = **0.050012** — just above 0.05, so not significant at the 5% level. The same value treated as a z-score would give p = 0.025880, which shows why the distinction matters for small samples: the t-distribution's heavier tails give larger, more honest p-values.",
       ],
     },
     {
@@ -6178,7 +6180,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       paragraphs: [
         "The sample size for a survey depends on three things: the confidence level, the margin of error, and the population size. This calculator uses Cochran's formula with the most conservative assumption — a 50/50 split (p = 0.5) — which gives the largest sample size and keeps the results reliable whatever the true proportion turns out to be.",
         "It starts with the infinite-population size, n₀ = z²p(1−p)/e², where z is 1.645 for 90%, 1.96 for 95%, or 2.576 for 99% confidence, then applies the finite population correction, n = n₀ ÷ (1 + (n₀−1)/N), which shrinks the sample when the population is small.",
-        "It also suggests how many surveys to send, assuming an 80% response rate: divide the required sample by 0.8. If you expect a lower response rate, send proportionally more.",
+        "It also suggests how many surveys to send, assuming an 80% response rate: divide the required sample by 0.8. If you expect a lower response rate, send proportionally more. If the population is unknown or very large, enter 0 — the calculator then uses the infinite-population size.",
       ],
     },
     {
@@ -6202,7 +6204,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How is a semester grade calculated?",
       paragraphs: [
         "A semester grade is a weighted average: each component score is multiplied by its weight, the products are added, and the total is divided by the sum of the weights. This calculator combines assignments, midterm, and final exam scores, then converts the percentage to a letter grade.",
-        "The weights do not have to add up to 100 — the calculator divides by the actual total weight, so any consistent set of weights works. The letter scale runs from A at 93% down to F below 60%, with plus and minus steps in between.",
+        "The weights do not have to add up to 100 — the calculator divides by the actual total weight, so any consistent set of weights works. If all weights are 0, the grade is 0%. The letter scale runs from A at 93% down to F below 60%, with plus and minus steps in between.",
         "Use it before the final to see what score you need: try different final-exam scores and watch the letter grade move.",
       ],
     },
@@ -6431,8 +6433,8 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "How is fence material calculated?",
       paragraphs: [
-        "Fence material is calculated from the length of the fence run: **posts = length ÷ post spacing + 1** (rounded up), **rails = sections × 3**, and **pickets = length ÷ 0.5**, assuming 6-inch-wide pickets. Post depth is one-third of the fence height.",
-        "The '+1' in the post count is the end post: a fence with 13 sections needs 14 posts, one at each end plus one between every pair of sections. Rails are counted as three per 8-foot section, and pickets at two per foot of fence length.",
+        "Fence material is calculated from the length of the fence run: **posts = length ÷ post spacing + 1** (rounded up), **rails = sections × 2 for fences up to 4 feet tall, × 3 for taller fences**, and **pickets = length ÷ 0.5**, assuming 6-inch-wide pickets. Post depth is one-third of the fence height.",
+        "The '+1' in the post count is the end post: a fence with 13 sections needs 14 posts, one at each end plus one between every pair of sections. Rails are counted per section — two for a fence up to 4 feet tall, three for taller fences — and the section count comes from the post spacing you enter, not a fixed 8 feet.",
         "Enter the total fence length, the height, and the spacing between posts, and the calculator returns the post, rail, and picket counts plus the recommended post depth — the four numbers you need for a materials list.",
       ],
     },
@@ -6447,7 +6449,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "What should you check before buying fence materials?",
       paragraphs: [
         "Buy a few extra pickets and at least one spare post: boards split, posts arrive warped, and cuts go wrong. The calculator gives exact counts for a straight run, so corners, slopes, and gates all need adjusting by hand.",
-        "Two assumptions are built into this calculator: rails are counted as three per 8-foot section whatever the fence height or post spacing, and pickets assume 6-inch boards with no gap. If you are building a shorter fence with two rails per section, or pickets with gaps between them, adjust the rail and picket counts yourself.",
+        "One assumption is built into this calculator: pickets assume 6-inch boards with no gap. If your pickets have gaps between them, adjust the picket count yourself. The rail count already follows the fence height — two per section up to 4 feet, three above — and the post spacing you enter.",
         "Check local rules before you dig: many areas limit fence height (often 6 feet in back gardens, lower in front), require the finished side to face outwards, and need you to call before digging to mark buried utilities.",
       ],
     },
@@ -6666,7 +6668,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How does the password generator work?",
       paragraphs: [
         "The password generator builds a password by picking characters at random from a **character pool**. Lowercase letters are always included; you can add uppercase letters, numbers, and symbols by setting each option to 1, and you choose the length from 4 to 64 characters. Click Calculate to generate a new password.",
-        "The pool sizes are fixed: 26 lowercase letters, 26 uppercase, 10 digits, and 26 symbols — so with all four types selected the pool is **88 characters**. Every character in the password is an independent random pick from that pool.",
+        "The pool sizes are fixed: 26 lowercase letters, 26 uppercase, 10 digits, and 26 symbols — so with all four types selected the pool is **88 characters**. Every password is guaranteed to contain **at least one character from each selected type**: the generator picks one character from each type first, fills the rest at random from the full pool, and shuffles the result — so a short password never comes out missing the numbers or symbols you asked for.",
         "The calculator also reports **entropy**, the strength of the password measured in bits: entropy = log₂(pool size) × length. It rates the result Weak, Moderate, Strong, or Very Strong based on that number — over 40 bits is Moderate, over 60 is Strong, and over 80 is Very Strong.",
       ],
     },
@@ -6681,7 +6683,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How should you use generated passwords?",
       paragraphs: [
         "Use a **different password for every account** and store them in a password manager — that is the point of generating random passwords you could never memorise. A 16-character generated password is strong; the same password reused across ten sites is not.",
-        "Two honest limits of this tool: it generates passwords with JavaScript's Math.random(), which is pseudo-random rather than cryptographically secure, so for the highest-security accounts a password manager's built-in generator is the better choice. And because characters are picked purely at random, there is no guarantee that every selected character type actually appears in the password — with 16 characters it almost always does, but check before you rely on it.",
+        "The generator uses **crypto.getRandomValues()**, a cryptographically secure random source built into the browser, and the password never leaves your device — it is generated locally, not sent anywhere. For the highest-security accounts, a password manager's built-in generator is still the best choice, because it also stores the password securely.",
         "Longer is better, and there is no real downside to length: a 20- or 24-character password is barely harder to store in a manager than a 16-character one, and each extra character multiplies the guessing effort by the size of the pool.",
       ],
     },
@@ -6882,13 +6884,13 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "Worked example",
       paragraphs: [
         "Clock in at **09:00** and out at **17:30**, with a **30-minute break**, at **$25 an hour**. Total minutes are (17 × 60 + 30) − (9 × 60) − 30 = 1,050 − 540 − 30 = **480 minutes**, which is **8h 0m** or **8.00 decimal hours**.",
-        "Daily pay is 8.00 × $25 = **$200.00**, and the weekly figure is $200.00 × 5 = **$1,000.00**. For an overnight shift — 22:00 to 06:00 with the same 30-minute break — the total is 360 − 1,320 − 30 = −990 minutes, plus 1,440 for crossing midnight = **450 minutes (7h 30m)**, paying **$187.50**.",
+        "Daily pay is 8.00 × $25 = **$200.00**, and the weekly figure is $200.00 × 5 = **$1,000.00**. For an overnight shift — 22:00 to 06:00 with the same 30-minute break — the shift is 360 − 1,320 = −960 minutes, plus 1,440 for crossing midnight = 480 minutes, minus the 30-minute break = **450 minutes (7h 30m)**, paying **$187.50**.",
       ],
     },
     {
       heading: "What should you watch out for on a time card?",
       paragraphs: [
-        "Keep the **break shorter than the shift**. The overnight adjustment adds 24 hours whenever the total goes negative, so a break longer than the shift — say a 10-hour break on an 8-hour shift — wraps around and shows as a very long shift instead of an error.",
+        "Keep the **break shorter than the shift**. The calculator checks this: a break longer than the shift — say a 10-hour break on an 8-hour shift — shows an error instead of a result, because no hours would be left to pay.",
         "The weekly figure assumes five identical days. If your days vary in length, run each day separately and add the daily pay figures together — the ×5 shortcut only works when every day matches.",
         "This calculator does not apply overtime rules: it pays every hour at the same rate. If your jurisdiction pays time-and-a-half over 40 hours a week, work out the overtime hours separately and add the premium yourself.",
       ],
@@ -6986,13 +6988,13 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "Worked example",
       paragraphs: [
         "Take an air temperature of **20°F with a 15 mph wind**. The wind factor is 15^0.16 ≈ 1.542, so the wind chill is 35.74 + 0.6215 × 20 − 35.75 × 1.542 + 0.4275 × 20 × 1.542 = **6°F** (−14°C) — fourteen degrees colder than the thermometer reads, with a **low frostbite risk**.",
-        "At **0°F with a 20 mph wind**, the wind chill falls to **−22°F**, and the calculator flags **frostbite in 15 minutes**. The same 0°F air with no wind would feel like 0°F — the wind alone accounts for the entire 22-degree difference.",
+        "At **0°F with a 20 mph wind**, the wind chill falls to **−22°F**, and the calculator flags **frostbite in about 30 minutes**. The same 0°F air with no wind would feel like 0°F — the wind alone accounts for the entire 22-degree difference.",
       ],
     },
     {
       heading: "When is wind chill dangerous?",
       paragraphs: [
-        "The calculator flags **frostbite in 30 minutes when the wind chill falls below 0°F, and in 15 minutes below −18°F**. Those times are for exposed skin: covered skin is protected, which is why the practical advice is about clothing, not about staying indoors at all costs.",
+        "Frostbite times on exposed skin follow the **National Weather Service** table: at a wind chill of **−19 to −24°F, about 30 minutes; −25 to −44°F, about 10 minutes; −45°F and below, about 5 minutes**. Those times are for exposed skin: covered skin is protected, which is why the practical advice is about clothing, not about staying indoors at all costs.",
         "Dress in layers, cover exposed skin — face, ears, and hands lose heat fastest — and keep dry: wet clothing loses its insulating value and accelerates heat loss far more than wind alone.",
         "Wind chill also matters for planning, not just comfort. It decides whether a school run, a construction shift, or a winter hike needs extra precautions, and it is the number weather forecasts quote for a reason: the air temperature alone understates the cold whenever the wind is up.",
       ],
@@ -7178,9 +7180,9 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "How is the insurance estimate calculated?",
       paragraphs: [
-        "This calculator gives a rough estimate of annual car insurance cost from just three inputs. It starts with a base premium of **4% of the car's value per year**, then adjusts for driver age — **drivers under 25 pay 1.5× the base, and drivers over 65 pay 1.2×** — and finally reduces the premium for a higher deductible: each $1,000 of deductible cuts the premium by 6%, up to the formula's limit.",
+        "This calculator gives a rough estimate of annual car insurance cost from just three inputs. It starts with a base premium of **4% of the car's value per year**, then adjusts for driver age — **drivers under 25 pay 1.5× the base, and drivers over 65 pay 1.2×** — and finally reduces the premium for a higher deductible: each $1,000 of deductible cuts the premium by 6%, down to a floor of 10% of the base premium — the estimate can never go below that, however large the deductible.",
         "The result is an **estimate, not a quote**. Real premiums depend on many things this tool never asks about: where you live, your driving record, how far you drive, the coverage type and limits, and the insurer itself. Two drivers with the same car and age can easily pay very different amounts.",
-        "Keep the deductible within a realistic range (a few hundred to a few thousand dollars). The discount formula is designed for ordinary deductibles; very large values push the estimate outside any sensible range.",
+        "Keep the deductible within a realistic range (a few hundred to a few thousand dollars). The discount is capped so the premium never falls below 10% of the base premium, so a very large deductible simply sits at that floor rather than producing a meaningless figure.",
       ],
     },
     {
@@ -7229,7 +7231,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How are combinations calculated?",
       paragraphs: [
         "A combination counts how many ways you can **choose r items from n items when the order does not matter**. The formula is **nCr = n! ÷ (r! × (n−r)!)**, where '!' means factorial — multiplying a number by every whole number below it. Choosing a 3-person committee from 10 people is a combination, because the same three people in a different order are still the same committee.",
-        "This calculator also shows the probability of one specific combination: **1 ÷ nCr**, expressed as a percentage when it is not too small. Note that the tool **caps n at 30** (and r at n) — larger values are clamped to 30, so results for bigger problems must be worked out elsewhere.",
+        "This calculator also shows the probability of one specific combination: **1 ÷ nCr**, expressed as a percentage when it is not too small. The tool accepts **n up to 170** (and r up to n) — larger values are clamped to 170, and results above one trillion are shown in scientific notation.",
         "Combinations differ from **permutations**, where order does matter: arranging 3 people in a row from 10 gives far more results than merely choosing the same 3 people, because every arrangement of the same three counts separately.",
       ],
     },
@@ -7243,7 +7245,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
     {
       heading: "Where combinations actually get used",
       paragraphs: [
-        "Lotteries are the classic example: the odds of matching all six numbers in a 6-from-49 draw are 1 in C(49,6) = 13,983,816 — though note that this tool caps n at 30, so it cannot compute that example directly. Card games, team selection, quality-control sampling, and genetics all use the same counting.",
+        "Lotteries are the classic example: the odds of matching all six numbers in a 6-from-49 draw are 1 in C(49,6) = 13,983,816 — try it in the calculator, which handles n up to 170. Card games, team selection, quality-control sampling, and genetics all use the same counting.",
         "A useful shortcut: C(n,r) always equals C(n, n−r), because choosing which r items to take is the same as choosing which n−r items to leave behind. So C(10,7) is the same as C(10,3) — 120 — which can save a lot of arithmetic when r is large.",
       ],
     },
@@ -7476,25 +7478,25 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
 
   "hex-to-decimal-calculator": [
     {
-      heading: "What does this calculator actually convert?",
+      heading: "How does hex-to-decimal conversion work?",
       paragraphs: [
         "Hexadecimal (hex) is the base-16 number system, using the digits 0–9 plus the letters **A–F for the values 10–15**. It is a compact way of writing binary: each hex digit stands for exactly four bits, so one byte is always two hex digits.",
-        "One important detail about this tool: despite the page name, **it converts from decimal to hexadecimal, not the other way round**. The input is a plain decimal number, and the tool shows its hex, binary, and octal forms. It cannot accept hex letters such as A–F because the input field only takes numbers — to convert hex to decimal, use the explanation below and check the result by entering the decimal answer here.",
+        "Enter a hex value — digits 0–9 and letters A–F, with or without a **0x prefix** — and the tool shows its **decimal** value plus the binary and octal forms. Upper- or lowercase letters both work.",
         "The hex-to-decimal rule is: multiply each hex digit by 16 raised to its position (from the right, starting at 0) and add them up. So 0x1A3 = 1 × 256 + 10 × 16 + 3 = **419**.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Enter the decimal number **255**. The tool shows **0xFF** in hexadecimal, **11111111** in binary, and **0o377** in octal. Check the hex by hand: F stands for 15, so 0xFF = 15 × 16 + 15 = 240 + 15 = **255** — the same number, as expected.",
-        "The other direction works the same way: **0xFF** converts back to 255, and **0x1A3** is 1 × 256 + 10 × 16 + 3 × 1 = **419**. Each hex digit to the left is worth sixteen times the one to its right, just as each decimal digit is worth ten times the one to its right.",
+        "Enter the hex value **FF**. The tool shows **255** in decimal, **11111111** in binary, and **0o377** in octal. Check the decimal by hand: F stands for 15, so 0xFF = 15 × 16 + 15 = 240 + 15 = **255**.",
+        "The same rule works for longer values: **0x1A3** is 1 × 256 + 10 × 16 + 3 × 1 = **419**. Each hex digit to the left is worth sixteen times the one to its right, just as each decimal digit is worth ten times the one to its right.",
       ],
     },
     {
       heading: "Where hexadecimal is used",
       paragraphs: [
         "Hex is everywhere in computing: **colour codes** like #FF0000 (red) are three bytes in hex, **memory addresses** and **MAC addresses** are written in hex, and programmers use it to describe binary data compactly. A single hex digit replaces four binary digits, which is why long binary strings are almost always shown in hex instead.",
-        "Because this tool works decimal-to-hex, it is most useful as a quick check: enter a decimal value you know and read off the hex, binary, and octal forms together. For converting a hex value you already have, apply the place-value rule above — or enter the decimal result here to confirm it matches.",
+        "Enter a hex value you already have — a colour code, a memory address, a value from code — and read off the decimal, binary, and octal forms together. The tool accepts up to 12 hex digits, which covers values up to 281,474,976,710,655.",
       ],
     },
   ],
@@ -7681,7 +7683,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "What is the modulo operation?",
       paragraphs: [
         "Modulo gives you the **remainder after division**. 17 mod 5 is 2, because 17 ÷ 5 = 3 with 2 left over. It answers the question 'what is left?' rather than 'how many times does it fit?'",
-        "The relationship is **dividend = quotient × divisor + remainder**. This calculator shows all three parts: the remainder, the whole-number quotient, and the full division written out, plus whether the dividend is even or odd.",
+        "The relationship is **dividend = quotient × divisor + remainder**. This calculator shows all three parts: the remainder, the whole-number quotient, and the full division written out, plus whether the dividend is even or odd. With a negative dividend it uses the mathematical (floor) definition, so −17 mod 5 = 3 and the division reads −17 = −4 × 5 + 3.",
         "Dividing by zero has no answer, so if you enter 0 as the divisor the calculator shows an error instead of a result.",
       ],
     },
@@ -7941,7 +7943,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "How is ring size calculated from circumference?",
       paragraphs: [
         "Measure your finger's circumference in millimetres, and the size follows from it. The US size is approximately **(circumference − 36.5) ÷ 2.55**, and the **EU size is simply the circumference in millimetres** — a 54 mm finger is a EU size 54.",
-        "This calculator also gives the ring's **inside diameter (circumference ÷ π)** and an approximate UK letter size. The US formula is a linear approximation of the standard sizing tables, so it is accurate to about a quarter of a size for typical fingers.",
+        "This calculator also gives the ring's **inside diameter (circumference ÷ π)** and an approximate UK letter size, taken from the standard UK sizing chart by nearest circumference — a 54 mm finger is UK size **O**. The US formula is a linear approximation of the standard sizing tables, so it is accurate to about a quarter of a size for typical fingers.",
         "Because the UK letter is only approximate, check it against a jeweller's sizing chart before ordering — and when in doubt, size with a physical ring sizer rather than relying on any formula.",
       ],
     },
@@ -7949,7 +7951,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "Worked example",
       paragraphs: [
         "Measure a finger circumference of **54 mm**. The inside diameter is 54 ÷ π = **17.2 mm**.",
-        "The US size is (54 − 36.5) ÷ 2.55 = 17.5 ÷ 2.55 = **6.9**, and the EU size is **54** — the circumference itself, rounded to the nearest whole millimetre.",
+        "The US size is (54 − 36.5) ÷ 2.55 = 17.5 ÷ 2.55 = **6.9**, and the EU size is **54** — the circumference itself, rounded to the nearest whole millimetre. The nearest UK letter size on the standard chart is **O** (54.51 mm).",
       ],
     },
     {
@@ -8053,7 +8055,7 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       heading: "Worked example",
       paragraphs: [
         "Fill a raised bed **12 feet long and 4 feet wide to a depth of 6 inches**. The depth in feet is 6 ÷ 12 = 0.5, so the volume is 12 × 4 × 0.5 = **24 cubic feet**.",
-        "In cubic yards that is 24 ÷ 27 = **0.89 cubic yards** — just under a yard, so ordering one cubic yard covers it with a little to spare. At 1.1 tons per cubic yard, the soil weighs about **0.98 tons**, roughly 1,960 pounds.",
+        "In cubic yards that is 24 ÷ 27 = **0.89 cubic yards** — just under a yard, so ordering one cubic yard covers it with a little to spare. At 1.1 tons per cubic yard, the soil weighs about **0.98 tons**, roughly 1,960 pounds. In 40 lb bags, a bag holds about 0.75 cubic feet, so 24 ÷ 0.75 = **32 bags**.",
       ],
     },
     {
@@ -8250,18 +8252,18 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
 
   "word-count-calculator": [
     {
-      heading: "What does the word count calculator estimate?",
+      heading: "What does the word count calculator count?",
       paragraphs: [
-        "This calculator starts from a **word count you already know** and estimates everything else: characters (words × average characters per word), sentences (about 15 words each), paragraphs (about 5 sentences each), reading time at 250 words per minute, and speaking time at 150 words per minute.",
-        "Note that it does **not count words from pasted text** — there is no text box. You enter the word count (from your document or editor) and the average characters per word, and the calculator derives the rest. The default of 5 characters per word is a reasonable average for English prose.",
-        "The sentence and paragraph figures are rough by design: real sentences vary in length, and real paragraphs vary even more. Treat them as planning estimates, not exact counts.",
+        "Paste or type your text into the box and the calculator counts it directly: **words** (split on whitespace), **characters** (with and without spaces), **sentences** (ending in . ! or ?), and **paragraphs** (separated by blank lines). It also estimates reading time at 250 words per minute and speaking time at 150 words per minute.",
+        "The counts are exact for the text you enter — words, characters, sentences, and paragraphs are all counted, not estimated from averages. The sample text loaded by default has **29 words, 160 characters, 4 sentences, and 2 paragraphs**, so you can see every figure at work before you paste your own text.",
+        "Reading and speaking times are the only estimates: real reading speed varies with the material and the reader, so treat them as planning figures, not exact timings.",
       ],
     },
     {
       heading: "Worked example",
       paragraphs: [
-        "Enter **1,500 words** with an average of **5 characters per word**. The character count is 1,500 × 5 = **7,500 characters**.",
-        "The estimates are 1,500 ÷ 15 = **100 sentences** and 100 ÷ 5 = **20 paragraphs**. Reading time is 1,500 ÷ 250 = **6.0 minutes**, and speaking time is 1,500 ÷ 150 = **10.0 minutes** — a useful pair when a piece is both published and presented.",
+        "Paste the sample text loaded by default — two short paragraphs of pangrams. The calculator counts **29 words, 160 characters (131 without spaces), 4 sentences, and 2 paragraphs**.",
+        "Reading and speaking times come from the word count: a 1,500-word article takes 1,500 ÷ 250 = **6.0 minutes** to read and 1,500 ÷ 150 = **10.0 minutes** to speak aloud — a useful pair when a piece is both published and presented.",
       ],
     },
     {

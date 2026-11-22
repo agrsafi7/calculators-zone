@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
-import GuideSections from "@/components/GuideSections";
+import LazyGuideSections from "@/components/LazyGuideSections";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { Calculator, ChevronRight, LayoutGrid } from "lucide-react";
 
@@ -259,7 +259,7 @@ const PercentageCalculator = () => {
           </div>
 
           {/* In-depth guide (same position as in CalculatorTemplate) */}
-          <GuideSections slug="percentage-calculator" />
+          <LazyGuideSections slug="percentage-calculator" />
 
           <div className="mt-8 pt-6 border-t border-surface-container">
             <h3 className="font-display text-[18px] font-semibold text-ink mb-4">More Math Tools on TheCalculator.us</h3>

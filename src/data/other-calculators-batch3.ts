@@ -91,29 +91,6 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
 
   // ═══ POOL & OUTDOOR ═══
   {
-    slug: "pool-volume-calculator", name: "Pool Volume Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Pool & Outdoor",
-    description: "Calculate the volume of water in your swimming pool.",
-    metaDescription: "Free pool volume calculator. Find gallons of water in your pool.",
-    icon: "layers",
-    inputs: [
-      { id: "length", label: "Length (feet)", type: "number", defaultValue: 30 },
-      { id: "width", label: "Width (feet)", type: "number", defaultValue: 15 },
-      { id: "avgDepth", label: "Average Depth (feet)", type: "number", defaultValue: 5, step: 0.5 },
-    ],
-    calculate: (v) => {
-      const cubicFt = v.length * v.width * v.avgDepth;
-      const gallons = cubicFt * 7.48052;
-      return [
-        { label: "Volume (Gallons)", value: num(gallons), highlight: true },
-        { label: "Volume (Liters)", value: num(gallons * 3.78541) },
-        { label: "Cubic Feet", value: num(cubicFt) },
-      ];
-    },
-    formula: { expression: "Volume = L × W × D × 7.48", variables: ["L = Length", "W = Width", "D = Avg depth"] },
-    howToUse: "Enter pool dimensions in feet.", faqs: defFaqs("Pool Volume Calculator"), relatedCalcs: b3Rel("pool-volume-calculator"),
-  },
-  {
     slug: "deck-stain-calculator", name: "Deck Stain Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Pool & Outdoor",
     description: "Calculate how much stain you need for your deck.",
@@ -153,11 +130,12 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     calculate: (v) => {
       const workWeeks = 52 - v.vacWeeks;
       const total = v.salary + v.expenses;
-      const hourly = total / (workWeeks * v.billableHours);
+      const billableYear = workWeeks * v.billableHours;
+      const hourly = billableYear > 0 ? total / billableYear : 0;
       return [
         { label: "Recommended Hourly Rate", value: fmt(hourly), highlight: true },
         { label: "Annual Revenue Needed", value: fmt0(total) },
-        { label: "Billable Hours/Year", value: num(workWeeks * v.billableHours) },
+        { label: "Billable Hours/Year", value: num(billableYear) },
         { label: "Monthly Revenue", value: fmt(total / 12) },
       ];
     },
@@ -167,30 +145,6 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       { question: "How is the hourly rate calculated?", answer: "Rate = (desired salary + annual expenses) ÷ ((52 − vacation weeks) × billable hours per week). A $60,000 salary plus $10,000 expenses over 48 weeks at 30 billable hours a week gives $48.61 an hour." },
       { question: "Does the rate include taxes?", answer: "No. It covers only your salary and expenses. As a freelancer you must also fund income tax, retirement savings, and health cover, so treat the result as a floor and add a margin for those costs." },
     ], relatedCalcs: b3Rel("hourly-rate-calculator"),
-  },
-  {
-    slug: "break-even-calculator", name: "Break-Even Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Business & Freelance",
-    description: "Calculate the break-even point for your product.",
-    metaDescription: "Free break-even calculator. Find how many units to sell.",
-    icon: "layers",
-    inputs: [
-      { id: "fixedCosts", label: "Fixed Costs ($)", type: "number", defaultValue: 5000, prefix: "$" },
-      { id: "pricePerUnit", label: "Price Per Unit ($)", type: "number", defaultValue: 50, prefix: "$" },
-      { id: "costPerUnit", label: "Variable Cost/Unit ($)", type: "number", defaultValue: 20, prefix: "$" },
-    ],
-    calculate: (v) => {
-      const margin = v.pricePerUnit - v.costPerUnit;
-      const units = margin > 0 ? Math.ceil(v.fixedCosts / margin) : 0;
-      return [
-        { label: "Break-Even Units", value: num(units), highlight: true },
-        { label: "Break-Even Revenue", value: fmt(units * v.pricePerUnit) },
-        { label: "Profit Margin/Unit", value: fmt(margin) },
-        { label: "Contribution Margin %", value: `${num((margin / v.pricePerUnit) * 100)}%` },
-      ];
-    },
-    formula: { expression: "Units = Fixed Costs / (Price - Variable Cost)", variables: ["All in USD"] },
-    howToUse: "Enter fixed costs, price per unit, and variable cost per unit.", faqs: defFaqs("Break-Even Calculator"), relatedCalcs: b3Rel("break-even-calculator"),
   },
   {
     slug: "invoice-calculator", name: "Invoice Calculator", category: "Other Calculators", categorySlug: "other",
@@ -236,9 +190,9 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       const net = gross - v.expenses;
       return [
         { label: "Gross Profit", value: fmt(gross) },
-        { label: "Gross Margin", value: `${num((gross / v.revenue) * 100)}%` },
+        { label: "Gross Margin", value: v.revenue !== 0 ? `${num((gross / v.revenue) * 100)}%` : "—" },
         { label: "Net Profit", value: fmt(net), highlight: true },
-        { label: "Net Margin", value: `${num((net / v.revenue) * 100)}%` },
+        { label: "Net Margin", value: v.revenue !== 0 ? `${num((net / v.revenue) * 100)}%` : "—" },
       ];
     },
     formula: defFormula, howToUse: "Enter revenue, COGS, and operating expenses.", faqs: defFaqs("Profit Margin Calculator"), relatedCalcs: b3Rel("profit-margin-calculator"),
@@ -310,7 +264,8 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       let base = v.carValue * 0.04;
       if (v.age < 25) base *= 1.5;
       else if (v.age > 65) base *= 1.2;
-      const annual = base * (1 - (v.deductible / 5000) * 0.3);
+      const deductibleFactor = Math.max(0.1, 1 - (v.deductible / 5000) * 0.3);
+      const annual = base * deductibleFactor;
       return [
         { label: "Est. Annual Premium", value: fmt(annual), highlight: true },
         { label: "Monthly Premium", value: fmt(annual / 12) },
@@ -319,7 +274,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     },
     formula: defFormula, howToUse: "Enter car value, driver age, and deductible.", faqs: [
       { question: "How does the Car Insurance Estimator work?", answer: "Enter the required values and the calculator will compute the results instantly." },
-      { question: "How is the estimate calculated?", answer: "The base premium is 4% of the car's value per year, multiplied by 1.5 for drivers under 25 or 1.2 for drivers over 65, then reduced for a higher deductible. A $20,000 car, a 30-year-old driver, and a $500 deductible give $776 a year." },
+      { question: "How is the estimate calculated?", answer: "The base premium is 4% of the car's value per year, multiplied by 1.5 for drivers under 25 or 1.2 for drivers over 65, then reduced for a higher deductible. A $20,000 car, a 30-year-old driver, and a $500 deductible give $776 a year. The deductible discount is capped so the premium never falls below 10% of the base premium." },
       { question: "Is this a real insurance quote?", answer: "No. It is a rough estimate from three inputs only. Real premiums also depend on where you live, your driving record, how far you drive, and the coverage you choose — get quotes from several insurers for a real price." },
     ], relatedCalcs: b3Rel("car-insurance-calculator"),
   },
@@ -341,12 +296,12 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       const mi = v.income / 12;
       const maxPmt = Math.min(mi * 0.28, mi * 0.36 - v.monthlyDebts);
       const r = v.rate / 100 / 12;
-      const loan = maxPmt > 0 ? maxPmt * ((1 - Math.pow(1 + r, -360)) / r) : 0;
+      const loan = maxPmt > 0 ? (r === 0 ? maxPmt * 360 : maxPmt * ((1 - Math.pow(1 + r, -360)) / r)) : 0;
       return [
         { label: "Max Home Price", value: fmt0(loan + v.downPayment), highlight: true },
         { label: "Max Loan Amount", value: fmt0(loan) },
         { label: "Max Monthly Payment", value: fmt(maxPmt) },
-        { label: "DTI Ratio", value: `${num(((maxPmt + v.monthlyDebts) / mi) * 100)}%` },
+        { label: "DTI Ratio", value: mi > 0 ? `${num(((maxPmt + v.monthlyDebts) / mi) * 100)}%` : "—" },
       ];
     },
     formula: defFormula, howToUse: "Enter income, debts, down payment, and interest rate.", faqs: [
@@ -354,35 +309,6 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       { question: "Does the estimate include taxes and insurance?", answer: "No. The maximum payment covers principal and interest only, on a 30-year fixed mortgage at the rate you enter. Property tax, homeowner's insurance, HOA dues, and PMI (usually required with less than 20% down) are all extra, so your real monthly housing cost will be higher." },
       { question: "How does the down payment affect affordability?", answer: "The down payment is added directly to the maximum loan: max home price = max loan + down payment. A larger down payment raises the price you can afford dollar for dollar, and it also lowers the loan amount you need." },
     ], relatedCalcs: b3Rel("home-affordability-calculator"),
-  },
-  {
-    slug: "moving-cost-calculator", name: "Moving Cost Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Real Estate",
-    description: "Estimate moving costs based on distance and home size.",
-    metaDescription: "Free moving cost calculator. Enter distance, number of rooms, and packing service to estimate your total moving cost with a full cost breakdown.",
-    icon: "layers",
-    inputs: [
-      { id: "distance", label: "Distance (miles)", type: "number", defaultValue: 500 },
-      { id: "rooms", label: "Number of Rooms", type: "number", defaultValue: 3, min: 1 },
-      { id: "packing", label: "Pro Packing (1=Yes, 0=No)", type: "number", defaultValue: 1, min: 0, max: 1 },
-    ],
-    calculate: (v) => {
-      const local = v.distance < 100;
-      const labor = local ? v.rooms * 400 : v.rooms * 600;
-      const transport = local ? 500 : v.distance * 0.5 * (v.rooms * 1500 / 1000);
-      const packing = v.packing ? v.rooms * 300 : 0;
-      return [
-        { label: "Estimated Total", value: fmt0(labor + transport + packing), highlight: true },
-        { label: "Labor Cost", value: fmt0(labor) },
-        { label: "Transport Cost", value: fmt0(transport) },
-        { label: "Packing Cost", value: v.packing ? fmt0(packing) : "DIY" },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter distance, rooms, and packing preference.", faqs: [
-      { question: "How much does it cost to move a 3-bedroom home 500 miles?", answer: "With professional packing, this calculator estimates $3,825: $1,800 labor (3 rooms at the $600 long-distance rate), $1,125 transport, and $900 packing (3 rooms × $300). Packing yourself drops the total to $2,925." },
-      { question: "How much does a local move cost?", answer: "Local moves (under 100 miles) are charged at $400 per room for labor plus a flat $500 for transport. A 2-room local move you pack yourself comes to $1,300; adding professional packing at $300 per room brings it to $1,900." },
-      { question: "How is the moving cost calculated?", answer: "The estimate adds three parts: labor (rooms × $400 local or × $600 long-distance), transport (a flat $500 locally, or distance × $0.50 × rooms × 1.5 long-distance), and optional professional packing at $300 per room." },
-    ], relatedCalcs: b3Rel("moving-cost-calculator"),
   },
   {
     slug: "closing-cost-calculator", name: "Closing Cost Calculator", category: "Other Calculators", categorySlug: "other",
@@ -403,7 +329,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Est. Closing Costs", value: fmt(total), highlight: true },
         { label: "Loan Origination", value: fmt(orig) },
         { label: "Title Insurance", value: fmt(title) },
-        { label: "% of Home Price", value: `${num((total / v.homePrice) * 100)}%` },
+        { label: "% of Home Price", value: v.homePrice > 0 ? `${num((total / v.homePrice) * 100)}%` : "—" },
       ];
     },
     formula: { expression: "Total = Origination (1% of loan) + Title (0.5% of price) + Escrow deposit (1% of price) + $1,050 fixed fees", variables: ["Worked default: $2,800 + $1,750 + $3,500 + $1,050 = $9,100 on a $350,000 home"] },
@@ -416,28 +342,6 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
   },
 
   // ═══ FOOD & NUTRITION ═══
-  {
-    slug: "water-intake-calculator", name: "Water Intake Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Food & Nutrition",
-    description: "Calculate daily water intake recommendation.",
-    metaDescription: "Free water intake calculator.",
-    icon: "layers",
-    inputs: [
-      { id: "weight", label: "Weight (lbs)", type: "number", defaultValue: 160 },
-      { id: "activity", label: "Activity (1=Low, 2=Med, 3=High)", type: "number", defaultValue: 2, min: 1, max: 3 },
-    ],
-    calculate: (v) => {
-      const base = v.weight * 0.5;
-      const mult = v.activity === 1 ? 1 : v.activity === 2 ? 1.2 : 1.5;
-      const oz = base * mult;
-      return [
-        { label: "Daily Water", value: `${num(oz)} oz`, highlight: true },
-        { label: "Cups Per Day", value: `${num(oz / 8)} cups` },
-        { label: "Liters Per Day", value: `${num(oz * 0.0296)} L` },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter weight and activity level.", faqs: defFaqs("Water Intake Calculator"), relatedCalcs: b3Rel("water-intake-calculator"),
-  },
   {
     slug: "caffeine-calculator", name: "Caffeine Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Food & Nutrition",
@@ -510,34 +414,10 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Target Fund", value: fmt0(target), highlight: true },
         { label: "Current Savings", value: fmt0(v.currentSavings) },
         { label: "Still Needed", value: fmt0(gap) },
-        { label: "Progress", value: `${num(Math.min(100, (v.currentSavings / target) * 100))}%` },
+        { label: "Progress", value: target > 0 ? `${num(Math.min(100, (v.currentSavings / target) * 100))}%` : "—" },
       ];
     },
     formula: defFormula, howToUse: "Enter monthly expenses, months of coverage, and current savings.", faqs: defFaqs("Emergency Fund Calculator"), relatedCalcs: b3Rel("emergency-fund-calculator"),
-  },
-  {
-    slug: "savings-goal-calculator", name: "Savings Goal Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Savings & Budgeting",
-    description: "Calculate monthly savings needed to reach a goal.",
-    metaDescription: "Free savings goal calculator.",
-    icon: "layers",
-    inputs: [
-      { id: "goal", label: "Savings Goal ($)", type: "number", defaultValue: 20000, prefix: "$" },
-      { id: "current", label: "Current Savings ($)", type: "number", defaultValue: 2000, prefix: "$" },
-      { id: "months", label: "Time Frame (months)", type: "number", defaultValue: 24 },
-      { id: "rate", label: "Annual Interest (%)", type: "number", defaultValue: 4.5, step: 0.1 },
-    ],
-    calculate: (v) => {
-      const needed = v.goal - v.current;
-      const r = v.rate / 100 / 12;
-      const monthly = r > 0 ? (needed * r) / (Math.pow(1 + r, v.months) - 1) : needed / v.months;
-      return [
-        { label: "Monthly Savings", value: fmt(monthly), highlight: true },
-        { label: "Remaining to Goal", value: fmt(needed) },
-        { label: "Weekly Amount", value: fmt(monthly / 4.33) },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter goal, current savings, time frame, and interest rate.", faqs: defFaqs("Savings Goal Calculator"), relatedCalcs: b3Rel("savings-goal-calculator"),
   },
   {
     slug: "inflation-calculator", name: "Inflation Calculator", category: "Other Calculators", categorySlug: "other",
@@ -557,83 +437,14 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Future Cost Equivalent", value: fmt(futureVal), highlight: true },
         { label: "Future Purchasing Power", value: fmt(purchPower) },
         { label: "Value Lost", value: fmt(v.amount - purchPower) },
-        { label: "Total Inflation", value: `${num(((futureVal / v.amount) - 1) * 100)}%` },
+        { label: "Total Inflation", value: `${num((Math.pow(1 + v.rate / 100, v.years) - 1) * 100)}%` },
       ];
     },
     formula: { expression: "FV = PV × (1 + r)^n", variables: ["PV = Present value", "r = Inflation rate", "n = Years"] },
     howToUse: "Enter current amount, inflation rate, and years.", faqs: defFaqs("Inflation Calculator"), relatedCalcs: b3Rel("inflation-calculator"),
   },
 
-  // ═══ PRINTING & DESIGN ═══
-  {
-    slug: "dpi-calculator", name: "DPI Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Printing & Design",
-    description: "Calculate print quality DPI from pixel dimensions.",
-    metaDescription: "Free DPI calculator for printing.",
-    icon: "layers",
-    inputs: [
-      { id: "widthPx", label: "Image Width (pixels)", type: "number", defaultValue: 3000 },
-      { id: "heightPx", label: "Image Height (pixels)", type: "number", defaultValue: 2000 },
-      { id: "widthIn", label: "Print Width (inches)", type: "number", defaultValue: 10 },
-    ],
-    calculate: (v) => {
-      const dpi = v.widthPx / v.widthIn;
-      const quality = dpi >= 300 ? "Excellent" : dpi >= 150 ? "Good" : dpi >= 72 ? "Fair" : "Poor";
-      return [
-        { label: "DPI", value: `${Math.round(dpi)}`, highlight: true },
-        { label: "Print Size", value: `${num(v.widthIn)}" × ${num(v.heightPx / dpi)}"` },
-        { label: "Quality", value: quality },
-        { label: "Megapixels", value: `${num((v.widthPx * v.heightPx) / 1000000)} MP` },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter image pixel dimensions and desired print width.", faqs: defFaqs("DPI Calculator"), relatedCalcs: b3Rel("dpi-calculator"),
-  },
-  {
-    slug: "aspect-ratio-calculator", name: "Aspect Ratio Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Printing & Design",
-    description: "Calculate and resize dimensions maintaining aspect ratio.",
-    metaDescription: "Free aspect ratio calculator.",
-    icon: "layers",
-    inputs: [
-      { id: "width", label: "Original Width", type: "number", defaultValue: 1920 },
-      { id: "height", label: "Original Height", type: "number", defaultValue: 1080 },
-      { id: "newWidth", label: "New Width", type: "number", defaultValue: 1280 },
-    ],
-    calculate: (v) => {
-      const ratio = v.width / v.height;
-      const newH = Math.round(v.newWidth / ratio);
-      const gcd = (a: number, b: number): number => b === 0 ? a : gcd(b, a % b);
-      const g = gcd(v.width, v.height);
-      return [
-        { label: "Aspect Ratio", value: `${v.width / g}:${v.height / g}`, highlight: true },
-        { label: "Decimal Ratio", value: num(ratio) },
-        { label: "New Dimensions", value: `${v.newWidth} × ${newH}` },
-        { label: "Scale Factor", value: `${num((v.newWidth / v.width) * 100)}%` },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter original dimensions and desired new width.", faqs: defFaqs("Aspect Ratio Calculator"), relatedCalcs: b3Rel("aspect-ratio-calculator"),
-  },
-
   // ═══ MATH & NUMBERS ═══
-  {
-    slug: "roman-numeral-converter", name: "Roman Numeral Converter", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Math & Numbers",
-    description: "Convert between Arabic numbers and Roman numerals.",
-    metaDescription: "Free Roman numeral converter.",
-    icon: "layers",
-    inputs: [{ id: "number", label: "Number (1-3999)", type: "number", defaultValue: 2026, min: 1, max: 3999 }],
-    calculate: (v) => {
-      const vals = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
-      const syms = ["M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"];
-      let n = Math.floor(v.number); let roman = "";
-      for (let i = 0; i < vals.length; i++) while (n >= vals[i]) { roman += syms[i]; n -= vals[i]; }
-      return [
-        { label: "Roman Numeral", value: roman, highlight: true },
-        { label: "Arabic Number", value: `${v.number}` },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter a number between 1 and 3999.", faqs: defFaqs("Roman Numeral Converter"), relatedCalcs: b3Rel("roman-numeral-converter"),
-  },
   {
     slug: "binary-converter", name: "Binary Converter", category: "Other Calculators", categorySlug: "other",
     subcategory: "Math & Numbers",
@@ -677,55 +488,8 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       { question: "What if the old value is zero?", answer: "Percentage change is undefined when the starting value is zero, because you cannot divide by zero. This calculator shows 0% in that case rather than an error — treat it as 'no meaningful percentage change' rather than a real result." },
     ], relatedCalcs: b3Rel("percentage-change-calculator"),
   },
-  {
-    slug: "random-number-generator", name: "Random Number Generator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Math & Numbers",
-    description: "Generate random numbers within a range.",
-    metaDescription: "Free random number generator.",
-    icon: "layers",
-    inputs: [
-      { id: "min", label: "Minimum", type: "number", defaultValue: 1 },
-      { id: "max", label: "Maximum", type: "number", defaultValue: 100 },
-      { id: "count", label: "How Many", type: "number", defaultValue: 5, min: 1, max: 20 },
-    ],
-    calculate: (v) => {
-      const nums = Array.from({ length: Math.min(v.count, 20) }, () => Math.floor(Math.random() * (v.max - v.min + 1)) + v.min);
-      return [
-        { label: "Random Numbers", value: nums.join(", "), highlight: true },
-        { label: "Range", value: `${v.min} to ${v.max}` },
-        { label: "Count", value: `${nums.length}` },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter min, max, and count.", faqs: defFaqs("Random Number Generator"), relatedCalcs: b3Rel("random-number-generator"),
-  },
 
   // ═══ FITNESS & EXERCISE ═══
-  {
-    slug: "running-pace-calculator", name: "Running Pace Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Fitness & Exercise",
-    description: "Calculate running pace, speed, and finish times.",
-    metaDescription: "Free running pace calculator. Enter distance and time to find your pace per mile and kilometer, your speed, and predicted race finish times.",
-    icon: "layers",
-    inputs: [
-      { id: "distance", label: "Distance (miles)", type: "number", defaultValue: 5, step: 0.1 },
-      { id: "hours", label: "Hours", type: "number", defaultValue: 0 },
-      { id: "minutes", label: "Minutes", type: "number", defaultValue: 40 },
-      { id: "seconds", label: "Seconds", type: "number", defaultValue: 0 },
-    ],
-    calculate: (v) => {
-      const totalSec = v.hours * 3600 + v.minutes * 60 + v.seconds;
-      const paceSec = v.distance > 0 ? totalSec / v.distance : 0;
-      const pM = Math.floor(paceSec / 60);
-      const pS = Math.round(paceSec % 60);
-      const mph = v.distance > 0 && totalSec > 0 ? (v.distance / totalSec) * 3600 : 0;
-      return [
-        { label: "Pace (per mile)", value: `${pM}:${pS.toString().padStart(2, "0")}`, highlight: true },
-        { label: "Speed", value: `${num(mph)} mph` },
-        { label: "Speed (km/h)", value: `${num(mph * 1.60934)} km/h` },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter distance and total time.", faqs: defFaqs("Running Pace Calculator"), relatedCalcs: b3Rel("running-pace-calculator"),
-  },
   {
     slug: "calories-burned-calculator", name: "Calories Burned Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Fitness & Exercise",
@@ -746,7 +510,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Calories Burned", value: `${Math.round(cal)} cal`, highlight: true },
         { label: "Activity", value: names[v.activity] || "Unknown" },
         { label: "MET Value", value: `${met}` },
-        { label: "Cal/Minute", value: num(cal / v.duration) },
+        { label: "Cal/Minute", value: v.duration > 0 ? num(cal / v.duration) : "—" },
       ];
     },
     formula: defFormula, howToUse: "Enter weight, duration, and activity type.", faqs: defFaqs("Calories Burned Calculator"), relatedCalcs: b3Rel("calories-burned-calculator"),
@@ -795,7 +559,7 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Annual Savings", value: fmt(oldCost - newCost), highlight: true },
         { label: "Old Annual Cost", value: fmt(oldCost) },
         { label: "New Annual Cost", value: fmt(newCost) },
-        { label: "Energy Reduction", value: `${num(((v.oldWatts - v.newWatts) / v.oldWatts) * 100)}%` },
+        { label: "Energy Reduction", value: v.oldWatts !== 0 ? `${num(((v.oldWatts - v.newWatts) / v.oldWatts) * 100)}%` : "—" },
       ];
     },
     formula: defFormula, howToUse: "Enter bulb count, wattages, hours, and electricity rate.", faqs: [
@@ -858,56 +622,6 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
   },
 
   // ═══ TRAVEL PLANNING ═══
-  {
-    slug: "road-trip-calculator", name: "Road Trip Cost Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Travel Planning",
-    description: "Estimate total road trip costs.",
-    metaDescription: "Free road trip cost calculator.",
-    icon: "layers",
-    inputs: [
-      { id: "distance", label: "Distance (miles)", type: "number", defaultValue: 1000 },
-      { id: "mpg", label: "MPG", type: "number", defaultValue: 28 },
-      { id: "gasPrice", label: "Gas Price ($/gal)", type: "number", defaultValue: 3.5, prefix: "$", step: 0.01 },
-      { id: "nights", label: "Hotel Nights", type: "number", defaultValue: 2 },
-      { id: "hotelCost", label: "Hotel/Night ($)", type: "number", defaultValue: 120, prefix: "$" },
-      { id: "foodPerDay", label: "Food/Day ($)", type: "number", defaultValue: 50, prefix: "$" },
-    ],
-    calculate: (v) => {
-      const fuel = (v.distance / v.mpg) * v.gasPrice;
-      const hotel = v.nights * v.hotelCost;
-      const food = (v.nights + 1) * v.foodPerDay;
-      return [
-        { label: "Total Trip Cost", value: fmt(fuel + hotel + food), highlight: true },
-        { label: "Fuel Cost", value: fmt(fuel) },
-        { label: "Lodging Cost", value: fmt(hotel) },
-        { label: "Food Cost", value: fmt(food) },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter distance, MPG, gas price, and trip details.", faqs: defFaqs("Road Trip Cost Calculator"), relatedCalcs: b3Rel("road-trip-calculator"),
-  },
-  {
-    slug: "currency-exchange-calculator", name: "Currency Exchange Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Travel Planning",
-    description: "Convert between currencies.",
-    metaDescription: "Free currency exchange calculator.",
-    icon: "layers",
-    inputs: [
-      { id: "amount", label: "Amount", type: "number", defaultValue: 1000 },
-      { id: "rate", label: "Exchange Rate", type: "number", defaultValue: 0.85, step: 0.001 },
-      { id: "fee", label: "Service Fee (%)", type: "number", defaultValue: 2, step: 0.1 },
-    ],
-    calculate: (v) => {
-      const converted = v.amount * v.rate;
-      const fee = converted * (v.fee / 100);
-      return [
-        { label: "Converted", value: num(converted) },
-        { label: "Fee", value: num(fee) },
-        { label: "You Receive", value: num(converted - fee), highlight: true },
-        { label: "Effective Rate", value: num((converted - fee) / v.amount) },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter amount, exchange rate, and service fee.", faqs: defFaqs("Currency Exchange Calculator"), relatedCalcs: b3Rel("currency-exchange-calculator"),
-  },
   {
     slug: "luggage-weight-calculator", name: "Luggage Weight Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Travel Planning",
@@ -1007,8 +721,8 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const r = Math.sqrt(v.ratioW ** 2 + v.ratioH ** 2);
-      const w = (v.diagonal / r) * v.ratioW;
-      const h = (v.diagonal / r) * v.ratioH;
+      const w = r > 0 ? (v.diagonal / r) * v.ratioW : 0;
+      const h = r > 0 ? (v.diagonal / r) * v.ratioH : 0;
       return [
         { label: "Width", value: `${num(w)} in`, highlight: true },
         { label: "Height", value: `${num(h)} in` },
@@ -1068,56 +782,6 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
     formula: defFormula, howToUse: "Enter battery capacity and average power draw.", faqs: defFaqs("Battery Life Calculator"), relatedCalcs: b3Rel("battery-life-calculator"),
   },
 
-  // ═══ CONSTRUCTION & HOME ═══
-  {
-    slug: "wallpaper-calculator", name: "Wallpaper Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Construction & Home",
-    description: "Calculate wallpaper rolls needed for a room.",
-    metaDescription: "Free wallpaper calculator.",
-    icon: "layers",
-    inputs: [
-      { id: "length", label: "Room Length (ft)", type: "number", defaultValue: 14 },
-      { id: "width", label: "Room Width (ft)", type: "number", defaultValue: 12 },
-      { id: "height", label: "Ceiling Height (ft)", type: "number", defaultValue: 9 },
-      { id: "rollCoverage", label: "Roll Coverage (sq ft)", type: "number", defaultValue: 56 },
-    ],
-    calculate: (v) => {
-      const wallArea = 2 * (v.length + v.width) * v.height;
-      const net = wallArea * 0.85;
-      const rolls = Math.ceil(net / v.rollCoverage);
-      return [
-        { label: "Rolls Needed", value: `${rolls}`, highlight: true },
-        { label: "Wall Area", value: `${num(wallArea)} sq ft` },
-        { label: "Net Area", value: `${num(net)} sq ft` },
-        { label: "With 10% Waste", value: `${Math.ceil(rolls * 1.1)} rolls` },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter room dimensions and roll coverage.", faqs: defFaqs("Wallpaper Calculator"), relatedCalcs: b3Rel("wallpaper-calculator"),
-  },
-  {
-    slug: "fence-calculator", name: "Fence Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Construction & Home",
-    description: "Calculate materials for a fence project.",
-    metaDescription: "Free fence calculator. Enter fence length, height, and post spacing to estimate the posts, rails, and pickets your fence will need.",
-    icon: "layers",
-    inputs: [
-      { id: "length", label: "Fence Length (ft)", type: "number", defaultValue: 100 },
-      { id: "height", label: "Fence Height (ft)", type: "number", defaultValue: 6 },
-      { id: "postSpacing", label: "Post Spacing (ft)", type: "number", defaultValue: 8 },
-    ],
-    calculate: (v) => {
-      const posts = Math.ceil(v.length / v.postSpacing) + 1;
-      const sections = posts - 1;
-      return [
-        { label: "Posts Needed", value: `${posts}`, highlight: true },
-        { label: "Rails Needed", value: `${sections * 3}` },
-        { label: "Pickets (6\" wide)", value: `${Math.ceil(v.length / 0.5)}` },
-        { label: "Sections", value: `${sections}` },
-      ];
-    },
-    formula: defFormula, howToUse: "Enter fence length, height, and post spacing.", faqs: defFaqs("Fence Calculator"), relatedCalcs: b3Rel("fence-calculator"),
-  },
-
   // ═══ HEALTH & SAFETY — habit cost calculators (added 2026-11-07 from GSC query demand) ═══
   {
     slug: "quit-smoking-calculator", name: "Quit Smoking Savings Calculator", category: "Other Calculators", categorySlug: "other",
@@ -1132,12 +796,12 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
       { id: "daysQuit", label: "Days Since You Quit", type: "number", defaultValue: 30 },
     ],
     calculate: (v) => {
-      const perDay = v.cigsPerDay * (v.packPrice / v.perPack);
+      const perDay = v.perPack > 0 ? v.cigsPerDay * (v.packPrice / v.perPack) : 0;
       const yearly = perDay * 365;
       return [
         { label: "Money Saved So Far", value: fmt(perDay * v.daysQuit), highlight: true },
         { label: "Cigarettes Not Smoked", value: num(v.cigsPerDay * v.daysQuit) },
-        { label: "Packs Not Bought", value: num((v.cigsPerDay * v.daysQuit) / v.perPack) },
+        { label: "Packs Not Bought", value: v.perPack > 0 ? num((v.cigsPerDay * v.daysQuit) / v.perPack) : "—" },
         { label: "You Save Per Day", value: fmt(perDay) },
         { label: "You Save Per Week", value: fmt(perDay * 7) },
         { label: "You Save Per Month", value: fmt((perDay * 365) / 12) },

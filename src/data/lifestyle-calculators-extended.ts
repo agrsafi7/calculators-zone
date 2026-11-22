@@ -36,10 +36,11 @@ export const lifestyleCalculatorsExtended: CalculatorConfig[] = [
   ),
   makeLife("fence-calculator", "Fence Calculator", "Calculate fence materials needed: posts, rails, and pickets.", "Free fence calculator. Enter fence length, height, and post spacing to estimate the posts, rails, and pickets your fence will need.", "Home & Construction",
     [{ id: "length", label: "Fence Length (ft)", type: "number", defaultValue: 100, step: 1 }, { id: "height", label: "Fence Height (ft)", type: "number", defaultValue: 6, step: 0.5 }, { id: "postSpacing", label: "Post Spacing (ft)", type: "number", defaultValue: 8, step: 1 }],
-    (v) => { const posts = Math.ceil(v.length / v.postSpacing) + 1; const rails = Math.ceil(v.length / 8) * 3; const pickets = Math.ceil(v.length / 0.5); return [{ label: "Posts Needed", value: `${posts}`, highlight: true }, { label: "Rails (8ft)", value: `${rails}` }, { label: "Pickets", value: `${pickets}` }, { label: "Post Depth", value: `${Math.ceil(v.height / 3)} ft` }]; },
-    { expression: "Posts = Length/Spacing + 1", variables: ["Post depth = 1/3 of height"] },
+    (v) => { if (v.length <= 0 || v.postSpacing <= 0) return [{ label: "Error", value: "Enter a fence length and post spacing above 0", highlight: true }]; const posts = Math.ceil(v.length / v.postSpacing) + 1; const sections = posts - 1; const rails = sections * (v.height <= 4 ? 2 : 3); const pickets = Math.ceil(v.length / 0.5); return [{ label: "Posts Needed", value: `${posts}`, highlight: true }, { label: "Rails", value: `${rails}` }, { label: "Pickets", value: `${pickets}` }, { label: "Post Depth", value: `${Math.ceil(v.height / 3)} ft` }]; },
+    { expression: "Posts = Length/Spacing + 1", variables: ["Post depth = 1/3 of height", "Rails = 2 per section for fences up to 4 ft, 3 per section for taller fences"] },
     [
       { question: "How deep should fence posts be?", answer: "About one-third of the post's height below ground — the calculator uses post depth = height ÷ 3, so a 6-foot fence needs posts buried 2 feet deep." },
+      { question: "How many rails does each section need?", answer: "Two rails per section for a fence up to 4 feet tall, and three per section for taller fences. A 100-foot, 4-foot fence with 8-foot post spacing has 13 sections, so it needs 26 rails; the same fence at 6 feet needs 39." },
       { question: "Does the calculator include gates or concrete?", answer: "No. It estimates posts, rails, and pickets only. Gates, concrete, hardware, and caps are extra, so add them to your materials list separately." },
     ]
   ),

@@ -270,19 +270,18 @@ const _datetimeCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const target = new Date(v.year, v.month - 1, v.day);
       const now = new Date();
-      const diff = target.getTime() - now.getTime();
-      const days = Math.floor(diff / 86400000);
-      const hours = Math.floor((diff % 86400000) / 3600000);
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const days = Math.round((target.getTime() - today.getTime()) / 86400000);
       const weeks = Math.floor(days / 7);
       const months = Math.round(days / 30.44);
       return [
         { label: "Days Remaining", value: `${Math.max(0, days)}`, highlight: true },
-        { label: "Hours", value: `${Math.max(0, days * 24 + hours)}` },
+        { label: "Hours", value: `${Math.max(0, days * 24)}` },
         { label: "Weeks", value: `${Math.max(0, weeks)}` },
         { label: "Months (approx)", value: `${Math.max(0, months)}` },
       ];
     },
-    formula: { expression: "Remaining = Target Date − Now", variables: ["Converted from milliseconds"] },
+    formula: { expression: "Remaining = Target Date − Today (calendar days)", variables: ["Counts whole calendar dates, not 24-hour periods"] },
     howToUse: "Enter a target date to see how much time remains until it arrives.",
     faqs: [
       { question: "Does it update in real time?", answer: "The value is calculated when you change inputs. Refresh to get the current countdown." },
@@ -302,27 +301,37 @@ const _datetimeCalculators: CalculatorConfig[] = [
       { id: "day", label: "Day (1-31)", type: "number", defaultValue: 15, min: 1, max: 31 },
     ],
     calculate: (v) => {
-      const d = new Date(v.year, v.month - 1, v.day);
-      const dayOfYear = Math.floor((d.getTime() - new Date(v.year, 0, 0).getTime()) / 86400000);
-      // ISO week calculation
-      const jan4 = new Date(v.year, 0, 4);
+      const year = Math.round(v.year), month = Math.round(v.month), day = Math.round(v.day);
+      const d = new Date(year, month - 1, day);
+      if (d.getFullYear() !== year || d.getMonth() !== month - 1 || d.getDate() !== day) {
+        return [{ label: "Error", value: "Invalid date — please check the day and month", highlight: true }];
+      }
+      const dayOfYear = Math.floor((d.getTime() - new Date(year, 0, 0).getTime()) / 86400000);
+      // ISO 8601: the Thursday of the current week determines the ISO week-year,
+      // so early-January dates can belong to the previous year and late-December
+      // dates to the next year.
+      const thursday = new Date(d);
+      thursday.setDate(d.getDate() - ((d.getDay() + 6) % 7) + 3);
+      const weekYear = thursday.getFullYear();
+      const jan4 = new Date(weekYear, 0, 4);
       const startOfWeek1 = new Date(jan4);
       startOfWeek1.setDate(jan4.getDate() - ((jan4.getDay() + 6) % 7));
-      const weekNum = Math.ceil(((d.getTime() - startOfWeek1.getTime()) / 86400000 + 1) / 7);
+      const weekNum = Math.round((thursday.getTime() - startOfWeek1.getTime()) / 86400000 / 7) + 1;
       const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
       return [
-        { label: "Week Number", value: `Week ${Math.max(1, weekNum)}`, highlight: true },
+        { label: "Week Number", value: `Week ${weekNum} of ${weekYear}`, highlight: true },
         { label: "Day of Year", value: `${dayOfYear}` },
         { label: "Day of Week", value: dayNames[d.getDay()] },
-        { label: "Quarter", value: `Q${Math.ceil(v.month / 3)}` },
+        { label: "Quarter", value: `Q${Math.ceil(month / 3)}` },
       ];
     },
-    formula: { expression: "ISO 8601 week numbering", variables: ["Week 1 contains January 4th"] },
+    formula: { expression: "ISO 8601 week numbering", variables: ["Week 1 contains January 4th", "The ISO week-year can differ from the calendar year"] },
     howToUse: "Enter a date to find its ISO week number, day of year, and more.",
     faqs: [
       { question: "What is ISO week numbering?", answer: "ISO 8601 defines week 1 as the week containing the first Thursday of January. Weeks start on Monday." },
       { question: "Can a year have 53 weeks?", answer: "Yes. Most years have 52 ISO weeks, but a year has 53 when January 1st falls on a Thursday, or in a leap year starting on a Wednesday. 2020 had 53 ISO weeks." },
-      { question: "Why does the tool show Week 53 for 29 December 2025?", answer: "ISO week-years do not line up exactly with calendar years: 29–31 December 2025 belong to ISO week 1 of 2026. This tool assigns every date to the calendar year you enter, so those dates show as Week 53 instead. The same applies at the start of January — 1 January 2023 belongs to ISO week 52 of 2022 but shows as Week 1 here." },
+      { question: "Why do some December dates show as week 1 of the next year?", answer: "ISO week-years do not line up exactly with calendar years: 29–31 December 2025 belong to ISO week 1 of 2026, and 1 January 2023 belongs to ISO week 52 of 2022. The calculator shows the ISO week-year alongside the week number so the year is never ambiguous." },
+      { question: "What if I enter a date that does not exist?", answer: "The calculator shows an error instead of silently rolling over — 30 February, for example, is not a real date, so it is rejected rather than treated as 2 March." },
     ],
     relatedCalcs: dtRelated("week-number-calculator"),
   },
@@ -404,10 +413,11 @@ const _datetimeCalculators: CalculatorConfig[] = [
       const result = new Date(start);
       result.setDate(result.getDate() + v.addDays);
       const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const absDays = Math.abs(v.addDays);
       return [
         { label: "Result Date", value: result.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }), highlight: true },
         { label: "Day of Week", value: dayNames[result.getDay()] },
-        { label: "Weeks", value: `${Math.abs(Math.floor(v.addDays / 7))} weeks, ${Math.abs(v.addDays % 7)} days` },
+        { label: "Weeks", value: `${Math.floor(absDays / 7)} weeks, ${absDays % 7} days` },
       ];
     },
     formula: { expression: "Result = Start Date + Days", variables: ["Negative days subtracts"] },

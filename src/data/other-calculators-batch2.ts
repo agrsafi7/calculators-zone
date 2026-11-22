@@ -15,93 +15,6 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
   // WEATHER & ENVIRONMENT (subcategory)
   // ═══════════════════════════════════════
   {
-    slug: "wind-chill-calculator", name: "Wind Chill Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Weather & Environment",
-    description: "Calculate wind chill temperature based on air temperature and wind speed.",
-    metaDescription: "Free wind chill calculator. Find the feels-like temperature.",
-    icon: "layers",
-    inputs: [
-      { id: "temp", label: "Temperature (°F)", type: "number", defaultValue: 30 },
-      { id: "wind", label: "Wind Speed (mph)", type: "number", defaultValue: 15 },
-    ],
-    calculate: (v) => {
-      const wc = 35.74 + 0.6215 * v.temp - 35.75 * Math.pow(v.wind, 0.16) + 0.4275 * v.temp * Math.pow(v.wind, 0.16);
-      const wcC = (wc - 32) * 5 / 9;
-      let risk = "Low";
-      if (wc < -20) risk = "Extreme (frostbite in minutes)";
-      else if (wc < 0) risk = "High";
-      else if (wc < 20) risk = "Moderate";
-      return [
-        { label: "Wind Chill", value: wc.toFixed(1) + "°F", highlight: true },
-        { label: "Wind Chill (°C)", value: wcC.toFixed(1) + "°C" },
-        { label: "Frostbite Risk", value: risk },
-      ];
-    },
-    formula: { expression: "WC = 35.74 + 0.6215T - 35.75V^0.16 + 0.4275TV^0.16", variables: ["T = Air temperature °F", "V = Wind speed mph"] },
-    howToUse: "Enter air temperature in °F and wind speed in mph.",
-    faqs: [{ question: "When is wind chill dangerous?", answer: "Below 0°F wind chill, frostbite can occur in 30 minutes." }],
-    relatedCalcs: batch2Rel("wind-chill-calculator"),
-  },
-  {
-    slug: "heat-index-calculator", name: "Heat Index Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Weather & Environment",
-    description: "Calculate heat index (feels-like temperature) from temperature and humidity.",
-    metaDescription: "Free heat index calculator. Find the apparent temperature.",
-    icon: "layers",
-    inputs: [
-      { id: "temp", label: "Temperature (°F)", type: "number", defaultValue: 95 },
-      { id: "humidity", label: "Relative Humidity (%)", type: "number", defaultValue: 60, suffix: "%" },
-    ],
-    calculate: (v) => {
-      const T = v.temp, R = v.humidity;
-      const hi = -42.379 + 2.04901523*T + 10.14333127*R - 0.22475541*T*R - 0.00683783*T*T - 0.05481717*R*R + 0.00122874*T*T*R + 0.00085282*T*R*R - 0.00000199*T*T*R*R;
-      let danger = "Caution";
-      if (hi >= 130) danger = "Extreme Danger";
-      else if (hi >= 105) danger = "Danger";
-      else if (hi >= 90) danger = "Extreme Caution";
-      return [
-        { label: "Heat Index", value: hi.toFixed(1) + "°F", highlight: true },
-        { label: "Heat Index (°C)", value: ((hi - 32) * 5 / 9).toFixed(1) + "°C" },
-        { label: "Danger Level", value: danger },
-      ];
-    },
-    formula: { expression: "Rothfusz regression equation", variables: ["T = Temperature °F", "R = Relative humidity %"] },
-    howToUse: "Enter temperature (°F) and relative humidity (%).",
-    faqs: [{ question: "When is heat index dangerous?", answer: "Above 105°F heat index, heat stroke is likely with prolonged exposure." }],
-    relatedCalcs: batch2Rel("heat-index-calculator"),
-  },
-  {
-    slug: "dew-point-calculator", name: "Dew Point Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Weather & Environment",
-    description: "Calculate dew point temperature from air temperature and humidity.",
-    metaDescription: "Free dew point calculator. Find dew point from temp and humidity.",
-    icon: "layers",
-    inputs: [
-      { id: "temp", label: "Temperature (°C)", type: "number", defaultValue: 25 },
-      { id: "humidity", label: "Relative Humidity (%)", type: "number", defaultValue: 60, suffix: "%" },
-    ],
-    calculate: (v) => {
-      const a = 17.27, b = 237.7;
-      const alpha = (a * v.temp) / (b + v.temp) + Math.log(v.humidity / 100);
-      const dewPoint = (b * alpha) / (a - alpha);
-      const dewPointF = dewPoint * 9 / 5 + 32;
-      let comfort = "Dry";
-      if (dewPoint > 24) comfort = "Severely uncomfortable";
-      else if (dewPoint > 20) comfort = "Very humid";
-      else if (dewPoint > 16) comfort = "Somewhat uncomfortable";
-      else if (dewPoint > 10) comfort = "Comfortable";
-      return [
-        { label: "Dew Point", value: dewPoint.toFixed(1) + "°C", highlight: true },
-        { label: "Dew Point (°F)", value: dewPointF.toFixed(1) + "°F" },
-        { label: "Comfort Level", value: comfort },
-      ];
-    },
-    formula: { expression: "Td = b × α / (a - α)", variables: ["α = aT/(b+T) + ln(RH/100)", "a=17.27, b=237.7"] },
-    howToUse: "Enter air temperature (°C) and relative humidity (%).",
-    faqs: [{ question: "What's a comfortable dew point?", answer: "Below 16°C (60°F) is comfortable. Above 20°C feels oppressive." }],
-    relatedCalcs: batch2Rel("dew-point-calculator"),
-  },
-  {
     slug: "rainfall-calculator", name: "Rainfall Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Weather & Environment",
     description: "Calculate water volume from rainfall amount and area.",
@@ -155,34 +68,6 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     howToUse: "Enter the current UV index and your skin type (1=very fair, 6=very dark).",
     faqs: [{ question: "What UV index needs sunscreen?", answer: "UV 3+ requires protection. UV 8+ requires extra caution." }],
     relatedCalcs: batch2Rel("uv-index-exposure-calculator"),
-  },
-  {
-    slug: "carbon-footprint-calculator", name: "Carbon Footprint Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Weather & Environment",
-    description: "Estimate your annual carbon footprint from driving, electricity, and flights.",
-    metaDescription: "Free carbon footprint calculator. Estimate your annual CO2 emissions from driving, home electricity use, and flights, broken down by source.",
-    icon: "layers",
-    inputs: [
-      { id: "milesDriven", label: "Miles Driven/Year", type: "number", defaultValue: 12000 },
-      { id: "kwh", label: "Monthly Electricity (kWh)", type: "number", defaultValue: 900 },
-      { id: "flights", label: "Flight Hours/Year", type: "number", defaultValue: 10 },
-    ],
-    calculate: (v) => {
-      const drivingCO2 = v.milesDriven * 0.411; // kg CO2 per mile
-      const electricityCO2 = v.kwh * 12 * 0.42; // kg CO2 per kWh
-      const flightCO2 = v.flights * 250; // kg CO2 per flight hour
-      const total = (drivingCO2 + electricityCO2 + flightCO2) / 1000; // metric tons
-      return [
-        { label: "Annual CO₂", value: total.toFixed(1) + " tons", highlight: true },
-        { label: "From Driving", value: (drivingCO2 / 1000).toFixed(1) + " tons" },
-        { label: "From Electricity", value: (electricityCO2 / 1000).toFixed(1) + " tons" },
-        { label: "From Flights", value: (flightCO2 / 1000).toFixed(1) + " tons" },
-      ];
-    },
-    formula: { expression: "CO₂ = Driving + Electricity + Flights", variables: ["0.411 kg/mile driving", "0.42 kg/kWh electricity", "250 kg/flight hour"] },
-    howToUse: "Enter annual miles driven, monthly electricity usage, and flight hours.",
-    faqs: [{ question: "What's the average US carbon footprint?", answer: "About 16 metric tons CO₂ per person per year." }],
-    relatedCalcs: batch2Rel("carbon-footprint-calculator"),
   },
 
   // ═══════════════════════════════════════
@@ -302,7 +187,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const r = v.gender === 1 ? 0.73 : 0.66;
-      const bac = ((v.drinks * 0.6 * 5.14) / (v.weight * r)) - (0.015 * v.hours);
+      const bac = v.weight > 0 ? ((v.drinks * 0.6 * 5.14) / (v.weight * r)) - (0.015 * v.hours) : 0;
       const actualBac = Math.max(0, bac);
       let status = "Sober";
       if (actualBac >= 0.30) status = "Life-threatening";
@@ -418,37 +303,6 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     relatedCalcs: batch2Rel("electricity-bill-calculator"),
   },
   {
-    slug: "solar-panel-calculator", name: "Solar Panel Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Electricity & Energy",
-    description: "Estimate solar panel system size and savings for your home.",
-    metaDescription: "Free solar panel calculator. Estimate system size and cost savings.",
-    icon: "layers",
-    inputs: [
-      { id: "monthlyBill", label: "Monthly Electric Bill", type: "number", defaultValue: 150, prefix: "$" },
-      { id: "sunHours", label: "Peak Sun Hours/Day", type: "number", defaultValue: 5, step: 0.5 },
-      { id: "panelWatts", label: "Panel Wattage", type: "number", defaultValue: 400 },
-    ],
-    calculate: (v) => {
-      const monthlyKwh = v.monthlyBill / 0.13;
-      const dailyKwh = monthlyKwh / 30;
-      const systemKw = dailyKwh / v.sunHours;
-      const panels = Math.ceil((systemKw * 1000) / v.panelWatts);
-      const systemCost = systemKw * 2800;
-      const annualSavings = v.monthlyBill * 12;
-      const payback = systemCost / annualSavings;
-      return [
-        { label: "System Size", value: systemKw.toFixed(1) + " kW", highlight: true },
-        { label: "Panels Needed", value: panels.toString() },
-        { label: "Est. System Cost", value: fmt0(systemCost) },
-        { label: "Payback Period", value: payback.toFixed(1) + " years" },
-      ];
-    },
-    formula: { expression: "System kW = Daily kWh ÷ Sun Hours", variables: ["Daily kWh = Monthly Bill ÷ Rate ÷ 30"] },
-    howToUse: "Enter your monthly bill, average peak sun hours, and panel wattage.",
-    faqs: [{ question: "How many sun hours does my area get?", answer: "US average is 4-6 peak sun hours. Check NREL's solar resource maps." }],
-    relatedCalcs: batch2Rel("solar-panel-calculator"),
-  },
-  {
     slug: "battery-life-calculator", name: "Battery Life Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Electricity & Energy",
     description: "Calculate battery runtime from capacity and device power consumption.",
@@ -492,9 +346,14 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const effectiveSpeed = v.speed - v.headwind;
-      const hours = v.distance / effectiveSpeed;
-      const h = Math.floor(hours);
-      const m = Math.round((hours - h) * 60);
+      if (effectiveSpeed <= 0) return [
+        { label: "Flight Time", value: "Cannot fly — headwind cancels airspeed", highlight: true },
+        { label: "Effective Speed", value: effectiveSpeed + " mph" },
+        { label: "Distance (km)", value: Math.round(v.distance * 1.60934).toLocaleString() + " km" },
+      ];
+      const totalMin = Math.round((v.distance / effectiveSpeed) * 60);
+      const h = Math.floor(totalMin / 60);
+      const m = totalMin % 60;
       const distKm = v.distance * 1.60934;
       return [
         { label: "Flight Time", value: `${h}h ${m}m`, highlight: true },
@@ -520,16 +379,15 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
       { id: "gasPrice", label: "Gas Price ($/gal)", type: "number", defaultValue: 3.5, prefix: "$", step: 0.01 },
     ],
     calculate: (v) => {
-      const hours = v.distance / v.avgSpeed;
-      const h = Math.floor(hours);
-      const m = Math.round((hours - h) * 60);
-      const gallons = v.distance / v.mpg;
-      const fuelCost = gallons * v.gasPrice;
+      const hours = v.avgSpeed > 0 ? v.distance / v.avgSpeed : NaN;
+      const totalMin = Number.isFinite(hours) ? Math.round(hours * 60) : NaN;
+      const gallons = v.mpg > 0 ? v.distance / v.mpg : NaN;
+      const fuelCost = Number.isFinite(gallons) ? gallons * v.gasPrice : NaN;
       const stops = Math.floor(v.distance / 300);
       return [
-        { label: "Drive Time", value: `${h}h ${m}m`, highlight: true },
-        { label: "Fuel Cost", value: fmt(fuelCost) },
-        { label: "Gallons Needed", value: gallons.toFixed(1) + " gal" },
+        { label: "Drive Time", value: Number.isFinite(totalMin) ? `${Math.floor(totalMin / 60)}h ${totalMin % 60}m` : "—", highlight: true },
+        { label: "Fuel Cost", value: Number.isFinite(fuelCost) ? fmt(fuelCost) : "—" },
+        { label: "Gallons Needed", value: Number.isFinite(gallons) ? gallons.toFixed(1) + " gal" : "—" },
         { label: "Gas Stops (~300mi)", value: stops.toString() },
       ];
     },
@@ -552,12 +410,11 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const kwhNeeded = v.battery * ((v.targetCharge - v.currentCharge) / 100);
-      const hours = kwhNeeded / v.chargerKw;
-      const h = Math.floor(hours);
-      const m = Math.round((hours - h) * 60);
+      const hours = v.chargerKw > 0 ? kwhNeeded / v.chargerKw : NaN;
+      const totalMin = Number.isFinite(hours) ? Math.round(hours * 60) : NaN;
       const cost = kwhNeeded * 0.13;
       return [
-        { label: "Charge Time", value: `${h}h ${m}m`, highlight: true },
+        { label: "Charge Time", value: Number.isFinite(totalMin) ? `${Math.floor(totalMin / 60)}h ${totalMin % 60}m` : "—", highlight: true },
         { label: "Energy Needed", value: kwhNeeded.toFixed(1) + " kWh" },
         { label: "Est. Cost", value: fmt(cost) },
         { label: "Range Added (~3.5mi/kWh)", value: Math.round(kwhNeeded * 3.5) + " mi" },
@@ -572,123 +429,6 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
   // ═══════════════════════════════════════
   // CONSTRUCTION & HOME (subcategory)
   // ═══════════════════════════════════════
-  {
-    slug: "wallpaper-calculator", name: "Wallpaper Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Construction & Home",
-    description: "Calculate how many rolls of wallpaper you need for a room.",
-    metaDescription: "Free wallpaper calculator. Estimate rolls needed for your room.",
-    icon: "layers",
-    inputs: [
-      { id: "roomLength", label: "Room Length (ft)", type: "number", defaultValue: 14 },
-      { id: "roomWidth", label: "Room Width (ft)", type: "number", defaultValue: 12 },
-      { id: "wallHeight", label: "Wall Height (ft)", type: "number", defaultValue: 8 },
-      { id: "rollWidth", label: "Roll Width (inches)", type: "number", defaultValue: 21 },
-    ],
-    calculate: (v) => {
-      const perimeter = 2 * (v.roomLength + v.roomWidth);
-      const wallArea = perimeter * v.wallHeight;
-      const rollCoverage = (v.rollWidth / 12) * 33; // standard 33ft roll
-      const rolls = Math.ceil(wallArea / rollCoverage * 1.1); // 10% waste
-      return [
-        { label: "Rolls Needed", value: rolls.toString(), highlight: true },
-        { label: "Wall Area", value: wallArea.toFixed(0) + " sq ft" },
-        { label: "Roll Coverage", value: rollCoverage.toFixed(1) + " sq ft/roll" },
-        { label: "Perimeter", value: perimeter + " ft" },
-      ];
-    },
-    formula: { expression: "Rolls = Wall Area ÷ Roll Coverage × 1.1", variables: ["10% waste factor included"] },
-    howToUse: "Enter room dimensions and wallpaper roll width.",
-    faqs: [{ question: "Should I buy extra?", answer: "Yes, always buy 10-15% extra for pattern matching and waste." }],
-    relatedCalcs: batch2Rel("wallpaper-calculator"),
-  },
-  {
-    slug: "tile-calculator", name: "Tile Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Construction & Home",
-    description: "Calculate how many tiles you need for floors or walls.",
-    metaDescription: "Free tile calculator. Estimate tiles needed with waste factor.",
-    icon: "layers",
-    inputs: [
-      { id: "areaLength", label: "Area Length (ft)", type: "number", defaultValue: 12 },
-      { id: "areaWidth", label: "Area Width (ft)", type: "number", defaultValue: 10 },
-      { id: "tileSize", label: "Tile Size (inches)", type: "number", defaultValue: 12 },
-      { id: "waste", label: "Waste Factor (%)", type: "number", defaultValue: 10, suffix: "%" },
-    ],
-    calculate: (v) => {
-      const areaSqFt = v.areaLength * v.areaWidth;
-      const tileSqFt = (v.tileSize * v.tileSize) / 144;
-      const tilesNeeded = Math.ceil(areaSqFt / tileSqFt);
-      const withWaste = Math.ceil(tilesNeeded * (1 + v.waste / 100));
-      const boxes = Math.ceil(withWaste / 10);
-      return [
-        { label: "Tiles Needed (with waste)", value: withWaste.toString(), highlight: true },
-        { label: "Tiles (exact)", value: tilesNeeded.toString() },
-        { label: "Area", value: areaSqFt + " sq ft" },
-        { label: "Boxes (~10/box)", value: boxes.toString() },
-      ];
-    },
-    formula: { expression: "Tiles = Area ÷ Tile Area × (1 + Waste%)", variables: ["Tile area in sq ft"] },
-    howToUse: "Enter area dimensions, tile size, and waste percentage.",
-    faqs: [{ question: "How much waste to plan for?", answer: "10% for straight lay, 15% for diagonal, 20% for complex patterns." }],
-    relatedCalcs: batch2Rel("tile-calculator"),
-  },
-  {
-    slug: "fence-calculator", name: "Fence Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Construction & Home",
-    description: "Calculate materials needed for fencing — posts, rails, and pickets.",
-    metaDescription: "Free fence calculator. Enter fence length, height, and post spacing to estimate the posts, rails, and pickets your fence will need.",
-    icon: "layers",
-    inputs: [
-      { id: "length", label: "Fence Length (ft)", type: "number", defaultValue: 100 },
-      { id: "height", label: "Fence Height (ft)", type: "number", defaultValue: 6 },
-      { id: "postSpacing", label: "Post Spacing (ft)", type: "number", defaultValue: 8 },
-      { id: "costPerFt", label: "Cost per Linear Ft ($)", type: "number", defaultValue: 25, prefix: "$" },
-    ],
-    calculate: (v) => {
-      const posts = Math.ceil(v.length / v.postSpacing) + 1;
-      const rails = Math.ceil(v.length / v.postSpacing) * (v.height > 4 ? 3 : 2);
-      const pickets = Math.ceil(v.length / 0.5); // 6" spacing
-      const totalCost = v.length * v.costPerFt;
-      return [
-        { label: "Posts Needed", value: posts.toString(), highlight: true },
-        { label: "Rails", value: rails.toString() },
-        { label: "Pickets (6\" spacing)", value: pickets.toString() },
-        { label: "Estimated Cost", value: fmt0(totalCost) },
-      ];
-    },
-    formula: { expression: "Posts = Length ÷ Spacing + 1", variables: ["Rails = Sections × (2 or 3)"] },
-    howToUse: "Enter fence length, height, post spacing, and cost per foot.",
-    faqs: [{ question: "How deep should fence posts be?", answer: "At least 1/3 of total post length, typically 2-3 feet deep." }],
-    relatedCalcs: batch2Rel("fence-calculator"),
-  },
-  {
-    slug: "deck-calculator", name: "Deck Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Construction & Home",
-    description: "Calculate decking boards, joists, and screws needed for a deck.",
-    metaDescription: "Free deck calculator. Enter deck length and width to estimate the decking boards, joists, and screws needed to build your deck.",
-    icon: "layers",
-    inputs: [
-      { id: "length", label: "Deck Length (ft)", type: "number", defaultValue: 16 },
-      { id: "width", label: "Deck Width (ft)", type: "number", defaultValue: 12 },
-      { id: "boardWidth", label: "Board Width (inches)", type: "number", defaultValue: 5.5 },
-    ],
-    calculate: (v) => {
-      const area = v.length * v.width;
-      const boardsNeeded = Math.ceil(v.width / (v.boardWidth / 12));
-      const totalBoardFeet = boardsNeeded * v.length;
-      const joists = Math.ceil(v.length / 1.33) + 1; // 16" OC
-      const screws = area * 6; // ~6 screws per sq ft
-      return [
-        { label: "Deck Boards", value: boardsNeeded.toString(), highlight: true },
-        { label: "Board Linear Ft", value: totalBoardFeet.toString() },
-        { label: "Joists (16\" OC)", value: joists.toString() },
-        { label: "Screws Needed", value: Math.round(screws).toLocaleString() },
-      ];
-    },
-    formula: { expression: "Boards = Width ÷ Board Width", variables: ["Joists at 16\" on center"] },
-    howToUse: "Enter deck dimensions and board width.",
-    faqs: [{ question: "What joist spacing should I use?", answer: "16\" OC is standard. 12\" OC for diagonal decking or heavy loads." }],
-    relatedCalcs: batch2Rel("deck-calculator"),
-  },
   {
     slug: "insulation-calculator", name: "Insulation Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Construction & Home",
@@ -916,37 +656,6 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
   // EVENTS & PLANNING (subcategory)
   // ═══════════════════════════════════════
   {
-    slug: "wedding-budget-calculator", name: "Wedding Budget Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Events & Planning",
-    description: "Plan your wedding budget with cost breakdowns by category.",
-    metaDescription: "Free wedding budget calculator. Enter your total budget and guest count to split costs by category: venue, catering, photography, flowers, and decor.",
-    icon: "layers",
-    inputs: [
-      { id: "totalBudget", label: "Total Budget", type: "number", defaultValue: 30000, prefix: "$" },
-      { id: "guests", label: "Number of Guests", type: "number", defaultValue: 100 },
-    ],
-    calculate: (v) => {
-      const venue = v.totalBudget * 0.40;
-      const catering = v.totalBudget * 0.25;
-      const photography = v.totalBudget * 0.12;
-      const flowers = v.totalBudget * 0.08;
-      const other = v.totalBudget * 0.15;
-      const perGuest = v.totalBudget / v.guests;
-      return [
-        { label: "Per Guest Cost", value: fmt(perGuest), highlight: true },
-        { label: "Venue (40%)", value: fmt0(venue) },
-        { label: "Catering (25%)", value: fmt0(catering) },
-        { label: "Photography (12%)", value: fmt0(photography) },
-        { label: "Flowers/Decor (8%)", value: fmt0(flowers) },
-        { label: "Other (15%)", value: fmt0(other) },
-      ];
-    },
-    formula: { expression: "Industry standard allocation percentages", variables: ["Venue 40%, Catering 25%, Photo 12%, Flowers 8%, Other 15%"] },
-    howToUse: "Enter total budget and number of guests.",
-    faqs: [{ question: "Average US wedding cost?", answer: "About $30,000-35,000 in 2024." }],
-    relatedCalcs: batch2Rel("wedding-budget-calculator"),
-  },
-  {
     slug: "party-food-calculator", name: "Party Food Calculator", category: "Other Calculators", categorySlug: "other",
     subcategory: "Events & Planning",
     description: "Calculate how much food and drinks to buy for a party.",
@@ -1020,12 +729,12 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
       const converted = v.amount * v.rate;
       const feeAmount = converted * (v.fee / 100);
       const afterFee = converted - feeAmount;
-      const effectiveRate = afterFee / v.amount;
+      const effectiveRate = v.amount !== 0 ? afterFee / v.amount : 0;
       return [
         { label: "Converted Amount", value: converted.toFixed(2), highlight: true },
         { label: "After Fee", value: afterFee.toFixed(2) },
         { label: "Fee Amount", value: feeAmount.toFixed(2) },
-        { label: "Effective Rate", value: effectiveRate.toFixed(4) },
+        { label: "Effective Rate", value: v.amount !== 0 ? effectiveRate.toFixed(4) : "—" },
       ];
     },
     formula: { expression: "Converted = Amount × Rate × (1 - Fee%)", variables: ["Rate = Exchange rate"] },
@@ -1049,7 +758,9 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
       const remaining = v.goal - v.current;
       const monthlyRate = v.interest / 100 / 12;
       let monthlySaving: number;
-      if (monthlyRate > 0) {
+      if (v.months <= 0) {
+        monthlySaving = 0;
+      } else if (monthlyRate > 0) {
         monthlySaving = (remaining * monthlyRate) / (Math.pow(1 + monthlyRate, v.months) - 1);
       } else {
         monthlySaving = remaining / v.months;
@@ -1079,11 +790,11 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
       { id: "sqft", label: "Square Footage", type: "number", defaultValue: 1800 },
     ],
     calculate: (v) => {
-      const pricePerSqFt = v.price / v.sqft;
+      const pricePerSqFt = v.sqft > 0 ? v.price / v.sqft : 0;
       const pricePerSqM = pricePerSqFt * 10.764;
       return [
-        { label: "Price per Sq Ft", value: fmt(pricePerSqFt), highlight: true },
-        { label: "Price per Sq Meter", value: fmt(pricePerSqM) },
+        { label: "Price per Sq Ft", value: v.sqft > 0 ? fmt(pricePerSqFt) : "—", highlight: true },
+        { label: "Price per Sq Meter", value: v.sqft > 0 ? fmt(pricePerSqM) : "—" },
         { label: "Total Price", value: fmt0(v.price) },
         { label: "Total Area", value: v.sqft.toLocaleString() + " sq ft" },
       ];
@@ -1244,67 +955,6 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     faqs: [{ question: "KB vs KiB?", answer: "KB (1000 bytes) is decimal. KiB (1024 bytes) is binary. We use binary." }],
     relatedCalcs: batch2Rel("storage-converter-calculator"),
   },
-  {
-    slug: "screen-resolution-calculator", name: "Screen Resolution Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Technology & Computing",
-    description: "Calculate pixel density (PPI) from screen size and resolution.",
-    metaDescription: "Free screen resolution calculator. Enter pixel dimensions and screen size to find pixel density (PPI), total pixels, and aspect ratio.",
-    icon: "layers",
-    inputs: [
-      { id: "width", label: "Horizontal Pixels", type: "number", defaultValue: 2560 },
-      { id: "height", label: "Vertical Pixels", type: "number", defaultValue: 1440 },
-      { id: "diagonal", label: "Screen Size (inches)", type: "number", defaultValue: 27, step: 0.1 },
-    ],
-    calculate: (v) => {
-      const diagPixels = Math.sqrt(v.width * v.width + v.height * v.height);
-      const ppi = diagPixels / v.diagonal;
-      const megapixels = (v.width * v.height) / 1e6;
-      const aspectW = v.width / gcd(v.width, v.height);
-      const aspectH = v.height / gcd(v.width, v.height);
-      function gcd(a: number, b: number): number { return b === 0 ? a : gcd(b, a % b); }
-      return [
-        { label: "Pixel Density", value: ppi.toFixed(0) + " PPI", highlight: true },
-        { label: "Total Pixels", value: megapixels.toFixed(2) + " MP" },
-        { label: "Aspect Ratio", value: `${aspectW}:${aspectH}` },
-        { label: "Resolution", value: `${v.width}×${v.height}` },
-      ];
-    },
-    formula: { expression: "PPI = √(W² + H²) ÷ Diagonal", variables: ["W, H = pixel dimensions", "Diagonal in inches"] },
-    howToUse: "Enter screen resolution and diagonal size in inches.",
-    faqs: [{ question: "What PPI is considered retina?", answer: "Apple defines Retina as ~220+ PPI for laptops, 326+ for phones." }],
-    relatedCalcs: batch2Rel("screen-resolution-calculator"),
-  },
-  {
-    slug: "bandwidth-calculator", name: "Bandwidth Calculator", category: "Other Calculators", categorySlug: "other",
-    subcategory: "Technology & Computing",
-    description: "Calculate bandwidth needs for streaming, video calls, and web browsing.",
-    metaDescription: "Free bandwidth calculator. Estimate internet speed requirements.",
-    icon: "layers",
-    inputs: [
-      { id: "streamingDevices", label: "4K Streaming Devices", type: "number", defaultValue: 2 },
-      { id: "videoCalls", label: "Simultaneous Video Calls", type: "number", defaultValue: 1 },
-      { id: "gamingDevices", label: "Gaming Devices", type: "number", defaultValue: 1 },
-      { id: "generalDevices", label: "General Browsing Devices", type: "number", defaultValue: 3 },
-    ],
-    calculate: (v) => {
-      const streamingMbps = v.streamingDevices * 25; // 4K needs ~25 Mbps
-      const videoCalls = v.videoCalls * 10;
-      const gaming = v.gamingDevices * 15;
-      const general = v.generalDevices * 5;
-      const total = streamingMbps + videoCalls + gaming + general;
-      const recommended = Math.ceil(total * 1.25 / 50) * 50; // Round up with 25% buffer
-      return [
-        { label: "Minimum Needed", value: total + " Mbps", highlight: true },
-        { label: "Recommended Plan", value: recommended + " Mbps" },
-        { label: "Streaming", value: streamingMbps + " Mbps" },
-        { label: "Other Uses", value: (videoCalls + gaming + general) + " Mbps" },
-      ];
-    },
-    formula: { expression: "Total = Σ(Devices × Bandwidth per device)", variables: ["4K: 25Mbps, Video: 10Mbps, Gaming: 15Mbps, General: 5Mbps"] },
-    howToUse: "Enter the number of devices for each activity type.",
-    faqs: [{ question: "Is 100 Mbps enough?", answer: "For 2-3 people with moderate use, yes. Heavy households need 200+." }],
-    relatedCalcs: batch2Rel("bandwidth-calculator"),
-  },
 
   // ═══════════════════════════════════════
   // PHOTOGRAPHY & MEDIA (subcategory)
@@ -1412,17 +1062,20 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const totalMinutes = v.minutes + v.seconds / 60;
-      const paceMin = totalMinutes / v.distance;
-      const paceMinWhole = Math.floor(paceMin);
-      const paceSec = Math.round((paceMin - paceMinWhole) * 60);
-      const mph = (v.distance / totalMinutes) * 60;
+      const paceMin = v.distance > 0 ? totalMinutes / v.distance : NaN;
+      const mph = totalMinutes > 0 ? (v.distance / totalMinutes) * 60 : NaN;
       const km = v.distance * 1.60934;
-      const paceKm = totalMinutes / km;
+      const paceKm = km > 0 ? totalMinutes / km : NaN;
+      const fmtPace = (p: number) => {
+        if (!Number.isFinite(p)) return "—";
+        const totalSec = Math.round(p * 60);
+        return `${Math.floor(totalSec / 60)}:${(totalSec % 60).toString().padStart(2, "0")}`;
+      };
       return [
-        { label: "Pace", value: `${paceMinWhole}:${paceSec.toString().padStart(2, '0')} /mile`, highlight: true },
-        { label: "Speed", value: mph.toFixed(1) + " mph" },
-        { label: "Pace (km)", value: `${Math.floor(paceKm)}:${Math.round((paceKm % 1) * 60).toString().padStart(2, '0')} /km` },
-        { label: "5K Prediction", value: `${Math.floor(paceMin * 3.1)}:${Math.round((paceMin * 3.1 % 1) * 60).toString().padStart(2, '0')}` },
+        { label: "Pace", value: `${fmtPace(paceMin)} /mile`, highlight: true },
+        { label: "Speed", value: Number.isFinite(mph) ? mph.toFixed(1) + " mph" : "—" },
+        { label: "Pace (km)", value: `${fmtPace(paceKm)} /km` },
+        { label: "5K Prediction", value: fmtPace(paceMin * 3.1) },
       ];
     },
     formula: { expression: "Pace = Time ÷ Distance", variables: ["Speed = Distance ÷ Time × 60"] },
@@ -1443,7 +1096,7 @@ export const otherCalculatorsBatch2: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const totalHours = v.hours + v.minutes / 60;
-      const speed = v.distance / totalHours;
+      const speed = totalHours > 0 ? v.distance / totalHours : 0;
       const speedKmh = speed * 1.60934;
       const distKm = v.distance * 1.60934;
       const calories = v.distance * 40; // rough estimate: 40 cal per mile

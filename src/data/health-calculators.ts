@@ -59,6 +59,12 @@ const _healthCalculators: CalculatorConfig[] = [
       { id: "hip", label: "Hip (cm, women only)", type: "number", defaultValue: 95, step: 0.1 },
     ],
     calculate: (v) => {
+      const logArg = v.gender === 0 ? v.waist - v.neck : v.waist + v.hip - v.neck;
+      if (v.height <= 0 || logArg <= 0) return [
+        { label: "Body Fat %", value: "Invalid measurements", highlight: true },
+        { label: "Category", value: "—" },
+        { label: "Lean Body Mass", value: "—" },
+      ];
       let bf: number;
       if (v.gender === 0) {
         bf = 495 / (1.0324 - 0.19077 * Math.log10(v.waist - v.neck) + 0.15456 * Math.log10(v.height)) - 450;
@@ -234,11 +240,11 @@ const _healthCalculators: CalculatorConfig[] = [
         ? 0.407 * v.weight + 0.267 * v.height - 19.2
         : 0.252 * v.weight + 0.473 * v.height - 48.3;
       const fatMass = v.weight - lbm;
-      const bf = (fatMass / v.weight) * 100;
+      const bf = v.weight !== 0 ? (fatMass / v.weight) * 100 : NaN;
       return [
         { label: "Lean Body Mass", value: `${lbm.toFixed(1)} kg`, highlight: true },
         { label: "Fat Mass", value: `${fatMass.toFixed(1)} kg` },
-        { label: "Body Fat %", value: `${bf.toFixed(1)}%` },
+        { label: "Body Fat %", value: Number.isFinite(bf) ? `${bf.toFixed(1)}%` : "—" },
       ];
     },
     formula: { expression: "LBM (male) = 0.407×W + 0.267×H − 19.2", variables: ["W = Weight (kg)", "H = Height (cm)", "Boer Formula"] },
@@ -270,7 +276,7 @@ const _healthCalculators: CalculatorConfig[] = [
       const diffDays = Math.floor((now.getTime() - lmp.getTime()) / (1000 * 60 * 60 * 24));
       const weeks = Math.max(0, Math.floor(diffDays / 7));
       const days = Math.max(0, diffDays % 7);
-      const trimester = weeks < 13 ? "1st" : weeks < 27 ? "2nd" : "3rd";
+      const trimester = weeks < 14 ? "1st" : weeks < 28 ? "2nd" : "3rd";
       return [
         { label: "Estimated Due Date", value: due.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" }), highlight: true },
         { label: "Current Week", value: `Week ${weeks}, Day ${days}` },
@@ -585,7 +591,7 @@ const _healthCalculators: CalculatorConfig[] = [
     calculate: (v) => {
       const r = v.gender === 0 ? 0.68 : 0.55;
       const alcoholGrams = v.drinks * 14;
-      const bac = Math.max(0, (alcoholGrams / (v.weight * 1000 * r)) * 100 - 0.015 * v.hours);
+      const bac = v.weight > 0 ? Math.max(0, (alcoholGrams / (v.weight * 1000 * r)) * 100 - 0.015 * v.hours) : 0;
       let status = "Sober";
       if (bac > 0.08) status = "Legally Impaired";
       else if (bac > 0.04) status = "Mildly Impaired";
@@ -681,14 +687,14 @@ const _healthCalculators: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const fatGrams = (v.calories * (v.fatPct / 100)) / 9;
-      const satFat = fatGrams * 0.33;
+      const satFat = v.calories * 0.10 / 9; // dietary guideline: saturated fat below 10% of calories
       return [
         { label: "Daily Fat", value: `${Math.round(fatGrams)}g`, highlight: true },
         { label: "Calories from Fat", value: `${Math.round(fatGrams * 9)} cal` },
         { label: "Saturated Fat Limit", value: `< ${Math.round(satFat)}g` },
       ];
     },
-    formula: { expression: "Fat (g) = (Calories × Fat%) / 9", variables: ["1g fat = 9 calories", "Typical range: 20-35% of calories"] },
+    formula: { expression: "Fat (g) = (Calories × Fat%) / 9", variables: ["1g fat = 9 calories", "Typical range: 20-35% of calories", "Saturated fat limit = 10% of calories ÷ 9"] },
     howToUse: "Enter your daily calorie target and preferred fat percentage to calculate your daily fat gram intake.",
     faqs: [
       { question: "Are all fats bad?", answer: "No. Unsaturated fats (olive oil, nuts, avocados) are beneficial. Limit saturated fats to <10% of calories and avoid trans fats entirely." },
@@ -791,7 +797,7 @@ const _healthCalculators: CalculatorConfig[] = [
       { id: "weight", label: "Weight (kg)", type: "number", defaultValue: 75, step: 0.1 },
     ],
     calculate: (v) => {
-      const bsa = Math.sqrt((v.height * v.weight) / 3600);
+      const bsa = Math.sqrt(Math.max(0, (v.height * v.weight) / 3600));
       return [
         { label: "BSA", value: `${bsa.toFixed(2)} m²`, highlight: true },
         { label: "Average Adult BSA", value: "1.7-1.9 m²" },
@@ -814,31 +820,39 @@ const _healthCalculators: CalculatorConfig[] = [
     icon: "heart",
     inputs: [
       { id: "gender", label: "Gender", type: "select", defaultValue: 0, options: [{ value: 0, label: "Male" }, { value: 1, label: "Female" }] },
+      { id: "age", label: "Age", type: "number", defaultValue: 25, min: 17, max: 65 },
       { id: "height", label: "Height (inches)", type: "number", defaultValue: 70, step: 0.5 },
       { id: "waist", label: "Waist (inches)", type: "number", defaultValue: 34, step: 0.5 },
       { id: "neck", label: "Neck (inches)", type: "number", defaultValue: 15.5, step: 0.5 },
       { id: "hip", label: "Hip (inches, women)", type: "number", defaultValue: 38, step: 0.5 },
     ],
     calculate: (v) => {
+      const logArg = v.gender === 0 ? v.waist - v.neck : v.waist + v.hip - v.neck;
+      if (v.height <= 0 || logArg <= 0) return [{ label: "Error", value: "Enter valid measurements: height above 0, and waist must exceed neck (men) or waist + hip must exceed neck (women).", highlight: true }];
       let bf: number;
       if (v.gender === 0) {
         bf = 86.010 * Math.log10(v.waist - v.neck) - 70.041 * Math.log10(v.height) + 36.76;
       } else {
         bf = 163.205 * Math.log10(v.waist + v.hip - v.neck) - 97.684 * Math.log10(v.height) - 78.387;
       }
-      const maxAllowed = v.gender === 0 ? 26 : 36;
+      // AR 600-9 Table B-2 maximum body fat by age group
+      const ageBand = v.age <= 20 ? "17–20" : v.age <= 27 ? "21–27" : v.age <= 39 ? "28–39" : "40+";
+      const maxAllowed = v.gender === 0
+        ? (v.age <= 20 ? 20 : v.age <= 27 ? 22 : v.age <= 39 ? 24 : 26)
+        : (v.age <= 20 ? 30 : v.age <= 27 ? 32 : v.age <= 39 ? 34 : 36);
       return [
         { label: "Body Fat %", value: `${Math.max(bf, 2).toFixed(1)}%`, highlight: true },
+        { label: "Age Group", value: ageBand },
         { label: "Army Max Allowed", value: `${maxAllowed}%` },
         { label: "Status", value: bf <= maxAllowed ? "Within Standards ✓" : "Exceeds Standards" },
       ];
     },
-    formula: { expression: "Male: 86.01×log(waist−neck) − 70.04×log(height) + 36.76", variables: ["Female adds hip measurement", "All measurements in inches"] },
+    formula: { expression: "Male: 86.01×log(waist−neck) − 70.04×log(height) + 36.76", variables: ["Female adds hip measurement", "All measurements in inches", "Max allowed by age (AR 600-9 Table B-2): men 20/22/24/26%, women 30/32/34/36%"] },
     howToUse: "Enter measurements in inches. Women must also enter hip measurement.",
     faqs: [
-      { question: "What are Army body fat standards?", answer: "Males: 26% max (ages 17-20) to 26%. Females: 30-36% depending on age. Standards vary by branch." },
+      { question: "What are Army body fat standards?", answer: "The maximum depends on age (AR 600-9 Table B-2). Men: 20% (ages 17-20), 22% (21-27), 24% (28-39), 26% (40+). Women: 30%, 32%, 34%, and 36% in the same age bands." },
       { question: "How accurate is the Army body fat test?", answer: "The tape method typically lands within about 3-4 percentage points of lab methods like DEXA scans. Technique matters: a tape pulled too tight or placed in the wrong spot can shift the result by several points." },
-      { question: "Do the Army's body fat limits change with age?", answer: "Yes. The limits rise with age — men range from 20% (ages 17-20) to 26% (40+), and women from 30% to 36%. This calculator shows the 40-and-over ceiling (26% men, 36% women) for everyone, so younger soldiers should check the limit for their age group." },
+      { question: "Do the Army's body fat limits change with age?", answer: "Yes. The limits rise with age — men range from 20% (ages 17-20) to 26% (40+), and women from 30% to 36%. Enter your age and the calculator applies the limit for your age group." },
     ],
     relatedCalcs: healthRelated("army-body-fat-calculator"),
   },
@@ -857,7 +871,7 @@ const _healthCalculators: CalculatorConfig[] = [
       const calories = (v.activity * v.weight * 3.5 / 200) * v.duration;
       return [
         { label: "Calories Burned", value: `${Math.round(calories)} cal`, highlight: true },
-        { label: "Per Hour", value: `${Math.round(calories * 60 / v.duration)} cal/hr` },
+        { label: "Per Hour", value: v.duration !== 0 ? `${Math.round(calories * 60 / v.duration)} cal/hr` : "0 cal/hr" },
         { label: "MET Value", value: `${v.activity}` },
       ];
     },
@@ -950,6 +964,10 @@ const _healthCalculators: CalculatorConfig[] = [
       { id: "creatinine", label: "Serum Creatinine (mg/dL)", type: "number", defaultValue: 1.0, step: 0.01 },
     ],
     calculate: (v) => {
+      if (v.creatinine <= 0) return [
+        { label: "eGFR", value: "Enter a creatinine level above 0", highlight: true },
+        { label: "CKD Stage", value: "—" },
+      ];
       const kappa = v.gender === 0 ? 0.9 : 0.7;
       const alpha = v.gender === 0 ? -0.302 : -0.241;
       const sexFactor = v.gender === 0 ? 1 : 1.012;
@@ -1048,6 +1066,10 @@ const _healthCalculators: CalculatorConfig[] = [
       { id: "wrist", label: "Wrist Circumference (cm)", type: "number", defaultValue: 17, step: 0.1 },
     ],
     calculate: (v) => {
+      if (v.wrist <= 0) return [
+        { label: "Body Frame", value: "Enter a wrist measurement above 0", highlight: true },
+        { label: "Height/Wrist Ratio", value: "—" },
+      ];
       const ratio = v.height / v.wrist;
       let frame: string;
       if (v.gender === 0) {
@@ -1110,6 +1132,12 @@ const _healthCalculators: CalculatorConfig[] = [
       { id: "height", label: "Height (cm)", type: "number", defaultValue: 170, step: 0.1 },
     ],
     calculate: (v) => {
+      if (v.height <= 0) return [
+        { label: "BMI", value: "Enter a height above 0", highlight: true },
+        { label: "Category", value: "—" },
+        { label: "Max Healthy Weight", value: "—" },
+        { label: "Weight to Lose", value: "—" },
+      ];
       const bmi = v.weight / ((v.height / 100) ** 2);
       const maxHealthy = 24.9 * ((v.height / 100) ** 2);
       const overBy = Math.max(0, v.weight - maxHealthy);

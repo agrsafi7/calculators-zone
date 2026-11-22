@@ -25,8 +25,9 @@ export default defineConfig(({ mode }) => ({
           "vendor-router": ["react-router-dom"],
           // UI components chunk
           "vendor-ui": ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu", "@radix-ui/react-select", "@radix-ui/react-tabs", "@radix-ui/react-accordion"],
-          // Query client
-          "vendor-query": ["@tanstack/react-query"],
+          // NOTE: no vendor-query chunk — @tanstack/react-query is imported
+          // nowhere (zero useQuery calls); QueryClientProvider was removed
+          // from App.tsx (PageSpeed item 53, 22 Nov 2026).
         },
       },
     },

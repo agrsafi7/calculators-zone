@@ -46,6 +46,30 @@ if (typeof globalThis.localStorage === "undefined") {
 }
 const { render: renderRoute } = await import("/tmp/entry-server.cjs");
 
+// 1b2. Warm up React.lazy components used by calculator pages
+// (LazyGuideSections): renderToString renders the Suspense fallback for an
+// unresolved lazy component, so the first SSR render must happen here —
+// discarded — with a macrotask afterwards to let the lazy factory's promise
+// settle. After that, every real render in the loop below emits the full
+// guide HTML. Any calculator route that renders CalculatorTemplate (or a
+// dedicated page) works — all four call sites share the one lazy module.
+// /science/ routes are excluded because the five science-template pages
+// render ScienceCalculator, which has no GuideSections. If this ever stops
+// working, the guide-presence assertion in buildHtml fails the build
+// loudly instead of shipping guideless pages.
+const warmupEntry = entries.find(
+  (e) => /^\/[^/]+\/[^/]+$/.test(e.path) && !e.path.startsWith("/science/")
+);
+if (warmupEntry) {
+  try {
+    renderRoute(warmupEntry.path);
+  } catch {
+    // A failed warmup render is not fatal by itself — the assertion in
+    // buildHtml will catch any page whose guide is actually missing.
+  }
+  await new Promise((r) => setTimeout(r, 0));
+}
+
 // 1c. Read the Vite manifest to map pages -> output chunks (for per-route
 // modulepreload hints, so the client's lazy page chunk is already cached
 // when React hydrates and the Suspense boundary resolves)
@@ -153,6 +177,26 @@ const buildHtml = (entry) => {
     const tag = `<script type="application/ld+json">${JSON.stringify(breadcrumbLd).replace(/</g, "\\u003c")}</script>`;
     html = html.replace("</head>", `  ${tag}\n</head>`);
   }
+  // HowTo structured data — owned by this prerender layer, like FAQPage
+  // above (same SEO audit F7 pattern: Helmet <script> children don't
+  // survive prerender serialization). Steps are built in collect-meta.ts
+  // from the config formula + the guide's worked example; pages without a
+  // clean worked example carry no howTo and get no block.
+  if (entry.howTo) {
+    const howToLd = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      name: entry.howTo.name,
+      description: entry.howTo.description,
+      step: entry.howTo.steps.map((s) => ({
+        "@type": "HowToStep",
+        name: s.name,
+        text: s.text,
+      })),
+    };
+    const tag = `<script type="application/ld+json">${JSON.stringify(howToLd).replace(/</g, "\\u003c")}</script>`;
+    html = html.replace("</head>", `  ${tag}\n</head>`);
+  }
   // Article structured data for blog posts (content visible to crawlers without JS)
   if (entry.articleLd) {
     const tag = `<script type="application/ld+json">${JSON.stringify(entry.articleLd).replace(/</g, "\\u003c")}</script>`;
@@ -167,6 +211,7 @@ const buildHtml = (entry) => {
   }
   // Server-rendered content: real HTML in #root so first paint doesn't wait
   // for the JS bundle. React hydrates this markup on load.
+  let ssrOk = false;
   try {
     const ssr = renderRoute(entry.path);
     if (ssr && ssr.includes("<")) {
@@ -176,9 +221,22 @@ const buildHtml = (entry) => {
         /<div id="root">[\s\S]*?<\/div>\s*<noscript>/,
         `<div id="root">${ssr}</div>\n    <noscript>`
       );
+      ssrOk = true;
     }
   } catch (err) {
     console.warn(`[prerender] SSR failed for ${entry.path}: ${err.message} — shipping empty shell`);
+  }
+  // Guide-presence assertion (LazyGuideSections guard): a calculator page
+  // whose guide exists must carry it in the served HTML. If the lazy warmup
+  // in §1b2 above ever stops resolving the component, renderToString silently
+  // renders the Suspense fallback instead — fail the build loudly rather
+  // than ship 328 pages with their guides stripped. Only checked when SSR
+  // itself succeeded; a failed SSR keeps the existing warn-and-continue.
+  if (entry.hasGuide && ssrOk && !html.includes("In-Depth Guide")) {
+    throw new Error(
+      `[prerender] ${entry.path}: guide missing from served HTML — ` +
+        `LazyGuideSections did not resolve during SSR (check the warmup)`
+    );
   }
   return html;
 };

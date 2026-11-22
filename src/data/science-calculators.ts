@@ -365,8 +365,8 @@ const _scienceCalculators: CalculatorConfig[] = [
   },
   {
     slug: "ideal-gas-law-calculator", name: "Ideal Gas Law Calculator", category: "Science", categorySlug: "science",
-    description: "Calculate pressure, volume, temperature, or moles using PV = nRT.",
-    metaDescription: "Free ideal gas law calculator. PV = nRT. Solve for any variable.",
+    description: "Calculate temperature from pressure, volume, and moles using PV = nRT.",
+    metaDescription: "Free ideal gas law calculator. PV = nRT. Solve for temperature.",
     icon: "flask",
     inputs: [
       { id: "pressure", label: "Pressure (atm)", type: "number", defaultValue: 1, step: 0.01 },
@@ -374,8 +374,9 @@ const _scienceCalculators: CalculatorConfig[] = [
       { id: "moles", label: "Moles (n)", type: "number", defaultValue: 1, step: 0.01 },
     ],
     calculate: (v) => {
-      const R = 0.08206; // L·atm/(mol·K)
+      const R = 0.082057; // L·atm/(mol·K)
       if (v.moles === 0) return [{ label: "Error", value: "Moles cannot be zero" }];
+      if (v.pressure < 0 || v.volume < 0 || v.moles < 0) return [{ label: "Error", value: "Pressure, volume, and moles cannot be negative" }];
       const T = (v.pressure * v.volume) / (v.moles * R);
       return [
         { label: "Temperature", value: `${T.toFixed(2)} K`, highlight: true },
@@ -383,12 +384,12 @@ const _scienceCalculators: CalculatorConfig[] = [
         { label: "PV", value: `${(v.pressure * v.volume).toFixed(4)} L·atm` },
       ];
     },
-    formula: { expression: "PV = nRT → T = PV/(nR)", variables: ["R = 0.08206 L·atm/(mol·K)", "T in Kelvin"] },
+    formula: { expression: "PV = nRT → T = PV/(nR)", variables: ["R = 0.082057 L·atm/(mol·K)", "T in Kelvin"] },
     howToUse: "Enter pressure, volume, and moles to solve for temperature.",
     faqs: [
-      { question: "What is R?", answer: "The ideal gas constant. R = 0.08206 L·atm/(mol·K) = 8.314 J/(mol·K)." },
+      { question: "What is R?", answer: "The ideal gas constant. R = 0.082057 L·atm/(mol·K) = 8.314 J/(mol·K)." },
       { question: "Why must temperature be in Kelvin?", answer: "Gas laws work on ratios of temperature, and only the Kelvin scale has a true zero at absolute zero (−273.15 °C). A Celsius temperature plugged into PV = nRT gives a meaningless result." },
-      { question: "Can this calculator solve for pressure or volume?", answer: "No — it solves for temperature only, even though the page description says it solves for any variable. Rearrange the law yourself: P = nRT ÷ V and V = nRT ÷ P, with R = 0.08206 L·atm/(mol·K)." },
+      { question: "Can this calculator solve for pressure or volume?", answer: "No — it solves for temperature only. Rearrange the law yourself: P = nRT ÷ V and V = nRT ÷ P, with R = 0.082057 L·atm/(mol·K)." },
     ],
     relatedCalcs: sciRelated("ideal-gas-law-calculator"),
   },

@@ -31,6 +31,8 @@ import { otherCalculatorsBatch3 } from "../src/data/other-calculators-batch3";
 import { expansionCalculators } from "../src/data/expansion-calculators";
 import { scienceTemplateBySlug } from "../src/data/science";
 import { blogPosts, isPublished } from "../src/data/blog-posts";
+import { calculatorGuides } from "../src/data/calculator-guides";
+import { DELETED_SLUGS } from "../src/data/deleted-slugs";
 
 interface Entry {
   path: string;
@@ -39,6 +41,12 @@ interface Entry {
   faqs?: { question: string; answer: string }[];
   breadcrumbs?: { name: string; url: string }[];
   articleLd?: Record<string, unknown>;
+  // Set on calculator pages whose guide GuideSections renders — prerender.mjs
+  // asserts the served HTML actually contains it (LazyGuideSections guard).
+  hasGuide?: boolean;
+  // HowTo structured data: steps derived from the config formula + the
+  // guide's worked example. Absent when the page has no clean steps.
+  howTo?: { name: string; description: string; steps: { name: string; text: string }[] };
 }
 
 const allConfigs = [
@@ -66,6 +74,32 @@ const allConfigs = [
   ...otherCalculatorsBatch3,
   ...expansionCalculators,
 ];
+
+// Build-time assertion (item 48 follow-up): duplicate categorySlug/slug
+// path keys are silent today — SSR (entry-server configByPath, last-wins)
+// renders a different copy than the client (GenericCalculatorPage
+// configs.find, first-wins), which caused the item 47 SSR/client mismatch
+// (visible FAQs ≠ FAQPage schema). Fail the build loudly instead.
+// The key matches entry-server's configByPath exactly, and pruned slugs are
+// excluded: their configs are dead code (the route 301s), so a collision
+// between two dead copies is not a live-route bug.
+const pathCounts = new Map<string, number>();
+for (const c of allConfigs) {
+  if (DELETED_SLUGS.has(c.slug)) continue;
+  const key = `${c.categorySlug}/${c.slug}`;
+  pathCounts.set(key, (pathCounts.get(key) ?? 0) + 1);
+}
+const duplicatePaths = [...pathCounts.entries()].filter(([, n]) => n > 1);
+if (duplicatePaths.length > 0) {
+  console.error(
+    `[collect-meta] FATAL: ${duplicatePaths.length} duplicate calculator path key(s) — ` +
+      `delete the later copy of each (keep the FIRST, per item 47):`
+  );
+  for (const [key, n] of duplicatePaths.sort()) {
+    console.error(`  ${key} (${n} configs)`);
+  }
+  process.exit(1);
+}
 
 // Full config lookup by slug (first occurrence wins, same as the router)
 const configBySlug = new Map<string, (typeof allConfigs)[number]>();
@@ -153,6 +187,55 @@ const customOverrides: Record<string, { title: string; description: string; faqs
 
 const entries: Entry[] = [];
 
+// Strip the **bold** markers guide paragraphs use — JSON-LD step text is
+// plain text (same transform the blog articleBody uses below).
+const stripMd = (s: string) => s.replace(/\*\*(.+?)\*\*/g, "$1").trim();
+
+// HowTo steps for a calculator page, derived from the config (inputs +
+// formula) and the guide's own worked example. Returns undefined unless
+// every step is clean — a page with no clear worked example gets no HowTo
+// schema rather than a bad one.
+const buildHowTo = (
+  cfg: (typeof allConfigs)[number] | undefined,
+  name: string,
+  description: string,
+  slug: string
+): Entry["howTo"] => {
+  if (!cfg) return undefined;
+  const expression = cfg.formula?.expression?.trim();
+  if (!expression || cfg.inputs.length === 0) return undefined;
+  const guide = calculatorGuides[slug];
+  const worked = guide?.find((s) => /worked examples?/i.test(s.heading));
+  const exampleText = worked?.paragraphs.map(stripMd).find((p) => p.length > 0);
+  if (!exampleText) return undefined;
+  const labels = cfg.inputs.map((i) => i.label.trim()).filter(Boolean);
+  if (labels.length === 0) return undefined;
+  const listed =
+    labels.length === 1
+      ? labels[0]
+      : `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}`;
+  const desc = (cfg.description || description).trim();
+  if (!desc) return undefined;
+  return {
+    name: `How to use the ${name}`,
+    description: desc,
+    steps: [
+      {
+        name: "Enter your values",
+        text: `Enter ${listed} into the calculator.`,
+      },
+      {
+        name: "Apply the formula",
+        text: `The calculator applies the formula ${expression}.`,
+      },
+      {
+        name: "Worked example",
+        text: `Worked example: ${exampleText}`,
+      },
+    ],
+  };
+};
+
 // Calculator pages — same canonical list as the sitemap
 for (const u of uniqueCalculators) {
   const path = `/${u.categorySlug}/${u.slug}`;
@@ -168,6 +251,9 @@ for (const u of uniqueCalculators) {
   // comes from the path-resolved config, so subcategory-labelled configs
   // (e.g. "Geometry") match what the page visibly shows.
   const sci = u.categorySlug === "science" ? scienceTemplateBySlug[u.slug] : undefined;
+  // Guide presence: GuideSections renders for this slug (generic template +
+  // the three custom pages). Science-template pages never render guides.
+  const hasGuide = !sci && (calculatorGuides[u.slug]?.length ?? 0) > 0;
   const calcName = override?.title ?? pathCfg?.name ?? u.name;
   const catName = pathCfg?.category ?? u.category;
   const breadcrumbs: { name: string; url: string }[] = sci
@@ -193,6 +279,19 @@ for (const u of uniqueCalculators) {
     // pages change.
     faqs: (override?.faqs ?? cfg?.faqs)?.slice(0, 12),
     breadcrumbs,
+    hasGuide: hasGuide || undefined,
+    // No HowTo for science-template pages: ScienceCalculator renders no
+    // guide, so there is no visible worked example to ground the steps in.
+    // The three custom pages are skipped inside buildHowTo (no data-file
+    // config, so no formula/inputs to derive steps from).
+    howTo: sci
+      ? undefined
+      : buildHowTo(
+          cfg,
+          override?.title ?? cfg?.name ?? u.name,
+          override?.description ?? cfg?.metaDescription ?? u.description,
+          u.slug
+        ),
   });
 }
 

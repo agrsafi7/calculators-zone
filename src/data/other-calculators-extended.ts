@@ -81,11 +81,11 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     calculate: (v) => {
       const areaSqFt = v.areaLength * v.areaWidth;
       const tileSqFt = (v.tileSize * v.tileSize) / 144;
-      const tilesNeeded = areaSqFt / tileSqFt;
+      const tilesNeeded = tileSqFt > 0 ? areaSqFt / tileSqFt : 0;
       const withWaste = tilesNeeded * (1 + v.waste / 100);
       return [
-        { label: "Tiles Needed", value: Math.ceil(withWaste).toLocaleString(), highlight: true },
-        { label: "Without Waste", value: Math.ceil(tilesNeeded).toLocaleString() },
+        { label: "Tiles Needed", value: tileSqFt > 0 ? Math.ceil(withWaste).toLocaleString() : "—", highlight: true },
+        { label: "Without Waste", value: tileSqFt > 0 ? Math.ceil(tilesNeeded).toLocaleString() : "—" },
         { label: "Area", value: areaSqFt + " sq ft" },
         { label: "Tile Area", value: tileSqFt.toFixed(2) + " sq ft" },
       ];
@@ -138,9 +138,9 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
       const wallArea = v.perimeter * v.height;
       const rollCoverage = (v.rollWidth / 12) * v.rollLength;
       const usableCoverage = rollCoverage * 0.85;
-      const rollsNeeded = wallArea / usableCoverage;
+      const rollsNeeded = usableCoverage > 0 ? wallArea / usableCoverage : 0;
       return [
-        { label: "Rolls Needed", value: Math.ceil(rollsNeeded).toString(), highlight: true },
+        { label: "Rolls Needed", value: usableCoverage > 0 ? Math.ceil(rollsNeeded).toString() : "—", highlight: true },
         { label: "Wall Area", value: Math.round(wallArea) + " sq ft" },
         { label: "Coverage Per Roll", value: usableCoverage.toFixed(1) + " sq ft" },
         { label: "Total Roll Coverage", value: rollCoverage.toFixed(1) + " sq ft" },
@@ -216,14 +216,14 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
       { id: "height", label: "Fence Height (ft)", type: "number", defaultValue: 6 },
     ],
     calculate: (v) => {
-      const posts = Math.ceil(v.totalLength / v.postSpacing) + 1;
+      const posts = v.postSpacing > 0 ? Math.ceil(v.totalLength / v.postSpacing) + 1 : 0;
       const sections = posts - 1;
       const rails = sections * (v.height > 4 ? 3 : 2);
       const pickets = Math.ceil(v.totalLength / 0.5);
       return [
-        { label: "Posts Needed", value: posts.toString(), highlight: true },
-        { label: "Fence Sections", value: sections.toString() },
-        { label: "Rails Needed", value: rails.toString() },
+        { label: "Posts Needed", value: v.postSpacing > 0 ? posts.toString() : "—", highlight: true },
+        { label: "Fence Sections", value: v.postSpacing > 0 ? sections.toString() : "—" },
+        { label: "Rails Needed", value: v.postSpacing > 0 ? rails.toString() : "—" },
         { label: "Pickets (6\" spacing)", value: pickets.toLocaleString() },
       ];
     },
@@ -298,12 +298,12 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const dailyKwh = v.monthlyKwh / 30;
-      const systemKw = dailyKwh / v.sunHours;
-      const panels = Math.ceil((systemKw * 1000) / v.panelWatts);
+      const systemKw = v.sunHours > 0 ? dailyKwh / v.sunHours : 0;
+      const panels = v.panelWatts > 0 ? Math.ceil((systemKw * 1000) / v.panelWatts) : 0;
       const annualSavings = v.monthlyKwh * 12 * 0.13;
       return [
-        { label: "Panels Needed", value: panels.toString(), highlight: true },
-        { label: "System Size", value: systemKw.toFixed(1) + " kW" },
+        { label: "Panels Needed", value: v.sunHours > 0 && v.panelWatts > 0 ? panels.toString() : "—", highlight: true },
+        { label: "System Size", value: v.sunHours > 0 ? systemKw.toFixed(1) + " kW" : "—" },
         { label: "Daily kWh Needed", value: dailyKwh.toFixed(1) },
         { label: "Annual Savings (est)", value: fmt0(annualSavings) },
       ];
@@ -349,12 +349,12 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     ],
     calculate: (v) => {
       const fileBits = v.fileSize * 8;
-      const seconds = fileBits / v.speed;
+      const seconds = v.speed > 0 ? fileBits / v.speed : 0;
       const minutes = seconds / 60;
       const hours = minutes / 60;
       return [
-        { label: "Download Time", value: minutes >= 60 ? hours.toFixed(1) + " hours" : minutes >= 1 ? minutes.toFixed(1) + " min" : seconds.toFixed(0) + " sec", highlight: true },
-        { label: "Total Seconds", value: Math.round(seconds).toLocaleString() },
+        { label: "Download Time", value: v.speed > 0 ? (minutes >= 60 ? hours.toFixed(1) + " hours" : minutes >= 1 ? minutes.toFixed(1) + " min" : seconds.toFixed(0) + " sec") : "—", highlight: true },
+        { label: "Total Seconds", value: v.speed > 0 ? Math.round(seconds).toLocaleString() : "—" },
         { label: "File Size", value: v.fileSize >= 1000 ? (v.fileSize / 1000).toFixed(1) + " GB" : v.fileSize + " MB" },
         { label: "Speed", value: v.speed + " Mbps" },
       ];
@@ -453,33 +453,6 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     relatedCalcs: otherRel("video-file-size-calculator"),
   },
   {
-    slug: "carbon-footprint-calculator", name: "Carbon Footprint Calculator", category: "Other Calculators", categorySlug: "other",
-    description: "Estimate your monthly carbon footprint from driving, electricity, and flights.",
-    metaDescription: "Free carbon footprint calculator. Estimate your annual CO2 emissions from driving, home electricity use, and flights, broken down by source.",
-    icon: "layers",
-    inputs: [
-      { id: "carMiles", label: "Monthly Car Miles", type: "number", defaultValue: 1000 },
-      { id: "electricityKwh", label: "Monthly Electricity (kWh)", type: "number", defaultValue: 900 },
-      { id: "flightsPerYear", label: "Flights Per Year", type: "number", defaultValue: 4 },
-    ],
-    calculate: (v) => {
-      const carCO2 = v.carMiles * 0.404 * 12;
-      const electricityCO2 = v.electricityKwh * 0.42 * 12;
-      const flightCO2 = v.flightsPerYear * 500;
-      const total = (carCO2 + electricityCO2 + flightCO2) / 1000;
-      return [
-        { label: "Annual CO₂", value: total.toFixed(1) + " tonnes", highlight: true },
-        { label: "Car Emissions", value: (carCO2 / 1000).toFixed(1) + " t" },
-        { label: "Electricity", value: (electricityCO2 / 1000).toFixed(1) + " t" },
-        { label: "Flights", value: (flightCO2 / 1000).toFixed(1) + " t" },
-      ];
-    },
-    formula: { expression: "CO₂ = Car + Electricity + Flights", variables: ["Car: 0.404 kg/mile", "Electricity: 0.42 kg/kWh", "Flight: ~500 kg/flight"] },
-    howToUse: "Enter monthly car miles, electricity usage, and annual flights.",
-    faqs: [{ question: "What's the average carbon footprint?", answer: "US average: ~16 tonnes/year. Global average: ~4 tonnes. Goal: under 2 tonnes." }],
-    relatedCalcs: otherRel("carbon-footprint-calculator"),
-  },
-  {
     slug: "wind-chill-calculator", name: "Wind Chill Calculator", category: "Other Calculators", categorySlug: "other",
     description: "Calculate wind chill temperature based on air temperature and wind speed.",
     metaDescription: "Free wind chill calculator. Find the feels-like temperature in cold wind.",
@@ -489,19 +462,33 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
       { id: "wind", label: "Wind Speed (mph)", type: "number", defaultValue: 15, step: 1 },
     ],
     calculate: (v) => {
+      // NWS formula is only valid for temp <= 50°F and wind >= 3 mph; below 3 mph
+      // there is no wind-chill effect (and Math.pow of a negative wind is NaN).
+      if (v.temp > 50 || v.wind < 3) {
+        const tR = Math.round(v.temp);
+        const fb = tR <= -45 ? "5 minutes" : tR <= -25 ? "10 minutes" : tR <= -19 ? "30 minutes" : "Low";
+        return [
+          { label: "Wind Chill", value: `${v.temp}°F (no effect)`, highlight: true },
+          { label: "Wind Chill (°C)", value: `${((v.temp - 32) * 5 / 9).toFixed(1)}°C` },
+          { label: "Actual Temp", value: v.temp + "°F" },
+          { label: "Frostbite Risk", value: fb },
+        ];
+      }
       const wc = 35.74 + 0.6215 * v.temp - 35.75 * Math.pow(v.wind, 0.16) + 0.4275 * v.temp * Math.pow(v.wind, 0.16);
       const wcC = (wc - 32) * 5 / 9;
-      const frostbiteMin = v.wind > 5 && wc < -18 ? Math.max(5, 30 + wc) : 0;
+      // NWS frostbite times for exposed skin, by wind chill
+      const wcR = Math.round(wc);
+      const frostbiteMin = wcR <= -45 ? "5 minutes" : wcR <= -25 ? "10 minutes" : wcR <= -19 ? "30 minutes" : "Low";
       return [
-        { label: "Wind Chill", value: Math.round(wc) + "°F", highlight: true },
+        { label: "Wind Chill", value: wcR + "°F", highlight: true },
         { label: "Wind Chill (°C)", value: wcC.toFixed(1) + "°C" },
         { label: "Actual Temp", value: v.temp + "°F" },
-        { label: "Frostbite Risk", value: frostbiteMin > 0 ? frostbiteMin + " min" : "Low" },
+        { label: "Frostbite Risk", value: frostbiteMin },
       ];
     },
-    formula: { expression: "WC = 35.74 + 0.6215T - 35.75V^0.16 + 0.4275TV^0.16", variables: ["T = Temperature in °F", "V = Wind speed in mph"] },
+    formula: { expression: "WC = 35.74 + 0.6215T - 35.75V^0.16 + 0.4275TV^0.16", variables: ["T = Temperature in °F", "V = Wind speed in mph", "NWS frostbite times: -19 to -24°F: 30 min; -25 to -44°F: 10 min; -45°F and below: 5 min"] },
     howToUse: "Enter air temperature in °F and wind speed in mph.",
-    faqs: [{ question: "When is wind chill dangerous?", answer: "Below -20°F wind chill: frostbite in 30 minutes. Below -45°F: frostbite in 10 minutes." }],
+    faqs: [{ question: "When is wind chill dangerous?", answer: "Frostbite times on exposed skin (NWS): at a wind chill of -19 to -24°F, about 30 minutes; -25 to -44°F, about 10 minutes; -45°F and below, about 5 minutes. Above -19°F the risk is low." }],
     relatedCalcs: otherRel("wind-chill-calculator"),
   },
   {
@@ -543,6 +530,12 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
       { id: "humidity", label: "Relative Humidity (%)", type: "number", defaultValue: 60, suffix: "%" },
     ],
     calculate: (v) => {
+      if (v.humidity <= 0) return [
+        { label: "Dew Point", value: "—", highlight: true },
+        { label: "Dew Point (°C)", value: "—" },
+        { label: "Comfort Level", value: "—" },
+        { label: "Humidity", value: v.humidity + "%" },
+      ];
       const tempC = (v.temp - 32) * 5 / 9;
       const a = 17.27, b = 237.7;
       const alpha = (a * tempC) / (b + tempC) + Math.log(v.humidity / 100);
@@ -601,7 +594,11 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
     calculate: (v) => {
       const diameter = v.circumference / Math.PI;
       const usSize = (v.circumference - 36.5) / 2.55;
-      const ukLetter = String.fromCharCode(65 + Math.round(usSize));
+      // UK letter sizes by inside circumference in mm (standard jewellers' chart)
+      const ukTable: [string, number][] = [["A", 37.54], ["B", 38.86], ["C", 40.15], ["D", 41.50], ["E", 42.76], ["F", 44.14], ["G", 45.11], ["H", 46.02], ["I", 47.25], ["J", 48.38], ["K", 49.64], ["L", 50.58], ["M", 51.87], ["N", 53.16], ["O", 54.51], ["P", 55.76], ["Q", 57.15], ["R", 58.47], ["S", 60.00], ["T", 61.29], ["U", 62.89], ["V", 63.84], ["W", 65.22], ["X", 66.54], ["Y", 67.51], ["Z", 68.77], ["Z+1", 70.15]];
+      let ukLetter = "Smaller than A";
+      if (v.circumference > 70.15) ukLetter = "Larger than Z+1";
+      else if (v.circumference >= 37.54) ukLetter = ukTable.reduce((best, cur) => Math.abs(cur[1] - v.circumference) < Math.abs(best[1] - v.circumference) ? cur : best)[0];
       const euSize = v.circumference;
       return [
         { label: "US Ring Size", value: usSize.toFixed(1), highlight: true },
@@ -610,9 +607,9 @@ export const otherCalculatorsExtended: CalculatorConfig[] = [
         { label: "UK Size (approx)", value: ukLetter },
       ];
     },
-    formula: { expression: "US Size = (Circumference - 36.5) ÷ 2.55", variables: ["Circumference in mm", "Diameter = Circumference ÷ π"] },
+    formula: { expression: "US Size = (Circumference - 36.5) ÷ 2.55", variables: ["Circumference in mm", "Diameter = Circumference ÷ π", "UK letter = nearest size on the standard UK chart"] },
     howToUse: "Measure finger circumference with a string, then measure the string in mm.",
-    faqs: [{ question: "How do I measure my finger?", answer: "Wrap a thin strip of paper around your finger, mark where it overlaps, and measure the length in mm." }, { question: "What is my EU ring size?", answer: "Your finger circumference in millimetres: a 54 mm finger is EU size 54. The US size uses the formula (circumference - 36.5) / 2.55, which gives 6.9 for a 54 mm finger." }, { question: "Should I size up or down if I am between sizes?", answer: "Size up for wide bands (6 mm and wider feel tighter) and if you will wear the ring in hot weather, when fingers swell. A jeweller can confirm the size before an expensive purchase." }],
+    faqs: [{ question: "How do I measure my finger?", answer: "Wrap a thin strip of paper around your finger, mark where it overlaps, and measure the length in mm." }, { question: "What is my EU ring size?", answer: "Your finger circumference in millimetres: a 54 mm finger is EU size 54 and UK size O. The US size uses the formula (circumference - 36.5) / 2.55, which gives 6.9 for a 54 mm finger." }, { question: "Should I size up or down if I am between sizes?", answer: "Size up for wide bands (6 mm and wider feel tighter) and if you will wear the ring in hot weather, when fingers swell. A jeweller can confirm the size before an expensive purchase." }],
     relatedCalcs: otherRel("ring-size-calculator"),
   },
   {

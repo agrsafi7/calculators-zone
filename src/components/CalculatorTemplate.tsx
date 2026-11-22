@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
-import GuideSections from "@/components/GuideSections";
+import LazyGuideSections from "@/components/LazyGuideSections";
 import SEO from "@/components/SEO";
 import { addRecentCalculator, uniqueCalculators } from "@/lib/calculator-utils";
 import { DELETED_SLUGS } from "@/data/deleted-slugs";
@@ -14,8 +14,8 @@ const CalculatorChart = lazy(() => import("@/components/CalculatorChart"));
 export interface InputConfig {
   id: string;
   label: string;
-  type: "number" | "select";
-  defaultValue: number;
+  type: "number" | "select" | "text" | "textarea";
+  defaultValue: number | string;
   prefix?: string;
   suffix?: string;
   step?: number;
@@ -41,7 +41,9 @@ export interface CalculatorConfig {
   metaDescription: string;
   icon: string;
   inputs: InputConfig[];
-  calculate: (values: Record<string, number>) => ResultItem[];
+  // Values are `any` so text/textarea inputs can pass strings through
+  // alongside the numbers every existing config uses.
+  calculate: (values: Record<string, any>) => ResultItem[];
   formula: { expression: string; variables: string[] };
   howToUse: string;
   longExplanation?: string;
@@ -81,12 +83,12 @@ const getDirectoryGroups = (categorySlug: string, currentSlug: string) => {
 
 const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
   const getDefaults = () => {
-    const d: Record<string, number> = {};
+    const d: Record<string, any> = {};
     config.inputs.forEach((inp) => { d[inp.id] = inp.defaultValue; });
     return d;
   };
 
-  const [values, setValues] = useState<Record<string, number>>(getDefaults);
+  const [values, setValues] = useState<Record<string, any>>(getDefaults);
 
   useEffect(() => {
     addRecentCalculator({
@@ -122,14 +124,17 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
     ? config.description.trim()
     : `${config.description.trim()}.`;
 
-  const handleChange = (id: string, val: number) => {
-    // Clamp to the input's declared range so degenerate values (negative
-    // loan terms, etc.) can't be entered in the first place.
+  const handleChange = (id: string, val: number | string) => {
+    // Clamp numeric inputs to the input's declared range so degenerate values
+    // (negative loan terms, etc.) can't be entered in the first place.
+    // Text inputs pass through unclamped.
     const inp = config.inputs.find((i) => i.id === id);
-    let clamped = val;
-    if (Number.isFinite(val) && inp) {
-      if (inp.min !== undefined && clamped < inp.min) clamped = inp.min;
-      if (inp.max !== undefined && clamped > inp.max) clamped = inp.max;
+    let clamped: number | string = val;
+    if (typeof val === "number" && Number.isFinite(val) && inp) {
+      let num = val;
+      if (inp.min !== undefined && num < inp.min) num = inp.min;
+      if (inp.max !== undefined && num > inp.max) num = inp.max;
+      clamped = num;
     }
     setValues((prev) => ({ ...prev, [id]: clamped }));
   };
@@ -234,6 +239,20 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
               <div className="bg-surface-lowest rounded-xl p-6 shadow-sm">
                 <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
                   {config.inputs.map((inp) => (
+                    inp.type === "textarea" ? (
+                      <div key={inp.id} className="flex flex-col gap-1.5">
+                        <label className="text-[13px] font-medium text-ink" htmlFor={`inp-${inp.id}`}>
+                          {inp.label}
+                        </label>
+                        <textarea
+                          id={`inp-${inp.id}`}
+                          rows={6}
+                          value={values[inp.id] ?? ""}
+                          onChange={(e) => handleChange(inp.id, e.target.value)}
+                          className="w-full px-3 py-2 rounded-lg bg-surface-low text-[14px] text-ink focus:outline-none focus:ring-2 focus:ring-primary resize-y"
+                        />
+                      </div>
+                    ) : (
                     <div key={inp.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                       <label className="text-[13px] font-medium text-ink" htmlFor={`inp-${inp.id}`}>
                         {inp.label}
@@ -249,6 +268,16 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                             <option key={o.value} value={o.value}>{o.label}</option>
                           ))}
                         </select>
+                      ) : inp.type === "text" ? (
+                        <div className="flex items-center rounded-lg bg-surface-low overflow-hidden w-full sm:w-64 focus-within:bg-surface-lowest focus-within:ring-2 focus-within:ring-primary">
+                          <input
+                            id={`inp-${inp.id}`}
+                            className="w-full bg-transparent px-2 py-1.5 font-numeric text-[14px] text-right text-ink focus:outline-none"
+                            type="text"
+                            value={values[inp.id] ?? ""}
+                            onChange={(e) => handleChange(inp.id, e.target.value)}
+                          />
+                        </div>
                       ) : (
                         <div className="flex items-center rounded-lg bg-surface-low overflow-hidden w-full sm:w-64 focus-within:bg-surface-lowest focus-within:ring-2 focus-within:ring-primary">
                           {inp.prefix && (
@@ -270,6 +299,7 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
                         </div>
                       )}
                     </div>
+                    )
                   ))}
                   <div className="flex items-center gap-3 pt-1">
                     <button
@@ -389,7 +419,7 @@ const CalculatorTemplate = ({ config }: { config: CalculatorConfig }) => {
           </div>
 
           {/* In-depth guide (only for calculators that have one) */}
-          <GuideSections slug={config.slug} />
+          <LazyGuideSections slug={config.slug} />
 
           {/* Category directory grid */}
           {directoryGroups.length > 0 && (

@@ -3952,6 +3952,261 @@
       "source": "/science/work-calculator",
       "destination": "/category/science",
       "statusCode": 301
+    },
+    {
+      "source": "/datetime/sleep-cycle-calculator",
+      "destination": "/health/sleep-cycle-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/cooking-measurement-converter",
+      "destination": "/conversions/cooking-measurement-converter",
+      "statusCode": 301
+    },
+    {
+      "source": "/lifestyle/discount-calculator",
+      "destination": "/finance/discount-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/bandwidth-calculator",
+      "destination": "/lifestyle/bandwidth-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/break-even-calculator",
+      "destination": "/finance/break-even-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/calories-burned-calculator",
+      "destination": "/health/calories-burned-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/carbon-footprint-calculator",
+      "destination": "/science/carbon-footprint-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/cat-age-calculator",
+      "destination": "/lifestyle/cat-age-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/concrete-calculator",
+      "destination": "/lifestyle/concrete-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/cycling-speed-calculator",
+      "destination": "/lifestyle/cycling-speed-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/deck-calculator",
+      "destination": "/lifestyle/deck-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/dew-point-calculator",
+      "destination": "/lifestyle/dew-point-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/discount-calculator",
+      "destination": "/finance/discount-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/dog-age-calculator",
+      "destination": "/lifestyle/dog-age-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/electricity-bill-calculator",
+      "destination": "/lifestyle/electricity-bill-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/emergency-fund-calculator",
+      "destination": "/finance/emergency-fund-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/exponent-calculator",
+      "destination": "/math/exponent-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/fence-calculator",
+      "destination": "/lifestyle/fence-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/flight-time-calculator",
+      "destination": "/datetime/flight-time-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/flooring-calculator",
+      "destination": "/lifestyle/flooring-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/fuel-cost-calculator",
+      "destination": "/lifestyle/fuel-cost-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/grade-calculator",
+      "destination": "/math/grade-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/gravel-calculator",
+      "destination": "/lifestyle/gravel-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/heat-index-calculator",
+      "destination": "/lifestyle/heat-index-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/inflation-calculator",
+      "destination": "/finance/inflation-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/lcm-calculator",
+      "destination": "/math/lcm-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/markup-calculator",
+      "destination": "/finance/markup-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/mulch-calculator",
+      "destination": "/lifestyle/mulch-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/one-rep-max-calculator",
+      "destination": "/health/one-rep-max-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/paint-calculator",
+      "destination": "/lifestyle/paint-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/probability-calculator",
+      "destination": "/math/probability-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/profit-margin-calculator",
+      "destination": "/finance/profit-margin-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/property-tax-calculator",
+      "destination": "/finance/property-tax-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/random-number-generator",
+      "destination": "/lifestyle/random-number-generator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/ratio-calculator",
+      "destination": "/math/ratio-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/reading-time-calculator",
+      "destination": "/math/reading-time-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/rent-vs-buy-calculator",
+      "destination": "/finance/rent-vs-buy-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/roman-numeral-converter",
+      "destination": "/lifestyle/roman-numeral-converter",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/running-pace-calculator",
+      "destination": "/lifestyle/running-pace-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/screen-resolution-calculator",
+      "destination": "/lifestyle/screen-resolution-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/shoe-size-converter",
+      "destination": "/lifestyle/shoe-size-converter",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/square-footage-calculator",
+      "destination": "/lifestyle/square-footage-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/square-root-calculator",
+      "destination": "/math/square-root-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/tile-calculator",
+      "destination": "/lifestyle/tile-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/tire-size-calculator",
+      "destination": "/lifestyle/tire-size-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/variance-calculator",
+      "destination": "/math/variance-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/vat-calculator",
+      "destination": "/finance/vat-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/water-intake-calculator",
+      "destination": "/health/water-intake-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/wedding-budget-calculator",
+      "destination": "/lifestyle/wedding-budget-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/wind-chill-calculator",
+      "destination": "/lifestyle/wind-chill-calculator",
+      "statusCode": 301
+    },
+    {
+      "source": "/other/z-score-calculator",
+      "destination": "/math/z-score-calculator",
+      "statusCode": 301
     }
   ]
 }

@@ -20,6 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { toast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 import type {
   ScienceCalculatorConfig,
   Variable,
@@ -167,6 +168,10 @@ const ScienceCalculator = ({ config }: Props) => {
 
   return (
     <div className="bg-[hsl(220,20%,97%)] dark:bg-background min-h-[calc(100vh-200px)]">
+      {/* Toaster lives here (not in AppShell): this page calls toast() for
+          copy/share feedback, and mounting it locally keeps the toast
+          primitives out of the entry bundle (PageSpeed item 53). */}
+      <Toaster />
       <SEO
         title={config.metaTitle}
         description={config.metaDescription}

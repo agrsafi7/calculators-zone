@@ -102,6 +102,11 @@ const _conversionCalculators: CalculatorConfig[] = [
       { id: "from", label: "From", type: "select", defaultValue: 0, options: [{ value: 0, label: "Celsius" }, { value: 1, label: "Fahrenheit" }, { value: 2, label: "Kelvin" }] },
     ],
     calculate: (v) => {
+      const belowZero = (v.from === 0 && v.value < -273.15) || (v.from === 1 && v.value < -459.67) || (v.from === 2 && v.value < 0);
+      if (belowZero) return [
+        { label: "Result", value: "Below absolute zero", highlight: true },
+        { label: "Note", value: "Nothing can be colder than 0 K (−273.15 °C / −459.67 °F)" },
+      ];
       let c: number;
       if (v.from === 0) c = v.value;
       else if (v.from === 1) c = (v.value - 32) * 5 / 9;
@@ -113,7 +118,7 @@ const _conversionCalculators: CalculatorConfig[] = [
       ];
     },
     formula: { expression: "°F = °C × 9/5 + 32; K = °C + 273.15", variables: ["°C = (°F − 32) × 5/9"] },
-    howToUse: "Enter a temperature and select its scale to see all conversions.",
+    howToUse: "Enter a temperature and select its scale to see all conversions. Temperatures below absolute zero (0 K) are not accepted.",
     faqs: [
       { question: "How do you convert Celsius to Fahrenheit?", answer: "Multiply by 9/5 and add 32: F = C x 9/5 + 32. So 100 C (boiling water) is 212 F, and 0 C (freezing) is 32 F." },
       { question: "What is absolute zero?", answer: "0 K = -273.15 C = -459.67 F. It is the theoretical lowest temperature, the point at which particles have minimal thermal motion. Nothing can be colder than 0 K." },
