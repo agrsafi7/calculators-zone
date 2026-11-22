@@ -1,6 +1,6 @@
 # TheCalculator.us
 
-> TheCalculator.us offers 332 free online calculators for finance, health, math, science, unit conversions, date & time, and everyday life — plus plain-English guides and explainers on the blog. All tools run instantly in the browser; no sign-up required.
+> TheCalculator.us offers 331 free online calculators for finance, health, math, science, unit conversions, date & time, and everyday life — plus plain-English guides and explainers on the blog. All tools run instantly in the browser; no sign-up required.
 
 Use this file to find the right calculator or article for a task. Each section below lists key pages as Markdown links with a short description. For the full machine-readable index of every page, see the sitemap.
 
@@ -15,12 +15,23 @@ Use this file to find the right calculator or article for a task. Each section b
 - [Scientific Calculator](https://thecalculator.us/math/scientific-calculator): Advanced math functions in the browser.
 - [Compound Interest Calculator](https://thecalculator.us/finance/compound-interest-calculator): Growth of savings and investments over time.
 
+## More key calculators
+
+- [APR Calculator](https://thecalculator.us/finance/apr-calculator): Annual percentage rate for loans and credit cards.
+- [ROI Calculator](https://thecalculator.us/finance/roi-calculator): Return on investment, including annualised return.
+- [Mortgage Payoff Calculator](https://thecalculator.us/finance/mortgage-payoff-calculator): Extra payments and the fastest way to clear a mortgage.
+- [BMR Calculator](https://thecalculator.us/health/bmr-calculator): Basal metabolic rate — calories burned at rest.
+- [Calories Burned Calculator](https://thecalculator.us/health/calories-burned-calculator): Calories burned by activity, duration, and weight.
+- [GPA Calculator](https://thecalculator.us/math/gpa-calculator): Grade point average from course grades and credits.
+- [Ohm's Law Calculator](https://thecalculator.us/science/ohms-law-calculator): Voltage, current, resistance, and power.
+- [Time Zone Converter](https://thecalculator.us/datetime/time-zone-converter): Convert times between time zones.
+
 ## Categories
 
 - [Finance Calculators](https://thecalculator.us/category/finance): Mortgage, loans, investments, taxes, retirement, and amortization tools.
 - [Health & Fitness Calculators](https://thecalculator.us/category/health): BMI, calories, body fat, BMR, heart rate, and nutrition tools.
 - [Math Calculators](https://thecalculator.us/category/math): Fractions, algebra, geometry, statistics, and number tools.
-- [Unit Converters](https://thecalculator.us/category/conversions): Length, weight, temperature, and 100+ unit conversions.
+- [Unit Converters](https://thecalculator.us/category/conversions): Length, weight, temperature, volume, and other unit conversions.
 - [Science Calculators](https://thecalculator.us/category/science): Physics, chemistry, and thermodynamics tools.
 - [Date & Time Calculators](https://thecalculator.us/category/datetime): Age, date differences, time zones, and countdowns.
 - [Lifestyle Calculators](https://thecalculator.us/category/lifestyle): Cooking, construction, automotive, and daily-life tools.
