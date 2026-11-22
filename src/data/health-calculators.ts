@@ -282,6 +282,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter the date of your last menstrual period (LMP). The calculator adds 280 days to estimate your due date.",
     faqs: [
       { question: "How accurate is Naegele's rule?", answer: "About 5% of babies are born on their due date. Most births occur within 1-2 weeks of the estimated date." },
+      { question: "What if I don't know my LMP date?", answer: "Estimate the closest date you can, then ask your clinician for an early ultrasound — a first-trimester scan dates the pregnancy within about 5 days and is the standard fallback when the LMP is unknown." },
+      { question: "Does the calculator adjust for long or short cycles?", answer: "No. It assumes ovulation on day 14 of a 28-day cycle. If your cycles are regularly longer or shorter, the due date can shift by the difference — a first-trimester ultrasound gives a more reliable date in that case." },
     ],
     relatedCalcs: healthRelated("pregnancy-calculator"),
   },
@@ -769,7 +771,11 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Epley: 1RM = W × (1 + R/30); Brzycki: 1RM = W × 36/(37−R)", variables: ["W = weight lifted", "R = reps performed"] },
     howToUse: "Enter the weight you lifted and how many reps you completed. The calculator estimates your 1RM.",
-    faqs: [{ question: "How accurate is this?", answer: "Most accurate with 1-10 reps. Above 10 reps, estimates become less reliable. The average of Epley and Brzycki is typically within 5% of actual 1RM." }],
+    faqs: [
+      { question: "How accurate is this?", answer: "Most accurate with 1-10 reps. Above 10 reps, estimates become less reliable. The average of Epley and Brzycki is typically within 5% of actual 1RM." },
+      { question: "Which formula is better, Epley or Brzycki?", answer: "Neither wins outright — Epley tends to run slightly high and Brzycki slightly low at higher reps, and they agree closely under 10 reps. This calculator averages the two, which is typically within about 5% of a tested 1RM for sets of 1-10 reps." },
+      { question: "Can I use it for any exercise?", answer: "Yes — bench press, squat, deadlift, overhead press, or any lift where you can record a weight and a rep count. The formulas were built on barbell compound lifts, so estimates for isolation or machine exercises are rougher." },
+    ],
     relatedCalcs: healthRelated("one-rep-max-calculator"),
   },
   // 22. Body Surface Area Calculator
@@ -791,7 +797,11 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "BSA = √(Height × Weight / 3600)", variables: ["Mosteller formula", "Height in cm, Weight in kg"] },
     howToUse: "Enter height and weight to calculate body surface area.",
-    faqs: [{ question: "Why is BSA important?", answer: "BSA is used for drug dosing (chemotherapy), burn assessment, kidney function, and cardiac index calculations." }],
+    faqs: [
+      { question: "Why is BSA important?", answer: "BSA is used for drug dosing (chemotherapy), burn assessment, kidney function, and cardiac index calculations." },
+      { question: "What is a normal BSA?", answer: "Most adults fall between about 1.7 and 1.9 m², with men typically a little higher than women. Children have much smaller values — a newborn is around 0.25 m². The calculator shows the adult range next to your result for comparison." },
+      { question: "Mosteller vs DuBois — which formula should I use?", answer: "Mosteller (used here) and DuBois usually agree within a few percent for adults, and Mosteller is the standard in most hospitals because it is simpler. For children, or when a protocol names a specific formula, follow that protocol." },
+    ],
     relatedCalcs: healthRelated("body-surface-area-calculator"),
   },
   // 23. Army Body Fat Calculator

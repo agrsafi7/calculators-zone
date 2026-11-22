@@ -1394,7 +1394,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Progressive: each bracket range taxed at its rate", variables: [] },
     howToUse: "Enter your taxable income and filing status.",
-    faqs: [{ question: "Am I taxed at my bracket rate on everything?", answer: "No! Only income within each bracket is taxed at that rate. Your effective rate is always lower than your marginal rate." }],
+    faqs: [
+      { question: "Am I taxed at my bracket rate on everything?", answer: "No! Only income within each bracket is taxed at that rate. Your effective rate is always lower than your marginal rate." },
+      { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on your last dollar of income; your effective rate is total tax divided by total income. A single filer with $85,000 of taxable income is in the 22% marginal bracket but pays an effective rate of 16.18%." },
+      { question: "Which year's brackets does this calculator use?", answer: "The 2024 federal brackets. The IRS adjusts the thresholds for inflation each year, so the exact cutoffs shift slightly from year to year — check the current year's figures when filing." },
+      { question: "Is this my whole tax bill?", answer: "No. This is federal income tax only — it does not include state tax, FICA, or tax credits. The income you enter is taxable income after deductions, not your gross salary." },
+    ],
     relatedCalcs: financeRelated("tax-bracket-calculator"),
   },
   {

@@ -192,7 +192,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to m/s, then to target", variables: ["1 km/h = 0.2778 m/s", "1 mph = 0.4470 m/s"] },
     howToUse: "Enter a speed and unit to convert between speed units.",
-    faqs: [{ question: "What are knots?", answer: "Nautical miles per hour. Used in aviation and maritime. 1 knot ≈ 1.852 km/h." }],
+    faqs: [
+      { question: "What are knots?", answer: "Nautical miles per hour. Used in aviation and maritime. 1 knot ≈ 1.852 km/h." },
+      { question: "How do I convert km/h to mph?", answer: "Divide km/h by 1.60934 (1 mile = 1.60934 km). 100 km/h is 62.14 mph. To go the other way, multiply mph by 1.60934: 60 mph is 96.56 km/h." },
+      { question: "Can I convert from feet per second?", answer: "The converter shows ft/s in the results, but the From list offers only km/h, mph, m/s, and knots, so you cannot enter a value in ft/s directly. To convert from ft/s, multiply by 0.3048 to get m/s first, then enter that value." },
+    ],
     relatedCalcs: convRelated("speed-converter"),
   },
   {
@@ -393,7 +397,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Amount × Exchange Rate", variables: ["⚠️ Rates are approximate / static", "Use a live API for real-time rates"] },
     howToUse: "Enter an amount and currency. Note: exchange rates are approximate and not live.",
-    faqs: [{ question: "Are these rates live?", answer: "No. These are approximate static rates. For actual trading, use a live exchange rate service." }],
+    faqs: [
+      { question: "Are these rates live?", answer: "No. These are approximate static rates. For actual trading, use a live exchange rate service." },
+      { question: "Which currencies does this converter support?", answer: "Five major currencies: US dollars (USD), euros (EUR), British pounds (GBP), Japanese yen (JPY), and Canadian dollars (CAD). Every conversion goes through US dollars, so all five results appear at once." },
+      { question: "How do I convert euros to US dollars?", answer: "Multiply euros by the euro-to-dollar rate. At this converter's built-in approximate rate of 1 EUR = 1.08 USD, €100 converts to about $108.00. Because real rates move constantly, check a live rate before exchanging money." },
+    ],
     relatedCalcs: convRelated("currency-converter"),
   },
   {

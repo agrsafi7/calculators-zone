@@ -6,11 +6,11 @@ const rel = (exclude: string) => [
   { name: "Electricity Cost", slug: "electricity-calculator", icon: "smile", category: "lifestyle" },
 ].filter(c => c.slug !== exclude);
 
-const makeLife = (slug: string, name: string, desc: string, meta: string, subcategory: string, inputs: CalculatorConfig["inputs"], calculate: CalculatorConfig["calculate"], formula: CalculatorConfig["formula"]): CalculatorConfig => ({
+const makeLife = (slug: string, name: string, desc: string, meta: string, subcategory: string, inputs: CalculatorConfig["inputs"], calculate: CalculatorConfig["calculate"], formula: CalculatorConfig["formula"], extraFaqs: { question: string; answer: string }[] = []): CalculatorConfig => ({
   slug, name, category: "Lifestyle", categorySlug: "lifestyle", description: desc, metaDescription: meta, icon: "smile", subcategory,
   inputs, calculate, formula,
   howToUse: `Enter values to use the ${name}.`,
-  faqs: [{ question: `What does the ${name} do?`, answer: desc }],
+  faqs: [{ question: `What does the ${name} do?`, answer: desc }, ...extraFaqs],
   relatedCalcs: rel(slug),
 });
 
@@ -19,7 +19,11 @@ export const lifestyleCalculatorsExtended: CalculatorConfig[] = [
   makeLife("paint-calculator", "Paint Calculator", "Calculate how much paint you need for walls based on room dimensions.", "Free paint calculator. Enter room length, width, and wall height to estimate how many gallons of paint you need, including extra coats.", "Home & Construction",
     [{ id: "length", label: "Room Length (ft)", type: "number", defaultValue: 15, step: 0.5 }, { id: "width", label: "Room Width (ft)", type: "number", defaultValue: 12, step: 0.5 }, { id: "height", label: "Wall Height (ft)", type: "number", defaultValue: 8, step: 0.5 }, { id: "coats", label: "Number of Coats", type: "number", defaultValue: 2, min: 1 }],
     (v) => { const wallArea = 2 * (v.length + v.width) * v.height; const doorWindow = wallArea * 0.15; const paintableArea = (wallArea - doorWindow) * v.coats; const gallons = paintableArea / 350; return [{ label: "Gallons Needed", value: `${Math.ceil(gallons)}`, highlight: true }, { label: "Wall Area", value: `${wallArea.toFixed(0)} sq ft` }, { label: "Paintable Area", value: `${paintableArea.toFixed(0)} sq ft` }]; },
-    { expression: "Gallons = Paintable Area / 350 sq ft per gallon", variables: ["Deduct 15% for doors/windows"] }
+    { expression: "Gallons = Paintable Area / 350 sq ft per gallon", variables: ["Deduct 15% for doors/windows"] },
+    [
+      { question: "How much area does a gallon of paint cover?", answer: "About 350 sq ft per gallon on smooth walls, which is the coverage this calculator uses. Rough or textured surfaces absorb more paint, so they need more." },
+      { question: "Does the calculator subtract doors and windows?", answer: "Yes — it deducts a flat 15% of the wall area for doors and windows. If your room has very large windows or almost no doors, the estimate will be a little high or low; the 15% is a typical average, not a measurement of your room." },
+    ]
   ),
   makeLife("flooring-calculator", "Flooring Calculator", "Calculate flooring material needed for a room with waste factor.", "Free flooring calculator. Enter room length and width plus a waste allowance to estimate the square footage and number of boxes you need.", "Home & Construction",
     [{ id: "length", label: "Room Length (ft)", type: "number", defaultValue: 15, step: 0.5 }, { id: "width", label: "Room Width (ft)", type: "number", defaultValue: 12, step: 0.5 }, { id: "waste", label: "Waste (%)", type: "number", defaultValue: 10, min: 0 }],

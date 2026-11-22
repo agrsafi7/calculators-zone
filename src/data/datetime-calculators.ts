@@ -284,7 +284,11 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Remaining = Target Date − Now", variables: ["Converted from milliseconds"] },
     howToUse: "Enter a target date to see how much time remains until it arrives.",
-    faqs: [{ question: "Does it update in real time?", answer: "The value is calculated when you change inputs. Refresh to get the current countdown." }],
+    faqs: [
+      { question: "Does it update in real time?", answer: "The value is calculated when you change inputs. Refresh to get the current countdown." },
+      { question: "Why does the months figure say 'approx'?", answer: "Months are 28-31 days long, so the calculator divides by the average month of 30.44 days (365.25 ÷ 12) and rounds. It is a useful rough scale, but for exact planning use the days figure." },
+      { question: "What happens if the target date is in the past?", answer: "All results show 0. The calculator clamps negative values rather than showing a negative countdown — it measures time remaining, not time elapsed." },
+    ],
     relatedCalcs: dtRelated("countdown-calculator"),
   },
   {
@@ -464,7 +468,11 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Due = Start + Duration", variables: ["Duration in days"] },
     howToUse: "Enter a start date and duration in days to calculate the due date.",
-    faqs: [{ question: "Can I use weeks?", answer: "Multiply weeks by 7 and enter as days." }],
+    faqs: [
+      { question: "Can I use weeks?", answer: "Multiply weeks by 7 and enter as days." },
+      { question: "Does it count business days or calendar days?", answer: "Calendar days — weekends and holidays are included. A 30-day deadline starting on a Friday includes four weekends. If your deadline is defined in business days, convert it to calendar days first." },
+      { question: "Is this the same as a pregnancy due date calculator?", answer: "No. This tool adds any number of days to any start date — for invoices, assignments, and deadlines. Pregnancy due dates use a different method (280 days from the last menstrual period); use the Pregnancy Due Date Calculator for that." },
+    ],
     relatedCalcs: dtRelated("due-date-calculator"),
   },
   {

@@ -337,7 +337,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "DTI Ratio", value: `${num(((maxPmt + v.monthlyDebts) / mi) * 100)}%` },
       ];
     },
-    formula: defFormula, howToUse: "Enter income, debts, down payment, and interest rate.", faqs: defFaqs("Home Affordability Calculator"), relatedCalcs: b3Rel("home-affordability-calculator"),
+    formula: defFormula, howToUse: "Enter income, debts, down payment, and interest rate.", faqs: [
+      { question: "What is the 28/36 rule?", answer: "A common lender guideline: spend no more than 28% of gross monthly income on housing, and no more than 36% on housing plus all other debts. This calculator takes the lower of the two caps as your maximum monthly payment." },
+      { question: "Does the estimate include taxes and insurance?", answer: "No. The maximum payment covers principal and interest only, on a 30-year fixed mortgage at the rate you enter. Property tax, homeowner's insurance, HOA dues, and PMI (usually required with less than 20% down) are all extra, so your real monthly housing cost will be higher." },
+      { question: "How does the down payment affect affordability?", answer: "The down payment is added directly to the maximum loan: max home price = max loan + down payment. A larger down payment raises the price you can afford dollar for dollar, and it also lowers the loan amount you need." },
+    ], relatedCalcs: b3Rel("home-affordability-calculator"),
   },
   {
     slug: "moving-cost-calculator", name: "Moving Cost Calculator", category: "Other Calculators", categorySlug: "other",
@@ -651,7 +655,11 @@ export const otherCalculatorsBatch3: CalculatorConfig[] = [
         { label: "Direction", value: change > 0 ? "Increase" : change < 0 ? "Decrease" : "No Change" },
       ];
     },
-    formula: defFormula, howToUse: "Enter old and new values.", faqs: defFaqs("Percentage Change Calculator"), relatedCalcs: b3Rel("percentage-change-calculator"),
+    formula: defFormula, howToUse: "Enter old and new values.", faqs: [
+      { question: "How do you calculate percentage change?", answer: "Subtract the old value from the new value, divide by the old value, and multiply by 100. From 50 to 75: (75 − 50) ÷ 50 × 100 = 50% increase." },
+      { question: "What is the difference between percentage change and percentage points?", answer: "Percentage points are the simple arithmetic difference between two percentages; percentage change is relative. A rate rising from 10% to 12% rises by 2 percentage points, but that is a 20% increase ((12 − 10) ÷ 10 × 100)." },
+      { question: "What if the old value is zero?", answer: "Percentage change is undefined when the starting value is zero, because you cannot divide by zero. This calculator shows 0% in that case rather than an error — treat it as 'no meaningful percentage change' rather than a real result." },
+    ], relatedCalcs: b3Rel("percentage-change-calculator"),
   },
   {
     slug: "random-number-generator", name: "Random Number Generator", category: "Other Calculators", categorySlug: "other",

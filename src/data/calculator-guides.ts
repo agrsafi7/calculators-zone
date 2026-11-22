@@ -3096,4 +3096,905 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
+
+  "take-home-pay-calculator": [
+    {
+      heading: "How is take-home pay calculated?",
+      paragraphs: [
+        "Take-home pay is the money left from your salary after taxes and deductions are taken out. It is calculated as **gross pay minus federal income tax, state income tax, FICA (Social Security and Medicare), retirement contributions, and health insurance premiums**.",
+        "This calculator applies the flat tax rates you enter to your salary, so it is an estimate rather than a precise payroll figure: it does not apply the progressive federal tax brackets or the standard deduction. **Retirement contributions** lower the income that federal and state tax apply to, but **FICA is still charged on your full gross pay** — which matches how 401(k) contributions are treated in real payroll. Health insurance is treated here as a post-tax cost, although many employer plans deduct premiums before tax.",
+        "FICA is **6.2% for Social Security plus 1.45% for Medicare**, or 7.65% combined. In reality the Social Security portion stops once your earnings pass the annual wage base ($184,500 in 2026); this calculator applies the rate you enter to your full salary, so high earners should treat the result as approximate.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$75,000 salary** with a 22% federal rate, 5% state rate, 7.65% FICA, a 6% retirement contribution, and $200 a month for health insurance. The retirement contribution is **$4,500**, which lowers taxable income to **$70,500**. Federal tax is $15,510, state tax is $3,525, FICA is $5,737.50 on the full gross, and health insurance costs $2,400 a year — total deductions of **$31,672.50**.",
+        "That leaves **$43,327.50 a year**, or **$3,610.63 a month** and **$1,666.44 every two weeks**. The 6% retirement contribution saves **$1,215 in income tax** (27% of $4,500). Note that the calculator's 'effective tax rate' of 42.23% counts every deduction, including retirement savings and insurance — not just tax.",
+      ],
+    },
+    {
+      heading: "How can you increase your take-home pay?",
+      paragraphs: [
+        "The most reliable lever is **pre-tax contributions**: money you put into a 401(k), HSA, or FSA lowers the income your federal and state taxes apply to, so each dollar contributed costs you less than a dollar of take-home pay. If you get a large tax refund every year, adjusting your **W-4 withholding** spreads that money across your paychecks instead.",
+        "Remember that a raise does not arrive in full: at the rates in the example above, a **$5,000 raise keeps about $3,267.50** after federal, state, and FICA taxes. And raising your retirement contribution is a trade-off — it lowers your take-home pay today while building savings and cutting your tax bill.",
+      ],
+    },
+  ],
+
+  "mortgage-amortization-schedule-calculator": [
+    {
+      heading: "How does mortgage amortization work?",
+      paragraphs: [
+        "Amortization is the process of paying off a loan through fixed monthly payments that are split between interest and principal. Each month, **interest is charged on the remaining balance**, and whatever is left of your payment reduces the principal — so the interest portion shrinks and the principal portion grows over the life of the loan.",
+        "Lenders use the standard amortization formula: **M = P × r(1+r)ⁿ / ((1+r)ⁿ − 1)**, where M is the monthly payment, P is the loan amount, r is the monthly interest rate (annual rate ÷ 12), and n is the total number of payments. This calculator applies that formula and summarizes your **first year** — Year 1 interest, Year 1 principal, and the balance after 12 payments — plus the total interest over the full term, rather than printing all 360 monthly rows.",
+        "Because interest is charged on the balance, your early payments are mostly interest. That is why extra payments toward principal are so powerful early on: every dollar of principal you pay ahead of schedule stops earning interest for the lender.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$350,000 mortgage at 6.5% fixed for 30 years** (360 payments). The monthly rate is 0.065 ÷ 12 = 0.005417, giving a monthly principal-and-interest payment of **$2,212.24**. On the very first payment, interest is $350,000 × 0.005417 = **$1,895.83**, so only **$316.40** reduces your balance.",
+        "After the first year you have paid **$22,634.82 in interest** and only **$3,912.04 of principal**, leaving a balance of **$346,087.96**. Over the full 30 years you pay **$446,405.71 in interest** — more than the amount you borrowed. By the final payment the split has flipped completely: **$11.92 of interest and $2,200.32 of principal**.",
+      ],
+    },
+    {
+      heading: "How can you pay less interest on a mortgage?",
+      paragraphs: [
+        "**Shorten the term.** The same $350,000 loan at 6.5% over 15 years costs **$3,048.88 a month** but only **$198,797.64 in total interest** — a saving of **$247,608.07** compared with the 30-year loan.",
+        "**Pay a little extra toward principal.** Adding just $100 a month to the 30-year loan above pays it off 42 months early and saves **$62,627.05 in interest**. Making one extra full payment a year saves **$97,981.94** and clears the loan in about 24 years. A third lever is the **rate itself**: refinancing to a lower rate cuts both the payment and the total interest, though closing costs mean it only pays off if you stay in the home long enough.",
+      ],
+    },
+  ],
+
+  "auto-lease-calculator": [
+    {
+      heading: "How is a car lease payment calculated?",
+      paragraphs: [
+        "A lease payment covers the car's depreciation while you drive it, plus a finance charge. It is calculated as **(capitalized cost − residual value) ÷ term + (capitalized cost + residual value) × money factor**, with sales tax added to the monthly amount.",
+        "The **capitalized cost** is the negotiated price minus your down payment. The **residual value** is what the car is expected to be worth at the end of the lease, set as a percentage of the MSRP — here 58% of $35,000, or $20,300. The **money factor** is the lease's finance rate in decimal form; multiplying it by 2,400 gives the approximate APR, so 0.0018 is about 4.32%.",
+        "This calculator applies sales tax to the monthly payment, which is how most states tax leases, but a few states tax the vehicle's full price or the total of the lease payments up front. It also does not include one-time fees such as the acquisition fee or disposition fee, so treat the total as the payment cost rather than the complete out-the-door cost.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Lease a car with a **$35,000 MSRP**, negotiated to **$33,000**, with **$2,000 down**, a **58% residual**, a **0.0018 money factor**, a **36-month term**, and **8% tax**. The residual value is **$20,300** and the capitalized cost is **$31,000**. Depreciation is ($31,000 − $20,300) ÷ 36 = **$297.22 a month**, and the finance charge is ($31,000 + $20,300) × 0.0018 = **$92.34 a month**.",
+        "That gives a pre-tax payment of **$389.56**, or **$420.73 a month** with 8% tax. The total lease cost is **$17,146.18** (36 payments plus the down payment), and the implied APR is **4.32%**. Negotiating just $1,000 more off the price would save **$31.94 a month — $1,149.98 over the term** — which is why the negotiated price matters more than the monthly payment.",
+      ],
+    },
+    {
+      heading: "What should you check before signing a lease?",
+      paragraphs: [
+        "Convert the money factor to an APR and compare it with auto loan rates — a money factor of 0.0018 is about 4.32%, but dealers sometimes mark it up. Check the **residual value** too: a higher residual means lower payments, and it is also the price you would pay if you buy the car at lease end.",
+        "Watch the **mileage allowance** and the per-mile overage charge, since excess miles can erase the savings of a low payment. And compare the **total lease cost** with buying: leasing usually means lower monthly payments but no ownership or equity at the end, so it suits drivers who want a new car every few years and stay within the mileage limit.",
+      ],
+    },
+  ],
+
+  "break-even-calculator": [
+    {
+      heading: "What is the break-even point?",
+      paragraphs: [
+        "The break-even point is the sales volume at which total revenue exactly covers total costs — no profit, no loss. It is calculated as **fixed costs ÷ (selling price per unit − variable cost per unit)**.",
+        "The difference between the selling price and the variable cost is the **contribution per unit**: the amount each sale contributes toward covering fixed costs. Dividing the contribution by the price gives the **contribution margin** as a percentage. Because you cannot sell part of a unit, this calculator rounds the break-even point up to whole units.",
+        "**Fixed costs** — rent, salaries, insurance — stay the same whether you sell nothing or a thousand units. **Variable costs** — materials, packaging, per-unit labor — rise with every unit sold. The calculator uses your monthly fixed costs, so the result is the number of units you must sell each month.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A business with **$10,000 a month in fixed costs** sells a product for **$50** with a **$20 variable cost per unit**. The contribution is $50 − $20 = **$30 per unit**, so the exact break-even point is $10,000 ÷ $30 = 333.33 units — rounded up to **334 units**, or **$16,700 in break-even revenue**. The contribution margin is $30 ÷ $50 = **60%**.",
+        "At 334 units the business makes a **$20 profit** ($16,700 revenue against $16,680 of costs), while at 333 units it would lose **$10** — that is why the rounding matters. Raising the price to $55 would drop the break-even point to **286 units**, and cutting fixed costs to $8,000 would drop it to **267 units**.",
+      ],
+    },
+    {
+      heading: "How can you lower your break-even point?",
+      paragraphs: [
+        "You have three levers: **cut fixed costs**, **raise the price**, or **reduce the variable cost per unit**. Small changes move the number a lot — the $5 price rise in the example above cuts the break-even point by 48 units a month.",
+        "Each lever has a trade-off. Raising prices can reduce the number of units you sell, and cutting fixed costs can mean giving up space or staff. Reducing variable costs — renegotiating with suppliers, cutting waste — is often the safest lever, because it improves every sale without touching the price. Re-run the calculation whenever any of the three inputs changes.",
+      ],
+    },
+  ],
+
+  "cd-calculator": [
+    {
+      heading: "How does a CD earn interest?",
+      paragraphs: [
+        "A certificate of deposit (CD) pays a fixed interest rate on a lump sum that you lock away for a set term. The maturity value is calculated as **FV = P × (1 + r/n)^(nt)**, where P is the deposit, r is the annual rate, n is the number of compounding periods per year, and t is the term in years.",
+        "One detail matters: the rate field on this page is labeled APY, but the formula compounds the rate you enter at the frequency you choose — that is, it treats the rate as a **nominal annual rate**. A true 5% APY would return exactly $10,500 on a $10,000 deposit after one year; with monthly compounding this calculator returns **$10,511.62**. The difference is small, but it is real.",
+        "CDs at FDIC-insured banks are protected up to **$250,000 per depositor, per bank**. The trade-off for the fixed rate is access: withdrawing early usually triggers a penalty of several months' interest, so only lock away money you will not need before the term ends.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Deposit **$10,000 at 5% for 12 months with monthly compounding**. The maturity value is $10,000 × (1 + 0.05 ÷ 12)^12 = **$10,511.62**, so the CD earns **$511.62 in interest** — an average of **$42.63 a month**.",
+        "Compounding more often helps only slightly: daily compounding gives **$10,512.67**, just $1.05 more over the year. Time matters far more than frequency — the same $10,000 at 5% for five years grows to **$12,833.59**, earning **$2,833.59 in interest**.",
+      ],
+    },
+    {
+      heading: "How do you choose the right CD term?",
+      paragraphs: [
+        "Match the term to when you need the money. Longer terms usually pay higher rates, but the money is locked away — a five-year CD at a good rate is a poor choice for money you might need next year. If you are unsure, **laddering** — splitting your money across CDs of different terms — keeps some of it maturing regularly while the rest earns the longer-term rate.",
+        "Before you commit, check the **early-withdrawal penalty** and compare the rate with high-yield savings accounts, which pay a variable rate but keep your money accessible. A CD wins when you value a guaranteed rate and will not touch the money until maturity.",
+      ],
+    },
+  ],
+
+  "college-cost-calculator": [
+    {
+      heading: "How much will college cost by the time you enroll?",
+      paragraphs: [
+        "The future cost of college is today's annual cost grown by tuition inflation for each year until enrollment, then added up over four years. The calculator applies **future cost = current cost × (1 + inflation)^years** to tuition plus room and board.",
+        "The total assumes a **four-year degree** and applies the same inflation rate to room and board as to tuition. The 'monthly savings needed' figure simply divides the total by the months until enrollment — it assumes your savings earn **no investment return**, so it is a conservative target: if your savings grow, you would need less each month.",
+        "The result is the sticker price before financial aid. Grants, scholarships, and need-based aid can reduce the actual amount substantially, and the calculator does not include books, fees, travel, or personal expenses.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Tuition of **$30,000** plus room and board of **$12,000** is **$42,000 a year** today. With enrollment five years away and 5% annual tuition inflation, the first year will cost $42,000 × 1.05^5 = **$53,603.83**.",
+        "The four years cost **$53,603.83, $56,284.02, $59,098.22, and $62,053.13** — a total of **$231,039.19**, compared with $168,000 at today's prices. Inflation alone adds **$63,039.19**. Saving the full amount over five years takes **$3,850.65 a month** with no investment growth; if the savings earned 5% a year, about **$3,397.33 a month** would be enough.",
+      ],
+    },
+    {
+      heading: "How can you reduce the total cost of college?",
+      paragraphs: [
+        "Start early: the same inflation that raises the price also rewards early saving, because money set aside now has years to grow. A **529 plan** lets savings grow tax-free when used for education, and starting at a community college for the first two years before transferring can cut the total substantially.",
+        "Compare the **net price**, not the sticker price: a college with high published tuition may offer enough aid to cost less than a cheaper school. Use each college's net price calculator, and apply for scholarships early — every dollar of aid is a dollar you do not have to save or borrow.",
+      ],
+    },
+  ],
+
+  "debt-to-income-ratio-calculator": [
+    {
+      heading: "What is a debt-to-income ratio?",
+      paragraphs: [
+        "Your debt-to-income ratio (DTI) is the share of your gross monthly income that goes to debt payments. It is calculated as **(total monthly debt payments ÷ gross monthly income) × 100**.",
+        "The calculator adds up your **mortgage or rent, car payment, student loan payment, credit card minimums, and other monthly debts**, then divides by your gross (pre-tax) monthly income. Lenders use DTI to judge whether you can take on another payment — it is one of the first numbers checked on a mortgage application.",
+        "This calculator rates your result on a simple scale: **20% or less is Excellent, up to 36% is Good, up to 43% is Acceptable, up to 50% is High, and above 50% is Very High Risk**. DTI only reflects monthly payments against income — it does not account for your total balances, credit score, or savings.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "With **$6,000 a month in gross income** and debts of $1,500 mortgage, $400 car payment, $300 student loan, and $150 in credit card minimums, total monthly debt is **$2,350**. DTI is $2,350 ÷ $6,000 × 100 = **39.17%**, rated **Acceptable**, leaving **$3,650** of income after debt payments.",
+        "Paying off the $400 car payment would cut total debt to $1,950 and DTI to **32.50% — rated Good**. To reach the 36% threshold without paying anything off entirely, this borrower would need to cut **$190 a month** in debt payments.",
+      ],
+    },
+    {
+      heading: "How can you lower your DTI?",
+      paragraphs: [
+        "Attack the numerator or the denominator. Paying down a debt removes its whole monthly payment from the calculation — clearing the smallest balance first frees up cash quickly, while clearing the highest-rate debt saves the most interest. **Refinancing** to a lower payment or a longer term also lowers DTI, though it can cost more interest overall.",
+        "Raising your income works just as well: a raise or extra work increases the denominator without touching your debts. And avoid taking on new debt before applying for a mortgage — many lenders look for a DTI of **43% or below**, and below 36% puts you in a strong position.",
+      ],
+    },
+  ],
+
+  "down-payment-calculator": [
+    {
+      heading: "How does a down payment affect your mortgage?",
+      paragraphs: [
+        "A down payment is the cash you pay up front when buying a home; the rest is borrowed as a mortgage. It is calculated as **home price × down payment percentage**, and a bigger down payment means a smaller loan, a lower monthly payment, and less total interest.",
+        "The **20% threshold** matters: with less than 20% down, most conventional loans require **private mortgage insurance (PMI)**, which protects the lender if you default. This calculator estimates PMI at **0.5% of the loan amount per year** — a middle estimate, since real PMI varies with your credit score and loan-to-value ratio.",
+        "You do not need 20% to buy: FHA loans require as little as 3.5% down, and some conventional loans accept 3–5%. The trade-off is a higher monthly payment, PMI, and more total interest — which this calculator shows side by side.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Buy a **$400,000 home at 6.5% for 30 years** with **20% down**: the down payment is **$80,000**, the loan is **$320,000**, and the monthly payment is **$2,022.62** with no PMI.",
+        "With **10% down** instead, the down payment is **$40,000**, the loan is **$360,000**, and the payment is $2,275.44 plus **$150 a month of PMI — $2,425.44 in total**, or **$402.83 more every month**. Total interest rises from $408,142 to $459,160 — **$51,018 more** over the life of the loan. With **3% down**, the payment plus PMI reaches **$2,614.09 a month**.",
+      ],
+    },
+    {
+      heading: "How much should you put down?",
+      paragraphs: [
+        "Twenty percent is a good target if you can reach it **without draining your emergency savings** — it removes PMI and lowers both the payment and the total interest. But a smaller down payment is not a mistake if it gets you into a home sooner and you can afford the higher payment; the PMI is temporary, not forever.",
+        "On a conventional loan you can typically ask to **cancel PMI once you reach 20% equity**, and it must be removed automatically once your loan balance falls to 22% of the home's original value. If you put less than 20% down, check your loan balance against that threshold each year — dropping PMI is an easy monthly saving.",
+      ],
+    },
+  ],
+
+  "home-equity-loan-calculator": [
+    {
+      heading: "How does a home equity loan work?",
+      paragraphs: [
+        "A home equity loan lets you borrow a lump sum against the equity in your home — the difference between what your home is worth and what you still owe on the mortgage. It is a fixed-rate loan repaid in equal monthly installments, calculated with the standard amortization formula **M = P × r(1+r)ⁿ / ((1+r)ⁿ − 1)**.",
+        "This calculator prices the loan amount you enter — it does not check how much equity you have or what a lender will approve. Many lenders cap total borrowing at around **80–85% of the home's value**, so the amount you can borrow depends on your home value and your remaining mortgage balance.",
+        "Your home is the collateral, so missed payments put it at risk — that is the key difference from an unsecured loan. Interest may be **tax-deductible if the loan is used to buy, build, or substantially improve your home**, within the combined mortgage debt limits.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Borrow **$50,000 at 7.5% for 15 years** (180 payments). The monthly payment is **$463.51**. The first payment includes **$312.50 of interest** — nearly two-thirds of the payment — because interest is charged on the full balance.",
+        "Over 15 years you pay **$33,431.11 in interest** for a total cost of **$83,431.11**. A 10-year term raises the payment to **$593.51** but cuts total interest to **$21,221.06**, saving **$12,210.05**. Stretching to 30 years drops the payment to **$349.61** but pushes total interest to **$75,858.61** — more than the amount borrowed.",
+      ],
+    },
+    {
+      heading: "When does a home equity loan make sense?",
+      paragraphs: [
+        "It suits **large, one-time costs** where the rate beats the alternatives — a major renovation, or consolidating high-interest credit card debt into a lower fixed rate. It is a poor fit for everyday spending: borrowing against your home to fund consumption turns short-term purchases into long-term debt secured by your house.",
+        "Compare it with a **HELOC**, which is a revolving line of credit with a variable rate that you draw on as needed, and with a **cash-out refinance**, which replaces your existing mortgage. Shop at least a few lenders — rates, fees, and closing costs vary — and borrow only what you can repay comfortably.",
+      ],
+    },
+  ],
+
+  "interest-rate-calculator": [
+    {
+      heading: "How do you find the interest rate on a loan?",
+      paragraphs: [
+        "If you know the loan amount, the monthly payment, and the term, the interest rate can be worked backward from the loan payment formula. There is no direct formula for the rate, so this calculator solves it iteratively with **Newton's method** — refining a guess until the payment it produces matches yours.",
+        "This is useful when a dealer or lender quotes a **monthly payment without clearly stating the rate**: the implied rate lets you compare offers fairly. The result is the nominal annual interest rate — it is not the APR, which also includes fees and is usually slightly higher.",
+        "One limit to know: the payment must cover the principal over the term. If your total payments add up to less than the loan amount, no positive interest rate can produce that payment, and the result will not be meaningful — so check your numbers if the answer looks wrong.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **$20,000 loan** with a **$400 monthly payment** over **60 months** implies an annual rate of **7.42%**. Total paid is $24,000, so the loan costs **$4,000 in interest**.",
+        "If the payment were **$450 a month** instead, the implied rate jumps to **12.50%** — total paid $27,000, interest **$7,000**. A $50 difference in the monthly payment costs **$3,000 over five years**, which is why the rate behind a quoted payment is always worth checking.",
+      ],
+    },
+    {
+      heading: "What should you do with the rate you find?",
+      paragraphs: [
+        "Compare it with the **APR on competing offers**, since APR includes fees and is the fairest basis for comparison. If the implied rate is far above the rate the lender advertised, ask what fees are bundled into the payment — the gap is usually explained there.",
+        "Use the number to negotiate: a lower rate on the same term cuts both your monthly payment and your total interest. And if you are choosing between a lower rate and a shorter term, run both through a loan calculator — the shorter term often saves more overall, even at the same rate.",
+      ],
+    },
+  ],
+
+  "profit-margin-calculator": [
+    {
+      heading: "How is profit margin calculated?",
+      paragraphs: [
+        "Profit margin is the share of revenue left as profit after costs. It is calculated as **(revenue − cost) ÷ revenue × 100**. Margin is measured against revenue; markup — profit as a share of cost — is a different number for the same sale.",
+        "This calculator works from **revenue (the selling price) and cost of goods**, so the margin it reports is a **gross margin**. It does not subtract operating expenses such as rent, salaries, or marketing, so your net margin — profit after all expenses — would be lower.",
+        "The distinction between margin and markup trips up many sellers: a **50% markup** (adding half the cost on top) equals only a **33.33% margin**, because the profit is measured against the larger revenue figure. When you set prices from a target margin, always work from revenue, not cost.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Sell a product for **$100** that costs **$60** to make. Profit is **$40**, the margin is $40 ÷ $100 = **40%**, the markup is $40 ÷ $60 = **66.67%**, and cost is **60% of revenue**.",
+        "Sell a different product for **$200** with a **$150** cost: profit is **$50**, but the margin is only **25%** and the markup **33.33%**. The second product earns more dollars per sale ($50 vs $40) but keeps a smaller share of each dollar — margin and total profit can point in different directions, so track both.",
+      ],
+    },
+    {
+      heading: "What is a good profit margin?",
+      paragraphs: [
+        "It depends on the industry. As a rough guide, software and tech margins often run **60–90%**, services **15–30%**, manufacturing **5–10%**, and retail **2–5%** — but these ranges vary widely, so compare your margin with businesses like yours rather than with a universal benchmark.",
+        "To improve margin, you can **raise prices**, **cut the cost of goods**, or **shift sales toward higher-margin products**. Track margin per product, not just overall: a best-seller with a thin margin can look healthy on revenue while contributing little profit.",
+      ],
+    },
+  ],
+
+  "sales-tax-calculator": [
+    {
+      heading: "How is sales tax calculated?",
+      paragraphs: [
+        "Sales tax is a percentage added to the price of a purchase. The total is calculated as **price × (1 + tax rate ÷ 100)**, and the tax itself is **price × tax rate ÷ 100**.",
+        "The rate you pay is usually a combination of **state, county, and city taxes**, so it varies by where you buy — and some states exempt groceries, clothing, or other categories. In the US, tax is added at checkout, so the shelf price is not the price you pay.",
+        "This calculator works forward from the **pre-tax price**. If you only know the total on a receipt, you can work backward: divide the total by (1 + tax rate ÷ 100) to recover the pre-tax price, and the difference is the tax.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Buy an item for **$100** where the tax rate is **8.25%**: the tax is $100 × 0.0825 = **$8.25**, and the total is **$108.25**. A **$1,200 laptop at 6%** carries **$72 of tax** for a total of **$1,272**.",
+        "Working backward: a receipt total of **$500** at a **7% rate** means a pre-tax price of $500 ÷ 1.07 = **$467.29**, so **$32.71** of the total was tax.",
+      ],
+    },
+    {
+      heading: "Why does the same item cost different amounts in different places?",
+      paragraphs: [
+        "Because the rate depends on location: combined state and local rates range from zero in the five states with no statewide sales tax (Alaska, Delaware, Montana, New Hampshire, and Oregon) to over 10% in some cities. A few states also exempt certain goods, so the same basket can be taxed differently across state lines.",
+        "Online orders are usually taxed based on **where the item is delivered**, not where the seller is located, since most states now require online sellers to collect tax. When budgeting for a big purchase, round the rate up slightly — a small rate difference on a large price adds up fast.",
+      ],
+    },
+  ],
+
+  "tax-bracket-calculator": [
+    {
+      heading: "How do federal tax brackets work?",
+      paragraphs: [
+        "The US federal income tax is progressive: your income is taxed in slices, with each slice taxed at its own rate. Your **marginal bracket** is the rate on your last dollar of income, while your **effective rate** — total tax divided by total income — is always lower.",
+        "This calculator uses the **2024 federal brackets** for two filing statuses — Single and Married Filing Jointly — with seven rates: 10%, 12%, 22%, 24%, 32%, 35%, and 37%. The IRS adjusts the bracket thresholds for inflation each year, so the figures shift slightly from year to year. The income you enter is **taxable income** — what remains after the standard deduction ($14,600 for single filers in 2024) or itemized deductions — not your gross salary.",
+        "The result is **federal income tax only**. It does not include state tax, FICA, or tax credits, and it does not cover the Head of Household or Married Filing Separately statuses — so treat it as a planning estimate, not a filing figure.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **single filer with $85,000 of taxable income** falls in the **22% marginal bracket** — but only the income above $47,150 is taxed at 22%. The bill is 10% of the first $11,600 ($1,160), plus 12% of the next $35,550 ($4,266), plus 22% of the remaining $37,850 ($8,327): total federal tax **$13,753**, an effective rate of **16.18%**, and **$71,247 after tax**.",
+        "The same $85,000 for **married filing jointly** is taxed as 10% of the first $23,200 ($2,320) plus 12% of the remaining $61,800 ($7,416): **$9,736** total, a **12% marginal bracket**, and an **11.45% effective rate**. Taxing the whole $85,000 at 22% — the common misunderstanding — would give $18,700, overstating the real bill by **$4,947**.",
+      ],
+    },
+    {
+      heading: "Does a raise push you into a higher bracket — and should you care?",
+      paragraphs: [
+        "A raise can move you into a higher bracket, but only the income **above the threshold** is taxed at the higher rate — the rest is taxed exactly as before. A raise never leaves you with less after-tax income under the federal brackets alone.",
+        "What actually changes your bill is **taxable income**: pre-tax contributions to a 401(k) or HSA, and deductions, lower it directly. Near a bracket threshold, a deduction saves tax at your marginal rate — so $1,000 of extra 401(k) contributions saves a 22%-bracket filer **$220 in federal tax**.",
+      ],
+    },
+  ],
+  "pregnancy-calculator": [
+    {
+      heading: "How is a pregnancy due date calculated?",
+      paragraphs: [
+        "Your estimated due date is your last menstrual period (LMP) plus 280 days (40 weeks). This is **Naegele's rule**, the standard method used worldwide: pregnancy is dated from the first day of your last period, not from conception, because the LMP is a date most people can remember while conception usually is not.",
+        "The 280 days include about two weeks before ovulation, so at the due date the pregnancy is 40 weeks by gestational age but the baby has been developing for about 38 weeks. Only about **5% of babies arrive on their due date** — most are born within a week or two either side — so treat the date as a planning anchor for appointments and preparations, not a deadline.",
+        "This calculator also shows your current week, your trimester, and the days left until the due date, all counted from the same LMP date. It assumes a regular 28-day cycle with ovulation around day 14; if your cycles are much longer or shorter, an early ultrasound gives a more reliable date.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "LMP = **January 1, 2026**. Adding 280 days gives an estimated due date of **Thursday, October 8, 2026**. The same result comes from the classic Naegele shortcut: add 7 days (January 8), subtract 3 months (October 8, 2025), add 1 year (October 8, 2026).",
+        "Milestones from that LMP: week 13 begins **April 2, 2026**, week 27 begins **July 9, 2026**, and full term (39 weeks) begins **October 1, 2026**. This calculator counts the first trimester as weeks 0–12, the second as weeks 13–26, and the third from week 27 — definitions vary by a week between sources, so your clinician's dates may differ slightly.",
+      ],
+    },
+    {
+      heading: "When should you trust the estimate — and when not?",
+      paragraphs: [
+        "The estimate is most reliable when your periods are regular and you are sure of your LMP date. It is less reliable with **irregular cycles**, recent hormonal contraception, or breastfeeding, because ovulation may not have happened on day 14. A first-trimester ultrasound (usually between weeks 8 and 13) dates a pregnancy within about 5 days and takes priority when it disagrees with the LMP date.",
+        "If you conceived by IVF, dating starts from the egg retrieval or transfer date instead of the LMP — ask your clinic for the gestational age they are using. Whatever the method, bring the result to your first prenatal appointment: your clinician confirms the dating and sets the schedule for scans and tests from it.",
+      ],
+    },
+  ],
+
+  "heart-rate-zone-calculator": [
+    {
+      heading: "How are heart rate zones calculated?",
+      paragraphs: [
+        "Heart rate zones are bands of beats per minute (bpm) based on your **heart rate reserve (HRR)** — the gap between your maximum heart rate and your resting heart rate. This calculator uses the **Karvonen method**: Zone = HRR × percentage + resting HR, with maximum heart rate estimated as **220 − age**.",
+        "The four zones are **Zone 1 (50–60%)** recovery, **Zone 2 (60–70%)** aerobic base, **Zone 3 (70–80%)** tempo, and **Zone 4 (80–90%)** threshold. Training in different zones stresses different energy systems, which is why structured plans mix easy and hard days instead of running every session at the same effort.",
+        "Both inputs are estimates: 220 − age can miss an individual's true maximum by roughly **10–12 bpm** in either direction, and resting heart rate varies with sleep, illness, and fitness. Treat the zones as a starting guide, not a medical measurement — and if you take medication that affects heart rate (such as beta blockers) or have a heart condition, ask your doctor before training to heart rate targets.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Age **30**, resting HR **60 bpm**. Maximum heart rate = 220 − 30 = **190 bpm**; heart rate reserve = 190 − 60 = **130 bpm**. Zone 1 (50–60%) = 130 × 0.50 + 60 to 130 × 0.60 + 60 = **125–138 bpm**. Zone 2 (60–70%) = **138–151 bpm**, Zone 3 (70–80%) = **151–164 bpm**, and Zone 4 (80–90%) = **164–177 bpm**.",
+        "In practice: an easy run that stays in Zone 2 (138–151 bpm) builds aerobic fitness with low fatigue, while intervals that push into Zone 4 (164–177 bpm) improve speed and lactate tolerance. If your easy runs keep drifting into Zone 3, slow down — most runners go too hard on easy days.",
+      ],
+    },
+    {
+      heading: "Which zone should you train in?",
+      paragraphs: [
+        "Most of your training — roughly **80% of weekly time** in the popular polarized approach — belongs in Zones 1–2, where you can still hold a conversation. These sessions build the aerobic base that makes everything else possible, and they are the ones beginners skip most often.",
+        "Zone 3 is the 'grey zone': hard enough to tire you, not hard enough to drive big adaptations — useful for tempo runs but easy to overdo. Zone 4 is for structured intervals with recovery built in. This calculator stops at Zone 4 (90%); the all-out Zone 5 (90–100%, here 177–190 bpm) is for short sprints and max-effort testing, and it is the zone most worth discussing with a coach or clinician before chasing.",
+      ],
+    },
+  ],
+
+  "one-rep-max-calculator": [
+    {
+      heading: "How is a one rep max estimated?",
+      paragraphs: [
+        "A one rep max (1RM) is the heaviest weight you can lift for a single repetition with good form. Instead of testing it directly, this calculator estimates it from a lighter set you already did: enter the **weight lifted and the reps completed**, and it averages the **Epley** and **Brzycki** formulas.",
+        "Epley: **1RM = W × (1 + R ÷ 30)**. Brzycki: **1RM = W × 36 ÷ (37 − R)**. Both formulas were developed from observed lifting data and agree closely at low reps; averaging them smooths out each formula's bias. If you enter 1 rep, the calculator simply returns the weight itself — that is your tested 1RM.",
+        "The estimate is most reliable with **1–10 reps**; beyond about 10 reps the formulas drift, because endurance starts to matter more than maximal strength. Treat the result as a training number, not a promise: use it to set working weights, and re-test with a real single when it matters.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**100 kg for 8 reps.** Epley: 100 × (1 + 8 ÷ 30) = 100 × 1.2667 = **126.7 kg**. Brzycki: 100 × 36 ÷ (37 − 8) = 3,600 ÷ 29 = **124.1 kg**. The average is **125.4 kg**, shown as an estimated 1RM of **125 kg**.",
+        "From that estimate the calculator also gives training percentages: **95% (119 kg)** for a heavy single and **80% (100 kg)** for working sets. A second check: **60 kg for 5 reps** gives Epley 70.0 kg and Brzycki 67.5 kg, an average of **69 kg** — the two formulas agree within 2.5 kg at low reps, which is why the average is trustworthy there.",
+      ],
+    },
+    {
+      heading: "How to use your 1RM in training",
+      paragraphs: [
+        "Most programs prescribe loads as percentages of 1RM: **65–75%** for volume and hypertrophy work, **75–85%** for strength sets, and **85–95%** for heavy singles and peaking. The calculator's 95% and 80% rows give you the two most-used anchors without extra math.",
+        "Re-test or re-estimate every **4–8 weeks** as you get stronger, and estimate separately for each lift — your squat, bench, and deadlift 1RMs are independent numbers. Never test a true 1RM alone: use a spotter, safety pins, or a rack, and warm up in small jumps rather than going straight to the top weight.",
+      ],
+    },
+  ],
+
+  "vo2-max-calculator": [
+    {
+      heading: "How is VO2 max calculated?",
+      paragraphs: [
+        "VO2 max is the maximum rate at which your body can use oxygen during hard exercise, measured in **milliliters of oxygen per kilogram of body weight per minute (mL/kg/min)**. This calculator estimates it from the **Cooper 12-minute run test**: run as far as you can in 12 minutes, enter the distance, and it applies **VO2 max = (distance in meters − 504.9) ÷ 44.73**.",
+        "That formula comes from Dr. Kenneth Cooper's research correlating 12-minute run distance with lab-measured VO2 max. It is an estimate, not a lab result: a true VO2 max test needs a treadmill or bike, a gas-analysis mask, and a graded effort to exhaustion. Field estimates like this one are typically within a few mL/kg/min of lab values for healthy adults.",
+        "One thing to know about this tool: the result comes from the **distance only**, and it assumes the run lasted 12 minutes. The time field on the page does not change the result, so make sure the distance you enter is what you covered in exactly 12 minutes of running.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Run **2.4 km in 12 minutes**: (2,400 − 504.9) ÷ 44.73 = 1,895.1 ÷ 44.73 = **42.4 mL/kg/min**, rated **Good**. Run **3.0 km**: (3,000 − 504.9) ÷ 44.73 = **55.8 mL/kg/min**, rated **Superior**. Run **2.0 km**: (2,000 − 504.9) ÷ 44.73 = **33.4 mL/kg/min**, rated **Average**.",
+        "The calculator's bands are: **above 55** Superior, **45–55** Excellent, **38–45** Good, **30–38** Average, and **30 or below** Poor. These are general adult bands, not adjusted for age or sex — a 55 for a 60-year-old is far more impressive than a 55 for a 20-year-old, so compare your number mainly against your own past results.",
+      ],
+    },
+    {
+      heading: "How can you improve your VO2 max?",
+      paragraphs: [
+        "The fastest gains come from **high-intensity interval training (HIIT)**: repeated 3–5 minute efforts at 90–95% of max heart rate with equal recovery, once or twice a week. Longer steady runs in Zone 2 build the aerobic base that intervals sharpen. Many beginners see gains of around **10–20% over 8–12 weeks** of consistent training, though gains slow as fitness rises.",
+        "Retest every **6–8 weeks** under the same conditions — same course, similar weather, rested — and run the full 12 minutes at an even, hard effort. Pacing matters: starting too fast and fading usually covers less distance than a steady effort, and a shorter distance means a lower estimate.",
+      ],
+    },
+  ],
+
+  "waist-to-hip-ratio-calculator": [
+    {
+      heading: "How is waist-to-hip ratio calculated?",
+      paragraphs: [
+        "Waist-to-hip ratio (WHR) is your **waist circumference divided by your hip circumference**, measured in the same units: **WHR = waist ÷ hip**. It describes where your body stores fat — a higher ratio means more fat around the abdomen, which carries more health risk than fat stored around the hips and thighs.",
+        "The World Health Organization flags **above 0.90 for men** and **above 0.85 for women** as substantially increased risk of metabolic complications. This calculator uses those same cut-offs: a ratio above your threshold shows as 'High Risk', at or below it as 'Normal'.",
+        "WHR is a screening measure, not a diagnosis. It adds information BMI misses — two people with the same BMI can have very different fat distributions — but it cannot measure visceral fat directly, and a single ratio should never override a clinician's assessment.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A woman with a waist of **80 cm** and hips of **100 cm**: WHR = 80 ÷ 100 = **0.800**, below the female threshold of 0.85 — **Normal**. A man with a waist of **95 cm** and hips of **100 cm**: WHR = 95 ÷ 100 = **0.950**, above the male threshold of 0.90 — **High Risk**.",
+        "Notice how small changes matter: if that man trims his waist to **88 cm** with hips unchanged, his ratio falls to **0.880** — back under the threshold. Because the ratio has no units, centimeters and inches give the same answer as long as both measurements use the same unit.",
+      ],
+    },
+    {
+      heading: "How to measure waist and hip correctly",
+      paragraphs: [
+        "Measure your waist at the **narrowest point** of your torso, usually just above the navel, with the tape snug but not compressing the skin. Measure your hips at the **widest point** around the buttocks. Stand relaxed, breathe out normally, and keep the tape level — measuring over thick clothing adds error.",
+        "Take each measurement **twice** and average them; a 1–2 cm error in the waist moves the ratio by about 0.01–0.02, which can flip a borderline result. Re-measure every few weeks rather than daily — fat distribution changes slowly, and daily fluctuations are mostly water and posture.",
+      ],
+    },
+  ],
+
+  "body-surface-area-calculator": [
+    {
+      heading: "How is body surface area calculated?",
+      paragraphs: [
+        "Body surface area (BSA) is the total surface area of your skin, measured in **square meters (m²)**. This calculator uses the **Mosteller formula**, the simplest and most widely used: **BSA = √(height in cm × weight in kg ÷ 3,600)**.",
+        "BSA matters because many medical doses and measurements scale with surface area better than with weight alone. It is used to calculate **chemotherapy doses**, assess **burn size**, index **kidney function** (eGFR), and compute **cardiac index** from cardiac output. The average adult BSA is roughly **1.7–1.9 m²**.",
+        "Other formulas exist — DuBois and DuBois (1916) is the classic, and Haycock and others are used for children — but Mosteller is preferred in practice because it is simple and agrees closely with DuBois for most adults. This calculator uses Mosteller only, so results may differ slightly from a tool using a different formula.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Height **175 cm**, weight **75 kg**: BSA = √(175 × 75 ÷ 3,600) = √(13,125 ÷ 3,600) = √3.6458 = **1.91 m²** — at the top of the typical adult range. A smaller adult at **170 cm and 70 kg**: BSA = √(170 × 70 ÷ 3,600) = √3.3056 = **1.82 m²**.",
+        "Because BSA uses a square root, it grows more slowly than weight: doubling weight alone increases BSA by only about **41%** (√2 ≈ 1.414), which is why dosing by surface area gives smaller patients proportionally larger doses per kilogram than dosing by weight.",
+      ],
+    },
+    {
+      heading: "What is BSA used for — and what are its limits?",
+      paragraphs: [
+        "In oncology, many chemotherapy drugs are dosed in **mg per m² of BSA**, and in burn care the **rule of nines** estimates the percentage of BSA burned. In cardiology, dividing cardiac output by BSA gives the cardiac index, letting doctors compare heart performance between people of different sizes.",
+        "BSA is an estimate from height and weight, not a direct measurement — formulas can disagree by a few percent, and none accounts for body composition. Drug dosing is always a clinician's decision: this calculator is for understanding the number, not for working out a dose.",
+      ],
+    },
+  ],
+
+  "daily-calorie-deficit-calculator": [
+    {
+      heading: "How is a daily calorie deficit calculated?",
+      paragraphs: [
+        "A calorie deficit is the gap between the calories you burn and the calories you eat. This calculator works backwards from your goal: it multiplies the weight you want to lose by **7,700 calories per kilogram** (the energy stored in a kilogram of body fat) and spreads that total evenly over your timeframe: **daily deficit = weight × 7,700 ÷ (weeks × 7)**.",
+        "The 7,700 figure is the metric version of the familiar **3,500 calories per pound** rule (3,500 × 2.2 ≈ 7,700). It is a planning average, not a law of physics: real weight loss slows over time as a lighter body burns fewer calories, so the calculator's even split is a starting plan, not a guarantee.",
+        "The calculator also flags safety: a deficit above **1,000 calories per day** is marked 'Too aggressive', because very large deficits risk muscle loss, fatigue, and nutrient shortfalls. Note that this tool sizes the deficit only — it does not ask for your current weight or activity, so you still need your maintenance calories (TDEE) to turn the deficit into a daily intake target.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Goal: lose **10 kg in 20 weeks**. Total energy to burn: 10 × 7,700 = **77,000 calories**. Spread over 140 days: 77,000 ÷ 140 = **550 calories per day**, or **3,850 per week**, at a rate of **0.50 kg per week** — marked sustainable.",
+        "Squeeze the same 10 kg into **8 weeks** and the daily deficit jumps to 77,000 ÷ 56 = **1,375 calories per day**, which the calculator flags as too aggressive. The fix is to extend the timeframe: 10 kg in 12 weeks needs 77,000 ÷ 84 ≈ **917 calories per day**, under the 1,000 limit.",
+      ],
+    },
+    {
+      heading: "How to turn the deficit into a daily plan",
+      paragraphs: [
+        "Find your maintenance calories first — use a TDEE or calorie calculator — then subtract the deficit. If your maintenance is 2,400 calories and your deficit is 550, your target intake is **1,850 calories per day**. Pair the deficit with enough protein (around 1.6–2.2 g per kg of body weight is the usual recommendation for dieting) and resistance training to protect muscle.",
+        "Weigh yourself weekly under the same conditions and adjust if progress stalls for 2–3 weeks: recalculate with your new weight, or trim another 100–200 calories. If the deficit pushes your intake very low — generally below about 1,200 calories a day for women or 1,500 for men without medical supervision — talk to a doctor or dietitian before continuing.",
+      ],
+    },
+  ],
+
+  "fraction-to-decimal-calculator": [
+    {
+      heading: "How do you convert a fraction to a decimal?",
+      paragraphs: [
+        "Divide the numerator by the denominator: **decimal = numerator ÷ denominator**. The fraction bar is a division sign — 3/8 simply means 3 divided by 8. Multiply the result by 100 to get the percentage.",
+        "Some fractions convert cleanly (**terminating decimals**): denominators made only of 2s and 5s, like 8 or 20, always terminate. Others **repeat forever**: 1/3 = 0.333…, 5/6 = 0.8333…. This calculator shows decimals rounded to **6 decimal places** and percentages to 2, so repeating decimals appear as a close approximation, not the exact value.",
+        "Dividing by zero is undefined, so a denominator of 0 returns an error instead of a result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**3/8** = 3 ÷ 8 = **0.375**, which is **37.50%**. **7/16** = 7 ÷ 16 = **0.4375**, or **43.75%**. Both terminate because 8 and 16 are powers of 2.",
+        "**1/3** = 1 ÷ 3 = **0.333333** (rounded to 6 places), or **33.33%**. The true value repeats forever, so any decimal you write down is an approximation — for exact work, keep the fraction. A quick check: 0.333333 × 3 = 0.999999, not quite 1, which is the rounding showing.",
+      ],
+    },
+    {
+      heading: "When should you use the fraction, and when the decimal?",
+      paragraphs: [
+        "Decimals win for **measurement and money**: 0.375 inches or $37.50 is easier to read than 3/8 of a dollar. Fractions win for **exact math**: 1/3 + 1/3 + 1/3 is exactly 1, but 0.333 + 0.333 + 0.333 = 0.999. In cooking, construction, and school math, keep fractions until the final step, then convert.",
+        "Common conversions worth memorizing: **1/2 = 0.5, 1/4 = 0.25, 3/4 = 0.75, 1/5 = 0.2, 1/8 = 0.125, 1/10 = 0.1**. With these six, most everyday fractions convert in your head.",
+      ],
+    },
+  ],
+
+  "decimal-to-fraction-calculator": [
+    {
+      heading: "How do you convert a decimal to a fraction?",
+      paragraphs: [
+        "Write the decimal over a power of 10, then simplify. Count the decimal places (n), multiply the decimal by **10ⁿ** to get the numerator, use **10ⁿ** as the denominator, then divide both by their **greatest common divisor (GCD)**.",
+        "For **0.75**: two decimal places, so 0.75 = 75/100; the GCD of 75 and 100 is 25, giving **3/4**. The calculator does exactly this: it reads the decimal places from the number you type, builds the fraction, and reduces it with the GCD.",
+        "This works for **terminating decimals** — decimals that end. Repeating decimals like 0.333… cannot be typed exactly, so entering 0.333 gives 333/1000, not 1/3. Irrational numbers such as π have no exact fraction form at all.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**0.75** → 75/100 → divide by 25 → **3/4** (75%). **0.125** → 125/1000 → divide by 125 → **1/8** (12.50%). **2.5** → 25/10 → divide by 5 → **5/2** (250%).",
+        "A longer one: **0.625** → 625/1000 → the GCD of 625 and 1000 is 125 → **5/8**. And **1.6** → 16/10 → divide by 2 → **8/5**. The percentage shown alongside is just the decimal × 100, so 0.625 is 62.50%.",
+      ],
+    },
+    {
+      heading: "Where is decimal-to-fraction conversion useful?",
+      paragraphs: [
+        "Cooking and construction still run on fractions: a recipe calling for 0.75 cups is **3/4 cup**, and a 0.125-inch drill bit is **1/8 inch**. In school math, fractions keep exact values where decimals round — 1/3 is exact, 0.333 is not.",
+        "For repeating decimals, use algebra instead of this tool: for 0.333…, let x = 0.333…, then 10x = 3.333…, so 9x = 3 and x = **1/3**. The same trick works for any repeating block.",
+      ],
+    },
+  ],
+
+  "exponent-calculator": [
+    {
+      heading: "How are exponents calculated?",
+      paragraphs: [
+        "An exponent tells you how many times to multiply the base by itself: **xⁿ = x × x × … × x** (n times). So 2¹⁰ means 2 multiplied by itself 10 times. This calculator computes **xⁿ for any base and exponent**, including negative and fractional exponents, and also shows the result in scientific notation.",
+        "The exponent rules behind the tool: **x⁰ = 1** for any nonzero x, **x⁻ⁿ = 1 ÷ xⁿ** (a negative exponent means 'take the reciprocal'), and **x^(1/n)** is the nth root — so 9^0.5 = √9 = 3. Multiplying powers with the same base adds exponents: xᵃ × xᵇ = x^(a+b).",
+        "Results grow fast: each extra power of 2 doubles the answer. That is why the calculator shows scientific notation alongside the full number — 2⁶⁴ is 18,446,744,073,709,551,616, which is far easier to read as 1.8447e+19. One limitation: a negative base raised to a fractional exponent has no real-number answer in this calculator (it shows NaN), even though the cube root of −8 is −3.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**2¹⁰** = 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 = **1,024**, shown in scientific notation as **1.0240e+3**. **5³** = 5 × 5 × 5 = **125**. **3⁴** = 3 × 3 × 3 × 3 = **81**.",
+        "Negative and fractional exponents: **2⁻³** = 1 ÷ 2³ = 1 ÷ 8 = **0.125**. **9^0.5** = √9 = **3**. And **10⁶** = **1,000,000** — a 1 followed by six zeros, which is why scientific notation counts zeros as powers of 10.",
+      ],
+    },
+    {
+      heading: "Where do exponents show up in real life?",
+      paragraphs: [
+        "**Compound interest** is exponential: money growing at 7% a year multiplies by 1.07ⁿ, which is why starting early matters so much. **Computing** runs on powers of 2 — a kilobyte is 2¹⁰ = 1,024 bytes. **Science** uses exponents for anything that doubles or halves: bacterial growth, radioactive decay, and the Richter scale, where each whole number is 10 times the amplitude of the last.",
+        "A useful mental shortcut: **2¹⁰ ≈ 10³** (1,024 ≈ 1,000). So 2²⁰ is about a million, 2³⁰ about a billion — close enough for quick estimates of storage, populations, and doubling times.",
+      ],
+    },
+  ],
+
+  "log-calculator": [
+    {
+      heading: "How are logarithms calculated?",
+      paragraphs: [
+        "A logarithm answers the question 'to what power must the base be raised to get this value?' — **logₐ(x) = y means aʸ = x**. So log₁₀(100) = 2 because 10² = 100. This calculator finds logs in any base using the **change of base formula**: **logₐ(x) = ln(x) ÷ ln(a)**, and it also shows log₁₀ and ln for every value you enter.",
+        "The two most common bases have special names: **log₁₀** (common log, base 10) and **ln** (natural log, base e ≈ 2.71828). Base 10 logs count digits and powers of 10; natural logs appear wherever things grow or decay continuously — interest, populations, radioactive decay.",
+        "Logarithms are only defined for **positive values** with a **positive base that is not 1**, so entering 0, a negative number, or base 1 returns an error. That is a mathematical rule, not a tool limitation: no power of 10 ever equals 0 or a negative number.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**log₁₀(100) = 2** because 10² = 100, and **log₁₀(1,000) = 3** because 10³ = 1,000. For the same value, **ln(100) = 4.605170** — the natural log is larger because base e (≈2.718) is smaller than 10, so it takes more multiplications to reach 100.",
+        "Custom bases work the same way: **log₂(32) = 5** because 2⁵ = 32, and **log₅(125) = 3** because 5³ = 125. Using the change of base formula, log₂(32) = ln(32) ÷ ln(2) = 3.465736 ÷ 0.693147 = **5**.",
+      ],
+    },
+    {
+      heading: "Where are logarithms used?",
+      paragraphs: [
+        "Logarithms turn multiplication into addition, which is why they appear in **scales**: the Richter scale, decibels, and pH are all logarithmic — each step of 1 means 10 times the underlying quantity. A magnitude 6 earthquake is 10 times the amplitude of a magnitude 5.",
+        "They also **undo exponentials**: if an investment doubles every 8 years, log₂ tells you how many doublings fit in a given period, and ln appears in the continuous-compounding formula. In data work, log scales make exponential growth look like a straight line, which is why charts of infections, prices, and populations so often use them.",
+      ],
+    },
+  ],
+
+  "prime-factorization-calculator": [
+    {
+      heading: "How is prime factorization calculated?",
+      paragraphs: [
+        "Prime factorization breaks a number into the **prime numbers that multiply together to make it**. This calculator uses **trial division**: it divides by the smallest prime (2) as many times as possible, then moves to 3, then 5, and so on, until only 1 remains. The divisors it collected are the prime factors.",
+        "Every integer above 1 has exactly **one** prime factorization — the **fundamental theorem of arithmetic**. That uniqueness is why factorization matters: it is the basis for simplifying fractions, finding GCDs and LCMs, and (at very large scales) modern cryptography — RSA encryption relies on the fact that factoring a 600-digit number is practically impossible.",
+        "The calculator also reports the **unique primes** (each factor listed once), whether the number **is prime** (a number with only one factor — itself), and the **total count of factors**. Enter an integer of 2 or more; 1 and 0 have no prime factorization, so they return an error.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**360**: divide by 2 → 180 → 90 → 45 (three 2s), then 45 is not even, so divide by 3 → 15 → 5 (two 3s), and 5 is prime. So 360 = **2 × 2 × 2 × 3 × 3 × 5**, or in exponent form **2³ × 3² × 5**. Check: 8 × 9 × 5 = **360**. Unique primes: 2, 3, 5. Number of factors: 6. Is prime? No.",
+        "**97** is prime: trial division finds no divisor, so the factorization is just **97** itself, with 1 factor. And **100** = **2 × 2 × 5 × 5** = 2² × 5² — useful when simplifying 100/360, since the common factors 2² × 5 cancel to leave 5/18.",
+      ],
+    },
+    {
+      heading: "What is prime factorization used for?",
+      paragraphs: [
+        "**Simplifying fractions**: cancel the prime factors two numbers share. **Finding GCD and LCM**: the GCD takes the lowest shared powers, the LCM the highest powers. **Checking primality**: if trial division finds no factor up to the square root, the number is prime.",
+        "Trial division is simple but slow for huge numbers — checking a 20-digit number this way could take billions of steps. That slowness is a feature, not a bug: it is what keeps RSA encryption secure. For everyday numbers under a few million, this calculator answers instantly.",
+      ],
+    },
+  ],
+
+  "surface-area-calculator": [
+    {
+      heading: "How is surface area calculated?",
+      paragraphs: [
+        "Surface area is the total area of all the outside faces of a 3D shape, measured in **square units**. This calculator covers four shapes: **sphere 4πr²**, **cylinder 2πr(r + h)**, **cone πr(r + l)** where l is the slant height, and **rectangular prism 2(lw + wh + lh)**.",
+        "The cylinder formula counts both circular ends (2πr²) plus the curved side (2πrh); the cone formula counts the circular base (πr²) plus the curved side (πrl). For the cone you enter the **vertical height**, and the calculator works out the slant height itself with Pythagoras: **l = √(r² + h²)**.",
+        "Enter dimensions in any unit — centimeters, inches, meters — and the answer comes back in that unit squared. The sphere uses only the radius (dimension 1); the other dimensions are ignored for it, and dimension 3 (depth) is used only by the rectangular prism.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Sphere, radius **5**: 4π × 5² = 4π × 25 = **314.16**. Cylinder, radius **5**, height **10**: 2π × 5 × (5 + 10) = 2π × 5 × 15 = **471.24**. Cone, radius **5**, height **10**: slant height = √(25 + 100) = √125 = 11.18, so π × 5 × (5 + 11.18) = **254.16**. Rectangular prism, **5 × 10 × 3**: 2 × (50 + 30 + 15) = **190.00**.",
+        "Notice the cylinder beats the sphere here even though both have radius 5 — the extra height adds curved-side area. And the cone has the smallest area of the rounded shapes, because its side slopes inward instead of standing straight up.",
+      ],
+    },
+    {
+      heading: "Where does surface area matter?",
+      paragraphs: [
+        "**Painting and wrapping**: the paint, paper, or fabric you need is the surface area, not the volume. **Packaging**: a box's material cost follows its surface area, which is why flat, wide boxes cost more to make than compact ones of the same volume. **Heating and cooling**: radiators and heat sinks work by surface area — fins exist to add more of it.",
+        "A useful rule: when you double every dimension, surface area grows **4 times** (2²) while volume grows 8 times (2³). That is why small objects cool faster relative to their size, and why scaling a design up changes its material needs more than you might expect.",
+      ],
+    },
+  ],
+
+  "due-date-calculator": [
+    {
+      heading: "How is a due date calculated?",
+      paragraphs: [
+        "A due date is a start date plus a duration: **due date = start date + number of days**. Enter the start date and how many days you have, and the calculator counts forward on the real calendar — across month ends and leap years — and shows the resulting date, its day of the week, and how many days from now it falls.",
+        "This is a general deadline calculator for **invoices, assignments, contracts, warranties, and project milestones** — not a pregnancy due date (that is the separate Pregnancy Due Date Calculator, which counts 280 days from the last menstrual period). For a 'net 30' invoice dated February 1, the due date is simply 30 days later.",
+        "The calculator counts **calendar days**, not business days, so weekends and holidays are included in the count. If your deadline is defined in business days, count those separately and enter the equivalent calendar span.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Start **February 1, 2025**, duration **30 days**: February 2025 has 28 days, so 30 days forward lands on **Monday, March 3, 2025** — 4 weeks and 2 days later. Start **January 1, 2025**, duration **90 days**: January (31) + February (28) + March (31) = 90 days, landing on **Tuesday, April 1, 2025**.",
+        "Leap years are handled automatically: 30 days from February 1, 2024 lands on **March 2, 2024**, one day earlier than in 2025, because February 2024 had 29 days. The calculator uses real calendar dates, so you never need to adjust for leap years by hand.",
+      ],
+    },
+    {
+      heading: "What are the common due-date conventions?",
+      paragraphs: [
+        "**Net 30 / Net 60 / Net 90** in invoicing mean payment is due that many days after the invoice date — enter the invoice date and the net days. **Rental and subscription periods** often run to the same date next month, which is not always the same as adding 30 days: 30 days from January 31 is March 2, not February 28.",
+        "For legal or contract deadlines, check whether the last day falls on a weekend or holiday — many contracts roll the deadline to the next business day. The calculator shows the calendar date; applying a business-day rule is a separate step.",
+      ],
+    },
+  ],
+
+  "countdown-calculator": [
+    {
+      heading: "How does a countdown calculator work?",
+      paragraphs: [
+        "A countdown calculator subtracts the current moment from a target date: **time remaining = target date − now**. It converts that gap from milliseconds into **days, total hours, whole weeks, and approximate months**, so you can see the same wait in whichever unit makes sense.",
+        "The conversions are straightforward: hours are days × 24 plus the leftover hours, weeks are whole 7-day blocks (any leftover days are dropped), and months use the average month length of **30.44 days** (365.25 ÷ 12), which is why the months figure is labelled approximate. If the target date has already passed, every result shows **0** rather than a negative number.",
+        "The countdown is a snapshot: it is calculated when the page loads or when you change the target date. It does not tick down in real time, so refresh the page for the latest figure.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A target **100 days** away shows **100 days**, **2,400 hours** (100 × 24), **14 weeks** (100 ÷ 7 = 14.28, rounded down), and **≈3 months** (100 ÷ 30.44 = 3.28, rounded to 3). A target **24 days** away — say December 1 to Christmas Day — shows **24 days**, **576 hours**, **3 weeks**, and **≈1 month** (24 ÷ 30.44 = 0.79, rounded to 1).",
+        "A full year out: **365 days** shows **52 weeks** and **≈12 months** (365 ÷ 30.44 = 11.99, rounded to 12). The months figure is the roughest of the four — real months run 28 to 31 days — so use days for precise planning and months only for a general sense of scale.",
+      ],
+    },
+    {
+      heading: "What are countdowns useful for?",
+      paragraphs: [
+        "Countdowns turn vague dates into concrete plans: **exam revision** (days left sets the daily study load), **travel** (weeks left sets the booking and packing schedule), **project deadlines**, and **events** like weddings and product launches, where the same number in days, weeks, and months helps different people plan.",
+        "One caution: the days figure counts **whole 24-hour periods** from now, not calendar dates, so a target 'tomorrow' can show 0 days if less than 24 hours remain. For date-only planning, the Date Calculator or Days Between Dates tool gives the calendar-day count instead.",
+      ],
+    },
+  ],
+  "currency-converter": [
+    {
+      heading: "How does currency conversion work?",
+      paragraphs: [
+        "A currency converter turns an amount in one currency into another by multiplying by the **exchange rate** between them — the price of one currency in terms of the other. This converter works through **US dollars as a middle step**: your amount is first converted to USD, then from USD into each of the other currencies, so all five results appear at once.",
+        "The five currencies covered are the **US dollar (USD), euro (EUR), British pound (GBP), Japanese yen (JPY), and Canadian dollar (CAD)**. Real exchange rates move every minute while markets are open, so this converter uses **fixed approximate rates** built into the tool — it treats 1 euro as 1.08 USD, 1 pound as 1.27 USD, 1 Canadian dollar as 0.74 USD, and 1 yen as 0.0067 USD. Those figures are reasonable for a rough estimate, but they are not live market rates and will drift from the real rate over time.",
+        "One display detail: yen results are shown as **whole yen with no decimals**, because the yen has no smaller unit in everyday use — 1 yen is the smallest amount, unlike dollars and euros, which divide into cents.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **€100** at the converter's built-in approximate rate of 1 EUR = 1.08 USD: 100 × 1.08 = **$108.00**. From that $108.00, the other results follow by division: $108.00 ÷ 1.27 = **£85.04**, $108.00 ÷ 0.0067 = **¥16,119**, and $108.00 ÷ 0.74 = **C$145.95**.",
+        "Going the other way, **$100** converts to 100 ÷ 1.08 = **€92.59**, 100 ÷ 1.27 = **£78.74**, 100 ÷ 0.0067 = **¥14,925**, and 100 ÷ 0.74 = **C$135.14**. Notice the results are not mirror images: converting there and back at the same rates returns your starting amount, but the two directions use multiplication one way and division the other.",
+      ],
+    },
+    {
+      heading: "Why the amount you actually receive is different",
+      paragraphs: [
+        "The figure a converter shows is a **mid-market style estimate**, not what a bank or exchange service will actually give you. Money changers buy currency at one rate and sell it at a slightly worse one — the gap is called the **spread** — and many also add a flat fee or commission. On a small exchange, fees can matter more than the rate itself.",
+        "That is why this converter is best used for **rough budgeting and price comparisons** — working out whether a €60 hotel room is about $65 or about $85 — rather than for deciding the exact cost of a transfer. Before exchanging real money, check a live rate from your bank or a currency service, and compare the total you will receive after fees, not just the headline rate.",
+      ],
+    },
+  ],
+
+  "speed-converter": [
+    {
+      heading: "How is speed converted between units?",
+      paragraphs: [
+        "Speed is **distance divided by time**, so converting a speed means converting the distance part and the time part together. This converter works through **metres per second (m/s)** as a base unit: your value is first converted to m/s, then from m/s into km/h, mph, knots, and feet per second.",
+        "The conversion factors are exact definitions: **1 km/h = 0.2778 m/s** (divide by 3.6), **1 mph = 0.44704 m/s** (one mile is exactly 1,609.344 metres), **1 knot = 0.514444 m/s** (one nautical mile is exactly 1,852 metres), and **1 ft/s = 0.3048 m/s**. A knot is simply a nautical mile per hour, the standard speed unit in aviation and at sea.",
+        "One limitation to know: the converter **shows feet per second in the results but does not accept it as an input** — the From list offers only km/h, mph, m/s, and knots. To convert from ft/s, multiply by 0.3048 to get m/s first, then enter that value.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**100 km/h** converts to 100 ÷ 3.6 = **27.7778 m/s**. From there: 27.7778 ÷ 0.44704 = **62.14 mph**, 27.7778 ÷ 0.514444 = **54.00 knots**, and 27.7778 ÷ 0.3048 = **91.13 ft/s**. The mile figure is the one drivers meet most: 100 km/h is just over 62 mph.",
+        "Going the other way, **60 mph** is 60 × 0.44704 = **26.8224 m/s**, or 26.8224 × 3.6 = **96.56 km/h**. For a quick mental estimate, multiply mph by 1.6 to get km/h (60 mph ≈ 96 km/h) or multiply km/h by 0.6 to get mph (100 km/h ≈ 60 mph, a little under the exact 62.14).",
+      ],
+    },
+    {
+      heading: "Speeds worth knowing",
+      paragraphs: [
+        "Everyday speeds give the units a feel: walking is about **5 km/h (3.1 mph)**, a casual cyclist rides near **20 km/h (12 mph)**, and a typical US highway limit of **65 mph is about 105 km/h**, while the UK motorway limit of **70 mph is about 113 km/h**.",
+        "At the fast end, the speed of sound in air is about **343 m/s — roughly 1,235 km/h or 767 mph** — which is why aircraft speeds are often given as a fraction of it (Mach 0.8 is 80% of the speed of sound). A commercial jet cruises near 900 km/h, about 250 m/s.",
+      ],
+    },
+  ],
+
+  "speed-calculator": [
+    {
+      heading: "How is speed calculated?",
+      paragraphs: [
+        "Average speed is the **distance travelled divided by the time it took**: speed = distance ÷ time. Enter a distance in kilometres and a time in hours and minutes, and this calculator gives your average speed in **km/h, mph, and m/s**.",
+        "The result is an **average over the whole trip**, not the speed at any single moment. A drive with a fast highway stretch and a slow stretch through town has one average speed that blends both, and every stop — traffic lights, fuel, rest breaks — counts in the time and pulls the average down.",
+        "Note what the tool does and does not do: it **calculates speed only**, from the distance and time you enter. It does not solve for distance or time, so to find a distance you would multiply speed by time yourself (distance = speed × time), and to find a time you would divide distance by speed.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **100 km** trip taking **1 hour 30 minutes**: first convert the time to hours — 1 + 30 ÷ 60 = **1.5 hours**. Then 100 ÷ 1.5 = **66.67 km/h**. In miles per hour that is 66.67 ÷ 1.60934 = **41.42 mph**, and in metres per second 66.67 ÷ 3.6 = **18.52 m/s**.",
+        "A marathon example: running **42.195 km in 4 hours** gives 42.195 ÷ 4 = **10.55 km/h** — about 6.55 mph, or a pace of roughly 5 minutes 41 seconds per kilometre.",
+      ],
+    },
+    {
+      heading: "What affects your average speed?",
+      paragraphs: [
+        "Anything that adds time without adding distance lowers your average: **stops, congestion, hills, and headwinds**. That is why a journey's average speed is almost always well below the cruising speed — a car that spends most of a trip at 100 km/h but sits in traffic for 20 minutes will average far less.",
+        "Averages also do not combine the way intuition suggests. Drive somewhere at **60 km/h and back at 40 km/h** over the same distance, and the average for the round trip is **48 km/h, not 50** — because the slower leg takes longer, it weighs more heavily in the total time. The correct figure is the total distance divided by the total time, which is what this calculator does when you enter the full trip.",
+      ],
+    },
+  ],
+
+  "half-life-calculator": [
+    {
+      heading: "What is a half-life, and how is the remaining amount calculated?",
+      paragraphs: [
+        "A **half-life** is the time it takes for half of a substance to decay away. The amount left after any time follows the formula **N = N₀ × (½)^(t/t½)**, where N₀ is the starting amount, t is the elapsed time, and t½ is the half-life — every half-life that passes halves whatever remains.",
+        "The decay is **exponential, not linear**: after 1 half-life 50% remains, after 2 half-lives 25%, after 3 half-lives 12.5%, and after 10 half-lives less than 0.1%. The same formula describes radioactive decay, the way medicines clear from the body, and any other process where a quantity halves on a fixed schedule.",
+        "Two things to keep in mind: enter the half-life and the elapsed time in the **same units** (both in years, both in days, or both in hours), because the formula only uses their ratio — and the amount mathematically **never reaches exactly zero**, it just keeps halving toward it.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Start with **100 units** of a substance with a **half-life of 5** time units, and wait **15** time units: 15 ÷ 5 = **3 half-lives** have passed. Remaining = 100 × (½)³ = 100 × 0.125 = **12.5 units**, so **87.5 units have decayed** and **12.50%** remains.",
+        "The formula also handles fractions of a half-life. Start with **200 units**, half-life **8 days**, elapsed time **20 days**: 20 ÷ 8 = **2.5 half-lives**, and 200 × 0.5^2.5 = 200 × 0.1768 = **35.3553 units** remaining — **17.68%** of the original.",
+      ],
+    },
+    {
+      heading: "Where half-life shows up in real life",
+      paragraphs: [
+        "The best-known use is **carbon-14 dating**: carbon-14 has a half-life of about 5,730 years, so measuring how much remains in once-living material tells archaeologists how long ago it died. After about 11,460 years — two half-lives — only a quarter of the original carbon-14 is left.",
+        "In medicine, a drug's half-life sets how often it must be taken: a drug with a 6-hour half-life is mostly cleared within a day, while one with a 24-hour half-life builds up with daily doses. And in nuclear waste storage, half-lives ranging from days to thousands of years decide how long material must be kept isolated — which is why a single number, the half-life, carries so much practical weight.",
+      ],
+    },
+  ],
+
+  "concrete-calculator": [
+    {
+      heading: "How much concrete do I need?",
+      paragraphs: [
+        "Concrete is ordered by **volume**: multiply length × width × depth to get cubic feet, then divide by 27 to get **cubic yards** — the unit ready-mix suppliers use. This calculator also converts the same volume into the number of **60-lb and 80-lb bags** you would need if you mix it yourself.",
+        "The depth is entered in inches and converted to feet first (depth ÷ 12), because length and width are in feet. The bag counts use the standard yields of about **0.45 cubic feet per 60-lb bag** and **0.6 cubic feet per 80-lb bag**, and both are rounded up — you cannot buy part of a bag.",
+        "One honest caveat: the calculator gives the **exact volume of a perfect slab** and adds nothing for waste. Real pours lose concrete to spillage, uneven ground, and formwork, so order **5–10% extra** on top of the cubic-yard figure — for example, treat 1.23 cubic yards as roughly 1.36 with a 10% allowance.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **10 ft × 10 ft slab, 4 inches deep**: volume = 10 × 10 × (4 ÷ 12) = 10 × 10 × 0.3333 = **33.3 cubic feet**. In cubic yards that is 33.33 ÷ 27 = **1.23 cubic yards**. In bags: 33.33 ÷ 0.45 = 74.07, rounded up to **75 sixty-pound bags**, or 33.33 ÷ 0.6 = 55.56, rounded up to **56 eighty-pound bags**.",
+        "Double the length to a **20 ft × 10 ft slab at the same 4-inch depth** and everything doubles: **66.7 cubic feet**, **2.47 cubic yards**, **149 sixty-pound bags**, or **112 eighty-pound bags**. At that size, ready-mix delivery is usually the practical choice — mixing 149 bags by hand is a very long day.",
+      ],
+    },
+    {
+      heading: "Bags or ready-mix — and how thick should the slab be?",
+      paragraphs: [
+        "**4 inches** is the standard depth for patios, walkways, and shed bases. Driveways and areas that carry vehicles are usually poured **5–6 inches** thick, and the extra depth adds up fast: a 10 × 10 slab at 6 inches needs 50 cubic feet (1.85 cubic yards) instead of 33.3.",
+        "As a rough guide, **bags suit small jobs** — a few fence post footings, a small pad — while anything around a cubic yard or more is usually cheaper and far less labor as **ready-mix delivered by truck**. Either way, the calculator's volume is the starting point for the quote.",
+        "The tool assumes a **rectangular slab**. For an L-shaped patio or a round pad, split the area into rectangles (or work out the shape's area separately) and add the volumes together — the calculator handles one rectangle at a time.",
+      ],
+    },
+  ],
+
+  "paint-calculator": [
+    {
+      heading: "How much paint do I need for a room?",
+      paragraphs: [
+        "Paint is sold by the gallon and one gallon covers about **350 square feet**, so the amount you need comes from your wall area: the calculator measures the walls, subtracts **15% for doors and windows**, multiplies by the **number of coats**, and divides by 350.",
+        "The wall area is the room's **perimeter times the wall height** — 2 × (length + width) × height. The 15% deduction for doors and windows is a flat estimate, not a measurement of your room: a room with a wall of windows will need less paint than the estimate, and a room with almost no openings will need a little more.",
+        "Gallons are always **rounded up to whole gallons**, since paint is not sold in fractions. One reading tip: the **Paintable Area** figure the calculator shows already includes your coats — for the default room it reads 734 sq ft, which is 367 sq ft of wall surface times 2 coats, not the wall surface alone.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A **15 ft × 12 ft room with 8 ft walls, painted with 2 coats**: wall area = 2 × (15 + 12) × 8 = **432 sq ft**. Subtract 15% for doors and windows (432 × 0.15 = 64.8) to get **367.2 sq ft** of paintable wall. Two coats double that to **734.4 sq ft**, and 734.4 ÷ 350 = 2.098 gallons — rounded up, **3 gallons**.",
+        "The same room with **one coat** would need only 367.2 ÷ 350 = 1.049 gallons, still rounded up to **2 gallons**. And a smaller **12 ft × 10 ft room, 8 ft walls, one coat**: wall area = 2 × (12 + 10) × 8 = **352 sq ft**, paintable area = 352 × 0.85 = **299.2 sq ft**, and 299.2 ÷ 350 = 0.855 gallons — rounded up to **1 gallon**.",
+      ],
+    },
+    {
+      heading: "What changes how much paint you need?",
+      paragraphs: [
+        "The **350 sq ft per gallon** figure assumes smooth, previously painted walls. Rough or textured surfaces, bare drywall, and porous plaster absorb more paint and can cut coverage noticeably — a coat of **primer on new drywall** seals the surface and keeps the top coats closer to their rated coverage.",
+        "**Colour changes** matter too: painting a light colour over a dark one usually needs an extra coat, and deep, rich colours sometimes need three coats for an even finish. Budget for the extra coat rather than discovering it halfway through the second gallon.",
+        "Finally, this calculator covers **walls only** — ceilings, trim, and doors need separate estimates, and ceilings in particular take more paint than people expect, because the same 350 sq ft per gallon applies to a large flat area overhead.",
+      ],
+    },
+  ],
+
+  "percentage-change-calculator": [
+    {
+      heading: "How is percentage change calculated?",
+      paragraphs: [
+        "Percentage change compares a new value with an old one: **subtract the old value from the new value, divide by the old value, and multiply by 100**. A positive result is an increase; a negative result is a decrease.",
+        "The formula is **((new − old) ÷ |old|) × 100**. The calculator divides by the **absolute value** of the old number, so a change from a negative starting value still reads sensibly — moving from −50 to −25 is a genuine improvement, and the calculator reports it as a 50% increase rather than a misleading negative figure.",
+        "One edge case: if the old value is **zero**, percentage change is mathematically undefined, because you cannot divide by zero. This calculator shows **0%** in that case rather than an error — treat it as 'no meaningful percentage change' rather than a real result.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A price rises from **$50 to $75**: change = 75 − 50 = **25**, and 25 ÷ 50 × 100 = **50% increase**. A price falls from **$80 to $60**: change = 60 − 80 = **−20**, and −20 ÷ 80 × 100 = **−25%**, a 25% decrease. In both cases the calculator also shows the absolute change (25 and −20) and the direction.",
+        "Percentage changes are **not symmetric**: a 50% rise followed by a 50% fall does not return you to the start. $100 rising 50% becomes $150, but $150 falling 50% becomes **$75** — because the second 50% is taken from a larger base. The same asymmetry is why an investment that falls 50% needs a 100% gain to recover.",
+      ],
+    },
+    {
+      heading: "Percentage change vs percentage points",
+      paragraphs: [
+        "The most common confusion is between **percentage change** and **percentage points**. If an interest rate rises from 10% to 12%, the rise is **2 percentage points** (the simple arithmetic difference), but the percentage change is (12 − 10) ÷ 10 × 100 = **20%**. Both figures are correct — they answer different questions.",
+        "In everyday use, percentage change is the right tool for **prices, pay rises, and investment returns** ('up 8% this year'), while percentage points belong to rates that are already percentages ('unemployment rose 0.5 points'). Mixing them up is how headlines mislead: a tax rate going from 20% to 25% is a 5-point rise, not a 5% rise — it is a 25% increase.",
+      ],
+    },
+  ],
+
+  "home-affordability-calculator": [
+    {
+      heading: "How much house can I afford?",
+      paragraphs: [
+        "Lenders size a mortgage by your **monthly income and debts**, not your savings alone. This calculator applies the common **28/36 rule**: your housing payment should stay under 28% of gross monthly income, and your housing payment plus other monthly debts should stay under 36% — the lower of the two caps becomes your maximum monthly payment.",
+        "From that payment, the calculator works backwards to a loan amount using the **present value of an annuity**: it asks what loan your maximum payment would pay off over **30 years (360 monthly payments)** at the interest rate you enter, with a fixed rate assumed. Your **maximum home price is that loan plus your down payment**.",
+        "Be clear about what the figure leaves out: the payment covers **principal and interest only** — property tax, homeowner's insurance, HOA dues, and PMI (usually required when the down payment is under 20%) are all extra, so your real monthly housing cost will be higher. The DTI ratio shown is the debt-to-income ratio **at the maximum payment**, and there is no input for the loan term — 30 years is fixed.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take an **$85,000** annual income, **$500** a month in other debts, a **$40,000** down payment, and a **6.5%** rate. Monthly income is $85,000 ÷ 12 = **$7,083.33**. The 28% cap is $7,083.33 × 0.28 = **$1,983.33**; the 36% cap is $7,083.33 × 0.36 − $500 = **$2,050.00**. The lower cap binds, so the maximum payment is **$1,983.33**.",
+        "At 6.5%, the monthly rate is 0.065 ÷ 12 = 0.0054167, and the annuity factor for 360 payments is about **158.21** — each dollar of monthly payment supports about $158.21 of loan. So the maximum loan is $1,983.33 × 158.21 = **$313,785**, and the maximum home price is $313,785 + $40,000 = **$353,785**, with a DTI of ($1,983.33 + $500) ÷ $7,083.33 = **35.06%**.",
+        "Debts change the answer fast. With a **$60,000** income and **$800** a month in debts, monthly income is $5,000: the 28% cap is $1,400, but the 36% cap is $5,000 × 0.36 − $800 = **$1,000** — now the debts bind, and the maximum payment drops to $1,000, supporting a loan of about **$158,211** at 6.5% and a DTI of exactly 36%.",
+      ],
+    },
+    {
+      heading: "What this estimate leaves out",
+      paragraphs: [
+        "The biggest omissions are the **recurring costs bundled into a real mortgage payment**: property taxes and homeowner's insurance are usually collected monthly by the lender, HOA dues apply in many neighbourhoods, and PMI adds a monthly premium when the down payment is under 20%. On a $350,000 home these can easily add hundreds of dollars a month on top of principal and interest.",
+        "There are also **one-off costs** the calculator does not model: closing costs, moving, and the maintenance every home needs — a common budgeting rule is to set aside roughly 1% of the home's value per year for upkeep. And lenders look beyond the ratios at your **credit score, employment history, and savings** after the down payment, so the 28/36 result is a planning guideline, not a promise of approval.",
+      ],
+    },
+  ],
 };

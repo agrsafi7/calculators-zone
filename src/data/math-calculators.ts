@@ -217,7 +217,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Multiply by 10^n, then simplify by GCD", variables: ["n = number of decimal places"] },
     howToUse: "Enter a decimal and the calculator converts it to its simplest fraction.",
-    faqs: [{ question: "Can all decimals become fractions?", answer: "All terminating and repeating decimals can. Irrational numbers like π cannot be expressed as exact fractions." }],
+    faqs: [
+      { question: "Can all decimals become fractions?", answer: "All terminating and repeating decimals can. Irrational numbers like π cannot be expressed as exact fractions." },
+      { question: "Why does 0.333 give 333/1000 instead of 1/3?", answer: "The calculator converts exactly what you type. 0.333 is a terminating decimal equal to 333/1000 — it is close to 1/3 but not equal to it. True repeating decimals cannot be typed exactly, so they need the algebraic method described in the guide." },
+      { question: "Can I convert a decimal bigger than 1?", answer: "Yes. Decimals above 1 become improper fractions: 2.5 converts to 5/2, and 1.6 converts to 8/5. As a mixed number, 5/2 is 2½." },
+    ],
     relatedCalcs: mathRelated("decimal-to-fraction-calculator"),
   },
   // 6. Fraction to Decimal
@@ -243,7 +247,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Decimal = Numerator ÷ Denominator", variables: ["Simple division"] },
     howToUse: "Enter a numerator and denominator to get the decimal equivalent.",
-    faqs: [{ question: "What about repeating decimals?", answer: "Fractions like 1/3 produce repeating decimals (0.333...). The calculator shows a rounded value." }],
+    faqs: [
+      { question: "What about repeating decimals?", answer: "Fractions like 1/3 produce repeating decimals (0.333...). The calculator shows a rounded value." },
+      { question: "Why does the calculator show 6 decimal places?", answer: "Six places is enough for everyday precision — 0.333333 is within 0.000001 of the true value of 1/3. For exact arithmetic, keep the fraction form instead of converting back and forth." },
+      { question: "Can I convert improper fractions?", answer: "Yes. An improper fraction like 9/4 converts the same way: 9 ÷ 4 = 2.25 (225%). The result is simply greater than 1." },
+    ],
     relatedCalcs: mathRelated("fraction-to-decimal-calculator"),
   },
   // 7. Scientific Calculator
@@ -579,7 +587,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "logₐ(x) = ln(x) / ln(a)", variables: ["Change of base formula", "a = base, x = value"] },
     howToUse: "Enter the value and base to compute the logarithm. Also shows log₁₀ and ln.",
-    faqs: [{ question: "What is the natural log?", answer: "ln is the logarithm base e (≈2.71828). It's fundamental in calculus and appears naturally in growth/decay processes." }],
+    faqs: [
+      { question: "What is the natural log?", answer: "ln is the logarithm base e (≈2.71828). It's fundamental in calculus and appears naturally in growth/decay processes." },
+      { question: "What is log base 2 used for?", answer: "Base-2 logs count doublings and halvings. They appear in computing (bits and binary search), music (octaves), and any process that doubles — for example, log₂(32) = 5 means 32 is 2 doubled 5 times." },
+      { question: "Why can't I take the log of 0 or a negative number?", answer: "Because no power of a positive base ever equals 0 or a negative number. 10ʸ is always positive, however large or small y is, so log₁₀(0) and log₁₀(−5) have no real-number answer and the calculator returns an error." },
+    ],
     relatedCalcs: mathRelated("log-calculator"),
   },
   // 17. Exponent Calculator
@@ -604,7 +616,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Result = x^n", variables: ["x = base", "n = exponent"] },
     howToUse: "Enter a base and exponent. The calculator computes x raised to the power n.",
-    faqs: [{ question: "What is a negative exponent?", answer: "x⁻ⁿ = 1/xⁿ. For example, 2⁻³ = 1/8 = 0.125." }],
+    faqs: [
+      { question: "What is a negative exponent?", answer: "x⁻ⁿ = 1/xⁿ. For example, 2⁻³ = 1/8 = 0.125." },
+      { question: "What is x to the power of 0?", answer: "Any nonzero number to the power of 0 equals 1: 5⁰ = 1, 100⁰ = 1. This follows from the exponent rules — xⁿ ÷ xⁿ = x⁰ = 1. (0⁰ is a special case mathematicians treat as undefined or define as 1 by convention.)" },
+      { question: "Can the exponent be a decimal?", answer: "Yes. A fractional exponent is a root: 9^0.5 = 3 (the square root of 9), and 8^(1/3) ≈ 2 (the cube root of 8). Enter the decimal directly — for example, type 0.3333 for a cube root." },
+    ],
     relatedCalcs: mathRelated("exponent-calculator"),
   },
   // 18. Square Root
@@ -753,7 +769,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Divide by smallest prime repeatedly", variables: ["Trial division method"] },
     howToUse: "Enter a positive integer ≥ 2 to see its complete prime factorization.",
-    faqs: [{ question: "Why is prime factorization important?", answer: "It's fundamental in number theory, cryptography (RSA), finding LCM/GCD, and simplifying fractions." }],
+    faqs: [
+      { question: "Why is prime factorization important?", answer: "It's fundamental in number theory, cryptography (RSA), finding LCM/GCD, and simplifying fractions." },
+      { question: "Is 1 a prime number?", answer: "No. A prime has exactly two divisors: 1 and itself. 1 has only one divisor, so it is neither prime nor composite, and it has no prime factorization — the calculator asks for a number of 2 or more." },
+      { question: "What is the difference between prime factors and all factors?", answer: "Prime factors are only the prime building blocks (for 360: 2, 2, 2, 3, 3, 5). All factors include every number that divides evenly — 360 has 24 of them, from 1 to 360. This calculator shows the prime factors." },
+    ],
     relatedCalcs: mathRelated("prime-factorization-calculator"),
   },
   // 23. GPA Calculator
@@ -1427,7 +1447,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Sphere: 4πr²; Cylinder: 2πr(r+h); Cone: πr(r+l); Prism: 2(lw+wh+lh)", variables: ["r=radius, h=height, l=slant height"] },
     howToUse: "Select a shape and enter dimensions to calculate surface area.",
-    faqs: [{ question: "What is surface area used for?", answer: "Calculating material needed to cover an object, heat transfer, painting, wrapping, and manufacturing." }],
+    faqs: [
+      { question: "What is surface area used for?", answer: "Calculating material needed to cover an object, heat transfer, painting, wrapping, and manufacturing." },
+      { question: "What is the difference between surface area and volume?", answer: "Surface area measures the outside skin of a shape (square units); volume measures the space inside it (cubic units). A sphere of radius 5 has surface area 314.16 but volume 523.60 — different quantities, different units." },
+      { question: "Do I enter the slant height or the vertical height for a cone?", answer: "Enter the vertical height. The calculator derives the slant height with Pythagoras (l = √(r² + h²)) before applying the formula. For a cone of radius 5 and height 10, the slant height is 11.18." },
+    ],
     relatedCalcs: mathRelated("surface-area-calculator"),
   },
   // 43. Sample Size Calculator

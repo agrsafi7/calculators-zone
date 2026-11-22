@@ -59,7 +59,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "WHR = Waist / Hip", variables: ["Male risk: >0.9", "Female risk: >0.85"] },
     howToUse: "Measure waist at narrowest point and hips at widest point.",
-    faqs: [{ question: "What is a healthy WHR?", answer: "Males: <0.9, Females: <0.85. Higher ratios indicate more abdominal fat and greater health risk." }],
+    faqs: [
+      { question: "What is a healthy WHR?", answer: "Males: <0.9, Females: <0.85. Higher ratios indicate more abdominal fat and greater health risk." },
+      { question: "Is WHR better than BMI?", answer: "They measure different things: BMI estimates total body mass relative to height, while WHR shows where fat is stored. Abdominal fat is more closely linked to heart disease and type 2 diabetes, so WHR adds risk information BMI misses — but it is best used alongside BMI and waist circumference, not instead of them." },
+      { question: "What if my ratio is just over the threshold?", answer: "A borderline result is a prompt to check the bigger picture, not a verdict. Re-measure carefully (a 1-2 cm error can flip the result), and if it stays above the threshold, discuss it with your doctor along with blood pressure, cholesterol, and blood sugar." },
+    ],
     relatedCalcs: healthRelated("waist-to-hip-ratio-calculator"),
   },
   {
@@ -713,7 +717,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Deficit = (Weight × 7700) / (Weeks × 7)", variables: [] },
     howToUse: "Enter weight to lose and timeframe.",
-    faqs: [{ question: "What if deficit is too high?", answer: "Extend your timeframe. Deficits over 1000 cal/day risk muscle loss and metabolic slowdown." }],
+    faqs: [
+      { question: "What if deficit is too high?", answer: "Extend your timeframe. Deficits over 1000 cal/day risk muscle loss and metabolic slowdown." },
+      { question: "Where does 7,700 calories per kilogram come from?", answer: "A kilogram of body fat stores roughly 7,700 calories of energy — the metric equivalent of the well-known 3,500 calories per pound. It is an average: real fat loss also involves some water and lean tissue, so treat it as a planning figure, not an exact conversion." },
+      { question: "Why does weight loss slow down over time?", answer: "A lighter body burns fewer calories, so the same deficit shrinks as you lose weight. Appetite hormones also shift. If progress stalls for 2-3 weeks, recalculate your deficit with your new weight or trim another 100-200 calories a day." },
+    ],
     relatedCalcs: healthRelated("daily-calorie-deficit-calculator"),
   },
   {
@@ -842,7 +850,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "VO2max = (Distance_m − 504.9) / 44.73", variables: ["Cooper 12-minute run test"] },
     howToUse: "Run as far as you can in 12 minutes and enter the distance.",
-    faqs: [{ question: "What is VO2 max?", answer: "VO2 max is the maximum rate of oxygen consumption during exercise — the gold standard of cardiovascular fitness." }],
+    faqs: [
+      { question: "What is VO2 max?", answer: "VO2 max is the maximum rate of oxygen consumption during exercise — the gold standard of cardiovascular fitness." },
+      { question: "Do I have to run for exactly 12 minutes?", answer: "Yes — the Cooper formula is calibrated for a 12-minute all-out run. If you run for a different time, the estimate is not valid. Run as far as you can in 12 minutes and enter that distance." },
+      { question: "Why doesn't changing the time change my result?", answer: "The Cooper formula uses distance only and assumes a 12-minute test, so the time field does not affect the calculation. Make sure the distance you enter is what you covered in exactly 12 minutes." },
+    ],
     relatedCalcs: healthRelated("vo2-max-calculator"),
   },
   {
@@ -1107,7 +1119,11 @@ export const healthCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Zone = HRR × % + Resting HR", variables: ["Karvonen method"] },
     howToUse: "Enter age and resting heart rate.",
-    faqs: [{ question: "Which zone burns most fat?", answer: "Zone 2 (60-70%) uses the highest percentage of fat. Higher zones burn more total calories." }],
+    faqs: [
+      { question: "Which zone burns most fat?", answer: "Zone 2 (60-70%) uses the highest percentage of fat. Higher zones burn more total calories." },
+      { question: "How do I measure my resting heart rate?", answer: "Measure it first thing in the morning, before getting out of bed: count your pulse for 60 seconds, or use a watch or chest strap. Repeat for a few mornings and use the average — a single reading can be thrown off by a bad night's sleep." },
+      { question: "Why do the zones stop at Zone 4?", answer: "This calculator shows Zones 1-4 (50-90% of heart rate reserve), which cover recovery through threshold training. Zone 5 (90-100%) is all-out effort used for short sprints and max testing." },
+    ],
     relatedCalcs: healthRelated("heart-rate-zone-calculator"),
   },
   {

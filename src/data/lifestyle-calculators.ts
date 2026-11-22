@@ -552,7 +552,11 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Volume = L × W × (D/12) cubic feet; ÷ 27 = cubic yards", variables: ["60-lb bag ≈ 0.45 cu ft", "80-lb bag ≈ 0.6 cu ft"] },
     howToUse: "Enter length, width, and depth of your concrete project.",
-    faqs: [{ question: "Should I order extra?", answer: "Yes, order 5-10% extra for waste, spillage, and uneven ground." }],
+    faqs: [
+      { question: "Should I order extra?", answer: "Yes, order 5-10% extra for waste, spillage, and uneven ground." },
+      { question: "How many 60-lb bags of concrete are in a cubic yard?", answer: "A 60-lb bag yields about 0.45 cubic feet, and a cubic yard is 27 cubic feet, so 27 ÷ 0.45 = 60 bags per cubic yard. For 80-lb bags (0.6 cu ft each), it is 27 ÷ 0.6 = 45 bags. The calculator rounds bag counts up, since you cannot buy part of a bag." },
+      { question: "How thick should a concrete slab be?", answer: "4 inches is standard for patios, walkways, and shed bases; driveways and areas carrying vehicles are usually poured 5–6 inches thick. Enter the depth in inches — the calculator converts it to feet before working out the volume." },
+    ],
     relatedCalcs: lifeRelated("concrete-calculator"),
   },
   // BTU Calculator

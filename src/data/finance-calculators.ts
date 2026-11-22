@@ -290,6 +290,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Why is most of my early payment interest?", answer: "Because interest is calculated on the remaining balance. Early on, the balance is highest, so more of each payment goes to interest. Over time, as the balance shrinks, more goes to principal." },
       { question: "How does a 15-year vs 30-year schedule compare?", answer: "A 15-year mortgage has higher monthly payments but dramatically less total interest — often saving hundreds of thousands of dollars over the life of the loan." },
+      { question: "What does an amortization schedule show?", answer: "How each monthly payment splits between interest and principal, and how the remaining balance shrinks over time. This calculator summarizes the first year and the full-term totals rather than listing every monthly row." },
+      { question: "Do extra payments really save that much?", answer: "Yes. Extra principal reduces the balance that future interest is charged on. On a $350,000 loan at 6.5%, adding $100 a month toward principal pays the loan off 42 months early and saves $62,627 in interest." },
     ],
     relatedCalcs: financeRelated("mortgage-amortization-schedule-calculator"),
   },
@@ -334,6 +336,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "How accurate is this calculation?", answer: "The Newton's method approach converges to an extremely accurate result, typically within 0.001% of the actual rate." },
       { question: "Why would I need to calculate the rate?", answer: "This is useful when a dealer or lender quotes a monthly payment without clearly stating the rate, allowing you to compare offers." },
+      { question: "Is the rate the same as APR?", answer: "No. This is the nominal interest rate implied by your payment. APR also includes fees and other charges, so it is usually slightly higher than the interest rate alone." },
+      { question: "Why does the calculator show a negative rate?", answer: "If your total payments add up to less than the loan amount, no positive interest rate can produce that payment — for example, $300 a month for 60 months only totals $18,000 on a $20,000 loan. Check that your payment, term, and loan amount are entered correctly." },
     ],
     relatedCalcs: financeRelated("interest-rate-calculator"),
   },
@@ -958,6 +962,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is a good DTI ratio?", answer: "Below 36% is considered good, with no more than 28% going to housing. Most lenders require below 43% for mortgage approval. Below 20% is excellent." },
       { question: "How can I improve my DTI?", answer: "Increase income, pay down debts, avoid new debt, or refinance to lower payments. Even small reductions can improve loan terms." },
+      { question: "What debts count toward DTI?", answer: "Recurring monthly debt payments: mortgage or rent, car payments, student loans, credit card minimums, child support, and other loans. Everyday expenses like groceries, utilities, and subscriptions do not count." },
+      { question: "Does DTI use gross or net income?", answer: "Gross income — your pay before taxes and deductions. Lenders use gross monthly income, so enter your pre-tax figure." },
     ],
     relatedCalcs: financeRelated("debt-to-income-ratio-calculator"),
   },
@@ -1178,6 +1184,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is FICA?", answer: "FICA includes Social Security tax (6.2%) and Medicare tax (1.45%), totaling 7.65%. Your employer pays an equal amount. An additional 0.9% Medicare tax applies to income over $200,000." },
       { question: "How can I increase my take-home pay?", answer: "Maximize pre-tax deductions (401k, HSA, FSA), claim all eligible tax credits, adjust your W-4 withholding, and consider tax-advantaged benefits your employer offers." },
+      { question: "Why is my take-home pay less than my salary divided by 12?", answer: "Because federal and state income tax, FICA, retirement contributions, and health insurance are deducted before you are paid. Your gross salary is what you earn; your take-home pay is what is left after those deductions." },
+      { question: "Does this calculator use tax brackets?", answer: "No. It applies the flat tax rates you enter, so it does not apply the progressive federal brackets or the standard deduction. For a closer estimate, use the effective tax rates from your last pay stub or tax return." },
     ],
     relatedCalcs: financeRelated("take-home-pay-calculator"),
   },
@@ -1359,6 +1367,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Which states have no sales tax?", answer: "Alaska, Delaware, Montana, New Hampshire, and Oregon have no state sales tax. However, some Alaska municipalities charge local sales tax." },
       { question: "Is sales tax included in the listed price?", answer: "In the US, sales tax is added at checkout and not included in shelf prices. In many other countries, VAT is included in the displayed price." },
+      { question: "How do I find the pre-tax price from a total?", answer: "Divide the total by 1 plus the tax rate. A $500 receipt total at 7% tax means a pre-tax price of $500 ÷ 1.07 = $467.29, so $32.71 of the total was tax." },
+      { question: "Do I pay sales tax on online purchases?", answer: "Usually yes. Most states now require online sellers to collect sales tax based on the delivery address, so the rate is normally the one where the item is shipped." },
     ],
     relatedCalcs: financeRelated("sales-tax-calculator"),
   },
@@ -1580,6 +1590,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is a good profit margin?", answer: "Varies by industry. Software/tech: 60-90%. Retail: 2-5%. Manufacturing: 5-10%. Services: 15-30%. Compare to industry benchmarks for context." },
       { question: "Margin vs markup — what's the difference?", answer: "Margin is profit as a percentage of revenue. Markup is profit as a percentage of cost. A 50% markup equals a 33.3% margin." },
+      { question: "Is this gross margin or net margin?", answer: "Gross margin. It uses revenue minus cost of goods only, and does not subtract operating expenses like rent, salaries, or marketing — so your net margin would be lower." },
+      { question: "Can profit margin be negative?", answer: "Yes. If your cost is higher than your selling price, you lose money on every sale and the margin is negative. A negative margin means the price does not cover the cost of goods." },
     ],
     relatedCalcs: financeRelated("profit-margin-calculator"),
   },
@@ -1615,6 +1627,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "Why is break-even analysis important?", answer: "It tells you the minimum sales volume needed to cover costs. Any sales above this point generate profit. It's essential for pricing decisions and business planning." },
       { question: "How can I lower my break-even point?", answer: "Reduce fixed costs, increase selling price, or decrease variable costs per unit. Even small changes can significantly shift the break-even point." },
+      { question: "What is contribution margin?", answer: "The amount each sale contributes toward fixed costs: selling price minus variable cost per unit. As a percentage, it is the contribution divided by the price — $30 on a $50 product is a 60% contribution margin." },
+      { question: "Why does the calculator round up the break-even units?", answer: "Because you cannot sell part of a unit. Rounding up guarantees your costs are covered: at $10,000 fixed costs and a $30 contribution, 334 units leave a $20 profit, while 333 units would leave a $10 loss." },
     ],
     relatedCalcs: financeRelated("break-even-calculator"),
   },
@@ -1819,7 +1833,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Down Payment = Home Price × %", variables: ["PMI applies if <20% down", "PMI ≈ 0.5% of loan annually"] },
     howToUse: "Enter the home price and desired down payment percentage to see the impact on your mortgage.",
-    faqs: [{ question: "Do I need 20% down?", answer: "No. FHA loans require as little as 3.5%. Conventional loans start at 3-5%. But <20% means paying PMI." }],
+    faqs: [
+      { question: "Do I need 20% down?", answer: "No. FHA loans require as little as 3.5%. Conventional loans start at 3-5%. But <20% means paying PMI." },
+      { question: "What is PMI and when does it go away?", answer: "Private mortgage insurance protects the lender on conventional loans with less than 20% down. This calculator estimates it at 0.5% of the loan per year. You can typically ask to cancel it at 20% equity, and it must be removed automatically at 22%." },
+      { question: "Is a bigger down payment always better?", answer: "A bigger down payment lowers your monthly payment, removes PMI, and reduces total interest — but not if it drains your emergency savings. Balance the down payment against keeping a cash cushion for repairs and surprises." },
+      { question: "How much is the down payment on a $400,000 house?", answer: "20% is $80,000, 10% is $40,000, and 3% is $12,000. At 6.5% for 30 years, the monthly payment plus PMI is $2,022.62 with 20% down, $2,425.44 with 10% down, and $2,614.09 with 3% down." },
+    ],
     relatedCalcs: financeRelated("down-payment-calculator"),
   },
   // 50. CD Calculator
@@ -1846,7 +1865,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "FV = P × (1 + r/n)^(nt)", variables: ["P = deposit", "r = APY", "n = compounds/year", "t = years"] },
     howToUse: "Enter deposit amount, APY, term, and compounding frequency to see your CD's maturity value.",
-    faqs: [{ question: "Is my CD insured?", answer: "Yes, CDs at FDIC-insured banks are protected up to $250,000 per depositor per institution." }],
+    faqs: [
+      { question: "Is my CD insured?", answer: "Yes, CDs at FDIC-insured banks are protected up to $250,000 per depositor per institution." },
+      { question: "What is the difference between APY and interest rate?", answer: "APY is the total yield over a year including compounding, while the interest rate is the base rate before compounding. This calculator compounds the rate you enter at the frequency you choose, so a 5% rate with monthly compounding returns $10,511.62 on $10,000 after one year — slightly more than a true 5% APY." },
+      { question: "What happens if I withdraw from a CD early?", answer: "You usually pay an early-withdrawal penalty, typically several months of interest, and some banks may reduce your principal. Only lock away money you will not need before the term ends." },
+      { question: "Should I choose a longer CD term?", answer: "Longer terms usually pay higher rates but lock your money away longer. If you are unsure when you will need the money, consider laddering — splitting it across CDs with different maturity dates." },
+    ],
     relatedCalcs: financeRelated("cd-calculator"),
   },
   // 51. Bond Calculator
@@ -2233,7 +2257,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Standard amortization: M = P × [r(1+r)^n] / [(1+r)^n − 1]", variables: ["Fixed rate, fixed term"] },
     howToUse: "Enter the loan amount, interest rate, and term to see your monthly payment.",
-    faqs: [{ question: "Is home equity loan interest deductible?", answer: "Yes, if the loan is used to buy, build, or substantially improve your home (up to $750K combined mortgage debt)." }],
+    faqs: [
+      { question: "Is home equity loan interest deductible?", answer: "Yes, if the loan is used to buy, build, or substantially improve your home (up to $750K combined mortgage debt)." },
+      { question: "How much can I borrow with a home equity loan?", answer: "It depends on your equity and the lender's loan-to-value cap — many lenders cap total borrowing at around 80-85% of the home's value. This calculator prices the loan amount you enter; it does not check your available equity." },
+      { question: "What is the difference between a home equity loan and a HELOC?", answer: "A home equity loan is a lump sum with a fixed rate and fixed monthly payment. A HELOC is a revolving line of credit with a variable rate that you draw on as needed." },
+      { question: "What happens if I cannot repay a home equity loan?", answer: "Your home is the collateral, so missed payments can ultimately lead to foreclosure. Borrow only what you can repay comfortably, and keep an emergency buffer." },
+    ],
     relatedCalcs: financeRelated("home-equity-loan-calculator"),
   },
   // 64. Mutual Fund Calculator
@@ -2319,7 +2348,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Future Cost = Current × (1 + inflation)^years", variables: ["Summed over 4 years of college"] },
     howToUse: "Enter current tuition, room & board, years until enrollment, and expected tuition inflation.",
-    faqs: [{ question: "How fast does tuition increase?", answer: "Historically 5-8% per year, outpacing general inflation. Public and private rates differ significantly." }],
+    faqs: [
+      { question: "How fast does tuition increase?", answer: "Historically 5-8% per year, outpacing general inflation. Public and private rates differ significantly." },
+      { question: "Does the calculator include financial aid?", answer: "No. It estimates the sticker price before grants, scholarships, and need-based aid, which can reduce the actual cost substantially. Use each college's net price calculator for a realistic figure." },
+      { question: "Why does it assume four years?", answer: "Four years is the standard length of a bachelor's degree. If the degree takes five years, or includes graduate school, the total will be higher." },
+      { question: "What does 'monthly savings needed' assume?", answer: "It divides the total cost by the months until enrollment and assumes your savings earn no investment return. If your savings grow, you need less each month — at a 5% return, the example total needs about $3,397 a month instead of $3,851." },
+    ],
     relatedCalcs: financeRelated("college-cost-calculator"),
   },
   // 67. Auto Lease Calculator
@@ -2354,7 +2388,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Payment = (Cap − Residual)/Term + (Cap + Residual) × MF + Tax", variables: ["APR ≈ MF × 2400"] },
     howToUse: "Enter MSRP, negotiated price, residual, money factor, and term to estimate your lease payment.",
-    faqs: [{ question: "Should I negotiate MSRP or money factor?", answer: "Both. The cap cost (negotiated price) is the biggest lever. A lower money factor also reduces your finance charges." }],
+    faqs: [
+      { question: "Should I negotiate MSRP or money factor?", answer: "Both. The cap cost (negotiated price) is the biggest lever. A lower money factor also reduces your finance charges." },
+      { question: "What is a money factor?", answer: "The money factor is the finance rate on a lease, expressed as a small decimal. Multiply it by 2,400 to get the approximate APR — a money factor of 0.0018 is about 4.32%." },
+      { question: "What is residual value?", answer: "The predicted value of the car at the end of the lease, set as a percentage of the MSRP. A higher residual means lower monthly payments, and it is usually the price you would pay to buy the car when the lease ends." },
+      { question: "Is leasing cheaper than buying?", answer: "Leasing usually has lower monthly payments, but you build no ownership or equity. Compare the total lease cost with the total cost of buying, and consider how long you keep cars and how many miles you drive." },
+    ],
     relatedCalcs: financeRelated("auto-lease-calculator"),
   },
   // 68. Boat Loan Calculator

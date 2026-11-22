@@ -352,7 +352,11 @@ const _scienceCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "N = N₀ × (½)^(t/t½)", variables: ["N₀ = initial", "t = elapsed time", "t½ = half-life"] },
     howToUse: "Enter the initial amount, half-life period, and elapsed time.",
-    faqs: [{ question: "What is a half-life?", answer: "The time for half of a radioactive substance to decay. After 1 half-life, 50% remains; after 2, 25%; etc." }],
+    faqs: [
+      { question: "What is a half-life?", answer: "The time for half of a radioactive substance to decay. After 1 half-life, 50% remains; after 2, 25%; etc." },
+      { question: "How much is left after 3 half-lives?", answer: "One-eighth: each half-life halves what remains, so after 3 half-lives (1/2)³ = 1/8 = 12.5% is left. 100 units with a 5-unit half-life leave 12.5 units after 15 units of time." },
+      { question: "Do the half-life and elapsed time need the same units?", answer: "Yes. Enter both in the same units — years, days, or hours — because the formula only uses their ratio (time ÷ half-life). Mixing units, like a half-life in days with a time in hours, gives a wrong answer." },
+    ],
     relatedCalcs: sciRelated("half-life-calculator"),
   },
   {
@@ -521,7 +525,11 @@ const _scienceCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Speed = Distance / Time", variables: ["d = distance", "t = time", "v = speed"] },
     howToUse: "Enter distance and time to calculate speed, or use to solve for any variable.",
-    faqs: [{ question: "Speed vs velocity?", answer: "Speed is scalar (magnitude only). Velocity is a vector (magnitude + direction)." }],
+    faqs: [
+      { question: "Speed vs velocity?", answer: "Speed is scalar (magnitude only). Velocity is a vector (magnitude + direction)." },
+      { question: "How do I calculate average speed?", answer: "Divide total distance by total time. A 100 km trip in 1 hour 30 minutes is 100 ÷ 1.5 = 66.67 km/h. Convert minutes to hours first (30 minutes = 0.5 hours) — the calculator does this for you from the separate hours and minutes fields." },
+      { question: "Can this calculator solve for distance or time?", answer: "No — it calculates speed only. Enter the distance and the time, and it returns the speed in km/h, mph, and m/s. To find a distance, multiply speed by time; to find a time, divide distance by speed." },
+    ],
     relatedCalcs: sciRelated("speed-calculator"),
   },
   // Mass Calculator
