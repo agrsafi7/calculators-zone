@@ -116,6 +116,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What credit score do I need for a personal loan?", answer: "Most lenders require a minimum score of 580-620. Better scores (700+) qualify for lower rates, potentially saving thousands in interest." },
       { question: "Are personal loans better than credit cards?", answer: "Personal loans typically have lower interest rates than credit cards and fixed repayment schedules, making them better for large, planned expenses or debt consolidation." },
+      { question: "What is an origination fee, and how does it affect the total cost?", answer: "An origination fee is an upfront charge, usually a percentage of the loan amount. This calculator shows the fee separately and adds it to your total cost, while the monthly payment is calculated on the full loan amount. On a $15,000 loan with a 2% fee, the fee is $300 — and at 10% over 36 months the total cost including the fee is $17,724.28." },
+      { question: "Does a longer term save money?", answer: "A longer term lowers the monthly payment but raises the total interest. Borrowing $15,000 at 10%: over 36 months the payment is $484.01 and total interest is $2,424.28; over 60 months the payment drops to $318.71 but total interest rises to $4,122.34 — an extra $1,698.06. Choose the shortest term whose payment fits your budget." },
     ],
     relatedCalcs: financeRelated("personal-loan-calculator"),
   },
@@ -589,8 +591,10 @@ const _financeCalculators: CalculatorConfig[] = [
     formula: { expression: "FV = Balance × (1+r)^n + (Your+Employer)/12 × [(1+r)^n−1]/r", variables: ["Employer Match = Salary × min(Contribution, MatchLimit) × MatchRate"] },
     howToUse: "Enter your salary, contribution percentage, employer match details, current balance, expected return, and years to retirement. See how employer matching boosts your savings.",
     faqs: [
-      { question: "Should I max out my 401k?", answer: "At minimum, contribute enough to get the full employer match — it's free money. Beyond that, consider maxing out if you can ($23,000 limit in 2024) for tax-deferred growth." },
+      { question: "Should I max out my 401k?", answer: "At minimum, contribute enough to get the full employer match — it's free money. Beyond that, consider maxing out if you can: the IRS limit for employee contributions is $24,500 in 2026 ($32,500 if you are 50 or older, with an $8,000 catch-up; $35,750 for ages 60-63 with the higher $11,250 catch-up). Check current IRS figures each year, as limits are adjusted for inflation." },
       { question: "What is employer matching?", answer: "Employer matching means your employer contributes money to your 401(k) based on your contributions. For example, a 50% match on up to 6% of salary means if you contribute 6%, they add 3%." },
+      { question: "How much is the employer match actually worth?", answer: "A lot more than the yearly amount suggests, because the match compounds too. On a $75,000 salary, contributing 10% with a 50% match up to 6% means your employer adds $2,250 a year — $67,500 over 30 years. At a 7% return, that match grows the final balance by $228,744.56 compared with saving without any match." },
+      { question: "Does this calculator account for salary increases or taxes?", answer: "No. It assumes your salary and contribution rate stay constant, compounds monthly at the return you enter, and shows the pre-tax balance. Withdrawals from a traditional 401(k) are taxed as income in retirement, so the spendable amount will be lower than the projected balance." },
     ],
     relatedCalcs: financeRelated("401k-calculator"),
   },
@@ -629,7 +633,9 @@ const _financeCalculators: CalculatorConfig[] = [
     howToUse: "Enter your current balance, annual contribution, expected return, years to retirement, and expected tax rate. Compare Traditional vs Roth IRA outcomes.",
     faqs: [
       { question: "Roth vs Traditional IRA — which is better?", answer: "If you expect to be in a higher tax bracket in retirement, Roth is better (pay taxes now at lower rate). If you expect lower taxes in retirement, Traditional saves you more." },
-      { question: "What are the IRA contribution limits?", answer: "For 2024, the limit is $7,000/year ($8,000 if age 50+). These limits are adjusted periodically for inflation." },
+      { question: "What are the IRA contribution limits?", answer: "For 2026, the combined limit across all your Traditional and Roth IRAs is $7,500 per year if you are under 50, or $8,600 if you are 50 or older (a $1,100 catch-up). The limit is also capped at your taxable compensation for the year. Check current IRS figures each year, as limits are adjusted for inflation." },
+      { question: "How does this calculator compare Roth and Traditional IRAs?", answer: "It grows both accounts at the same return, then shows the after-tax result: the Roth keeps the full balance (qualified withdrawals are tax-free), while the Traditional balance is reduced by your expected retirement tax rate. For example, a $782,565 balance at a 22% retirement tax rate leaves $610,401 after tax in a Traditional IRA. Note it does not model the upfront tax deduction a Traditional contribution may give you." },
+      { question: "What happens if I contribute more than the limit?", answer: "Excess IRA contributions are hit with a 6% excise tax for each year the excess stays in the account. If you over-contribute, remove the excess (plus any earnings on it) before the tax-filing deadline for that year to avoid the penalty." },
     ],
     relatedCalcs: financeRelated("ira-calculator"),
   },
@@ -695,6 +701,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is the time value of money?", answer: "Money available today is worth more than the same amount in the future because it can be invested to earn returns. Present value quantifies this difference." },
       { question: "How do I choose a discount rate?", answer: "Use your expected rate of return on alternative investments, the inflation rate, or your required rate of return. Higher rates result in lower present values." },
+      { question: "How much is $100,000 in 10 years worth today?", answer: "It depends on the discount rate: at 6% it is worth $55,839.48 today; at 3% it is worth $74,409.39; at 9% only $42,241.08. The rate you choose changes the answer far more than most people expect, so pick one that reflects a realistic alternative return." },
+      { question: "Present value vs future value — what is the difference?", answer: "Present value discounts a future sum back to today; future value compounds today's money forward. They are the same formula rearranged: PV = FV / (1 + r)^n, and FV = PV × (1 + r)^n. Use present value to compare future payments, and future value to project what savings will grow to." },
     ],
     relatedCalcs: financeRelated("present-value-calculator"),
   },
@@ -1273,6 +1281,8 @@ const _financeCalculators: CalculatorConfig[] = [
     faqs: [
       { question: "What is the difference between taxable and gross income?", answer: "Gross income is your total earnings. Taxable income is what's left after subtracting deductions (standard or itemized) and any pre-tax contributions." },
       { question: "How do tax brackets work?", answer: "The US uses progressive brackets. Only the income within each bracket is taxed at that rate — not your entire income. Moving into a higher bracket only affects the income above that threshold." },
+      { question: "What is the difference between marginal and effective tax rate?", answer: "Your marginal rate is the rate on your last dollar of income; your effective rate is total tax divided by total income. On $75,000 of taxable income as a single filer, the marginal rate is 22% but the effective rate is only 15.40% ($11,553 of tax) — because the lower brackets tax most of the income at 10% and 12%." },
+      { question: "Which tax year do this calculator's brackets come from?", answer: "This calculator uses the 2024 federal brackets (10% to 37%) for single filers and married couples filing jointly. The IRS adjusts the bracket thresholds for inflation each year — for example, the top of the 10% single bracket is $11,600 for 2024 but $12,400 for 2026 — so for a current-year estimate, check the latest IRS figures. It covers federal income tax only, not state tax or payroll taxes." },
     ],
     relatedCalcs: financeRelated("income-tax-calculator"),
   },
@@ -1738,7 +1748,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Recalculate amortization with extra principal payments each month", variables: ["Extra payments reduce principal faster"] },
     howToUse: "Enter your remaining balance, rate, term, and extra monthly payment to see how much time and interest you save.",
-    faqs: [{ question: "Do extra payments go to principal?", answer: "Yes, extra payments typically reduce the principal directly, which means less interest accrues in future months." }],
+    faqs: [
+      { question: "Do extra payments go to principal?", answer: "Yes, extra payments typically reduce the principal directly, which means less interest accrues in future months." },
+      { question: "How much can an extra $200 a month really save?", answer: "A lot. On a $250,000 balance at 6.5% with 25 years left, adding $200 a month pays the loan off in 19 years and 6 months instead of 25 — saving 5 years and 6 months, and $64,927.88 in interest. The extra payments total only $46,800, so every extra dollar saves about $1.39 in interest." },
+      { question: "Should I pay off my mortgage early or invest the extra money?", answer: "It depends on your rate and your risk tolerance. Paying down a 6.5% mortgage is a guaranteed 6.5% return; investing might earn more but is not guaranteed. Pay off higher-interest debt (like credit cards) first, keep an emergency fund, and then weigh the guaranteed saving against your expected investment return." },
+      { question: "Will my lender charge a prepayment penalty?", answer: "Most modern US mortgages have no prepayment penalty, but check your loan agreement to be sure. Also confirm with your servicer that extra payments are applied to principal — some lenders hold them as advance payments unless you specify otherwise." },
+    ],
     relatedCalcs: financeRelated("mortgage-payoff-calculator"),
   },
   // 48. House Affordability Calculator
@@ -1972,7 +1987,12 @@ const _financeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Category = Income × Percentage", variables: ["50/30/20 is a popular guideline"] },
     howToUse: "Enter your monthly income and adjust the percentages for needs, wants, and savings.",
-    faqs: [{ question: "What counts as needs?", answer: "Housing, utilities, groceries, insurance, minimum debt payments, transportation — essentials you must pay." }],
+    faqs: [
+      { question: "What counts as needs?", answer: "Housing, utilities, groceries, insurance, minimum debt payments, transportation — essentials you must pay." },
+      { question: "What is the 50/30/20 rule?", answer: "A simple budgeting guideline: 50% of income to needs, 30% to wants, and 20% to savings and extra debt payments. On $5,000 a month that is $2,500 for needs, $1,500 for wants, and $1,000 for savings — $12,000 saved in a year. The percentages are adjustable: in a high-cost city, 60/25/15 may be more realistic." },
+      { question: "What if my percentages do not add up to 100%?", answer: "The calculator multiplies each percentage by your income independently, so if your percentages add up to more than 100% you are budgeting more than you earn. Adjust the three percentages so they total 100% — that is the plan that actually fits your income." },
+      { question: "Should I use take-home pay or gross income?", answer: "Use take-home pay — the money that actually lands in your account after tax and payroll deductions. Budgeting from gross income overstates what you have to spend and leaves you short every month." },
+    ],
     relatedCalcs: financeRelated("budget-calculator"),
   },
   // 56. Debt Consolidation Calculator

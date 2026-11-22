@@ -190,7 +190,11 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Count weekdays (Mon-Fri) between dates", variables: ["Excludes Saturday and Sunday"] },
     howToUse: "Enter start and end dates. The calculator counts only Mon-Fri as business days.",
-    faqs: [{ question: "Does it exclude holidays?", answer: "No, only weekends. Public holidays vary by country and are not excluded." }],
+    faqs: [
+      { question: "Does it exclude holidays?", answer: "No, only weekends. Public holidays vary by country and are not excluded." },
+      { question: "Does the count include the start and end dates?", answer: "Yes — both endpoints count if they fall on weekdays. From Monday January 6 to Friday January 31, 2025, the calculator counts 20 business days and 6 weekend days, covering the whole span inclusive." },
+      { question: "How are work weeks calculated?", answer: "Work weeks are business days divided by 5. Twenty business days equals 4.0 work weeks. It is a simple conversion, not a count of calendar weeks, so a span starting mid-week still converts cleanly." },
+    ],
     relatedCalcs: dtRelated("business-days-calculator"),
   },
   {
@@ -400,7 +404,11 @@ const _datetimeCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Result = Start Date + Days", variables: ["Negative days subtracts"] },
     howToUse: "Enter a starting date and number of days to add (or subtract with negative values).",
-    faqs: [{ question: "Does it handle leap years?", answer: "Yes, JavaScript's Date object handles leap years automatically." }],
+    faqs: [
+      { question: "Does it handle leap years?", answer: "Yes, JavaScript's Date object handles leap years automatically." },
+      { question: "How do I subtract days from a date?", answer: "Enter a negative number of days. For example, January 1, 2025 minus 90 days is October 3, 2024. The result date and day of the week are shown the same way as for adding days." },
+      { question: "What does the weeks breakdown mean?", answer: "It restates the day count in whole weeks plus leftover days. Adding 90 days is 12 weeks and 6 days (12 x 7 = 84, plus 6). It is the same span, just easier to picture." },
+    ],
     relatedCalcs: dtRelated("add-subtract-days-calculator"),
   },
   {

@@ -54,7 +54,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to base unit (meters), then to target", variables: ["1 ft = 0.3048 m", "1 mi = 1609.344 m"] },
     howToUse: "Enter a value and select the source unit. All conversions are shown simultaneously.",
-    faqs: [{ question: "How many feet in a meter?", answer: "1 meter = 3.28084 feet." }],
+    faqs: [
+      { question: "How many feet are in a meter?", answer: "1 meter = 3.28084 feet (exactly 100 / 30.48, since 1 foot is defined as 0.3048 m). So 100 m is 328.084 ft." },
+      { question: "How do I convert miles to kilometers?", answer: "Multiply miles by 1.609344 - the exact definition of a mile. A 5-mile run is 5 x 1.609344 = 8.04672 km. To go the other way, divide kilometers by 1.609344 (or multiply by 0.621371)." },
+      { question: "Why do conversions sometimes show many decimal places?", answer: "Metric and imperial units rarely divide evenly, so exact conversions produce long decimals. This converter rounds results to 4 decimal places (6 for kilometers and miles), which is more precision than most everyday uses need." },
+    ],
     relatedCalcs: convRelated("length-converter"),
   },
   {
@@ -81,9 +85,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Convert to base (kg), then to target", variables: ["1 lb = 0.4536 kg", "1 stone = 6.35 kg"] },
     howToUse: "Enter a weight and source unit to see all conversions.",
-    faqs: [{ question: "How many pounds in a kilogram?", answer: "1 kg = 2.20462 lbs." },
-      { question: "Mass vs weight?", answer: "Mass is constant everywhere; weight depends on gravity. On Earth's surface they're used interchangeably." },
-      { question: "How many kilograms are in a metric ton?", answer: "1 metric ton = 1,000 kg = 1,000,000 grams. A small car weighs roughly 1 to 1.5 metric tons." }],
+    faqs: [
+      { question: "How many pounds in a kilogram?", answer: "1 kg = 2.20462 lb (from the exact definition 1 lb = 0.45359237 kg). So 70 kg is about 154.32 lb. This converter uses the rounded factor 0.453592, which agrees with the exact value to four decimal places." },
+      { question: "Mass vs weight?", answer: "Mass is constant everywhere; weight is the force gravity exerts on that mass, so it changes with gravity - you would weigh less on the Moon but your mass would be unchanged. On Earth's surface the two are used interchangeably, and this converter treats them as the same thing." },
+      { question: "How many kilograms are in a metric ton?", answer: "1 metric ton = 1,000 kg = 1,000,000 grams. A small car weighs roughly 1 to 1.5 metric tons. Note that a US short ton is different: 2,000 lb, or about 907.18 kg." },
+    ],
     relatedCalcs: convRelated("weight-converter"),
   },
   {
@@ -108,7 +114,11 @@ const _conversionCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "°F = °C × 9/5 + 32; K = °C + 273.15", variables: ["°C = (°F − 32) × 5/9"] },
     howToUse: "Enter a temperature and select its scale to see all conversions.",
-    faqs: [{ question: "What is absolute zero?", answer: "0 K = −273.15 °C = −459.67 °F. It's the theoretical lowest temperature." }],
+    faqs: [
+      { question: "How do you convert Celsius to Fahrenheit?", answer: "Multiply by 9/5 and add 32: F = C x 9/5 + 32. So 100 C (boiling water) is 212 F, and 0 C (freezing) is 32 F." },
+      { question: "What is absolute zero?", answer: "0 K = -273.15 C = -459.67 F. It is the theoretical lowest temperature, the point at which particles have minimal thermal motion. Nothing can be colder than 0 K." },
+      { question: "Is there a temperature where Celsius and Fahrenheit are the same?", answer: "Yes: -40 C = -40 F. It is the only point where the two scales agree, and it is a handy check that a conversion is working." },
+    ],
     relatedCalcs: convRelated("temperature-converter"),
   },
   {

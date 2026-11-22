@@ -84,7 +84,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "% Increase = ((New − Original) / Original) × 100", variables: ["New = New Value", "Original = Original Value"] },
     howToUse: "Enter the original and new values. The calculator shows the percentage and absolute increase.",
-    faqs: [{ question: "Can this show negative results?", answer: "Yes — a negative result means the value actually decreased." }],
+    faqs: [
+      { question: "How do you calculate percentage increase?", answer: "Subtract the original value from the new value, divide by the original value, and multiply by 100. A salary rising from $50,000 to $55,000 is (55,000 - 50,000) / 50,000 x 100 = 10%." },
+      { question: "Can the percentage increase be negative?", answer: "Yes. A negative result means the value actually went down - for example, 100 falling to 90 is a -10% 'increase'. If you expect a decrease, the percentage decrease calculator expresses the same change as a positive 10%." },
+      { question: "What if the original value is zero?", answer: "Percentage increase is undefined when the starting value is zero, because you would be dividing by zero. This calculator returns 0% in that case rather than an error, so treat a 0% result from a zero start as 'not defined', not as no change." },
+    ],
     relatedCalcs: mathRelated("percentage-increase-calculator"),
   },
   // 2. Percentage Decrease
@@ -110,7 +114,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "% Decrease = ((Original − New) / Original) × 100", variables: ["Original = Starting Value", "New = Ending Value"] },
     howToUse: "Enter the original value and the new lower value.",
-    faqs: [{ question: "What if the new value is higher?", answer: "The result will be negative, indicating an increase rather than a decrease." }],
+    faqs: [
+      { question: "How do you calculate percentage decrease?", answer: "Subtract the new value from the original, divide by the original value, and multiply by 100. A jacket falling from $80 to $64 is (80 - 64) / 80 x 100 = 20% off." },
+      { question: "What if the new value is higher than the original?", answer: "The result is negative, which means the value increased rather than decreased. For example, 100 rising to 110 gives -10% on this calculator - the percentage increase calculator would show it as a 10% increase." },
+      { question: "Is percentage decrease the same as percentage change?", answer: "Almost. Percentage change uses the same formula but keeps the sign: a rise is positive, a fall is negative. This calculator frames the result as a decrease, so a fall shows as a positive number - a price dropping 20% reads as 20%, not -20%." },
+    ],
     relatedCalcs: mathRelated("percentage-decrease-calculator"),
   },
   // 3. Fraction Calculator
@@ -348,7 +356,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Mean = Σx / n; Median = middle value; Mode = most frequent", variables: ["n = number of values"] },
     howToUse: "Enter up to 5 values to find the mean, median, mode, and range.",
-    faqs: [{ question: "What if there are multiple modes?", answer: "A data set can be bimodal or multimodal if multiple values share the highest frequency." }],
+    faqs: [
+      { question: "What is the difference between mean, median, and mode?", answer: "The mean is the average - add all values and divide by how many there are. The median is the middle value when the data is sorted. The mode is the value that appears most often. For 5, 8, 8, 12, 15 the mean is 9.6, the median is 8, and the mode is 8." },
+      { question: "When is the median better than the mean?", answer: "When the data has outliers. A single very large value pulls the mean up but barely moves the median, which is why house prices and incomes are usually reported as medians. If the mean and median are far apart, the data is skewed." },
+      { question: "What does 'No mode' mean?", answer: "Every value in your set appears exactly once, so no value is most frequent. A set can also have two or more modes (bimodal or multimodal) when several values tie for the highest frequency - this calculator lists all of them." },
+    ],
     relatedCalcs: mathRelated("mean-median-mode-calculator"),
   },
   // 10. Probability
@@ -877,7 +889,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "m = (y₂−y₁) / (x₂−x₁)", variables: ["Two points: (x₁,y₁) and (x₂,y₂)"] },
     howToUse: "Enter two points (x₁,y₁) and (x₂,y₂) to find the slope and line equation.",
-    faqs: [{ question: "What does undefined slope mean?", answer: "A vertical line (x₁=x₂) has undefined slope because you'd divide by zero." }],
+    faqs: [
+      { question: "What does the slope of a line mean?", answer: "Slope measures steepness: how much y changes for each unit x changes. A slope of 2 means y rises 2 for every 1 across. A positive slope rises left to right, a negative slope falls, and a zero slope is a flat horizontal line." },
+      { question: "What does undefined slope mean?", answer: "A vertical line (x1 = x2) has undefined slope because the formula divides by zero - the x-values do not change at all. This calculator reports 'Undefined (vertical line)' for that case." },
+      { question: "How do I get the equation of the line?", answer: "Once you have the slope m and the y-intercept b, the equation is y = mx + b. For the points (1, 2) and (4, 8), the slope is 2 and the intercept is 0, so the line is y = 2x. The calculator also gives the distance between the points (6.7082 here)." },
+    ],
     relatedCalcs: mathRelated("slope-calculator"),
   },
   // 27. Distance Formula
@@ -1114,7 +1130,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Divide both by GCD to simplify", variables: ["a:b = (a/GCD):(b/GCD)"] },
     howToUse: "Enter two numbers to simplify their ratio.",
-    faqs: [{ question: "What is a ratio?", answer: "A ratio compares two quantities. 3:4 means 'for every 3 of A, there are 4 of B.'" }],
+    faqs: [
+      { question: "How do you simplify a ratio?", answer: "Divide both numbers by their greatest common divisor (GCD). For 12:18, the GCD is 6, so 12 / 6 = 2 and 18 / 6 = 3, giving 2:3. This calculator rounds decimal inputs to whole numbers before simplifying." },
+      { question: "What is the difference between a ratio and a fraction?", answer: "A ratio compares two parts (2:3 means 2 parts of A for every 3 parts of B), while a fraction expresses one part against a whole or a division. The ratio 2:3 equals the fraction 2/3 = 0.6667, and A is 2 out of 5 total parts (40%)." },
+      { question: "How do I use a ratio in a recipe or scale?", answer: "Multiply both sides by the same number to scale up without changing the proportion. A 2:3 mix scaled x10 becomes 20:30 - for example, 20 g of one ingredient to 30 g of another." },
+    ],
     relatedCalcs: mathRelated("ratio-calculator"),
   },
   // 35. Z-Score Calculator
@@ -1167,7 +1187,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Area = πr²; Circumference = 2πr; Diameter = 2r", variables: ["r = radius"] },
     howToUse: "Enter the radius to calculate area, circumference, and diameter.",
-    faqs: [{ question: "What is π?", answer: "Pi (π) ≈ 3.14159... is the ratio of a circle's circumference to its diameter. It's an irrational number." }],
+    faqs: [
+      { question: "How do you find the area of a circle?", answer: "Multiply pi by the square of the radius: A = pi x r^2. For a radius of 5, A = 3.14159 x 25 = 78.54 square units." },
+      { question: "What is the difference between circumference and diameter?", answer: "The diameter is the straight line across the circle through its centre (2r), while the circumference is the distance around it (2 x pi x r, or pi x diameter). For a radius of 5, the diameter is 10 and the circumference is 31.42." },
+      { question: "What if I know the diameter or circumference instead of the radius?", answer: "Divide the diameter by 2 to get the radius, or divide the circumference by 2 x pi (about 6.283). This calculator takes the radius only, so convert first and then enter the radius." },
+    ],
     relatedCalcs: mathRelated("circle-calculator"),
   },
   // 37. Pythagorean Theorem Calculator
@@ -1305,7 +1329,11 @@ const _mathCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Arithmetic: Σx/n; Geometric: (Πx)^(1/n); Harmonic: n/Σ(1/x)", variables: ["n = count of values"] },
     howToUse: "Enter up to 5 values to calculate different types of averages.",
-    faqs: [{ question: "Which average should I use?", answer: "Arithmetic for most cases. Geometric for rates of change. Harmonic for rates and ratios (like speed)." }],
+    faqs: [
+      { question: "Which average should I use?", answer: "The arithmetic mean is the everyday average and suits most data. Use the geometric mean for growth rates and ratios that compound, and the harmonic mean for rates like speed over equal distances." },
+      { question: "Why are the three means different?", answer: "Each weights the data differently. For 10, 20, 30, 40, 50 the arithmetic mean is 30, the geometric mean is 26.05, and the harmonic mean is 21.90. The geometric mean is always less than or equal to the arithmetic mean, and the harmonic mean is the smallest of the three." },
+      { question: "Can I use zero or negative numbers?", answer: "The arithmetic mean handles any numbers, but the geometric mean needs positive values - a zero makes it 0, and negatives give no real result. The harmonic mean also breaks with a zero (division by zero). For data with zeros or negatives, stick to the arithmetic mean." },
+    ],
     relatedCalcs: mathRelated("average-calculator"),
   },
   // 40. Right Triangle Calculator

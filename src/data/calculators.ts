@@ -81,7 +81,7 @@ export const categories: CategoryInfo[] = [
     slug: "other",
     icon: "layers",
     color: "hsl(45 93% 47%)",
-    description: "Automotive, real estate, cooking, DIY, weather, crafts, and 100+ more specialized calculators.",
+    description: "Automotive, real estate, cooking, DIY, weather, crafts, and more — 59 specialized calculators in all.",
     tags: ["Fuel Cost", "Property Tax", "Concrete"],
   },
 ];

@@ -862,7 +862,11 @@ const _lifestyleCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Boys: (Father + Mother + 13) / 2; Girls: (Father + Mother − 13) / 2", variables: ["Mid-parental height method", "±5cm accuracy"] },
     howToUse: "Enter the child's gender and both parents' heights to predict adult height.",
-    faqs: [{ question: "How accurate is this?", answer: "Mid-parental height predicts within ±5cm for ~50% of children. Genetics, nutrition, and health also play roles." }],
+    faqs: [
+      { question: "How accurate is this?", answer: "Mid-parental height predicts within ±5cm for ~50% of children. Genetics, nutrition, and health also play roles." },
+      { question: "How does the mid-parental height method work?", answer: "Average both parents' heights, then add 6.5 cm for a boy or subtract 6.5 cm for a girl. With a 180 cm father and a 168 cm mother, a boy is predicted at 180.5 cm and a girl at 167.5 cm." },
+      { question: "What can make a child taller or shorter than predicted?", answer: "Nutrition, overall health, the timing of puberty, and genes from the wider family all play a part. The ±5 cm range covers about half of children. If a child's growth seems unusually fast or slow, a paediatrician can check it against growth charts." },
+    ],
     relatedCalcs: lifeRelated("height-calculator"),
   },
   // Shoe Size Calculator (multi-directional converter)

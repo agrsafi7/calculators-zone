@@ -290,7 +290,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "CAGR = (End/Begin)^(1/Years) − 1", variables: ["Smooths out year-to-year volatility"] },
     howToUse: "Enter beginning value, ending value, and number of years.",
-    faqs: [{ question: "Why use CAGR?", answer: "CAGR gives a smoothed annual rate that accounts for compounding, more useful than simple average returns." }],
+    faqs: [
+      { question: "Why use CAGR?", answer: "CAGR gives a smoothed annual rate that accounts for compounding, more useful than simple average returns." },
+      { question: "What does a 20.11% CAGR mean in practice?", answer: "It means an investment that grew from $10,000 to $25,000 over 5 years compounded at 20.11% a year — a 150% total return and a 2.50× multiple. Every year the balance grew by 20.11% of the previous year's balance, not of the original $10,000." },
+      { question: "Why is CAGR different from the average of yearly returns?", answer: "A simple average ignores compounding. An investment that gains 50% one year and loses 50% the next averages 0% — but $100 becomes $150, then $75, a 25% loss. The CAGR over those two years is -13.40%, which reflects what actually happened to your money." },
+      { question: "Does CAGR show risk or volatility?", answer: "No. CAGR smooths the whole period into one steady rate, so two investments with the same CAGR can have very different rides — one steady, one with wild swings. Use CAGR to compare long-term growth, and look at volatility separately to judge the risk taken." },
+    ],
     relatedCalcs: financeRelated("cagr-calculator"),
   },
   {
@@ -1533,7 +1538,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Target = Monthly Expenses × Months of Coverage", variables: [] },
     howToUse: "Enter monthly expenses, desired coverage months, and current savings.",
-    faqs: [{ question: "How many months should I save?", answer: "3-6 months for stable employment, 6-12 months for self-employed or variable income." }],
+    faqs: [
+      { question: "How many months should I save?", answer: "3-6 months for stable employment, 6-12 months for self-employed or variable income." },
+      { question: "How much do I actually need in my emergency fund?", answer: "Multiply your monthly expenses by the months of coverage you want. At $4,000 a month in expenses and 6 months of coverage, the target is $24,000. If you already have $5,000 saved, the gap is $19,000 — and closing it in 12 months means setting aside $1,583.33 a month." },
+      { question: "Where should I keep my emergency fund?", answer: "In a high-yield savings account, separate from your everyday spending money and reachable within a day or two. It should not be invested in the stock market — the point is that the money is there in full exactly when you need it, even during a downturn." },
+      { question: "How fast should I build my emergency fund?", answer: "Start with a small automatic transfer every payday — even $100 a month builds the habit — and increase it when you can. This calculator shows the monthly amount needed to close your gap in 12 months, which gives you a concrete target to work toward." },
+    ],
     relatedCalcs: financeRelated("emergency-fund-calculator"),
   },
   {
@@ -1562,7 +1572,12 @@ export const financeCalculatorsExtended: CalculatorConfig[] = [
     },
     formula: { expression: "Net Worth = Total Assets − Total Liabilities", variables: [] },
     howToUse: "Enter all your assets and debts to calculate net worth.",
-    faqs: [{ question: "What is a good net worth?", answer: "A common benchmark: your age × income / 10. Net worth grows exponentially with consistent saving and investing." }],
+    faqs: [
+      { question: "What is a good net worth?", answer: "A common benchmark: your age × income / 10. Net worth grows exponentially with consistent saving and investing." },
+      { question: "What counts as an asset or a liability?", answer: "Assets are what you own: cash and savings, investments, property at current market value, vehicles, and other valuables. Liabilities are what you owe: mortgage, car loans, student loans, and credit card balances. Net worth is simply total assets minus total liabilities." },
+      { question: "Can my net worth be negative?", answer: "Yes — and it is common early in a career, when student loans or a large mortgage outweigh savings. A negative net worth is a starting point, not a verdict: what matters is the trend. Recheck it every few months and watch the number move in the right direction." },
+      { question: "What is the debt-to-asset ratio?", answer: "It is your total liabilities divided by your total assets, showing how much of what you own is funded by debt. With $265,000 of debts against $505,000 of assets, the ratio is 52.48% — just over half. A lower ratio means more of your assets are truly yours." },
+    ],
     relatedCalcs: financeRelated("net-worth-calculator"),
   },
   {

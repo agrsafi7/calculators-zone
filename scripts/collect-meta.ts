@@ -186,7 +186,12 @@ for (const u of uniqueCalculators) {
     path,
     title: `${override?.title ?? cfg?.name ?? u.name} | TheCalculator.us`,
     description: override?.description ?? cfg?.metaDescription ?? u.description,
-    faqs: (override?.faqs ?? cfg?.faqs)?.slice(0, 6),
+    // Cap 12 (was 6): the FAQPage schema must list the same questions the page
+    // visibly shows. The five science-template pages carry 8–9 visible FAQs
+    // (and scientific-notation / law-of-cosines 8 each); a cap of 6 truncated
+    // their schema. No other page has more than 4 FAQs, so only those seven
+    // pages change.
+    faqs: (override?.faqs ?? cfg?.faqs)?.slice(0, 12),
     breadcrumbs,
   });
 }

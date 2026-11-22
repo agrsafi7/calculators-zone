@@ -2303,4 +2303,797 @@ export const calculatorGuides: Record<string, GuideSection[]> = {
       ],
     },
   ],
+
+  "personal-loan-calculator": [
+    {
+      heading: "How personal loan payments are calculated",
+      paragraphs: [
+        "A personal loan is an **amortizing loan**: you borrow a lump sum and repay it in equal monthly installments over a fixed term. Each payment is split into an interest portion and a principal portion, and the split shifts every month — early payments are mostly interest, later payments mostly principal.",
+        "Lenders use the standard amortization formula: **M = P × r(1+r)ⁿ / ((1+r)ⁿ − 1)**, where M is the monthly payment, P is the loan amount, r is the monthly interest rate (annual rate ÷ 12), and n is the number of monthly payments. This calculator applies that formula instantly, so changing the rate or term shows the new payment right away.",
+        "Many personal loans also charge an **origination fee**, usually 1–8% of the loan amount. This calculator shows the fee separately and adds it to your total cost, while the monthly payment is calculated on the full loan amount. That matters when comparing offers: a loan with a lower rate but a high fee can cost more overall than a slightly higher-rate loan with no fee.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Borrow **$15,000 at 10% for 36 months** with a 2% origination fee. The monthly rate is 0.10 ÷ 12 = 0.008333. Plugging into the formula gives a monthly payment of **$484.01**.",
+        "Look at the first payment: interest = $15,000 × 0.008333 = **$125.00**, so only **$359.01** reduces your balance. Over the full 36 months you pay **$2,424.28 in interest**, plus a **$300 origination fee** (2% of $15,000), for a total cost of **$17,724.28**.",
+        "Stretch the same loan to 60 months and the payment falls to **$318.71** — but total interest rises to **$4,122.34**, an extra **$1,698.06** for the convenience of the lower payment. That trade-off is exactly what this calculator is for.",
+      ],
+    },
+    {
+      heading: "How to borrow less expensively",
+      paragraphs: [
+        "Three levers control what a personal loan costs: the **rate**, the **term**, and the **fees**. The rate is usually the biggest — improving your credit score before you apply, or getting quotes from several lenders, can move it by points, not fractions.",
+        "Choose the **shortest term whose payment fits your budget**. A longer term feels easier month to month but quietly adds thousands in interest, as the worked example shows. If you can afford the 36-month payment, take it over the 60-month one.",
+        "Finally, read the fee line. An origination fee is charged whether or not you finish the loan, and some lenders deduct it from the amount you receive — so a $15,000 loan with a 2% fee may only put $14,700 in your account while you still repay the full $15,000. Enter the fee in this calculator and compare the **total cost**, not just the monthly payment.",
+      ],
+    },
+  ],
+
+  "mortgage-payoff-calculator": [
+    {
+      heading: "How extra payments shorten a mortgage",
+      paragraphs: [
+        "A mortgage payment is mostly interest in the early years, because interest is charged on the remaining balance each month. On a **$250,000 balance at 6.5%**, the first month's interest alone is about $1,354 — most of the payment never touches the principal.",
+        "Extra payments break that pattern. When you pay more than the scheduled amount, the extra goes **straight to principal**, which shrinks the balance that next month's interest is charged on. The effect compounds: a smaller balance means less interest, which means more of each regular payment goes to principal too.",
+        "This calculator rebuilds your amortization month by month with the extra payment included, so the payoff date and interest saved it shows are the real result of that compounding — not a rough estimate.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$250,000 balance at 6.5% with 25 years left**. The scheduled monthly payment is **$1,688.02**, and paying it off on schedule would cost **$256,405.37 in total interest** — more than the balance itself.",
+        "Add just **$200 extra per month**. The loan is paid off in **19 years and 6 months** (234 months) instead of 25 years — **5 years and 6 months sooner** — and total interest falls to **$191,477.49**, a saving of **$64,927.88**.",
+        "The extra payments themselves total **$46,800** ($200 × 234 months). So every extra dollar you paid saved about **$1.39 in interest** — a return no savings account offers, and it is guaranteed.",
+      ],
+    },
+    {
+      heading: "Making extra payments work",
+      paragraphs: [
+        "Before you start, confirm with your loan servicer that extra payments are **applied to principal**. Some servicers hold extra money as advance payments toward future bills unless you specify otherwise, which does not save interest. Also check your loan agreement for a **prepayment penalty** — rare on modern US mortgages, but worth a minute of reading.",
+        "If $200 a month feels like a stretch, try **one extra payment a year** instead — for example, splitting one monthly payment across the year adds about $141 a month on the example above and still cuts years off the loan. Even $50 extra a month makes a visible difference over 25 years.",
+        "Extra mortgage payments compete with other uses of the money. Pay off higher-interest debt first (credit cards almost always come first), keep an **emergency fund** of 3–6 months of expenses, and then weigh the guaranteed saving against what you might earn investing. There is no single right answer — but this calculator makes the mortgage side of the trade-off concrete.",
+      ],
+    },
+  ],
+
+  "budget-calculator": [
+    {
+      heading: "The 50/30/20 rule",
+      paragraphs: [
+        "The 50/30/20 rule is a simple way to split your income: **50% to needs, 30% to wants, and 20% to savings and extra debt payments**. Needs are the essentials you must pay — housing, utilities, groceries, insurance, minimum debt payments, transport. Wants are everything that makes life enjoyable but is not essential — dining out, streaming, travel, new clothes. Savings covers your emergency fund, retirement, and paying debt down faster.",
+        "The math is straightforward: **Category = Monthly Income × Percentage**. This calculator multiplies your income by each percentage you enter, so you can see the dollar amount for every category at a glance — and adjust the percentages to fit your real life instead of forcing your life into a preset split.",
+        "One important detail: use your **take-home pay** — the money that actually reaches your account after tax and payroll deductions — not your gross salary. Budgeting from gross income overstates what you have to spend and leaves you short every month.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "On **$5,000 a month** of take-home pay, the classic 50/30/20 split gives **$2,500 for needs**, **$1,500 for wants**, and **$1,000 for savings** — which adds up to **$12,000 saved in a year**.",
+        "But the rule is a starting point, not a law. In a high-cost city, rent alone can push needs past 50%. A **60/25/15 split** on the same $5,000 gives **$3,000 for needs**, **$1,250 for wants**, and **$750 for savings** — still **$9,000 saved a year**, and a plan you can actually stick to beats an ideal one you abandon in February.",
+        "Whatever split you choose, make sure the three percentages **add up to 100%**. This calculator multiplies each percentage independently, so percentages totalling more than 100% mean you are budgeting more than you earn.",
+      ],
+    },
+    {
+      heading: "Making the budget stick",
+      paragraphs: [
+        "A budget only works if it survives contact with real spending. Track your actual outgoings for a month and compare them with the targets — most people discover one category (often dining out or subscriptions) quietly running far over its share.",
+        "**Automate the savings slice.** Move it to a separate account on payday, before you can spend it. A budget that depends on willpower at the end of the month will lose to a budget that pays you first.",
+        "Review the split every few months, not every day. Income changes, rent changes, and a budget that flexes with your life is one you will keep. If needs are squeezing savings below 10% for months, that is a signal to look at the big fixed costs — housing and transport — rather than cutting every small pleasure.",
+      ],
+    },
+  ],
+
+  "401k-calculator": [
+    {
+      heading: "How a 401(k) grows",
+      paragraphs: [
+        "A 401(k) grows from three sources: **your contributions**, your **employer's matching contributions**, and **investment returns** compounding on both. Contributions go in before tax (in a traditional 401(k)), the money grows tax-deferred, and you pay income tax only when you withdraw it in retirement.",
+        "The employer match is the part people underestimate. A common formula is **50% of your contributions up to 6% of salary** — contribute 6%, and your employer adds 3%. This calculator applies the match as **Salary × min(Your Contribution %, Match Limit %) × Match %**, so it only matches the part of your contribution within the limit.",
+        "The projection uses monthly compounding: **FV = Balance × (1+r)ⁿ + (Monthly Contributions) × [(1+r)ⁿ − 1] / r**, where r is the monthly return and n is the number of months. It assumes your salary and contribution rate stay constant and shows the pre-tax balance — withdrawals in retirement are taxed as income.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take a **$75,000 salary**, a **10% contribution**, a **50% employer match up to 6%**, a **$25,000 current balance**, a **7% return**, and **30 years** to retirement. You contribute **$7,500 a year**; your employer adds **$2,250 a year** (50% of the 6% of salary that qualifies for the match). Together that is **$812.50 a month** going into the account.",
+        "After 30 years the projected balance is **$1,194,138.87**. Your own contributions total $225,000 and the employer match totals **$67,500** — on top of the $25,000 starting balance, the remaining **$876,638.87** is investment growth.",
+        "The match alone is worth far more than $67,500, because it compounds too. Run the same numbers without any employer match and the balance is **$965,394.31** — the match adds **$228,744.56**. Turning down the full match is the most expensive mistake in retirement saving.",
+      ],
+    },
+    {
+      heading: "Getting the most from your 401(k)",
+      paragraphs: [
+        "The first rule is simple: **contribute at least enough to get the full employer match**. It is an immediate 50–100% return on that part of your contribution, before any investment growth, and no investment can reliably beat it.",
+        "Beyond the match, the IRS sets an annual limit on employee contributions: **$24,500 for 2026** if you are under 50, or **$32,500 if you are 50 or older** (with an $8,000 catch-up contribution; $35,750 for ages 60–63 with the higher $11,250 catch-up). These limits are adjusted for inflation, so check the current IRS figures each year — this calculator does not enforce the limit, so it is up to you to stay within it.",
+        "Finally, remember what the projection assumes: a steady 7% return, a constant salary, and no withdrawals. Real returns vary year to year, and borrowing from a 401(k) or cashing out when changing jobs can undo years of growth. Use this calculator to test scenarios — a higher contribution rate, an extra five years — and let the numbers show which lever matters most.",
+      ],
+    },
+  ],
+
+  "ira-calculator": [
+    {
+      heading: "Traditional vs Roth: the same growth, different tax timing",
+      paragraphs: [
+        "A Traditional IRA and a Roth IRA invest in exactly the same way — the difference is **when you pay tax**. Traditional contributions may be tax-deductible now, and you pay income tax when you withdraw in retirement. Roth contributions are made with after-tax money, and qualified withdrawals in retirement are **tax-free**.",
+        "This calculator grows both accounts with the same formula — **FV = Balance × (1+r)ⁿ + (Annual Contribution ÷ 12) × [(1+r)ⁿ − 1] / r**, compounded monthly — and then shows the after-tax result for each: the Roth keeps the full balance, while the Traditional balance is reduced by your expected retirement tax rate, **FV × (1 − Tax Rate)**.",
+        "One thing the comparison does not model: the **upfront tax deduction** a Traditional contribution may give you today. If your Traditional contributions are deductible, that tax saving is real money too — the calculator's Traditional figure shows only the withdrawal side of the deal.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Start with a **$15,000 balance**, contribute **$6,500 a year** ($541.67 a month), earn **7%**, and retire in **30 years** with an expected retirement tax rate of **22%**. The projected balance is **$782,565.08**.",
+        "In a **Roth IRA** you keep all of it: **$782,565.08**, tax-free. In a **Traditional IRA** the same balance is worth **$610,400.77 after tax** at 22% — a difference of **$172,164.31**. That gap is the price of paying tax later instead of now, before counting any deduction the Traditional contributions earned along the way.",
+        "Your total contributions over 30 years are **$210,000** ($15,000 starting balance plus $6,500 × 30), so **$572,565.08** of the final balance is investment growth. Raising the contribution to the 2026 maximum of **$7,500 a year** ($625 a month) lifts the balance to **$884,229.33** — an extra **$101,664.25** from just $1,000 more a year.",
+      ],
+    },
+    {
+      heading: "Choosing and funding your IRA",
+      paragraphs: [
+        "The Roth-vs-Traditional decision comes down to one question: **will your tax rate be higher now or in retirement?** Early in your career, when your rate is low, Roth usually wins — you pay a small tax now for decades of tax-free growth. Near peak earnings, the Traditional deduction may be worth more.",
+        "For 2026, the IRS limit is **$7,500 a year if you are under 50, or $8,600 if you are 50 or older** (a $1,100 catch-up) — combined across all your Traditional and Roth IRAs, and capped at your taxable compensation for the year. Roth contributions also have income limits, so check the current IRS figures if your income is high.",
+        "You can contribute for a tax year until the **tax-filing deadline the following April**, which gives you extra months to top up. But the strongest habit is the simplest: set up an automatic monthly contribution — $625 a month hits the 2026 maximum exactly — and let compounding do the heavy work.",
+      ],
+    },
+  ],
+
+  "present-value-calculator": [
+    {
+      heading: "Why a dollar tomorrow is worth less than a dollar today",
+      paragraphs: [
+        "Money available today can be invested and earn returns, so a sum promised in the future is worth less than the same sum in hand now. **Present value** puts a number on that difference: it is what a future payment is worth in today's dollars.",
+        "The formula is **PV = FV / (1 + r)ⁿ**, where FV is the future amount, r is the discount rate per year, and n is the number of years. The discount rate is your **opportunity cost** — the return you could earn elsewhere — so it should reflect a realistic alternative investment, not a guess.",
+        "The calculator also shows the **discount amount** (how much value time strips away) and the **discount factor** (PV ÷ FV) — the fraction of each future dollar that a dollar today is worth. A factor of 0.5584 means each future dollar is worth about 56 cents today.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **$100,000 due in 10 years** at a **6%** discount rate. The present value is $100,000 ÷ 1.06¹⁰ = **$55,839.48**. Time and a 6% return strip away **$44,160.52** — nearly half the value — and the discount factor is **0.5584**.",
+        "The rate you choose changes the answer dramatically. At **3%** the same $100,000 is worth **$74,409.39** today; at **9%** it is worth only **$42,241.08**. A 6-point difference in the discount rate nearly halves the present value, which is why the rate deserves more thought than any other input.",
+        "You can check the result by running it forward: **$55,839.48 × 1.06¹⁰ = $100,000.00**. Present value and future value are the same idea in opposite directions — discounting back and compounding forward meet in the middle.",
+      ],
+    },
+    {
+      heading: "Where present value is used",
+      paragraphs: [
+        "Present value is the tool for comparing money that arrives at **different times**. Should you take a lump sum or annual payments? Is a bond fairly priced? Is a business investment worth its upfront cost? Each question is answered by discounting every future cash flow to today and comparing.",
+        "The classic everyday case is a **lottery or settlement payout**: a $1 million prize paid over 20 years is worth far less than $1 million today, and the lump-sum offer is usually close to the present value at the payer's discount rate. Run both options through this calculator before choosing.",
+        "Be honest about the discount rate. Using an optimistic 12% makes every future payment look cheap and every long-term project look bad; using 2% does the opposite. For personal decisions, your expected long-term investment return — or the interest rate on your debt, if you would use the money to pay it down — is usually the right starting point.",
+      ],
+    },
+  ],
+
+  "cagr-calculator": [
+    {
+      heading: "What CAGR measures",
+      paragraphs: [
+        "The compound annual growth rate (CAGR) is the **steady yearly rate** that would have grown an investment from its starting value to its ending value, assuming smooth compounding. Real investments bounce around; CAGR draws the straight line through the noise.",
+        "The formula is **CAGR = (Ending Value ÷ Beginning Value)^(1 ÷ Years) − 1**. It is a geometric average, which means it accounts for compounding — the return each year applies to a balance that already includes earlier gains.",
+        "That is what makes CAGR useful for comparisons. Two investments over different periods, or with different starting amounts, can be judged on a single number: the annualized rate. This calculator also shows the **total return**, the **absolute gain**, and the **growth multiple** (ending ÷ beginning) so you can see the result in several ways at once.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "An investment grows from **$10,000 to $25,000 over 5 years**. The CAGR is (25,000 ÷ 10,000)^(1/5) − 1 = **20.11% a year**. The total return is **150%**, the absolute gain is **$15,000**, and the growth multiple is **2.50×**.",
+        "Check it by compounding forward: **$10,000 × 1.2011⁵ = $25,000.00**. Each year's 20.11% applies to the growing balance, not to the original $10,000 — that is why five years at 20.11% produces a 150% total return, not 100.55%.",
+        "CAGR also exposes why a simple average of yearly returns misleads. An investment that gains **50% one year and loses 50% the next** averages 0% — but $100 becomes $150, then **$75**, a 25% loss. The CAGR over those two years is **−13.40%**, which tells the truth about your money.",
+      ],
+    },
+    {
+      heading: "Using CAGR to compare investments",
+      paragraphs: [
+        "CAGR shines when periods differ. A 60% gain over 3 years (16.96% CAGR) beats an 80% gain over 5 years (12.47% CAGR) — but you would never see that from the totals alone. Whenever two options cover different time spans, annualize before comparing.",
+        "What CAGR cannot show is **risk**. Two investments with the same CAGR can have completely different rides — one a smooth climb, the other a rollercoaster that happened to end at the same place. Always pair CAGR with a look at volatility, especially for money you might need soon.",
+        "Finally, be careful annualizing short periods. A 10% gain in one month is not a 213% CAGR you can count on — the formula is exact, but extrapolating a lucky month across a year is not. CAGR is most honest over multi-year periods, where the compounding it measures has actually had time to work.",
+      ],
+    },
+  ],
+
+  "net-worth-calculator": [
+    {
+      heading: "What net worth actually measures",
+      paragraphs: [
+        "Your net worth is a single snapshot of your financial position: **Net Worth = Total Assets − Total Liabilities**. Assets are everything you own — cash and savings, investments, property at current market value, vehicles, and other valuables. Liabilities are everything you owe — mortgage, car loans, student loans, and credit card balances.",
+        "It is a stock, not a flow: income tells you what comes in each month, but net worth tells you **what you have kept**. Two people with the same salary can have very different net worths, and the difference is almost always spending and debt, not earnings.",
+        "This calculator also shows your **debt-to-asset ratio** — total liabilities divided by total assets. It answers a useful question: how much of what you own is funded by debt? A ratio of 50% means half your assets are effectively owned by your lenders.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Add up the assets: **$25,000** in cash and savings, **$100,000** in investments, a home worth **$350,000**, and **$30,000** in other assets — a total of **$505,000**. Now the liabilities: a **$250,000** mortgage and **$15,000** in other debts — a total of **$265,000**.",
+        "Net worth is $505,000 − $265,000 = **$240,000**. The debt-to-asset ratio is $265,000 ÷ $505,000 = **52.48%** — just over half of the assets are debt-funded, mostly through the mortgage.",
+        "Notice how much of the net worth sits in the home: $100,000 of home equity ($350,000 value minus $250,000 mortgage) is nearly half the total. That is normal for homeowners, but home equity is **illiquid** — it is real wealth you cannot spend without selling or borrowing against the house.",
+      ],
+    },
+    {
+      heading: "Growing your net worth",
+      paragraphs: [
+        "Net worth grows through two levers: **grow assets** and **shrink liabilities**. Saving and investing raise the asset side; paying down debt raises net worth dollar for dollar on the liability side, with the bonus of cutting future interest.",
+        "Check your net worth **every few months**, not every day. Markets move, home values shift, and a single reading is noise — the trend over a year or two is the signal. If the number is climbing steadily, your financial habits are working even when it does not feel like it.",
+        "If your net worth is negative, that is a starting point, not a verdict — it is common early in a career with student loans or a new mortgage. The most powerful early move is usually attacking the **highest-interest debt** while building a small emergency fund, then shifting the freed-up payments into investing once the expensive debt is gone.",
+      ],
+    },
+  ],
+
+  "emergency-fund-calculator": [
+    {
+      heading: "How big should your emergency fund be?",
+      paragraphs: [
+        "An emergency fund is cash set aside for the expenses life does not warn you about — a job loss, a medical bill, a car repair. Its size is measured in **months of expenses, not months of income**, because expenses are what the fund has to cover: **Target = Monthly Expenses × Months of Coverage**.",
+        "The standard guidance is **3–6 months of expenses** for someone with stable employment, and **6–12 months** for freelancers, the self-employed, or single-income households, where income is less predictable. A homeowner with an older house or an older car may reasonably aim higher than a renter with a steady paycheck.",
+        "This calculator works from your monthly expenses, the months of coverage you want, and what you have already saved. It shows your target, your progress as a percentage, the remaining gap, and the monthly amount needed to close that gap in 12 months.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "With **$4,000 a month** in expenses and **6 months** of coverage, the target is $4,000 × 6 = **$24,000**. If you already have **$5,000** saved, you are **20.83%** of the way there, with a gap of **$19,000**.",
+        "To close that gap in 12 months, you would need to save **$1,583.33 a month**. That is a steep number — which is why the timeline matters as much as the target. Spread over 24 months it is $791.67 a month, and over 36 months just $527.78.",
+        "The coverage choice moves the target just as much. Three months of the same expenses needs only **$12,000**, while twelve months needs **$48,000**. Start with the smallest target you can actually reach — a funded 3-month cushion beats an aspirational 12-month one you never start.",
+      ],
+    },
+    {
+      heading: "Building and keeping the fund",
+      paragraphs: [
+        "Keep the money in a **high-yield savings account**, separate from your everyday spending money and reachable within a day or two. It should not be invested in the stock market — the point of an emergency fund is that the full amount is there exactly when you need it, even in a downturn, when job losses and market falls tend to arrive together.",
+        "**Automate the transfer.** A fixed amount moving to the savings account on payday beats good intentions at the end of the month, and even a small amount builds the habit. Windfalls — tax refunds, bonuses, sold items — are the fastest way to jump-start a fund from zero.",
+        "When you use the fund, that is success, not failure — it did its job. The only rule is to **rebuild it afterwards**, starting with the next paycheck, before the spending it protected creeps back. An emergency fund you refill is a permanent safety net; one you spend and forget is a one-time rescue.",
+      ],
+    },
+  ],
+
+  "income-tax-calculator": [
+    {
+      heading: "How progressive tax brackets work",
+      paragraphs: [
+        "The US federal income tax is **progressive**: income is taxed in slices, and each slice is taxed at its own rate. Only the income inside a bracket is taxed at that bracket's rate — moving into a higher bracket never raises the tax on the income below it.",
+        "That is why two different rates matter. Your **marginal rate** is the rate on your last dollar of income; your **effective rate** is your total tax divided by your total income, and it is always lower than your marginal rate. Confusing the two is the most common tax misunderstanding there is.",
+        "This calculator applies the **2024 federal brackets** (10%, 12%, 22%, 24%, 32%, 35%, 37%) for single filers and married couples filing jointly, to the **taxable income** you enter — that is, your income after deductions. It covers federal income tax only: no state tax, no Social Security or Medicare payroll tax, and no head-of-household or married-filing-separately options. The IRS adjusts the bracket thresholds for inflation each year, so for a current-year estimate check the latest IRS figures.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take **$75,000 of taxable income as a single filer**, using this calculator's 2024 brackets. The first $11,600 is taxed at 10% (**$1,160**); the next $35,550 (up to $47,150) at 12% (**$4,266**); and the remaining $27,850 (up to $75,000) at 22% (**$6,127**). Total federal tax: **$11,553**.",
+        "The **marginal rate is 22%**, but the **effective rate is only 15.40%** ($11,553 ÷ $75,000) — because most of the income was taxed at 10% and 12%. After-tax income is **$63,447**. The same $75,000 as a married couple filing jointly owes **$8,536** — an 11.38% effective rate and a 12% marginal rate — because the joint brackets are roughly twice as wide.",
+        "For context, under the IRS's **2026 brackets** the same single filer would owe **$11,212** instead of $11,553 — the thresholds rise with inflation each year (the top of the 10% single bracket is $12,400 for 2026, versus $11,600 for 2024). This calculator's 2024-based figure is therefore a close estimate, not a filing-year number.",
+      ],
+    },
+    {
+      heading: "Using your tax estimate",
+      paragraphs: [
+        "The most practical use of this calculator is a **withholding check**. Compare its tax figure with what your employer withholds over the year: a big gap in either direction means a surprise refund or an unwelcome bill at filing time, and either can be fixed by adjusting your W-4.",
+        "Remember the input is **taxable income**, not gross pay. Most filers take the standard deduction — **$16,100 for single filers and $32,200 for married couples filing jointly in 2026** — so a single filer earning $91,100 gross with no other adjustments has about $75,000 of taxable income. Pre-tax retirement contributions reduce it further, which is one reason 401(k) and Traditional IRA contributions lower your tax bill.",
+        "Use the result as a planning estimate, not a filing figure. Deductions, credits, capital gains, and state taxes all sit outside this calculator, and the brackets themselves move every year. For the final number, the IRS figures for the relevant tax year — or a tax professional — are the authority.",
+      ],
+    },
+  ],
+
+  "daily-calorie-needs-calculator": [
+    {
+      heading: "How daily calorie needs are calculated",
+      paragraphs: [
+        "Your daily calorie need starts with your **basal metabolic rate (BMR)** — the energy your body burns at complete rest to keep you alive: breathing, circulation, body temperature. This calculator uses the **Mifflin-St Jeor equation**, the formula most dietitians consider the best validated for healthy adults: for men, BMR = 10 × weight (kg) + 6.25 × height (cm) − 5 × age + 5; for women, the same formula ends in − 161 instead of + 5.",
+        "BMR alone is not what you eat in a day, because you are not lying still all day. Multiplying BMR by an **activity factor** gives your **total daily energy expenditure (TDEE)**: 1.2 for sedentary, 1.375 lightly active, 1.55 moderately active, 1.725 very active, and 1.9 super active. Your goal then adjusts the target: **−500 calories a day to lose weight, +500 to gain**, and no adjustment to maintain.",
+        "The calculator also suggests a protein target of **30% of your daily calories**, divided by 4 calories per gram of protein. Protein is highlighted because it protects muscle while you lose weight and keeps you fuller than the same calories from carbs or fat.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified: BMR = 650 + 1031.25 − 150 − 161 = 1370.25 → 1370; TDEE = 1370.25 × 1.55 = 2123.89 → 2124.
+        "Take a **30-year-old woman weighing 65 kg at 165 cm**, moderately active, maintaining her weight. Her BMR = 10 × 65 + 6.25 × 165 − 5 × 30 − 161 = 650 + 1,031.25 − 150 − 161 = **1,370 calories**. Multiply by the moderate activity factor 1.55 and her TDEE is **2,124 calories a day**.",
+        // Verified: lose 2124 − 500 = 1624; gain 2124 + 500 = 2624; protein (2123.89 × 0.30) ÷ 4 = 159.29 → 159 g.
+        "With the goal set to maintain, her daily target is **2,124 calories**; switching to weight loss drops it to **1,624**, and weight gain raises it to **2,624**. Her protein suggestion is 2,124 × 0.30 ÷ 4 = **159 g per day**.",
+      ],
+    },
+    {
+      heading: "Using your number without overthinking it",
+      paragraphs: [
+        "Treat the result as a **starting point, not a prescription**. The Mifflin-St Jeor equation is accurate to roughly ±10% for most people, so the honest way to use it is to eat at your target for two to three weeks, watch the trend on the scales, and adjust by 100–200 calories if your weight is not moving the way you want.",
+        "Two common mistakes: **adding exercise calories on top of TDEE** (your activity factor already includes your workouts, so counting them again double-counts them) and **eating far below your BMR** for long stretches, which risks fatigue and nutrient gaps. This calculator gives general information, not medical advice — if you have a health condition, are pregnant, or want a personalised plan, talk to a clinician or registered dietitian.",
+      ],
+    },
+  ],
+
+  "heart-rate-calculator": [
+    {
+      heading: "Maximum heart rate and the Karvonen zones",
+      paragraphs: [
+        "Your **maximum heart rate** is the fastest your heart can beat during all-out effort, and it declines with age. This calculator estimates it with the classic formula **max HR = 220 − age** — a population average that is simple and widely used, though any individual's true maximum can differ by 10 or more beats per minute.",
+        "The training zones then use the **Karvonen method**, which is more personal than a plain percentage of max heart rate. It starts from your **heart rate reserve (HRR)** — max HR minus resting HR — and applies each zone's percentage to that reserve before adding resting HR back: **zone = HRR × % + resting HR**. Because your resting heart rate is in the formula, two people the same age get different zones if their fitness differs.",
+        "The three zones the calculator shows are **fat burn (60–70%)**, the steady effort where a high share of energy comes from fat; **cardio (70–80%)**, the moderate-to-hard range that builds endurance; and **peak (80–90%)**, short hard efforts that push your ceiling.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified: maxHR = 220 − 40 = 180; HRR = 180 − 65 = 115.
+        "Take a **40-year-old with a resting heart rate of 65 bpm**. Max HR = 220 − 40 = **180 bpm**, and heart rate reserve = 180 − 65 = **115 bpm**.",
+        // Verified: 60% → 134; 70% → 145.5 → 146; 80% → 157; 90% → 168.5 → 169 (JS Math.round).
+        "The zones follow from the Karvonen formula: fat burn is 115 × 0.60 + 65 = **134 bpm** up to 115 × 0.70 + 65 = **146 bpm**; cardio runs **146–157 bpm**; and peak runs **157–169 bpm**. Notice the zones share their boundary numbers — 146 bpm is both the top of fat burn and the bottom of cardio — because each boundary is the same percentage applied once.",
+      ],
+    },
+    {
+      heading: "Training in the right zone",
+      paragraphs: [
+        "Most weekly training belongs in the **fat-burn and cardio zones**: they are sustainable for 30–60 minutes, and you should still be able to speak in short sentences. Peak-zone work is best kept to short intervals with recovery between them, and it is not where a session should start — warm up in the lower zones first.",
+        "Use a **heart rate monitor or watch** rather than guessing by feel; perceived effort drifts as you tire, and heat and dehydration push heart rate up for the same pace. If you are new to exercise, have a heart condition, or take medication that affects heart rate, check with a clinician before training in the higher zones — these figures are general guidance, not medical advice.",
+      ],
+    },
+  ],
+
+  "target-heart-rate-calculator": [
+    {
+      heading: "The Karvonen formula, step by step",
+      paragraphs: [
+        "A target heart rate is the range your heart should be beating in for a chosen exercise intensity. This calculator uses the **Karvonen formula: target HR = HRR × intensity% + resting HR**, where **HRR (heart rate reserve)** is your maximum heart rate minus your resting heart rate.",
+        "Maximum heart rate is estimated as **220 − age**, so HRR is 220 − age − resting HR. Working from the reserve rather than from max HR alone is what makes the result personal: a fit person with a low resting heart rate gets a wider reserve and a higher target range than someone the same age with a higher resting rate.",
+        "You choose the intensity range yourself. Roughly, **50–60%** is light exercise and warm-ups, **60–70%** is moderate, and **70–85%** is vigorous. The calculator converts whatever range you enter into beats per minute.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified: maxHR = 220 − 35 = 185; HRR = 185 − 70 = 115.
+        "Take a **35-year-old with a resting heart rate of 70 bpm**, training at **60–80%** intensity. Max HR = 220 − 35 = **185 bpm**, and heart rate reserve = 185 − 70 = **115 bpm**.",
+        // Verified: low 115 × 0.60 + 70 = 139; high 115 × 0.80 + 70 = 162; 50% → 127.5 → 128.
+        "The low end is 115 × 0.60 + 70 = **139 bpm**; the high end is 115 × 0.80 + 70 = **162 bpm**. So the target range is **139–162 bpm**. For comparison, a 50% warm-up floor for the same person would be 115 × 0.50 + 70 = **128 bpm**.",
+      ],
+    },
+    {
+      heading: "Picking an intensity range",
+      paragraphs: [
+        "If you are just starting out, begin at **50–60%** and stay there for a few weeks — it builds the habit without exhausting you. Move to **60–70%** when easy sessions feel genuinely easy, and save **70–85%** for days when you are rested and warmed up.",
+        "Remember the 220 − age estimate can be off by 10 beats or more for an individual, so treat the range as a guide and cross-check with how you feel: at moderate intensity you can talk but not sing; at vigorous intensity you can only manage a few words at a time. If you have a heart condition or are returning to exercise after illness, ask a clinician what intensity is safe for you.",
+      ],
+    },
+  ],
+
+  "period-calculator": [
+    {
+      heading: "How period prediction works",
+      paragraphs: [
+        "This calculator predicts future periods with the simplest reliable rule: **next period = last period start + cycle length**. Enter the first day of your last period and your average cycle length, and it projects the next three periods.",
+        "A **cycle** is counted from the first day of one period to the first day of the next. The textbook average is **28 days**, and a normal range is roughly **21–35 days**. The prediction assumes your cycles are regular — the same length each month — which is why the result is an estimate, not a guarantee.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified with JS Date: Jan 15 2026 + 28d = Feb 12 2026; +28d = Mar 12 2026; +28d = Apr 9 2026.
+        "Suppose your last period started on **January 15, 2026** and your cycle is **28 days**. Add 28 days and the next period is predicted for **February 12, 2026**; add another 28 and the following one falls on **March 12, 2026**; a third cycle lands on **April 9, 2026**.",
+        // Verified: Jan 15 2026 + 30d = Feb 14 2026.
+        "With a **30-day cycle** from the same start date, the next period would instead be **February 14, 2026** — a two-day difference in cycle length moves every prediction by two days, which shows why knowing your own average matters more than the textbook 28.",
+      ],
+    },
+    {
+      heading: "Why predictions drift — and when to ask a clinician",
+      paragraphs: [
+        "Real cycles vary by a few days from month to month, and stress, illness, travel, and hormonal changes can shift a period further. The further ahead a prediction reaches, the more that uncertainty adds up, so treat the third date as a rough guide rather than a plan.",
+        "One thing to know about this tool: it asks for your **period duration**, but the predicted dates depend only on the last period's start date and your cycle length — the duration does not change the results. And this calculator predicts period dates only; it is not a fertility or contraception tool. If your cycles are consistently irregular, very heavy, very painful, or you miss periods, talk to a clinician.",
+      ],
+    },
+  ],
+
+  "bac-calculator": [
+    {
+      heading: "The Widmark formula behind the estimate",
+      paragraphs: [
+        "Blood alcohol content (BAC) is the percentage of alcohol in your bloodstream. This calculator uses the **Widmark formula: BAC = (alcohol in grams ÷ (body weight in grams × r)) × 100 − 0.015 × hours**. The factor **r** reflects the share of body weight that is water: **0.68 for men and 0.55 for women**, which is why the same drinks produce a higher BAC in a woman than in a man of the same weight.",
+        "Each **standard drink** counts as **14 grams of pure alcohol** — the US definition, roughly a 12 oz beer, a 5 oz glass of wine, or a 1.5 oz shot of spirits. The final term, **0.015% per hour**, is the average rate the liver clears alcohol; the calculator subtracts it for every hour since your first drink.",
+        "The result is labelled with a status: **minimal effects** above 0%, **mildly impaired** above 0.04%, and **legally impaired** above 0.08% — the legal driving limit in most US states. It also estimates the **time to sober** by dividing your current BAC by 0.015.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified: 56 g; 56 ÷ (80000 × 0.68) × 100 = 0.10294 → 0.103; − 0.015 × 2 = 0.07294 → 0.073%. Sober: 0.07294 ÷ 0.015 = 4.86 → 4.9 h.
+        "Take an **80 kg man who has had 4 standard drinks over 2 hours**. The alcohol is 4 × 14 = **56 g**. Plugging in: 56 ÷ (80,000 × 0.68) × 100 = **0.103%** before metabolism, minus 0.015 × 2 = 0.03 for the two hours, giving an estimated BAC of **0.073%** — 'mildly impaired', below the 0.08% legal limit but far from sober.",
+        // Verified: 60 kg woman, 2 drinks, 1 h: 28 ÷ (60000 × 0.55) × 100 = 0.0848 − 0.015 = 0.0698 → 0.070%.
+        "Time to sober is 0.073 ÷ 0.015 ≈ **4.9 hours** from now. For contrast, a **60 kg woman having 2 drinks in 1 hour** reaches about **0.070%** — nearly the same BAC from half the drinks, because of the lower body weight and the 0.55 factor.",
+      ],
+    },
+    {
+      heading: "What this estimate can't do",
+      paragraphs: [
+        "This is an **estimate, not a measurement**. Food, medication, drink strength, body composition, and individual metabolism all shift real BAC, and impairment begins well below 0.08% — reaction time and judgement are affected long before you feel drunk.",
+        "Nothing speeds up sobering: **coffee, food, cold air, and exercise do not help** — only time clears alcohol. Never drive after drinking, however low the number looks, and never treat this calculator's result as a legal defence or a reason to drive. If you are worried about your drinking, a clinician can help without judgement.",
+      ],
+    },
+  ],
+
+  "healthy-weight-calculator": [
+    {
+      heading: "The healthy BMI range, in kilograms",
+      paragraphs: [
+        "This calculator turns the standard **healthy BMI range (18.5–24.9)** into a weight range for your height, using the BMI definition in reverse: **weight = BMI × height (m)²**. The low end uses 18.5, the high end 24.9, and the midpoint is the average of the two.",
+        "BMI bands come from large population studies linking weight-for-height to health risk: below 18.5 is classed underweight, 18.5–24.9 healthy, 25–29.9 overweight, and 30 or above obese. The calculator also converts the range to pounds (multiplying by 2.205) for anyone who thinks in imperial units.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified: 1.7² = 2.89; 18.5 × 2.89 = 53.465 → 53.5; 24.9 × 2.89 = 71.961 → 72.0; mid 62.713 → 62.7; lbs 117.89 → 118, 158.67 → 159.
+        "At **170 cm** tall, height in metres squared is 1.7 × 1.7 = **2.89**. The healthy range is 18.5 × 2.89 = **53.5 kg** up to 24.9 × 2.89 = **72.0 kg**, with a midpoint of **62.7 kg** — or **118–159 lbs**.",
+        // Verified: 180 cm: 18.5 × 3.24 = 59.94 → 59.9; 24.9 × 3.24 = 80.676 → 80.7. Deltas: +6.4 low, +8.7 high.
+        "Height changes the range more than most people expect: at **180 cm** the same band gives **59.9–80.7 kg**. That is because weight scales with the square of height — ten extra centimetres adds about 6–9 kg to the range.",
+      ],
+    },
+    {
+      heading: "What to do with your range",
+      paragraphs: [
+        "Use the range as a **screening result, not a verdict**. BMI cannot tell muscle from fat, so a muscular athlete can sit above the range while being very lean, and an older adult can sit inside it while losing muscle. Waist measurement, body-fat percentage, and how you move and feel all add context the number alone cannot.",
+        "If you are outside the range and unsure why — or if you are thinking about changing your weight — a clinician or dietitian can interpret the number with your full health picture. Small, steady changes beat crash diets, and this calculator gives general information, not medical advice.",
+      ],
+    },
+  ],
+
+  "ph-calculator": [
+    {
+      heading: "What pH really means",
+      paragraphs: [
+        "pH is a compact way to describe how acidic or basic a solution is: **pH = −log₁₀[H⁺]**, the negative base-10 logarithm of the hydrogen ion concentration in moles per litre. Because the scale is logarithmic, **each whole pH unit is a 10-fold change** — a solution at pH 3 has ten times the hydrogen ions of one at pH 4.",
+        "The scale runs from 0 to 14 at room temperature: **below 7 is acidic, 7 is neutral, above 7 is basic** (alkaline). The calculator also reports **pOH = −log₁₀[OH⁻]**, and at 25°C the two always add up: **pH + pOH = 14**, so knowing one gives you the other.",
+        "It works in both directions: enter a hydrogen ion concentration to get pH and pOH, or enter a pH to get [H⁺] and [OH⁻] back. A concentration of zero or less has no pH, so the calculator asks for a positive value.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified: −log10(0.001) = 3.0000; pOH = 14 − 3 = 11.0000.
+        "Take a solution with **[H⁺] = 0.001 mol/L**. pH = −log₁₀(0.001) = −(−3) = **3.0000**, and pOH = 14 − 3 = **11.0000** — clearly acidic.",
+        // Verified: pH 9 → [H⁺] = 1.0000e-9, [OH⁻] = 1.0000e-5; pH 4.5 → [H⁺] = 3.1623e-5 (toExponential(4)).
+        "Going the other way, a solution at **pH 9** has [H⁺] = 10⁻⁹ = **1.0000e-9 mol/L** and [OH⁻] = 10⁻⁵ = **1.0000e-5 mol/L** — basic, with far more hydroxide than hydrogen ions. A mildly acidic solution at **pH 4.5** has [H⁺] = **3.1623e-5 mol/L**.",
+      ],
+    },
+    {
+      heading: "pH in everyday life",
+      paragraphs: [
+        "Everyday chemistry sits all over the scale: **lemon juice is around pH 2**, vinegar around 2.5, black coffee around 5, pure water 7, baking soda solution around 9, and household bleach around 12–13. The numbers explain the behaviour — the acidity of vinegar is what makes it a cleaner and a preservative.",
+        "Two things to keep in mind: the pH + pOH = 14 relationship holds at **25°C** and shifts slightly at other temperatures, and real-world pH is usually measured with a meter or indicator paper rather than calculated — this tool is for converting between pH and concentration, for homework, lab prep, and quick checks.",
+      ],
+    },
+  ],
+
+  "business-days-calculator": [
+    {
+      heading: "How business days are counted",
+      paragraphs: [
+        "A **business day** is a weekday — Monday to Friday. This calculator walks day by day from your start date to your end date, counting weekdays as business days and Saturdays and Sundays as weekend days.",
+        "Two details matter. First, **both the start and end dates are counted** if they fall on weekdays, so a Monday-to-Friday span counts 5 business days, not 4. Second, **public holidays are not excluded** — they vary by country and are not part of the count, so subtract them yourself if your deadline crosses one.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified by re-running the tool's loop: Jan 6 2025 (Mon) → Jan 31 2025 (Fri): 20 biz, 6 weekend, totalDays diff 25, work weeks 4.0.
+        "Take **Monday, January 6 to Friday, January 31, 2025**. The span covers four full working weeks, and the calculator counts **20 business days** and **6 weekend days** — the three Saturdays and Sundays in between — which converts to **4.0 work weeks** (20 ÷ 5).",
+        "The **total calendar days** figure shows **25**, which is the difference between the two dates. The business and weekend counts add to 26 because both endpoints are included in the day-by-day count — the difference is the inclusive counting, not an error in the weekday tally.",
+      ],
+    },
+    {
+      heading: "Planning with business days",
+      paragraphs: [
+        "Business-day counts are the currency of **deadlines, notice periods, delivery estimates, and leave planning**. A '10 business day' turnaround starting on a Monday lands two Fridays later, not ten calendar days later — the distinction is worth two weekend days every week.",
+        "For anything official, remember the two gaps: **add back any public holidays** in the span, and check whether your contract or employer counts the start day. This calculator counts it; some agreements do not, and that one day is the most common source of off-by-one deadline disputes.",
+      ],
+    },
+  ],
+
+  "add-subtract-days-calculator": [
+    {
+      heading: "Adding days across months and leap years",
+      paragraphs: [
+        "Adding days to a date sounds trivial until the span crosses a month boundary, a year boundary, or a leap-year February. This calculator does **true calendar arithmetic**: it advances the date day by day through the real calendar, so month lengths and leap years are handled automatically.",
+        "The direction is controlled by the sign: a **positive number adds days**, a **negative number subtracts them**. The result shows the new date, the **day of the week** it falls on, and the span restated in **whole weeks plus leftover days**.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified with JS Date: Jan 1 2025 + 90d = April 1, 2025 (Tuesday); 90 = 12 weeks + 6 days.
+        "Start on **January 1, 2025** and add **90 days**. Counting through January (31 days), February (28 days in 2025, not a leap year), and into March and April lands on **April 1, 2025 — a Tuesday**. The span restates as **12 weeks and 6 days** (12 × 7 = 84, plus 6).",
+        // Verified: Jan 1 2025 − 90d = October 3, 2024.
+        "Subtracting works the same way: January 1, 2025 minus 90 days is **October 3, 2024**. The result date and weekday are exact in both directions.",
+      ],
+    },
+    {
+      heading: "Everyday uses for date arithmetic",
+      paragraphs: [
+        "The classic uses are **deadlines and notice periods** ('90 days from today'), **warranty and return windows**, **travel planning** ('what date is 14 days before my flight?'), and **countdowns** to events. The day-of-week output matters as much as the date — a deadline landing on a Sunday is a different problem from one landing on a Tuesday.",
+        "One thing to know: the **weeks breakdown is exact for days you add**; for subtracted (negative) day counts, use the result date itself rather than the weeks figure. And if your span crosses February in a leap year, the calculator adds the extra day automatically — 2028 is the next leap year after 2024.",
+      ],
+    },
+  ],
+
+  "height-calculator": [
+    {
+      heading: "The mid-parental height method",
+      paragraphs: [
+        "A child's adult height is strongly influenced by their parents' heights, and the standard clinical shortcut is the **mid-parental height method**: average both parents' heights, then adjust for the child's sex. For a **boy: (father + mother + 13) ÷ 2**. For a **girl: (father + mother − 13) ÷ 2**.",
+        "The **13 cm** is the average adult height difference between men and women, split by the averaging into a ±6.5 cm adjustment. The result is a **target height** — the centre of the range a child is most likely to land in — and the calculator shows a **±5 cm range** around it, which covers about half of children.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        // Verified: boy (180+168+13)/2 = 180.5 cm = 5'11" (180.5/30.48 = 5.922 ft; 0.922×12 = 11.06 → 11); range 175.5→176, 185.5→186. Girl (180+168−13)/2 = 167.5 cm = 5'6"; range 162.5→163, 172.5→173.
+        "Take a father who is **180 cm** and a mother who is **168 cm**. For a boy: (180 + 168 + 13) ÷ 2 = 361 ÷ 2 = **180.5 cm**, or **5'11\"**, with a range of **176–186 cm**. For a girl with the same parents: (180 + 168 − 13) ÷ 2 = 335 ÷ 2 = **167.5 cm**, or **5'6\"**, with a range of **163–173 cm**.",
+        "The 13 cm between the two predictions is exactly the sex adjustment in the formula — same parents, same genes, but the average height difference between adult men and women shifts the target.",
+      ],
+    },
+    {
+      heading: "What the prediction can't capture",
+      paragraphs: [
+        "Parents' heights explain a lot, but not everything. **Nutrition, childhood health, the timing of puberty, and genes from the wider family** all move the final result, which is why the ±5 cm band covers only about half of children — the other half land further from the target in either direction.",
+        "Use the prediction as a rough guide, not a verdict on a child's growth. If growth seems unusually fast or slow, or a child drops across centile lines on a growth chart, a paediatrician can assess it properly. One display note: the feet-and-inches figure is rounded to the nearest inch, so at a few heights the rounding can show 12 inches — for example, 182 cm displays as 5'12\" — which simply means 6'0\".",
+      ],
+    },
+  ],
+
+  "percentage-increase-calculator": [
+    {
+      heading: "How percentage increase works",
+      paragraphs: [
+        "A percentage increase expresses growth **relative to where you started**. A $5,000 raise means something very different on a $25,000 salary than on a $100,000 one — the percentage puts the change in proportion, which is why raises, price rises, and investment gains are almost always quoted this way.",
+        "The formula is **% increase = ((New − Original) ÷ Original) × 100**. First find the absolute increase (new minus original), then divide by the original value to see how big the change is relative to the starting point, then multiply by 100 to turn it into a percentage. The **original value is always the denominator** — that is the part people most often get wrong.",
+        "This calculator shows both results: the **percentage increase** (the headline number) and the **absolute increase** (the raw difference). A negative percentage means the value actually fell — the tool does not stop you entering a smaller 'new' value, so check the sign if the result surprises you.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A salary rises from **$50,000 to $55,000**. The absolute increase is $55,000 − $50,000 = **$5,000**. Divide by the original: $5,000 ÷ $50,000 = 0.10. Multiply by 100: a **10% increase**.",
+        "Now compare a $5,000 raise on a $25,000 salary: $5,000 ÷ $25,000 = 0.20, a **20% increase** — twice the percentage for the same dollars. That is the whole point of the percentage: it measures the change against the starting point, not in isolation.",
+      ],
+    },
+    {
+      heading: "Where percentage increase shows up",
+      paragraphs: [
+        "Salary negotiations and annual reviews are the obvious case, but the same maths runs through **price inflation** (a grocery item rising from $2.00 to $2.20 is a 10% increase), **investment returns**, and **business growth** (revenue up from $40,000 to $48,000 a month is a 20% increase).",
+        "One trap: **percentage increases do not add up simply**. Two consecutive 10% increases are not a 20% increase — $100 growing 10% becomes $110, then 10% again is $121, a **21% total increase**, because the second rise applies to the larger amount. Compounding works the same way in reverse for decreases.",
+        "When comparing offers or tracking growth, always note the starting value alongside the percentage. A '50% increase' from a tiny base can be smaller in real terms than a '5% increase' from a large one.",
+      ],
+    },
+  ],
+
+  "percentage-decrease-calculator": [
+    {
+      heading: "How percentage decrease works",
+      paragraphs: [
+        "A percentage decrease measures a fall **relative to the original value**. A $16 saving on an $80 jacket and a $16 saving on a $400 coat are the same dollars but very different deals — the percentage tells you which one is the better discount.",
+        "The formula is **% decrease = ((Original − New) ÷ Original) × 100**. Subtract the new value from the original to get the absolute decrease, divide by the original, and multiply by 100. As with increases, the **original value is the denominator** — using the new value instead is the most common mistake.",
+        "This calculator shows the **percentage decrease** and the **absolute decrease**. If the new value is higher than the original, the result is negative — a sign you actually have an increase, and the percentage increase calculator will express it as a positive number.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A jacket drops from **$80 to $64**. The absolute decrease is $80 − $64 = **$16**. Divide by the original: $16 ÷ $80 = 0.20 — a **20% decrease**. That is the '20% off' the sale tag promises.",
+        "The reverse check: 20% of $80 is $16, and $80 − $16 = **$64**. Working backwards like this is a quick way to confirm any discount before you buy.",
+      ],
+    },
+    {
+      heading: "Discounts, depreciation, and drops",
+      paragraphs: [
+        "Retail discounts are the everyday case, but the same calculation covers **depreciation** (a car falling from $20,000 to $17,000 has lost 15%), **weight loss**, **bill reductions**, and **falling investment values**.",
+        "Watch out for the **asymmetry of percentages**: a 20% fall followed by a 20% rise does not get you back to the start. $100 down 20% is $80; 20% of $80 is only $16, so the rise takes you to **$96**, not $100. To recover a 20% drop you need a 25% rise (20 ÷ 80 = 0.25).",
+        "When a store stacks discounts — say 20% off, then a further 10% off — the reductions multiply rather than add: $100 → $80 → **$72**, a 28% total saving, not 30%.",
+      ],
+    },
+  ],
+
+  "mean-median-mode-calculator": [
+    {
+      heading: "Three ways to describe the 'middle'",
+      paragraphs: [
+        "Mean, median, and mode are the three **measures of central tendency** — three different answers to 'what is a typical value in this data?' They often agree, but when they do not, the disagreement itself tells you something about the data.",
+        "The **mean** is the arithmetic average: add all values and divide by how many there are (**mean = Σx ÷ n**). The **median** is the middle value once the data is sorted — with an even count, it is the average of the two middle values. The **mode** is the value that appears most often. This calculator also reports the **range** (highest minus lowest), a quick measure of spread.",
+        "This calculator takes **five values**. That is enough for a quick classroom or homework check, but for larger data sets you would use a spreadsheet or statistics tool — the concepts are identical, only the counting gets longer.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take the values **5, 8, 8, 12, 15**. The mean is (5 + 8 + 8 + 12 + 15) ÷ 5 = 48 ÷ 5 = **9.6**. Sorted, the middle value is **8**, so the median is 8. The value 8 appears twice — more than any other — so the mode is **8**. The range is 15 − 5 = **10**.",
+        "Now change the last value from 15 to 50. The mean jumps to (5 + 8 + 8 + 12 + 50) ÷ 5 = 83 ÷ 5 = **16.6**, but the median stays **8** and the mode stays **8**. One extreme value moved the mean a lot and the others not at all — that sensitivity is exactly why medians are used for house prices and incomes.",
+      ],
+    },
+    {
+      heading: "Which measure should you report?",
+      paragraphs: [
+        "Use the **mean** for symmetrical data with no extreme values — test scores in a typical class, for example. Use the **median** when the data is skewed or has outliers: income, house prices, and waiting times are the classic cases. Use the **mode** for categories and repeated values, such as the most common shoe size sold or the most frequent survey answer.",
+        "When the mean is noticeably above the median, the data is **skewed right** — a few large values are pulling the average up. When the mean sits below the median, a few small values are dragging it down. Reporting both numbers gives a much fairer picture than either alone.",
+        "If every value appears once, there is no mode — the calculator reports **'No mode'**. And if two values tie for most frequent, the data is **bimodal**; the calculator lists all tied values.",
+      ],
+    },
+  ],
+
+  "ratio-calculator": [
+    {
+      heading: "What a ratio is — and how to simplify one",
+      paragraphs: [
+        "A ratio compares two quantities in proportion: **12:18** says 'for every 12 of the first thing, there are 18 of the second.' Ratios show up in recipes, maps, scale models, mixing instructions, and finance — anywhere the **relationship** between two numbers matters more than the numbers themselves.",
+        "To simplify a ratio, divide both sides by their **greatest common divisor (GCD)** — the largest number that divides both evenly. For 12:18 the GCD is 6, so 12 ÷ 6 = 2 and 18 ÷ 6 = 3: the simplified ratio is **2:3**. Simplified ratios are easier to read, compare, and scale.",
+        "This calculator also converts the ratio to a **fraction** (2/3), a **decimal** (0.6667), and a **percentage** (66.67%) — the same relationship in three other forms. Note that the simplification step rounds decimal inputs to whole numbers first, so enter whole numbers when exact simplification matters.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Simplify **12:18**. The GCD of 12 and 18 is **6**. Dividing both sides: 12 ÷ 6 = 2 and 18 ÷ 6 = 3, so the ratio is **2:3**. As a fraction that is 2/3, as a decimal **0.6667**, and as a percentage **66.67%**.",
+        "To scale it up, multiply both sides by the same number: 2:3 × 10 = **20:30**. The proportion is unchanged — a paint mix of 2 parts blue to 3 parts white gives the same colour whether you mix 2 litres with 3 or 20 litres with 30.",
+      ],
+    },
+    {
+      heading: "Ratios in everyday life",
+      paragraphs: [
+        "Cooking is the friendliest example: a **rice-to-water ratio of 1:2** means one cup of rice to two cups of water, whatever the cup size. Scale it to 3 cups of rice and you need 6 cups of water — the ratio does the thinking for you.",
+        "Ratios also describe **odds, aspect ratios, and map scales**. A 16:9 screen, a 1:50,000 map, and a 3:1 odds quote are all ratios doing the same job: keeping two quantities in fixed proportion as the overall size changes.",
+        "To split an amount by a ratio, add the parts first. Splitting $500 in the ratio 2:3 means 5 parts of $100 each: **$200 and $300**. Check the split adds back to the total — 200 + 300 = 500 — and the ratio of the shares is still 2:3.",
+      ],
+    },
+  ],
+
+  "circle-calculator": [
+    {
+      heading: "The three circle measurements",
+      paragraphs: [
+        "Every circle is fixed by a single number — its **radius**, the distance from the centre to the edge. From the radius, everything else follows: the **diameter** (twice the radius), the **circumference** (the distance around), and the **area** (the space inside).",
+        "The formulas all use **π (pi), approximately 3.14159** — the ratio of any circle's circumference to its diameter. **Diameter = 2r**, **Circumference = 2πr** (equivalently π × diameter), and **Area = πr²**. Note the square in the area formula: doubling the radius quadruples the area.",
+        "This calculator takes the **radius** and returns all three measurements at once. If you only know the diameter, halve it first; if you know the circumference, divide by 2π (about 6.283) to get the radius.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "A circular garden has a **radius of 5 metres**. The diameter is 2 × 5 = **10 m**. The circumference is 2 × π × 5 = 10π = **31.4159 m** — the length of fencing needed around it. The area is π × 5² = 25π = **78.5398 m²** — the ground to plant.",
+        "Double the radius to 10 m and the area becomes π × 100 = **314.1593 m²** — four times larger, not twice. That squared relationship catches people out when sizing round tables, rugs, and pizza: a 12-inch pizza has 44% more area than a 10-inch one, not 20% more.",
+      ],
+    },
+    {
+      heading: "Where circle maths is used",
+      paragraphs: [
+        "Circles appear whenever something is round: **fencing a garden bed** (circumference), **ordering turf or concrete for a round patio** (area), **sizing a round tablecloth** (diameter plus a drop on each side), and **measuring wheels and pipes** (circumference gives distance per revolution).",
+        "Keep your units consistent — if the radius is in metres, the area comes out in **square metres** and the circumference in metres. Mixing centimetres and metres in the same calculation is the most common source of wrong answers.",
+        "For rough estimates, π ≈ 3 is often good enough: a circle of radius 5 m has an area of roughly 3 × 25 = 75 m² (the exact answer is 78.54 m²). Use the calculator when the exact figure matters — ordering materials, for example — and round up slightly to allow for cutting and waste.",
+      ],
+    },
+  ],
+
+  "average-calculator": [
+    {
+      heading: "Three kinds of average",
+      paragraphs: [
+        "'Average' usually means the **arithmetic mean** — add the numbers and divide by how many there are. But it is only one of three standard averages, and the other two are the right tool in specific situations. This calculator shows all three so you can compare them.",
+        "The **arithmetic mean** is Σx ÷ n. The **geometric mean** is the nth root of the product of all values — (Πx)^(1/n) — and it answers 'what constant rate gives the same overall growth?' The **harmonic mean** is n ÷ Σ(1/x), and it averages **rates** fairly. The three always come out in the same order: harmonic ≤ geometric ≤ arithmetic.",
+        "This calculator takes **five values**. The geometric and harmonic means need positive numbers to behave — a zero turns the geometric mean to 0 and breaks the harmonic mean entirely, so for data containing zeros or negatives, the arithmetic mean is the safe choice.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "For the values **10, 20, 30, 40, 50** (sum 150): the arithmetic mean is 150 ÷ 5 = **30**. The geometric mean is the 5th root of 10 × 20 × 30 × 40 × 50 = 12,000,000, which is **26.05**. The harmonic mean is 5 ÷ (1/10 + 1/20 + 1/30 + 1/40 + 1/50) = 5 ÷ 0.22833 = **21.90**.",
+        "The order holds as promised: 21.90 < 26.05 < 30. The wider the spread of the values, the further apart the three means drift — for identical values, all three are equal.",
+      ],
+    },
+    {
+      heading: "Picking the right average",
+      paragraphs: [
+        "Use the **arithmetic mean** for ordinary averaging: test scores, daily temperatures, monthly spending. It treats every value equally and is the number most people mean by 'average'.",
+        "Use the **geometric mean** for growth rates and ratios that compound — investment returns over several years, for example. Averaging +10% and −10% arithmetically gives 0%, but $100 growing 10% then falling 10% ends at **$99**: the geometric mean catches the loss the arithmetic mean hides.",
+        "Use the **harmonic mean** for rates over equal distances or quantities — the classic case is average speed. Driving 60 km at 60 km/h and 60 km at 120 km/h takes 1 hour + 0.5 hours = 1.5 hours for 120 km, so the true average speed is **80 km/h**, not the arithmetic 90 km/h. The harmonic mean of 60 and 120 is exactly 80.",
+      ],
+    },
+  ],
+
+  "slope-calculator": [
+    {
+      heading: "What slope measures",
+      paragraphs: [
+        "The **slope** of a line measures its steepness: how much y changes for each unit x changes. A slope of 2 means the line rises 2 units for every 1 unit it runs; a slope of 0.5 rises gently; a slope of 0 is flat; a negative slope falls as x increases.",
+        "The formula is **m = (y₂ − y₁) ÷ (x₂ − x₁)** — 'rise over run'. Once you have the slope, the **y-intercept** b comes from b = y₁ − m·x₁, and the full line is **y = mx + b**. This calculator also gives the straight-line **distance** between the two points, √(Δx² + Δy²).",
+        "A **vertical line** (both points sharing the same x) has no slope at all — the formula divides by zero. The calculator reports this as 'Undefined (vertical line)'. A horizontal line (same y) is different: its slope is simply 0.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Take the points **(1, 2) and (4, 8)**. The slope is m = (8 − 2) ÷ (4 − 1) = 6 ÷ 3 = **2**. The y-intercept is b = 2 − 2 × 1 = **0**, so the line is **y = 2x** — it passes through the origin. The distance between the points is √(3² + 6²) = √45 = **6.7082**.",
+        "Check the line against both points: at x = 1, y = 2 × 1 = 2; at x = 4, y = 2 × 4 = 8. A quick check like this catches swapped coordinates, the most common slope mistake.",
+      ],
+    },
+    {
+      heading: "Where slope shows up",
+      paragraphs: [
+        "Slope is the maths behind **gradients and rates of change**. A road sign reading '10% grade' describes a slope of 0.1 — a 1-metre rise for every 10 metres along. A roof pitch of 4:12 is a slope of 4 ÷ 12 ≈ 0.333.",
+        "In charts and data, slope is the **rate**: on a distance-time graph it is speed; on a cost graph it is the price per unit. A steeper line means a faster rate — comparing slopes is comparing rates.",
+        "Two lines with the same slope are **parallel**; lines whose slopes multiply to −1 are **perpendicular**. So a line with slope 2 is perpendicular to one with slope −0.5, since 2 × (−0.5) = −1.",
+      ],
+    },
+  ],
+
+  "length-converter": [
+    {
+      heading: "How length conversion works",
+      paragraphs: [
+        "Length conversion is multiplication by a fixed factor. Every unit has an **exact definition in metres**: 1 inch is exactly 2.54 cm, 1 foot is exactly 0.3048 m, and 1 mile is exactly 1609.344 m. Because the definitions are exact, conversions between them are exact too — any rounding happens only in how many decimals are displayed.",
+        "This converter works through a **base unit**: it first converts your value to metres, then from metres to each target unit. That is why one entry fills in all six results at once — metres, feet, inches, centimetres, kilometres, and miles.",
+        "Results are rounded to **4 decimal places** (6 for kilometres and miles). That is far more precision than a tape measure can deliver, but it keeps chained conversions accurate if you copy a result into another calculation.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**100 metres** converts to 100 ÷ 0.3048 = **328.0840 feet**, 100 ÷ 0.0254 = **3937.0079 inches**, and 100 ÷ 1609.344 = **0.062137 miles**. The same length, four ways of saying it.",
+        "Going the other way: a **5-mile run** is 5 × 1609.344 = **8046.72 metres**, or **8.04672 km**. And a single inch is exactly 2.54 cm — so a 12-inch ruler is exactly 30.48 cm long.",
+      ],
+    },
+    {
+      heading: "Metric, imperial, and everyday conversions",
+      paragraphs: [
+        "Most of the world uses **metric**; the US still uses **imperial** for everyday lengths, and the UK mixes both. The conversions that come up most are **inches ↔ centimetres** (screen sizes, heights), **feet ↔ metres** (room sizes, heights), and **miles ↔ kilometres** (driving distances).",
+        "For quick mental estimates: **1 inch ≈ 2.5 cm**, **1 foot ≈ 30 cm**, **1 metre ≈ 3.3 feet**, **1 mile ≈ 1.6 km**, and **1 km ≈ 0.62 miles**. These are close enough for judging whether furniture fits or how far a run is — use the converter when the exact figure matters.",
+        "Watch the units on **area and volume**: converting a length and then squaring it is not the same as converting an area. A room 3 m × 4 m is 12 m², which is 12 × 10.7639 = **129.17 ft²** — the conversion factor gets squared too (1 m² ≈ 10.7639 ft²).",
+      ],
+    },
+  ],
+
+  "weight-converter": [
+    {
+      heading: "How weight conversion works",
+      paragraphs: [
+        "Like length, weight conversion is multiplication by a fixed factor, working through a **base unit** — here, the kilogram. Enter a value in any of the seven units (kilograms, pounds, ounces, grams, stones, milligrams, metric tons) and the converter shows all seven at once.",
+        "The key definitions: **1 pound is exactly 0.45359237 kg**, **1 ounce is 1/16 of a pound** (about 28.3495 g), and **1 stone is 14 pounds** (about 6.35029 kg). A metric ton is exactly 1,000 kg. This converter uses the rounded factors 0.453592, 0.0283495, and 6.35029, which agree with the exact definitions to at least four decimal places for everyday values.",
+        "Strictly, kilograms measure **mass** and weight is a force that depends on gravity — but on Earth's surface the two are used interchangeably, and this converter (like every kitchen scale) treats them as the same thing.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "**70 kg** — a typical adult weight — converts to 70 ÷ 0.453592 = **154.3237 lb**, 70 ÷ 0.0283495 = **2469.1794 oz**, and 70 ÷ 6.35029 = **11.0231 stone**. In grams that is exactly 70,000 g, and in metric tons 0.070000 t.",
+        "The reverse check: 154.3237 lb × 0.453592 = **70 kg** (to the displayed precision). Using the exact definition instead, 70 kg is 154.3236 lb — the rounded factor shifts the fourth decimal place, far below what any bathroom scale can measure.",
+      ],
+    },
+    {
+      heading: "Kilograms, pounds, and stones in daily life",
+      paragraphs: [
+        "Most of the world weighs in **kilograms**; the US uses **pounds**, and the UK commonly uses **stones and pounds** for body weight — 11 stone is about 70 kg, and 12 stone is about 76 kg.",
+        "In the kitchen, **grams** rule for baking precision and **ounces** for US recipes: 8 oz is half a pound (about 227 g), and 1 oz is about 28.35 g. A stick of butter (4 oz) is about 113 g.",
+        "For quick estimates: **1 kg ≈ 2.2 lb**, **1 lb ≈ 0.45 kg**, and **1 stone ≈ 6.35 kg**. Double a kilogram figure and add 10% to get pounds in your head — 70 kg → 140 + 14 = **154 lb**, within a pound of the exact 154.32 lb.",
+      ],
+    },
+  ],
+
+  "temperature-converter": [
+    {
+      heading: "Three scales, one temperature",
+      paragraphs: [
+        "Temperature is measured on three scales in everyday use. **Celsius (°C)** is the scientific and world standard, defined by water freezing at 0 °C and boiling at 100 °C. **Fahrenheit (°F)** is still standard in the US, with water freezing at 32 °F and boiling at 212 °F. **Kelvin (K)** is the scientific absolute scale, starting at absolute zero.",
+        "Unlike other unit conversions, temperature conversion is **not just multiplication** — Fahrenheit has a shifted zero, so you must add or subtract 32 as well. **°F = °C × 9/5 + 32**, and going back, **°C = (°F − 32) × 5/9**. Kelvin is simpler: **K = °C + 273.15**, a pure shift with no scaling, because one kelvin is the same size as one degree Celsius.",
+        "This converter takes a temperature in any of the three scales and shows all three at once, rounded to two decimal places. Note that it accepts any number — including physically impossible values below absolute zero — so treat results below 0 K as a sign of an input error.",
+      ],
+    },
+    {
+      heading: "Worked example",
+      paragraphs: [
+        "Water boils at **100 °C**. In Fahrenheit that is 100 × 9/5 + 32 = 180 + 32 = **212 °F**. In Kelvin it is 100 + 273.15 = **373.15 K**.",
+        "A comfortable room temperature of **68 °F** is (68 − 32) × 5/9 = 36 × 5/9 = **20 °C**, or 293.15 K. And the two scales meet at exactly one point: **−40 °C = −40 °F**.",
+      ],
+    },
+    {
+      heading: "Everyday temperatures worth knowing",
+      paragraphs: [
+        "A few anchor points make the scales intuitive: **0 °C / 32 °F** is freezing, **20–22 °C / 68–72 °F** is room temperature, **37 °C / 98.6 °F** is body temperature, and **100 °C / 212 °F** is boiling. If a forecast says 30 °C, that is a hot 86 °F day.",
+        "For cooking, oven temperatures are the usual battleground: **180 °C is 356 °F** — cookbooks usually round the pair to 180 °C / 350 °F — and **200 °C is 392 °F**, commonly rounded to 400 °F in recipes.",
+        "A quick mental shortcut: to estimate Fahrenheit from Celsius, **double the Celsius figure and add 30** — 20 °C becomes about 70 °F (exactly 68 °F). It is close enough for weather, and the converter gives the exact figure when it matters.",
+      ],
+    },
+  ],
 };

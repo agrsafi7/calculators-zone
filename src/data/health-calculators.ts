@@ -165,6 +165,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Fill in your details and select your fitness goal to get a personalized daily calorie target plus a suggested protein intake.",
     faqs: [
       { question: "What is a safe caloric deficit?", answer: "A deficit of 500-750 calories per day is considered safe and sustainable for most adults, leading to 0.5-0.75 kg weight loss per week." },
+      { question: "What is the difference between BMR and TDEE?", answer: "BMR is the energy your body burns at complete rest. TDEE is BMR multiplied by your activity factor (1.2-1.9), giving your total daily burn including movement and exercise. The calculator shows both so you can see how much your activity adds." },
+      { question: "Why does the calculator suggest protein at 30% of calories?", answer: "Protein is set to 30% of your daily target, divided by 4 calories per gram. At 2,124 calories a day that is about 159 g of protein. It is a starting point that supports muscle maintenance and satiety — adjust it to your diet and goals." },
     ],
     relatedCalcs: healthRelated("daily-calorie-needs-calculator"),
   },
@@ -455,6 +457,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your age and resting heart rate to see your maximum heart rate and training zones.",
     faqs: [
       { question: "How do I measure resting heart rate?", answer: "Measure your pulse first thing in the morning before getting out of bed. Count beats for 60 seconds or 15 seconds × 4." },
+      { question: "What is the Karvonen method?", answer: "The Karvonen method builds training zones from your heart rate reserve (max heart rate minus resting heart rate) instead of a plain percentage of max heart rate. Because it includes your resting heart rate, two people of the same age get different zones if their fitness levels differ." },
+      { question: "How accurate is 220 minus age?", answer: "It is a population average, and an individual's true maximum heart rate can differ by 10 or more beats per minute. Treat the zones as a guide, not a precise prescription — a supervised fitness test gives a personal maximum." },
     ],
     relatedCalcs: healthRelated("heart-rate-calculator"),
   },
@@ -488,6 +492,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your age, resting heart rate, and desired intensity range to calculate your target heart rate for exercise.",
     faqs: [
       { question: "What intensity should I train at?", answer: "Beginners should start at 50-60%. Moderate fitness: 60-70%. Advanced: 70-85%. Always consult a doctor before starting intense exercise." },
+      { question: "What is heart rate reserve (HRR)?", answer: "Heart rate reserve is your maximum heart rate minus your resting heart rate — the range your heart actually works across. The Karvonen formula applies your chosen intensity percentage to this reserve, then adds your resting heart rate back." },
+      { question: "Why is my target zone different from a friend's at the same age?", answer: "Because resting heart rate differs. A lower resting heart rate (usually a fitter heart) widens the reserve and shifts the whole target range. Age alone gives the same maximum, but the Karvonen formula personalises the zones." },
     ],
     relatedCalcs: healthRelated("target-heart-rate-calculator"),
   },
@@ -593,6 +599,8 @@ const _healthCalculators: CalculatorConfig[] = [
     howToUse: "Enter your gender, weight, number of standard drinks consumed, and hours since your first drink.",
     faqs: [
       { question: "What is the legal BAC limit?", answer: "In most U.S. states, the legal limit is 0.08%. However, impairment can begin at much lower levels. Never drive if you feel impaired." },
+      { question: "Why does the same number of drinks affect people differently?", answer: "BAC depends on body weight, sex, and time. The formula uses a body-water factor of 0.68 for men and 0.55 for women, so a lighter person or a woman reaches a higher BAC from the same drinks. Food, medication, and tolerance also change the result." },
+      { question: "How long does it take to sober up?", answer: "The body clears alcohol at roughly 0.015% BAC per hour, and nothing speeds that up — not coffee, food, or cold air. At a BAC of 0.073%, expect about 4.9 hours before reaching zero. Sleep helps you feel rested, not sober faster." },
     ],
     relatedCalcs: healthRelated("bac-calculator"),
   },
@@ -907,7 +915,11 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Next Period = Last Period + Cycle Length", variables: ["Assumes regular cycles"] },
     howToUse: "Enter the first day of your last period and your average cycle length.",
-    faqs: [{ question: "What is a normal cycle length?", answer: "Normal cycles range from 21-35 days, with 28 days being average. Cycles can vary by a few days each month." }],
+    faqs: [
+      { question: "What is a normal cycle length?", answer: "Normal cycles range from 21-35 days, with 28 days being average. Cycles can vary by a few days each month." },
+      { question: "How accurate are the predicted dates?", answer: "The predictions assume perfectly regular cycles, so treat them as estimates. Stress, illness, travel, and hormonal changes can shift a period by several days, and the further ahead the prediction, the more uncertainty builds up." },
+      { question: "Can this calculator predict ovulation?", answer: "No — it predicts period start dates only. Ovulation usually happens about 14 days before the next period, so in a 28-day cycle it falls around day 14, but it shifts earlier or later with shorter or longer cycles." },
+    ],
     relatedCalcs: healthRelated("period-calculator"),
   },
   // 27. GFR Calculator
@@ -997,7 +1009,11 @@ const _healthCalculators: CalculatorConfig[] = [
     },
     formula: { expression: "Weight Range = BMI(18.5-24.9) × Height(m)²", variables: ["BMI 18.5-24.9 is considered healthy"] },
     howToUse: "Enter your height to see the healthy weight range based on BMI guidelines.",
-    faqs: [{ question: "Is BMI the best measure?", answer: "BMI is a screening tool, not a diagnostic. It doesn't account for muscle mass, bone density, or body composition." }],
+    faqs: [
+      { question: "Is BMI the best measure?", answer: "BMI is a screening tool, not a diagnostic. It doesn't account for muscle mass, bone density, or body composition." },
+      { question: "How is the healthy weight range calculated?", answer: "The range is the healthy BMI band (18.5-24.9) multiplied by your height in metres squared. At 170 cm that gives 53.5-72.0 kg, with a midpoint of 62.7 kg. The same range in pounds is 118-159 lbs." },
+      { question: "What should I do if I am outside the range?", answer: "Being outside the range is a prompt to look closer, not a diagnosis. Muscular athletes often sit above it, and older adults can be inside it while losing muscle. Pair the result with waist measurement and how you feel, and talk to a clinician if you are unsure." },
+    ],
     relatedCalcs: healthRelated("healthy-weight-calculator"),
   },
   // 30. Body Type Calculator
