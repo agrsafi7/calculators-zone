@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { categories } from "@/data/calculators";
-import { uniqueCalculators, searchCalculators } from "@/lib/calculator-utils";
+import { uniqueCalculators, searchCalculators, getCategoryCalculatorCount } from "@/lib/calculator-utils";
 import SEO from "@/components/SEO";
 import ScientificEngine from "@/components/ScientificEngine";
 import { useSearchAutocomplete, SearchSuggestions } from "@/components/SearchAutocomplete";
-import { ArrowLeftRight, ArrowRight, BadgeCheck, Clock, FlaskConical, Home, LucideIcon, Play, Search, TrendingUp } from "lucide-react";
+import { ArrowLeftRight, ArrowRight, BadgeCheck, Clock, FlaskConical, Home, LucideIcon, Play, Search } from "lucide-react";
 
 const totalCalcs = uniqueCalculators.length;
 
@@ -48,16 +48,11 @@ const HOME_FAQS = [
   },
 ];
 
-const POPULAR_TODAY = [
-  { name: "Mortgage", to: "/finance/mortgage-calculator" },
-  { name: "BMI Body Mass", to: "/health/bmi-calculator" },
-  { name: "Personal Loan", to: "/finance/personal-loan-calculator" },
-  { name: "Auto Financing", to: "/finance/auto-loan-calculator" },
-  { name: "Calorie Target", to: "/health/calorie-calculator" },
-];
+const calcsForCategory = (slug: string) =>
+  uniqueCalculators.filter((c) => c.categorySlug === slug);
 
-const topForCategory = (slug: string, n: number) =>
-  uniqueCalculators.filter((c) => c.categorySlug === slug).slice(0, n);
+const categoryLabel = (name: string) =>
+  name.endsWith("Calculators") ? name : `${name} Calculators`;
 
 const Index = () => {
   const navigate = useNavigate();
@@ -95,7 +90,7 @@ const Index = () => {
                 <p className="text-[12px] text-ink-soft mb-4">
                   Instant, precise mathematical engines for finance, everyday health, academics, and practical engineering.
                 </p>
-                <form className="flex flex-col gap-2 mb-4" onSubmit={submitQuickSearch}>
+                <form className="flex flex-col gap-2" onSubmit={submitQuickSearch}>
                   <div className="relative w-full" ref={heroSearch.ref}>
                     <Search size={18} className="absolute left-3 top-2.5 text-ink-soft" />
                     <input
@@ -127,23 +122,6 @@ const Index = () => {
                     <ArrowRight size={16} />
                   </button>
                 </form>
-                <div className="bg-surface-low rounded-lg p-4">
-                  <div className="flex items-center gap-1.5 text-[11px] text-ink-soft uppercase tracking-wider mb-2 font-medium">
-                    <TrendingUp size={14} className="text-primary" />
-                    <span>Popular Calculators</span>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5">
-                    {POPULAR_TODAY.map((p) => (
-                      <Link
-                        key={p.to}
-                        to={p.to}
-                        className="text-[12px] text-link hover:text-link-dark bg-surface-lowest px-2 py-1 rounded hover:shadow-sm transition-all"
-                      >
-                        {p.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
               </div>
               <div className="bg-primary text-white rounded-xl p-4 shadow-sm flex items-center justify-between">
                 <div className="flex flex-col">
@@ -155,56 +133,98 @@ const Index = () => {
             </div>
           </section>
 
-          {/* Category directory cards */}
-          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8" aria-label="Calculator categories">
-            {categories.map((cat, i) => {
-              const list = topForCategory(cat.slug, 12);
-              return (
-                <div key={cat.slug} className="bg-surface-lowest rounded-xl p-6 shadow-sm flex flex-col">
-                  <div className="flex items-center gap-4 pb-3 mb-4 bg-surface-low -mx-6 -mt-6 p-6 rounded-t-xl">
+          {/* Tier 1 — Categories, simple style */}
+          <section className="mb-8" aria-label="Calculator categories">
+            <h2 className="font-display text-[20px] font-semibold text-ink mb-4">Calculator Categories</h2>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {categories.map((cat) => {
+                const count = getCategoryCalculatorCount(cat.slug);
+                const Icon = CATEGORY_ICONS[cat.slug];
+                return (
+                  <Link
+                    key={cat.slug}
+                    to={`/category/${cat.slug}`}
+                    className="bg-surface-lowest rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow flex items-center gap-3 group"
+                  >
                     {CATEGORY_IMAGES[cat.slug] ? (
                       <img
-                        className="w-14 h-14 rounded-full object-cover shrink-0 shadow-sm"
+                        className="w-10 h-10 rounded-full object-cover shrink-0"
                         src={CATEGORY_IMAGES[cat.slug]}
                         alt={`${cat.name} calculators`}
                         loading="lazy"
-                        width={56}
-                        height={56}
+                        width={40}
+                        height={40}
                       />
                     ) : (
-                      <span className="w-14 h-14 rounded-full bg-primary flex items-center justify-center shrink-0 shadow-sm">
-                        {(() => { const DynIcon = CATEGORY_ICONS[cat.slug]; return <DynIcon size={28} className="text-white" />; })()}
+                      <span className="w-10 h-10 rounded-full bg-primary flex items-center justify-center shrink-0">
+                        {Icon && <Icon size={20} className="text-white" />}
                       </span>
                     )}
-                    <div>
-                      <h2 className="font-display text-[18px] font-semibold text-ink">
-                        <Link to={`/category/${cat.slug}`} className="hover:text-primary transition-colors">
-                          {cat.name}{cat.name.endsWith("Calculators") ? "" : " Calculators"}
-                        </Link>
-                      </h2>
-                    </div>
-                  </div>
-                  <ul className="flex flex-col gap-1.5 flex-1">
-                    {list.map((c) => (
-                      <li key={c.slug}>
-                        <Link
-                          to={`/${c.categorySlug}/${c.slug}`}
-                          className="text-[12px] text-link hover:text-link-dark hover:underline block py-0.5"
-                        >
-                          {c.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    to={`/category/${cat.slug}`}
-                    className="mt-3 text-[12px] font-medium text-primary hover:underline"
-                  >
-                    View all →
+                    <span>
+                      <span className="block font-display text-[15px] font-semibold text-ink group-hover:text-primary transition-colors">
+                        {categoryLabel(cat.name)}
+                      </span>
+                      <span className="block text-[12px] text-ink-soft">{count} calculators</span>
+                    </span>
                   </Link>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Tier 2 — Category pages, listed */}
+          <section className="mb-8" aria-label="Category pages">
+            <h2 className="font-display text-[20px] font-semibold text-ink mb-4">Category Pages</h2>
+            <div className="bg-surface-lowest rounded-xl shadow-sm px-6">
+              {categories.map((cat) => {
+                const count = getCategoryCalculatorCount(cat.slug);
+                return (
+                  <div key={cat.slug} className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 py-4 border-b border-border last:border-b-0">
+                    <Link
+                      to={`/category/${cat.slug}`}
+                      className="font-display text-[15px] font-semibold text-link hover:text-link-dark hover:underline shrink-0 sm:w-56"
+                    >
+                      {categoryLabel(cat.name)}
+                    </Link>
+                    <p className="text-[13px] text-ink-soft flex-1">{cat.description}</p>
+                    <span className="text-[12px] text-ink-soft shrink-0">{count} calculators</span>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Tier 3 — All calculators, compact directory grouped by category */}
+          <section className="mb-8" aria-label="All calculators">
+            <h2 className="font-display text-[20px] font-semibold text-ink mb-1">All Calculators</h2>
+            <p className="text-[13px] text-ink-soft mb-6">Every calculator on the site, grouped by category — {totalCalcs} free tools.</p>
+            <div className="flex flex-col gap-8">
+              {categories.map((cat) => {
+                const list = calcsForCategory(cat.slug);
+                return (
+                  <div key={cat.slug}>
+                    <h3 className="font-display text-[16px] font-semibold text-ink mb-3">
+                      <Link to={`/category/${cat.slug}`} className="hover:text-primary transition-colors">
+                        {categoryLabel(cat.name)}
+                      </Link>
+                      <span className="text-[12px] font-normal text-ink-soft ml-2">({list.length})</span>
+                    </h3>
+                    <ul className="columns-2 sm:columns-3 lg:columns-4 gap-x-6">
+                      {list.map((c) => (
+                        <li key={c.slug} className="break-inside-avoid">
+                          <Link
+                            to={`/${c.categorySlug}/${c.slug}`}
+                            className="text-[13px] text-link hover:text-link-dark hover:underline block py-0.5"
+                          >
+                            {c.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
           </section>
 
           <div className="flex justify-center items-center mb-8">
