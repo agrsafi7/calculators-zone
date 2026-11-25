@@ -224,7 +224,7 @@ const Index = () => {
               <p className="text-[14px] leading-relaxed">
                 TheCalculator.us's sole focus is to provide fast, comprehensive, convenient, free online calculators in a plethora of areas.
                 Currently, we have around {totalCalcs} calculators to help you "do the math" quickly in fields such as finance, fitness, health, math,
-                and others, with active research adding new utilities weekly. Our goal is to become the one-stop, go-to destination for people who need
+                and others, with new calculators added as we research and build them. Our goal is to become the one-stop, go-to destination for people who need
                 to make rapid, dependable calculations without intrusive interstitial ads or registration walls.
               </p>
               <p className="text-[14px] leading-relaxed">
@@ -233,6 +233,17 @@ const Index = () => {
                 mathematical standards. Additionally, while most calculators on TheCalculator.us are designed to be universally applicable for worldwide
                 usage, some are tailored for specific countries; for example, the <em>Income Tax Calculator</em> is calibrated specifically for
                 United States federal and state tax codes.
+              </p>
+              <p className="text-[14px] leading-relaxed">
+                Every calculator shows the formula it uses, and every calculation runs on your own device — your numbers never leave your browser, and
+                there's no account to create. Each tool also comes with a plain-language guide that explains the formula and walks through a worked
+                example, so you can see exactly how the answer was reached.
+              </p>
+              <p className="text-[14px] leading-relaxed">
+                You can read more about who runs the site, how the calculators are built and tested, and how the site stays free on our{" "}
+                <Link to="/about" className="text-primary hover:underline font-medium">
+                  About page
+                </Link>.
               </p>
             </div>
           </section>

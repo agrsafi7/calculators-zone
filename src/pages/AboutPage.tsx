@@ -70,9 +70,9 @@ const AboutPage = () => (
         <h2 className="text-lg font-bold text-foreground mt-6">How the site stays free</h2>
         <p>
           All {totalCalcs} calculators on TheCalculator.us are free for everyone, and no
-          ads are displayed. We applied to Google AdSense to help keep the calculators
-          free, but the application was not approved, so the site currently runs without
-          advertising.
+          ads are displayed. We have applied to Google AdSense to help keep the
+          calculators free; the application is currently under review, so the site runs
+          without advertising for now.
         </p>
 
         <h2 className="text-lg font-bold text-foreground mt-6">Contact</h2>
