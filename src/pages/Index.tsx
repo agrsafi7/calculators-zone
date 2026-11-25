@@ -217,7 +217,7 @@ const Index = () => {
             </Link>
           </div>
 
-          {/* About */}
+          {/* About — expanded 2026-11-25: how the calculators work + link to the full About page */}
           <section className="bg-surface-low rounded-xl p-6 text-ink-soft max-w-4xl mx-auto mb-6">
             <h2 className="font-display text-[18px] font-semibold text-ink mb-3">About TheCalculator.us</h2>
             <div className="space-y-3">
