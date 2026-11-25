@@ -28,6 +28,8 @@ const FAQS = [
   },
 ];
 
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 const fmt = (n: number, d = 2) =>
   "$" + n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
 
@@ -40,7 +42,11 @@ const MortgageCalculator = () => {
   const [propertyTax, setPropertyTax] = useState(4200);
   const [homeInsurance, setHomeInsurance] = useState(1200);
   const [hoaFee, setHoaFee] = useState(0);
+  const [pmiRate, setPmiRate] = useState(0.5);
+  const [startMonth, setStartMonth] = useState(() => new Date().getMonth());
+  const [startYear, setStartYear] = useState(() => new Date().getFullYear());
   const [showAmort, setShowAmort] = useState(false);
+  const [amortView, setAmortView] = useState<"annual" | "monthly">("annual");
 
   useEffect(() => {
     addRecentCalculator({
@@ -63,35 +69,70 @@ const MortgageCalculator = () => {
     }
     const monthlyTax = propertyTax / 12;
     const monthlyIns = homeInsurance / 12;
-    const totalMonthly = monthlyPI + monthlyTax + monthlyIns + hoaFee;
+    const downPctExact = homePrice > 0 ? Math.min(100, (downPayment / homePrice) * 100) : 0;
+    const pmiApplies = homePrice > 0 && downPayment < homePrice * 0.2;
+    const monthlyPmi = pmiApplies ? (principal * pmiRate) / 100 / 12 : 0;
+    const totalMonthly = monthlyPI + monthlyTax + monthlyIns + hoaFee + monthlyPmi;
     const totalInterest = Math.max(0, monthlyPI * n - principal);
-    const totalCost = principal + totalInterest + propertyTax * loanTerm + homeInsurance * loanTerm + hoaFee * n;
-    const now = new Date();
-    const payoff = new Date(now.getFullYear() + loanTerm, now.getMonth());
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const totalTax = propertyTax * loanTerm;
+    const totalIns = homeInsurance * loanTerm;
+    const totalHoa = hoaFee * n;
+    const annualPayment = totalMonthly * 12;
+    const startY = startYear > 1900 ? startYear : new Date().getFullYear();
+    const payoffIdx = startMonth + Math.max(0, n - 1);
+    const payoff = `${MONTHS[payoffIdx % 12]} ${startY + Math.floor(payoffIdx / 12)}`;
     return {
-      principal, monthlyPI, monthlyTax, monthlyIns, hoaFee, totalMonthly,
-      totalInterest, totalCost,
-      payoff: `${months[payoff.getMonth()]} ${payoff.getFullYear()}`,
-      monthlyRate, n,
+      principal, monthlyPI, monthlyTax, monthlyIns, hoaFee, monthlyPmi, pmiApplies,
+      downPctExact, totalMonthly, totalInterest, totalTax, totalIns, totalHoa,
+      annualPayment, payoff, monthlyRate, n, startY,
     };
-  }, [homePrice, downPayment, loanTerm, interestRate, propertyTax, homeInsurance, hoaFee]);
+  }, [homePrice, downPayment, loanTerm, interestRate, propertyTax, homeInsurance, hoaFee, pmiRate, startMonth, startYear]);
 
-  const amortRows = useMemo(() => {
-    const rows: { year: number; interest: number; principal: number; total: number; balance: number }[] = [];
+  const schedule = useMemo(() => {
+    const monthlyRows: { label: string; year: number; interest: number; principal: number; balance: number }[] = [];
     let balance = calc.principal;
-    for (let yr = 1; yr <= 5; yr++) {
-      let ai = 0, ap = 0;
-      for (let m = 0; m < 12; m++) {
-        if (balance <= 0) break;
-        const im = balance * calc.monthlyRate;
-        const pm = Math.min(balance, calc.monthlyPI - im);
-        ai += im; ap += pm; balance -= pm;
+    let pmiMonths = 0;
+    let totalPmi = 0;
+    const eightyPct = homePrice * 0.8;
+    for (let m = 0; m < calc.n; m++) {
+      if (balance <= 0) break;
+      const im = balance * calc.monthlyRate;
+      const pm = Math.min(balance, calc.monthlyPI - im);
+      balance -= pm;
+      const idx = startMonth + m;
+      const y = calc.startY + Math.floor(idx / 12);
+      const mo = idx % 12;
+      monthlyRows.push({ label: `${MONTHS[mo]} ${y}`, year: y, interest: im, principal: pm, balance: Math.max(0, balance) });
+      // PMI is charged for a month when the balance is still above 80% of the
+      // home value after that month's payment; it stops in the month the
+      // balance reaches 80%.
+      if (calc.pmiApplies && balance > eightyPct) {
+        pmiMonths++;
+        totalPmi += calc.monthlyPmi;
       }
-      rows.push({ year: yr, interest: ai, principal: ap, total: ai + ap, balance: Math.max(0, balance) });
     }
-    return rows;
-  }, [calc]);
+    const yearlyMap = new Map<number, { label: string; interest: number; principal: number; balance: number }>();
+    monthlyRows.forEach((r) => {
+      const ex = yearlyMap.get(r.year);
+      if (ex) {
+        ex.interest += r.interest;
+        ex.principal += r.principal;
+        ex.balance = r.balance;
+      } else {
+        yearlyMap.set(r.year, { label: String(r.year), interest: r.interest, principal: r.principal, balance: r.balance });
+      }
+    });
+    const yearlyRows = [...yearlyMap.values()];
+    const pmiEndIdx = startMonth + pmiMonths;
+    const pmiEnd =
+      calc.pmiApplies && pmiMonths > 0
+        ? `${MONTHS[pmiEndIdx % 12]} ${calc.startY + Math.floor(pmiEndIdx / 12)}`
+        : null;
+    return { monthlyRows, yearlyRows, pmiMonths, totalPmi, pmiEnd };
+  }, [calc, homePrice, startMonth]);
+
+  const totalCost =
+    calc.principal + calc.totalInterest + calc.totalTax + calc.totalIns + calc.totalHoa + schedule.totalPmi;
 
   const syncDownFromPrice = (price: number) => {
     setHomePrice(price);
@@ -108,7 +149,8 @@ const MortgageCalculator = () => {
   const reset = () => {
     setHomePrice(400000); setDownPayment(80000); setDownPaymentPct(20);
     setLoanTerm(30); setInterestRate(6.5); setPropertyTax(4200);
-    setHomeInsurance(1200); setHoaFee(0);
+    setHomeInsurance(1200); setHoaFee(0); setPmiRate(0.5);
+    setStartMonth(new Date().getMonth()); setStartYear(new Date().getFullYear());
   };
 
   const pct = (v: number) => (calc.totalMonthly > 0 ? ((v / calc.totalMonthly) * 100).toFixed(1) + "%" : "0%");
@@ -133,7 +175,7 @@ const MortgageCalculator = () => {
     <div className="w-full bg-background min-h-[calc(100vh-144px)]">
       <SEO
         title="Mortgage Calculator"
-        description="Free mortgage calculator. Estimate monthly PITI payments, total interest, and view the amortization schedule for home loans."
+        description="Free mortgage calculator. Estimate monthly PITI payments including PMI, total interest, and view the full amortization schedule for home loans."
         canonical="/finance/mortgage-calculator"
         breadcrumbs={[
           { name: "Home", url: "/" },
@@ -200,6 +242,17 @@ const MortgageCalculator = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <label className="text-[13px] font-medium text-ink" htmlFor="mc-loan">
+                      Loan Amount
+                    </label>
+                    <div className={wrap}>
+                      <span className={affix}>$</span>
+                      <input id="mc-loan" type="number" value={Math.round(calc.principal)} readOnly tabIndex={-1}
+                        className={`${numInput} opacity-70`} aria-label="Loan amount (home price minus down payment)" />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                     <label className="text-[13px] font-medium text-ink">Loan Term</label>
                     <div className="grid grid-cols-4 gap-1 bg-surface-low p-1 rounded-lg w-full sm:w-64">
                       {[30, 20, 15, 10].map((t) => (
@@ -212,6 +265,26 @@ const MortgageCalculator = () => {
                           {t} yr
                         </button>
                       ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <label className="text-[13px] font-medium text-ink" htmlFor="mc-start-month">
+                      Start Date
+                    </label>
+                    <div className="flex items-center gap-2 w-full sm:w-64">
+                      <select id="mc-start-month" value={startMonth}
+                        onChange={(e) => setStartMonth(Number(e.target.value))}
+                        className="flex-1 bg-surface-low rounded-lg px-2 py-1.5 font-numeric text-[14px] text-ink focus:outline-none focus:ring-2 focus:ring-primary">
+                        {MONTHS.map((m, i) => (
+                          <option key={m} value={i}>{m}</option>
+                        ))}
+                      </select>
+                      <div className={`${wrap} w-28`}>
+                        <input type="number" min={2026} max={2100} step={1} value={startYear}
+                          onChange={(e) => setStartYear(Number(e.target.value))}
+                          className={numInput} aria-label="Start year" />
+                      </div>
                     </div>
                   </div>
 
@@ -240,6 +313,21 @@ const MortgageCalculator = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                    <label className="text-[13px] font-medium text-ink flex items-center gap-1.5" htmlFor="mc-pmi">
+                      PMI Rate
+                      <Info size={16} className="text-ink-soft opacity-50" />
+                    </label>
+                    <div className={wrap}>
+                      <input id="mc-pmi" type="number" min={0} max={5} step={0.05} value={pmiRate}
+                        onChange={(e) => setPmiRate(Number(e.target.value))} className={numInput} />
+                      <span className={affix}>%</span>
+                    </div>
+                  </div>
+                  {!calc.pmiApplies && (
+                    <p className="text-[11px] text-ink-soft text-right -mt-1">PMI not required — your down payment is 20% or more.</p>
+                  )}
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
                     <label className="text-[13px] font-medium text-ink" htmlFor="mc-ins">Homeowners Insurance</label>
                     <div className={wrap}>
                       <span className={affix}>$</span>
@@ -250,7 +338,7 @@ const MortgageCalculator = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
-                    <label className="text-[13px] font-medium text-ink" htmlFor="mc-hoa">HOA / PMI / Fees</label>
+                    <label className="text-[13px] font-medium text-ink" htmlFor="mc-hoa">HOA Dues</label>
                     <div className={wrap}>
                       <span className={affix}>$</span>
                       <input id="mc-hoa" type="number" min={0} step={10} value={hoaFee}
@@ -280,7 +368,7 @@ const MortgageCalculator = () => {
                   </div>
                   <div>
                     <div className="font-display text-[15px] font-semibold text-ink">Conforming Loan Limit</div>
-                    <div className="text-[12px] text-ink-soft">Baseline limit is $766,550 for single-family homes in 2024–2025.</div>
+                    <div className="text-[12px] text-ink-soft">Baseline limit is $832,750 for single-family homes in 2026.</div>
                   </div>
                 </div>
                 <a className="text-[13px] font-medium text-primary hover:underline whitespace-nowrap hidden sm:inline-block" href="#formula-section">View Formula</a>
@@ -305,12 +393,14 @@ const MortgageCalculator = () => {
                     <div className="bg-primary transition-all duration-300" style={{ width: pct(calc.monthlyPI) }} title="Principal & Interest"></div>
                     <div className="bg-link transition-all duration-300" style={{ width: pct(calc.monthlyTax) }} title="Property Tax"></div>
                     <div className="bg-[#5bb8fe] transition-all duration-300" style={{ width: pct(calc.monthlyIns) }} title="Home Insurance"></div>
-                    <div className="bg-[#495167] transition-all duration-300" style={{ width: pct(calc.hoaFee) }} title="HOA / Fees"></div>
+                    <div className="bg-[#e8a838] transition-all duration-300" style={{ width: pct(calc.monthlyPmi) }} title="PMI"></div>
+                    <div className="bg-[#495167] transition-all duration-300" style={{ width: pct(calc.hoaFee) }} title="HOA Dues"></div>
                   </div>
                   <div className="flex items-center justify-between text-[11px] text-ink-soft">
                     <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-primary inline-block"></span> P&I</span>
                     <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-link inline-block"></span> Tax</span>
                     <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#5bb8fe] inline-block"></span> Ins</span>
+                    <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#e8a838] inline-block"></span> PMI</span>
                     <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-[#495167] inline-block"></span> HOA</span>
                   </div>
                 </div>
@@ -318,12 +408,29 @@ const MortgageCalculator = () => {
                   <div className="flex justify-between py-1.5"><span className="text-ink-soft">Principal & Interest</span><span className="font-numeric text-[14px] text-ink">{fmt(calc.monthlyPI)}</span></div>
                   <div className="flex justify-between py-1.5"><span className="text-ink-soft">Property Taxes (Monthly)</span><span className="font-numeric text-[14px] text-ink">{fmt(calc.monthlyTax)}</span></div>
                   <div className="flex justify-between py-1.5"><span className="text-ink-soft">Homeowners Insurance</span><span className="font-numeric text-[14px] text-ink">{fmt(calc.monthlyIns)}</span></div>
-                  <div className="flex justify-between py-1.5"><span className="text-ink-soft">PMI / HOA Dues</span><span className="font-numeric text-[14px] text-ink">{fmt(calc.hoaFee)}</span></div>
+                  <div className="flex justify-between py-1.5">
+                    <span className="text-ink-soft">PMI</span>
+                    {calc.pmiApplies ? (
+                      <span className="text-right">
+                        <span className="font-numeric text-[14px] text-ink block">{fmt(calc.monthlyPmi)}</span>
+                        <span className="text-[11px] text-ink-soft">ends {schedule.pmiEnd} · {schedule.pmiMonths} payments</span>
+                      </span>
+                    ) : (
+                      <span className="font-numeric text-[14px] text-ink">Not required</span>
+                    )}
+                  </div>
+                  <div className="flex justify-between py-1.5"><span className="text-ink-soft">HOA Dues</span><span className="font-numeric text-[14px] text-ink">{fmt(calc.hoaFee)}</span></div>
                 </div>
                 <div className="bg-surface-low rounded-lg p-4 flex flex-col gap-1.5 text-[12px]">
                   <div className="flex justify-between"><span className="text-ink-soft">Total Loan Amount</span><span className="font-numeric text-ink font-semibold">{fmt(calc.principal, 0)}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-soft">Down Payment</span><span className="font-numeric text-ink font-semibold">{fmt(downPayment, 0)}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-soft">Down Payment %</span><span className="font-numeric text-ink font-semibold">{calc.downPctExact.toFixed(2)}%</span></div>
                   <div className="flex justify-between"><span className="text-ink-soft">Total Interest Paid</span><span className="font-numeric text-ink font-semibold">{fmt(calc.totalInterest, 0)}</span></div>
-                  <div className="flex justify-between"><span className="text-ink-soft">Total Cost of Loan</span><span className="font-numeric text-ink font-semibold">{fmt(calc.totalCost, 0)}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-soft">Total Tax Paid</span><span className="font-numeric text-ink font-semibold">{fmt(calc.totalTax, 0)}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-soft">Total Home Insurance</span><span className="font-numeric text-ink font-semibold">{fmt(calc.totalIns, 0)}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-soft">Total PMI Paid</span><span className="font-numeric text-ink font-semibold">{calc.pmiApplies ? fmt(schedule.totalPmi, 0) : "Not required"}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-soft">Annual Payment Amount</span><span className="font-numeric text-ink font-semibold">{fmt(calc.annualPayment, 0)}</span></div>
+                  <div className="flex justify-between"><span className="text-ink-soft">Total Cost of Loan</span><span className="font-numeric text-ink font-semibold">{fmt(totalCost, 0)}</span></div>
                   <div className="flex justify-between"><span className="text-ink-soft">Estimated Payoff</span><span className="font-numeric text-ink font-semibold">{calc.payoff}</span></div>
                 </div>
                 <button
@@ -356,33 +463,45 @@ const MortgageCalculator = () => {
 
           {showAmort && (
             <div className="mt-6 bg-surface-lowest rounded-xl p-6 shadow-sm">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
                 <div>
-                  <h2 className="font-display text-[18px] font-semibold text-ink">Annual Amortization Schedule (First 5 Years)</h2>
-                  <p className="text-[12px] text-ink-soft">Shows the shift from interest-heavy payments to principal balance reduction.</p>
+                  <h2 className="font-display text-[18px] font-semibold text-ink">Amortization Schedule</h2>
+                  <p className="text-[12px] text-ink-soft">Full loan term from your start date — yearly or month by month.</p>
                 </div>
-                <button type="button" className="text-ink-soft hover:text-ink" onClick={() => setShowAmort(false)} aria-label="Close">
-                  <X size={20} />
-                </button>
+                <div className="flex items-center gap-2">
+                  <div className="grid grid-cols-2 gap-1 bg-surface-low p-1 rounded-lg">
+                    {(["annual", "monthly"] as const).map((v) => (
+                      <button
+                        key={v} type="button" onClick={() => setAmortView(v)}
+                        className={`py-1 px-3 text-center rounded text-[13px] font-medium transition-colors capitalize ${
+                          amortView === v ? "bg-surface-lowest text-primary font-semibold shadow-sm" : "text-ink-soft hover:text-ink"
+                        }`}
+                      >
+                        {v}
+                      </button>
+                    ))}
+                  </div>
+                  <button type="button" className="text-ink-soft hover:text-ink" onClick={() => setShowAmort(false)} aria-label="Close">
+                    <X size={20} />
+                  </button>
+                </div>
               </div>
-              <div className="overflow-x-auto">
+              <div className={amortView === "monthly" ? "overflow-auto max-h-[480px]" : "overflow-x-auto"}>
                 <table className="w-full text-left text-[12px]">
-                  <thead className="bg-surface-container text-[13px] font-medium text-ink">
+                  <thead className="bg-surface-container text-[13px] font-medium text-ink sticky top-0">
                     <tr>
-                      <th className="py-1.5 px-4 rounded-l">Year</th>
+                      <th className="py-1.5 px-4 rounded-l">{amortView === "annual" ? "Year" : "Month"}</th>
                       <th className="py-1.5 px-4 text-right">Interest Paid</th>
                       <th className="py-1.5 px-4 text-right">Principal Paid</th>
-                      <th className="py-1.5 px-4 text-right">Total Payments</th>
                       <th className="py-1.5 px-4 text-right rounded-r">Ending Balance</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-surface-container font-numeric text-[14px]">
-                    {amortRows.map((r, i) => (
-                      <tr key={r.year} className={i % 2 === 1 ? "bg-surface-low" : ""}>
-                        <td className="py-1.5 px-4 font-medium text-ink">Year {r.year}</td>
+                    {(amortView === "annual" ? schedule.yearlyRows : schedule.monthlyRows).map((r, i) => (
+                      <tr key={r.label} className={i % 2 === 1 ? "bg-surface-low" : ""}>
+                        <td className="py-1.5 px-4 font-medium text-ink">{r.label}</td>
                         <td className="py-1.5 px-4 text-right text-ink-soft">{fmt(r.interest, 0)}</td>
                         <td className="py-1.5 px-4 text-right text-ink-soft">{fmt(r.principal, 0)}</td>
-                        <td className="py-1.5 px-4 text-right text-ink-soft">{fmt(r.total, 0)}</td>
                         <td className="py-1.5 px-4 text-right font-semibold text-ink">{fmt(r.balance, 0)}</td>
                       </tr>
                     ))}
