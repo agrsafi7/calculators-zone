@@ -71,8 +71,8 @@ const AboutPage = () => (
         <p>
           All {totalCalcs} calculators on TheCalculator.us are free for everyone, and no
           ads are displayed. We have applied to Google AdSense to help keep the
-          calculators free; the application is currently under review, so the site runs
-          without advertising for now.
+          calculators free, and we're working to meet its requirements; the site
+          runs without advertising for now.
         </p>
 
         <h2 className="text-lg font-bold text-foreground mt-6">Contact</h2>

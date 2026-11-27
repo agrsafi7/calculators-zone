@@ -71,10 +71,30 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/geist-latin.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/inter-latin.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/jetbrains-mono-latin.woff2" />
-    <!-- Google AdSense — static snippet (restored 2026-11-05, AdSense audit Deploy 1):
-         the Nov 4 interaction/10s lazy-load injection is reverted so the code is
-         present in the served HTML exactly as when the site was verified. -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557796717236108" crossorigin="anonymous"></script>
+    <script>
+  (function () {
+    var LOADED = false;
+    function loadAds() {
+      if (LOADED) return;
+      LOADED = true;
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1557796717236108";
+      s.setAttribute("crossorigin", "anonymous");
+      document.head.appendChild(s);
+    }
+    function onInteract() {
+      ["scroll", "click", "touchstart", "keydown"].forEach(function (ev) {
+        window.removeEventListener(ev, onInteract);
+      });
+      loadAds();
+    }
+    ["scroll", "click", "touchstart", "keydown"].forEach(function (ev) {
+      window.addEventListener(ev, onInteract, { passive: true });
+    });
+    setTimeout(loadAds, 30000);
+  })();
+</script>
   
   </head>
   <body>
